@@ -1,0 +1,106 @@
+generated: '2026-08-01'
+method: probed
+source: live GET probes of /.well-known/* on every Kaseya apis.yml + OpenAPI servers[] host
+summary: >-
+  No Kaseya-owned host serves any /.well-known/ discovery document. security.txt,
+  OpenID Connect discovery, RFC 8414 OAuth authorization-server metadata, RFC 9727
+  /.well-known/api-catalog, ai-plugin.json and A2A agent cards all returned 404 (or
+  403 from the WAF) on every probed host. The only 200 observed on a *.kaseya.com host
+  was status.kaseya.com/.well-known/security.txt, which is served by the Atlassian
+  Statuspage platform and is canonical to atlassian.com — it is NOT a Kaseya-published
+  security.txt and is recorded here as vendor-owned so it is never mistaken for one.
+hosts:
+- host: https://www.kaseya.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 200
+    file: ../llms/kaseya-llms.txt
+    note: llms.txt is served at the site root, not under /.well-known/
+- host: https://api.bms.kaseya.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://webservices2.autotask.net
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://syrah-api.centrastage.net
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /auth/.well-known/openid-configuration
+    status: 302
+    note: redirects to /auth/userlogin (HTML login page) — no OIDC discovery document
+      is served; Datto RMM issues OAuth 2.0 tokens at /auth/oauth/token without RFC 8414
+      metadata
+- host: https://api.itglue.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+    note: the IT Glue edge returns 403 for every unauthenticated path outside /developer/;
+      no discovery document is exposed
+- host: https://status.kaseya.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    vendor: atlassian-statuspage
+    canonical: https://www.atlassian.com/.well-known/security.txt
+    note: >-
+      Served by Atlassian Statuspage, not by Kaseya. Contact/Policy point at
+      atlassian.com security reporting. NOT recorded as a Kaseya security.txt and
+      NOT wired as type SecurityTxt.
+x-evidence:
+  fetched: '2026-08-01'
+  method: HTTP GET, redirects followed, status recorded verbatim
+  agent_card_result: none — no A2A agent card was found on any Kaseya host, so no
+    a2a/ artifact was written

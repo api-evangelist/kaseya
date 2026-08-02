@@ -1,0 +1,113 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/kaseya-bms-openapi-original.json, openapi/kaseya-autotask-psa-openapi-original.json,
+  openapi/kaseya-datto-rmm-openapi-original.json, https://www.kaseya.com/trust-center/,
+  https://api.itglue.com/developer/
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: openapi/kaseya-datto-rmm-openapi-original.json declares openapi 3.1.0
+  scope: Datto RMM API v2
+- id: openapi-3.0
+  conforms: true
+  evidence: openapi/kaseya-bms-openapi-original.json declares openapi 3.0.1
+  scope: Kaseya BMS API 2.0
+- id: swagger-2.0
+  conforms: true
+  evidence: openapi/kaseya-autotask-psa-openapi-original.json declares swagger 2.0
+  scope: Datto Autotask PSA REST API
+  note: The largest Kaseya contract is still on the 2014-era Swagger 2.0 format, which
+    cannot express OAuth2 flows, callbacks/webhooks, links, or JSON Schema 2020-12.
+- id: oauth2
+  conforms: true
+  evidence: Datto RMM issues OAuth 2.0 access tokens at /auth/oauth/token; VSA 10
+    Trusted Applications provide OAuth-based authorization
+  scope: Datto RMM API v2, Kaseya VSA 10 API
+  caveat: The OAuth model is documented in prose only — neither the OpenAPI document
+    nor an RFC 8414 metadata endpoint declares it.
+- id: oidc
+  conforms: false
+  evidence: No /.well-known/openid-configuration is served on any Kaseya host (see
+    well-known/kaseya-well-known.yml)
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: false
+  evidence: 404 on every probed host
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No response in any of the three specs uses application/problem+json; BMS
+    uses a proprietary ErrorInfo envelope, Datto RMM a Spring-Boot ErrorResponse
+- id: json-api
+  conforms: true
+  evidence: The IT Glue API is documented as a JSON:API-conformant interface with
+    typed resources, relationships and included resources
+  scope: IT Glue API
+  caveat: Asserted from the IT Glue developer documentation; no machine-readable
+    contract is published to verify against.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: No /.well-known/security.txt on any Kaseya-owned host
+- id: rfc9727-api-catalog
+  conforms: false
+  evidence: 404 on /.well-known/api-catalog for every host
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation header support and no deprecation policy is
+    published for any Kaseya API
+- id: rfc6585-429
+  conforms: true
+  evidence: Datto RMM documents HTTP 429 on rate-limit exceeded
+  scope: Datto RMM API v2
+  caveat: 429 is documented in prose but is absent from the OpenAPI responses.
+- id: idempotency-key
+  conforms: false
+  evidence: No Idempotency-Key header or equivalent de-duplication contract in any
+    Kaseya API
+- id: optimistic-concurrency
+  conforms: true
+  evidence: Datto RMM returns 409 "Request aborted due to concurrent write access to
+    this record" on all 65 operations
+  scope: Datto RMM API v2
+- id: asyncapi
+  conforms: false
+  evidence: No AsyncAPI document is published; the event surface is webhook-only (see
+    asyncapi/kaseya-webhooks.yml)
+- id: webhooks
+  conforms: true
+  evidence: BMS and Autotask PSA both expose managed webhook subscriptions over REST
+  scope: Kaseya BMS API 2.0, Datto Autotask PSA REST API
+- id: mcp
+  conforms: false
+  evidence: No first-party Model Context Protocol server is published by Kaseya; the
+    MCP servers for Autotask, Datto RMM and IT Glue on npm and GitHub are all
+    community-authored
+- id: a2a
+  conforms: false
+  evidence: No /.well-known/agent-card.json or /.well-known/agent.json on any host
+- id: llms-txt
+  conforms: true
+  evidence: https://www.kaseya.com/llms.txt returns a 2,004-line llms.txt (and
+    https://datto.com/llms.txt a second one) — saved to llms/kaseya-llms.txt
+- id: scim
+  conforms: false
+- id: odata
+  conforms: false
+- id: graphql
+  conforms: false
+  evidence: No /graphql surface was found on any Kaseya API host
+- id: grpc
+  conforms: false
+  evidence: No .proto definitions were found in the kaseya, datto or itglue GitHub
+    organizations or on buf.build
+compliance_program:
+  published: true
+  url: https://www.kaseya.com/trust-center/
+  certifications:
+  - SOC 2 Type II
+  frameworks:
+  - NIST Cybersecurity Framework
+  - BSIMM
+  - OWASP ASVS Level 2
+  - NIST SP 800-61
+  customer_enablement:
+  - CMMC Customer Responsibility Matrix (third-party prepared)
+  detail: security/kaseya-trust-center.yml

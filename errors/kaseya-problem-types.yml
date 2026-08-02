@@ -1,0 +1,148 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/kaseya-datto-rmm-openapi-original.json, openapi/kaseya-autotask-psa-openapi-original.json,
+  openapi/kaseya-bms-openapi-original.json
+format: proprietary
+format_note: >-
+  No Kaseya API uses RFC 9457 application/problem+json. Datto RMM returns a Spring-Boot
+  style ErrorResponse object, BMS returns an ErrorInfo object nested inside a
+  200-status success envelope, and Autotask PSA declares only bare 401/403 status codes
+  with no error schema at all.
+envelopes:
+- api: Datto RMM API v2
+  schema: ErrorResponse
+  media_type: application/json
+  description: Default error response body
+  fields:
+  - name: timestamp
+    type: integer(int64)
+    description: Epoch millis when the error occurred
+  - name: status
+    type: integer(int32)
+    description: HTTP status code
+  - name: error
+    type: string
+    description: HTTP reason phrase
+  - name: path
+    type: string
+    description: Request path that produced the error
+  coverage: all 65 operations declare 401/403/409/500; 45 declare 404; 21 declare 400
+- api: Kaseya BMS API 2.0
+  schema: ErrorInfo
+  media_type: application/json
+  carried_in: the Error property of every *Response / *PagedResponse envelope
+  fields:
+  - name: Code
+    type: integer(int32)
+  - name: Message
+    type: string
+  - name: Details
+    type: string
+  - name: StackStrace
+    type: string
+    note: spelled "StackStrace" in the published schema — a typo that is part of the
+      wire contract and must be matched verbatim by clients
+  - name: SubErrors
+    type: array[string]
+  x-observation: >-
+    The BMS OpenAPI declares only 200 responses across all 435 operations. Failure is
+    signalled inside the body via Success=false and a populated Error object, so a
+    client cannot rely on HTTP status alone and no 4xx/5xx contract is machine-readable.
+- api: Datto Autotask PSA REST API
+  schema: null
+  media_type: null
+  x-observation: >-
+    All 3,009 operations declare 200, 401 (Unauthorized) and 403 (Forbidden) with
+    description-only responses and no schema. No 400, 404, 409, 422, 429 or 5xx
+    response is documented anywhere in the 3,009-operation contract.
+problems:
+- status: 400
+  api: Datto RMM API v2
+  titles:
+  - Request parameters are invalid.
+  - Request is invalid.
+  - Request data is invalid.
+  - The device identified by the given device UID is not of class device.
+  - The device identified by the given device UID is not of class printer.
+  - The device identified by the given device UID is not of class ESXi host.
+  - The device identified by the given device MAC address is not of class device.
+  occurrences: 21
+  schema: ErrorResponse
+  remediation: Validate path/query parameters and confirm the device class matches the
+    endpoint before retrying; a class mismatch is not retryable.
+- status: 401
+  api: Datto RMM API v2
+  titles:
+  - Request can not be authorized.
+  - Request cannot be authorized.
+  occurrences: 62
+  schema: ErrorResponse
+  remediation: The OAuth access token is missing, malformed or past its 100-hour
+    lifetime. Re-issue a token at /auth/oauth/token.
+- status: 403
+  api: Datto RMM API v2
+  titles:
+  - Authenticated user doesn't have access to this resource.
+  occurrences: 60
+  schema: ErrorResponse
+  remediation: >-
+    The token is valid but the underlying API user lacks permission. Also returned
+    (per the docs, not the spec) after persistent rate-limit violation, together with a
+    5-minute IP block — so a 403 is ambiguous between authorization failure and
+    throttling.
+- status: 404
+  api: Datto RMM API v2
+  titles:
+  - Device was not found.
+  - Site was not found.
+  - Variable was not found.
+  - Site or filter not found.
+  - Job or device was not found.
+  - Filter was not found.
+  - Job was not found.
+  - Device and/or site not found.
+  - Printer was not found.
+  occurrences: 45
+  schema: ErrorResponse
+- status: 409
+  api: Datto RMM API v2
+  titles:
+  - Conflict
+  - Request aborted due to concurrent write access to this record.
+  occurrences: 65
+  schema: ErrorResponse
+  remediation: Optimistic-locking conflict. Re-read the record and re-apply the change.
+    This is the only concurrency contract published across the whole Kaseya portfolio.
+- status: 429
+  api: Datto RMM API v2
+  titles:
+  - Rate limit exceeded
+  occurrences: 0
+  documented_in: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  x-gap: Documented in prose but absent from the OpenAPI document — an agent reading
+    only the spec will not know 429 is possible.
+- status: 500
+  api: Datto RMM API v2
+  titles:
+  - Internal Server Error
+  occurrences: 65
+  schema: ErrorResponse
+- status: 401
+  api: Datto Autotask PSA REST API
+  titles:
+  - Unauthorized
+  occurrences: 3007
+  schema: null
+- status: 403
+  api: Datto Autotask PSA REST API
+  titles:
+  - Forbidden
+  occurrences: 3007
+  schema: null
+gaps:
+- No RFC 9457 problem+json anywhere in the portfolio.
+- No documented error-code registry or catalogue page for any Kaseya API.
+- BMS documents zero non-200 responses.
+- Autotask documents no error schema and no 4xx beyond 401/403.
+- The documented 429 (Datto RMM) and the tenant-suspension behaviour (Autotask) are
+  absent from both machine-readable contracts.

@@ -1,0 +1,55 @@
+generated: '2026-08-01'
+method: generated
+source: openapi/kaseya-bms-openapi-original.json, openapi/kaseya-autotask-psa-openapi-original.json,
+  openapi/kaseya-datto-rmm-openapi-original.json
+note: >-
+  Kaseya publishes no AGENTS.md, skill files or agent operating guidance for any
+  product — searches of the product help systems and the kaseya, datto and itglue
+  GitHub organizations found none. These skills are GENERATED from the three published
+  contracts plus conventions/, errors/, rate-limits/ and authentication/. Every
+  operationId referenced was verified verbatim against the spec it names.
+skills:
+- file: kaseya-bms-triage-and-resolve-ticket.md
+  name: Triage and resolve a Kaseya BMS service desk ticket
+  api: openapi/kaseya-bms-openapi-original.json
+  operations:
+  - SearchTickets
+  - GetTicket
+  - GetTicketActivities
+  - GetTicketNotes
+  - PostTicketNote
+  - AssignTicket
+  - PostTicketTimeEntry
+  - ResolveTicket
+  - GetTicketSLAInfo
+- file: kaseya-autotask-query-and-update-tickets.md
+  name: Query and update Datto Autotask PSA tickets
+  api: openapi/kaseya-autotask-psa-openapi-original.json
+  operations:
+  - Tickets_QueryEntityInformation
+  - Tickets_QueryFieldDefinitions
+  - Tickets_QueryUserDefinedFieldDefinitions
+  - Tickets_Query
+  - Tickets_QueryCount
+  - Tickets_QueryItem
+  - Tickets_CreateEntity
+  - Tickets_PatchEntity
+  - Companies_Query
+  - Contacts_Query
+  - TimeEntries_CreateEntity
+- file: kaseya-datto-rmm-alert-to-remediation.md
+  name: Take a Datto RMM alert from open to remediated
+  api: openapi/kaseya-datto-rmm-openapi-original.json
+  operations:
+  - getUserAccountOpenAlerts
+  - getAlert
+  - getByUid
+  - getSite
+  - getDeviceAudit
+  - getDevicePatches
+  - createQuickJob
+  - getJobResults
+  - getStdOut
+  - getStdErr
+  - resolveAlert
+  - get

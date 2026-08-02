@@ -1,0 +1,79 @@
+generated: '2026-08-01'
+method: searched
+source: npm registry search, PyPI, GitHub orgs github.com/kaseya, github.com/datto,
+  github.com/itglue, PowerShell Gallery, and the product API documentation
+summary: >-
+  Kaseya publishes almost no first-party API client libraries. Searches of npm, PyPI,
+  RubyGems-adjacent registries and the three Kaseya-owned GitHub organizations
+  (kaseya, datto, itglue) found exactly one first-party API wrapper — the IT Glue
+  PowerShell module, published from the official itglue GitHub organization. Every
+  other Kaseya/Datto/Autotask/IT Glue client on npm and PyPI is community-authored.
+  The Datto and Kaseya GitHub organizations carry infrastructure and open-source
+  contributions (dattobd, openzfs, libvirt forks, TightVNC) rather than API SDKs.
+packages:
+- language: powershell
+  registry: github
+  name: ITGlueAPI
+  url: https://github.com/itglue/powershellwrapper
+  install: Install-Module -Name ITGlueAPI
+  official: true
+  api: IT Glue API
+  note: Published from the official itglue GitHub organization; described as "This
+    PowerShell module acts as a wrapper for the IT Glue API."
+community_packages:
+- language: javascript
+  registry: npm
+  name: kaseya
+  url: https://www.npmjs.com/package/kaseya
+  official: false
+  note: Community REST client for Kaseya
+- language: javascript
+  registry: npm
+  name: '@apigrate/autotask-restapi'
+  url: https://www.npmjs.com/package/@apigrate/autotask-restapi
+  official: false
+  note: Community NodeJS library for the Autotask REST API
+- language: javascript
+  registry: npm
+  name: autotask-rest-api-types
+  url: https://www.npmjs.com/package/autotask-rest-api-types
+  official: false
+  note: Generated TypeScript types for the Datto/Kaseya Autotask REST API
+- language: javascript
+  registry: npm
+  name: datto-rmm-api-client
+  url: https://www.npmjs.com/package/datto-rmm-api-client
+  official: false
+  note: TypeScript client for Datto RMM API v2
+- language: javascript
+  registry: npm
+  name: node-itglue
+  url: https://www.npmjs.com/package/node-itglue
+  official: false
+  note: Community Node.js wrapper for the IT Glue API
+- language: powershell
+  registry: github
+  name: DattoRMM
+  url: https://github.com/aaronengels/DattoRMM
+  official: false
+  note: Community PowerShell module for the Datto RMM API
+registries_checked:
+- registry: npm
+  first_party_found: 0
+- registry: pypi
+  first_party_found: 0
+  note: 'PyPI packages named datto, autotask and itglue exist but are unrelated or
+    community-authored: datto = "Data Tools (Dat To)" by kristiewirth; autotask =
+    a Django async task app by Klaus Bremer; itglue = an unattributed community wrapper.'
+- registry: maven-central
+  first_party_found: 0
+- registry: nuget
+  first_party_found: 0
+- registry: pkg.go.dev
+  first_party_found: 0
+- registry: rubygems
+  first_party_found: 0
+- registry: packagist
+  first_party_found: 0
+- registry: crates.io
+  first_party_found: 0

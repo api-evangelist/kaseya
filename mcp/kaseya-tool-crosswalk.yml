@@ -1,0 +1,338 @@
+generated: '2026-08-01'
+method: derived
+source: mcp/kaseya-mcp.yml, openapi/kaseya-bms-openapi-original.json, openapi/kaseya-autotask-psa-openapi-original.json,
+  openapi/kaseya-datto-rmm-openapi-original.json
+summary: >-
+  Kaseya ships no first-party MCP server, so this crosswalk binds the DERIVED candidate
+  tool set in mcp/kaseya-mcp.yml to the operationIds that actually exist in the three
+  published contracts. Every row is verified against the spec: the tool's real input
+  contract is that operation's parameters and requestBody. Confidence is high
+  throughout because the tools were derived from the operations rather than matched to
+  a published tool list — there is no vendor tool list to disagree with. The interesting
+  finding is the rest_only side: 3,483 of the 3,509 published operations have no
+  candidate tool, and the ratio is wildly uneven across the three products.
+surfaces:
+  openapi:
+  - file: openapi/kaseya-bms-openapi-original.json
+    spec: OpenAPI 3.0.1
+    operations: 435
+    gated: false
+  - file: openapi/kaseya-autotask-psa-openapi-original.json
+    spec: Swagger 2.0
+    operations: 3009
+    gated: false
+  - file: openapi/kaseya-datto-rmm-openapi-original.json
+    spec: OpenAPI 3.1.0
+    operations: 65
+    gated: false
+  graphql: null
+  graphql_note: No GraphQL endpoint was found on any Kaseya API host.
+  mcp:
+    url: null
+    gated: null
+    note: No first-party MCP server exists, so tools/list could not be called. Community
+      servers exist (see mcp/kaseya-mcp.yml community_servers) but are not Kaseya
+      surfaces and are not crosswalked here.
+crosswalk:
+- tool: search_tickets
+  category: service-desk
+  rest:
+  - SearchTickets
+  binding: rest
+  confidence: high
+  api: Kaseya BMS API 2.0
+- tool: get_ticket
+  category: service-desk
+  rest:
+  - GetTicket
+  binding: rest
+  confidence: high
+  api: Kaseya BMS API 2.0
+- tool: create_ticket
+  category: service-desk
+  rest:
+  - PostTicket
+  binding: rest
+  confidence: high
+  api: Kaseya BMS API 2.0
+- tool: add_ticket_note
+  category: service-desk
+  rest:
+  - PostTicketNote
+  binding: rest
+  confidence: high
+  api: Kaseya BMS API 2.0
+- tool: assign_ticket
+  category: service-desk
+  rest:
+  - AssignTicket
+  binding: rest
+  confidence: high
+  api: Kaseya BMS API 2.0
+- tool: resolve_ticket
+  category: service-desk
+  rest:
+  - ResolveTicket
+  binding: rest
+  confidence: high
+  api: Kaseya BMS API 2.0
+- tool: log_ticket_time
+  category: time-and-billing
+  rest:
+  - PostTicketTimeEntry
+  binding: rest
+  confidence: high
+  api: Kaseya BMS API 2.0
+- tool: list_accounts
+  category: crm
+  rest:
+  - GetAccountsListSummary
+  binding: rest
+  confidence: high
+  api: Kaseya BMS API 2.0
+- tool: query_autotask_tickets
+  category: service-desk
+  rest:
+  - Tickets_Query
+  - Tickets_UrlParameterQuery
+  binding: rest
+  confidence: high
+  api: Datto Autotask PSA REST API
+  note: POST /query takes the QueryModel body; GET /query takes the same filter grammar
+    as a `search` query-string parameter. A tool should prefer the POST form because
+    the GET form URL-encodes a whole JSON filter tree.
+- tool: get_autotask_ticket
+  category: service-desk
+  rest:
+  - Tickets_QueryItem
+  binding: rest
+  confidence: high
+  api: Datto Autotask PSA REST API
+- tool: create_autotask_ticket
+  category: service-desk
+  rest:
+  - Tickets_CreateEntity
+  binding: rest
+  confidence: high
+  api: Datto Autotask PSA REST API
+- tool: update_autotask_ticket
+  category: service-desk
+  rest:
+  - Tickets_PatchEntity
+  - Tickets_UpdateEntity
+  binding: rest
+  confidence: high
+  api: Datto Autotask PSA REST API
+  note: PATCH is a partial update, PUT replaces the entity. Both are exposed and neither
+    is idempotency-keyed, so a retried call can double-apply.
+- tool: query_autotask_companies
+  category: crm
+  rest:
+  - Companies_Query
+  binding: rest
+  confidence: high
+  api: Datto Autotask PSA REST API
+- tool: query_autotask_contacts
+  category: crm
+  rest:
+  - Contacts_Query
+  binding: rest
+  confidence: high
+  api: Datto Autotask PSA REST API
+- tool: query_autotask_configuration_items
+  category: assets
+  rest:
+  - ConfigurationItems_Query
+  binding: rest
+  confidence: high
+  api: Datto Autotask PSA REST API
+- tool: create_autotask_time_entry
+  category: time-and-billing
+  rest:
+  - TimeEntries_CreateEntity
+  binding: rest
+  confidence: high
+  api: Datto Autotask PSA REST API
+- tool: describe_autotask_entity
+  category: introspection
+  rest:
+  - Tickets_QueryFieldDefinitions
+  - Tickets_QueryUserDefinedFieldDefinitions
+  - Tickets_QueryEntityInformation
+  binding: rest
+  confidence: medium
+  api: Datto Autotask PSA REST API
+  note: >-
+    Autotask exposes entityInformation / fields / userDefinedFields triples on every one
+    of its ~190 entities. A real MCP server should expose ONE parameterised
+    describe_entity tool rather than 570 generated ones — this row is deliberately a
+    fan-in, and the Tickets triple is named only as the representative binding.
+- tool: list_rmm_sites
+  category: rmm-inventory
+  rest:
+  - getSites
+  binding: rest
+  confidence: high
+  api: Datto RMM API v2
+- tool: get_rmm_site
+  category: rmm-inventory
+  rest:
+  - getSite
+  binding: rest
+  confidence: high
+  api: Datto RMM API v2
+- tool: list_rmm_site_devices
+  category: rmm-inventory
+  rest:
+  - getSiteDevices
+  - getSiteDevices_1
+  binding: rest
+  confidence: high
+  api: Datto RMM API v2
+  note: getSiteDevices is the /v3 form, getSiteDevices_1 the /v2 form. The generator
+    disambiguated the duplicate operationId with a _1 suffix, which is a spec-quality
+    defect a tool name must not inherit.
+- tool: get_rmm_device
+  category: rmm-inventory
+  rest:
+  - getByUid
+  - getByUid_1
+  binding: rest
+  confidence: high
+  api: Datto RMM API v2
+- tool: get_rmm_device_audit
+  category: rmm-audit
+  rest:
+  - getDeviceAudit
+  binding: rest
+  confidence: high
+  api: Datto RMM API v2
+- tool: list_rmm_open_alerts
+  category: rmm-alerts
+  rest:
+  - getUserAccountOpenAlerts
+  binding: rest
+  confidence: high
+  api: Datto RMM API v2
+- tool: resolve_rmm_alert
+  category: rmm-alerts
+  rest:
+  - resolveAlert
+  binding: rest
+  confidence: high
+  api: Datto RMM API v2
+- tool: run_rmm_quick_job
+  category: rmm-automation
+  rest:
+  - createQuickJob
+  binding: rest
+  confidence: high
+  api: Datto RMM API v2
+  note: Highest-consequence operation in the candidate set — it executes a component on
+    a managed endpoint. Any real MCP server should gate this behind explicit human
+    confirmation.
+- tool: get_rmm_job_results
+  category: rmm-automation
+  rest:
+  - getJobResults
+  - getStdOut
+  - getStdErr
+  binding: rest
+  confidence: high
+  api: Datto RMM API v2
+- tool: get_rmm_device_patches
+  category: rmm-patching
+  rest:
+  - getDevicePatches
+  binding: rest
+  confidence: high
+  api: Datto RMM API v2
+- tool: check_rmm_request_rate
+  category: introspection
+  rest:
+  - get
+  binding: rest
+  confidence: high
+  api: Datto RMM API v2
+  note: The operationId is literally `get` (GET /v2/system/request_rate) — another
+    generator artefact in the published spec.
+mcp_only: []
+mcp_only_note: No MCP-only capability exists because there is no first-party MCP server
+  to diverge from REST.
+rest_only:
+- capability: Autotask entity CRUD beyond tickets, companies, contacts, configuration
+    items and time entries
+  api: Datto Autotask PSA REST API
+  approx_operations: 2900
+  examples:
+  - Projects_Query
+  - Tasks_Query
+  - Contracts_Query
+  - Resources_Query
+  - Opportunities equivalents, quotes, invoices, inventory, checklists, holidays,
+    appointments and ~180 other entities
+- capability: Autotask webhook administration
+  api: Datto Autotask PSA REST API
+  examples:
+  - CompanyWebhooks
+  - ContactWebhooks
+  - TicketWebhooks
+  - TicketNoteWebhooks
+  - ConfigurationItemWebhooks
+  - WebhookEventErrorLogs
+  note: The richest webhook control plane in the portfolio has no candidate tool at all.
+- capability: BMS finance, contracts, projects, inventory, purchasing and reporting
+  api: Kaseya BMS API 2.0
+  approx_operations: 380
+  examples:
+  - PostRecurringServiceContract
+  - ActivateContract
+  - GetProjectsListSummary
+  - GetAttachments
+- capability: BMS Kaseya One (K1) access control and CooperBot integration
+  api: Kaseya BMS API 2.0
+  examples:
+  - K1AccessControls tag (9 operations)
+  - K1CooperBots tag (8 operations)
+  note: Kaseya's own AI-assistant plumbing is exposed over the BMS API but is
+    undocumented outside the spec.
+- capability: BMS webhook administration
+  api: Kaseya BMS API 2.0
+  examples:
+  - PostWebhookConfiguration
+  - GetWebhookEventsLookup
+  - PatchWebhooks
+- capability: Datto RMM site settings, variables, filters and user key rotation
+  api: Datto RMM API v2
+  examples:
+  - createSiteVariable
+  - updateProxy
+  - getCustomFilters
+  - resetApiKeys
+coverage:
+  tools_named: 28
+  tools_bound: 28
+  tools_unbound: 0
+  mcp_only: 0
+  rest_operations_total: 3509
+  rest_operations_with_a_tool: 34
+  rest_coverage_percent: 0.97
+  per_api:
+  - api: Kaseya BMS API 2.0
+    operations: 435
+    tools: 8
+    coverage_percent: 1.8
+  - api: Datto Autotask PSA REST API
+    operations: 3009
+    tools: 9
+    coverage_percent: 0.4
+  - api: Datto RMM API v2
+    operations: 65
+    tools: 11
+    coverage_percent: 20.0
+x-observation: >-
+  Datto RMM is the only Kaseya surface small and well-summarised enough to be tool-ified
+  wholesale — 65 operations, every one carrying a summary. Autotask's 3,009 operations
+  are 190 entities x the same 12-operation CRUD template, so a faithful MCP server for
+  Autotask should be built as a handful of parameterised tools over the entity name
+  plus the entityInformation introspection endpoints, not as 3,009 generated tools.

@@ -1,0 +1,79 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Datto Autotask PSA REST API
+  version: 1.0.0
+x-generated: '2026-08-01'
+x-method: generated
+x-source: openapi/kaseya-autotask-psa-openapi-original.json
+extends: openapi/kaseya-autotask-psa-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-profiled: '2026-08-01'
+    x-apievangelist-provider: kaseya
+    x-apievangelist-api: kaseya:autotask-psa
+    x-apievangelist-harvested-from: https://webservices2.autotask.net/atservicesrest/swagger/docs/v1
+    x-apievangelist-operations: 3009
+    x-apievangelist-paths: 2077
+    x-apievangelist-definitions: 806
+    contact:
+      name: Autotask Developer Help
+      url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+    termsOfService: https://www.kaseya.com/legal/kaseya-api-license/
+- target: $.info
+  update:
+    x-apievangelist-gaps:
+    - id: swagger-2.0
+      detail: Still published as Swagger 2.0, which cannot express OAuth2 flows,
+        webhooks/callbacks, links or JSON Schema 2020-12.
+    - id: no-security-definitions
+      detail: securityDefinitions is empty. The real credentials (UserName, Secret,
+        ApiIntegrationCode) are modelled as ordinary required header parameters on all
+        3009 operations, so no tooling can recognise them as authentication.
+    - id: no-summaries
+      detail: Zero of the 3009 operations carry a summary or description.
+    - id: thin-error-contract
+      detail: Only 401 and 403 are declared, description-only, with no schema. The
+        documented tenant-suspension behaviour on threshold breach is absent entirely.
+    - id: no-idempotency
+      detail: No idempotency key on any create; PUT and PATCH are both offered.
+- target: $.securityDefinitions
+  update:
+    autotaskApiUser:
+      type: apiKey
+      name: UserName
+      in: header
+      description: >-
+        Autotask REST authenticates with three static headers — UserName (the API-only
+        user's e-mail), Secret (its password) and ApiIntegrationCode (the integration
+        tracking identifier). Modelled here as a single scheme because Swagger 2.0
+        cannot express a composite credential.
+      x-companion-headers:
+      - Secret
+      - ApiIntegrationCode
+      x-optional-headers:
+      - ImpersonationResourceId
+      x-docs: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+- target: $.info
+  update:
+    x-apievangelist-rate-limit:
+      limit: 10000
+      interval: hour
+      scope: per Autotask database, all integrations, rolling 60-minute window
+      enforcement: progressive latency then temporary API suspension for the tenant
+      docs: https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+    x-apievangelist-zones:
+    - webservices1.autotask.net
+    - webservices2.autotask.net
+    - webservices3.autotask.net
+    - webservices4.autotask.net
+    - webservices5.autotask.net
+    - webservices6.autotask.net
+    - webservices11.autotask.net
+    - webservices12.autotask.net
+    - webservices14.autotask.net
+    - webservices15.autotask.net
+    - webservices16.autotask.net
+    - webservices17.autotask.net
+    - webservices18.autotask.net
+    - webservices19.autotask.net

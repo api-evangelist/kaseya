@@ -1,0 +1,73 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Datto RMM API v2
+  version: 1.0.0
+x-generated: '2026-08-01'
+x-method: generated
+x-source: openapi/kaseya-datto-rmm-openapi-original.json
+extends: openapi/kaseya-datto-rmm-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-profiled: '2026-08-01'
+    x-apievangelist-provider: kaseya
+    x-apievangelist-api: kaseya:datto-rmm
+    x-apievangelist-harvested-from: https://syrah-api.centrastage.net/api/v3/api-docs
+    x-apievangelist-operations: 65
+    x-apievangelist-paths: 61
+    contact:
+      name: Datto RMM Help
+      url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+- target: $.servers
+  update:
+  - url: https://pinotage-api.centrastage.net/api
+    description: Pinotage region
+  - url: https://merlot-api.centrastage.net/api
+    description: Merlot region
+  - url: https://concord-api.centrastage.net/api
+    description: Concord region
+  - url: https://vidal-api.centrastage.net/api
+    description: Vidal region
+  - url: https://zinfandel-api.centrastage.net/api
+    description: Zinfandel region
+  - url: https://syrah-api.centrastage.net/api
+    description: Syrah region
+- target: $.components.securitySchemes
+  update:
+    dattoRmmOAuth2:
+      type: oauth2
+      description: >-
+        OAuth 2.0 access tokens issued by the Datto RMM authorization server from an
+        API Key and API Secret Key generated in the product UI. Tokens live 100 hours.
+        The published spec declares no securityScheme at all; this is added from the
+        documentation.
+      flows:
+        clientCredentials:
+          tokenUrl: https://syrah-api.centrastage.net/auth/oauth/token
+          scopes: {}
+      x-docs: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+- target: $.info
+  update:
+    x-apievangelist-rate-limit:
+      read: 600 requests per rolling 60 seconds
+      write: 100 requests per rolling 60 seconds
+      exceeded_status: 429
+      persistent_violation: 403 plus a 5-minute IP block
+      introspection_operation: get (GET /v2/system/request_rate)
+    x-apievangelist-gaps:
+    - id: missing-429
+      detail: 429 is documented in prose but declared on none of the 65 operations.
+    - id: no-security-scheme
+      detail: The document declares no securitySchemes despite requiring OAuth 2.0.
+    - id: prose-only-deprecation
+      detail: muteAlert and unmuteAlert state in their summaries that the capability
+        was removed in release 8.9.0, but neither carries the OpenAPI deprecated flag.
+    - id: generated-operation-ids
+      detail: 'Several operationIds are generator artefacts that make poor tool names:
+        `get`, `get_1`, `create`, `update`, `getByUid_1`, `getSiteDevices_1`.'
+- target: $.paths['/v2/alert/{alertUid}/mute'].post
+  update:
+    deprecated: true
+- target: $.paths['/v2/alert/{alertUid}/unmute'].post
+  update:
+    deprecated: true

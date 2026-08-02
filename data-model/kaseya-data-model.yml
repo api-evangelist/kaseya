@@ -1,0 +1,1265 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/kaseya-autotask-psa-openapi-original.json, openapi/kaseya-datto-rmm-openapi-original.json,
+  openapi/kaseya-bms-openapi-original.json
+summary: 'Entity-relationship graph derived from the three published Kaseya OpenAPI/Swagger documents.
+  Relationships are inferred from id-reference fields (Autotask, BMS) and from $ref links plus *Uid fields
+  (Datto RMM). Autotask PSA carries 806 definitions and 267 *Model entity schemas with 1,071 id-reference
+  fields across them, making it by far the largest data model in the portfolio; only the 20 highest-value
+  entities are expanded here. The three products share no identifiers: a Company in Autotask, an Account
+  in BMS and a Site in Datto RMM all model the same managed customer but are joined only by product integrations,
+  not by a common key.'
+schema_counts:
+  autotask_psa_definitions: 806
+  autotask_psa_entity_models: 269
+  autotask_psa_id_reference_fields: 1068
+  bms_schemas: 801
+  datto_rmm_schemas: 123
+entities:
+- name: Company
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/CompanyModel'
+  field_count: 61
+  relationships:
+  - type: belongs_to
+    via: apiVendorID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: billToCompanyLocationID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: billToCountryID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: companyCategoryID
+    target: CompanyCategory
+    resolved: true
+  - type: belongs_to
+    via: competitorID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: countryID
+    target: Country
+    resolved: true
+  - type: belongs_to
+    via: createdByResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: currencyID
+    target: Currency
+    resolved: true
+  - type: belongs_to
+    via: impersonatorCreatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: invoiceEmailMessageID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: invoiceTemplateID
+    target: InvoiceTemplate
+    resolved: true
+  - type: belongs_to
+    via: marketSegmentID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: ownerResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: parentCompanyID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: purchaseOrderTemplateID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: quoteEmailMessageID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: quoteTemplateID
+    target: QuoteTemplate
+    resolved: true
+  - type: belongs_to
+    via: taxID
+    target: Tax
+    resolved: true
+  - type: belongs_to
+    via: taxRegionID
+    target: TaxRegion
+    resolved: true
+  - type: belongs_to
+    via: territoryID
+    target: null
+    resolved: false
+- name: Contact
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/ContactModel'
+  field_count: 46
+  relationships:
+  - type: belongs_to
+    via: apiVendorID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: companyID
+    target: Company
+    resolved: true
+  - type: belongs_to
+    via: companyLocationID
+    target: CompanyLocation
+    resolved: true
+  - type: belongs_to
+    via: countryID
+    target: Country
+    resolved: true
+  - type: belongs_to
+    via: externalID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: impersonatorCreatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: soapParentPropertyId
+    target: null
+    resolved: false
+- name: Ticket
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/TicketModel'
+  field_count: 76
+  relationships:
+  - type: belongs_to
+    via: apiVendorID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: assignedResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: assignedResourceRoleID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: billingCodeID
+    target: BillingCode
+    resolved: true
+  - type: belongs_to
+    via: companyID
+    target: Company
+    resolved: true
+  - type: belongs_to
+    via: companyLocationID
+    target: CompanyLocation
+    resolved: true
+  - type: belongs_to
+    via: completedByResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: configurationItemID
+    target: ConfigurationItem
+    resolved: true
+  - type: belongs_to
+    via: contactID
+    target: Contact
+    resolved: true
+  - type: belongs_to
+    via: contractID
+    target: Contract
+    resolved: true
+  - type: belongs_to
+    via: contractServiceBundleID
+    target: ContractServiceBundle
+    resolved: true
+  - type: belongs_to
+    via: contractServiceID
+    target: ContractService
+    resolved: true
+  - type: belongs_to
+    via: createdByContactID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: creatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: externalID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: firstResponseAssignedResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: firstResponseInitiatingResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: impersonatorCreatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: lastActivityResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: monitorID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: monitorTypeID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: opportunityID
+    target: Opportunity
+    resolved: true
+  - type: belongs_to
+    via: organizationalLevelAssociationID
+    target: OrganizationalLevelAssociation
+    resolved: true
+  - type: belongs_to
+    via: problemTicketId
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: projectID
+    target: Project
+    resolved: true
+  - type: belongs_to
+    via: queueID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmAlertID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: serviceLevelAgreementID
+    target: null
+    resolved: false
+- name: TicketNote
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/TicketNoteModel'
+  field_count: 13
+  relationships:
+  - type: belongs_to
+    via: createdByContactID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: creatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: impersonatorCreatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: impersonatorUpdaterResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: soapParentPropertyId
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: ticketID
+    target: Ticket
+    resolved: true
+- name: Project
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/ProjectModel'
+  field_count: 44
+  relationships:
+  - type: belongs_to
+    via: companyID
+    target: Company
+    resolved: true
+  - type: belongs_to
+    via: companyOwnerResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: contractID
+    target: Contract
+    resolved: true
+  - type: belongs_to
+    via: creatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: impersonatorCreatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: lastActivityResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: opportunityID
+    target: Opportunity
+    resolved: true
+  - type: belongs_to
+    via: organizationalLevelAssociationID
+    target: OrganizationalLevelAssociation
+    resolved: true
+  - type: belongs_to
+    via: projectLeadResourceID
+    target: null
+    resolved: false
+- name: Task
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/TaskModel'
+  field_count: 37
+  relationships:
+  - type: belongs_to
+    via: assignedResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: assignedResourceRoleID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: billingCodeID
+    target: BillingCode
+    resolved: true
+  - type: belongs_to
+    via: companyLocationID
+    target: CompanyLocation
+    resolved: true
+  - type: belongs_to
+    via: completedByResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: creatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: departmentID
+    target: Department
+    resolved: true
+  - type: belongs_to
+    via: externalID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: lastActivityResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: phaseID
+    target: Phase
+    resolved: true
+  - type: belongs_to
+    via: projectID
+    target: Project
+    resolved: true
+  - type: belongs_to
+    via: soapParentPropertyId
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: taskCategoryID
+    target: null
+    resolved: false
+- name: Contract
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/ContractModel'
+  field_count: 36
+  relationships:
+  - type: belongs_to
+    via: billToCompanyContactID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: billToCompanyID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: companyID
+    target: Company
+    resolved: true
+  - type: belongs_to
+    via: contactID
+    target: Contact
+    resolved: true
+  - type: belongs_to
+    via: contractExclusionSetID
+    target: ContractExclusionSet
+    resolved: true
+  - type: belongs_to
+    via: exclusionContractID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: opportunityID
+    target: Opportunity
+    resolved: true
+  - type: belongs_to
+    via: organizationalLevelAssociationID
+    target: OrganizationalLevelAssociation
+    resolved: true
+  - type: belongs_to
+    via: renewedContractID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: serviceLevelAgreementID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: setupFeeBillingCodeID
+    target: null
+    resolved: false
+- name: Opportunity
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/OpportunityModel'
+  field_count: 61
+  relationships:
+  - type: belongs_to
+    via: companyID
+    target: Company
+    resolved: true
+  - type: belongs_to
+    via: contactID
+    target: Contact
+    resolved: true
+  - type: belongs_to
+    via: creatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: impersonatorCreatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: opportunityCategoryID
+    target: OpportunityCategory
+    resolved: true
+  - type: belongs_to
+    via: organizationalLevelAssociationID
+    target: OrganizationalLevelAssociation
+    resolved: true
+  - type: belongs_to
+    via: ownerResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: productID
+    target: Product
+    resolved: true
+  - type: belongs_to
+    via: salesOrderID
+    target: SalesOrder
+    resolved: true
+- name: Quote
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/QuoteModel'
+  field_count: 40
+  relationships:
+  - type: belongs_to
+    via: approvalStatusChangedByResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: billToLocationID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: companyID
+    target: Company
+    resolved: true
+  - type: belongs_to
+    via: contactID
+    target: Contact
+    resolved: true
+  - type: belongs_to
+    via: creatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: groupByID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: impersonatorCreatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: lastPublishedByResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: opportunityID
+    target: Opportunity
+    resolved: true
+  - type: belongs_to
+    via: proposalProjectID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: quoteTemplateID
+    target: QuoteTemplate
+    resolved: true
+  - type: belongs_to
+    via: shipToLocationID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: soldToLocationID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: taxRegionID
+    target: TaxRegion
+    resolved: true
+- name: TimeEntry
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/TimeEntryModel'
+  field_count: 31
+  relationships:
+  - type: belongs_to
+    via: billingApprovalResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: billingCodeID
+    target: BillingCode
+    resolved: true
+  - type: belongs_to
+    via: contractID
+    target: Contract
+    resolved: true
+  - type: belongs_to
+    via: contractServiceBundleID
+    target: ContractServiceBundle
+    resolved: true
+  - type: belongs_to
+    via: contractServiceID
+    target: ContractService
+    resolved: true
+  - type: belongs_to
+    via: creatorUserID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: impersonatorCreatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: impersonatorUpdaterResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: internalBillingCodeID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: lastModifiedUserID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: resourceID
+    target: Resource
+    resolved: true
+  - type: belongs_to
+    via: roleID
+    target: Role
+    resolved: true
+  - type: belongs_to
+    via: taskID
+    target: Task
+    resolved: true
+  - type: belongs_to
+    via: ticketID
+    target: Ticket
+    resolved: true
+- name: ConfigurationItem
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/ConfigurationItemModel'
+  field_count: 113
+  relationships:
+  - type: belongs_to
+    via: apiVendorID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: companyID
+    target: Company
+    resolved: true
+  - type: belongs_to
+    via: companyLocationID
+    target: CompanyLocation
+    resolved: true
+  - type: belongs_to
+    via: configurationItemCategoryID
+    target: ConfigurationItemCategory
+    resolved: true
+  - type: belongs_to
+    via: contactID
+    target: Contact
+    resolved: true
+  - type: belongs_to
+    via: contractID
+    target: Contract
+    resolved: true
+  - type: belongs_to
+    via: contractServiceBundleID
+    target: ContractServiceBundle
+    resolved: true
+  - type: belongs_to
+    via: contractServiceID
+    target: ContractService
+    resolved: true
+  - type: belongs_to
+    via: createdByPersonID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: dattoKernelVersionID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: dattoOSVersionID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: dattoZFSVersionID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: deviceNetworkingID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: domainRegistrarID
+    target: DomainRegistrar
+    resolved: true
+  - type: belongs_to
+    via: impersonatorCreatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: installedByContactID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: installedByID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: lastActivityPersonID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: parentConfigurationItemID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: productID
+    target: Product
+    resolved: true
+  - type: belongs_to
+    via: rmmDeviceAuditAntivirusStatusID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditArchitectureID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditBackupStatusID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditDeviceTypeID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditDisplayAdaptorID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditDomainID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditFirmwareID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditManufacturerID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditMobileNetworkOperatorID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditModelID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditMotherboardID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditPatchStatusID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditProcessorID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditServicePackID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceAuditSoftwareStatusID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmDeviceUID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: rmmVsaxDeviceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: serviceBundleID
+    target: ServiceBundle
+    resolved: true
+  - type: belongs_to
+    via: serviceID
+    target: Service
+    resolved: true
+  - type: belongs_to
+    via: serviceLevelAgreementID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: sourceChargeID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: vendorID
+    target: null
+    resolved: false
+- name: Resource
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/ResourceModel'
+  field_count: 36
+  relationships:
+  - type: belongs_to
+    via: accountingReferenceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: defaultServiceDeskRoleID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: locationID
+    target: null
+    resolved: false
+- name: ServiceCall
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/ServiceCallModel'
+  field_count: 16
+  relationships:
+  - type: belongs_to
+    via: canceledByResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: companyID
+    target: Company
+    resolved: true
+  - type: belongs_to
+    via: companyLocationID
+    target: CompanyLocation
+    resolved: true
+  - type: belongs_to
+    via: creatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: impersonatorCreatorResourceID
+    target: null
+    resolved: false
+- name: Product
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/ProductModel'
+  field_count: 30
+  relationships:
+  - type: belongs_to
+    via: chargeBillingCodeID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: createdByResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: defaultInstalledProductCategoryID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: defaultVendorID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: externalProductID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: impersonatorCreatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: internalProductID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: productBillingCodeID
+    target: null
+    resolved: false
+- name: BillingItem
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/BillingItemModel'
+  field_count: 53
+  relationships:
+  - type: belongs_to
+    via: accountManagerWhenApprovedID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: billingCodeID
+    target: BillingCode
+    resolved: true
+  - type: belongs_to
+    via: companyID
+    target: Company
+    resolved: true
+  - type: belongs_to
+    via: configurationItemID
+    target: ConfigurationItem
+    resolved: true
+  - type: belongs_to
+    via: contractBlockID
+    target: ContractBlock
+    resolved: true
+  - type: belongs_to
+    via: contractChargeID
+    target: ContractCharge
+    resolved: true
+  - type: belongs_to
+    via: contractID
+    target: Contract
+    resolved: true
+  - type: belongs_to
+    via: contractServiceAdjustmentID
+    target: ContractServiceAdjustment
+    resolved: true
+  - type: belongs_to
+    via: contractServiceBundleAdjustmentID
+    target: ContractServiceBundleAdjustment
+    resolved: true
+  - type: belongs_to
+    via: contractServiceBundleID
+    target: ContractServiceBundle
+    resolved: true
+  - type: belongs_to
+    via: contractServiceBundlePeriodID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: contractServiceID
+    target: ContractService
+    resolved: true
+  - type: belongs_to
+    via: contractServicePeriodID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: expenseItemID
+    target: ExpenseItem
+    resolved: true
+  - type: belongs_to
+    via: invoiceID
+    target: Invoice
+    resolved: true
+  - type: belongs_to
+    via: itemApproverID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: milestoneID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: organizationalLevelAssociationID
+    target: OrganizationalLevelAssociation
+    resolved: true
+  - type: belongs_to
+    via: projectChargeID
+    target: ProjectCharge
+    resolved: true
+  - type: belongs_to
+    via: projectID
+    target: Project
+    resolved: true
+  - type: belongs_to
+    via: roleID
+    target: Role
+    resolved: true
+  - type: belongs_to
+    via: serviceBundleID
+    target: ServiceBundle
+    resolved: true
+  - type: belongs_to
+    via: serviceID
+    target: Service
+    resolved: true
+  - type: belongs_to
+    via: sortOrderID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: taskID
+    target: Task
+    resolved: true
+  - type: belongs_to
+    via: taxCategoryID
+    target: TaxCategory
+    resolved: true
+  - type: belongs_to
+    via: ticketChargeID
+    target: TicketCharge
+    resolved: true
+  - type: belongs_to
+    via: ticketID
+    target: Ticket
+    resolved: true
+  - type: belongs_to
+    via: timeEntryID
+    target: TimeEntry
+    resolved: true
+  - type: belongs_to
+    via: vendorID
+    target: null
+    resolved: false
+- name: Appointment
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/AppointmentModel'
+  field_count: 9
+  relationships:
+  - type: belongs_to
+    via: creatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: resourceID
+    target: Resource
+    resolved: true
+- name: ExpenseItem
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/ExpenseItemModel'
+  field_count: 29
+  relationships:
+  - type: belongs_to
+    via: companyID
+    target: Company
+    resolved: true
+  - type: belongs_to
+    via: expenseCurrencyID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: expenseReportID
+    target: ExpenseReport
+    resolved: true
+  - type: belongs_to
+    via: projectID
+    target: Project
+    resolved: true
+  - type: belongs_to
+    via: soapParentPropertyId
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: taskID
+    target: Task
+    resolved: true
+  - type: belongs_to
+    via: ticketID
+    target: Ticket
+    resolved: true
+- name: Invoice
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/InvoiceModel'
+  field_count: 25
+  relationships:
+  - type: belongs_to
+    via: batchID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: companyID
+    target: Company
+    resolved: true
+  - type: belongs_to
+    via: creatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: invoiceEditorTemplateID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: voidedByResourceID
+    target: null
+    resolved: false
+- name: Subscription
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/SubscriptionModel'
+  field_count: 18
+  relationships:
+  - type: belongs_to
+    via: configurationItemID
+    target: ConfigurationItem
+    resolved: true
+  - type: belongs_to
+    via: impersonatorCreatorResourceID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: materialCodeID
+    target: null
+    resolved: false
+  - type: belongs_to
+    via: organizationalLevelAssociationID
+    target: OrganizationalLevelAssociation
+    resolved: true
+  - type: belongs_to
+    via: vendorID
+    target: null
+    resolved: false
+- name: ContractService
+  api: Datto Autotask PSA REST API
+  schema: '#/definitions/ContractServiceModel'
+  field_count: 11
+  relationships:
+  - type: belongs_to
+    via: contractID
+    target: Contract
+    resolved: true
+  - type: belongs_to
+    via: quoteItemID
+    target: QuoteItem
+    resolved: true
+  - type: belongs_to
+    via: serviceID
+    target: Service
+    resolved: true
+  - type: belongs_to
+    via: soapParentPropertyId
+    target: null
+    resolved: false
+- name: Site
+  api: Datto RMM API v2
+  schema: '#/components/schemas/Site'
+  field_count: 13
+  relationships:
+  - type: belongs_to
+    via: accountUid
+    target: Account
+  - type: has_one
+    via: proxySettings
+    target: ProxySettings
+  - type: has_one
+    via: devicesStatus
+    target: DevicesStatus
+- name: Device
+  api: Datto RMM API v2
+  schema: '#/components/schemas/Device'
+  field_count: 34
+  relationships:
+  - type: belongs_to
+    via: siteUid
+    target: Site
+  - type: has_one
+    via: deviceType
+    target: DevicesType
+  - type: has_one
+    via: antivirus
+    target: Antivirus
+  - type: has_one
+    via: patchManagement
+    target: PatchManagement
+- name: DeviceV3
+  api: Datto RMM API v2
+  schema: '#/components/schemas/DeviceV3'
+  field_count: 35
+  relationships:
+  - type: belongs_to
+    via: siteUid
+    target: Site
+  - type: has_one
+    via: deviceType
+    target: DevicesType
+  - type: has_one
+    via: antivirus
+    target: Antivirus
+  - type: has_one
+    via: patchManagement
+    target: PatchManagement
+  - type: has_many
+    via: udfs
+    target: UdfItem
+- name: Alert
+  api: Datto RMM API v2
+  schema: '#/components/schemas/Alert'
+  field_count: 14
+  relationships:
+  - type: belongs_to
+    via: alertUid
+    target: Alert
+  - type: has_one
+    via: alertMonitorInfo
+    target: AlertMonitorInfo
+  - type: has_one
+    via: alertSourceInfo
+    target: AlertSourceInfo
+  - type: has_many
+    via: responseActions
+    target: ResponseAction
+- name: Job
+  api: Datto RMM API v2
+  schema: '#/components/schemas/Job'
+  field_count: 5
+  relationships: []
+- name: Filter
+  api: Datto RMM API v2
+  schema: '#/components/schemas/Filter'
+  field_count: 6
+  relationships: []
+- name: Variable
+  api: Datto RMM API v2
+  schema: '#/components/schemas/Variable'
+  field_count: 4
+  relationships: []
+- name: NetworkInterface
+  api: Datto RMM API v2
+  schema: '#/components/schemas/NetworkInterface'
+  field_count: 5
+  relationships: []
+- name: Udf
+  api: Datto RMM API v2
+  schema: '#/components/schemas/Udf'
+  field_count: 300
+  relationships: []
+- name: Warranty
+  api: Datto RMM API v2
+  schema: '#/components/schemas/Warranty'
+  field_count: 1
+  relationships: []
+- name: PatchManagement
+  api: Datto RMM API v2
+  schema: '#/components/schemas/PatchManagement'
+  field_count: 4
+  relationships: []
+- name: Antivirus
+  api: Datto RMM API v2
+  schema: '#/components/schemas/Antivirus'
+  field_count: 2
+  relationships: []
+- name: ProductDto
+  api: Kaseya BMS API 2.0
+  schema: '#/components/schemas/ProductDto'
+  field_count: 8
+  relationships: []
+- name: TicketListDto
+  api: Kaseya BMS API 2.0
+  schema: '#/components/schemas/TicketListDto'
+  field_count: 71
+  relationships:
+  - type: belongs_to
+    via: AccountId
+    target: Account
+  - type: belongs_to
+    via: LocationId
+    target: Location
+  - type: belongs_to
+    via: ContactId
+    target: Contact
+  - type: belongs_to
+    via: QueueId
+    target: Queue
+  - type: belongs_to
+    via: StatusId
+    target: Status
+  - type: belongs_to
+    via: PriorityId
+    target: Priority
+  - type: belongs_to
+    via: TypeId
+    target: Type
+  - type: belongs_to
+    via: IssueTypeId
+    target: IssueType
+  - type: belongs_to
+    via: SubIssueTypeId
+    target: SubIssueType
+  - type: belongs_to
+    via: ContractId
+    target: Contract
+  - type: belongs_to
+    via: AssigneeId
+    target: Assignee
+  - type: belongs_to
+    via: WorkTypeId
+    target: WorkType
+  - type: belongs_to
+    via: TicketRecurringMasterId
+    target: TicketRecurringMaster
+  - type: belongs_to
+    via: SLAStatusEventId
+    target: SLAStatusEvent
+  - type: belongs_to
+    via: SourceId
+    target: Source
+  - type: belongs_to
+    via: SLAId
+    target: SLA
+  - type: belongs_to
+    via: SLAObjectiveId
+    target: SLAObjective
+  - type: belongs_to
+    via: HardwareAssetId
+    target: HardwareAsset
+cross_product_note: No shared identifier space. Kaseya's own product integrations (Autotask <-> Datto
+  RMM, IT Glue <-> BMS via the ITG tag on 18 BMS operations, RMMIntegration on 11 BMS operations) are
+  the only join paths, and they are configured per tenant rather than expressed in the contracts.

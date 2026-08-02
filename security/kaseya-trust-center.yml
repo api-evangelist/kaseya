@@ -1,0 +1,85 @@
+generated: '2026-08-01'
+method: searched
+probe: true
+url: https://www.kaseya.com/trust-center/
+sections:
+- name: Earning Your Trust
+  url: https://www.kaseya.com/trust-center/earning-your-trust/
+- name: Information Security
+  url: https://www.kaseya.com/trust-center/information-security/
+- name: Security Advisories
+  url: https://www.kaseya.com/trust-center/security/
+- name: Report a Security Issue
+  url: https://www.kaseya.com/trust-center/security/report/
+- name: Vulnerability Disclosure Policy
+  url: https://www.kaseya.com/trust-center/vulnerability-disclosure-policy/
+- name: SOC Report
+  url: https://www.kaseya.com/trust-center/soc-report/
+- name: SOC Report Downloads
+  url: https://www.kaseya.com/trust-center/soc-report/downloads/
+- name: CMMC Customer Responsibility Matrix
+  url: https://www.kaseya.com/trust-center/cmmc/
+- name: Privacy and Legal
+  url: https://www.kaseya.com/trust-center/privacy-and-legal/
+- name: Engage With Us
+  url: https://www.kaseya.com/trust-center/engage-with-us/
+- name: Sub-processors
+  url: https://www.kaseya.com/subprocessors/
+certifications:
+- id: soc2-type-2
+  name: SOC 2 Type II
+  claimed: true
+  evidence: '"exception-free SOC 2 Type II audits for a wide set of IT Complete modules"
+    — https://www.kaseya.com/trust-center/information-security/; reports requestable
+    at https://www.kaseya.com/trust-center/soc-report/downloads/'
+- id: cmmc
+  name: CMMC (Cybersecurity Maturity Model Certification)
+  claimed: partial
+  evidence: Kaseya publishes CMMC Customer Responsibility Matrix files prepared by a
+    certified third party — https://www.kaseya.com/trust-center/cmmc/ — a customer-enablement
+    artifact rather than a Kaseya certification.
+frameworks:
+- id: nist-csf
+  name: NIST Cybersecurity Framework
+  role: foundational framework used to measure security program scope and maturity
+- id: bsimm
+  name: BSIMM (Building Security In Maturity Model)
+  role: application and software security practice model
+- id: owasp-asvs
+  name: OWASP ASVS Level 2
+  role: guides penetration-testing quality
+- id: nist-sp-800-61
+  name: NIST SP 800-61
+  role: incident response procedures
+not_claimed:
+- ISO 27001
+- ISO 27017
+- ISO 27018
+- PCI DSS
+- HIPAA (as a Kaseya certification)
+- FedRAMP
+- CSA STAR
+- TX-RAMP / StateRAMP
+not_claimed_note: Not found on the Kaseya trust center or information-security pages
+  as of 2026-08-01. Absence here means "not published", not "not held".
+privacy:
+  privacy_statement: https://www.kaseya.com/legal/kaseya-privacy-statement/
+  dpa: https://www.kaseya.com/legal/kaseya-data-processing-addendum/
+  cookie_notice: https://www.kaseya.com/legal/kaseya-cookie-notice/
+  subprocessors: https://www.kaseya.com/subprocessors/
+  modern_slavery_statement: https://www.kaseya.com/wp-content/uploads/2026/02/Kaseya-UK-Modern-Slavery-and-Human-Trafficking-Policy-2025.pdf
+evidence:
+- source: https://www.kaseya.com/trust-center/
+  fetched: '2026-08-01'
+  keywords:
+  - trust center
+  - soc 2
+  - cmmc
+  - vulnerability disclosure
+- source: https://www.kaseya.com/trust-center/information-security/
+  fetched: '2026-08-01'
+  keywords:
+  - soc 2 type ii
+  - nist cybersecurity framework
+  - bsimm
+  - owasp asvs

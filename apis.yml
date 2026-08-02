@@ -1,18 +1,214 @@
 aid: kaseya
 name: Kaseya
-description: 'Kaseya is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Kaseya is a Miami-based provider of IT and security management software
+  for managed service providers (MSPs) and internal IT teams, delivering its portfolio
+  through the Kaseya 365 and IT Complete platforms. The company owns a large family
+  of separately-branded products, several of which ship public REST APIs: Kaseya BMS
+  (business management / PSA), Datto Autotask PSA, Datto RMM (remote monitoring and
+  management), Kaseya VSA 9 and VSA 10 (endpoint management), IT Glue (IT documentation),
+  myITprocess, Datto BCDR, SaaS Alerts, RocketCyber, Graphus, Spanning and Vonahi vPenTest.
+  Kaseya publishes machine-readable contracts for three of these surfaces — the BMS
+  API 2.0 (OpenAPI 3.0.1), the Datto|Autotask PSA REST API (Swagger 2.0, 3,000+ operations)
+  and the Datto RMM API v2 (OpenAPI 3.1.0) — with the remainder documented in HTML help
+  systems or behind tenant authentication.'
 url: https://raw.githubusercontent.com/api-evangelist/kaseya/refs/heads/main/apis.yml
+image: https://www.kaseya.com/wp-content/uploads/2023/04/kaseya-logo.svg
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
 specificationVersion: '0.20'
 created: '2026-08-01'
 modified: '2026-08-01'
 tags:
 - Company
-apis: []
+- IT Management
+- Managed Service Providers
+- Remote Monitoring and Management
+- Professional Services Automation
+- Cybersecurity
+- Backup and Disaster Recovery
+- IT Documentation
+- Endpoint Management
+- Service Desk
+- Ticketing
+- Compliance
+apis:
+- aid: kaseya:bms
+  name: Kaseya BMS API 2.0
+  description: 'The Kaseya BMS (Business Management Solution) V2 REST API exposes the
+    professional services automation surface of BMS — tickets, accounts, contacts,
+    contracts, opportunities, projects, timesheets, expenses, inventory, service desk
+    templates, workflows, dashboards, webhook configuration and the Kaseya One (K1)
+    access-control and CooperBot integrations. It is documented with a public Swagger
+    UI and a public OpenAPI 3.0.1 document covering 349 paths and 435 operations.'
+  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  baseURL: https://api.bms.kaseya.com
+  image: https://www.kaseya.com/wp-content/uploads/2023/04/kaseya-logo.svg
+  tags:
+  - Professional Services Automation
+  - Ticketing
+  - Service Desk
+  - Billing
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-bms-openapi-original.json
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Overlay
+    url: overlays/kaseya-bms-overlay.yaml
+- aid: kaseya:autotask-psa
+  name: Datto Autotask PSA REST API
+  description: 'The Datto|Autotask PSA REST API is Kaseya''s largest published contract
+    — a Swagger 2.0 document with 2,077 paths and 3,009 operations covering companies,
+    contacts, tickets, projects, tasks, contracts, opportunities, quotes, invoices,
+    time entries, configuration items, inventory, resources, checklists, webhooks and
+    the full Autotask entity model (806 definitions). Requests are authenticated with
+    ApiIntegrationCode, UserName and Secret headers and are served from zone-specific
+    webservicesN.autotask.net hosts.'
+  humanURL: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  baseURL: https://webservices2.autotask.net/ATServicesRest
+  image: https://www.kaseya.com/wp-content/uploads/2023/04/kaseya-logo.svg
+  tags:
+  - Professional Services Automation
+  - Ticketing
+  - Service Desk
+  - CRM
+  - Billing
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-autotask-psa-openapi-original.json
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Overlay
+    url: overlays/kaseya-autotask-psa-overlay.yaml
+- aid: kaseya:datto-rmm
+  name: Datto RMM API v2
+  description: 'The Datto RMM REST API v2 gives programmatic access to the remote monitoring
+    and management platform — devices, sites, site variables, alerts, jobs, audit data,
+    filters, users, activity logs and account settings. It publishes an anonymous OpenAPI
+    3.1.0 document (61 paths, 65 operations, 123 schemas) at /api/v3/api-docs on each
+    regional host, uses OAuth 2.0 access tokens issued at /auth/oauth/token, and enforces
+    600 read and 100 write requests per rolling 60 seconds.'
+  humanURL: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  baseURL: https://syrah-api.centrastage.net/api
+  image: https://www.kaseya.com/wp-content/uploads/2023/04/kaseya-logo.svg
+  tags:
+  - Remote Monitoring and Management
+  - Endpoint Management
+  - Alerts
+  - Automation
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-datto-rmm-openapi-original.json
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+  - type: Overlay
+    url: overlays/kaseya-datto-rmm-overlay.yaml
+- aid: kaseya:it-glue
+  name: IT Glue API
+  description: 'The IT Glue API is a JSON:API-conformant REST interface over the IT
+    Glue IT-documentation platform — organizations, configurations, contacts, locations,
+    passwords, documents, flexible assets and flexible asset types, domains, SSL certificates,
+    users and related relationships. It is authenticated with an account-scoped API
+    key sent in the x-api-key header and is documented with a Slate-style reference
+    at api.itglue.com/developer. No OpenAPI document is published.'
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  image: https://www.kaseya.com/wp-content/uploads/2023/04/kaseya-logo.svg
+  tags:
+  - IT Documentation
+  - Asset Management
+  - Passwords
+  properties:
+  - type: Documentation
+    url: https://api.itglue.com/developer/
+  - type: GettingStarted
+    url: https://help.itglue.kaseya.com/help/Content/1-admin/it-glue-api/getting-started-with-the-it-glue-api.html
+  - type: SDKs
+    url: https://github.com/itglue/powershellwrapper
+- aid: kaseya:vsa9
+  name: Kaseya VSA 9 REST API
+  description: 'The Kaseya VSA 9 REST API lets third-party applications integrate with
+    a VSA server and perform many of the tasks a VSA user performs in the product —
+    agents, machine groups, organizations, assets, audit data, patch management, agent
+    procedures, ticketing, alarms, service desk and system administration. Because VSA
+    9 is customer-hosted or tenant-hosted, the API is served from each customer''s own
+    VSA server root under /api/v1.0 rather than from a single vendor host.'
+  humanURL: https://help.vsa9.kaseya.com/help/Content/Modules/rest-api/home.htm
+  baseURL: https://help.vsa9.kaseya.com/help/Content/Modules/rest-api/31615.htm
+  x-base-url-pattern: https://{your-vsa-server}/api/v1.0
+  x-base-url-note: VSA 9 is tenant/customer-hosted; the callable base URL is the customer's
+    own VSA server root. The documentation reference URL is recorded here because Kaseya
+    publishes no single vendor-hosted VSA 9 API host.
+  image: https://www.kaseya.com/wp-content/uploads/2023/04/kaseya-logo.svg
+  tags:
+  - Endpoint Management
+  - Remote Monitoring and Management
+  - Patch Management
+  properties:
+  - type: Documentation
+    url: https://help.vsa9.kaseya.com/help/Content/Modules/rest-api/home.htm
+  - type: APIReference
+    url: https://help.vsa9.kaseya.com/help/Content/Modules/rest-api/31615.htm
+- aid: kaseya:vsa10
+  name: Kaseya VSA 10 API
+  description: 'VSA 10 (formerly VSA X) exposes a REST API browsable from each tenant''s
+    own server at /api, with access controlled through VSA access tokens that carry
+    explicit REST API (Read, Write) scopes, and through Trusted Applications which
+    provide OAuth-based authorization without manually created API credentials. Tenants
+    are hosted on subdomains of vsax.net.'
+  humanURL: https://help.vsa10.kaseya.com/help/Content/2-Administration/configuration/api.htm
+  baseURL: https://vsax.net/api
+  x-base-url-pattern: https://{tenant}.vsax.net/api
+  x-base-url-note: VSA 10 is tenant-scoped; each customer's API lives on their own vsax.net
+    subdomain.
+  image: https://www.kaseya.com/wp-content/uploads/2023/04/kaseya-logo.svg
+  tags:
+  - Endpoint Management
+  - Remote Monitoring and Management
+  - Automation
+  properties:
+  - type: Documentation
+    url: https://help.vsa10.kaseya.com/help/Content/2-Administration/configuration/api.htm
+  - type: Authentication
+    url: https://helpdesk.kaseya.com/hc/en-gb/articles/4705556673169-Use-VSA-Access-Token-API
+- aid: kaseya:myitprocess
+  name: myITprocess API
+  description: 'myITprocess is Kaseya''s strategic IT planning and QBR (quarterly business
+    review) product for MSPs. It ships a REST API documented with Swagger UI at reporting.live.myitprocess.com,
+    covering clients, initiatives, recommendations, meetings, review templates, categories
+    and questions. The Swagger document itself requires an API key, so no anonymous
+    machine-readable contract could be harvested.'
+  humanURL: https://helpdesk.kaseya.com/hc/en-gb/articles/4438175877521-myITprocess-API
+  baseURL: https://reporting.live.myitprocess.com
+  image: https://www.kaseya.com/wp-content/uploads/2023/04/kaseya-logo.svg
+  tags:
+  - IT Strategy
+  - Reporting
+  - Assessments
+  properties:
+  - type: Documentation
+    url: https://helpdesk.kaseya.com/hc/en-gb/articles/4438175877521-myITprocess-API
+  - type: APIReference
+    url: https://reporting.live.myitprocess.com/index.html
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +216,81 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://forgeglobal.com/kaseya_stock/
+  url: https://www.kaseya.com/
+- type: Documentation
+  url: https://helpdesk.kaseya.com/hc/en-gb
+- type: APIReference
+  url: https://api.bms.kaseya.com/swagger/index.html
+- type: GettingStarted
+  url: https://help.itglue.kaseya.com/help/Content/1-admin/it-glue-api/getting-started-with-the-it-glue-api.html
+- type: Support
+  url: https://www.kaseya.com/customer-success/support/
+- type: HelpCenter
+  url: https://helpdesk.kaseya.com/hc/en-gb
+- type: Community
+  url: https://community.kaseya.com/
+- type: Blog
+  url: https://www.kaseya.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/kaseya
+- type: Pricing
+  url: https://www.kaseya.com/request/pricing/
+- type: Login
+  url: https://one.kaseya.com/
+- type: TermsOfService
+  url: https://www.kaseya.com/legal/kaseya-master-agreement/
+- type: TermsOfUse
+  url: https://www.kaseya.com/legal/website-terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.kaseya.com/legal/kaseya-privacy-statement/
+- type: Legal
+  url: https://www.kaseya.com/legal/
+- type: StatusPage
+  url: https://status.kaseya.com/
+- type: Security
+  url: https://www.kaseya.com/trust-center/vulnerability-disclosure-policy/
+- type: TrustCenter
+  url: https://www.kaseya.com/trust-center/
+- type: Compliance
+  url: https://www.kaseya.com/trust-center/soc-report/
+- type: Authentication
+  url: authentication/kaseya-authentication.yml
+- type: DomainSecurity
+  url: security/kaseya-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/kaseya-vulnerability-disclosure.yml
+- type: Packages
+  url: packages/kaseya-packages.yml
+- type: SDKs
+  url: packages/kaseya-packages.yml
+- type: WellKnown
+  url: well-known/kaseya-well-known.yml
+- type: LLMsTxt
+  url: llms/kaseya-llms.txt
+- type: MCPServer
+  url: mcp/kaseya-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/kaseya-tool-crosswalk.yml
+- type: Conformance
+  url: conformance/kaseya-conformance.yml
+- type: ErrorCatalog
+  url: errors/kaseya-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/kaseya-lifecycle.yml
+- type: Conventions
+  url: conventions/kaseya-conventions.yml
+- type: ChangeLog
+  url: changelog/kaseya-changelog.yml
+- type: DataModel
+  url: data-model/kaseya-data-model.yml
+- type: RateLimits
+  url: rate-limits/kaseya-rate-limits.yml
+- type: Webhooks
+  url: asyncapi/kaseya-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-08-01'
+  status: enriched
+  artifacts_added: 24
+  pass: local-v1

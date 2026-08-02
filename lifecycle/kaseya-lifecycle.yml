@@ -1,0 +1,94 @@
+generated: '2026-08-01'
+method: searched
+source: product documentation, release-notes pages and the harvested OpenAPI documents
+versioning:
+- api: Kaseya BMS API 2.0
+  scheme: uri-path
+  current: v2
+  product_version: 5.58.0
+  spec_version: '2.0'
+  docs: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  note: A V1 API preceded V2; V2 is the documented current surface.
+- api: Datto Autotask PSA REST API
+  scheme: uri-path
+  current: V1.0
+  spec_version: v1
+  docs: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  note: Base URL form is [zone]/atservicesrest/v1.0/. A separate, older SOAP API is
+    still documented alongside REST.
+- api: Datto RMM API v2
+  scheme: uri-path
+  current: v2
+  emerging: v3
+  spec_version: 2.0.0
+  build: 235_0add0e4d537431f30405d568ccb46b6d7af1f183
+  docs: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  note: >-
+    The OpenAPI document mixes /v2 and /v3 paths — /v3/device, /v3/site and /v3/account
+    operations coexist with the v2 surface, so a v3 migration is visibly under way but
+    no migration guide was found.
+- api: IT Glue API
+  scheme: unversioned-path
+  docs: https://api.itglue.com/developer/
+  note: The IT Glue API exposes unversioned resource paths; changes are communicated
+    through the IT Glue changelog and blog rather than a version segment.
+- api: Kaseya VSA 9 REST API
+  scheme: uri-path
+  current: v1.0
+  docs: https://help.vsa9.kaseya.com/help/Content/Modules/rest-api/home.htm
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  policy_note: >-
+    No API deprecation policy, Sunset/Deprecation header support (RFC 8594) or
+    published removal window could be found for any Kaseya API. Deprecations are
+    announced per product in release notes and helpdesk articles rather than through a
+    portfolio-wide policy or a machine-readable signal.
+  observed_practice:
+  - The Autotask SOAP API is documented as legacy alongside the REST API, but no dated
+    sunset commitment is published.
+  - Datto RMM ships /v3 operations alongside /v2 without a documented v2 sunset date.
+  - 'IT Glue enforces a credential-lifecycle rule rather than an API one: API keys
+    unused for 90 days are automatically revoked (effective 2023-05-15).'
+deprecated_operations: []
+deprecated_operations_note: >-
+  No operation in any of the three harvested specs is flagged with the OpenAPI
+  `deprecated` keyword — including two Datto RMM operations whose own summaries say
+  they no longer work. Deprecation is announced in the summary prose but not in the
+  machine-readable field an agent or code generator reads.
+prose_deprecated_operations:
+- api: Datto RMM API v2
+  operationId: muteAlert
+  path: POST /v2/alert/{alertUid}/mute
+  summary: Alerts can no longer be muted, as of the 8.9.0 release.
+  openapi_deprecated_flag: false
+- api: Datto RMM API v2
+  operationId: unmuteAlert
+  path: POST /v2/alert/{alertUid}/unmute
+  summary: Alerts can no longer be un-muted, as of the 8.9.0 release.
+  openapi_deprecated_flag: false
+status_page:
+  url: https://status.kaseya.com/
+  platform: Atlassian Statuspage
+  additional:
+  - name: Datto status
+    url: https://status.datto.com/
+sla:
+  url: null
+  uptime_target: null
+  note: No public uptime SLA was found; service commitments sit inside the Kaseya
+    Master Agreement (https://www.kaseya.com/legal/kaseya-master-agreement/).
+release_notes:
+- name: 2026 First Half Release
+  url: https://www.kaseya.com/2026-h1-release/
+- name: 2025 Fall Innovations
+  url: https://www.kaseya.com/2025-fall-release/
+- name: 2025 Spring Innovations
+  url: https://www.kaseya.com/2025-spring-release/
+- name: Innovations hub
+  url: https://www.kaseya.com/innovations/
+support:
+  helpdesk: https://helpdesk.kaseya.com/hc/en-gb
+  community: https://community.kaseya.com/
+  customer_success: https://www.kaseya.com/customer-success/support/

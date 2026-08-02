@@ -1,0 +1,2004 @@
+﻿# Kaseya
+
+> IT &amp; Security Management for IT Professionals
+
+
+## Pages
+
+- [Cyber Resilience Solutions for Total Data Protection](https://www.kaseya.com/solutions/cyber-resilience/)
+- [Careers](https://www.kaseya.com/careers/)
+- [Candidate info](https://www.kaseya.com/careers/candidate-info/)
+- [Life at kaseya](https://www.kaseya.com/careers/life-at-kaseya/)
+- [Request My Demo - NEW](https://www.kaseya.com/request/demo-chat/)
+- [Kaseya – Cybersecurity (Growth Program) ](https://www.kaseya.com/solutions/connected-security/)
+- [Managed Service Providers](https://www.kaseya.com/solutions/msp/)
+- [MSP Automation for Smarter Workflows](https://www.kaseya.com/solutions/msp/automation/)
+- [MSP Customer Retention - Build Client Trust](https://www.kaseya.com/solutions/msp/customer-retention/)
+- [MSP Growth - Maximize Margins, Boost Profits](https://www.kaseya.com/solutions/msp/growth/)
+- [Kaseya Managed Service Provider (MSP) Partner Program](https://www.kaseya.com/solutions/msp/partner/)
+- [Become a Kaseya MSP Partner](https://www.kaseya.com/request/msp-partner/)
+- [IT Service Delivery Solutions for Automated Workflows](https://www.kaseya.com/solutions/it-service-delivery/)
+- [Request a Backup &amp; Recovery Demo](https://www.kaseya.com/request/backup-demo/)
+- [2026 First Half Release Notes](https://www.kaseya.com/2026-h1-release/)
+- [Cash Flow Gap Calculator](https://www.kaseya.com/cash-flow-gap-calculator/)
+- [Request ConnectBooster Demo](https://www.kaseya.com/request/connectbooster-demo/)
+- [Request ConnectBooster Pricing](https://www.kaseya.com/request/connectbooster-pricing/)
+- [Competitor: Kaseya MDR vs Huntress Managed EDR](https://www.kaseya.com/compare/kaseya-mdr-vs-huntress-managed-edr/)
+- [Chat Test Page](https://www.kaseya.com/chat-test-page/): This content is password-protected. To view it, please enter the password below. Password:
+- [Competitor: Kaseya SIEM vs Huntress](https://www.kaseya.com/compare/kaseya-siem-vs-huntress-managed-siem/)
+- [Request Kaseya SIEM Demo](https://www.kaseya.com/request/kaseya-siem-demo/)
+- [Kaseya Community](https://www.kaseya.com/kaseya-community/)
+- [Kaseya Intelligence](https://www.kaseya.com/platform/intelligence/)
+- [Competitor: Datto Siris vs Axcient](https://www.kaseya.com/compare/datto-siris-vs-axcient/)
+- [Request Kaseya MDR Demo](https://www.kaseya.com/request/kaseya-mdr-demo/)
+- [Request Kaseya MDR Pricing](https://www.kaseya.com/request/kaseya-mdr-pricing/)
+- [Competitor: Datto vs Acronis](https://www.kaseya.com/compare/datto-vs-acronis/)
+- [Competitor: Autotask vs Halo](https://www.kaseya.com/compare/autotask-vs-halo/)
+- [Mulesoft Test Page](https://www.kaseya.com/mulesoft-test-page/): This content is password-protected. To view it, please enter the password below. Password:
+- [Kaseya Cares](https://www.kaseya.com/kaseyacares/)
+- [Competitor: Kaseya vs NinjaOne](https://www.kaseya.com/compare/kaseya-vs-ninjaone/)
+- [Compare](https://www.kaseya.com/compare/)
+- [Request INKY Demo](https://www.kaseya.com/request/inky-demo/)
+- [Kaseya certified training camps](https://www.kaseya.com/kaseya-certified-training-camps/)
+- [Legal](https://www.kaseya.com/legal/)
+- [Kaseya 365 MSP Enablement Solution](https://www.kaseya.com/request/msp-enablement/)
+- [MSP Enablement](https://www.kaseya.com/solutions/msp-enablement/)
+- [Innovations](https://www.kaseya.com/innovations/)
+- [2025 Fall Innovations](https://www.kaseya.com/2025-fall-release/)
+- [RTO](https://www.kaseya.com/rto/)
+- [CMMC](https://www.kaseya.com/trust-center/cmmc/)
+- [Kaseya 365 Ops Demo](https://www.kaseya.com/request/demo-kaseya-365-ops/)
+- [Kaseya 365 Ops Pricing](https://www.kaseya.com/request/pricing-kaseya-365-ops/)
+- [Ransomware Protection](https://www.kaseya.com/solutions/ransomware-protection/)
+- [Kaseya 365 User](https://www.kaseya.com/platform/kaseya-365-user/)
+- [Kaseya 365 Ops](https://www.kaseya.com/platform/kaseya-365-ops/)
+- [Home KBUpdate 2025](https://www.kaseya.com/)
+- [Platform](https://www.kaseya.com/platform/)
+- [2025 Spring Innovations](https://www.kaseya.com/2025-spring-release/)
+- [Kaseya 365 Endpoint](https://www.kaseya.com/platform/kaseya-365-endpoint/)
+- [Kaseya 365 User Pricing](https://www.kaseya.com/request/pricing-kaseya-365-user/)
+- [Professional Services](https://www.kaseya.com/customer-success/professional-services/)
+- [Powered by Kaseya](https://www.kaseya.com/powered-by-kaseya/)
+- [Kaseya 365 User Demo](https://www.kaseya.com/request/demo-kaseya-365-user/)
+- [Customer Support](https://www.kaseya.com/customer-success/support/)
+- [Kaseya University](https://www.kaseya.com/customer-success/kaseya-university/)
+- [MSP Partner Request Demo](https://www.kaseya.com/get-started/partner-request/)
+- [Find an MSP](https://www.kaseya.com/find-an-msp/)
+- [Kaseya 365 Endpoint Pricing](https://www.kaseya.com/request/pricing-kaseya-365-endpoint/)
+- [The Kaseya Partner](https://www.kaseya.com/customer-success/partner-first/)
+- [Kaseya 365 Endpoint Demo](https://www.kaseya.com/request/demo-kaseya-365-endpoint/)
+- [Request Pricing](https://www.kaseya.com/request/pricing/)
+- [Primary Education](https://www.kaseya.com/solutions/it-departments/primary-education/)
+- [SOC Report Downloads](https://www.kaseya.com/trust-center/soc-report/downloads/)
+- [SMBs](https://www.kaseya.com/small-business/)
+- [Kaseya Center](https://www.kaseya.com/kaseya-center/)
+- [MSP ROI Calculator](https://www.kaseya.com/msp-roi-calculator/)
+- [Backup &amp; Recovery](https://www.kaseya.com/solutions/backup-and-recovery/)
+- [IT Risk Management](https://www.kaseya.com/solutions/it-risk-management/)
+- [IT Networking](https://www.kaseya.com/solutions/network-infrastructure/)
+- [IT Operations](https://www.kaseya.com/solutions/it-operations/)
+- [IT Security](https://www.kaseya.com/solutions/it-security/)
+- [Request My Demo](https://www.kaseya.com/request/demo/)
+- [Endpoint Management](https://www.kaseya.com/solutions/endpoint-management/)
+- [SMB ROI Calculator](https://www.kaseya.com/smb-roi-calculator/)
+- [Hall of Fame](https://www.kaseya.com/trust-center/vulnerability-disclosure-policy/hall-of-fame/)
+- [Privacy and Legal](https://www.kaseya.com/trust-center/privacy-and-legal/)
+- [Information Security](https://www.kaseya.com/trust-center/information-security/)
+- [Earning Your Trust](https://www.kaseya.com/trust-center/earning-your-trust/)
+- [Engage With Us](https://www.kaseya.com/trust-center/engage-with-us/)
+- [Auto Renewal Update](https://www.kaseya.com/auto-renewal-update/)
+- [Vulnerability Report](https://www.kaseya.com/trust-center/security/report/)
+- [Datto Acquisition FAQs](https://www.kaseya.com/datto-acquisition-faqs/)
+- [Security Advisories](https://www.kaseya.com/trust-center/security/)
+- [Datto Acquisition in the News](https://www.kaseya.com/datto-acquisition-in-the-news/)
+- [Datto to be Acquired by Kaseya](https://www.kaseya.com/datto-to-be-acquired-by-kaseya/)
+- [Jobs](https://www.kaseya.com/careers/jobs/)
+- [Pro](https://www.kaseya.com/solutions/msp/powered-services/pro/)
+- [Jumpstart](https://www.kaseya.com/solutions/msp/powered-services/jumpstart/)
+- [Powered Services](https://www.kaseya.com/solutions/msp/powered-services/)
+- [FastPass](https://www.kaseya.com/customer-success/fastpass/)
+- [SOC Report](https://www.kaseya.com/trust-center/soc-report/)
+- [IT Complete Compartmentalization](https://www.kaseya.com/it-complete-compartmentalization/)
+- [Trust Center](https://www.kaseya.com/trust-center/)
+- [Traverse Trial](https://www.kaseya.com/get-started/traverse-trial/)
+- [IT Departments](https://www.kaseya.com/solutions/it-departments/)
+- [IT Budgeting and Planning Tool](https://www.kaseya.com/it-budgeting-planning-tool/)
+- [ITG MSP ROI Calculator](https://www.kaseya.com/itg-msp-roi-calculator/)
+- [IT Security Assessment Tool](https://www.kaseya.com/it-security-assessment-tool/)
+- [Remote Workforce Management](https://www.kaseya.com/remote-workforce-management/)
+
+
+## Posts
+
+- [The week in breach news](https://www.kaseya.com/blog/the-week-in-breach-news-07-29-2026/): Microsoft outage disrupts Azure and Microsoft 365 as OpenAI’s test models escape containment, raising new fears of autonomous cyberattacks.
+- [Email security under NIS2 ](https://www.kaseya.com/blog/email-security-nis-2/): With evolving AI threats, traditional defences are no longer enough Email has long been a point of vulnerability for businesses, but the scale and sophistication of attacks are evolving, posing...
+- [Cyber resilience in the age of NIS2: Why backup is no longer just an IT function ](https://www.kaseya.com/blog/cyber-resilience-nis-2/): A question every business should be asking is: How quickly can we get back to business if something goes wrong? Downtime is expensive, and in...
+- [Cloud complacency is putting European Microsoft 365 and Azure date at risk](https://www.kaseya.com/blog/microsoft-365-azure-backup-data-recovery/): Microsoft 365 and Azure data is your responsibility. Learn why backup and recovery are essential to protect cloud data from...
+- [The week in breach news](https://www.kaseya.com/blog/the-week-in-breach-news-07-22-26/): The CISA has warned organizations about several Microsoft SharePoint vulnerabilities that are actively being exploited.
+- [Five cybersecurity priorities every school needs to get right](https://www.kaseya.com/blog/cybersecurity-lessons-education-sector/): K-12 and higher education institutions face constant cyberattacks due to limited IT resources. Here are five cybersecurity priorities they should...
+- [The week in breach news](https://www.kaseya.com/blog/the-week-in-breach-news-07-15-26/): EU exposes Russia-linked cyber campaign targeting member states as Australia warns of widespread attacks on content management systems.
+- [Standardize, document, automate: Insights from Kaseya Connect Europe](https://www.kaseya.com/blog/kaseya-connect-europe-2026-highlights/): Kaseya Connect Europe 2026 brought together industry leaders to share hard-won lessons. Here are the highlights and insights from key...
+- [The week in breach news](https://www.kaseya.com/blog/the-week-in-breach-news-07-08-26/): The U. S. Department of Homeland Security probes a cyberattack on a key information-sharing platform used by government agencies and...
+- [Five ways SIEM supports NIS2 compliance](https://www.kaseya.com/blog/how-security-information-and-event-management-siem-supports-nis2/): Security information and event management (SIEM) has come a long way since its inception over 20 years ago. Adoption was...
+- [Autotask 2026.3: Smarter planning, faster triage, simpler billing and expanded compliance](https://www.kaseya.com/blog/autotask-2026-3-release/): Explore the latest Autotask enhancements, including Resource Planner updates, Ticket Triage improvements, simplified service packaging, and expanded e-invoicing support.
+- [MDR vs. MSSP: Key differences and how they overlap](https://www.kaseya.com/blog/mdr-vs-mssp/): MDR is a security service; MSSP is a provider model, and many MSSPs offer MDR. Learn how they differ, where...
+- [The week in breach news](https://www.kaseya.com/blog/the-week-in-breach-news-07-01-26/): Cyberattack on Apple and Tesla supplier Tata Electronics raises supply chain concerns.
+- [Should we start with resilience and work backward from there?](https://www.kaseya.com/blog/should-we-start-with-resilience-and-work-backward-from-there/): Sponsored by: Kaseya This is a guest blog post by International Data Corporation (IDC), the global market intelligence leader, sharing...
+- [Sponsor Spotlight: Kaseya Connect Europe 2026](https://www.kaseya.com/blog/kaseya-connect-europe-2026-sponsor-spotlight/): Learn more about the companies that helped bring Kaseya Connect Europe 2026 to life and discover how they’re transforming the...
+- [The week in breach news](https://www.kaseya.com/blog/the-week-in-breach-news-06-24-26/): Many cybersecurity firms have been hit by a supply-chain attack after a breach on the market intelligence platform Klue.
+- [Why MSPs should revisit contract terms before going month-to-month](https://www.kaseya.com/blog/why-msps-should-revisit-contract-terms-before-going-month-to-month/): Learn why annual or multiyear terms matter for MSPs and explore some best practices for communicating price changes to customers.
+- [Elevating data protection to cyber resilience](https://www.kaseya.com/blog/elevating-data-protection-to-cyber-resilience/): Sponsored by: Kaseya This is a guest blog post by International Data Corporation (IDC), the global market intelligence leader, sharing...
+- [The week in breach news](https://www.kaseya.com/blog/the-week-in-breach-news-06-17-26/): Google patches fifth Chrome zero-day of 2026 as ransomware disrupts schools, ports and manufacturing.
+- [Is your backup strategy leaving you exposed?](https://www.kaseya.com/blog/why-your-backup-strategy-would-be-leaving-you-exposed/): Explore why your backup strategy could leave you exposed and why testing your recovery is essential.
+- [Virtual machine backup: How to back up a VM](https://www.kaseya.com/blog/virtual-machine-backup/): Virtual machines now host most business-critical workloads. Domain controllers, SQL Server instances, application servers and file servers run as VMs...
+- [Email security best practices and how to implement them](https://www.kaseya.com/blog/email-security-best-practices/): Discover best practices for email security, how to put each one in place and why it&#039;s important to consistently follow...
+- [VMware backup: How to back up VMware virtual machines](https://www.kaseya.com/blog/vmware-backup/): VMware vSphere runs a significant share of the world’s virtualized infrastructure. For most organizations using VMware, the virtual machines running...
+- [Patch management vs. vulnerability management: What’s the difference?](https://www.kaseya.com/blog/patch-management-vs-vulnerability-management/): Security teams and MSPs often use “patch management” and “vulnerability management” in the same breath, as if they mean the...
+- [What is email security?](https://www.kaseya.com/blog/what-is-email-security/): Learn what email security is, why it&#039;s important and how it works by using layered controls to protect against modern...
+- [Cloud email security: A guide for modern businesses](https://www.kaseya.com/blog/cloud-email-security/): The way businesses communicate has changed. Most organizations run email through Microsoft 365 or Google Workspace, teams are distributed across...
+- [Best email security solutions in 2026: Top services ranked](https://www.kaseya.com/blog/best-email-security-solutions/): Compare the top 10 email security solutions, software and services in 2026 to find the right platform for your business...
+- [The week in breach news](https://www.kaseya.com/blog/the-week-in-breach-news-06-10-26/): FBI and Google warn U. S. law firms of a new ransomware tactic as Miasma worm spreads through Microsoft Azure...
+- [The Vercel incident and the phishing campaigns already hiding in plain sight](https://www.kaseya.com/blog/phishing-campaigns-abusing-vercels-free-hosting-platform/): Explore three phishing campaigns that are abusing Vercel’s free hosting platform as a key piece of their attack infrastructure and...
+- [Kaseya wins Gold Stevie® Award for customer service excellence at The 2026 American Business Awards®](https://www.kaseya.com/blog/kaseya-wins-gold-stevie-award/): At Kaseya, our mission is to empower our customers to simplify and transform IT and cybersecurity management with innovative solutions...
+- [What is server virtualization? How it works, types and benefits](https://www.kaseya.com/blog/server-virtualization/): Learn what server virtualization is, how it works, key benefits, use cases, best practices, and how it supports business continuity...
+- [Best server backup software in 2026: Top solutions for MSPs and IT teams](https://www.kaseya.com/blog/best-server-backup-software/): Compare the best server backup solutions in 2026, ranked for MSPs and IT teams on recovery speed, ransomware protection, and...
+- [What is bare metal recovery? Definition, process and when to use it](https://www.kaseya.com/blog/bare-metal-recovery/): Hardware fails without warning. A system that was running fine at the end of the day can be completely inoperable...
+- [Server backup: Types, methods and building a backup strategy](https://www.kaseya.com/blog/server-backup/): Server failures don’t announce themselves. A ransomware attack encrypts your data overnight. A failing drive corrupts a week’s worth of...
+- [The week in breach news](https://www.kaseya.com/blog/the-week-in-breach-news-06-03-26/): FBI warns Microsoft 365 users of a phishing-as-a-service platform as a Ghost CMS flaw compromises hundreds of websites.
+- [What is SOC-as-a-Service (SOCaaS)?](https://www.kaseya.com/blog/soc-as-a-service-socaas/): Get a comprehensive overview of SOC-as-a-Service (SOCaaS), including key features and capabilities, benefits, pricing models, and how to evaluate providers.
+- [What is SecOps? Security operations explained](https://www.kaseya.com/blog/what-is-secops/): Most organizations have two teams that should be working hand in hand but often operate in separate worlds: IT operations,...
+- [Kaseya Connect Europe 2026: You can’t afford to miss this one](https://www.kaseya.com/blog/why-msps-and-it-teams-need-to-attend-kaseya-connect-europe-2026/): Kaseya Connect Europe 2026 is returning bigger and sharper to help MSPs and IT leaders adapt, grow and lead. From...
+- [What is threat detection and response (TDR)?](https://www.kaseya.com/blog/threat-detection-and-response-tdr/): Learn how threat detection and response (TDR) works, why it matters, what tools it relies on, and how MSPs and...
+- [Autotask Community Live 2026: Building the foundation for AI-driven IT operations](https://www.kaseya.com/blog/autotask-community-live-2026-recap/): Autotask Community Live 2026 opened with a clear message for MSPs and IT teams: AI is changing IT operations, but...
+- [The week in breach news](https://www.kaseya.com/blog/the-week-in-breach-news-05-27-26/): Megalodon hits 5,000+ GitHub repos as German hospitals face a major patient data breach.
+- [Is your business suffering from cloud complacency? Hidden Microsoft 365 and Azure risks in Europe](https://www.kaseya.com/blog/cloud-complacency-microsoft-365-azure-backup-recovery/): Discover the hidden risks of cloud complacency in Microsoft 365 and Azure. Learn why backup, recovery, and business continuity planning...
+- [MDR vs. XDR: Service or platform? Key differences explained](https://www.kaseya.com/blog/mdr-vs-xdr/): MDR and XDR are two of the most frequently confused terms in cybersecurity, and the confusion is understandable. Both involve...
+- [MDR vs. SOC: What’s the difference and which should you choose?](https://www.kaseya.com/blog/mdr-vs-soc/): When security teams ask about MDR vs. SOC, they’re usually asking the wrong question. MDR and a SOC aren’t competing...
+- [Best MDR providers in 2026: Top services ranked for MSPs and IT teams](https://www.kaseya.com/blog/best-mdr-providers/): Compare the 10 best MDR providers in 2026, ranked for MSPs and IT teams, to find the right managed detection...
+- [What is XDR? A guide to extended detection and response](https://www.kaseya.com/blog/what-is-xdr/): Learn the fundamentals of XDR, including how it works, key benefits, how it compares to similar technologies and how to...
+- [AI in cybersecurity: SaaS security risks you can’t afford to ignore](https://www.kaseya.com/blog/ai-in-cybersecurity-saas-security-risks-you-cant-afford-to-ignore/): AI is transforming cybersecurity threats. Learn how signal overload, SaaS sprawl, and identity-based attacks are driving the need for integrated...
+- [Turning signals into action with Kaseya](https://www.kaseya.com/blog/turning-signals-into-action-with-kaseya/): Turn cybersecurity noise into actionable intelligence with Kaseya. Improve visibility, reduce alerts and respond faster to SaaS and identity threats.
+- [EPP vs. EDR: Understanding the difference and how they work together](https://www.kaseya.com/blog/epp-vs-edr/): When evaluating endpoint security options, EPP and EDR are two terms that come up constantly, often side by side, and...
+- [Best EDR Solutions in 2026: Ranked for MSPs and IT teams](https://www.kaseya.com/blog/best-edr-solutions/): Ransomware attacks cost small businesses an average of $8,000 per hour from attack to remediation. The average breach takes 194...
+- [What is managed EDR (MEDR)? A guide for businesses and MSPs](https://www.kaseya.com/blog/managed-edr-medr/): Managed EDR combines endpoint detection with expert monitoring and response. Learn how it works, who needs it, and how MSPs...
+- [What is the cyber kill chain? Steps, examples and how to disrupt it](https://www.kaseya.com/blog/cyber-kill-chain/): Learn what the cyber kill chain is, how its 7 steps work, a real-world example, how it compares to MITRE...
+- [The week in breach news](https://www.kaseya.com/blog/the-week-in-breach-news-05-20-26/): Microsoft warns of a credential theft campaign targeting 35,000 users across 13,000 organizations in 26 countries.
+- [A two-part practical guide for EMEA IT leaders](https://www.kaseya.com/blog/ransomware-nis2-recovery-guide-part-2/): When ransomware strikes, the clock is ticking. Learn the critical incident reporting timelines for NIS2, GDPR, and DORA to keep...
+- [EDR vs. antivirus: How they differ and why most businesses need both](https://www.kaseya.com/blog/edr-vs-antivirus/): Antivirus prevents known threats while EDR detects and responds to what gets through. Learn key differences and why it&#039;s smart...
+- [EDR vs. XDR: Key differences and when to use each](https://www.kaseya.com/blog/edr-vs-xdr/): EDR monitors endpoints in depth while XDR correlates threats across your attack surface. Learn key differences, examples, and which solution...
+- [Indicators of compromise (IOCs): Types, examples, detection and response](https://www.kaseya.com/blog/indicators-of-compromise-ioc/): Learn what indicators of compromise (IOCs) are, the main types, common examples and how security teams use them to detect...
+- [MDR vs. EDR: What’s the difference and which is right for you?](https://www.kaseya.com/blog/mdr-vs-edr/): EDR is a technology, MDR is a service. Learn the key differences, when each one is the right fit, and...
+- [What is endpoint security? Types, threats, challenges and best practices](https://www.kaseya.com/blog/what-is-endpoint-security/): Every device that connects to your network is a potential entry point for attackers. Laptops, smartphones, servers, IoT sensors, point-of-sale...
+- [XDR vs. SIEM: What&#039;s the difference and which do you need?](https://www.kaseya.com/blog/xdr-vs-siem/): XDR and SIEM both detect security threats but work differently. Learn where each excels and whether you need one or...
+- [Best SIEM tools in 2026: Ranked for MSPs and IT teams](https://www.kaseya.com/blog/best-siem-tools/): Compare the top 10 SIEM tools in 2026, ranked by detection quality, deployment model, and real-world fit, to find the...
+- [SIEM vs. SOAR: What&#039;s the difference and do you need both?](https://www.kaseya.com/blog/siem-vs-soar/): SIEM detects threats by correlating security data. SOAR automates the response. Learn key differences, how they work together and which...
+- [Ransomware: NIS2 regulation and the road to recovery — Part 1](https://www.kaseya.com/blog/ransomware-nis2-recovery-guide-part-1/): Learn how backup strategy, immutable backups and recovery testing support ransomware resilience and NIS2 compliance for IT teams.
+- [EDR vs SIEM: Two Tools, One Security Strategy](https://www.kaseya.com/blog/edr-vs-siem/): EDR monitors endpoints in depth while SIEM correlates threats across your entire environment. Learn key differences and why strong IT...
+- [Cloud SIEM: A guide to features, advantages and deployment models](https://www.kaseya.com/blog/cloud-siem/): The way organizations manage security has changed permanently. Infrastructure that used to sit behind a firewall now spans cloud platforms,...
+- [AI SIEM: How AI is transforming threat detection and security operations](https://www.kaseya.com/blog/ai-siem/): Security teams have always faced an information problem. The data needed to catch threats exists somewhere within the environment, but...
+- [MDR vs. SIEM: Key differences and benefits of using both](https://www.kaseya.com/blog/mdr-vs-siem/): MDR is a human-led managed service and SIEM is a tool that provides comprehensive threat visibility. Learn how they differ...
+- [SIEM Integration: Types, Benefits and Best Practices](https://www.kaseya.com/blog/siem-integration/): SIEM integration connects your security tools to a central system for unified threat detection. Learn how it works and best...
+- [What is managed SIEM? How it works and what to look for](https://www.kaseya.com/blog/managed-siem/): Running a SIEM is one thing. Running it well is another. Security information and event management delivers enormous value when...
+- [Digital Specialists for Ticket Triage](https://www.kaseya.com/blog/digital-specialists-for-ticket-triage/): Every IT team knows the drill. A ticket comes in, but before anyone actually fixes the issue, the real work...
+- [What is patch management? A complete guide for MSPs and IT teams](https://www.kaseya.com/blog/what-is-patch-management/): Every IT environment runs on software that needs constant updating. Operating systems, browsers, business apps, the firmware on the network...
+- [Patch management best practices: How to reduce risk faster](https://www.kaseya.com/blog/patch-management-best-practices/): Most patch management best practices lists are interchangeable. Inventory your assets. Test before you deploy. Document a policy. Automate where...
+- [The patch management process: A step-by-step guide](https://www.kaseya.com/blog/patch-management-process/): Most patching programs don’t fail because the team doesn’t know the steps. They fail in the gaps between them: the...
+- [Best patch management software in 2026: Ranked for MSPs and IT teams](https://www.kaseya.com/blog/best-patch-management-software/): With roughly 50,000 CVEs published in 2025 — a 22% jump over the prior year — the patch management tool...
+- [The intelligence era is here: Kaseya’s vision for autonomous IT](https://www.kaseya.com/blog/kaseya-intelligence-autonomous-it-vision/): Over the past two decades, the IT industry has seen wave after wave of transformation — from break-fix to managed...
+- [What is a zero-day vulnerability? Definition, examples, and defenses](https://www.kaseya.com/blog/what-is-zero-day-vulnerability/): The term “zero day” appears in cybersecurity news constantly, but the concept is often misunderstood. A zero-day vulnerability isn’t necessarily...
+- [IT compliance for MSPs: how to build a practice that scales](https://www.kaseya.com/blog/it-compliance/): Compliance has quietly become one of the most commercially important capabilities an MSP can develop. The combination of rising regulatory...
+- [What is NIST compliance? A practical guide for IT teams and MSPs](https://www.kaseya.com/blog/what-is-nist-compliance/): “NIST” gets used to refer to several different things, often interchangeably and not always accurately. The agency. The Cybersecurity Framework....
+- [Why running your MSP feels harder in 2026 (and what to do)](https://www.kaseya.com/blog/msp-growth-challenges-2026/): Winning a new customer these days can feel a lot like courting someone who has no shortage of suitors. Because
+- [Cloud management: how to govern multi-cloud environments without losing control](https://www.kaseya.com/blog/cloud-management-guide/): Most organizations do not plan to have multi-cloud environments. They end up with them because different teams made different decisions...
+- [Building an IT knowledge base that people actually use](https://www.kaseya.com/blog/it-knowledge-base/): Most IT teams have some form of knowledge base. A shared drive with old runbooks, a wiki that hasn’t been...
+- [IT lifecycle management: what it is, why it matters, and how to do it well](https://www.kaseya.com/blog/it-lifecycle-management/): Most organizations don’t manage their IT assets through a proper lifecycle. They buy equipment when something breaks, replace software when...
+- [IT change management: a practical guide to reducing risk without slowing everything down](https://www.kaseya.com/blog/change-management/): Change management has a reputation problem in IT. For many teams, it means paperwork, slow approvals, and governance processes that...
+- [IT asset management (ITAM): a complete guide for IT teams and MSPs](https://www.kaseya.com/blog/it-asset-management-itam/): Every device, software license, and piece of IT infrastructure an organization owns or uses is an asset. IT asset management...
+- [Disaster recovery as a service (DRaaS): what it is and when your organization needs it](https://www.kaseya.com/blog/disaster-recovery-as-a-service-draas/): Disaster recovery used to be expensive, complex, and available only to enterprises that could justify building a secondary data center....
+- [Cyber insurance: what it covers, what it doesn&#039;t, and how to qualify](https://www.kaseya.com/blog/cyber-insurance-guide/): According to the 2026 Kaseya State of the MSP Report, 44% of MSPs report that at least 10% of their...
+- [Email security: a complete guide for IT teams and MSPs](https://www.kaseya.com/blog/email-security-guide/): Email remains the most exploited attack vector in cybersecurity. It’s the entry point for phishing, business email compromise, malware delivery,...
+- [Endpoint backup: the gap most IT teams overlook](https://www.kaseya.com/blog/endpoint-backup-guide/): Ask most IT teams where their backup program focuses and the answer is servers: file servers, database servers, application servers....
+- [Hyper-V management: backup, monitoring, and the agentless shift](https://www.kaseya.com/blog/hyper-v-management/): Microsoft Hyper-V is built into Windows Server, which makes it the default choice for mid-market organizations and SMBs that have...
+- [ISO 27001: What it is, what certification requires, and whether your organization needs it](https://www.kaseya.com/blog/iso-27001-guide/): ISO 27001 is the international standard for information security management systems. It is the most widely recognized security certification globally,...
+- [ITAR compliance: what it is, who it applies to, and what IT teams must do](https://www.kaseya.com/blog/itar-compliance-guide/): According to the 2026 Kaseya State of the MSP Report, regulatory compliance and reporting ranks among the top ten service...
+- [IT incident response: how to plan, prepare, and execute when a breach occurs](https://www.kaseya.com/blog/it-incident-response-guide/): According to the 2026 Kaseya State of the MSP Report, 44% of MSPs report that at least 10% of their...
+- [Enterprise backup: scaling data protection for complex IT environments](https://www.kaseya.com/blog/enterprise-backup/): Backup for a single server in a small office is a solved problem. Enterprise backup is a different category of...
+- [Exchange Server management: patching, monitoring, and the path forward](https://www.kaseya.com/blog/exchange-server-guide/): Exchange Server sits in a different position today than it did a year ago. Microsoft ended support for Exchange Server...
+- [GDPR for IT teams and MSPs: what you need to know and do](https://www.kaseya.com/blog/gdpr-for-it-teams/): GDPR enforcement is no longer a theoretical risk. European data protection authorities issued more than €1. 2 billion in fines...
+- [HIPAA compliance for MSPs: what&#039;s changing and what you must do now](https://www.kaseya.com/blog/hipaa-compliance-for-msps/): HIPAA, the Health Insurance Portability and Accountability Act, is one of the most well-known compliance frameworks in the US and...
+- [IT documentation best practices: how to build a knowledge base your team actually uses](https://www.kaseya.com/blog/it-documentation-best-practices/): According to the 2026 Kaseya State of the MSP Report, the share of MSPs struggling to create and maintain consistent...
+- [Zero trust security: what it is, why it matters, and how to implement it](https://www.kaseya.com/blog/zero-trust-security/): According to the 2026 Kaseya State of the MSP Report, 71% of MSPs reported year-over-year cybersecurity revenue growth, and zero...
+- [Zero Trust Network Access (ZTNA): what it is and why it&#039;s replacing VPN](https://www.kaseya.com/blog/zero-trust-network-access-ztna/): According to the 2026 Kaseya State of the MSP Report, 55% of MSPs offer identity and access management as a...
+- [The cloud shared responsibility model: what MSPs and clients are actually responsible for](https://www.kaseya.com/blog/cloud-shared-responsibility-model/): The cloud shared responsibility model is one of the most important concepts in cloud security, and one of the most...
+- [CMMC 2.0: what it is, who needs it, and how MSPs can help clients comply](https://www.kaseya.com/blog/cmmc-compliance-guide/): The Cybersecurity Maturity Model Certification (CMMC) is the US Department of Defense’s framework for ensuring that the defense industrial base,...
+
+
+## Products
+
+- [Cloud backup and disaster recovery for endpoints](https://www.kaseya.com/products/cloud-backup-disaster-recovery/)
+- [Datto File Protection ](https://www.kaseya.com/products/file-backup/)
+- [Datto Workplace](https://www.kaseya.com/products/enterprise-file-sharing/)
+- [Unitrends DRaaS](https://www.kaseya.com/products/draas/)
+- [SASE Solution - Secure Access Service Edge](https://www.kaseya.com/products/sase/)
+- [BCDR Solution - Data Backup &amp; Disaster Recovery](https://www.kaseya.com/products/bcdr/)
+- [Microsoft 365 Backup (Datto SaaS Protection for Microsoft 365)](https://www.kaseya.com/products/microsoft-365-backup/)
+- [Kaseya RMM Solutions ](https://www.kaseya.com/products/rmm-software/ransomware-detection/)
+- [SaaS Backup Solution](https://www.kaseya.com/products/saas-backup/)
+- [Cloud Backup Solution for Small Businesses](https://www.kaseya.com/products/small-business-cloud-backup/)
+- [Entra ID Backup Solution](https://www.kaseya.com/products/entra-id-backup/)
+- [Managed SOC Services](https://www.kaseya.com/products/managed-soc-services/)
+- [Azure Backup Solution](https://www.kaseya.com/products/azure-backup/)
+- [Salesforce Backup - Protect and Restore CRM Data](https://www.kaseya.com/products/salesforce-backup/)
+- [Datto SaaS Protection for Google Workspace](https://www.kaseya.com/products/google-workspace-backup/)
+- [Compliance Manager GRC](https://www.kaseya.com/products/grc-software/)
+- [IT Strategic Planning Tool - Plan with Confidence](https://www.kaseya.com/products/it-strategic-planning-tool/)
+- [Enterprise Backup Software](https://www.kaseya.com/products/enterprise-backup-software/)
+- [Backup Appliances | Unitrends Recovery Series Appliances](https://www.kaseya.com/products/backup-appliance/)
+- [MyGlue](https://www.kaseya.com/products/it-collaboration-tool/)
+- [IT Documentation Software - Track Everything IT](https://www.kaseya.com/products/it-documentation-software/)
+- [Offsite Backup Storage](https://www.kaseya.com/products/offsite-backup-storage/)
+- [Network Discovery Tool - Topology Mapping](https://www.kaseya.com/products/network-discovery-tool/)
+- [Vulnerability Scanning Tool](https://www.kaseya.com/products/vulnerability-scanning-tool/)
+- [Patch Management Software - Vulnerability Patching](https://www.kaseya.com/products/rmm-software/patch-management/)
+- [Kaseya SIEM | Security Information and Event Management Tool](https://www.kaseya.com/products/siem/)
+- [Network Assessment Tool - Automated Scans &amp; Reports](https://www.kaseya.com/products/network-assessment-tool/)
+- [Business Antivirus Software - Stop Advanced Threats](https://www.kaseya.com/products/business-antivirus-software/)
+- [Endpoint Backup Solution - Protect Endpoint Data](https://www.kaseya.com/products/endpoint-backup/)
+- [Network Penetration Testing Tool - Automated Pentesting](https://www.kaseya.com/products/network-penetration-testing-tool/)
+- [Dark Web Monitoring Tool - Identify Data Exposure](https://www.kaseya.com/products/dark-web-monitoring/)
+- [Anti-Phishing Software - Phishing Protection](https://www.kaseya.com/products/anti-phishing-software/)
+- [EDR Software - Endpoint Detection and Response](https://www.kaseya.com/products/edr-software/)
+- [Cloud Detection and Response (CDR) Software](https://www.kaseya.com/products/cloud-detection-and-response/)
+- [Security Awareness Training &amp; Phishing Simulation](https://www.kaseya.com/products/security-awareness-training/)
+- [MSP Billing Software - Automated Invoicing &amp; Payments](https://www.kaseya.com/products/msp-billing-software/)
+- [MDR services](https://www.kaseya.com/products/mdr-services/)
+- [INKY Advanced email security](https://www.kaseya.com/products/email-security-software/)
+- [NOC Services - 24/7 NOC Monitoring and Management](https://www.kaseya.com/products/noc-services/)
+- [MSP Quoting Software](https://www.kaseya.com/products/msp-quoting-software/)
+- [PSA Software](https://www.kaseya.com/products/psa-software/)
+- [RMM Software](https://www.kaseya.com/products/rmm-software/)
+- [Remote Control Software](https://www.kaseya.com/products/rmm-software/remote-control-software/)
+- [Datto Managed Power](https://www.kaseya.com/products/managed-power/)
+- [Credential Monitoring - Identify Exposed User Data](https://www.kaseya.com/products/kaseya-365/credential-monitoring/)
+- [Account Takeover Prevention - Stop ATO Attacks](https://www.kaseya.com/products/kaseya-365/account-takeover-prevention/)
+- [SaaS Security Posture Management (SSPM) Tool](https://www.kaseya.com/products/kaseya-365/saas-security-posture-management/)
+- [Identity Validation &amp; Governance of User Access](https://www.kaseya.com/products/kaseya-365/identity-validation/)
+- [Advanced Threat Protection (ATP) Software](https://www.kaseya.com/products/kaseya-365/advanced-threat-protection/)
+- [Security Awareness Training &amp; Phishing Simulation](https://www.kaseya.com/products/kaseya-365/security-awareness-training/)
+- [Kaseya 365 - EDR](https://www.kaseya.com/products/kaseya-365/edr-software/)
+- [Kaseya 365 - IT Automation](https://www.kaseya.com/products/kaseya-365/it-automation/)
+- [Kaseya 365 Endpoint - Endpoint Management](https://www.kaseya.com/products/kaseya-365/endpoint-management/)
+- [Kaseya 365 Endpoint - Endpoint Protection](https://www.kaseya.com/products/kaseya-365/endpoint-protection/)
+- [Kaseya 365 Endpoint - Endpoint Security](https://www.kaseya.com/products/kaseya-365/endpoint-security/)
+- [Mobile Device Management](https://www.kaseya.com/products/rmm-software/mobile-device-management/)
+- [Integration](https://www.kaseya.com/products/psa-software/integration/)
+- [Migration](https://www.kaseya.com/products/psa-software/migration/)
+- [Features](https://www.kaseya.com/products/psa-software/features/)
+- [What&#039;s New in Kaseya BMS](https://www.kaseya.com/products/psa-software/whats-new/)
+- [Network Monitoring](https://www.kaseya.com/products/rmm-software/network-monitoring/)
+- [IT Documentation](https://www.kaseya.com/products/rmm-software/it-documentation/)
+- [What&#039;s New in Kaseya VSA](https://www.kaseya.com/products/rmm-software/whats-new/)
+- [Project Management](https://www.kaseya.com/products/vorex/project-management/)
+- [Service Desk](https://www.kaseya.com/products/vorex/service-desk/)
+- [Vorex](https://www.kaseya.com/products/vorex/)
+- [Automation](https://www.kaseya.com/products/rmm-software/it-automation/)
+- [Discovery and Inventory](https://www.kaseya.com/products/rmm-software/discovery-and-inventory/)
+- [Unified Backup](https://www.kaseya.com/products/rmm-software/unified-backup/)
+- [Office 365 Backup](https://www.kaseya.com/products/rmm-software/office-365-backup/)
+- [Anti-Virus and Anti-Malware](https://www.kaseya.com/products/rmm-software/anti-virus-and-anti-malware/)
+- [PSA Migrator](https://www.kaseya.com/products/psa-migrator/)
+
+
+## Resources
+
+- [MSP Success Digital Marketing Programs](https://www.kaseya.com/resource/msp-success-digital-marketing-programs-recording/): View this on-demand webinar to learn How AI Is Supercharging Phishing and What You Must Do Next.
+- [MSPeasy: Marketing and sales playbook for growing MSPs](https://www.kaseya.com/resource/marketing-and-sales-playbook-for-growing-msps/): Learn proven sales and marketing strategies to attract more customers, accelerate MSP growth and build a predictable pipeline with Kaseya...
+- [Simplify Microsoft management: A practical five-step checklist](https://www.kaseya.com/resource/simplify-microsoft-management-checklist/): Use this five-step checklist to simplify Microsoft management, automate administration and close critical visibility gaps.
+- [IT Readiness Checklist: Is your organization cyber resilient?](https://www.kaseya.com/resource/cyber-resilience-it-readiness-checklist/): Is your organization truly cyber resilient? Download the checklist to identify recovery gaps and protect your organization against today&#039;s evolving...
+- [When Backup Meets Security in the MSP Stack](https://www.kaseya.com/resource/when-backup-meets-security-in-the-msp-stack/): Discover why fragmented backup and security tools are the MSP industry&#039;s biggest blind spot, and how a continuity-first stack turns...
+- [The MSP cyber resilience playbook: Real-world results with Datto BCDR, SaaS Protection and Endpoint Backup](https://www.kaseya.com/resource/the-msp-cyber-resilience-playbook/): Learn how leading MSPs deliver complete cyber resilience, minimize downtime and increase profitability with Datto backup solutions.
+- [Best practices for building a high-performing service desk](https://www.kaseya.com/resource/best-practices-for-building-a-high-performing-service-desk/): Discover how MSPs can automate L1 support, reduce security noise and grow margins in 90 days. Download Kaseya’s free AI...
+- [A practical guide to AI automation: The first 90 days](https://www.kaseya.com/resource/ai-automation-kasyea/): Discover how MSPs can automate L1 support, reduce security noise and grow margins in 90 days. Download Kaseya’s free AI...
+- [Watch On Demand: What the Top 15% of MSPs Do Differently](https://www.kaseya.com/resource/what-top-15-percent-msps-do-differently-webinar-replay/): Watch this on-demand session to explore insights from the 2026 State of the MSP Report, featuring key trends and strategies...
+- [MSP buyer’s guide to Microsoft Entra ID backup &amp; identity resilience](https://www.kaseya.com/resource/msp-buyers-guide-to-choosing-microsoft-entra-id-backup/): Learn why MSPs must protect Microsoft Entra ID and how to deliver identity resilience while building a high-margin, recurring revenue...
+- [Bridging the cyber resilience gap](https://www.kaseya.com/resource/idc-report-bridging-the-cyber-resilience-gap/): Learn how to strengthen cyber resilience with best practices for secure recovery, clean backups and faster response to cyber threats.
+- [Enabling AI to build resilience in cybersecurity](https://www.kaseya.com/resource/idc-report-enabling-ai-to-build-resilience-in-cybersecurity/): Discover how AI-powered cybersecurity improves resilience, streamlines operations and helps organizations strengthen recovery readiness.
+- [State of cyber resilience in Microsoft environments](https://www.kaseya.com/resource/report-state-of-cyber-resilience-in-microsoft-environments/): Discover IT leaders’ top cyber resilience priorities and best practices for protecting and recovering Microsoft environments.
+- [Unlock backup &amp; recovery in Microsoft environments: Winning strategies revealed](https://www.kaseya.com/resource/unlock-backup-recovery-microsoft-environments/): Watch this on-demand webinar to learn how to strengthen backup and recovery, reduce ransomware risk and improve resilience in Microsoft...
+- [Datto Backup for Microsoft Azure](https://www.kaseya.com/resource/datto-backup-for-microsoft-azure-solution-brief/): Reduce Azure risk with immutable backups stored outside your tenant. Datto Backup for Microsoft Azure delivers secure recovery, simplified operations...
+- [Datto Backup for Microsoft Azure Files &amp; Azure Blob](https://www.kaseya.com/resource/datto-backup-for-microsoft-azure-files-blob-feature-sheet/): Protect Azure Files and Blob Storage with independent, cloud-native backup and recovery. Enhance cyber resilience, simplify management and ensure rapid...
+- [2026 SaaS Security Report: Closing the unmanaged trust gap](https://www.kaseya.com/resource/saas-application-security-insights-2026/): The 2026 SaaS Security Report uncovers the risks, attack trends and operational blind spots IT teams need to understand to...
+- [Unitrends Product Tour: Enterprise-grade backup and recovery](https://www.kaseya.com/resource/enterprise-grade-backup-and-recovery/): Protect your data no matter where it lives with Unitrends — the No. 1 all-in-one backup and recovery solution. Take...
+- [The AI attack path evolution: Why the inbox is just the beginning](https://www.kaseya.com/resource/the-ai-attack-path-evolution/): Learn how AI is reshaping phishing, credential theft, and SaaS compromise. Watch this on-demand webinar and discover how to defend...
+- [AI for IT: Unlocking measurable productivity gains across IT teams](https://www.kaseya.com/resource/ai-in-action-it-productivity/): View this on-demand webinar to learn practical AI use cases that boost IT efficiency, consistency and smarter decision-making.
+- [Beyond the backlog: How IT teams scale without more headcount](https://www.kaseya.com/resource/beyond-the-backlog-how-it-teams-scale-without-more-headcount/): Watch this webinar to learn how IT teams improve efficiency and scale operations without increasing headcount.
+- [The Microsoft 365 security gaps you didn’t know you had](https://www.kaseya.com/resource/microsoft-365-security-gaps-you-didnt-know-you-had/): Watch this webinar to uncover Microsoft 365 security gaps and learn how to prevent configuration drift with automated policies.
+- [From risk to revenue: How MSPs close the endpoint security gap](https://www.kaseya.com/resource/from-risk-to-revenue-how-msps-close-the-endpoint-security-gap/): Discover how AI is transforming phishing attacks and email security. Download the 2026 Email security report to explore emerging threats...
+- [Building true cyber resilience in Microsoft Azure](https://www.kaseya.com/resource/building-true-cyber-resilience-in-microsoft-azure/): View this on-demand webinar to strengthen Azure backup and recovery strategies and build true cyber resilience.
+- [Beyond backup: Building cyber resilience for fast, reliable recovery](https://www.kaseya.com/resource/building-cyber-resilience-for-fast-reliable-recovery/): View the on-demand webinar to learn how to move beyond backup and build true cyber resilience with fast, reliable recovery.
+- [The future of AI-driven cyber defense: What modern IT teams need to know](https://www.kaseya.com/resource/ai-driven-cyber-defense/): View the on-demand webinar to learn how AI can transform cyber defense with better detection, faster response and stronger resilience.
+- [The 10 pentest findings hackers exploit first](https://www.kaseya.com/resource/10-pentest-findings-hackers-exploit-first/): View this on-demand webinar to learn the top 10 repeat pentest findings attackers exploit and how to fix them before...
+- [From scam to system: How AI is scaling phishing into a cyber weapon](https://www.kaseya.com/resource/how-ai-is-scaling-phishing-into-a-cyber-weapon-on-demand-webinar/): Watch this on-demand Kaseya session to learn how AI is advancing phishing attacks and discover practical strategies to reduce risk...
+- [AI in practice: Cut ticket resolution time by 50%](https://www.kaseya.com/resource/recording-beyond-the-hype-ai-in-practice/): Watch the on-demand webinar to discover how businesses and MSPs use AI and automation to cut ticket resolution times by...
+- [From Phishing to Fallout: Why MSPs Must Rethink Security and Recovery](https://www.kaseya.com/resource/from-phishing-to-fallout-msp-webinar/): Watch this on-demand session to learn how modern attacks actually unfold from AI-powered phishing and business email compromise to ransomware...
+- [AI in action: How MSPs achieve 50% faster resolution times](https://www.kaseya.com/resource/ai-in-action-how-msps-achieve-faster-resolution-times/): Discover how MSPs use AI to cut resolution time by up to 50%, eliminate manual work and scale service delivery...
+- [Finding signal in the noise with Kaseya SIEM](https://www.kaseya.com/resource/finding-signal-in-the-noise/): Cut through alert noise with Kaseya SIEM. Download the eBook to learn how MSPs detect real threats faster and reduce...
+- [Seguridad del correo electrónico en LATAM: El cambio con IA que no puedes ignorar](https://www.kaseya.com/resource/email-security-in-latam/): Boost MSP efficiency and improve service delivery with this concise checklist designed to streamline operations and save valuable time.
+- [vPenTest Network penetration testing product tour](https://www.kaseya.com/resource/vpentest-network-penetration-testing-product-tour/): See vPenTest in action. This product tour shows how automated network penetration testing finds vulnerabilities and helps you secure your...
+- [Perspectivas de crecimiento para 2026 y estrategias clave para los MSP en Latinoamérica](https://www.kaseya.com/resource/2026-latin-america-growth-outlook-it-service-providers/): Aprenda cómo los MSP en Latinoamérica pueden crecer en un mercado con contratos más pequeños, mayor competencia y expectativas más...
+- [From Cold Prospect to Signed Contract: The MSP Cyber Assessment Playbook](https://www.kaseya.com/resource/from-cold-prospect-to-signed-contract-msp-webinar/): Watch this on-demand session to learn how to build a prospecting campaign using Network Detective Pro and vPenTest to uncover...
+- [The MSP service delivery playbook: Real results with RMM, PSA and IT documentation](https://www.kaseya.com/resource/msp-service-delivery-playbook-for-rmm-psa-and-it-documentation/): Get 2026 MSP insights from 1,000 plus providers and learn how to grow revenue, adapt to market pressure, and stay...
+- [What the State of the MSP Report reveals](https://www.kaseya.com/resource/what-the-2026-state-of-the-msp-report-reveals/): Watch this on-demand session to explore insights from the 2026 State of the MSP Report, featuring key trends and strategies...
+- [INKY Product Tour: Advanced Email Security &amp; Threat Protection](https://www.kaseya.com/resource/inky-product-tour-advanced-email-security-threat-protection/): Take a tour of INKY’s advanced email security solution and see how it helps IT teams and MSPs detect and...
+- [2026 Kaseya State of the MSP Report](https://www.kaseya.com/resource/2026-kaseya-state-of-the-msp-report-insights/): Get 2026 MSP insights from 1,000 plus providers and learn how to grow revenue, adapt to market pressure, and stay...
+- [MSP efficiency checklist: Building a smarter operational foundation](https://www.kaseya.com/resource/msp-efficiency-checklist/): Boost MSP efficiency and improve service delivery with this concise checklist designed to streamline operations and save valuable time.
+- [Why MSPs need cyber resilience now](https://www.kaseya.com/resource/why-msps-need-cyber-resilience-checklist/): Discover why backup alone is no longer enough and why MSPs need cyber resilience now to tackle today&#039;s sophisticated attacks.
+- [Your last line of Defence: Why backup is now a cyber resilience control in APAC](https://www.kaseya.com/resource/your-last-line-of-defence-why-backup-is-now-a-cyber-resilience-control/): Watch this session to learn how modern backup and recovery strengthen cyber resilience, support ransomware recovery and deliver board-level assurance.
+- [Email security report: AI, phishing and the new era of defense](https://www.kaseya.com/resource/2026-kaseya-email-security-report/): Discover how AI is transforming phishing attacks and email security. Download the 2026 Email security report to explore emerging threats...
+- [The rise of phishing: Why MSPs must outpace smarter cybercriminals](https://www.kaseya.com/resource/the-rise-of-phishing-one-pager/): Discover how AI-driven phishing is reshaping cybersecurity and why MSPs must evolve to stay ahead of emerging threats.
+- [Redefining cyber resilience: Moving beyond backup to business continuity](https://www.kaseya.com/resource/redefining-cyber-resilience-business-continuity/): View this on-demand webinar to learn how to strengthen cyber resilience, ensure verified recovery and move beyond backup to business...
+- [How AI Is Supercharging Phishing and What You Must Do Next](https://www.kaseya.com/resource/webinar-ai-is-supercharging-phishing/): View this on-demand webinar to learn How AI Is Supercharging Phishing and What You Must Do Next.
+- [Understanding phishing: How a ransomware attack unfolds](https://www.kaseya.com/resource/whitepaper-understanding-phishing/): Download the whitepaper to learn how phishing has evolved into a gateway for ransomware and large-scale organizational disruption.
+- [Webinar: Building a high-performing service desk: Driving efficiency through structure, automation and documentation](https://www.kaseya.com/resource/webinar-building-a-high-performing-service-desk/): View this on-demand webinar to learn proven best practices for building a high-performing service desk through structure, automation and documentation.
+- [Defining reasonable cybersecurity in AI-driven APAC](https://www.kaseya.com/resource/recording-defining-reasonable-cybersecurity/): Watch the on-demand webinar to learn how AI reshapes cybersecurity expectations and what organisations must prove after a cyber incident.
+- [Understanding phishing: Account takeover](https://www.kaseya.com/resource/understanding-phishing-account-takeover/): Learn how account takeover fuels business email compromise, why SEGs miss it and how INKY detects real-account phishing with advanced...
+- [Webinar: Building scalable IT operations with automation and AI](https://www.kaseya.com/resource/building-scalable-it-operations/): View this on-demand webinar to learn how automation and AI help IT teams scale operations, reduce complexity and improve service...
+- [The human layer of cybersecurity: AI, email threats and the MSP opportunity](https://www.kaseya.com/resource/recording-the-human-layer-of-cybersecurity/): Watch the on-demand webinar to learn how MSPs shift from reactive email filtering to real-time, AI-driven user protection without added...
+- [AI Automation for MSPs: Turning Noise into Action](https://www.kaseya.com/resource/webinar-ai-automation-for-msps-turning-noise-into-action/): Watch this exclusive on-demand webinar to learn how modern backup and recovery can be the backbone of your risk management...
+- [The top 25 most-phished brands](https://www.kaseya.com/resource/whitepaper-the-top-25-most-phished-brands/): Download the whitepaper to uncover the top 25 most-phished brands and learn how INKY detects and prevents phishing attempts.
+- [TAG Cyber Report: Using trusted banners for email security awareness](https://www.kaseya.com/resource/using-trusted-banners-for-email-security-awareness/): Learn how trusted email banners reduce phishing risk and empower users with smarter, real-time email security awareness.
+- [Secure Mentem Report: A user study of warning banners in emails to reduce clicks on malicious emails](https://www.kaseya.com/resource/a-user-study-of-warning-banners-in-emails/): Download the report to discover how INKY warning banners in emails help users identify phishing messages correctly and reduce clicks...
+- [Phishing prevention checklist](https://www.kaseya.com/resource/phishing-prevention-checklist/): Download the checklist to help employees spot AI-powered phishing threats, reduce human error and stop email attacks before they reach...
+- [Modern Endpoint Management Solution Buyer&#039;s Guide to Help You Make the Right Decision](https://www.kaseya.com/resource/modern-endpoint-management-solution-buyers-guide-to-help-you-make-the-right-decision/)
+- [Webinar recording: Start 2026 with security you can prove](https://www.kaseya.com/resource/webinar-recording-2026-security/): Prove your security posture in 2026. Watch this on-demand webinar to validate real attack paths, exposed credentials and critical risks.
+- [Cybersecurity Jeopardy](https://www.kaseya.com/resource/recording-cybersecurity-jeopardy-2025/): Watch the Cybersecurity Jeopardy replay to test your cyber knowledge and learn expert tips to strengthen your security posture.
+- [8 must-have controls for Microsoft 365 &amp; Google Workspace](https://www.kaseya.com/resource/8-must-have-controls-for-microsoft-365-and-google-workspace/): Download the checklist to discover eight essential security controls that strengthen protection across Microsoft 365 and Google Workspace.
+- [The MSP guide to reducing endpoint tool sprawl](https://www.kaseya.com/resource/msp-solve-tool-sprawl-with-kaseya-365-endpoint/): Discover key cybersecurity trends, threats and opportunities from over 1,000 respondents. Download the 2025 Kaseya cybersecurity report today.
+- [Calculated risk: Turning data protection into a business advantage](https://www.kaseya.com/resource/turning-data-protection-into-business-advantage-on-demand-webinar/): Watch this exclusive on-demand webinar to learn how modern backup and recovery can be the backbone of your risk management...
+- [2026 Kaseya cybersecurity outlook](https://www.kaseya.com/resource/2026-kaseya-cybersecurity-outlook/): Discover key cybersecurity trends, threats and opportunities from over 1,000 respondents. Download the 2025 Kaseya cybersecurity report today.
+- [[On-Demand] The $2.8 billion problem: How to stop business email compromise](https://www.kaseya.com/resource/recording-how-to-stop-business-email-compromise/): Watch the on-demand webinar to discover how attackers bypass MFA and exploit SaaS gaps. Get actionable insights to stop costly...
+- [Fuel your MSP growth with managed security services](https://www.kaseya.com/resource/webinar-recording-msp-managed-security-services-growth/): Watch the on-demand MSP growth roundtable to learn how managed security services can boost revenue and client trust for your...
+- [[On demand] Beyond the firewall: Building a cyber safe culture](https://www.kaseya.com/resource/building-a-cyber-safe-culture/): Watch the on-demand recording to learn how to build a culture where employees become active defenders against cyberthreats.
+- [How Kaseya 365 User supercharges MSP profitability](https://www.kaseya.com/resource/how-kaseya-365-user-supercharges-msp-profitability/): Discover how Kaseya 365 User helps MSPs boost profitability with robust SaaS security, automation and smarter client protection in one...
+- [2026 Kaseya cybersecurity outlook](https://www.kaseya.com/resource/recording-2026-kaseya-cybersecurity-outlook/): Discover how RMM is evolving into a key cybersecurity tool. Watch our expert-led webinar to learn strategies for building secure,...
+- [Beheer en beveilig jouw IT met Kaseya 365 Endpoint](https://www.kaseya.com/resource/recording-beheer-en-beveilig-jouw-it-met-kaseya-365-endpoint/): Kijk ons webinar terug en ontdek hoe jij met Kaseya 365 Endpoint monitoring, beveiliging en back-up kunt samenbrengen om je...
+- [Integration checklist: Get more from your PSA, RMM &amp; IT documentation tools](https://www.kaseya.com/resource/integration-checklist-psa-rmm-it-documentation/): Discover how integrated PSA, RMM and IT documentation tools drive faster service and higher efficiency for IT teams with this...
+- [Cybersecurity unmasked: Espionage and advanced threats](https://www.kaseya.com/resource/webinar-cybersecurity-strategy-from-expert-hacker/): Watch Shawnee Delaney as she reveals how hackers think, use AI, and launch ransomware attacks. You’ll also learn practical ways...
+- [10 cybersecurity moves to outsmart hackers](https://www.kaseya.com/resource/cybersecurity-awareness-checklist/): Outsmart hackers this cybersecurity awareness month with 10 practical moves. Strengthen defenses, cut stress and free up time with our...
+- [Cybersecurity checklist for MSPs who want better margins](https://www.kaseya.com/resource/cybersecurity-checklist-for-msp-profit/): Get the cybersecurity checklist for MSPs. Discover simple steps to protect clients and grow profits with AV, RMM, EDR &amp;...
+- [The comprehensive IT budgeting checklist](https://www.kaseya.com/resource/it-budgeting-checklist-for-msp-it-teams/): Plan smarter with our IT budgeting checklist. Get 10 practical steps to simplify costs, avoid waste and build a stronger,...
+- [2025 global IT trends and priorities report](https://www.kaseya.com/resource/2025-global-it-trends-and-priorities-report/): Discover how 696 IT pros are tackling security, AI, budgets and burnout in 2025. Get key insights to guide smarter...
+- [Kaseya Backup Innovations](https://www.kaseya.com/resource/backup-innovation-2h2025/): Discover Kaseya’s latest backup breakthroughs. Fast recovery, unified management and smarter automation to keep your business resilient.
+- [Always on: Why resilience is the new competitive edge](https://www.kaseya.com/resource/always-on-why-resilience-is-the-new-competitive-edge/): Watch the on-demand webinar and explore how resilience, disaster recovery and AI can protect your business continuity.
+- [IT time-saving checklist](https://www.kaseya.com/resource/it-time-saving-checklist/): Based on 2025 survey data, this IT checklist shows how to reduce workload, save time and streamline operations with practical,...
+- [The IT director’s guide to smarter endpoint security](https://www.kaseya.com/resource/it-directors-endpoint-security-guide/): For IT leaders who want to simplify endpoint security, save time and ditch the tool sprawl without sacrificing control or...
+- [Building resilient IT operations from the inside out](https://www.kaseya.com/resource/recording-rmm-cybersecurity-resilient-it-operations/): Discover how RMM is evolving into a key cybersecurity tool. Watch our expert-led webinar to learn strategies for building secure,...
+- [[On-demand webinar] Proving the strategic value of IT](https://www.kaseya.com/resource/on-demand-webinar-proving-the-strategic-value-of-it/): Learn how to communicate IT’s value with data from Kaseya’s 2025 report. Support bigger budget requests, guide strategy and improve...
+- [Grow your startup MSP](https://www.kaseya.com/resource/grow-your-startup-msp-webinar-recording/): Watch the webinar recording to learn how to run smarter, leaner and more profitable MSP operations.
+- [The Future of RMM: AI-Powered Automation](https://www.kaseya.com/resource/the-future-of-rmm-ai-powered-automation/): Watch our webinar to discover how AI-powered RMM transforms IT management. Learn how to boost efficiency, reduce downtime, and enhance...
+- [Work smarter: The IT pro’s shortcut to efficiency](https://www.kaseya.com/resource/ebook-time-saving-guide-for-it-pros/): Learn how to overcome the chaos of fragmented IT tools with smart strategies, automation tips and checklists to save time...
+- [How to retain clients with less effort](https://www.kaseya.com/resource/msp-client-retention-checklist/): Download the MSP client retention checklist to discover five practical strategies that make it easier to keep your clients loyal,...
+- [Kaseya 365 Ops for MSPs](https://www.kaseya.com/resource/k365-ops-for-msps/): Discover how Kaseya 365 Ops helps MSPs streamline operations, maximize efficiency and fuel growth, all from a single platform.
+- [Kaseya 365 Ops Cooper Copilot AI Features](https://www.kaseya.com/resource/kaseya-365-ops-ai-features/): Discover the AI features in Kaseya 365 Ops that streamline documentation, ticketing and service delivery. Download the one-pager now.
+- [Kaseya 365 Ops for IT Teams](https://www.kaseya.com/resource/k365-ops-for-it-teams/): Discover how Kaseya 365 Ops helps IT teams streamline operations, maximize efficiency and fuel growth, all from a single platform.
+- [Microsoft 365 &amp; Google Workspace User Health check](https://www.kaseya.com/resource/recording-microsoft-356-google-workspace-user-health-check/): Watch the on-demand webinar for a comprehensive health check on SaaS application usage to uncover hidden risks, optimize security and...
+- [7 Key Stats From the 2025 MSP Benchmark Survey](https://www.kaseya.com/resource/2025-msp-benchmark-stats-infographic/): Discover 7 game-changing MSP stats from the 2025 Benchmark Survey. Get key insights on growth, challenges and trends in one...
+- [Be Stronger, More Secure and Profitable With Kaseya 365 Endpoint](https://www.kaseya.com/resource/kaseya-365-endpoint-guide/): Scale your MSP business, reduce costs and stay ahead of threats with Kaseya 365 Endpoint platform. Download the eBook to...
+- [The 2025 Global MSP Benchmark Report Webinar](https://www.kaseya.com/resource/webinar-recording-2025-global-msp-benchmark-data/): Watch the 2025 Global MSP Benchmark Report webinar to uncover key trends, revenue drivers and strategies to scale your MSP...
+- [Key SaaS Security Trends](https://www.kaseya.com/resource/recording-key-saas-security-trends/): Discover hidden SaaS security risks. Join our webinar to explore key insights from the 2025 SASI Report.
+- [2025 Global MSP Benchmark Report](https://www.kaseya.com/resource/2025-msp-benchmark-report/): Discover key MSP trends, challenges and revenue drivers for 2025. Get insights from over 800 MSPs to refine your strategy...
+- [The AI Phishing Revolution: How Cybercriminals Are Outsmarting Traditional Defenses](https://www.kaseya.com/resource/recording-the-ai-phishing-revolution/): Watch the on-demand webinar to uncover AI-driven phishing threats and learn advanced strategies to protect your organization in 2025 and...
+- [Building Cyber Resilience](https://www.kaseya.com/resource/building-a-cyber-resilient-business/): Download the checklist to discover strategies for protecting users and building business resilience against threats like phishing, ransomware and BEC.
+- [Cooper Copilot for Kaseya BMS](https://www.kaseya.com/resource/cooper-copilot-for-kaseya-bms/): Improve team coordination with Collision-Free Ticketing in BMS. Get real-time alerts and avoid duplicate work. Download the feature sheet now!
+- [Streamline Support with Collision-Free Ticketing in BMS](https://www.kaseya.com/resource/bms-collision-free-ticketing/): Improve team coordination with Collision-Free Ticketing in BMS. Get real-time alerts and avoid duplicate work. Download the feature sheet now!
+- [The Ultimate User Security Playbook: Prevent, Respond and Recover with Confidence](https://www.kaseya.com/resource/ultimate-user-security-playbook-prevent-respond-and-recover-with-confidence-registration/): Learn how to integrate proactive defenses, automated threat response and resilient recovery tools into a unified, user-centric security strategy.
+
+
+## Press Releases
+
+- [Kaseya Finds 69% of SaaS Accounts have More Guest Access than Licensed Users](https://www.kaseya.com/press-release/kaseya-finds-69-of-saas-accounts-have-more-guest-access-than-licensed-users/): Kaseya’s 2026 SaaS Security Report reveals that multi-factor authentication gaps, OAuth sprawl and external file sharing are widening the SMB...
+- [Kaseya Previews Next Evolution of Kaseya Intelligence at Connect Europe 2026](https://www.kaseya.com/press-release/kaseya-previews-next-evolution-of-kaseya-intelligence-at-connect-europe-2026/): Introducing an open platform to help MSPs scale faster and improve service delivery by bringing advanced insights and automation into...
+- [Kaseya Unveils MSP Success, a Unified Growth Ecosystem to Scale MSPs Globally](https://www.kaseya.com/press-release/kaseya-unveils-msp-success-a-unified-growth-ecosystem-to-scale-msps-globally/): The ecosystem centers on MSP Success Digital Marketing, a purpose-built platform designed to streamline lead generation and drive measurable business...
+- [Kaseya Appoints Roxi Wen as Chief Financial and Operating Officer](https://www.kaseya.com/press-release/kaseya-appoints-roxi-wen-as-chief-financial-and-operating-officer/): Seasoned finance and operations leader joins Kaseya to drive operational excellence and growth
+- [Kaseya Unveils the First Agentic IT Management Platform – Turning Data into Autonomous Action](https://www.kaseya.com/press-release/kaseya-unveils-the-first-agentic-it-management-platform-turning-data-into-autonomous-action/): Powered by Kaseya Intelligence, Kaseya’s platform combines the industry’s deepest real-world IT dataset with an execution layer that acts with...
+- [AI Emerges as the Key to Scaling MSP Operations  as Growth Gets Harder](https://www.kaseya.com/press-release/ai-emerges-as-the-key-to-scaling-msp-operations-as-growth-gets-harder/): Kaseya&#039;s 2026 State of the MSP Report finds 48% of MSPs rank AI as the number one client need, while...
+- [Kaseya Expands AI Innovation with Silicon Valley R&amp;D Hub to Accelerate Customer Outcomes](https://www.kaseya.com/press-release/kaseya-expands-ai-innovation-with-silicon-valley-rd-hub-to-accelerate-customer-outcomes/): New investment strengthens Kaseya’s leadership in AI-driven IT operations and agentic automation
+- [Kaseya unveils next-generation innovations in cyber resilience](https://www.kaseya.com/press-release/kaseya-unveils-next-generation-innovations-in-cyber-resilience/): AI-powered tools set new industry standards for backup and recovery.
+- [Kaseya Report Highlights Impact of AI on Cybersecurity Threat Landscape](https://www.kaseya.com/press-release/kaseya-report-highlights-impact-of-ai-on-cybersecurity-threat-landscape/): The 2026 Kaseya INKY Email Security Report analyzes the evolution of phishing and email-based cybercrime in the age of AI.
+- [Kaseya introduces latest innovations at Kaseya Connect APAC 2025](https://www.kaseya.com/press-release/kaseya-introduces-latest-innovations-at-kaseya-connect-apac-2025/): New Datto SIRIS 6 appliance, AI-assisted email security acquisition and Datto Backup for Entra ID exhibited at Sydney conference
+- [Kaseya unveils Fall 2025 innovations delivering automation, strengthened cybersecurity capabilities and elevated customer experience](https://www.kaseya.com/press-release/kaseya-unveils-fall-2025-innovations-delivering-automation-strengthened-cybersecurity-capabilities-and-elevated-customer-experience/): Miami, FL – October 23, 2025 – Kaseya, the leading global provider of AI-powered IT management and cybersecurity software forRead...
+- [Kaseya announces latest innovations at DattoCon 2025](https://www.kaseya.com/press-release/kaseya-announces-latest-innovations-at-dattocon-2025/): New Datto SIRIS 6 appliance, AI-assisted email security acquisition and Datto Backup for Entra ID unveiled
+- [Kaseya Acquires Leading AI-Powered Email Security Provider INKY](https://www.kaseya.com/press-release/kaseya-acquires-leading-email-security-provider-inky/): Acquisition strengthens Kaseya’s end-to-end cybersecurity platform and advances Kaseya 365 User with next-generation, AI-driven email protection.
+- [Kaseya Adds New Chief Revenue Officer and Chief Technology Officer](https://www.kaseya.com/press-release/kaseya-adds-new-chief-revenue-officer-and-chief-technology-officer/): Seasoned technology industry leaders, Anthony Anzevino and Pratik Wadher, join company’s executive leadership team to accelerate growth and innovation.
+- [Kaseya Publishes Customer Responsibility Matrices to Help Partners Meet Department of Defense Cybersecurity Requirements](https://www.kaseya.com/press-release/kaseya-publishes-customer-responsibility-matrices-to-help-partners-meet-department-of-defense-cybersecurity-requirements/): Miami, FL, August 19, 2025 – Kaseya, the leading global provider of AI-powered IT management and cybersecurity software, announced todayRead...
+- [Kaseya Strengthens Presence in the Nordics with Upstream AB Partnership](https://www.kaseya.com/press-release/kaseya-strengthens-presence-in-the-nordics-with-upstream-ab-partnership/): Company will leverage Upstream AB’s AI capabilities to accelerate innovation in intelligent automation
+- [Kaseya launches AI-powered workflows within VSA 10](https://www.kaseya.com/press-release/kaseya-launches-ai-powered-workflows-within-vsa-10/): Use of this new feature drives workflow success rates to 96%
+- [Kaseya Extends Community Investment with Addition of Technology Marketing Toolkit](https://www.kaseya.com/press-release/kaseya-extends-community-investment-with-addition-of-technology-marketing-toolkit/): Miami, FL, July 8, 2025 – Kaseya, the leading global provider of AI-powered IT management and cybersecurity software, today announcedRead...
+- [Kaseya brings innovation to DattoCon Europe](https://www.kaseya.com/press-release/kaseya-brings-innovation-to-dattocon-europe/): Rania Succar to take the stage for the first time as Kaseya’s new CEO
+- [Kaseya Appoints Rania Succar as Chief Executive Officer](https://www.kaseya.com/press-release/kaseya-appoints-rania-succar-as-chief-executive-officer/): New CEO to lead company’s next phase of innovation, platform depth and customer-centric growth
+- [Kaseya and Pulseway Unite to Drive Innovation for IT Professionals](https://www.kaseya.com/press-release/kaseya-and-pulseway-unite-to-drive-innovation-for-it-professionals/): Next step of long-standing partnership delivers integrated solutions and access to the Kaseya ecosystem
+- [Kaseya announces latest innovations at Connect 2025](https://www.kaseya.com/press-release/kaseya-announces-latest-innovations-at-connect-2025/): New capabilities and commercial policies launched to help drive efficiency and streamline IT operations
+- [Kaseya Unveils Spring 2025 Innovations, Showcasing AI-Driven Innovations Across IT Management and Cybersecurity](https://www.kaseya.com/press-release/kaseya-unveils-spring-2025-innovations-showcasing-ai-driven-innovations-across-it-management-and-cybersecurity/): Miami, FL – April 16, 2025 – Kaseya, the leading global provider of AI-powered cybersecurity and IT management software, hasRead...
+- [Kaseya Appoints Jim Lippie as Chief Product Officer](https://www.kaseya.com/press-release/kaseya-appoints-jim-lippie-as-chief-product-officer/): Miami, FL – April 14, 2025 – Kaseya, the leading global provider of AI-powered cybersecurity and IT management software, announced...
+- [A Reimagined Kaseya Connect Debuts This April in Las Vegas](https://www.kaseya.com/press-release/a-reimagined-kaseya-connect-debuts-this-april-in-las-vegas/): New event to feature an exclusive cyber-security summit, expanded training and celebrity keynotes
+- [Kaseya Continues Strong Momentum in Q1 with New Product Innovations and Major Award Wins](https://www.kaseya.com/press-release/kaseya-continues-strong-momentum-in-q1-with-new-product-innovations-and-major-award-wins/): Miami, FL – March 13, 2025 – Kaseya, the leading global provider of AI-powered cybersecurity and IT management software, hasRead...
+- [Kaseya Teams With SafeLogic to Strengthen Partner Security](https://www.kaseya.com/press-release/kaseya-teams-with-safelogic-to-strengthen-partner-security/): Collaboration With Cryptographic Solutions Company Further Demonstrates Kaseya’s Commitment to Meeting FedRAMP Standards
+- [Kaseya Report Outlines Top Trends in Backup and Recovery in 2025](https://www.kaseya.com/press-release/kaseya-report-outlines-top-trends-in-backup-and-recovery-in-2025/): More than 30% of IT professionals are losing sleep over their backup and recovery preparedness – according to new Kaseya...
+- [Dan Tomaszewski of Kaseya Recognized on CRN’s Elite 50 Most Influential Channel Chiefs for 2025](https://www.kaseya.com/press-release/dan-tomaszewski-of-kaseya-recognized-on-crns-elite-50-most-influential-channel-chiefs-for-2025/): Miami, Florida – February 4, 2025 – Kaseya, the leading global provider of AI-powered cybersecurity and IT management software, todayRead...
+- [Fred Voccola Transitions to Vice Chairman Role](https://www.kaseya.com/press-release/fred-voccola-transitions-to-vice-chairman-role/): Kaseya Prepares for Next Stage of Growth Following Record-Breaking Year, Launch of Kaseya 365
+- [Kaseya’s State of MSP Shows What Makes a Top-Performing MSP](https://www.kaseya.com/press-release/kaseyas-state-of-msp-shows-what-makes-a-top-performing-msp/): With profitability a major focus, MSPs are optimistic about growing their businesses in 2025.
+- [Kaseya Steps Up Its Backup Game for MSPs With Free Hardware for Datto SIRIS](https://www.kaseya.com/press-release/kaseya-steps-up-its-backup-game-for-msps-with-free-hardware-for-datto-siris/): Company also launches Backup Concierge Program and Next Gen Endpoint Backup
+- [Kaseya showcases next-gen IT innovation at DattoCon APAC 2024](https://www.kaseya.com/press-release/kaseya-showcases-next-gen-it-innovation-at-dattocon-apac-2024/): Three-day Sydney conference highlights new products, strategic partnerships and excellence in MSP services
+- [Kaseya Continues Driving MSP Profitability and Efficiency with Launch of Kaseya 365 User at DattoCon Miami](https://www.kaseya.com/press-release/kaseya-continues-driving-msp-profitability-and-efficiency-with-launch-of-kaseya-365-user-at-dattocon-miami/): Company Includes Newly Acquired SaaS Alerts&#039; Innovative Technology in New Subscription
+- [The 2024 Kaseya Security Survey Finds Human Error is Cybersecurity’s Weakest Link](https://www.kaseya.com/press-release/the-2024-kaseya-security-survey-finds-human-error-is-cybersecuritys-weakest-link/): IT Professionals are Also Trying to Navigate the New Frontier of Artificial Intelligence
+- [Kaseya Launches FedRAMP Authorization Process](https://www.kaseya.com/press-release/kaseya-launches-fedramp-authorization-process/): Company Commits to Becoming One of the First MSP-Centric Platform Vendors to Achieve FedRAMP Authorization
+- [MSPs Adopt Kaseya 365 at Rapid Pace](https://www.kaseya.com/press-release/msps-adopt-kaseya-365-at-rapid-pace/): Customers experience 30 - 50% higher profits thanks to advantageous unit economics
+- [Kaseya’s Future of IT Survey Report Underscores Prioritization of AI and Cybersecurity as Top Places for Investment](https://www.kaseya.com/press-release/kaseyas-future-of-it-survey-report-underscores-prioritization-of-ai-and-cybersecurity-as-top-places-for-investment/): Miami, FL – July 10, 2024 – Kaseya, the leading global provider of AI-powered cybersecurity and IT management software, releasedRead...
+- [Kaseya Launches TruPeer EMERGE to help smaller-sized MSPs maximize their growth](https://www.kaseya.com/press-release/kaseya-launches-trupeer-emerge-to-help-smaller-sized-mps-maximize-their-growth/): The new offering is purpose-built for emerging MSPS with 1-5 employees
+- [Kaseya DattoCon Europe Brings Kaseya 365 and Other Exciting Offerings to EMEA Customers](https://www.kaseya.com/press-release/kaseya-dattocon-europe-brings-kaseya-365-and-other-exciting-offerings-to-emea-customers/): This year’s event promises an exhilarating three days in Dublin – with sessions on automating common practices to transform MSP...
+- [Kaseya Strengthens Global Presence With New Leadership Team in Europe and Asia-Pacific](https://www.kaseya.com/press-release/kaseya-strengthens-global-presence-with-new-leadership-team-in-europe-and-asia-pacific/): Dermot McCann Named Executive Vice President and General Manager for EMEA and Daniel Garcia Promoted to Vice President and General...
+- [Sun Sentinel Names Kaseya a Winner of the South Florida Top Workplaces 2024 Award](https://www.kaseya.com/press-release/sun-sentinel-names-kaseya-a-winner-of-the-south-florida-top-workplaces-2024-award/): Miami, Florida, May 28, 2024 – Kaseya has been awarded a Top Workplaces 2024 honor by South Florida’s Top Workplaces....
+- [Kaseya Names Ryan Courson Chief Operating Officer and Chief Financial Officer](https://www.kaseya.com/press-release/kaseya-names-ryan-courson-chief-operating-officer-and-chief-financial-officer/): Global Provider of AI-Powered Cybersecurity and IT Management Adds Seasoned Executive to Leadership Team
+- [Kaseya Introduces Revolutionary New Offering, Kaseya 365, Changing the Economics of the MSP Industry Forever](https://www.kaseya.com/press-release/kaseya-introduces-revolutionary-new-offering-kaseya-365-changing-the-economics-of-the-msp-industry-forever/): Groundbreaking new offering, and Kaseya’s Partner First Program, launched at Kaseya’s Connect Global conference
+- [Kaseya’s 2024 MSP Benchmark Report Finds that Cybersecurity is a Top Revenue Driver for Three Quarters of Managed Service Providers](https://www.kaseya.com/press-release/kaseyas-2024-msp-benchmark-report-finds-that-cybersecurity-is-a-top-revenue-driver-for-three-quarters-of-managed-service-providers/): The MSP Benchmark Report explores how cybersecurity, AI and automation are impacting IT professional’s workflow, work-life balance and hiring trends...
+- [Kaseya Kicks Off Three Exciting Days in Sydney for Kaseya DattoCon APAC](https://www.kaseya.com/press-release/kaseya-kicks-off-three-exciting-days-in-sydney-for-kaseya-dattocon-apac/): The event promises exciting product updates, training, networking and more – all designed to make MSPs more successful.
+- [The Power of the Managed Service Provider: New Report from Kaseya Explores the Challenges and Opportunities for IT Professionals](https://www.kaseya.com/press-release/the-power-of-the-managed-service-provider-new-report-from-kaseya-explores-the-challenges-and-opportunities-for-it-professionals/): Datto’s Global State of the MSP: Trends and Forecasts for 2024 underscores the importance of customer experience in a highly...
+- [Kaseya Announces New Offerings, Special Recognitions](https://www.kaseya.com/press-release/kaseya-announces-new-offerings-special-recognitions/): Kaseya Help Desk Services “Takes on” Tickets, Powered Services Pro Launches Marketing Blueprint, and Vonahi Security Scores 9 Badges for...
+- [Kaseya Takes Over Miami as it Welcomes Customers to its Home for Kaseya DattoCon](https://www.kaseya.com/press-release/kaseya-takes-over-miami-as-it-welcomes-customers-to-its-home-for-kaseya-dattocon/): The sold-out event promises three days of exciting product updates, networking, and more – all designed to make MSPs more...
+- [Kaseya Addresses Tech Skills Gaps with New Online Certification Course](https://www.kaseya.com/press-release/kaseya-addresses-tech-skills-gaps-with-new-online-certification-course/): Students gain qualifications they need to get hard-to-fill tech jobs.
+- [Kaseya Extends Increased Capabilities to Partners in the APAC Region](https://www.kaseya.com/press-release/kaseya-extends-increased-capabilities-to-partners-in-the-apac-region/): Kaseya launches ConnectBooster, Datto Networking and Unitrends Endpoint Backup in Australia
+- [Kaseya Unveils Product Innovations at Kaseya DattoCon Europe](https://www.kaseya.com/press-release/kaseya-unveils-product-innovations-at-kaseya-dattocon-europe/): Combining the best of Kaseya Connect and DattoCon, the first joint event since the acquisition of Datto will showcase technical...
+- [Kaseya’s 2023 IT Operations Report Reveals Economic Uncertainty Driving Business for MSPs](https://www.kaseya.com/press-release/kaseyas-2023-it-operations-report-reveals-economic-uncertainty-driving-business-for-msps/): Annual Survey Finds More Services Being Outsourced to MSPs With Resources Going Towards Automation, Integrations and Cybersecurity
+- [Kaseya Unveils IT Complete 2.0 at Kaseya Connect Global](https://www.kaseya.com/press-release/kaseya-unveils-it-complete-2-0-at-kaseya-connect-global/): Industry-Leading Event Promises 4 Days of Certifications, Product Updates and More – All Designed to Make IT Professionals More Successful
+- [Kaseya’s 2023 MSP Benchmark Report Finds that Automation, Cybersecurity and Integration Top the List of Priorities for MSPs](https://www.kaseya.com/press-release/2023-kaseya-msp-benchmark-report/): Acquiring new customers amidst growing competition and dealing with sophisticated security threats cited as their greatest challenges
+- [Kaseya’s APAC Team Reveals Winners of 2022 MSP of the Year Awards](https://www.kaseya.com/press-release/kaseyas-apac-team-reveals-winners-of-2022-msp-of-the-year-awards/): Local MSPs recognised for their outstanding work
+- [Fred Voccola Is Named a Channel Futures 2023  Channel Influencer of the Year by Channel Futures](https://www.kaseya.com/press-release/fred-voccola-is-named-a-channel-futures-2023-channel-influencer-of-the-year-by-channel-futures/): PHOENIX — Feb. 21, 2023 — Fred Voccola, CEO of Kaseya, has been named one of two Channel Influencers ofRead...
+- [Kaseya Reaffirms Commitment to Channel Partners by Expanding its Global Partner Program](https://www.kaseya.com/press-release/kaseya-reaffirms-commitment-to-channel-partners-by-expanding-its-global-partner-program/): Company increases program resources by 300 percent, grows team to more than 60
+- [Datto Unveils Next-Generation Cloud-Managed Ethernet Switches and Secure Remote Access Solutions for MSP and SMB Markets](https://www.kaseya.com/press-release/datto-unveils-next-generation-cloud-managed-ethernet-switches-and-secure-remote-access-solutions-for-msp-and-smb-markets/): Available Now, New Family Line of Cloud-Managed Switches Complements Datto Wi-Fi Access Points and Integrated Secure Routers; Provides Unparalleled Reliability,...
+- [Datto’s Annual State of Ransomware Report Reveals SMBs are Taking Cybersecurity More Seriously](https://www.kaseya.com/press-release/dattos-annual-state-of-ransomware-report-reveals-smbs-are-taking-cybersecurity-more-seriously/): SMBs are investing in protection with network and cloud security topping the list.
+- [Kaseya Unveils Its Major Event Line-Up for 2023](https://www.kaseya.com/press-release/kaseya-unveils-its-major-event-line-up-for-2023/): With five large customer-centric conferences and multiple one-day locals and symposiums, Kaseya offers a can’t-miss event for everyone in the...
+- [Return of the Schnizz! Sarah Robb O’Hagan to Headline TruMethods 2023 Schnizzfest](https://www.kaseya.com/press-release/return-of-the-schnizz-sarah-robb-ohagan-to-headline-trumethods-2023-schnizzfest/): Event draws the industry’s top MSPs and cloud providers to share best practices, network and more
+- [Datto EDR Streamlines Endpoint Security by Catching the Threats That Matter Most](https://www.kaseya.com/press-release/datto-edr-streamlines-endpoint-security-by-catching-the-threats-that-matter-most/): Solution is easy-to-use, affordable and helps detect threats that evade other defenses
+- [Datto Global State of the MSP Report Reveals Biggest Challenges Facing MSPs](https://www.kaseya.com/press-release/datto-global-state-of-the-msp-report-reveals-biggest-challenges-facing-msps/): Partners are worried about competition, revenue growth, profitability, customer acquisition and hiring; Survey also found break-fix is making a comeback...
+- [Kaseya Makes Billing Painless for its MSP Customers Through ConnectBooster Integration](https://www.kaseya.com/press-release/kaseya-makes-billing-painless-for-its-msp-customers-through-connectbooster-integration/): The leading accounts receivable automation and payment solutions provider eliminates billing hassles and further augments Kaseya’s IT Complete platform
+- [Connect IT Europe Kicks Off in Amsterdam with Product Announcements, Compelling Speakers Focused on Helping IT Professionals Boost Their Business](https://www.kaseya.com/press-release/connect-it-europe-kicks-off-in-amsterdam-with-product-announcements-compelling-speakers-focused-on-helping-it-professionals-boost-their-business/): With speakers like Kevin Gaskell and Dex Hunter-Torricke, Kaseya’s much-anticipated three-day event will be filled with IT industry expertise and...
+- [DattoCon22 Returns In-Person to Washington, D.C. With Over 2,500 Attendees Expected](https://www.kaseya.com/press-release/dattocon22-returns-in-person-to-washington-d-c-with-over-2500-attendees-expected/): Kaseya CEO Fred Voccola, alongside Datto executives, to unveil latest product developments
+- [Kaseya Takes Home 10 ChannelPro Network Readers’ Choice Awards](https://www.kaseya.com/press-release/kaseya-takes-home-10-channelpro-network-readers-choice-awards/): Awards feature Datto and include Best RMM Vendor, Best PSA Vendor, Best Vendor Partner Program and Best Password Management/IAM Vendor,...
+- [Kaseya’s Dan Tomaszewski Promoted to Executive Vice President of the Channel](https://www.kaseya.com/press-release/kaseyas-dan-tomaszewski-promoted-to-executive-vice-president-of-the-channel/): Miami, FL – August 1, 2022 – Kaseya, the leading global provider of unified IT management and security software for...
+- [250 New Jobs to be Created as Kaseya Chooses Dundalk for its New Centre of Excellence](https://www.kaseya.com/press-release/250-new-jobs-to-be-created-as-kaseya-chooses-dundalk-centre-of-excellence/): New roles at company’s second Irish site will focus on engineering, technical support and inside sales
+- [Kaseya’s Annual IT Operations Report Reveals IT Professionals are Focused on Security and Integration](https://www.kaseya.com/press-release/kaseyas-annual-it-operations-report-reveals/): Cybersecurity and data protection, inadequate IT budgets and outdated legacy systems top the list of this year’s challenges identified in...
+- [Connect IT Asia-Pacific 2022 Promises Can’t-Miss Sessions and New Product Innovations Designed to Help IT Professionals Supercharge Their Businesses](https://www.kaseya.com/press-release/connect-it-asia-pacific-2022/): With Layne Beachley, Scotty Schindler and Matt Formston speaking, the event will feature three days filled with industry insights and...
+- [Kaseya&#039;s Sepedeh Tofigh Recognized With South Florida Business Journal&#039;s 40 Under 40 Award](https://www.kaseya.com/press-release/south-florida-business-journals-40-under-40-award/): Chief Legal and Human Resources Officer was honored for her professional achievements and charity work
+- [Kaseya Closes Acquisition of Datto with Promise to Boost Innovation and Lower Prices](https://www.kaseya.com/press-release/kaseya-closes-acquisition-of-datto/): Significant workflow integrations and product investment planned to augment IT Complete platform
+- [Connect IT Global 2022 Kicks Off with Can’t-Miss Sessions and New Product Innovations Designed to Help IT Professionals Supercharge Their Businesses](https://www.kaseya.com/press-release/connect-it-global-2022-kicks-off/): From Terry Bradshaw and Frank Abagnale to Robin Robins, Connect IT Global celebrates 15 years of bringing the best of...
+- [Connect IT Asia-Pacific Announces Exciting Speaker Line-Up and Can’t-Miss Sessions that Will Empower IT Professionals to Achieve Even Greater Success](https://www.kaseya.com/press-release/connect-it-asia-pacific-announces-exciting-speaker-line-up/): The event will include inspirational talks from Paralympian Matt Formston and business leader Scotty Schindler as well as panels on...
+- [Kaseya Named One of the Best Places to Work in South Florida by the Sun Sentinel](https://www.kaseya.com/press-release/kaseya-named-one-of-the-best-places-to-work-in-south-florida-by-the-sun-sentinel/): The company was one of only 128 organizations to make the prestigious annual list
+- [Kaseya Expands its Global Footprint With New Office in Poland](https://www.kaseya.com/press-release/kaseya-expands-its-global-footprint-with-new-office-in-poland/): Company to create a tech ecosystem by hiring 500 local engineers over the next three years
+- [Kaseya’s GlueX is Back Live and In Person and Now in Miami Beach](https://www.kaseya.com/press-release/kaseyas-gluex-is-back-live-and-in-person-and-now-in-miami-beach/): Conference comeback slated for the Magic City with Actor and Comedian Jason Alexander and Reggie Fils-Aimé, former Nintendo North America...
+- [Kaseya’s Latest Innovation Cycle Provides Enhanced Automation, Security and Compliance Capabilities to Help MSPs and SMBs Thrive in The Evolving Tech Landscape](https://www.kaseya.com/press-release/kaseyas-latest-innovation-cycle-provides-enhanced-automation-security-and-compliance-capabilities-to-help-msps-and-smbs-thrive-in-the-evolving-tech-landscape/): Key integrations allow IT professionals to streamline administrative tasks like billing and documentation, protect growing volumes of data and comply...
+- [Kaseya Partners With Florida International University to Launch Tech Workforce Pipeline](https://www.kaseya.com/press-release/kaseya-partners-with-florida-international-university-to-launch-tech-workforce-pipeline/): Collaboration designed to foster local tech ecosystem and hire FIU grads for positions in sales, research and development and customer...
+- [Datto to be Acquired by Kaseya for $6.2 Billion, with Funding Led by Insight Partners](https://www.kaseya.com/press-release/kaseya-acquires-datto/): Datto stockholders to receive $35. 50 per share in cash
+- [Kaseya Continues Investment in the APAC Region Announcing New Partnership with Macquarie Cloud Services to Support Continued Growth](https://www.kaseya.com/press-release/kaseya-continues-investment-in-the-apac-region-announcing-new-partnership-with-macquarie-cloud-services-to-support-continued-growth/): Kaseya customers across Asia Pacific (APAC) will benefit with an expanded array of best-in-breed RMM, PSA and data protection capabilities...
+- [Kaseya’s Tracy Hernandez Named Among the Top 25 Sales Executives of 2022 by The Software Report](https://www.kaseya.com/press-release/kaseyas-tracy-hernandez-named-among-the-top-25-sales-executives-of-2022-by-the-software-report/): The SVP of Sales Enablement was ranked #3 for her achievements ensuring top line growth and expansion into new markets
+- [Connect IT APAC Returns In Person to Sydney With Pro Surfer Layne Beachley as Keynote Speaker](https://www.kaseya.com/press-release/connect-it-apac-returns-in-person-to-sydney-with-pro-surfer-layne-beachley-as-keynote-speaker/): The channel’s premier event signals region’s comeback and includes an M&amp;A Summit, job fair and more
+- [Connect IT Global is Jam-Packed with Workshops and Certifications to Take Your IT Knowledge to the Next Level](https://www.kaseya.com/press-release/connect-it-global-is-jam-packed-with-workshops-and-certifications-to-take-your-it-knowledge-to-the-next-level/): Attendees have access to thousands of dollars worth of in-depth training and certifications from industry leaders
+- [Connect IT – the #1 European IT Event of the Year – Returns to Amsterdam](https://www.kaseya.com/press-release/connect-it-the-1-european-it-event-of-the-year-returns-to-amsterdam/): Headliners include Kevin Gaskell, former CEO of successful world-class brands such as Porsche and Lamborghini and Dex Hunter-Torricke, former communications...
+- [Kaseya’s Powered Services Pro Supercharges MSP Sales and Marketing Efforts](https://www.kaseya.com/press-release/kaseyas-powered-services-pro-supercharges-msp-sales-and-marketing-efforts/): Platform enhancements include new product sales certifications and Done-4-U social media services that make it even easier for MSPs to...
+- [Kaseya CISO and Former FBI Agent Jason Manar Among Featured Speakers at  “All 4 One” Virtual Cybersecurity Panel](https://www.kaseya.com/press-release/kaseya-ciso-and-former-fbi-agent-jason-manar-among-featured-speakers-at-all-4-one-virtual-cybersecurity-panel/): Manar joins CISOs from the channel’s four biggest vendors to talk about cybersecurity practices
+- [IT Professionals Can Ease Compliance Woes with Upgraded Compliance Manager GRC Solution](https://www.kaseya.com/press-release/it-professionals-can-ease-compliance-woes-with-upgraded-compliance-manager-grc-solution/): MSPs and SMBs can now simultaneously manage the IT requirements of any industry and government standard as well as customized...
+- [Kaseya’s Annual MSP Benchmark Survey Shows Opportunities in Remote Work and Cloud Migration](https://www.kaseya.com/press-release/kaseyas-annual-msp-benchmark-survey-shows-opportunities-in-remote-work-and-cloud-migration/): MSPs see security as both a challenge and an opportunity in 2022, especially as half say that their business is...
+- [Kaseya CEO Fred Voccola Is Named a Channel Futures 2022 Channel Influencer](https://www.kaseya.com/press-release/kaseya-ceo-fred-voccola-is-named-a-channel-futures-2022-channel-influencer/): MIAMI — Feb. 22, 2022 — Kaseya, the leading provider of unified IT management and security software for managed serviceRead...
+- [Kaseya Takes Home Gold with Three Cybersecurity Excellence Awards](https://www.kaseya.com/press-release/kaseya-takes-home-gold-with-three-cybersecurity-excellence-awards/): Compliance Manager, Graphus and BullPhish ID recognized as best-of-breed solutions in the prestigious annual awards
+- [Kaseya&#039;s Adam Larrabee, Amelia Paro and Dan Tomaszewski Receive the Prestigious 2022 CRN Channel Chief Award](https://www.kaseya.com/press-release/kaseyas-adam-larrabee-amelia-paro-and-dan-tomaszewski-receive-the-prestigious-2022-crn-channel-chief-award/): February 7, 2022 – Miami — Kaseya, the leading provider of unified IT management and security software for managed serviceRead...
+- [Unitrends Introduces ION Appliances That Provide Powerful Data Protection and Fit in Your Pocket](https://www.kaseya.com/press-release/unitrends-introduces-ion-appliances-that-provide-powerful-data-protection-and-fit-in-your-pocket/): The cutting-edge backup appliances and new Cyber Assurance Program ensures MSPs and SMBs can combat ransomware, data loss and downtime
+- [NFL Legend Terry Bradshaw to Headline Kaseya’s Connect IT Global 2022](https://www.kaseya.com/press-release/nfl-legend-terry-bradshaw-to-headline-kaseyas-connect-it-global-2022/): The channel’s premier event returns to Las Vegas for 15th annual conference featuring additional speakers Frank Abagnale, inspiration for the...
+- [Kaseya Looks Back on 2021 as Transformative Year with More IT Complete Enhancements Than Ever Before](https://www.kaseya.com/press-release/kaseya-looks-back-on-2021-as-transformative-year-with-more-it-complete-enhancements-than-ever-before/): From key acquisitions to new regional data centers, the company has continued to put its customers’ needs first—and has seen...
+- [Kaseya Invites MSP Community to Participate in its 11th Annual MSP Benchmark Survey](https://www.kaseya.com/press-release/kaseya-invites-msp-community-to-participate-in-its-11th-annual-msp-benchmark-survey/): Questionnaire data will help Kaseya and the channel better understand the MSP community’s challenges and opportunities
+- [Kaseya Adds New UK GDPR Module to Its Award-Winning Compliance Manager Platform to Simplify Compliance With The UK’s Sweeping Privacy Regulation](https://www.kaseya.com/press-release/kaseya-adds-new-uk-gdpr-module-to-its-award-winning-compliance-manager-platform-to-simplify-compliance-with-the-uks-sweeping-privacy-regulation/): The update, which was introduced at Kaseya’s Connect IT Europe conference, generates key documents – including Evidence of Compliance –...
+- [Kaseya’s Dana Liedholm Wins Gold Globee® in the 11th Annual 2021 Communications Excellence Awards](https://www.kaseya.com/press-release/kaseyas-dana-liedholm-wins-gold-globee-in-the-11th-annual-2021-communications-excellence-awards/): Liedholm recognized for Excellence in Crisis Communication due to her work highlighting Kaseya’s proactive, customer-centric response to the July 2...
+- [Kaseya CFO Kathy Wagner Named Among the Top 50 Women Leaders in SaaS](https://www.kaseya.com/press-release/kaseya-cfo-kathy-wagner-named-among-the-top-50-women-leaders-in-saas/): Wagner recognized by The Software Report for her ability to lead Kaseya through a period of rapid expansion and transformation
+
+
+## Case Studies
+
+- [Turning saved costs into growth: How Real Solutions tripled their margins  ](https://www.kaseya.com/case-studies/real-solutions-case-study/): See how MSP Real Solutions tripled margins, cut tooling costs by 60% and doubled ticket capacity with Kaseya 365 Endpoint...
+- [How Inspired IT protected 1,200 endpoints and slashed 189 hours of work](https://www.kaseya.com/case-studies/inspired-it/): See how Inspired IT unified security, protected 1,200 endpoints and saved 100+ hours per month with Kaseya 365, AI ticket...
+- [How Smart Computing Solutions scaled from 1,600 to 2,400 endpoints with long-term client retentions ](https://www.kaseya.com/case-studies/smart-computing-solutions/): See how Smart Computing Solutions scaled from 1,600 to 2,400 endpoints, grew to 120 client environments and accelerated security revenue...
+- [How Silicon Valley Services doubled profit margins and reduced reactive work by 70%](https://www.kaseya.com/case-studies/silicon-valley-services/): See how Silicon Valley Services reduced reactive support by 70%, doubled profit margins and increased capacity without adding staff.
+- [How Earney IT drove 40% annual growth with Kaseya](https://www.kaseya.com/case-studies/earney-it/): Discover how Earney IT transformed its MSP operations with Kaseya, achieving 40% annual growth, improving efficiency, strengthening cybersecurity, and scaling...
+- [How Waedt IT Services transformed their operations with Kaseya](https://www.kaseya.com/case-studies/waedt-it-services/): See how Waedt IT Services cut billing time from days to hours, reduced patching by 90%, and achieved 20–30% annual...
+- [400% profit growth? Here’s how Our IT Services did it. ](https://www.kaseya.com/case-studies/our-it-services/): Discover how Our IT Services achieved 400% profit growth, cut operating costs by 50%, and reduced ticket volume by 30%...
+- [How Clarity built a more efficient, secure and resilient MSP business](https://www.kaseya.com/case-studies/clarity-technical-solutions/): See how Clarity transformed from break-fix to MSP, improving efficiency, cybersecurity and business continuity with Kaseya&#039;s integrated platform.
+- [How Enitech went from startup MSP to $250K in monthly revenue  ](https://www.kaseya.com/case-studies/enitech/): Discover how Enitech unified operations with Kaseya, expanded cybersecurity services and accelerated growth to over $250K in monthly revenue.
+- [How inTEC Group standardized 15 MSPs into one scalable business with the Kaseya platform](https://www.kaseya.com/case-studies/intec-group/): Learn how inTEC Group unified 15 MSPs on the Kaseya Platform, reduced ticket resolution times by 15%, improved cybersecurity and...
+- [From VSA 9 to Datto RMM: How Stability IT simplified its entire operation with a smooth migration](https://www.kaseya.com/case-studies/stability-it/): Learn how Stability IT consolidated tools, reached 97% patch compliance, resolved support calls faster and increased MSP profitability.
+- [Discover how CMIT Solutions of Manhattan scaled their relationship-driven MSP](https://www.kaseya.com/case-studies/cmit-solutions/)
+- [How Landus simplified IT operations across 2,000 endpoints with a unified Kaseya platform](https://www.kaseya.com/case-studies/landus/): Discover how Landus streamlined support for 650 employees, centralized IT operations and strengthened cybersecurity with Kaseya&#039;s integrated IT and security...
+- [How In-Common Laboratories strengthened healthcare IT security, compliance and efficiency with an integrated Kaseya stack](https://www.kaseya.com/case-studies/in-common-labs/): Discover how In-Common Laboratories consolidated six IT tools into Kaseya, improving security, compliance, automation and operational efficiency.
+- [How efex scaled through standardization, cybersecurity and platform-driven efficiency](https://www.kaseya.com/case-studies/efex/): Learn how efex cut onboarding time by 50%, streamlined service delivery and scaled operations using Kaseya&#039;s integrated platform.
+- [How VMhosts mastered 3x endpoint growth without tripling its team](https://www.kaseya.com/case-studies/vmhosts/): See how VMhosts tripled endpoint management growth, reduced software costs by 20%+ and added £21K in annual profit with Kaseya...
+- [Kryonyx Corporation scales 400% without more headcount](https://www.kaseya.com/case-studies/kryonyx/): See how Kryonyx scaled 400% with an 11-person team, reduced ticket times and achieved near-zero downtime through automation and platform...
+- [How ZTek Solutions achieved 300% growth and 30% profit margins with Kaseya](https://www.kaseya.com/case-studies/ztek-solutions/): Offen Petroleum has spent decades doing one thing exceptionally well: delivering fuel to the right place.
+- [GDR Group elevates client protection with layered cybersecurity](https://www.kaseya.com/case-studies/gdr-group/): Discover how GDR Group standardized security, reduced incidents and scaled efficiently with a layered MDR approach and 24/7 SOC support.
+- [How Offen Petroleum runs IT operations 5x faster with IT Glue](https://www.kaseya.com/case-studies/offen-petroleum/): Offen Petroleum has spent decades doing one thing exceptionally well: delivering fuel to the right place.
+- [Allierad doubles technician productivity after moving to Autotask](https://www.kaseya.com/case-studies/allierad-doubles-productivity-autotask/): Houston MSP Allierad nearly doubled technician productivity after switching from HaloPSA to Autotask in under two months.
+- [18 years in the making: Why GDR Group switched their PSA for Autotask](https://www.kaseya.com/case-studies/gdr-group-connectwise-autotask/): After 18 years on ConnectWise, GDR Group switched to Autotask — streamlining workflows, improving technician efficiency and driving growth.
+- [How STCNtech kept a campus open after a midnight outage with Datto BCDR](https://www.kaseya.com/case-studies/stcntech/): See how STCNtech relied on Datto BCDR to restore systems fast after a midnight outage and keep a campus operational...
+- [How Netrio helps clients deploy phishing protection in minutes with INKY](https://www.kaseya.com/case-studies/netrio/): Learn how Netrio reduces phishing risk by empowering end users with INKY’s clear, effective email security.
+- [How Big-D Construction strengthened email security for 900 employees with INKY](https://www.kaseya.com/case-studies/big-d/): See how Big-D Construction strengthened email security for nearly 900 employees while reducing IT workload with INKY.
+- [How Computer Care blocked 8,000 dangerous threats with INKY &amp; Kaseya 365 User](https://www.kaseya.com/case-studies/computer-care/): See how Computer Care strengthened email security by adopting INKY with Kaseya 365 User as part of a more connected,...
+- [OmniSystems upgrades service delivery and saves 20% technician time with Kaseya 365 Endpoint Pro](https://www.kaseya.com/case-studies/omnisystems-kaseya-365-endpoint-pro/): Discover how OmniSystems boosted efficiency by 20%, achieved CMMC readiness and simplified client management after adopting Kaseya 365 Endpoint Pro.
+- [How Fuse Technology built a seamless 24/7 MSP across 4 countries](https://www.kaseya.com/case-studies/fuse-technology-global/): A flood put a dental practice underwater. Teamwork Technology had it back online in two hours, proof that preparedness (and...
+- [When disaster hits: How Teamwork Technology keeps clinics online](https://www.kaseya.com/case-studies/teamwork-technology/): A flood put a dental practice underwater. Teamwork Technology had it back online in two hours, proof that preparedness (and...
+- [Kaseya 365 Endpoint Pro: The right platform for government IT departments](https://www.kaseya.com/case-studies/burleson-county-consolidation-kaseya-365-endpoint/): How one IT pro manages 100 endpoints across three offices with Kaseya 365 Endpoint Pro, replacing tool sprawl, automating patching...
+- [Built on grit: How NEXTGen IT turns challenges into comebacks](https://www.kaseya.com/case-studies/nextgen-it-challenges-comebacks/)
+- [Built to last: How Astute turned efficiency into predictable growth](https://www.kaseya.com/case-studies/astute-built-to-last/): Astute Technology unified its stack with Kaseya to reduce tool sprawl and gain predictable growth, faster service, stronger renewals and...
+- [Thrive raises the bar on client protection with SaaS Alerts](https://www.kaseya.com/case-studies/thrive-raises-the-bar-on-client-protection-with-saas-alerts/): Discover how SaaS Alerts’ powerful cloud detection and response platform helped Thrive deliver superior security services to clients.
+- [Salinor powers up IT operations with a smooth migration to VSA 10](https://www.kaseya.com/case-studies/case-study-salinor-vsa10-migration/): How Brazil’s salt giant Salinor powered ahead with a seamless migration to VSA 10, unlocking efficiencies across its operations.
+- [How BCS IS|IT tripled margins with Kaseya 365 Endpoint Pro](https://www.kaseya.com/case-studies/bcs-isit-security-framework-profit-kaseya-365-pro/): From technology tinkering to trusted partner. Like many MSPs, Nero Consulting began with founder Anthony Oren helping others with computer...
+- [From break-fix to AI: Power Consulting’s evolution with Autotask](https://www.kaseya.com/case-studies/ai-power-consulting-autotask/): Discover how Power Consulting scaled smarter with Autotask, transforming decades of experience into an AI-driven future.
+- [Blackline IT: Protecting people, not just systems ](https://www.kaseya.com/case-studies/blackline-it-doing-whats-right/): Blackline IT protects clients with care and confidence, using Kaseya’s unified platform and RocketCyber to deliver security that never sleeps.
+- [Waedt IT steigert Effizienz, Professionalität und Profitabilität mit Datto](https://www.kaseya.com/case-studies/waedt-case-study/): Erfahren Sie, wie Waedt IT mit Datto-Lösungen Zeit spart, Margen steigert und dabei Services auf Enterprise-Niveau flexibel skaliert.
+- [Ark ICT Solutions: Built on trust, secured by Kaseya 365 ](https://www.kaseya.com/case-studies/ark-ict-solutions-kaseya-365-ark/): Ark scaled from local IT provider to trusted cybersecurity partner with Kaseya 365. See how they did it.
+- [Cobalt finds its power stroke with Kaseya 365 Endpoint](https://www.kaseya.com/case-studies/cobalt-msp-finds-power-in-kaseya-365-endpoint/): Discover how Cobalt boosted efficiency, cut costs and empowered their 18-person team to work smarter, respond faster and protect clients...
+- [Nero Consulting: Securing the future through a cybersecurity-first strategy](https://www.kaseya.com/case-studies/nero-consulting-securing-the-future-through-a-cybersecurity-first-strategy/): From technology tinkering to trusted partner. Like many MSPs, Nero Consulting began with founder Anthony Oren helping others with computer...
+- [Stepping Forward Technology&#039;s journey from IT provider to trusted partner](https://www.kaseya.com/case-studies/stepping-forward-technology/)
+- [Affinity Technology Partners goes from grit to growth](https://www.kaseya.com/case-studies/affinity-technology-partners/)
+- [Bacheler Technologies builds IT success without sacrificing work-life balance](https://www.kaseya.com/case-studies/bacheler-technologies/): A people-first MSP Bacheler Technologies was never just about IT. When Craig Bacheler founded the company in 2008, he envisionedRead...
+- [Ergon Consulting Group – From Setbacks to Success With Kaseya Innovations](https://www.kaseya.com/case-studies/ergon-consulting-group/): Challenges The early days at Ergon Consulting Group were filled with promise. However, the company faced a major hurdle whenRead...
+- [Appalachia Technologies](https://www.kaseya.com/case-studies/appalachia-technologies/): Discover how Appalachia Technologies boosted efficiency, cut resolution times by 50% and improved team confidence with IT Glue&#039;s centralized documentation.
+- [How Tekie Geek Simplified Operations with Kaseya BMS](https://www.kaseya.com/case-studies/tekie-geek-bms/): Discover how Tekie Geek boosted efficiency and streamlined operations by switching to Kaseya BMS, enhancing IT support for SMBs in...
+- [The Recovery Chronicles: How DataSHUR Saved a Client From the Verge of Closure](https://www.kaseya.com/case-studies/datashur/): Discover how DataSHUR rescued a major dental franchise facing $1. 2M in lost revenue and operational downtime by leveraging Datto’s...
+- [Tekie Geek ](https://www.kaseya.com/case-studies/tekie-geek/): Tekie Geek scaled faster and improved efficiency with IT Glue, streamlining onboarding and creating SOPs to maintain high service standards...
+- [Computer Geeks](https://www.kaseya.com/case-studies/computer-geeks-datto-edr-case-study/): Learn how Computer Geeks, a UK-based MSP, transformed its cybersecurity approach by making Datto EDR a standard for all clients,...
+- [Healthy Technology Solutions](https://www.kaseya.com/case-studies/healthy-technology-solutions/): Discover why Healthy Technology Solutions switched to IT Glue to streamline documentation, improve efficiency and enhance client service in their...
+- [ITPartners+](https://www.kaseya.com/case-studies/itpartners/): Learn how Datto Managed SOC and Datto EDR swiftly identified and contained a ransomware attack for ITPartners+. A quick response,...
+- [vIT4u](https://www.kaseya.com/case-studies/vit4u/): Before IT Glue, the MSP’s mission-critical IT information was scattered across disparate Excel and Word documents, making it difficult to...
+- [KPS Global LLC: Enhancing IT management with Datto RMM amid rapid growth](https://www.kaseya.com/case-studies/kps-global-it-growth-datto-rmm/): Discover how KPS Global used Datto RMM to gain visibility and control over 900+ endpoints, eliminating IT roadblocks and supporting...
+- [Crystal Mountain](https://www.kaseya.com/case-studies/crystal-mountain/): Explore how the IT team at Crystal Mountain outdoor resort in Michigan was able to increase its visibility into its...
+- [CURAit](https://www.kaseya.com/case-studies/curait/): The story of CURAit began in 2009, but the passion for IT within the company extends back much further. The...
+- [IT Reinvented: How GoCloud Scaled to the Cloud and Beyond, Powered by Kaseya](https://www.kaseya.com/case-studies/it-reinvented-how-go-cloud-scaled-to-the-cloud-and-beyond-powered-by-kaseya/): Challenges After months of strategic development to expand the company beyond IT sales, GoCloud’s foray into cloud services was initiallyRead...
+- [Pioneer Bank](https://www.kaseya.com/case-studies/pioneer-bank/): Find out how Pioneer Bank integrated Datto Managed SOC &amp; EDR for advanced 24/7 cybersecurity to significantly improve compliance protection...
+- [Acumen Consulting Improves Efficiency and Automates More With Datto RMM](https://www.kaseya.com/case-studies/acumen-consulting-autotask-datto-rmm/): Discover how Acumen Consulting leverages Autotask and Datto RMM to improve efficiency, save costs and streamline endpoint and user management.
+- [Novum Energy](https://www.kaseya.com/case-studies/novum-energy/): Novum Energy has established itself as a prominent player in the global trading of commodities, primarily focusing on crude oil.
+- [CISPOINT](https://www.kaseya.com/case-studies/cispoint/): Discover how CISPOINT enhanced their IT security and operational efficiency leveraging Kaseya&#039;s IT security solutions, like RocketCyber, Datto EDR and...
+- [PulseOne](https://www.kaseya.com/case-studies/pulseone/): Discover how PulseOne enhanced their IT service delivery and customer satisfaction with IT Glue, achieving efficiency, transparency and improved end-user...
+- [From Cyber Warfare to MSP Innovation: Xonicwave’s ProfitFuel Success Story](https://www.kaseya.com/case-studies/from-cyber-warfare-to-msp-innovation-xonicwaves-profitfuel-success-story/): See how Xonicwave, led by a former U. S. Air Force cyber expert, uses ProfitFuel to drive MSP innovation, growth,...
+- [OneSource Technology’s 25+ year evolution supported by Autotask, Datto RMM and IT Glue](https://www.kaseya.com/case-studies/onesource-technology-autotask-datto-rmm-it-glue/): Discover how OneSource Technology scaled over 25 years with Autotask, Datto RMM, and IT Glue, supporting 2,500+ endpoints and ensuring...
+- [Visy Technology Systems Improves Sales Management and Project Efficiency With Autotask](https://www.kaseya.com/case-studies/visy-tech-autotask/): Learn how Visy Technology Systems improved sales management and project efficiency with Autotask, streamlining quoting and enhancing visibility across its...
+- [5 Factor Technology](https://www.kaseya.com/case-studies/5-factor-technology-aec-security-case-study/): Discover how 5 Factor Technology transformed AEC industry security for SMBs by integrating RocketCyber’s SOC service, delivering 24/7 monitoring and...
+- [CTI Technology Migrates to Autotask for Greater Efficiency](https://www.kaseya.com/case-studies/cti-technology-migrates-to-autotask-for-greater-efficiency/): CTI Technology provides a wide range of IT services for businesses in the Chicagoland area
+- [From Navy Technician to Networking Titan: Cambium Data’s MSP Success Story](https://www.kaseya.com/case-studies/cambium-datas-msp-success-story/): Challenges As Cambium grew, the company’s potential was stifled by a lack of a structured sales process due to theRead...
+- [CST Group Leverages Advanced Automation of VSA 10 to Streamline Workflows Cost-Effectively](https://www.kaseya.com/case-studies/cst-group-automation-vsa10-streamlines-workflows/): Challenges CST Group Inc. manages over 730 endpoints, mainly for government agencies stretching from Northern New York to Southwest Florida....
+- [Savadge Networking Solutions (SNS IT)](https://www.kaseya.com/case-studies/savadge-networking-solutions/): The team at SNS IT did not have an organizational system to document their clients’ mission-critical IT information, and they...
+- [Atom Creek](https://www.kaseya.com/case-studies/atom-creek/): Atom Creek transforms IT management with IT Glue, enhancing documentation and client solutions, leading to a more efficient and secure...
+- [Vicinity Counts on Datto BCDR to Protect Critical Alaskan Business Above the Arctic Circle](https://www.kaseya.com/case-studies/vicinity-protects-critical-alaskan-businesses-with-datto/): Vicinity is a third-generation information technology (IT) service provider based in Hawaii and Alaska.
+- [How Two River Technology Group Achieved Powerful Outcomes With Datto RMM](https://www.kaseya.com/case-studies/how-two-river-technology-group-achieved-powerful-outcomes-with-datto-rmm/): A flood put a dental practice underwater. Teamwork Technology had it back online in two hours, proof that preparedness (and...
+- [Impulse Data Improves Operational Efficiency and Boosts Sales with Kaseya Quote Manager](https://www.kaseya.com/case-studies/impulse-data-efficiency-and-sales-quote-manager/): Challenges Before implementing Kaseya Quote Manager, Impulse Data grappled with challenges stemming from manual creation using Word documents and ExcelRead...
+- [Systemhaus Leverages Kaseya Solutions to Deliver Superior IT and Security Services](https://www.kaseya.com/case-studies/systemhaus-excel-at-it-service-with-kaseya/): Challenges Systemhaus has built a strong reputation for delivering outstanding IT and security services to a more than 2,000-strong clientRead...
+- [Hope Church Uses VSA to Boost Efficiency on a Budget](https://www.kaseya.com/case-studies/hope-church-boosts-efficiency-on-a-budget-with-vsa/): Being a church, we have a budget. Kaseya is working hand-in-hand with us to get us the best value for...
+- [Tarilon Technology Services Achieves Simplified Documentation With IT Glue](https://www.kaseya.com/case-studies/tarilon-technology-services/): Tarilon Technology Services is a Managed Service Provider that focuses on small businesses. As their operations expanded, managing IT information...
+- [Solulan Helps Its Clients Recover From Ransomware With Datto Solutions](https://www.kaseya.com/case-studies/solulan-helps-its-clients-recover-from-ransomware-with-datto/): Solulan is a managed service provider (MSP) founded in 1999. The company is primarily located in Quebec, Canada, but has...
+- [Tecbound Assures Azure Continuity With Datto](https://www.kaseya.com/case-studies/tecbound-assures-azure-continuity-with-datto/): Tecbound CEO and founder Oscar Diaz has been serving Calgary businesses for over 11 years, specializing in helping Canadian police...
+- [Data Integrity Services, Inc. Ramps Up Cloud and Security Services With Datto](https://www.kaseya.com/case-studies/data-integrity-services-inc-ramps-up-cloud-and-security-services-with-datto/): Data Integrity Services, Inc. is a Florida-based managed service provider (MSP) with a strong focus on cybersecurity and cloud services.
+- [The POA Story: How Datto Is Filling the Gaps in Client Protection](https://www.kaseya.com/case-studies/how-datto-is-filling-the-gaps-in-client-protection-for-pacific-office-automation/): POA has been a Datto partner since 2014, leveraging diverse Datto solutions, especially across its business continuity and disaster recovery...
+- [Sephno Systems Leverages the Kaseya IT Complete Platform to Unlock Business Growth and Success in the Cybersecurity Space](https://www.kaseya.com/case-studies/sephno-systems-kaseya-cybersecurity-success-story/): Discover how Sephno unlocked business growth and success in IT services and cybersecurity with Kaseya IT Complete.
+- [Ceeva Maximizes Microsoft Azure Uptime With Datto](https://www.kaseya.com/case-studies/ceeva-maximizes-microsoft-azure-uptime-with-datto/): Ceeva is a Pittsburgh-based IT managed services firm with an unwavering focus on instilling IT confidence in each of its...
+- [Twintel Stays at the Cutting Edge of Technology With Datto](https://www.kaseya.com/case-studies/twintel-stays-at-the-cutting-edge-of-technology-with-datto/): Founded in 2008, Twintel Solutions is a leading managed services provider (MSP) from Garden Grove, California.
+- [PaperSolve Revolutionizes Their Client Server Data Recovery Process With Datto](https://www.kaseya.com/case-studies/papersolve-client-server-data-recovery-with-datto/): PaperSolve is a managed IT services and software development company with over 30 years of experience serving small and midsize...
+- [Jera-IT&#039;s Three-Pronged Approach to Incident Response and Disaster Recovery](https://www.kaseya.com/case-studies/jera-its-three-pronged-approach-to-incident-response/): Jera-IT, formerly Clark Integrated Technologies, was founded in 1991 as an IT consulting firm serving the local farming and business...
+- [TribeTech](https://www.kaseya.com/case-studies/tribetech/): Find out how TribeTech provides 24/7 threat monitoring without a dedicated security operations center (SOC) and streamlines operations by leveraging...
+- [NO &amp; SE IT Group](https://www.kaseya.com/case-studies/no-se-it-group-2/): NO &amp; SE IT Group is a Managed Service Provider helping companies in New Orleans and Baton Rouge, USA. Despite...
+- [Solulan Leverages Kaseya’s Security and IT Operations Management Solution to Achieve Growth, Efficiency and Competitive Edge](https://www.kaseya.com/case-studies/blue-diamond-datto-customer-solulan-soars/): Discover how Solulan, a top Canadian MSP, boosted its cybersecurity and expanded operations with Kaseya&#039;s solutions and the Kaseya-Datto Partner...
+- [MicroAge](https://www.kaseya.com/case-studies/microage-2/): We know how frustrating it is when a client makes grand plans but fails to follow through on them. It...
+- [Doc Tech](https://www.kaseya.com/case-studies/doctech/): When Doc Tech added IT services to their core services — print, copy and scan dealership — they still used...
+- [Total Group](https://www.kaseya.com/case-studies/total-group/): Total Group International is an enterprise-level IT support provider operating in Hertfordshire and surrounding areas for over 20 years. The...
+- [Lutheran Social Services of South California](https://www.kaseya.com/case-studies/lutheran-social-services-of-south-california/): When the IT manager of Lutheran Social Services (LSSSC) Philip Olinger started in the organization seven years ago, there was...
+- [GC Brieau Provides Clients With Productivity and Security Solutions Through Datto Solutions](https://www.kaseya.com/case-studies/gc-brieau-provides-clients-with-productivity-and-security-solutions-through-datto-solutions/): GC Brieau was founded in 2009 as a small managed service provider (MSP) based in Sherbrooke, Quebec.
+- [The Diocese of Austin Ramps Up Cloud and Security Services — Backed by Data Integrity and Powered by Datto](https://www.kaseya.com/case-studies/cloud-and-security-services-backed-by-data-integrity-and-powered-by-datto/): The Diocese of Austin was founded in November 1947 as the seventh diocese in Texas by Pope Pius XII.
+- [BCS Quickly Restores Its Largest Manufacturing Client’s Critical Operations After a Ransomware Attack With Datto Continuity](https://www.kaseya.com/case-studies/bcs-quickly-restores-its-largest-manufacturing-client-with-datto-continuity/): BCS is a Southeast Wisconsin-based managed service provider (MSP) founded in 2012. They primarily focus on architecture, engineering and construction...
+- [be-solutions Redefines Mobility and Security With Datto Workplace](https://www.kaseya.com/case-studies/be-solutions-redefines-mobility-and-security-with-datto-workplace/): be-solutions is a Munich-based managed service provider (MSP), founded in 2000 by two friends. The company focuses on small and...
+- [InnoTek](https://www.kaseya.com/case-studies/innotek-2/): Before myITprocess, InnoTek did not have a structured library of standards or a streamlined process for assessing their clients’ IT...
+- [PNJ Technology Partners](https://www.kaseya.com/case-studies/customer-spotlight-pnj-technology-partners/): PNJ Technology Partners struggled to find a solution that met their growing needs. They experimented with options like KeePass and...
+- [Centauri Health Solutions](https://www.kaseya.com/case-studies/centauri-health-solutions/): Centauri Health Solutions provides technology and technology-enabled services to payors and providers across all healthcare programs, including Medicare, Medicaid, Commercial,...
+- [Netsmart](https://www.kaseya.com/case-studies/netsmart/): With their documentation stored in various tools — passwords in an in-house server and information on devices, in SOPs and...
+
+#
+# Detailed Content
+
+
+## Pages
+
+- Published: 2026-05-04
+- Modified: 2026-05-04
+- URL: https://www.kaseya.com/chat-test-page/
+
+- Published: 2026-02-27
+- Modified: 2026-02-27
+- URL: https://www.kaseya.com/mulesoft-test-page/
+
+- Published: 2025-11-03
+- Modified: 2025-11-05
+- URL: https://www.kaseya.com/legal/
+
+- Published: 2018-05-25
+- Modified: 2024-12-11
+- URL: https://www.kaseya.com/events/
+
+- Published: 2018-04-13
+- Modified: 2025-12-08
+- URL: https://www.kaseya.com/integrations/
+
+
+
+## Posts
+
+- Published: 2026-07-29
+- Modified: 2026-07-29
+- URL: https://www.kaseya.com/blog/the-week-in-breach-news-07-29-2026/
+Microsoft outage disrupts Azure and Microsoft 365 as OpenAI’s test models escape containment, raising new fears of autonomous cyberattacks.
+
+
+- Published: 2026-07-27
+- Modified: 2026-07-27
+- URL: https://www.kaseya.com/blog/email-security-nis-2/
+
+- Published: 2026-07-27
+- Modified: 2026-07-27
+- URL: https://www.kaseya.com/blog/cyber-resilience-nis-2/
+
+- Published: 2026-07-27
+- Modified: 2026-07-27
+- URL: https://www.kaseya.com/blog/microsoft-365-azure-backup-data-recovery/
+Microsoft 365 and Azure data is your responsibility. Learn why backup and recovery are essential to protect cloud data from loss, ransomware, and disruption.
+
+
+- Published: 2026-07-22
+- Modified: 2026-07-21
+- URL: https://www.kaseya.com/blog/the-week-in-breach-news-07-22-26/
+The CISA has warned organizations about several Microsoft SharePoint vulnerabilities that are actively being exploited.
+
+
+- Published: 2026-07-20
+- Modified: 2026-07-30
+- URL: https://www.kaseya.com/blog/cybersecurity-lessons-education-sector/
+K-12 and higher education institutions face constant cyberattacks due to limited IT resources. Here are five cybersecurity priorities they should act on now to reduce risk.
+
+
+- Published: 2026-07-15
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/blog/the-week-in-breach-news-07-15-26/
+EU exposes Russia-linked cyber campaign targeting member states as Australia warns of widespread attacks on content management systems.
+
+
+- Published: 2026-07-14
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/blog/kaseya-connect-europe-2026-highlights/
+Kaseya Connect Europe 2026 brought together industry leaders to share hard-won lessons. Here are the highlights and insights from key sessions.
+
+
+- Published: 2026-07-08
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/blog/the-week-in-breach-news-07-08-26/
+The U.S. Department of Homeland Security probes a cyberattack on a key information-sharing platform used by government agencies and partners.
+
+
+- Published: 2026-07-07
+- Modified: 2026-07-07
+- URL: https://www.kaseya.com/blog/how-security-information-and-event-management-siem-supports-nis2/
+
+- Published: 2026-07-06
+- Modified: 2026-07-06
+- URL: https://www.kaseya.com/blog/autotask-2026-3-release/
+Explore the latest Autotask enhancements, including Resource Planner updates, Ticket Triage improvements, simplified service packaging, and expanded e-invoicing support.
+
+
+- Published: 2026-07-02
+- Modified: 2026-07-02
+- URL: https://www.kaseya.com/blog/mdr-vs-mssp/
+MDR is a security service; MSSP is a provider model, and many MSSPs offer MDR. Learn how they differ, where each is strong, and how they work together.
+
+
+- Published: 2026-07-01
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/blog/the-week-in-breach-news-07-01-26/
+Cyberattack on Apple and Tesla supplier Tata Electronics raises supply chain concerns.
+
+
+- Published: 2026-06-30
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/blog/should-we-start-with-resilience-and-work-backward-from-there/
+
+- Published: 2026-06-26
+- Modified: 2026-07-01
+- URL: https://www.kaseya.com/blog/kaseya-connect-europe-2026-sponsor-spotlight/
+Learn more about the companies that helped bring Kaseya Connect Europe 2026 to life and discover how they’re transforming the IT industry.
+
+
+- Published: 2026-06-24
+- Modified: 2026-06-25
+- URL: https://www.kaseya.com/blog/the-week-in-breach-news-06-24-26/
+Many cybersecurity firms have been hit by a supply-chain attack after a breach on the market intelligence platform Klue.
+
+
+- Published: 2026-06-23
+- Modified: 2026-06-23
+- URL: https://www.kaseya.com/blog/why-msps-should-revisit-contract-terms-before-going-month-to-month/
+Learn why annual or multiyear terms matter for MSPs and explore some best practices for communicating price changes to customers.
+
+
+- Published: 2026-06-22
+- Modified: 2026-06-25
+- URL: https://www.kaseya.com/blog/elevating-data-protection-to-cyber-resilience/
+
+- Published: 2026-06-17
+- Modified: 2026-06-23
+- URL: https://www.kaseya.com/blog/the-week-in-breach-news-06-17-26/
+Google patches fifth Chrome zero-day of 2026 as ransomware disrupts schools, ports and manufacturing.
+
+
+- Published: 2026-06-17
+- Modified: 2026-06-24
+- URL: https://www.kaseya.com/blog/why-your-backup-strategy-would-be-leaving-you-exposed/
+Explore why your backup strategy could leave you exposed and why testing your recovery is essential.
+
+
+- Published: 2026-06-15
+- Modified: 2026-06-22
+- URL: https://www.kaseya.com/blog/virtual-machine-backup/
+
+- Published: 2026-06-15
+- Modified: 2026-06-15
+- URL: https://www.kaseya.com/blog/email-security-best-practices/
+Discover best practices for email security, how to put each one in place and why it's important to consistently follow them for stronger email protection.
+
+
+- Published: 2026-06-15
+- Modified: 2026-06-15
+- URL: https://www.kaseya.com/blog/vmware-backup/
+
+- Published: 2026-06-15
+- Modified: 2026-06-15
+- URL: https://www.kaseya.com/blog/patch-management-vs-vulnerability-management/
+
+- Published: 2026-06-15
+- Modified: 2026-06-15
+- URL: https://www.kaseya.com/blog/cloud-email-security/
+
+- Published: 2026-06-15
+- Modified: 2026-06-15
+- URL: https://www.kaseya.com/blog/what-is-email-security/
+Learn what email security is, why it's important and how it works by using layered controls to protect against modern email threats like phishing and BEC.
+
+
+- Published: 2026-06-15
+- Modified: 2026-06-15
+- URL: https://www.kaseya.com/blog/best-email-security-solutions/
+Compare the top 10 email security solutions, software and services in 2026 to find the right platform for your business and threat environment.
+
+
+- Published: 2026-06-10
+- Modified: 2026-06-16
+- URL: https://www.kaseya.com/blog/the-week-in-breach-news-06-10-26/
+FBI and Google warn U.S. law firms of a new ransomware tactic as Miasma worm spreads through Microsoft Azure repositories.
+
+
+- Published: 2026-06-10
+- Modified: 2026-06-10
+- URL: https://www.kaseya.com/blog/phishing-campaigns-abusing-vercels-free-hosting-platform/
+Explore three phishing campaigns that are abusing Vercel’s free hosting platform as a key piece of their attack infrastructure and learn how to spot them.
+
+
+- Published: 2026-06-09
+- Modified: 2026-06-09
+- URL: https://www.kaseya.com/blog/kaseya-wins-gold-stevie-award/
+
+- Published: 2026-06-04
+- Modified: 2026-06-22
+- URL: https://www.kaseya.com/blog/server-virtualization/
+Learn what server virtualization is, how it works, key benefits, use cases, best practices, and how it supports business continuity and disaster recovery.
+
+
+- Published: 2026-06-04
+- Modified: 2026-06-22
+- URL: https://www.kaseya.com/blog/best-server-backup-software/
+Compare the best server backup solutions in 2026, ranked for MSPs and IT teams on recovery speed, ransomware protection, and ease of management.
+
+
+- Published: 2026-06-04
+- Modified: 2026-06-04
+- URL: https://www.kaseya.com/blog/bare-metal-recovery/
+
+- Published: 2026-06-04
+- Modified: 2026-06-22
+- URL: https://www.kaseya.com/blog/server-backup/
+
+- Published: 2026-06-03
+- Modified: 2026-06-03
+- URL: https://www.kaseya.com/blog/the-week-in-breach-news-06-03-26/
+FBI warns Microsoft 365 users of a phishing-as-a-service platform as a Ghost CMS flaw compromises hundreds of websites.
+
+
+- Published: 2026-06-02
+- Modified: 2026-06-02
+- URL: https://www.kaseya.com/blog/soc-as-a-service-socaas/
+Get a comprehensive overview of SOC-as-a-Service (SOCaaS), including key features and capabilities, benefits, pricing models, and how to evaluate providers.
+
+
+- Published: 2026-06-02
+- Modified: 2026-06-02
+- URL: https://www.kaseya.com/blog/what-is-secops/
+
+- Published: 2026-06-02
+- Modified: 2026-06-02
+- URL: https://www.kaseya.com/blog/why-msps-and-it-teams-need-to-attend-kaseya-connect-europe-2026/
+
+- Published: 2026-05-29
+- Modified: 2026-05-29
+- URL: https://www.kaseya.com/blog/threat-detection-and-response-tdr/
+Learn how threat detection and response (TDR) works, why it matters, what tools it relies on, and how MSPs and IT teams can build effective TDR programs.
+
+
+- Published: 2026-05-28
+- Modified: 2026-05-28
+- URL: https://www.kaseya.com/blog/autotask-community-live-2026-recap/
+
+- Published: 2026-05-27
+- Modified: 2026-06-25
+- URL: https://www.kaseya.com/blog/the-week-in-breach-news-05-27-26/
+Megalodon hits 5,000+ GitHub repos as German hospitals face a major patient data breach.
+
+
+- Published: 2026-05-27
+- Modified: 2026-05-27
+- URL: https://www.kaseya.com/blog/cloud-complacency-microsoft-365-azure-backup-recovery/
+Discover the hidden risks of cloud complacency in Microsoft 365 and Azure. Learn why backup, recovery, and business continuity planning are essential for protecting business data.
+
+
+- Published: 2026-05-27
+- Modified: 2026-05-27
+- URL: https://www.kaseya.com/blog/mdr-vs-xdr/
+
+- Published: 2026-05-27
+- Modified: 2026-05-27
+- URL: https://www.kaseya.com/blog/mdr-vs-soc/
+
+- Published: 2026-05-27
+- Modified: 2026-05-27
+- URL: https://www.kaseya.com/blog/best-mdr-providers/
+Compare the 10 best MDR providers in 2026, ranked for MSPs and IT teams, to find the right managed detection and response service for your organization.
+
+
+- Published: 2026-05-27
+- Modified: 2026-05-27
+- URL: https://www.kaseya.com/blog/what-is-xdr/
+Learn the fundamentals of XDR, including how it works, key benefits, how it compares to similar technologies and how to achieve XDR-level coverage today.
+
+
+- Published: 2026-05-25
+- Modified: 2026-05-25
+- URL: https://www.kaseya.com/blog/ai-in-cybersecurity-saas-security-risks-you-cant-afford-to-ignore/
+AI is transforming cybersecurity threats. Learn how signal overload, SaaS sprawl, and identity-based attacks are driving the need for integrated cloud detection and response.
+
+
+- Published: 2026-05-25
+- Modified: 2026-05-27
+- URL: https://www.kaseya.com/blog/turning-signals-into-action-with-kaseya/
+Turn cybersecurity noise into actionable intelligence with Kaseya. Improve visibility, reduce alerts and respond faster to SaaS and identity threats.
+
+
+- Published: 2026-05-22
+- Modified: 2026-05-22
+- URL: https://www.kaseya.com/blog/epp-vs-edr/
+
+- Published: 2026-05-22
+- Modified: 2026-05-22
+- URL: https://www.kaseya.com/blog/best-edr-solutions/
+
+- Published: 2026-05-21
+- Modified: 2026-05-21
+- URL: https://www.kaseya.com/blog/managed-edr-medr/
+Managed EDR combines endpoint detection with expert monitoring and response. Learn how it works, who needs it, and how MSPs can deliver it as a service.
+
+
+- Published: 2026-05-21
+- Modified: 2026-05-21
+- URL: https://www.kaseya.com/blog/cyber-kill-chain/
+Learn what the cyber kill chain is, how its 7 steps work, a real-world example, how it compares to MITRE ATT&CK and how to use it to improve security.
+
+
+- Published: 2026-05-20
+- Modified: 2026-05-20
+- URL: https://www.kaseya.com/blog/the-week-in-breach-news-05-20-26/
+Microsoft warns of a credential theft campaign targeting 35,000 users across 13,000 organizations in 26 countries.
+
+
+- Published: 2026-05-20
+- Modified: 2026-06-09
+- URL: https://www.kaseya.com/blog/ransomware-nis2-recovery-guide-part-2/
+When ransomware strikes, the clock is ticking. Learn the critical incident reporting timelines for NIS2, GDPR, and DORA to keep your business compliant.
+
+
+- Published: 2026-05-20
+- Modified: 2026-05-20
+- URL: https://www.kaseya.com/blog/edr-vs-antivirus/
+Antivirus prevents known threats while EDR detects and responds to what gets through. Learn key differences and why it's smart to deploy both.
+
+
+- Published: 2026-05-19
+- Modified: 2026-05-19
+- URL: https://www.kaseya.com/blog/what-is-endpoint-security/
+
+- Published: 2026-05-19
+- Modified: 2026-05-19
+- URL: https://www.kaseya.com/blog/siem-vs-soar/
+SIEM detects threats by correlating security data. SOAR automates the response. Learn key differences, how they work together and which is right for you.
+
+
+- Published: 2026-05-19
+- Modified: 2026-05-19
+- URL: https://www.kaseya.com/blog/indicators-of-compromise-ioc/
+Learn what indicators of compromise (IOCs) are, the main types, common examples and how security teams use them to detect and respond to threats.
+
+
+- Published: 2026-05-19
+- Modified: 2026-05-19
+- URL: https://www.kaseya.com/blog/mdr-vs-edr/
+EDR is a technology, MDR is a service. Learn the key differences, when each one is the right fit, and how they work together to protect endpoints and beyond.
+
+
+- Published: 2026-05-19
+- Modified: 2026-05-19
+- URL: https://www.kaseya.com/blog/xdr-vs-siem/
+XDR and SIEM both detect security threats but work differently. Learn where each excels and whether you need one or both to protect your environment.
+
+
+- Published: 2026-05-19
+- Modified: 2026-06-18
+- URL: https://www.kaseya.com/blog/best-siem-tools/
+Compare the top 10 SIEM tools in 2026, ranked by detection quality, deployment model, and real-world fit, to find the right solution for your security operations.
+
+
+- Published: 2026-05-19
+- Modified: 2026-05-20
+- URL: https://www.kaseya.com/blog/edr-vs-xdr/
+EDR monitors endpoints in depth while XDR correlates threats across your attack surface. Learn key differences, examples, and which solution fits your stack.
+
+
+- Published: 2026-05-18
+- Modified: 2026-05-18
+- URL: https://www.kaseya.com/blog/ransomware-nis2-recovery-guide-part-1/
+Learn how backup strategy, immutable backups and recovery testing support ransomware resilience and NIS2 compliance for IT teams.
+
+
+- Published: 2026-05-17
+- Modified: 2026-05-18
+- URL: https://www.kaseya.com/blog/edr-vs-siem/
+EDR monitors endpoints in depth while SIEM correlates threats across your entire environment. Learn key differences and why strong IT security needs both.
+
+
+- Published: 2026-05-14
+- Modified: 2026-05-14
+- URL: https://www.kaseya.com/blog/cloud-siem/
+
+- Published: 2026-05-14
+- Modified: 2026-06-18
+- URL: https://www.kaseya.com/blog/ai-siem/
+
+- Published: 2026-05-14
+- Modified: 2026-05-14
+- URL: https://www.kaseya.com/blog/mdr-vs-siem/
+MDR is a human-led managed service and SIEM is a tool that provides comprehensive threat visibility. Learn how they differ and why it helps to combine them.
+
+
+- Published: 2026-05-14
+- Modified: 2026-05-14
+- URL: https://www.kaseya.com/blog/siem-integration/
+SIEM integration connects your security tools to a central system for unified threat detection. Learn how it works and best practices for getting it right.
+
+
+- Published: 2026-05-13
+- Modified: 2026-05-13
+- URL: https://www.kaseya.com/blog/managed-siem/
+
+- Published: 2026-05-13
+- Modified: 2026-07-15
+- URL: https://www.kaseya.com/blog/digital-specialists-for-ticket-triage/
+
+- Published: 2026-05-12
+- Modified: 2026-05-12
+- URL: https://www.kaseya.com/blog/what-is-patch-management/
+
+- Published: 2026-05-12
+- Modified: 2026-05-13
+- URL: https://www.kaseya.com/blog/patch-management-best-practices/
+
+- Published: 2026-05-12
+- Modified: 2026-05-12
+- URL: https://www.kaseya.com/blog/patch-management-process/
+
+- Published: 2026-05-12
+- Modified: 2026-05-12
+- URL: https://www.kaseya.com/blog/best-patch-management-software/
+
+- Published: 2026-05-12
+- Modified: 2026-05-12
+- URL: https://www.kaseya.com/blog/kaseya-intelligence-autonomous-it-vision/
+
+- Published: 2026-05-11
+- Modified: 2026-05-14
+- URL: https://www.kaseya.com/blog/what-is-zero-day-vulnerability/
+
+- Published: 2026-05-11
+- Modified: 2026-05-14
+- URL: https://www.kaseya.com/blog/it-compliance/
+
+- Published: 2026-05-11
+- Modified: 2026-05-14
+- URL: https://www.kaseya.com/blog/what-is-nist-compliance/
+
+- Published: 2026-05-11
+- Modified: 2026-05-08
+- URL: https://www.kaseya.com/blog/msp-growth-challenges-2026/
+
+- Published: 2026-05-11
+- Modified: 2026-05-11
+- URL: https://www.kaseya.com/blog/cloud-management-guide/
+
+- Published: 2026-05-11
+- Modified: 2026-05-14
+- URL: https://www.kaseya.com/blog/it-knowledge-base/
+
+- Published: 2026-05-11
+- Modified: 2026-05-14
+- URL: https://www.kaseya.com/blog/it-lifecycle-management/
+
+- Published: 2026-05-10
+- Modified: 2026-05-13
+- URL: https://www.kaseya.com/blog/change-management/
+
+- Published: 2026-05-10
+- Modified: 2026-05-12
+- URL: https://www.kaseya.com/blog/it-asset-management-itam/
+
+- Published: 2026-05-10
+- Modified: 2026-05-12
+- URL: https://www.kaseya.com/blog/disaster-recovery-as-a-service-draas/
+
+- Published: 2026-05-10
+- Modified: 2026-05-11
+- URL: https://www.kaseya.com/blog/cyber-insurance-guide/
+
+- Published: 2026-05-10
+- Modified: 2026-05-12
+- URL: https://www.kaseya.com/blog/email-security-guide/
+
+- Published: 2026-05-10
+- Modified: 2026-05-12
+- URL: https://www.kaseya.com/blog/endpoint-backup-guide/
+
+- Published: 2026-05-10
+- Modified: 2026-05-12
+- URL: https://www.kaseya.com/blog/hyper-v-management/
+
+- Published: 2026-05-10
+- Modified: 2026-05-12
+- URL: https://www.kaseya.com/blog/iso-27001-guide/
+
+- Published: 2026-05-10
+- Modified: 2026-05-12
+- URL: https://www.kaseya.com/blog/itar-compliance-guide/
+
+- Published: 2026-05-10
+- Modified: 2026-05-12
+- URL: https://www.kaseya.com/blog/it-incident-response-guide/
+
+- Published: 2026-05-10
+- Modified: 2026-05-13
+- URL: https://www.kaseya.com/blog/enterprise-backup/
+
+- Published: 2026-05-10
+- Modified: 2026-05-13
+- URL: https://www.kaseya.com/blog/exchange-server-guide/
+
+- Published: 2026-05-10
+- Modified: 2026-05-13
+- URL: https://www.kaseya.com/blog/gdpr-for-it-teams/
+
+- Published: 2026-05-10
+- Modified: 2026-05-13
+- URL: https://www.kaseya.com/blog/hipaa-compliance-for-msps/
+
+- Published: 2026-05-10
+- Modified: 2026-05-13
+- URL: https://www.kaseya.com/blog/it-documentation-best-practices/
+
+- Published: 2026-05-10
+- Modified: 2026-05-13
+- URL: https://www.kaseya.com/blog/zero-trust-security/
+
+- Published: 2026-05-10
+- Modified: 2026-06-15
+- URL: https://www.kaseya.com/blog/zero-trust-network-access-ztna/
+
+- Published: 2026-05-09
+- Modified: 2026-05-11
+- URL: https://www.kaseya.com/blog/cloud-shared-responsibility-model/
+
+- Published: 2026-05-09
+- Modified: 2026-05-11
+- URL: https://www.kaseya.com/blog/cmmc-compliance-guide/
+
+
+
+## Products
+
+
+
+## Resources
+
+
+
+## Press Releases
+
+- Published: 2026-06-30
+- Modified: 2026-06-29
+- URL: https://www.kaseya.com/press-release/kaseya-finds-69-of-saas-accounts-have-more-guest-access-than-licensed-users/
+Kaseya’s 2026 SaaS Security Report reveals that multi-factor authentication gaps, OAuth sprawl and external file sharing are widening the SMB attack surface
+
+
+- Published: 2026-06-17
+- Modified: 2026-06-25
+- URL: https://www.kaseya.com/press-release/kaseya-previews-next-evolution-of-kaseya-intelligence-at-connect-europe-2026/
+Introducing an open platform to help MSPs scale faster and improve service delivery by bringing advanced insights and automation into the tools IT teams use every day
+
+
+- Published: 2026-06-09
+- Modified: 2026-06-09
+- URL: https://www.kaseya.com/press-release/kaseya-unveils-msp-success-a-unified-growth-ecosystem-to-scale-msps-globally/
+The ecosystem centers on MSP Success Digital Marketing, a purpose-built platform designed to streamline lead generation and drive measurable business outcomes
+
+
+- Published: 2026-06-05
+- Modified: 2026-06-05
+- URL: https://www.kaseya.com/press-release/kaseya-appoints-roxi-wen-as-chief-financial-and-operating-officer/
+Seasoned finance and operations leader joins Kaseya to drive operational excellence and growth
+
+
+- Published: 2026-04-24
+- Modified: 2026-04-25
+- URL: https://www.kaseya.com/press-release/kaseya-unveils-the-first-agentic-it-management-platform-turning-data-into-autonomous-action/
+Powered by Kaseya Intelligence, Kaseya’s platform combines the industry’s deepest real-world IT dataset with an execution layer that acts with accuracy
+
+
+- Published: 2026-04-14
+- Modified: 2026-04-14
+- URL: https://www.kaseya.com/press-release/ai-emerges-as-the-key-to-scaling-msp-operations-as-growth-gets-harder/
+Kaseya's 2026 State of the MSP Report finds 48% of MSPs rank AI as the number one client need, while shrinking deals and a widening talent gap make AI-driven efficiency essential to protecting margins
+
+
+- Published: 2026-04-07
+- Modified: 2026-04-07
+- URL: https://www.kaseya.com/press-release/kaseya-expands-ai-innovation-with-silicon-valley-rd-hub-to-accelerate-customer-outcomes/
+New investment strengthens Kaseya’s leadership in AI-driven IT operations and agentic automation
+
+
+- Published: 2026-03-31
+- Modified: 2026-04-01
+- URL: https://www.kaseya.com/press-release/kaseya-unveils-next-generation-innovations-in-cyber-resilience/
+AI-powered tools set new industry standards for backup and recovery.
+
+
+- Published: 2026-03-17
+- Modified: 2026-03-16
+- URL: https://www.kaseya.com/press-release/kaseya-report-highlights-impact-of-ai-on-cybersecurity-threat-landscape/
+The 2026 Kaseya INKY Email Security Report analyzes the evolution of phishing and email-based cybercrime in the age of AI.
+
+
+- Published: 2025-10-28
+- Modified: 2025-10-28
+- URL: https://www.kaseya.com/press-release/kaseya-introduces-latest-innovations-at-kaseya-connect-apac-2025/
+New Datto SIRIS 6 appliance, AI-assisted email security acquisition and Datto Backup for Entra ID exhibited at Sydney conference
+
+
+- Published: 2025-10-23
+- Modified: 2025-10-23
+- URL: https://www.kaseya.com/press-release/kaseya-unveils-fall-2025-innovations-delivering-automation-strengthened-cybersecurity-capabilities-and-elevated-customer-experience/
+
+- Published: 2025-10-07
+- Modified: 2025-10-07
+- URL: https://www.kaseya.com/press-release/kaseya-announces-latest-innovations-at-dattocon-2025/
+New Datto SIRIS 6 appliance, AI-assisted email security acquisition and Datto Backup for Entra ID unveiled
+
+
+- Published: 2025-10-07
+- Modified: 2025-10-07
+- URL: https://www.kaseya.com/press-release/kaseya-acquires-leading-email-security-provider-inky/
+Acquisition strengthens Kaseya’s end-to-end cybersecurity platform and advances Kaseya 365 User with next-generation, AI-driven email protection.
+
+
+- Published: 2025-09-10
+- Modified: 2025-09-09
+- URL: https://www.kaseya.com/press-release/kaseya-adds-new-chief-revenue-officer-and-chief-technology-officer/
+Seasoned technology industry leaders, Anthony Anzevino and Pratik Wadher, join company’s executive leadership team to accelerate growth and innovation.
+
+
+- Published: 2025-08-19
+- Modified: 2025-10-17
+- URL: https://www.kaseya.com/press-release/kaseya-publishes-customer-responsibility-matrices-to-help-partners-meet-department-of-defense-cybersecurity-requirements/
+
+- Published: 2025-08-08
+- Modified: 2025-08-08
+- URL: https://www.kaseya.com/press-release/kaseya-strengthens-presence-in-the-nordics-with-upstream-ab-partnership/
+Company will leverage Upstream AB’s AI capabilities to accelerate innovation in intelligent automation
+
+
+- Published: 2025-07-22
+- Modified: 2025-07-22
+- URL: https://www.kaseya.com/press-release/kaseya-launches-ai-powered-workflows-within-vsa-10/
+Use of this new feature drives workflow success rates to 96%
+
+
+- Published: 2025-07-08
+- Modified: 2025-07-08
+- URL: https://www.kaseya.com/press-release/kaseya-extends-community-investment-with-addition-of-technology-marketing-toolkit/
+
+- Published: 2025-06-17
+- Modified: 2025-06-17
+- URL: https://www.kaseya.com/press-release/kaseya-brings-innovation-to-dattocon-europe/
+Rania Succar to take the stage for the first time as Kaseya’s new CEO
+
+
+- Published: 2025-06-03
+- Modified: 2025-06-02
+- URL: https://www.kaseya.com/press-release/kaseya-appoints-rania-succar-as-chief-executive-officer/
+New CEO to lead company’s next phase of innovation, platform depth and customer-centric growth
+
+
+- Published: 2025-05-16
+- Modified: 2025-05-16
+- URL: https://www.kaseya.com/press-release/kaseya-and-pulseway-unite-to-drive-innovation-for-it-professionals/
+Next step of long-standing partnership delivers integrated solutions and access to the Kaseya ecosystem
+
+
+- Published: 2025-04-28
+- Modified: 2025-04-29
+- URL: https://www.kaseya.com/press-release/kaseya-announces-latest-innovations-at-connect-2025/
+New capabilities and commercial policies launched to help drive efficiency and streamline IT operations
+
+
+- Published: 2025-04-17
+- Modified: 2025-04-17
+- URL: https://www.kaseya.com/press-release/kaseya-unveils-spring-2025-innovations-showcasing-ai-driven-innovations-across-it-management-and-cybersecurity/
+
+- Published: 2025-04-14
+- Modified: 2025-04-14
+- URL: https://www.kaseya.com/press-release/kaseya-appoints-jim-lippie-as-chief-product-officer/
+
+- Published: 2025-03-20
+- Modified: 2025-04-14
+- URL: https://www.kaseya.com/press-release/a-reimagined-kaseya-connect-debuts-this-april-in-las-vegas/
+New event to feature an exclusive cyber-security summit, expanded training and celebrity keynotes
+
+
+- Published: 2025-03-13
+- Modified: 2025-03-12
+- URL: https://www.kaseya.com/press-release/kaseya-continues-strong-momentum-in-q1-with-new-product-innovations-and-major-award-wins/
+
+- Published: 2025-02-26
+- Modified: 2025-02-26
+- URL: https://www.kaseya.com/press-release/kaseya-teams-with-safelogic-to-strengthen-partner-security/
+Collaboration With Cryptographic Solutions Company Further Demonstrates Kaseya’s Commitment to Meeting FedRAMP Standards
+
+
+- Published: 2025-02-06
+- Modified: 2025-10-25
+- URL: https://www.kaseya.com/press-release/kaseya-report-outlines-top-trends-in-backup-and-recovery-in-2025/
+More than 30% of IT professionals are losing sleep over their backup and recovery preparedness – according to new Kaseya survey
+
+
+- Published: 2025-02-04
+- Modified: 2025-02-04
+- URL: https://www.kaseya.com/press-release/dan-tomaszewski-of-kaseya-recognized-on-crns-elite-50-most-influential-channel-chiefs-for-2025/
+
+- Published: 2025-01-09
+- Modified: 2025-01-09
+- URL: https://www.kaseya.com/press-release/fred-voccola-transitions-to-vice-chairman-role/
+Kaseya Prepares for Next Stage of Growth Following Record-Breaking Year, Launch of Kaseya 365
+
+
+- Published: 2025-01-06
+- Modified: 2025-01-06
+- URL: https://www.kaseya.com/press-release/kaseyas-state-of-msp-shows-what-makes-a-top-performing-msp/
+With profitability a major focus, MSPs are optimistic about growing their businesses in 2025.
+
+
+- Published: 2024-11-19
+- Modified: 2024-11-18
+- URL: https://www.kaseya.com/press-release/kaseya-steps-up-its-backup-game-for-msps-with-free-hardware-for-datto-siris/
+Company also launches Backup Concierge Program and Next Gen Endpoint Backup
+
+
+- Published: 2024-11-14
+- Modified: 2024-11-14
+- URL: https://www.kaseya.com/press-release/kaseya-showcases-next-gen-it-innovation-at-dattocon-apac-2024/
+Three-day Sydney conference highlights new products, strategic partnerships and excellence in MSP services
+
+
+- Published: 2024-10-29
+- Modified: 2024-10-30
+- URL: https://www.kaseya.com/press-release/kaseya-continues-driving-msp-profitability-and-efficiency-with-launch-of-kaseya-365-user-at-dattocon-miami/
+Company Includes Newly Acquired SaaS Alerts' Innovative Technology in New Subscription
+
+
+- Published: 2024-10-15
+- Modified: 2024-10-17
+- URL: https://www.kaseya.com/press-release/the-2024-kaseya-security-survey-finds-human-error-is-cybersecuritys-weakest-link/
+IT Professionals are Also Trying to Navigate the New Frontier of Artificial Intelligence
+
+
+- Published: 2024-10-01
+- Modified: 2024-09-30
+- URL: https://www.kaseya.com/press-release/kaseya-launches-fedramp-authorization-process/
+Company Commits to Becoming One of the First MSP-Centric Platform Vendors to Achieve FedRAMP Authorization
+
+
+- Published: 2024-07-24
+- Modified: 2024-07-23
+- URL: https://www.kaseya.com/press-release/msps-adopt-kaseya-365-at-rapid-pace/
+Customers experience 30 - 50% higher profits thanks to advantageous unit economics
+
+
+- Published: 2024-07-10
+- Modified: 2024-07-10
+- URL: https://www.kaseya.com/press-release/kaseyas-future-of-it-survey-report-underscores-prioritization-of-ai-and-cybersecurity-as-top-places-for-investment/
+
+- Published: 2024-06-20
+- Modified: 2024-06-20
+- URL: https://www.kaseya.com/press-release/kaseya-launches-trupeer-emerge-to-help-smaller-sized-mps-maximize-their-growth/
+The new offering is purpose-built for emerging MSPS with 1-5 employees
+
+
+- Published: 2024-06-12
+- Modified: 2024-06-11
+- URL: https://www.kaseya.com/press-release/kaseya-dattocon-europe-brings-kaseya-365-and-other-exciting-offerings-to-emea-customers/
+This year’s event promises an exhilarating three days in Dublin – with sessions on automating common practices to transform MSP businesses and much more!
+
+
+- Published: 2024-06-05
+- Modified: 2024-06-05
+- URL: https://www.kaseya.com/press-release/kaseya-strengthens-global-presence-with-new-leadership-team-in-europe-and-asia-pacific/
+Dermot McCann Named Executive Vice President and General Manager for EMEA and Daniel Garcia Promoted to Vice President and General Manager for APAC
+
+
+- Published: 2024-05-28
+- Modified: 2024-05-30
+- URL: https://www.kaseya.com/press-release/sun-sentinel-names-kaseya-a-winner-of-the-south-florida-top-workplaces-2024-award/
+
+- Published: 2024-05-24
+- Modified: 2024-05-31
+- URL: https://www.kaseya.com/press-release/kaseya-names-ryan-courson-chief-operating-officer-and-chief-financial-officer/
+Global Provider of AI-Powered Cybersecurity and IT Management Adds Seasoned Executive to Leadership Team
+
+
+- Published: 2024-04-30
+- Modified: 2024-11-06
+- URL: https://www.kaseya.com/press-release/kaseya-introduces-revolutionary-new-offering-kaseya-365-changing-the-economics-of-the-msp-industry-forever/
+Groundbreaking new offering, and Kaseya’s Partner First Program, launched at Kaseya’s Connect Global conference
+
+
+- Published: 2024-03-05
+- Modified: 2024-03-04
+- URL: https://www.kaseya.com/press-release/kaseyas-2024-msp-benchmark-report-finds-that-cybersecurity-is-a-top-revenue-driver-for-three-quarters-of-managed-service-providers/
+The MSP Benchmark Report explores how cybersecurity, AI and automation are impacting IT professional’s workflow, work-life balance and hiring trends in a highly competitive market
+
+
+- Published: 2023-11-14
+- Modified: 2023-11-15
+- URL: https://www.kaseya.com/press-release/kaseya-kicks-off-three-exciting-days-in-sydney-for-kaseya-dattocon-apac/
+The event promises exciting product updates, training, networking and more – all designed to make MSPs more successful.
+
+
+- Published: 2023-11-08
+- Modified: 2023-11-08
+- URL: https://www.kaseya.com/press-release/the-power-of-the-managed-service-provider-new-report-from-kaseya-explores-the-challenges-and-opportunities-for-it-professionals/
+Datto’s Global State of the MSP: Trends and Forecasts for 2024 underscores the importance of customer experience in a highly competitive market
+
+
+- Published: 2023-11-03
+- Modified: 2023-11-03
+- URL: https://www.kaseya.com/press-release/kaseya-announces-new-offerings-special-recognitions/
+Kaseya Help Desk Services “Takes on” Tickets, Powered Services Pro Launches Marketing Blueprint, and Vonahi Security Scores 9 Badges for vPenTest
+
+
+- Published: 2023-10-03
+- Modified: 2023-10-03
+- URL: https://www.kaseya.com/press-release/kaseya-takes-over-miami-as-it-welcomes-customers-to-its-home-for-kaseya-dattocon/
+The sold-out event promises three days of exciting product updates, networking, and more – all designed to make MSPs more successful.
+
+
+- Published: 2023-09-12
+- Modified: 2026-06-15
+- URL: https://www.kaseya.com/press-release/kaseya-addresses-tech-skills-gaps-with-new-online-certification-course/
+Students gain qualifications they need to get hard-to-fill tech jobs.
+
+
+- Published: 2023-07-17
+- Modified: 2025-10-25
+- URL: https://www.kaseya.com/press-release/kaseya-extends-increased-capabilities-to-partners-in-the-apac-region/
+Kaseya launches ConnectBooster, Datto Networking and Unitrends Endpoint Backup in Australia
+
+
+- Published: 2023-06-27
+- Modified: 2024-03-12
+- URL: https://www.kaseya.com/press-release/kaseya-unveils-product-innovations-at-kaseya-dattocon-europe/
+Combining the best of Kaseya Connect and DattoCon, the first joint event since the acquisition of Datto will showcase technical insights, solutions updates and growth strategies with the European IT community
+
+
+- Published: 2023-06-22
+- Modified: 2023-06-22
+- URL: https://www.kaseya.com/press-release/kaseyas-2023-it-operations-report-reveals-economic-uncertainty-driving-business-for-msps/
+Annual Survey Finds More Services Being Outsourced to MSPs With Resources Going Towards Automation, Integrations and Cybersecurity
+
+
+- Published: 2023-04-25
+- Modified: 2023-05-02
+- URL: https://www.kaseya.com/press-release/kaseya-unveils-it-complete-2-0-at-kaseya-connect-global/
+Industry-Leading Event Promises 4 Days of Certifications, Product Updates and More – All Designed to Make IT Professionals More Successful
+
+
+- Published: 2023-03-30
+- Modified: 2023-03-30
+- URL: https://www.kaseya.com/press-release/2023-kaseya-msp-benchmark-report/
+Acquiring new customers amidst growing competition and dealing with sophisticated security threats cited as their greatest challenges
+
+
+- Published: 2023-02-23
+- Modified: 2023-02-23
+- URL: https://www.kaseya.com/press-release/kaseyas-apac-team-reveals-winners-of-2022-msp-of-the-year-awards/
+Local MSPs recognised for their outstanding work
+
+
+- Published: 2023-02-21
+- Modified: 2023-02-21
+- URL: https://www.kaseya.com/press-release/fred-voccola-is-named-a-channel-futures-2023-channel-influencer-of-the-year-by-channel-futures/
+
+- Published: 2023-01-31
+- Modified: 2023-01-30
+- URL: https://www.kaseya.com/press-release/kaseya-reaffirms-commitment-to-channel-partners-by-expanding-its-global-partner-program/
+Company increases program resources by 300 percent, grows team to more than 60
+
+
+- Published: 2023-01-24
+- Modified: 2023-01-23
+- URL: https://www.kaseya.com/press-release/datto-unveils-next-generation-cloud-managed-ethernet-switches-and-secure-remote-access-solutions-for-msp-and-smb-markets/
+Available Now, New Family Line of Cloud-Managed Switches Complements Datto Wi-Fi Access Points and Integrated Secure Routers; Provides Unparalleled Reliability, Affordability and Ease of-Use
+
+
+- Published: 2023-01-17
+- Modified: 2023-01-16
+- URL: https://www.kaseya.com/press-release/dattos-annual-state-of-ransomware-report-reveals-smbs-are-taking-cybersecurity-more-seriously/
+SMBs are investing in protection with network and cloud security topping the list.
+
+
+- Published: 2022-12-19
+- Modified: 2023-02-13
+- URL: https://www.kaseya.com/press-release/kaseya-unveils-its-major-event-line-up-for-2023/
+With five large customer-centric conferences and multiple one-day locals and symposiums, Kaseya offers a can’t-miss event for everyone in the channel.
+
+
+- Published: 2022-12-05
+- Modified: 2023-12-01
+- URL: https://www.kaseya.com/press-release/return-of-the-schnizz-sarah-robb-ohagan-to-headline-trumethods-2023-schnizzfest/
+Event draws the industry’s top MSPs and cloud providers to share best practices, network and more
+
+
+- Published: 2022-11-15
+- Modified: 2022-12-07
+- URL: https://www.kaseya.com/press-release/datto-edr-streamlines-endpoint-security-by-catching-the-threats-that-matter-most/
+Solution is easy-to-use, affordable and helps detect threats that evade other defenses
+
+
+- Published: 2022-10-31
+- Modified: 2022-12-07
+- URL: https://www.kaseya.com/press-release/datto-global-state-of-the-msp-report-reveals-biggest-challenges-facing-msps/
+Partners are worried about competition, revenue growth, profitability, customer acquisition and hiring; Survey also found break-fix is making a comeback … but with a twist
+
+
+- Published: 2022-10-05
+- Modified: 2022-12-15
+- URL: https://www.kaseya.com/press-release/kaseya-makes-billing-painless-for-its-msp-customers-through-connectbooster-integration/
+The leading accounts receivable automation and payment solutions provider eliminates billing hassles and further augments Kaseya’s IT Complete platform
+
+
+- Published: 2022-09-14
+- Modified: 2022-12-07
+- URL: https://www.kaseya.com/press-release/connect-it-europe-kicks-off-in-amsterdam-with-product-announcements-compelling-speakers-focused-on-helping-it-professionals-boost-their-business/
+With speakers like Kevin Gaskell and Dex Hunter-Torricke, Kaseya’s much-anticipated three-day event will be filled with IT industry expertise and fun
+
+
+- Published: 2022-09-12
+- Modified: 2025-08-08
+- URL: https://www.kaseya.com/press-release/dattocon22-returns-in-person-to-washington-d-c-with-over-2500-attendees-expected/
+Kaseya CEO Fred Voccola, alongside Datto executives, to unveil latest product developments
+
+
+- Published: 2022-08-01
+- Modified: 2025-08-08
+- URL: https://www.kaseya.com/press-release/kaseya-takes-home-10-channelpro-network-readers-choice-awards/
+Awards feature Datto and include Best RMM Vendor, Best PSA Vendor, Best Vendor Partner Program and Best Password Management/IAM Vendor, among others
+
+
+- Published: 2022-08-01
+- Modified: 2026-06-15
+- URL: https://www.kaseya.com/press-release/kaseyas-dan-tomaszewski-promoted-to-executive-vice-president-of-the-channel/
+
+- Published: 2022-07-26
+- Modified: 2026-06-15
+- URL: https://www.kaseya.com/press-release/250-new-jobs-to-be-created-as-kaseya-chooses-dundalk-centre-of-excellence/
+New roles at company’s second Irish site will focus on engineering, technical support and inside sales
+
+
+- Published: 2022-07-12
+- Modified: 2022-11-22
+- URL: https://www.kaseya.com/press-release/kaseyas-annual-it-operations-report-reveals/
+Cybersecurity and data protection, inadequate IT budgets and outdated legacy systems top the list of this year’s challenges identified in the company’s eighth benchmark survey
+
+
+- Published: 2022-07-06
+- Modified: 2025-10-24
+- URL: https://www.kaseya.com/press-release/connect-it-asia-pacific-2022/
+With Layne Beachley, Scotty Schindler and Matt Formston speaking, the event will feature three days filled with industry insights and fun
+
+
+- Published: 2022-07-01
+- Modified: 2022-11-21
+- URL: https://www.kaseya.com/press-release/south-florida-business-journals-40-under-40-award/
+Chief Legal and Human Resources Officer was honored for her professional achievements and charity work
+
+
+- Published: 2022-06-23
+- Modified: 2022-06-23
+- URL: https://www.kaseya.com/press-release/kaseya-closes-acquisition-of-datto/
+Significant workflow integrations and product investment planned to augment IT Complete platform
+
+
+- Published: 2022-06-20
+- Modified: 2025-10-25
+- URL: https://www.kaseya.com/press-release/connect-it-global-2022-kicks-off/
+From Terry Bradshaw and Frank Abagnale to Robin Robins, Connect IT Global celebrates 15 years of bringing the best of the channel under one roof for four days filled with industry insights and fun
+
+
+- Published: 2022-05-10
+- Modified: 2022-12-07
+- URL: https://www.kaseya.com/press-release/connect-it-asia-pacific-announces-exciting-speaker-line-up/
+The event will include inspirational talks from Paralympian Matt Formston and business leader Scotty Schindler as well as panels on critical topics like compliance and cybersecurity
+
+
+- Published: 2022-05-02
+- Modified: 2022-12-15
+- URL: https://www.kaseya.com/press-release/kaseya-named-one-of-the-best-places-to-work-in-south-florida-by-the-sun-sentinel/
+The company was one of only 128 organizations to make the prestigious annual list
+
+
+- Published: 2022-04-26
+- Modified: 2022-12-15
+- URL: https://www.kaseya.com/press-release/kaseya-expands-its-global-footprint-with-new-office-in-poland/
+Company to create a tech ecosystem by hiring 500 local engineers over the next three years
+
+
+- Published: 2022-04-22
+- Modified: 2022-11-21
+- URL: https://www.kaseya.com/press-release/kaseyas-gluex-is-back-live-and-in-person-and-now-in-miami-beach/
+Conference comeback slated for the Magic City with Actor and Comedian Jason Alexander and Reggie Fils-Aimé, former Nintendo North America President and COO, headlining the must-attend event
+
+
+- Published: 2022-04-21
+- Modified: 2023-02-27
+- URL: https://www.kaseya.com/press-release/kaseyas-latest-innovation-cycle-provides-enhanced-automation-security-and-compliance-capabilities-to-help-msps-and-smbs-thrive-in-the-evolving-tech-landscape/
+Key integrations allow IT professionals to streamline administrative tasks like billing and documentation, protect growing volumes of data and comply with increased regulatory requirements
+
+
+- Published: 2022-04-15
+- Modified: 2022-12-14
+- URL: https://www.kaseya.com/press-release/kaseya-partners-with-florida-international-university-to-launch-tech-workforce-pipeline/
+Collaboration designed to foster local tech ecosystem and hire FIU grads for positions in sales, research and development and customer and product support
+
+
+- Published: 2022-04-11
+- Modified: 2022-12-07
+- URL: https://www.kaseya.com/press-release/kaseya-acquires-datto/
+Datto stockholders to receive $35.50 per share in cash
+
+
+- Published: 2022-03-31
+- Modified: 2022-12-08
+- URL: https://www.kaseya.com/press-release/kaseya-continues-investment-in-the-apac-region-announcing-new-partnership-with-macquarie-cloud-services-to-support-continued-growth/
+Kaseya customers across Asia Pacific (APAC) will benefit with an expanded array of best-in-breed RMM, PSA and data protection capabilities hosted locally
+
+
+- Published: 2022-03-30
+- Modified: 2022-12-12
+- URL: https://www.kaseya.com/press-release/kaseyas-tracy-hernandez-named-among-the-top-25-sales-executives-of-2022-by-the-software-report/
+The SVP of Sales Enablement was ranked #3 for her achievements ensuring top line growth and expansion into new markets
+
+
+- Published: 2022-03-28
+- Modified: 2022-12-07
+- URL: https://www.kaseya.com/press-release/connect-it-apac-returns-in-person-to-sydney-with-pro-surfer-layne-beachley-as-keynote-speaker/
+The channel’s premier event signals region’s comeback and includes an M&A Summit, job fair and more
+
+
+- Published: 2022-03-25
+- Modified: 2022-12-07
+- URL: https://www.kaseya.com/press-release/connect-it-global-is-jam-packed-with-workshops-and-certifications-to-take-your-it-knowledge-to-the-next-level/
+Attendees have access to thousands of dollars worth of in-depth training and certifications from industry leaders
+
+
+- Published: 2022-03-23
+- Modified: 2022-12-07
+- URL: https://www.kaseya.com/press-release/connect-it-the-1-european-it-event-of-the-year-returns-to-amsterdam/
+Headliners include Kevin Gaskell, former CEO of successful world-class brands such as Porsche and Lamborghini and Dex Hunter-Torricke, former communications exec with Facebook and Google
+
+
+- Published: 2022-03-17
+- Modified: 2022-12-12
+- URL: https://www.kaseya.com/press-release/kaseyas-powered-services-pro-supercharges-msp-sales-and-marketing-efforts/
+Platform enhancements include new product sales certifications and Done-4-U social media services that make it even easier for MSPs to grow profits and expand their customer base
+
+
+- Published: 2022-03-15
+- Modified: 2022-12-08
+- URL: https://www.kaseya.com/press-release/kaseya-ciso-and-former-fbi-agent-jason-manar-among-featured-speakers-at-all-4-one-virtual-cybersecurity-panel/
+Manar joins CISOs from the channel’s four biggest vendors to talk about cybersecurity practices
+
+
+- Published: 2022-03-10
+- Modified: 2022-12-07
+- URL: https://www.kaseya.com/press-release/it-professionals-can-ease-compliance-woes-with-upgraded-compliance-manager-grc-solution/
+MSPs and SMBs can now simultaneously manage the IT requirements of any industry and government standard as well as customized sets of IT policies and procedures
+
+
+- Published: 2022-03-03
+- Modified: 2022-03-02
+- URL: https://www.kaseya.com/press-release/kaseyas-annual-msp-benchmark-survey-shows-opportunities-in-remote-work-and-cloud-migration/
+MSPs see security as both a challenge and an opportunity in 2022, especially as half say that their business is more at risk to cybercrime compared to one year ago
+
+
+- Published: 2022-02-22
+- Modified: 2022-12-08
+- URL: https://www.kaseya.com/press-release/kaseya-ceo-fred-voccola-is-named-a-channel-futures-2022-channel-influencer/
+
+- Published: 2022-02-09
+- Modified: 2025-10-24
+- URL: https://www.kaseya.com/press-release/kaseya-takes-home-gold-with-three-cybersecurity-excellence-awards/
+Compliance Manager, Graphus and BullPhish ID recognized as best-of-breed solutions in the prestigious annual awards
+
+
+- Published: 2022-02-07
+- Modified: 2025-10-25
+- URL: https://www.kaseya.com/press-release/kaseyas-adam-larrabee-amelia-paro-and-dan-tomaszewski-receive-the-prestigious-2022-crn-channel-chief-award/
+
+- Published: 2022-02-02
+- Modified: 2025-10-25
+- URL: https://www.kaseya.com/press-release/unitrends-introduces-ion-appliances-that-provide-powerful-data-protection-and-fit-in-your-pocket/
+The cutting-edge backup appliances and new Cyber Assurance Program ensures MSPs and SMBs can combat ransomware, data loss and downtime
+
+
+- Published: 2022-01-18
+- Modified: 2022-12-13
+- URL: https://www.kaseya.com/press-release/nfl-legend-terry-bradshaw-to-headline-kaseyas-connect-it-global-2022/
+The channel’s premier event returns to Las Vegas for 15th annual conference featuring additional speakers Frank Abagnale, inspiration for the blockbuster “Catch Me If You Can,” and MSP Guru Robin Robins
+
+
+- Published: 2022-01-10
+- Modified: 2025-10-25
+- URL: https://www.kaseya.com/press-release/kaseya-looks-back-on-2021-as-transformative-year-with-more-it-complete-enhancements-than-ever-before/
+From key acquisitions to new regional data centers, the company has continued to put its customers’ needs first—and has seen expansive growth as a result
+
+
+- Published: 2021-11-17
+- Modified: 2022-12-15
+- URL: https://www.kaseya.com/press-release/kaseya-invites-msp-community-to-participate-in-its-11th-annual-msp-benchmark-survey/
+Questionnaire data will help Kaseya and the channel better understand the MSP community’s challenges and opportunities
+
+
+- Published: 2021-11-16
+- Modified: 2022-12-08
+- URL: https://www.kaseya.com/press-release/kaseya-adds-new-uk-gdpr-module-to-its-award-winning-compliance-manager-platform-to-simplify-compliance-with-the-uks-sweeping-privacy-regulation/
+The update, which was introduced at Kaseya’s Connect IT Europe conference, generates key documents – including Evidence of Compliance – required by the UK’s General Data Protection Regulation (GDPR)
+
+
+- Published: 2021-11-03
+- Modified: 2022-12-12
+- URL: https://www.kaseya.com/press-release/kaseyas-dana-liedholm-wins-gold-globee-in-the-11th-annual-2021-communications-excellence-awards/
+Liedholm recognized for Excellence in Crisis Communication due to her work highlighting Kaseya’s proactive, customer-centric response to the July 2 ransomware attack
+
+
+- Published: 2021-10-27
+- Modified: 2022-12-08
+- URL: https://www.kaseya.com/press-release/kaseya-cfo-kathy-wagner-named-among-the-top-50-women-leaders-in-saas/
+Wagner recognized by The Software Report for her ability to lead Kaseya through a period of rapid expansion and transformation
+
+
+
+
+## Case Studies
+
+- Published: 2025-05-20
+- Modified: 2025-10-30
+- URL: https://www.kaseya.com/case-studies/bacheler-technologies/
+
+- Published: 2025-02-11
+- Modified: 2025-02-11
+- URL: https://www.kaseya.com/case-studies/ergon-consulting-group/
+
+- Published: 2024-11-07
+- Modified: 2024-11-08
+- URL: https://www.kaseya.com/case-studies/tekie-geek-bms/
+Discover how Tekie Geek boosted efficiency and streamlined operations by switching to Kaseya BMS, enhancing IT support for SMBs in NY and NJ.
+
+
+- Published: 2024-07-09
+- Modified: 2025-10-22
+- URL: https://www.kaseya.com/case-studies/it-reinvented-how-go-cloud-scaled-to-the-cloud-and-beyond-powered-by-kaseya/
+
+- Published: 2024-06-21
+- Modified: 2025-02-27
+- URL: https://www.kaseya.com/case-studies/from-cyber-warfare-to-msp-innovation-xonicwaves-profitfuel-success-story/
+See how Xonicwave, led by a former U.S. Air Force cyber expert, uses ProfitFuel to drive MSP innovation, growth, and client success. Read their story now!
+
+
+- Published: 2024-04-23
+- Modified: 2024-04-23
+- URL: https://www.kaseya.com/case-studies/cambium-datas-msp-success-story/
+
+- Published: 2024-03-27
+- Modified: 2024-03-29
+- URL: https://www.kaseya.com/case-studies/cst-group-automation-vsa10-streamlines-workflows/
+
+- Published: 2024-01-25
+- Modified: 2024-02-01
+- URL: https://www.kaseya.com/case-studies/impulse-data-efficiency-and-sales-quote-manager/
+
+- Published: 2024-01-22
+- Modified: 2024-01-30
+- URL: https://www.kaseya.com/case-studies/systemhaus-excel-at-it-service-with-kaseya/
+
+- Published: 2024-01-16
+- Modified: 2024-03-22
+- URL: https://www.kaseya.com/case-studies/hope-church-boosts-efficiency-on-a-budget-with-vsa/
+Being a church, we have a budget. Kaseya is working hand-in-hand with us to get us the best value for money and ensure accountability. I see a bright future.
+
+
+- Published: 2023-12-13
+- Modified: 2025-02-27
+- URL: https://www.kaseya.com/case-studies/sephno-systems-kaseya-cybersecurity-success-story/
+Discover how Sephno unlocked business growth and success in IT services and cybersecurity with Kaseya IT Complete.
+
+
+- Published: 2023-08-25
+- Modified: 2025-02-27
+- URL: https://www.kaseya.com/case-studies/blue-diamond-datto-customer-solulan-soars/
+Discover how Solulan, a top Canadian MSP, boosted its cybersecurity and expanded operations with Kaseya's solutions and the Kaseya-Datto Partner Program!
+
+
+- Published: 2023-03-29
+- Modified: 2023-04-05
+- URL: https://www.kaseya.com/case-studies/cost-savings-with-kaseya-noc-services/
+Find out how Coastal Computer Consulting leveraged Kaseya NOC services to scale faster, boost technician productivity and do more with less.
+
+
+- Published: 2023-02-08
+- Modified: 2023-02-08
+- URL: https://www.kaseya.com/case-studies/cost-savings-with-it-complete-platform/
+Logically streamlined their tool sets and cut costs by more than 50% with Kaseya's integrated tech stack. Read on to discover the company's journey with Kaseya.
+
+
+- Published: 2022-11-18
+- Modified: 2022-11-18
+- URL: https://www.kaseya.com/case-studies/kaseya-noc-services/
+Find out how Coastal Computer Consulting leveraged Kaseya NOC services to scale faster, boost technician productivity and do more with less.
+
+
+- Published: 2022-11-11
+- Modified: 2024-07-15
+- URL: https://www.kaseya.com/case-studies/gocloud-outsources-to-kaseya-help-desk-service/
+
+- Published: 2022-04-01
+- Modified: 2022-04-14
+- URL: https://www.kaseya.com/case-studies/credo-technology-leverages-kaseya-integration/
+
+- Published: 2022-03-09
+- Modified: 2022-11-29
+- URL: https://www.kaseya.com/case-studies/tech-stack-that-works-for-reachout-not-the-other-way-around/
+
+- Published: 2022-02-24
+- Modified: 2022-11-29
+- URL: https://www.kaseya.com/case-studies/dts-it-services-leverages-bms-to-achieve-greater-efficiency-and-scalability/
+
+- Published: 2022-01-12
+- Modified: 2022-04-14
+- URL: https://www.kaseya.com/case-studies/staples-motley-leads-it-with-kaseya-vs/
+
+- Published: 2022-01-06
+- Modified: 2022-01-07
+- URL: https://www.kaseya.com/case-studies/pds-networking/
+
+- Published: 2021-09-15
+- Modified: 2021-09-15
+- URL: https://www.kaseya.com/case-studies/corporate-tech-kaseya-where-trust-meets-security/
+
+- Published: 2020-12-09
+- Modified: 2020-12-09
+- URL: https://www.kaseya.com/case-studies/transform-your-it-with-kaseya-it-complete-srkk-case-study/
+
+- Published: 2020-08-27
+- Modified: 2022-04-14
+- URL: https://www.kaseya.com/case-studies/bms-and-integrated-workflows-with-vsa-and-it-glue/
+
+- Published: 2020-08-19
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/case-studies/achievement-first-public-charter-schools/
+
+- Published: 2020-04-08
+- Modified: 2022-12-12
+- URL: https://www.kaseya.com/case-studies/nero-consulting-replaces-ninjarmm-with-kaseya-vsa/
+
+- Published: 2020-04-07
+- Modified: 2020-04-09
+- URL: https://www.kaseya.com/case-studies/circle-computer-resources-replaces-solarwinds-n-central-with-kaseya-vsa/
+
+- Published: 2020-02-18
+- Modified: 2020-02-18
+- URL: https://www.kaseya.com/case-studies/staff-of-6-leverages-kaseyas-integrated-platform-to-service-1100-endpoints/
+
+- Published: 2020-01-30
+- Modified: 2022-04-14
+- URL: https://www.kaseya.com/case-studies/the-all-new-kaseya-fusion-mobile-app-is-here/
+
+- Published: 2019-11-08
+- Modified: 2026-01-07
+- URL: https://www.kaseya.com/case-studies/kaseya-it-complete-is-the-new-one-stop-shop-for-method-groups-it-needs/
+
+- Published: 2019-10-18
+- Modified: 2025-08-06
+- URL: https://www.kaseya.com/case-studies/method-group-improves-service-delivery-with-kaseya-it-complete/
+
+- Published: 2019-07-15
+- Modified: 2022-12-15
+- URL: https://www.kaseya.com/case-studies/jacobs-engineering-group-leverages-kaseya-vsa-to-automate-it-management/
+
+- Published: 2019-04-24
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/case-studies/automation-comes-easy-with-vsa-by-kaseya/
+
+- Published: 2019-02-14
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/case-studies/kaseya-sets-the-wheel-in-motion-for-data-tech/
+
+- Published: 2018-12-12
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/case-studies/chr-solutions-looks-to-vsa-by-kaseya-to-transform-challenges-into-opportunities/
+
+- Published: 2018-11-15
+- Modified: 2022-12-15
+- URL: https://www.kaseya.com/case-studies/baroan-technology-replaces-storagecraft-and-veeam-with-kub-by-kaseya/
+
+- Published: 2018-11-05
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/case-studies/healthcare-rehab-center-airrosti/
+
+- Published: 2018-10-08
+- Modified: 2022-11-24
+- URL: https://www.kaseya.com/case-studies/touch-n-go-uses-vsa-to-support-millions-of-epayments/
+
+- Published: 2018-10-03
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/moq-digital-delivers-innovative-reliable-solutions-with-kaseya-it-complete/
+
+- Published: 2018-09-19
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/case-studies/remote-management-in-vsa-by-kaseya-saves-community-west-credit-union-time-money/
+
+- Published: 2018-08-21
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/electronic-payments-provider-touch-n-go-automates-processes-with-vsa-by-kaseya/
+
+- Published: 2018-08-13
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/dynamic-computing-unlocks-the-power-of-it-complete/
+
+- Published: 2018-06-28
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/it-complete-deep-integrations-and-automation-make-it-a-no-brainer/
+
+- Published: 2017-08-29
+- Modified: 2021-06-10
+- URL: https://www.kaseya.com/case-studies/bms-helps-preeminent-msp-the-20-integrate-tools-to-create-mature-msps/
+
+- Published: 2017-08-16
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/galaxy-theatres-says-goodbye-to-break-fix-and-hello-to-automation-and-cloud-backup-keeping-staff-and-moviegoers-smiling/
+
+- Published: 2017-08-16
+- Modified: 2021-06-11
+- URL: https://www.kaseya.com/case-studies/vsa-automation-helps-baroan-technologies-dramatically-reduce-alerts-and-time-spent-on-tickets-shares-knowledge-with-community-through-kaseya-automation-exchange/
+
+- Published: 2017-08-16
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/kaseya-it-complete-platform-serves-as-the-backbone-to-emerging-its-service-delivery-and-business-growth/
+
+- Published: 2017-08-07
+- Modified: 2021-07-08
+- URL: https://www.kaseya.com/case-studies/st-josephs-university-tackles-higher-ed-challenges-including-byod-and-security-with-vsa/
+
+- Published: 2017-08-01
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/case-studies/critical-healthcare-services-reach-underserved-communities-across-the-san-antonio-area-with-help-from-vsa/
+
+- Published: 2017-08-01
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/case-studies/dataprise-takes-managed-services-to-the-next-level-with-kaseya/
+
+- Published: 2017-07-20
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/case-studies/single-pane-of-glass-in-vsa-bms-provides-spectrum-data-networks-with-clear-view-of-customer-needs/
+
+- Published: 2017-07-20
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/medical-clinic-turns-to-vsa-to-address-compliance-needs-reaps-automation-benefits-in-multiple-ways/
+
+- Published: 2017-07-20
+- Modified: 2022-12-13
+- URL: https://www.kaseya.com/case-studies/computex-turns-to-traverse-to-enhance-network-as-a-service/
+
+- Published: 2017-07-19
+- Modified: 2026-07-14
+- URL: https://www.kaseya.com/case-studies/ease-of-use-accessibility-drive-techbldrs-to-migrate-to-vsa-by-kaseya/
+
+- Published: 2016-01-17
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/peoples-bank-and-trust-turns-to-kaseya-to-provide-a-simplified-it-experience/
+
+- Published: 2015-10-23
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/deliver-consistent-and-repeatable-high-quality-services/
+
+- Published: 2015-10-23
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/empowering-customers-through-transparent-processes/
+
+- Published: 2015-10-14
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/increase-security-and-regulatory-compliance-save-time/
+
+- Published: 2015-09-14
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/scale-business-without-increasing-tech-count/
+
+- Published: 2015-05-19
+- Modified: 2019-10-29
+- URL: https://www.kaseya.com/case-studies/rosnet-offers-restaurants-efficient-it-management-solutions-with-kaseya/
+
+- Published: 2015-05-19
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/powerful-tools-for-commanding-all-of-it-centrally/
+
+- Published: 2015-05-19
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/c7-data-centers-selects-best-all-in-one-it-systems-management-solutions-you-can-find/
+
+- Published: 2015-05-19
+- Modified: 2025-12-01
+- URL: https://www.kaseya.com/case-studies/networking-and-training-at-kaseya-connect/
+
+- Published: 2015-05-19
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/kaseyas-policy-management-cuts-routine-manual-tasks-98-for-jmark/
+
+- Published: 2015-05-19
+- Modified: 2019-08-05
+- URL: https://www.kaseya.com/case-studies/kaseya-helps-cloud-solutions-it-improve-efficiencies-reduce-manual-processes/
+
+

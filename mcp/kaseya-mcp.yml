@@ -1,0 +1,180 @@
+generated: '2026-08-01'
+method: derived
+status: candidate
+source: openapi/kaseya-bms-openapi-original.json, openapi/kaseya-autotask-psa-openapi-original.json,
+  openapi/kaseya-datto-rmm-openapi-original.json
+official_server: none
+official_server_note: >-
+  Kaseya publishes no first-party Model Context Protocol server for any of its
+  products. Searches of the Kaseya, Datto and IT Glue GitHub organizations, npm, the
+  product documentation and the public MCP registries found only community-authored
+  servers (listed under community_servers below). No mcp.kaseya.com or equivalent
+  hosted endpoint exists, and no /.well-known/oauth-protected-resource is served on any
+  Kaseya host. The tools below are a DERIVED candidate surface — a proposal grounded in
+  real operationIds from the three published contracts, not something Kaseya ships.
+server:
+  name: kaseya
+  transport: http
+  url: null
+tools:
+- name: search_tickets
+  description: Search the BMS service desk for tickets matching a typed filter, with
+    page-number pagination.
+  source_operation: openapi/kaseya-bms-openapi-original.json#SearchTickets
+  api: Kaseya BMS API 2.0
+- name: get_ticket
+  description: Fetch a single BMS ticket by id.
+  source_operation: openapi/kaseya-bms-openapi-original.json#GetTicket
+  api: Kaseya BMS API 2.0
+- name: create_ticket
+  description: Create a BMS service desk ticket.
+  source_operation: openapi/kaseya-bms-openapi-original.json#PostTicket
+  api: Kaseya BMS API 2.0
+- name: add_ticket_note
+  description: Add a note to a BMS ticket.
+  source_operation: openapi/kaseya-bms-openapi-original.json#PostTicketNote
+  api: Kaseya BMS API 2.0
+- name: assign_ticket
+  description: Assign a BMS ticket to a technician.
+  source_operation: openapi/kaseya-bms-openapi-original.json#AssignTicket
+  api: Kaseya BMS API 2.0
+- name: resolve_ticket
+  description: Resolve a BMS ticket.
+  source_operation: openapi/kaseya-bms-openapi-original.json#ResolveTicket
+  api: Kaseya BMS API 2.0
+- name: log_ticket_time
+  description: Post a time entry against a BMS ticket.
+  source_operation: openapi/kaseya-bms-openapi-original.json#PostTicketTimeEntry
+  api: Kaseya BMS API 2.0
+- name: list_accounts
+  description: List BMS CRM account summaries.
+  source_operation: openapi/kaseya-bms-openapi-original.json#GetAccountsListSummary
+  api: Kaseya BMS API 2.0
+- name: query_autotask_tickets
+  description: Query Autotask PSA tickets with the JSON filter grammar.
+  source_operation: openapi/kaseya-autotask-psa-openapi-original.json#Tickets_Query
+  api: Datto Autotask PSA REST API
+- name: get_autotask_ticket
+  description: Fetch a single Autotask PSA ticket by id.
+  source_operation: openapi/kaseya-autotask-psa-openapi-original.json#Tickets_QueryItem
+  api: Datto Autotask PSA REST API
+- name: create_autotask_ticket
+  description: Create an Autotask PSA ticket.
+  source_operation: openapi/kaseya-autotask-psa-openapi-original.json#Tickets_CreateEntity
+  api: Datto Autotask PSA REST API
+- name: update_autotask_ticket
+  description: Patch an Autotask PSA ticket.
+  source_operation: openapi/kaseya-autotask-psa-openapi-original.json#Tickets_PatchEntity
+  api: Datto Autotask PSA REST API
+- name: query_autotask_companies
+  description: Query Autotask PSA companies.
+  source_operation: openapi/kaseya-autotask-psa-openapi-original.json#Companies_Query
+  api: Datto Autotask PSA REST API
+- name: query_autotask_contacts
+  description: Query Autotask PSA contacts.
+  source_operation: openapi/kaseya-autotask-psa-openapi-original.json#Contacts_Query
+  api: Datto Autotask PSA REST API
+- name: query_autotask_configuration_items
+  description: Query Autotask PSA configuration items (managed assets).
+  source_operation: openapi/kaseya-autotask-psa-openapi-original.json#ConfigurationItems_Query
+  api: Datto Autotask PSA REST API
+- name: create_autotask_time_entry
+  description: Create an Autotask PSA time entry.
+  source_operation: openapi/kaseya-autotask-psa-openapi-original.json#TimeEntries_CreateEntity
+  api: Datto Autotask PSA REST API
+- name: describe_autotask_entity
+  description: Fetch the field definitions of an Autotask entity so a client can build
+    a valid filter or payload at runtime.
+  source_operation: openapi/kaseya-autotask-psa-openapi-original.json#Tickets_QueryFieldDefinitions
+  api: Datto Autotask PSA REST API
+- name: list_rmm_sites
+  description: List Datto RMM sites for the authenticated account.
+  source_operation: openapi/kaseya-datto-rmm-openapi-original.json#getSites
+  api: Datto RMM API v2
+- name: get_rmm_site
+  description: Fetch a Datto RMM site, including its device count.
+  source_operation: openapi/kaseya-datto-rmm-openapi-original.json#getSite
+  api: Datto RMM API v2
+- name: list_rmm_site_devices
+  description: List the devices in a Datto RMM site.
+  source_operation: openapi/kaseya-datto-rmm-openapi-original.json#getSiteDevices
+  api: Datto RMM API v2
+- name: get_rmm_device
+  description: Fetch a Datto RMM device by UID.
+  source_operation: openapi/kaseya-datto-rmm-openapi-original.json#getByUid
+  api: Datto RMM API v2
+- name: get_rmm_device_audit
+  description: Fetch audit data for a Datto RMM device.
+  source_operation: openapi/kaseya-datto-rmm-openapi-original.json#getDeviceAudit
+  api: Datto RMM API v2
+- name: list_rmm_open_alerts
+  description: List open alerts across the Datto RMM account.
+  source_operation: openapi/kaseya-datto-rmm-openapi-original.json#getUserAccountOpenAlerts
+  api: Datto RMM API v2
+- name: resolve_rmm_alert
+  description: Resolve a Datto RMM alert.
+  source_operation: openapi/kaseya-datto-rmm-openapi-original.json#resolveAlert
+  api: Datto RMM API v2
+- name: run_rmm_quick_job
+  description: Create a quick job (run a component) on a Datto RMM device.
+  source_operation: openapi/kaseya-datto-rmm-openapi-original.json#createQuickJob
+  api: Datto RMM API v2
+  consequence: write — executes code on a managed endpoint; the highest-consequence
+    operation in the whole Kaseya candidate surface.
+- name: get_rmm_job_results
+  description: Fetch job results for a device, including stdout and stderr.
+  source_operation: openapi/kaseya-datto-rmm-openapi-original.json#getJobResults
+  api: Datto RMM API v2
+- name: get_rmm_device_patches
+  description: List the patches of a Datto RMM device.
+  source_operation: openapi/kaseya-datto-rmm-openapi-original.json#getDevicePatches
+  api: Datto RMM API v2
+- name: check_rmm_request_rate
+  description: Fetch the caller's current Datto RMM request-rate status so an agent can
+    pace itself before being throttled.
+  source_operation: openapi/kaseya-datto-rmm-openapi-original.json#get
+  api: Datto RMM API v2
+community_servers:
+- name: autotask-mcp
+  url: https://github.com/wyre-technology/autotask-mcp
+  npm: https://www.npmjs.com/package/autotask-mcp
+  official: false
+  tools_claimed: 39
+  covers: Datto Autotask PSA
+- name: tphakala/autotask-mcp
+  url: https://github.com/tphakala/autotask-mcp
+  official: false
+  language: Go
+  covers: Datto Autotask PSA
+- name: '@veeemlab/datto-rmm-mcp'
+  url: https://www.npmjs.com/package/@veeemlab/datto-rmm-mcp
+  official: false
+  tools_claimed: 55
+  covers: Datto RMM
+- name: datto-rmm-mcp-server
+  url: https://www.npmjs.com/package/datto-rmm-mcp-server
+  official: false
+  covers: Datto RMM
+- name: mcp-itglue
+  url: https://www.npmjs.com/package/mcp-itglue
+  official: false
+  covers: IT Glue
+- name: '@wilnertech/itglue-mcp-server'
+  url: https://www.npmjs.com/package/@wilnertech/itglue-mcp-server
+  official: false
+  tools_claimed: 139
+  covers: IT Glue
+- name: '@teamnetwork-nz/vsa-mcp-server'
+  url: https://www.npmjs.com/package/@teamnetwork-nz/vsa-mcp-server
+  official: false
+  covers: Kaseya VSA 9.5 REST API
+- name: kaseya-docs-mcp
+  url: https://www.npmjs.com/package/kaseya-docs-mcp
+  official: false
+  covers: documentation search across Kaseya, Datto, Autotask and IT Glue
+x-observation: >-
+  A third-party MCP ecosystem has already formed around the Kaseya portfolio — at least
+  eight community servers across four products, one claiming 139 tools. The demand for
+  an agent surface is demonstrably there; Kaseya has not met it with a first-party
+  server, so MSPs are handing full-administrator Autotask credentials to unaffiliated
+  npm packages.

@@ -1,0 +1,136 @@
+generated: '2026-08-01'
+method: searched
+source: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm,
+  openapi/kaseya-bms-openapi-original.json, openapi/kaseya-autotask-psa-openapi-original.json,
+  https://help.saasalerts.kaseya.com/help/Content/How-To/webhooks-api-documentation.htm
+spec_type: Webhooks
+asyncapi_published: false
+asyncapi_note: >-
+  No AsyncAPI document is published for any Kaseya product. Searches of the Kaseya,
+  Datto and IT Glue GitHub organizations, the product help systems and /asyncapi.yaml
+  on every API host returned nothing. Kaseya's event surface is real but is described
+  only through HTTP webhook configuration UIs and REST management endpoints — so this
+  artifact captures the webhook catalog rather than fabricating an event spec.
+surfaces:
+- api: Kaseya BMS API 2.0
+  kind: webhooks
+  managed_via_api: true
+  docs: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  ui_path: Admin > Integrations > Webhooks
+  subject: ticket-related events
+  event_types:
+  - Created
+  - Updated
+  - Deleted
+  event_selection:
+  - Send me everything
+  - Let me select individual events
+  event_discovery:
+    operation: GET /v2/admin/webhooks/events/lookup
+    operationId: GetWebhookEventsLookup
+    note: The subscribable event vocabulary is served by the API itself rather than
+      published as a static list, so the authoritative catalog requires an authenticated
+      call.
+  delivery:
+    target: customer-supplied Payload URL
+    content_type: selectable
+    signature:
+      supported: true
+      mechanism: optional shared Secret; when set, a Signature value is presented in
+        the header area of the event details window
+    retry:
+      automatic: undocumented
+      manual_redelivery: true
+      manual_redelivery_note: Failed deliveries are flagged in the grid and can be
+        re-sent with the Redeliver action.
+  management_operations:
+  - operationId: PostWebhookConfiguration
+    method: POST
+    path: /v2/admin/webhooks
+  - operationId: GetWebhookConfigurationsList
+    method: POST
+    path: /v2/admin/webhooks/search
+  - operationId: GetWebhookConfiguration
+    method: GET
+    path: /v2/admin/webhooks/{id}
+  - operationId: PutWebhookConfiguration
+    method: PUT
+    path: /v2/admin/webhooks/{id}
+  - operationId: PatchWebhooks
+    method: PATCH
+    path: /v2/admin/webhooks
+  - operationId: DeleteWebhookConfiguration
+    method: DELETE
+    path: /v2/admin/webhooks/{id}
+  - operationId: DeleteWebhooks
+    method: DELETE
+    path: /v2/admin/webhooks
+- api: Datto Autotask PSA REST API
+  kind: webhooks
+  managed_via_api: true
+  docs: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  source: openapi/kaseya-autotask-psa-openapi-original.json
+  note: >-
+    Autotask exposes the richest webhook control plane in the portfolio — webhooks are
+    first-class API entities with per-entity field selection, user-defined-field
+    selection, resource exclusions and an error log, all manageable over REST.
+  subscribable_entities:
+  - entity: Company
+    tags:
+    - CompanyWebhooks
+    - CompanyWebhookFields
+    - CompanyWebhookUdfFields
+    - CompanyWebhookExcludedResources
+  - entity: Contact
+    tags:
+    - ContactWebhooks
+    - ContactWebhookFields
+    - ContactWebhookUdfFields
+    - ContactWebhookExcludedResources
+  - entity: ConfigurationItem
+    tags:
+    - ConfigurationItemWebhooks
+    - ConfigurationItemWebhookFields
+    - ConfigurationItemWebhookUdfFields
+    - ConfigurationItemWebhookExcludedResources
+  - entity: Ticket
+    tags:
+    - TicketWebhooks
+    - TicketWebhookFields
+    - TicketWebhookUdfFields
+    - TicketWebhookExcludedResources
+  - entity: TicketNote
+    tags:
+    - TicketNoteWebhooks
+    - TicketNoteWebhookFields
+    - TicketNoteWebhookExcludedResources
+  observability:
+    error_log: WebhookEventErrorLogs
+    note: Delivery failures are queryable through the API as WebhookEventErrorLogs
+      entities.
+  field_level_control:
+    fields: subscribe to change notifications on selected standard fields
+    udf_fields: subscribe to change notifications on selected user-defined fields
+    excluded_resources: suppress events caused by named resources (commonly used to
+      stop an integration from hearing its own writes back)
+- api: Datto RMM API v2
+  kind: none-published
+  note: >-
+    The Datto RMM OpenAPI 3.1.0 document declares no webhooks and no callbacks. Alert
+    and job state is polled through /v2/alert, /v2/job and /v2/activity-logs. Datto RMM
+    monitors do support outbound integrations configured in the product UI, but no
+    machine-readable event contract is published.
+- api: SaaS Alerts
+  kind: webhooks
+  docs: https://help.saasalerts.kaseya.com/help/Content/How-To/webhooks-api-documentation.htm
+  note: SaaS Alerts (a Kaseya product) documents its own webhook API separately from
+    the surfaces profiled in this repo.
+gaps:
+- No AsyncAPI document anywhere in the Kaseya portfolio.
+- No published payload schema for BMS webhook events; the BMS OpenAPI describes only
+  the webhook management operations, not the event bodies.
+- No published event-name vocabulary for BMS (the lookup endpoint is authenticated).
+- No signature algorithm is named for BMS webhook verification, only that a Signature
+  field appears when a Secret is configured.
+- Autotask webhook payload schemas are not present in the Swagger 2.0 document either
+  — only the webhook configuration entities are.

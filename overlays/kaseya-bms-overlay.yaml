@@ -1,0 +1,51 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Kaseya BMS API 2.0
+  version: 1.0.0
+x-generated: '2026-08-01'
+x-method: generated
+x-source: openapi/kaseya-bms-openapi-original.json
+extends: openapi/kaseya-bms-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-profiled: '2026-08-01'
+    x-apievangelist-provider: kaseya
+    x-apievangelist-api: kaseya:bms
+    x-apievangelist-harvested-from: https://api.bms.kaseya.com/swagger/v2/swagger.json
+    x-apievangelist-operations: 435
+    x-apievangelist-paths: 349
+    contact:
+      name: Kaseya Support
+      url: https://helpdesk.kaseya.com/hc/en-gb
+    termsOfService: https://www.kaseya.com/legal/kaseya-api-license/
+- target: $.info
+  update:
+    x-apievangelist-gaps:
+    - id: no-error-responses
+      detail: All 435 operations declare only a 200 response. Failures are signalled
+        inside the body via Success=false and an ErrorInfo object, so no 4xx/5xx
+        contract is machine-readable.
+    - id: no-operation-summaries
+      detail: Operations carry operationIds and tags but no summary or description
+        text.
+    - id: no-idempotency
+      detail: No Idempotency-Key header on any create operation.
+    - id: no-rate-limit-signal
+      detail: The documented 1500/hour/endpoint limit is not expressed in the spec and
+        no RateLimit headers are declared.
+- target: $.servers
+  update:
+  - url: https://api.bms.kaseya.com
+    description: US
+  - url: https://api.bmsemea.kaseya.com
+    description: EMEA
+  - url: https://api.bmsapac.kaseya.com
+    description: APAC
+  - url: https://api.vorexlogin.com
+    description: Vorex
+- target: $.components.securitySchemes.bearerAuth
+  update:
+    x-token-endpoint: POST /v2/security/authenticate
+    x-token-credentials: BMS username, password, company name, server URL
+    x-refresh-supported: true

@@ -1,0 +1,76 @@
+generated: '2026-08-01'
+method: searched
+source: https://www.kaseya.com/innovations/, https://www.kaseya.com/2026-h1-release/,
+  https://www.kaseya.com/blog/
+summary: >-
+  Kaseya publishes no per-API changelog. Changes are announced on a twice-yearly
+  "Innovations" release cadence at the portfolio level, plus per-product release notes
+  inside each product's own help system and blog posts on kaseya.com. There is no
+  dated, machine-readable API change feed for BMS, Autotask PSA, Datto RMM, IT Glue or
+  VSA, and no RSS/Atom feed of API changes was found.
+scheme:
+  api_versioning: per-product uri-path (see lifecycle/kaseya-lifecycle.yml)
+  release_cadence: semi-annual portfolio "Innovations" releases (Spring / Fall, now
+    H1 / H2) plus continuous per-product release notes
+  api_change_feed: none
+current_versions:
+  kaseya_bms_api: '2.0'
+  kaseya_bms_product: 5.58.0
+  autotask_psa_rest_api: v1.0
+  datto_rmm_api: 2.0.0 (Build 235_0add0e4d537431f30405d568ccb46b6d7af1f183)
+entries:
+- version: 2026 H1 Release
+  date: '2026'
+  url: https://www.kaseya.com/2026-h1-release/
+  breaking: []
+  additions:
+  - product: Kaseya SIEM
+    highlight: New SIEM bringing endpoint, network and cloud visibility across 60+ data
+      sources together with automated response and 24/7 SOC support.
+  - product: Autotask PSA
+    highlight: Digital Specialist for Ticket Triage — multiple AI agents coordinate to
+      route tickets to technicians by skill and workload.
+  - product: Datto Backup for Microsoft Azure
+    highlight: Backup for Azure Files, extending isolated immutable backups to Azure
+      VMs and file storage.
+  - product: Datto BCDR
+    highlight: AI-powered screenshot verification of backups.
+  - product: Datto RMM
+    highlight: Conversational AI over activity logs and device insights.
+  - product: SaaS Alerts + INKY
+    highlight: Real-time detection and cross-surface containment for compromised
+      accounts.
+  - product: Kaseya Assist
+    highlight: In-app chatbots added to IT Glue and KaseyaOne.
+  - product: Datto SaaS Protection
+    highlight: Unified Microsoft 365 Exchange and Entra ID recovery workflows.
+  - product: Kaseya MDR
+    highlight: 24/7 expert-managed detection across endpoints, Microsoft 365 and
+      firewalls.
+  - product: SIRIS 6 / Unitrends
+    highlight: FIPS mode for compliance.
+  api_changes: none documented
+- version: Autotask 2026.3
+  date: '2026'
+  url: https://www.kaseya.com/blog/autotask-2026-3-release/
+  note: Autotask ships its own numbered product releases (2026.3) announced on the
+    Kaseya blog and in the Autotask release notes.
+- version: 2025 Fall Innovations
+  date: '2025'
+  url: https://www.kaseya.com/2025-fall-release/
+- version: 2025 Spring Innovations
+  date: '2025'
+  url: https://www.kaseya.com/2025-spring-release/
+per_product_release_notes:
+- product: Kaseya (portfolio)
+  url: https://www.kaseya.com/innovations/
+- product: IT Glue API
+  url: https://www.itglue.com/blog/it-glue-api-evolution/
+  note: 'IT Glue publishes API-specific change narrative on its blog — "IT Glue''s API
+    evolution: Delivering on Kaseya''s API-first vision" describes new CRUD endpoints
+    added over a six-month window.'
+gaps:
+- No dated, per-API changelog for any Kaseya API.
+- No RSS/Atom or JSON feed of API changes.
+- No breaking-change register and no migration guides (notably for the Datto RMM
+  v2 to v3 transition already visible in the spec).

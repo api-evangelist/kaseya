@@ -1,0 +1,78 @@
+generated: '2026-08-01'
+method: searched
+source: product API documentation for each Kaseya surface
+rate_limits:
+- api: Kaseya BMS API 2.0
+  limit_count: 1500
+  interval: hour
+  scope: per endpoint
+  description: The V2 API call limit is 1500 per hour per endpoint.
+  docs: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+- api: Datto Autotask PSA REST API
+  limit_count: 10000
+  interval: hour
+  scope: per Autotask database, counting all integrations, on a rolling 60-minute window
+  description: >-
+    Autotask caps external REST requests at 10,000 per rolling hour per database.
+    Usage-based latency is applied progressively as the threshold is approached and a
+    notification is raised; exceeding the threshold temporarily suspends API service
+    for that tenant.
+  enforcement: progressive latency, then temporary suspension / API disabled for the
+    tenant
+  docs: https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+- api: Datto RMM API v2
+  limit_count: 600
+  interval: 60 seconds
+  scope: query (read) operations, rolling 60-second window
+  description: Query operations are limited to 600 requests within the past 60 seconds.
+  response_status: 429
+  docs: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+- api: Datto RMM API v2
+  limit_count: 100
+  interval: 60 seconds
+  scope: write operations, rolling 60-second window
+  description: >-
+    Write operations are limited by default to 100 requests within the past 60 seconds.
+    Exceeding the limit returns HTTP 429; persistent violation returns HTTP 403 with a
+    temporary IP block requiring a 5-minute wait.
+  response_status: 429
+  escalation_status: 403
+  docs: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+signalling:
+  headers_documented: false
+  note: >-
+    None of the three published Kaseya contracts declares RateLimit / X-RateLimit
+    response headers. On BMS and Autotask a client learns it has been throttled only
+    from the HTTP status. Datto RMM is the exception: it exposes rate state as a
+    queryable resource instead of as headers.
+  endpoints:
+  - api: Datto RMM API v2
+    operation: GET /v2/system/request_rate
+    schema: RateStatusResponse
+    fields:
+    - slidingTimeWindowSizeSeconds
+    - accountUid
+    - accountCount
+    - accountRateLimit
+    - accountCutOffRatio
+    - accountWriteRateLimit
+    - accountWriteCount
+    - operationWriteStatus (map of operation -> {limit, count})
+    note: >-
+      A real, machine-readable rate-limit signal — the only one in the Kaseya
+      portfolio. It reports the sliding window size, the account read and write
+      limits, current counts and a per-operation write limit/count map, so an agent can
+      pace itself before being throttled. It costs a request, unlike response headers.
+  - api: Datto RMM API v2
+    operation: GET /v2/system/pagination
+    schema: PaginationConfiguration
+    note: Publishes the server's pagination configuration so a client can size its
+      page requests correctly.
+  - api: Datto RMM API v2
+    operation: GET /v2/system/status
+    schema: StatusResponse
+undocumented:
+- api: IT Glue API
+  note: No published request-rate figure was found in the IT Glue API documentation.
+- api: Kaseya VSA 9 / VSA 10
+  note: No published request-rate figure was found; both are tenant-hosted.

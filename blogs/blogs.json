@@ -1,0 +1,14 @@
+{
+  "repo": "kaseya",
+  "feeds": [
+    {
+      "source": "https://community.kaseya.com/",
+      "feed_url": "https://community.kaseya.com/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-01T15:49:00Z"
+}

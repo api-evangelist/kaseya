@@ -1,0 +1,223 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/kaseya-bms-openapi-original.json, openapi/kaseya-autotask-psa-openapi-original.json,
+  openapi/kaseya-datto-rmm-openapi-original.json
+docs:
+- https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+- https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+- https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+summary: >-
+  Kaseya's three published contracts share no cross-cutting conventions. They were
+  built by three different companies (Kaseya, Autotask, CentraStage/Datto) and
+  acquired into one portfolio, so pagination, filtering, error envelopes, media types
+  and auth differ per API. An agent integrating across the Kaseya estate must learn
+  three separate request/response grammars.
+apis:
+- api: Kaseya BMS API 2.0
+  base_url: https://api.bms.kaseya.com
+  regional_hosts:
+  - https://api.bms.kaseya.com
+  - https://api.bmsemea.kaseya.com
+  - https://api.bmsapac.kaseya.com
+  - https://api.vorexlogin.com
+  authentication:
+    style: bearer JWT
+    token_endpoint: POST /v2/security/authenticate
+  media_types:
+    request:
+    - application/json
+    - application/json-patch+json
+    - text/json
+    - application/*+json
+    response:
+    - application/json
+    - text/json
+    - text/plain
+  envelope:
+    style: wrapped
+    shape: '{Success, Error, Result, TotalRecords}'
+    success_field: Success
+    payload_field: Result
+    error_field: Error
+    total_field: TotalRecords
+    note: BMS wraps every response in a success/result envelope rather than returning
+      the resource directly, and signals failure inside a 200 body via Success=false
+      plus an Error object.
+  pagination:
+    style: page-number
+    request_location: POST body on /search operations
+    params:
+    - PageSize
+    - PageNumber
+    read_only_echo:
+    - StartRowIndex
+    - EndRowIndex
+    response_fields:
+    - TotalRecords
+  filtering:
+    style: typed filter object in the request body
+    params:
+    - Filter
+    - Sort
+    - Exclude
+    note: Each resource has its own strongly typed *FilterDto (e.g. TicketFilterDto).
+  sorting:
+    param: Sort
+  field_selection:
+    param: Exclude
+    style: exclusion list
+  versioning: uri-path (/v2)
+  idempotency:
+    supported: false
+    note: No Idempotency-Key header, request-id echo or de-duplication contract is
+      declared in the spec or the documentation.
+  request_tracing:
+    header: null
+    supported: false
+  rate_limit_signalling:
+    headers: []
+    documented_limit: 1500 requests/hour/endpoint
+- api: Datto Autotask PSA REST API
+  base_url: https://webservices2.autotask.net/ATServicesRest
+  zone_discovery: >-
+    Autotask is multi-homed across at least 14 zone hosts (webservices1–19.autotask.net,
+    covering pre-release, limited release, America East/West, UK, ANZ, German, EU1 and
+    Spanish). Clients must resolve their tenant's zone before calling.
+  authentication:
+    style: three static headers (UserName, Secret, ApiIntegrationCode)
+  media_types:
+    request:
+    - application/json
+    response:
+    - application/json
+    - text/json
+  envelope:
+    style: wrapped for queries, direct for single-entity reads
+    shape: '{items: [...], pageDetails: {...}}'
+    payload_field: items
+  pagination:
+    style: cursor-by-URL
+    request_params:
+    - maxRecords (in the query body/QueryModel)
+    response_fields:
+    - pageDetails.count
+    - pageDetails.requestCount
+    - pageDetails.prevPageUrl
+    - pageDetails.nextPageUrl
+    note: The server returns fully-formed next/previous page URLs; clients follow them
+      rather than constructing offsets.
+  filtering:
+    style: JSON filter grammar
+    location: '`search` query-string parameter (GET) or `queryModel` request body (POST)'
+    grammar:
+      filter: array of Filter objects
+      filter_fields:
+      - op
+      - field
+      - value
+      - udf
+      - items
+      operators_note: >-
+        Filter objects nest via `items`, so compound AND/OR trees are expressible; a
+        filter with `udf` set to true targets user-defined fields.
+      field_selection: includeFields (array of field names)
+      max_records: maxRecords
+  child_resources:
+    style: parentId path segment
+    note: 979 operations take a `parentId` path parameter, exposing child collections
+      (e.g. /Companies/{parentId}/Notes).
+  versioning: uri-path (/V1.0/)
+  idempotency:
+    supported: false
+    note: No idempotency key. PATCH and PUT are both offered on most entities, and
+      creates are plain POSTs with no client-supplied de-duplication token.
+  request_tracing:
+    header: null
+    supported: false
+    note: ApiIntegrationCode identifies the *integration*, not the individual request.
+  rate_limit_signalling:
+    headers: []
+    documented_limit: 10,000 requests/hour/database (rolling window, progressive latency)
+- api: Datto RMM API v2
+  base_url: https://{region}-api.centrastage.net/api
+  authentication:
+    style: OAuth 2.0 bearer access token
+    token_endpoint: POST /auth/oauth/token
+    token_lifetime: 100 hours
+  media_types:
+    request:
+    - application/json
+    response:
+    - application/json
+  envelope:
+    style: direct resource, with paged collections carrying a pageDetails-style block
+  pagination:
+    style: page-and-size query parameters
+    params:
+    - page
+    - max
+    note: 25 operations take `page`, 24 take `max`.
+  filtering:
+    style: typed query parameters per resource (siteName, hostname, deviceType,
+      operatingSystem, macAddress, muted, ...)
+  versioning:
+    style: uri-path
+    current: v2
+    emerging: v3
+    note: /v3/device, /v3/site and /v3/account operations coexist with the v2 surface.
+  concurrency_control:
+    supported: true
+    mechanism: optimistic locking
+    status: 409
+    description: '"Request aborted due to concurrent write access to this record." —
+      the only concurrency-safety contract published anywhere in the Kaseya portfolio,
+      and the closest thing to a safe-retry primitive.'
+  idempotency:
+    supported: false
+    note: >-
+      No Idempotency-Key header. The documented 409 on concurrent write is a conflict
+      signal, not an idempotency guarantee — a retried POST after a network timeout can
+      still duplicate work.
+  request_tracing:
+    header: null
+    supported: false
+  rate_limit_signalling:
+    headers: []
+    statuses:
+    - 429 on limit exceeded
+    - 403 plus a 5-minute IP block on persistent violation
+    documented_limit: 600 reads / 100 writes per rolling 60 seconds
+    introspection_endpoint: GET /v2/system/request_rate
+    introspection_note: >-
+      Datto RMM exposes live rate state as a resource (RateStatusResponse — sliding
+      window size, account read/write limits and counts, and a per-operation write
+      limit/count map) rather than as response headers. Sibling endpoints
+      /v2/system/pagination and /v2/system/status publish the server's pagination
+      configuration and health. This is the only runtime self-description anywhere in
+      the Kaseya portfolio.
+cross_cutting_gaps:
+- id: idempotency
+  present: false
+  detail: No Kaseya API publishes an idempotency key, a safe-retry contract or a
+    request de-duplication window. Retrying a failed create is unsafe on all surfaces.
+- id: request-id-tracing
+  present: false
+  detail: No API returns a correlation/request-id header a caller can quote in a
+    support ticket.
+- id: rfc9457-problem-details
+  present: false
+  detail: No API uses application/problem+json; BMS uses a proprietary success/error
+    envelope and Datto RMM uses a Spring-Boot default error body.
+- id: rate-limit-headers
+  present: false
+  detail: All three APIs publish limits in prose but expose no RateLimit response
+    headers, so throttling is only discoverable from the status code.
+- id: consistent-envelope
+  present: false
+  detail: Three different response shapes across three APIs from the same vendor.
+cross_links:
+  errors: errors/kaseya-problem-types.yml
+  lifecycle: lifecycle/kaseya-lifecycle.yml
+  authentication: authentication/kaseya-authentication.yml
+  rate_limits: rate-limits/kaseya-rate-limits.yml
+  webhooks: asyncapi/kaseya-webhooks.yml
