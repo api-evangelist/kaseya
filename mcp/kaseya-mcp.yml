@@ -1,25 +1,21 @@
 generated: '2026-08-01'
 method: derived
 status: candidate
-source: openapi/kaseya-bms-openapi-original.json, openapi/kaseya-autotask-psa-openapi-original.json,
-  openapi/kaseya-datto-rmm-openapi-original.json
+source: openapi/kaseya-bms-openapi-original.json, openapi/kaseya-autotask-psa-openapi-original.json, openapi/kaseya-datto-rmm-openapi-original.json
 official_server: none
-official_server_note: >-
-  Kaseya publishes no first-party Model Context Protocol server for any of its
-  products. Searches of the Kaseya, Datto and IT Glue GitHub organizations, npm, the
-  product documentation and the public MCP registries found only community-authored
-  servers (listed under community_servers below). No mcp.kaseya.com or equivalent
-  hosted endpoint exists, and no /.well-known/oauth-protected-resource is served on any
-  Kaseya host. The tools below are a DERIVED candidate surface — a proposal grounded in
-  real operationIds from the three published contracts, not something Kaseya ships.
+official_server_note: Kaseya publishes no first-party Model Context Protocol server for any of its products.
+  Searches of the Kaseya, Datto and IT Glue GitHub organizations, npm, the product documentation and the
+  public MCP registries found only community-authored servers (listed under community_servers below).
+  No mcp.kaseya.com or equivalent hosted endpoint exists, and no /.well-known/oauth-protected-resource
+  is served on any Kaseya host. The tools below are a DERIVED candidate surface — a proposal grounded
+  in real operationIds from the three published contracts, not something Kaseya ships.
 server:
   name: kaseya
   transport: http
   url: null
 tools:
 - name: search_tickets
-  description: Search the BMS service desk for tickets matching a typed filter, with
-    page-number pagination.
+  description: Search the BMS service desk for tickets matching a typed filter, with page-number pagination.
   source_operation: openapi/kaseya-bms-openapi-original.json#SearchTickets
   api: Kaseya BMS API 2.0
 - name: get_ticket
@@ -83,8 +79,8 @@ tools:
   source_operation: openapi/kaseya-autotask-psa-openapi-original.json#TimeEntries_CreateEntity
   api: Datto Autotask PSA REST API
 - name: describe_autotask_entity
-  description: Fetch the field definitions of an Autotask entity so a client can build
-    a valid filter or payload at runtime.
+  description: Fetch the field definitions of an Autotask entity so a client can build a valid filter
+    or payload at runtime.
   source_operation: openapi/kaseya-autotask-psa-openapi-original.json#Tickets_QueryFieldDefinitions
   api: Datto Autotask PSA REST API
 - name: list_rmm_sites
@@ -119,8 +115,8 @@ tools:
   description: Create a quick job (run a component) on a Datto RMM device.
   source_operation: openapi/kaseya-datto-rmm-openapi-original.json#createQuickJob
   api: Datto RMM API v2
-  consequence: write — executes code on a managed endpoint; the highest-consequence
-    operation in the whole Kaseya candidate surface.
+  consequence: write — executes code on a managed endpoint; the highest-consequence operation in the whole
+    Kaseya candidate surface.
 - name: get_rmm_job_results
   description: Fetch job results for a device, including stdout and stderr.
   source_operation: openapi/kaseya-datto-rmm-openapi-original.json#getJobResults
@@ -130,8 +126,8 @@ tools:
   source_operation: openapi/kaseya-datto-rmm-openapi-original.json#getDevicePatches
   api: Datto RMM API v2
 - name: check_rmm_request_rate
-  description: Fetch the caller's current Datto RMM request-rate status so an agent can
-    pace itself before being throttled.
+  description: Fetch the caller's current Datto RMM request-rate status so an agent can pace itself before
+    being throttled.
   source_operation: openapi/kaseya-datto-rmm-openapi-original.json#get
   api: Datto RMM API v2
 community_servers:
@@ -172,9 +168,13 @@ community_servers:
   url: https://www.npmjs.com/package/kaseya-docs-mcp
   official: false
   covers: documentation search across Kaseya, Datto, Autotask and IT Glue
-x-observation: >-
-  A third-party MCP ecosystem has already formed around the Kaseya portfolio — at least
-  eight community servers across four products, one claiming 139 tools. The demand for
-  an agent surface is demonstrably there; Kaseya has not met it with a first-party
-  server, so MSPs are handing full-administrator Autotask credentials to unaffiliated
-  npm packages.
+x-observation: A third-party MCP ecosystem has already formed around the Kaseya portfolio — at least eight
+  community servers across four products, one claiming 139 tools. The demand for an agent surface is demonstrably
+  there; Kaseya has not met it with a first-party server, so MSPs are handing full-administrator Autotask
+  credentials to unaffiliated npm packages.
+deployment:
+  mode: none
+  verified: derived
+  tools: 28
+  checked: '2026-08-12'
+  source: catalog MCP census

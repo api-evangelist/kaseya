@@ -1,0 +1,1678 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Datto RMM API",
+    "version": "2.0.0 (Build 235_0add0e4d537431f30405d568ccb46b6d7af1f183)"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "/v2/site",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a new site in the authenticated user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://syrah-api.centrastage.net/api/v2/site",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new site in the authenticated user's account."
+        },
+        {
+          "info": {
+            "name": "Creates a site variable in the site identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/variable",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a site variable in the site identified by the given site Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches data of the site (including total number of devices) identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches data of the site (including total number of devices) identified by the given site Uid."
+        },
+        {
+          "info": {
+            "name": "Updates the site identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the site identified by the given site Uid."
+        },
+        {
+          "info": {
+            "name": "Updates the site variable identified by the given site Uid and variable Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/variable/:variableId",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the site variable identified by the given site Uid and variable Id."
+        },
+        {
+          "info": {
+            "name": "Deletes the site variable identified by the given site Uid and variable Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/variable/:variableId",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes the site variable identified by the given site Uid and variable Id."
+        },
+        {
+          "info": {
+            "name": "Creates/updates the proxy settings for the site identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/settings/proxy",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates/updates the proxy settings for the site identified by the given site Uid."
+        },
+        {
+          "info": {
+            "name": "Deletes site proxy settings for the site identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/settings/proxy",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes site proxy settings for the site identified by the given site Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches the variables of the site identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/variables",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches the variables of the site identified by the given site Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches settings of the site identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/settings",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches settings of the site identified by the given site Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches the patches of all devices in the site identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/patches",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "installStatus",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of patches aggregated across the site's devices. When the optional installStatus parameter is omitted, a single patch may appear up to three times — once per bucket (INSTALLED/APPROVED_PENDING/NOT_APPROVED) it has devices in, each with its own totalDevices count."
+        },
+        {
+          "info": {
+            "name": "Fetches the site device filters (that the user can see with administrator role) of the site identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/filters",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches the site device filters (that the user can see with administrator role) of the site identified by the given site Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches the devices records of the site identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/devices",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches the devices records of the site identified by the given site Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches the shortened devices records with network interface information of the site identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/devices/network-interface",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches the shortened devices records with network interface information of the site identified by the given site Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches the resolved alerts of the site identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/alerts/resolved",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "muted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "If the muted parameter is not provided, both muted and umuted alerts will be queried."
+        },
+        {
+          "info": {
+            "name": "Fetches the open alerts of the site identified by the given site Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/site/:siteUid/alerts/open",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "muted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "If the muted parameter is not provided, both muted and umuted alerts will be queried."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "/v2/device",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moves a device from one site to another site.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://syrah-api.centrastage.net/api/v2/device/:deviceUid/site/:siteUid",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path",
+                "description": "The UID of the device to move to a different site"
+              },
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path",
+                "description": "The UID of the target site"
+              }
+            ]
+          },
+          "docs": "Moves a device from one site to another site."
+        },
+        {
+          "info": {
+            "name": "Creates a quick job on the device identified by the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://syrah-api.centrastage.net/api/v2/device/:deviceUid/quickjob",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a quick job on the device identified by the given device Uid."
+        },
+        {
+          "info": {
+            "name": "Sets the warranty of a device identified by the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://syrah-api.centrastage.net/api/v2/device/:deviceUid/warranty",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The warrantyDate field should be a ISO 8601 string with this format: yyyy-mm-dd. The warranty date can also be set to null."
+        },
+        {
+          "info": {
+            "name": "Sets the user defined fields of a device identified by the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://syrah-api.centrastage.net/api/v2/device/:deviceUid/udf",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "All UDF values are accepted as strings. Any user defined field supplied with an empty or null value will be deleted. All user defined fields not supplied will retain their current values. The API attempts to parse string values into their configured types (BOOLEAN/NUMBER/DATE). If a value cannot be parsed to match its configured type, it will be stored as a string and flagged as a type mismatch."
+        },
+        {
+          "info": {
+            "name": "Fetches data of the device identified by the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/device/:deviceUid",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches data of the device identified by the given device Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches the patches of the device identified by the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/device/:deviceUid/patches",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "installStatus",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of patches for the device. The optional installStatus parameter filters results by INSTALLED, APPROVED_PENDING or NOT_APPROVED. When omitted, all patches for the device are returned."
+        },
+        {
+          "info": {
+            "name": "Fetches the resolved alerts of the device identified by the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/device/:deviceUid/alerts/resolved",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "muted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "If the muted parameter is not provided, both muted and umuted alerts will be queried."
+        },
+        {
+          "info": {
+            "name": "Fetches the open alerts of the device identified by the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/device/:deviceUid/alerts/open",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "muted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "If the muted parameter is not provided, both muted and umuted alerts will be queried."
+        },
+        {
+          "info": {
+            "name": "Fetches data of the device(s) identified by the given MAC address in format: XXXXXXXXXXXX",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/device/macAddress/:macAddress",
+            "params": [
+              {
+                "name": "macAddress",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches data of the device(s) identified by the given MAC address in format: XXXXXXXXXXXX"
+        },
+        {
+          "info": {
+            "name": "Fetches data of the device identified by the given device Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/device/id/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches data of the device identified by the given device Id."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "/v2/account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates an account variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://syrah-api.centrastage.net/api/v2/account/variable",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an account variable"
+        },
+        {
+          "info": {
+            "name": "Updates the account variable identified by the given variable Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://syrah-api.centrastage.net/api/v2/account/variable/:variableId",
+            "params": [
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the account variable identified by the given variable Id."
+        },
+        {
+          "info": {
+            "name": "Deletes the account variable identified by the given variable Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://syrah-api.centrastage.net/api/v2/account/variable/:variableId",
+            "params": [
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes the account variable identified by the given variable Id."
+        },
+        {
+          "info": {
+            "name": "Fetches the authenticated user's account data.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/account"
+          },
+          "docs": "Fetches the authenticated user's account data."
+        },
+        {
+          "info": {
+            "name": "Fetches the account variables.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/account/variables",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches the account variables."
+        },
+        {
+          "info": {
+            "name": "Fetches the authentication users records of the authenticated user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/account/users",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches the authentication users records of the authenticated user's account."
+        },
+        {
+          "info": {
+            "name": "Fetches the site records of the authenticated user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/account/sites",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "siteName",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed."
+              }
+            ]
+          },
+          "docs": "Fetches the site records of the authenticated user's account."
+        },
+        {
+          "info": {
+            "name": "Fetches the sites records with its mapped dnet network id for the authenticated user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/account/dnet-site-mappings",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches the sites records with its mapped dnet network id for the authenticated user's account."
+        },
+        {
+          "info": {
+            "name": "Fetches the devices of the authenticated user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/account/devices",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filterId",
+                "value": "",
+                "type": "query",
+                "description": "Optional. If applied, this filter exclusively determines the results."
+              },
+              {
+                "name": "hostname",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed."
+              },
+              {
+                "name": "deviceType",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed."
+              },
+              {
+                "name": "operatingSystem",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed."
+              },
+              {
+                "name": "siteName",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed."
+              }
+            ]
+          },
+          "docs": "Fetches the devices of the authenticated user's account."
+        },
+        {
+          "info": {
+            "name": "Fetches the components records of the authenticated user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/account/components",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches the components records of the authenticated user's account."
+        },
+        {
+          "info": {
+            "name": "Fetches resolved alerts of the authenticated user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/account/alerts/resolved",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "muted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "If the muted parameter is not provided, both muted and umuted alerts will be queried."
+        },
+        {
+          "info": {
+            "name": "Fetches open alerts of the authenticated user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/account/alerts/open",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "muted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "If the muted parameter is not provided, both muted and umuted alerts will be queried."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "/v3/device",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Sets the user defined fields of a device identified by the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://syrah-api.centrastage.net/api/v3/device/:deviceUid/udf",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "V3 enforces strict type validation: each UDF must match its configured type (STRING/BOOLEAN/NUMBER/DATE). Type mismatches are rejected. Set value to null to delete a UDF."
+        },
+        {
+          "info": {
+            "name": "Fetches data of the device identified by the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v3/device/:deviceUid",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches data of the device identified by the given device Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches data of the device(s) identified by the given MAC address in format: XXXXXXXXXXXX",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v3/device/macAddress/:macAddress",
+            "params": [
+              {
+                "name": "macAddress",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches data of the device(s) identified by the given MAC address in format: XXXXXXXXXXXX"
+        },
+        {
+          "info": {
+            "name": "Fetches data of the device identified by the given device Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v3/device/id/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches data of the device identified by the given device Id."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "/v2/user",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Resets the authenticated user's API access and secret keys.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://syrah-api.centrastage.net/api/v2/user/resetApiKeys"
+          },
+          "docs": "Resets the authenticated user's API access and secret keys."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "/v2/alert",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Alerts can no longer be un-muted, as of the 8.9.0 release.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://syrah-api.centrastage.net/api/v2/alert/:alertUid/unmute",
+            "params": [
+              {
+                "name": "alertUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Alerts can no longer be un-muted, as of the 8.9.0 release."
+        },
+        {
+          "info": {
+            "name": "Resolves the alert identified by the given alert Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://syrah-api.centrastage.net/api/v2/alert/:alertUid/resolve",
+            "params": [
+              {
+                "name": "alertUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resolves the alert identified by the given alert Uid."
+        },
+        {
+          "info": {
+            "name": "Alerts can no longer be muted, as of the 8.9.0 release.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://syrah-api.centrastage.net/api/v2/alert/:alertUid/mute",
+            "params": [
+              {
+                "name": "alertUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Alerts can no longer be muted, as of the 8.9.0 release."
+        },
+        {
+          "info": {
+            "name": "Fetches data of the alert identified by the given alert Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/alert/:alertUid",
+            "params": [
+              {
+                "name": "alertUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches data of the alert identified by the given alert Uid."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "/v3/site",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches the devices records of the site identified by the given site Uid with structured UDF format.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v3/site/:siteUid/devices",
+            "params": [
+              {
+                "name": "siteUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filterId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns device information with UDFs in structured format including type information and custom labels."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "/v3/account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches the devices of the authenticated user's account with structured UDF format.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v3/account/devices",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filterId",
+                "value": "",
+                "type": "query",
+                "description": "Optional. If applied, this filter exclusively determines the results."
+              },
+              {
+                "name": "hostname",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed."
+              },
+              {
+                "name": "deviceType",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed."
+              },
+              {
+                "name": "operatingSystem",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed."
+              },
+              {
+                "name": "siteName",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed."
+              }
+            ]
+          },
+          "docs": "Returns device information with UDFs in structured format including type information and custom labels."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "/v2/system",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches the system status (start date, status and version).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/system/status"
+          },
+          "docs": "An API access token is not necessary."
+        },
+        {
+          "info": {
+            "name": "Fetches the request rate status for the authenticated user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/system/request_rate"
+          },
+          "docs": "Fetches the request rate status for the authenticated user's account."
+        },
+        {
+          "info": {
+            "name": "Fetches the pagination configurations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/system/pagination"
+          },
+          "docs": "Fetches the pagination configurations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "/v2/job",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches data of the job identified by the given job Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/job/:jobUid",
+            "params": [
+              {
+                "name": "jobUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches data of the job identified by the given job Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches job results of the job identified by the job Uid for device identified by the device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/job/:jobUid/results/:deviceUid",
+            "params": [
+              {
+                "name": "jobUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches job results of the job identified by the job Uid for device identified by the device Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches data of the job's StdOut identified by the given job Uid and device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/job/:jobUid/results/:deviceUid/stdout",
+            "params": [
+              {
+                "name": "jobUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches data of the job's StdOut identified by the given job Uid and device Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches data of the job's StdErr identified by the given job Uid and device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/job/:jobUid/results/:deviceUid/stderr",
+            "params": [
+              {
+                "name": "jobUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches data of the job's StdErr identified by the given job Uid and device Uid."
+        },
+        {
+          "info": {
+            "name": "Fetches components of the job identified by the given job Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/job/:jobUid/components",
+            "params": [
+              {
+                "name": "jobUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches components of the job identified by the given job Uid."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "/v2/filter",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches the default device filters.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/filter/default-filters",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches the default device filters."
+        },
+        {
+          "info": {
+            "name": "Fetches the custom device filters for the user (using administrator role).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/filter/custom-filters",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches the custom device filters for the user (using administrator role)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "/v2/audit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches audit data of the printer identified the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/audit/printer/:deviceUid",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The device class must be of type \"printer\"."
+        },
+        {
+          "info": {
+            "name": "Fetches audit data of the ESXi host identified the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/audit/esxihost/:deviceUid",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The device class must be of type \"esxihost\"."
+        },
+        {
+          "info": {
+            "name": "Fetches audit data of the generic device identified the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/audit/device/:deviceUid",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The device class must be of type \"device\"."
+        },
+        {
+          "info": {
+            "name": "Fetches audited software of the generic device identified the given device Uid.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/audit/device/:deviceUid/software",
+            "params": [
+              {
+                "name": "deviceUid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "The device class must be of type \"device\"."
+        },
+        {
+          "info": {
+            "name": "Fetches audit data of the generic device(s) identified the given MAC address in format: XXXXXXXXXXXX",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/audit/device/macAddress/:macAddress",
+            "params": [
+              {
+                "name": "macAddress",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The device class must be of type \"device\"."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "/v2/activity-logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetches the activity logs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://syrah-api.centrastage.net/api/v2/activity-logs",
+            "params": [
+              {
+                "name": "size",
+                "value": "20",
+                "type": "query",
+                "description": "Specifies the number of records to be returned"
+              },
+              {
+                "name": "order",
+                "value": "asc",
+                "type": "query",
+                "description": "Specifies the order in which records should be returned based on their creation date"
+              },
+              {
+                "name": "searchAfter",
+                "value": "1662554037000,60761aa3-d03e-3d76-b75b-da28629a4103",
+                "type": "query",
+                "description": "Acts as a pointer to determine the starting point for returning records from the database. It is not advised to set this parameter manually. Instead, it is recommended to utilize the 'prevPage' and 'nextPage' URLs that are returned in the response where this parameter in already included."
+              },
+              {
+                "name": "page",
+                "value": "next",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "2022-12-21T10:15:30Z",
+                "type": "query",
+                "description": "Defines the UTC start date for fetching data. By default API returns logs from last 15 minutes. Format: yyyy-MM-ddTHH:mm:ssZ"
+              },
+              {
+                "name": "until",
+                "value": "2023-02-25T10:15:30Z",
+                "type": "query",
+                "description": "Defines the UTC end date for fetching data. Format: yyyy-MM-ddTHH:mm:ssZ"
+              },
+              {
+                "name": "entities",
+                "value": "device",
+                "type": "query",
+                "description": "Filters the returned activity logs based on their type. It can take multiple values separated by comma"
+              },
+              {
+                "name": "categories",
+                "value": "job,device",
+                "type": "query",
+                "description": "Filters the returned activity logs based on their category. It can take multiple values separated by comma"
+              },
+              {
+                "name": "actions",
+                "value": "deployment,note",
+                "type": "query",
+                "description": "Filters the returned activity logs based on their action. It can take multiple values separated by comma"
+              },
+              {
+                "name": "siteIds",
+                "value": "4,8",
+                "type": "query",
+                "description": "Filters the returned activity logs based on the site they were created in. It can take multiple values separated by comma"
+              },
+              {
+                "name": "userIds",
+                "value": "1,4",
+                "type": "query",
+                "description": "Filters the returned activity logs based on the user they are associated with. It can take multiple values separated by comma"
+              },
+              {
+                "name": "searchQuery",
+                "value": "data.filter_id : \"filterId\" AND device.hostname : \"hostname\"",
+                "type": "query",
+                "description": "Enter queries using single words, phrases, terms containing wildcards or boolean operators, fuzzy searches, grouped searches, or special characters. See <a href=\"https://rmm.datto.com/help/en/Content/3NEWUI/Analytics/ActivityLog.htm\">Activity Log</a> for more details."
+              }
+            ]
+          },
+          "docs": "Fetches the activity logs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
