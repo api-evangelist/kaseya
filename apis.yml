@@ -50,6 +50,12 @@ apis:
   - Ticketing
   - Service Desk
   - Billing
+  - Project
+  tags_raw:
+  - Professional Services Automation
+  - Ticketing
+  - Service Desk
+  - Billing
   - Projects
   properties:
   - type: OpenAPI
