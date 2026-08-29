@@ -12,6 +12,18 @@ description: 'Kaseya is a Miami-based provider of IT and security management sof
   and the Datto RMM API v2 (OpenAPI 3.1.0) — with the remainder documented in HTML help
   systems or behind tenant authentication.'
 url: https://raw.githubusercontent.com/api-evangelist/kaseya/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.kaseya.com/wp-content/uploads/2023/04/kaseya-logo.svg
 x-type: company
 x-source: harvest:secondary-market
@@ -16774,6 +16786,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/kaseya-capability-edges.yml
+  name: Kaseya Business Capability Map
 - type: Overlay
   url: overlays/kaseya-bms-overlay.yaml
 - type: Overlay
