@@ -1,0 +1,72 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Datto|Autotask PSA Rest Zone Information API Integration API
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+tags:
+- name: ZoneInformationApiIntegration
+paths:
+  /V1.0/ZoneInformation:
+    get:
+      tags:
+      - ZoneInformationApiIntegration
+      operationId: ZoneInformationApiIntegration_QueryZoneInformation
+      parameters:
+      - name: user
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZoneInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ZoneInformationResultModel'
+components:
+  schemas:
+    ZoneInformationResultModel:
+      type: object
+      properties:
+        zoneName:
+          type: string
+          readOnly: true
+        url:
+          type: string
+          readOnly: true
+        webUrl:
+          type: string
+          readOnly: true
+        ci:
+          format: int32
+          type: integer
+          readOnly: true

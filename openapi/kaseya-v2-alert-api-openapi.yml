@@ -1,0 +1,325 @@
+openapi: 3.2.0
+info:
+  title: Datto RMM /v2/alert API
+  description: Datto RMM (Remote Monitoring and Management) REST API
+  license:
+    name: '©Datto, Inc. - All rights reserved. '
+    url: http://www.datto.com/
+  version: 2.0.0 (Build 235_0add0e4d537431f30405d568ccb46b6d7af1f183)
+servers:
+- url: https://syrah-api.centrastage.net/api
+  description: Generated server url
+tags:
+- name: /v2/alert
+  description: Operations on alerts
+paths:
+  /v2/alert/{alertUid}/unmute:
+    post:
+      tags:
+      - /v2/alert
+      summary: Alerts can no longer be un-muted, as of the 8.9.0 release.
+      operationId: unmuteAlert
+      parameters:
+      - name: alertUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/alert/{alertUid}/unmute
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/alert/{alertUid}/unmute
+        '200':
+          description: OK
+      deprecated: true
+  /v2/alert/{alertUid}/resolve:
+    post:
+      tags:
+      - /v2/alert
+      summary: Resolves the alert identified by the given alert Uid.
+      operationId: resolveAlert
+      parameters:
+      - name: alertUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/alert/{alertUid}/resolve
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/alert/{alertUid}/resolve
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/alert/{alertUid}/resolve
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/alert/{alertUid}/resolve
+        '200':
+          description: OK
+  /v2/alert/{alertUid}/mute:
+    post:
+      tags:
+      - /v2/alert
+      summary: Alerts can no longer be muted, as of the 8.9.0 release.
+      operationId: muteAlert
+      parameters:
+      - name: alertUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/alert/{alertUid}/mute
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/alert/{alertUid}/mute
+        '200':
+          description: OK
+      deprecated: true
+  /v2/alert/{alertUid}:
+    get:
+      tags:
+      - /v2/alert
+      summary: Fetches data of the alert identified by the given alert Uid.
+      operationId: getAlert
+      parameters:
+      - name: alertUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/alert/{alertUid}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/alert/{alertUid}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/alert/{alertUid}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/alert/{alertUid}
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Alert data
+                properties:
+                  alertUid:
+                    type: string
+                  priority:
+                    type: string
+                    enum:
+                    - Critical
+                    - High
+                    - Moderate
+                    - Low
+                    - Information
+                    - Unknown
+                  diagnostics:
+                    type: string
+                  resolved:
+                    type: boolean
+                  resolvedBy:
+                    type: string
+                  resolvedOn:
+                    type: string
+                    format: date-time
+                  muted:
+                    type: boolean
+                  ticketNumber:
+                    type: string
+                  timestamp:
+                    type: string
+                    format: date-time
+                  alertMonitorInfo:
+                    $ref: '#/components/schemas/AlertMonitorInfo'
+                  alertContext:
+                    $ref: '#/components/schemas/AlertContext'
+                  alertSourceInfo:
+                    $ref: '#/components/schemas/AlertSourceInfo'
+                  responseActions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ResponseAction'
+                  autoresolveMins:
+                    type: integer
+                    format: int32
+components:
+  schemas:
+    AlertContext:
+      discriminator:
+        propertyName: '@class'
+      properties:
+        '@class':
+          type: string
+      required:
+      - '@class'
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
+    AlertMonitorInfo:
+      type: object
+      description: Alert monitor information
+      properties:
+        sendsEmails:
+          type: boolean
+        createsTicket:
+          type: boolean
+    ResponseAction:
+      type: object
+      properties:
+        actionTime:
+          type: string
+          format: date-time
+        actionType:
+          type: string
+          enum:
+          - EMAIL_SENT
+          - EMAIL_SEND_ERROR
+          - TICKET_PENDING
+          - TICKET_CREATED
+          - TICKET_CREATION_ERROR
+          - TICKET_CLOSED_CALL
+          - COMPONENT
+          - WEBHOOK_EXECUTED
+          - WEBHOOK_EXECUTION_ERROR
+        description:
+          type: string
+        actionReference:
+          type: string
+        actionReferenceInt:
+          type: string
+    AlertSourceInfo:
+      type: object
+      description: Alert source information data
+      properties:
+        deviceUid:
+          type: string
+        deviceName:
+          type: string
+        siteUid:
+          type: string
+        siteName:
+          type: string

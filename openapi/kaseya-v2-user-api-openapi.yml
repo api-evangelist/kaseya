@@ -1,0 +1,87 @@
+openapi: 3.2.0
+info:
+  title: Datto RMM /v2/user API
+  description: Datto RMM (Remote Monitoring and Management) REST API
+  license:
+    name: '©Datto, Inc. - All rights reserved. '
+    url: http://www.datto.com/
+  version: 2.0.0 (Build 235_0add0e4d537431f30405d568ccb46b6d7af1f183)
+servers:
+- url: https://syrah-api.centrastage.net/api
+  description: Generated server url
+tags:
+- name: /v2/user
+  description: Operations on users
+paths:
+  /v2/user/resetApiKeys:
+    post:
+      tags:
+      - /v2/user
+      summary: Resets the authenticated user's API access and secret keys.
+      operationId: resetApiKeys
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/user/resetApiKeys
+        '409':
+          description: Request aborted due to concurrent write access to this record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/user/resetApiKeys
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/user/resetApiKeys
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Authentication user keys
+                properties:
+                  apiAccessKey:
+                    type: string
+                  apiSecretKey:
+                    type: string
+                  userName:
+                    type: string
+components:
+  schemas:
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error

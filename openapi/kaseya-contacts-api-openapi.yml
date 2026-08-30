@@ -1,0 +1,2242 @@
+openapi: 3.2.0
+info:
+  title: Kaseya Contacts API
+  version: '1.0'
+  description: 'Operations tagged Contacts across 2 of this provider''s published API definitions: kaseya-autotask-psa-openapi-original.json, kaseya-bms-openapi-original.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+- url: https://api.bms.kaseya.com
+tags:
+- name: Contacts
+paths:
+  /V1.0/Contacts/query:
+    get:
+      tags:
+      - Contacts
+      operationId: Contacts_UrlParameterQuery
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ContactModel_Contact'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ContactModel_Contact'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Contacts
+      operationId: Contacts_Query
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ContactModel_Contact'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ContactModel_Contact'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Contacts/{id}:
+    get:
+      tags:
+      - Contacts
+      operationId: Contacts_QueryItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_ContactModel_Contact'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_ContactModel_Contact'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Contacts/query/count:
+    get:
+      tags:
+      - Contacts
+      operationId: Contacts_UrlParameterQueryCount
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Contacts
+      operationId: Contacts_QueryCount
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Contacts/entityInformation:
+    get:
+      tags:
+      - Contacts
+      operationId: Contacts_QueryEntityInformation
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Contacts/entityInformation/fields:
+    get:
+      tags:
+      - Contacts
+      operationId: Contacts_QueryFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Contacts/entityInformation/userDefinedFields:
+    get:
+      tags:
+      - Contacts
+      operationId: Contacts_QueryUserDefinedFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /v2/crm/contacts/summary:
+    post:
+      tags:
+      - Contacts
+      operationId: PostContactSummaryInfo
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ContactInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ContactInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ContactInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ContactSummaryOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactSummaryOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ContactSummaryOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    get:
+      tags:
+      - Contacts
+      operationId: GetContactsListSummary
+      parameters:
+      - name: Filter.AccountId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.AccountName
+        in: query
+        schema:
+          type: string
+      - name: Filter.FirstName
+        in: query
+        schema:
+          type: string
+      - name: Filter.LastName
+        in: query
+        schema:
+          type: string
+      - name: Filter.Phone
+        in: query
+        schema:
+          type: string
+      - name: Filter.Email
+        in: query
+        schema:
+          type: string
+      - name: Filter.CreatedOnFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.CreatedOnTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.ModifiedOnFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.ModifiedOnTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.IsActive
+        in: query
+        schema:
+          type: boolean
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ContactsSummaryOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsSummaryOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ContactsSummaryOutputDtoIEnumerablePagedResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/crm/contacts/summary/{id}:
+    get:
+      tags:
+      - Contacts
+      operationId: GetContactSummary
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ContactsSummaryOutputDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsSummaryOutputDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ContactsSummaryOutputDto'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/crm/contacts/{id}:
+    put:
+      tags:
+      - Contacts
+      operationId: PutContact
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ContactPutInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactPutInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ContactPutInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ContactPutInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ContactOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ContactOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    patch:
+      tags:
+      - Contacts
+      operationId: PatchContact
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ContactOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ContactOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/crm/contacts/search:
+    get:
+      tags:
+      - Contacts
+      operationId: GetContactsSearch
+      parameters:
+      - name: Filter.Ids
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: Filter.AccountIds
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: Filter.AccountName
+        in: query
+        schema:
+          type: string
+      - name: Filter.LocationId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.LocationName
+        in: query
+        schema:
+          type: string
+      - name: Filter.FirstName
+        in: query
+        schema:
+          type: string
+      - name: Filter.LastName
+        in: query
+        schema:
+          type: string
+      - name: Filter.EmailAddress
+        in: query
+        schema:
+          type: string
+      - name: Filter.JobTitle
+        in: query
+        schema:
+          type: string
+      - name: Filter.IsPoc
+        in: query
+        schema:
+          type: boolean
+      - name: Filter.HasClientPortalAccess
+        in: query
+        schema:
+          type: boolean
+      - name: Filter.IsActive
+        in: query
+        schema:
+          type: boolean
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ContactsSearchSelectOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsSearchSelectOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ContactsSearchSelectOutputDtoListResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/crm/contacts/{Id}:
+    delete:
+      tags:
+      - Contacts
+      operationId: DeleteContact
+      parameters:
+      - name: Id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/crm/contacts/{contactId}/emails:
+    patch:
+      tags:
+      - Contacts
+      operationId: PatchContactEmails
+      parameters:
+      - name: contactId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactEmailPatchOperationDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactEmailPatchOperationDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactEmailPatchOperationDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactEmailPatchOperationDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ContactEmailPatchResultDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactEmailPatchResultDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ContactEmailPatchResultDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/crm/contacts/{contactId}/phones:
+    patch:
+      tags:
+      - Contacts
+      operationId: PatchContactPhones
+      parameters:
+      - name: contactId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactPhonePatchOperationDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactPhonePatchOperationDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactPhonePatchOperationDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactPhonePatchOperationDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ContactPhonePatchResultDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactPhonePatchResultDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ContactPhonePatchResultDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+components:
+  schemas:
+    QueryActionResult_ContactModel_Contact:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    ParameterExpression:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        isByRef:
+          type: boolean
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    ItemQueryResultModel_ContactModel_Contact:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ContactModel'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    Expression_Func_Contact_Int64:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParameterExpression'
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        body:
+          $ref: '#/components/schemas/Expression'
+          readOnly: true
+        returnType:
+          type: string
+          readOnly: true
+        tailCall:
+          type: boolean
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    Expression:
+      type: object
+      properties:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    ContactModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        additionalAddressInformation:
+          type: string
+        addressLine:
+          type: string
+        addressLine1:
+          type: string
+        alternatePhone:
+          type: string
+        apiVendorID:
+          format: int32
+          type: integer
+        bulkEmailOptOutTime:
+          format: date-time
+          type: string
+        city:
+          type: string
+        companyID:
+          format: int32
+          type: integer
+        companyLocationID:
+          format: int32
+          type: integer
+        countryID:
+          format: int32
+          type: integer
+        createDate:
+          format: date-time
+          type: string
+        emailAddress:
+          type: string
+        emailAddress2:
+          type: string
+        emailAddress3:
+          type: string
+        extension:
+          type: string
+        externalID:
+          type: string
+        facebookUrl:
+          type: string
+        faxNumber:
+          type: string
+        firstName:
+          type: string
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        isActive:
+          format: int32
+          type: integer
+        isOptedOutFromBulkEmail:
+          type: boolean
+        lastActivityDate:
+          format: date-time
+          type: string
+        lastModifiedDate:
+          format: date-time
+          type: string
+        lastName:
+          type: string
+        linkedInUrl:
+          type: string
+        middleInitial:
+          type: string
+        mobilePhone:
+          type: string
+        namePrefix:
+          format: int32
+          type: integer
+        nameSuffix:
+          format: int32
+          type: integer
+        note:
+          type: string
+        receivesEmailNotifications:
+          type: boolean
+        phone:
+          type: string
+        primaryContact:
+          type: boolean
+        billingContact:
+          type: boolean
+        roomNumber:
+          type: string
+        solicitationOptOut:
+          type: boolean
+        solicitationOptOutTime:
+          format: date-time
+          type: string
+        state:
+          type: string
+        surveyOptOut:
+          type: boolean
+        title:
+          type: string
+        twitterUrl:
+          type: string
+        zipCode:
+          type: string
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_Contact_Int64'
+          readOnly: true
+        userDefinedFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinedField'
+    ContactsSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AccountId:
+          type: integer
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        LocationName:
+          type:
+          - string
+          - 'null'
+        FirstName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        JobTitle:
+          type:
+          - string
+          - 'null'
+        IsPoc:
+          type: boolean
+        IsActive:
+          type: boolean
+        EffectiveDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        IsBillable:
+          type: boolean
+        Emails:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactEmailOutputDto'
+        Phones:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactPhoneOutputDto'
+        CanRecieveInvoices:
+          type: boolean
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ContactOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AccountId:
+          type: integer
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type: integer
+          format: int32
+        LocationName:
+          type:
+          - string
+          - 'null'
+        FirstName:
+          type:
+          - string
+          - 'null'
+        MiddleName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        JobTitle:
+          type:
+          - string
+          - 'null'
+        Poc:
+          type:
+          - boolean
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        BillByContact:
+          type:
+          - boolean
+          - 'null'
+        EffectiveDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Phones:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactPhoneOutputDto'
+        Emails:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactEmailOutputDto'
+        RecieveInvoices:
+          type:
+          - boolean
+          - 'null'
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        ModifiedByName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ContactPhonePatchResultDto:
+      type: object
+      properties:
+        Added:
+          type: integer
+          format: int32
+        Updated:
+          type: integer
+          format: int32
+        Deleted:
+          type: integer
+          format: int32
+        Phones:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactPhoneOutputDto'
+      additionalProperties: false
+    PhoneInputDto:
+      type: object
+      properties:
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        PhoneTypeId:
+          type: integer
+          format: int32
+        IsDefault:
+          type: boolean
+      additionalProperties: false
+    OperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
+    Operation:
+      type: object
+      properties:
+        OperationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type:
+          - string
+          - 'null'
+        op:
+          type:
+          - string
+          - 'null'
+        from:
+          type:
+          - string
+          - 'null'
+        value: {}
+      additionalProperties: false
+    ContactPhoneOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Phone:
+          type:
+          - string
+          - 'null'
+        PhoneTypeId:
+          type: integer
+          format: int32
+        PhoneType:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+      additionalProperties: false
+    CustomFieldDataOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Data:
+          type:
+          - string
+          - 'null'
+        SettingsId:
+          type: integer
+          format: int32
+        CustomFieldType:
+          type: integer
+          format: int32
+        CustomFieldId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    CustomFieldDataInputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CustomFieldId:
+          type: integer
+          format: int32
+        Data:
+          type:
+          - string
+          - 'null'
+        SettingsId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    ContactEmailPatchResultDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ContactEmailPatchResultDto'
+      additionalProperties: false
+    ContactsSummaryOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactsSummaryOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ContactEmailPatchOperationDto:
+      type: object
+      properties:
+        Operation:
+          $ref: '#/components/schemas/RelatedItemOperationType'
+        NewEmailAddress:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsDefault:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    ContactPhonePatchOperationDto:
+      type: object
+      properties:
+        Operation:
+          $ref: '#/components/schemas/RelatedItemOperationType'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        NewPhoneNumber:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsDefault:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    ContactEmailPatchResultDto:
+      type: object
+      properties:
+        Added:
+          type: integer
+          format: int32
+        Updated:
+          type: integer
+          format: int32
+        Deleted:
+          type: integer
+          format: int32
+        Emails:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactEmailOutputDto'
+      additionalProperties: false
+    RelatedItemOperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    ContactPutInputDto:
+      type: object
+      properties:
+        AccountId:
+          type: integer
+          format: int32
+        LocationId:
+          type: integer
+          format: int32
+        FirstName:
+          type:
+          - string
+          - 'null'
+        MiddleName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        JobTitle:
+          type:
+          - string
+          - 'null'
+        Poc:
+          type: boolean
+        IsActive:
+          type: boolean
+        ReceiveInvoices:
+          type: boolean
+        BillByContact:
+          type: boolean
+        EffectiveDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    ContactSummaryOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ContactSummaryOutputDto'
+      additionalProperties: false
+    ContactPhonePatchResultDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ContactPhonePatchResultDto'
+      additionalProperties: false
+    ContactsSearchSelectOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactsSearchSelectOutputDto'
+      additionalProperties: false
+    ContactEmailOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        EmailTypeId:
+          type: integer
+          format: int32
+        EmailType:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+      additionalProperties: false
+    EmailInputDto:
+      type: object
+      properties:
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        EmailTypeId:
+          type: integer
+          format: int32
+        IsDefault:
+          type: boolean
+      additionalProperties: false
+    ContactOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ContactOutputDto'
+      additionalProperties: false
+    ContactSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        FirstName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type: integer
+          format: int32
+        LocationName:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        CustomFieldsData:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldDataOutputDto'
+      additionalProperties: false
+    ContactsSearchSelectOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        AccountId:
+          type: integer
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type: integer
+          format: int32
+        LocationName:
+          type:
+          - string
+          - 'null'
+        FirstName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        JobTitle:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        IsPoc:
+          type: boolean
+        IsActive:
+          type: boolean
+        HasClientPortalAccess:
+          type: boolean
+      additionalProperties: false
+    ContactInputDto:
+      type: object
+      properties:
+        FirstName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        LocationId:
+          type: integer
+          format: int32
+        Phones:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PhoneInputDto'
+        Emails:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/EmailInputDto'
+        CustomFieldsData:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldDataInputDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT
+x-refined-from:
+- kaseya-autotask-psa-openapi-original.json
+- kaseya-bms-openapi-original.json

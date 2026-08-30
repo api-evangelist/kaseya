@@ -1,0 +1,73 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 K1 Ticket Action API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: K1TicketAction
+paths:
+  /v2/kaseya-one/tickets/action/notifications:
+    post:
+      tags:
+      - K1TicketAction
+      operationId: PostK1TicketActionNotifications
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/K1TicketActionNotificationsDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/K1TicketActionNotificationsDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/K1TicketActionNotificationsDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/K1TicketActionNotificationsDto'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    K1TicketActionNotificationsDto:
+      type: object
+      properties:
+        KaseyaOneOrganizationId:
+          type:
+          - string
+          - 'null'
+        Id:
+          type:
+          - string
+          - 'null'
+        ActionEventType:
+          type:
+          - string
+          - 'null'
+        Event: {}
+        EventType:
+          type:
+          - string
+          - 'null'
+        AppClientIdentifier:
+          type:
+          - string
+          - 'null'
+        TargetProducts:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

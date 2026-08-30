@@ -1,0 +1,766 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Teams Channel API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: TeamsChannel
+paths:
+  /v2/admin/teamschannel/search:
+    post:
+      tags:
+      - TeamsChannel
+      operationId: GetTeamsChannelsList
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelsListInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelsListInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelsListInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelsListInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelListOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelListOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelListOutputDtoListResponse'
+  /v2/admin/teamschannel/{id}:
+    get:
+      tags:
+      - TeamsChannel
+      operationId: GetTeamsChannel
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelOutputDtoResponse'
+    put:
+      tags:
+      - TeamsChannel
+      operationId: PutTeamsChannel
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelOutputDtoResponse'
+    delete:
+      tags:
+      - TeamsChannel
+      operationId: DeleteTeamsChannel
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+  /v2/admin/teamschannel:
+    post:
+      tags:
+      - TeamsChannel
+      operationId: PostTeamsChannel
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelOutputDtoResponse'
+    patch:
+      tags:
+      - TeamsChannel
+      operationId: PatchTeamsChannel
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelBatchInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelBatchInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelBatchInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelBatchInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+    delete:
+      tags:
+      - TeamsChannel
+      operationId: DeleteTeamsChannels
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Int32BatchIdsDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Int32BatchIdsDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Int32BatchIdsDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Int32BatchIdsDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+  /v2/admin/teamschannel/lookup:
+    get:
+      tags:
+      - TeamsChannel
+      operationId: GetTeamsChannelLookup
+      parameters:
+      - name: Ids
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: Name
+        in: query
+        schema:
+          type: string
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelLookupOutputDtoListResponse'
+  /v2/admin/teamschannel/status:
+    post:
+      tags:
+      - TeamsChannel
+      operationId: GetTeamsChannelStatus
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelStatusInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelStatusInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelStatusInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelStatusInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelStatusOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelStatusOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelStatusOutputDtoResponse'
+  /v2/admin/teamschannel/{teamschannelid}/logs/search:
+    post:
+      tags:
+      - TeamsChannel
+      operationId: GetTeamsChannelsActivityLogsList
+      parameters:
+      - name: teamschannelid
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelsActivityLogsListInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelsActivityLogsListInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelsActivityLogsListInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TeamsChannelsActivityLogsListInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelsActivityLogsListOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelsActivityLogsListOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TeamsChannelsActivityLogsListOutputDtoListResponse'
+components:
+  schemas:
+    TeamsChannelListOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TeamsChannelListOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    TeamsChannelLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TeamsChannelsActivityLogsListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/TeamsChannelsActivityLogsFilterDto'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TeamsChannelBatchInputDto:
+      type: object
+      properties:
+        ModuleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        IsEnabled:
+          type: boolean
+      additionalProperties: false
+    TeamsChannelStatusInputDto:
+      type: object
+      properties:
+        WebhookUrl:
+          type:
+          - string
+          - 'null'
+        TeamsChannelId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    TeamsChannelStatusOutputDto:
+      type: object
+      properties:
+        IsConnected:
+          type: boolean
+      additionalProperties: false
+    TeamsChannelInputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        FailureNotificationEmail:
+          type:
+          - string
+          - 'null'
+        WebhookUrl:
+          type:
+          - string
+          - 'null'
+        IsEnabled:
+          type: boolean
+      additionalProperties: false
+    TeamsChannelStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TeamsChannelStatusOutputDto'
+      additionalProperties: false
+    TeamsChannelsActivityLogsListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        TeamsChannelId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsSuccess:
+          type:
+          - boolean
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        WorkflowId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        WorkflowName:
+          type:
+          - string
+          - 'null'
+        TicketId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    TeamsChannelsListFilter:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        IsEnabled:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    TeamsChannelsActivityLogsFilterDto:
+      type: object
+      properties:
+        IsSuccess:
+          type:
+          - boolean
+          - 'null'
+        CreatedOnFromDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnToDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        WorkflowName:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TeamsChannelOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        FailureNotificationEmail:
+          type:
+          - string
+          - 'null'
+        WebhookUrl:
+          type:
+          - string
+          - 'null'
+        IsEnabled:
+          type: boolean
+        WorkflowsAssigned:
+          type: integer
+          format: int32
+        Alerts:
+          type: integer
+          format: int32
+      additionalProperties: false
+    TeamsChannelOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TeamsChannelOutputDto'
+      additionalProperties: false
+    TeamsChannelLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TeamsChannelLookupOutputDto'
+      additionalProperties: false
+    TeamsChannelListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        FailureNotificationEmail:
+          type:
+          - string
+          - 'null'
+        FailureNotificationCount:
+          type:
+          - string
+          - 'null'
+        WebhookUrl:
+          type:
+          - string
+          - 'null'
+        IsEnabled:
+          type: boolean
+        WorkflowsAssigned:
+          type: integer
+          format: int32
+        Alerts:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Int32BatchIdsDto:
+      type: object
+      properties:
+        ModuleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    TeamsChannelsListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/TeamsChannelsListFilter'
+      additionalProperties: false
+    TeamsChannelsActivityLogsListOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TeamsChannelsActivityLogsListOutputDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

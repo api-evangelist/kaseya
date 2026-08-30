@@ -1,0 +1,100 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Scheduler Jobs API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: SchedulerJobs
+paths:
+  /v2/system/schedulerJobs/{jobId}/status:
+    get:
+      tags:
+      - SchedulerJobs
+      operationId: GetSchedulerJobStatus
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SchedulerJobOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchedulerJobOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SchedulerJobOutputDtoResponse'
+components:
+  schemas:
+    SchedulerJobOutputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Reason:
+          type:
+          - string
+          - 'null'
+        Data:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+      additionalProperties: false
+    SchedulerJobOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/SchedulerJobOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,113 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Statuses API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Statuses
+paths:
+  /v2/system/statuses/lookup:
+    get:
+      tags:
+      - Statuses
+      operationId: GetStatusLookups
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StatusLookupOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusLookupOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StatusLookupOutputDtoIEnumerableResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    StatusLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        FontColor:
+          type:
+          - string
+          - 'null'
+        Color:
+          type:
+          - string
+          - 'null'
+        StatusOrder:
+          type: integer
+          format: int32
+        TypeId:
+          type: integer
+          format: int32
+        IsSystemStatus:
+          type: integer
+          format: int32
+        SlaEventId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    StatusLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/StatusLookupOutputDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

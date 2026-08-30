@@ -1,0 +1,852 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Datto|Autotask PSA Rest Purchase Orders API
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+tags:
+- name: PurchaseOrders
+paths:
+  /V1.0/PurchaseOrders/query:
+    get:
+      tags:
+      - PurchaseOrders
+      operationId: PurchaseOrders_UrlParameterQuery
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_PurchaseOrderModel_PurchaseOrder'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_PurchaseOrderModel_PurchaseOrder'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - PurchaseOrders
+      operationId: PurchaseOrders_Query
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_PurchaseOrderModel_PurchaseOrder'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_PurchaseOrderModel_PurchaseOrder'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+  /V1.0/PurchaseOrders/{id}:
+    get:
+      tags:
+      - PurchaseOrders
+      operationId: PurchaseOrders_QueryItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_PurchaseOrderModel_PurchaseOrder'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_PurchaseOrderModel_PurchaseOrder'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/PurchaseOrders/query/count:
+    get:
+      tags:
+      - PurchaseOrders
+      operationId: PurchaseOrders_UrlParameterQueryCount
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - PurchaseOrders
+      operationId: PurchaseOrders_QueryCount
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+  /V1.0/PurchaseOrders:
+    put:
+      tags:
+      - PurchaseOrders
+      operationId: PurchaseOrders_UpdateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseOrderModel'
+        required: true
+    post:
+      tags:
+      - PurchaseOrders
+      operationId: PurchaseOrders_CreateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseOrderModel'
+        required: true
+    patch:
+      tags:
+      - PurchaseOrders
+      operationId: PurchaseOrders_PatchEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseOrderModel'
+        required: true
+  /V1.0/PurchaseOrders/entityInformation:
+    get:
+      tags:
+      - PurchaseOrders
+      operationId: PurchaseOrders_QueryEntityInformation
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/PurchaseOrders/entityInformation/fields:
+    get:
+      tags:
+      - PurchaseOrders
+      operationId: PurchaseOrders_QueryFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/PurchaseOrders/entityInformation/userDefinedFields:
+    get:
+      tags:
+      - PurchaseOrders
+      operationId: PurchaseOrders_QueryUserDefinedFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+components:
+  schemas:
+    QueryActionResult_PurchaseOrderModel_PurchaseOrder:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseOrderModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    ItemQueryResultModel_PurchaseOrderModel_PurchaseOrder:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/PurchaseOrderModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    PurchaseOrderModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        cancelDateTime:
+          format: date-time
+          type: string
+        createDateTime:
+          format: date-time
+          type: string
+        creatorResourceID:
+          format: int32
+          type: integer
+        externalPONumber:
+          type: string
+        fax:
+          type: string
+        freight:
+          format: double
+          type: number
+        generalMemo:
+          type: string
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        internalCurrencyFreight:
+          format: double
+          type: number
+        latestEstimatedArrivalDate:
+          format: date-time
+          type: string
+        paymentTerm:
+          format: int32
+          type: integer
+        phone:
+          type: string
+        purchaseForCompanyID:
+          format: int32
+          type: integer
+        purchaseOrderNumber:
+          type: string
+        purchaseOrderTemplateID:
+          format: int32
+          type: integer
+        shippingDate:
+          format: date-time
+          type: string
+        shippingType:
+          format: int32
+          type: integer
+        shipToAddress1:
+          type: string
+        shipToAddress2:
+          type: string
+        shipToCity:
+          type: string
+        shipToName:
+          type: string
+        shipToPostalCode:
+          type: string
+        shipToState:
+          type: string
+        showEachTaxInGroup:
+          type: boolean
+        showTaxCategory:
+          type: boolean
+        status:
+          format: int32
+          type: integer
+        submitDateTime:
+          format: date-time
+          type: string
+        taxRegionID:
+          format: int32
+          type: integer
+        useItemDescriptionsFrom:
+          format: int32
+          type: integer
+        vendorID:
+          format: int32
+          type: integer
+        vendorInvoiceNumber:
+          type: string
+        additionalVendorInvoiceNumbers:
+          type: string
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    Object:
+      type: object
+      properties: {}
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string

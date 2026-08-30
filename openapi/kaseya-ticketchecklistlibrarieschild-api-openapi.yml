@@ -1,0 +1,699 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Datto|Autotask PSA Rest Ticket Checklist Libraries Child API
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+tags:
+- name: TicketChecklistLibrariesChild
+paths:
+  /V1.0/Tickets/{parentId}/ChecklistLibraries:
+    post:
+      tags:
+      - TicketChecklistLibrariesChild
+      operationId: TicketChecklistLibrariesChild_CreateEntity
+      parameters:
+      - name: parentId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketChecklistLibraryModel'
+        required: true
+  /V1.0/Tickets/{parentId}/ChecklistLibraries/entityInformation:
+    get:
+      tags:
+      - TicketChecklistLibrariesChild
+      operationId: TicketChecklistLibrariesChild_QueryEntityInformation
+      parameters:
+      - name: parentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/Tickets/{parentId}/ChecklistLibraries/entityInformation/fields:
+    get:
+      tags:
+      - TicketChecklistLibrariesChild
+      operationId: TicketChecklistLibrariesChild_QueryFieldDefinitions
+      parameters:
+      - name: parentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/Tickets/{parentId}/ChecklistLibraries/entityInformation/userDefinedFields:
+    get:
+      tags:
+      - TicketChecklistLibrariesChild
+      operationId: TicketChecklistLibrariesChild_QueryUserDefinedFieldDefinitions
+      parameters:
+      - name: parentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+components:
+  schemas:
+    ParameterExpression:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        isByRef:
+          type: boolean
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Expression:
+      type: object
+      properties:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    Expression_Func_TicketChecklistLibrary_Int64:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParameterExpression'
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        body:
+          $ref: '#/components/schemas/Expression'
+          readOnly: true
+        returnType:
+          type: string
+          readOnly: true
+        tailCall:
+          type: boolean
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    TicketChecklistLibraryModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        checklistLibraryID:
+          format: int32
+          type: integer
+        ticketID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_TicketChecklistLibrary_Int64'
+          readOnly: true
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'

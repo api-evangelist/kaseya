@@ -1,0 +1,238 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Servicedesk API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Servicedesk
+paths:
+  /v2/servicedesk/tickets/{ticketId}/ticketresolution/generate:
+    post:
+      parameters:
+      - name: ticketId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: doSaveResult
+        in: query
+        schema:
+          type: boolean
+          default: false
+      responses: {}
+      deprecated: true
+      tags:
+      - Servicedesk
+  /v2/servicedesk/tickets/{ticketId}/ticketresolution:
+    post:
+      parameters:
+      - name: ticketId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TicketSmartResolutionSummaryPostInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketSmartResolutionSummaryPostInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TicketSmartResolutionSummaryPostInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TicketSmartResolutionSummaryPostInputDto'
+      responses: {}
+      deprecated: true
+      tags:
+      - Servicedesk
+    put:
+      parameters:
+      - name: ticketId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TicketSmartResolutionSummaryPutInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketSmartResolutionSummaryPutInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TicketSmartResolutionSummaryPutInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TicketSmartResolutionSummaryPutInputDto'
+      responses: {}
+      deprecated: true
+      tags:
+      - Servicedesk
+    get:
+      parameters:
+      - name: ticketId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses: {}
+      deprecated: true
+      tags:
+      - Servicedesk
+  /v2/servicedesk/tickets/{ticketId}/ticketresolution/refine:
+    post:
+      parameters:
+      - name: ticketId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TicketRephraseNoteInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketRephraseNoteInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TicketRephraseNoteInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TicketRephraseNoteInputDto'
+      responses: {}
+      deprecated: true
+      tags:
+      - Servicedesk
+  /v2/servicedesk/tickets/{ticketId}/ticketsummary/generate:
+    post:
+      parameters:
+      - name: ticketId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses: {}
+      deprecated: true
+      tags:
+      - Servicedesk
+  /v2/servicedesk/tickets/{ticketId}/ticketsummary:
+    put:
+      parameters:
+      - name: ticketId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TicketSmartSummaryPutInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketSmartSummaryPutInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TicketSmartSummaryPutInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TicketSmartSummaryPutInputDto'
+      responses: {}
+      deprecated: true
+      tags:
+      - Servicedesk
+    get:
+      parameters:
+      - name: ticketId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses: {}
+      deprecated: true
+      tags:
+      - Servicedesk
+  /v2/servicedesk/tickets/notes/rephrase:
+    post:
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TicketRephraseNoteInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketRephraseNoteInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TicketRephraseNoteInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TicketRephraseNoteInputDto'
+      responses: {}
+      deprecated: true
+      tags:
+      - Servicedesk
+components:
+  schemas:
+    TicketRephraseNoteInputDto:
+      required:
+      - Details
+      type: object
+      properties:
+        Details:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    TicketSmartResolutionSummaryPutInputDto:
+      type: object
+      properties:
+        Summary:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketSmartSummaryPutInputDto:
+      type: object
+      properties:
+        Summary:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketSmartResolutionSummaryPostInputDto:
+      type: object
+      properties:
+        Summary:
+          type:
+          - string
+          - 'null'
+        DurationInMilliseconds:
+          type: integer
+          format: int32
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,158 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Qbd Integration API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: QbdIntegration
+paths:
+  /v2/integration/qbd/jobstatus/{jobId}:
+    get:
+      tags:
+      - QbdIntegration
+      operationId: GetJobInfo
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobInfoDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobInfoDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobInfoDtoResponse'
+  /v2/integration/qbd/entitymappings:
+    post:
+      tags:
+      - QbdIntegration
+      operationId: PostEntityMappings
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbEntityMappingInputDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbEntityMappingInputDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbEntityMappingInputDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbEntityMappingInputDto'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    IntegrationJobInfoDto:
+      type: object
+      properties:
+        State:
+          type:
+          - string
+          - 'null'
+        JobLogs:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IntegrationJobLogDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbEntityMappingInputDto:
+      type: object
+      properties:
+        IntegrationEntityType:
+          type: integer
+          format: int32
+        InternalEntityId:
+          type: integer
+          format: int32
+        ExternalEntityId:
+          type:
+          - string
+          - 'null'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationJobInfoDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/IntegrationJobInfoDto'
+      additionalProperties: false
+    IntegrationJobLogDto:
+      type: object
+      properties:
+        Message:
+          type:
+          - string
+          - 'null'
+        Code:
+          type:
+          - string
+          - 'null'
+        Date:
+          type: string
+          format: date-time
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

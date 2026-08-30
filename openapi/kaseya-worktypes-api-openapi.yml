@@ -1,0 +1,93 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Work Types API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: WorkTypes
+paths:
+  /v2/system/worktypes/lookup:
+    get:
+      tags:
+      - WorkTypes
+      operationId: GetWorkTypeLookups
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WorkTypeLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkTypeLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WorkTypeLookupOutputDtoListResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    WorkTypeLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WorkTypeLookupOutputDto'
+      additionalProperties: false
+    WorkTypeLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+        IsActive:
+          type: boolean
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

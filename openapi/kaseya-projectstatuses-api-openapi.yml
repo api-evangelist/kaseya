@@ -1,0 +1,452 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Project Statuses API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: ProjectStatuses
+paths:
+  /v2/project/statuses/search:
+    post:
+      tags:
+      - ProjectStatuses
+      operationId: GetProjectStatusesList
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatusesListInpuDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatusesListInpuDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatusesListInpuDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatusesListInpuDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusesListOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusesListOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusesListOutputDtoIEnumerablePagedResponse'
+  /v2/project/statuses/{id}:
+    get:
+      tags:
+      - ProjectStatuses
+      operationId: GetProjectStatus
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusOutputDtoResponse'
+    delete:
+      tags:
+      - ProjectStatuses
+      operationId: DeleteProjectStatus
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+    put:
+      tags:
+      - ProjectStatuses
+      operationId: PutProjectStatus
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatusInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatusInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatusInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatusInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusOutputDtoResponse'
+  /v2/project/statuses:
+    post:
+      tags:
+      - ProjectStatuses
+      operationId: PostProjectStatus
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatusInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatusInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatusInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatusInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusOutputDtoResponse'
+  /v2/project/statuses/lookup:
+    get:
+      tags:
+      - ProjectStatuses
+      operationId: GetProjectStatusesLookup
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusesLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusesLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatusesLookupOutputDtoListResponse'
+  /v2/project/statuses/{id}/reorder/{order}:
+    put:
+      tags:
+      - ProjectStatuses
+      operationId: PutProjectStatusOrder
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: order
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    ProjectStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ProjectStatusOutputDto'
+      additionalProperties: false
+    ProjectStatusesListOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProjectStatusesListOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProjectStatusesListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsSystem:
+          type: boolean
+        IsDefault:
+          type: boolean
+        IsActive:
+          type: boolean
+        StageStatusId:
+          type: integer
+          format: int32
+        StageStatusName:
+          type:
+          - string
+          - 'null'
+        Order:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ColorId:
+          type: integer
+          format: int32
+        ColorName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProjectStatusesLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProjectStatusesLookupOutputDto'
+      additionalProperties: false
+    ProjectStatusesLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        IsDefault:
+          type: boolean
+        StageStatusId:
+          type: integer
+          format: int32
+        ColorId:
+          type: integer
+          format: int32
+        ColorName:
+          type:
+          - string
+          - 'null'
+        Order:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ProjectStatusInputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+        IsActive:
+          type: boolean
+        StageStatusId:
+          type: integer
+          format: int32
+        Order:
+          type: integer
+          format: int32
+        ColorId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProjectStatusOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsSystem:
+          type: boolean
+        IsDefault:
+          type: boolean
+        IsActive:
+          type: boolean
+        StageStatusId:
+          type: integer
+          format: int32
+        StageStatusName:
+          type:
+          - string
+          - 'null'
+        Order:
+          type: integer
+          format: int32
+        ColorId:
+          type: integer
+          format: int32
+        ColorName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProjectStatusesListInpuDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/ProjectStatusesListFilterDto'
+      additionalProperties: false
+    ProjectStatusesListFilterDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        IsSystem:
+          type:
+          - boolean
+          - 'null'
+        IsDefault:
+          type:
+          - boolean
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

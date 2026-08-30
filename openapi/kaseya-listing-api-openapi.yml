@@ -1,0 +1,254 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Listing API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Listing
+paths:
+  /v2/listing/searchcolumns/{moduleId}:
+    get:
+      tags:
+      - Listing
+      operationId: GetListingSearchColumns
+      parameters:
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ListingSearchOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingSearchOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ListingSearchOutputDtoIEnumerableResponse'
+  /v2/listing/searchcolumns/{searchColumnId}/values:
+    get:
+      tags:
+      - Listing
+      operationId: GetSearchComboItems
+      parameters:
+      - name: searchColumnId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SearchComboItemOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchComboItemOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SearchComboItemOutputDtoIEnumerableResponse'
+  /v2/listing/listingcolumns/{moduleId}:
+    get:
+      tags:
+      - Listing
+      operationId: GetListingColumns
+      parameters:
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ListingColumnOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingColumnOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ListingColumnOutputDtoIEnumerableResponse'
+components:
+  schemas:
+    ListingSearchOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ListingSearchOutputDto'
+      additionalProperties: false
+    ListingColumnOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ListingColumnOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    DataType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
+    SearchComboItemOutputDto:
+      type: object
+      properties:
+        SearchValue:
+          type:
+          - string
+          - 'null'
+        SearchText:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SearchComboItemOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SearchComboItemOutputDto'
+      additionalProperties: false
+    ListingColumnOutputDto:
+      type: object
+      properties:
+        ListingColumnId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CustomFieldId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Label:
+          type:
+          - string
+          - 'null'
+        DataType:
+          $ref: '#/components/schemas/DataType'
+        IsHidden:
+          type: boolean
+        IsDefault:
+          type: boolean
+        Order:
+          type: integer
+          format: int32
+        Width:
+          type: number
+          format: double
+      additionalProperties: false
+    ListingSearchOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Label:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+        ControlType:
+          type:
+          - string
+          - 'null'
+        Operator:
+          type:
+          - string
+          - 'null'
+        SearchOrder:
+          type: integer
+          format: int32
+        IsSearchById:
+          type: boolean
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

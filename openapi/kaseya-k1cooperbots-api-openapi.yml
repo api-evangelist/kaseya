@@ -1,0 +1,342 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 K1 Cooper Bots API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: K1CooperBots
+paths:
+  /v2/kaseya-one/worktypes/lookup:
+    post:
+      tags:
+      - K1CooperBots
+      operationId: GetWorkTypesLookup
+      parameters:
+      - name: skipToken
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/K1LookupInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/K1LookupInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/K1LookupInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/K1LookupInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputResponseDto'
+  /v2/kaseya-one/worktypes/lookup/{id}:
+    get:
+      tags:
+      - K1CooperBots
+      operationId: GetWorkTypeLookup
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputDto'
+  /v2/kaseya-one/resources/lookup:
+    post:
+      tags:
+      - K1CooperBots
+      operationId: GetK1ResourcesLookup
+      parameters:
+      - name: skipToken
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/K1LookupInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/K1LookupInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/K1LookupInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/K1LookupInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputResponseDto'
+  /v2/kaseya-one/resources/lookup/{id}:
+    get:
+      tags:
+      - K1CooperBots
+      operationId: GetK1ResourceLookup
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputDto'
+  /v2/kaseya-one/resources/roles/lookup:
+    post:
+      tags:
+      - K1CooperBots
+      operationId: GetK1RolesLookup
+      parameters:
+      - name: skipToken
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/K1RolesLookupInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/K1RolesLookupInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/K1RolesLookupInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/K1RolesLookupInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputResponseDto'
+  /v2/kaseya-one/resources/roles/lookup/{id}:
+    get:
+      tags:
+      - K1CooperBots
+      operationId: GetK1RoleLookup
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputDto'
+  /v2/kaseya-one/tickets/statuses/lookup:
+    post:
+      tags:
+      - K1CooperBots
+      operationId: GetK1TicketStatusesLookup
+      parameters:
+      - name: skipToken
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/K1LookupInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/K1LookupInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/K1LookupInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/K1LookupInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputResponseDto'
+  /v2/kaseya-one/tickets/statuses/lookup/{id}:
+    get:
+      tags:
+      - K1CooperBots
+      operationId: GetK1TicketStatusesLookup
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1LookupOutputDto'
+components:
+  schemas:
+    K1SearchCriteriaDto:
+      type: object
+      properties:
+        term:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1RolesLookupInputDto:
+      type: object
+      properties:
+        InstanceId:
+          type:
+          - string
+          - 'null'
+        KaseyaOneOrganizationId:
+          type:
+          - string
+          - 'null'
+        search:
+          $ref: '#/components/schemas/K1SearchCriteriaDto'
+        TimeSpentBy:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1LookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Value:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1LookupInputDto:
+      type: object
+      properties:
+        InstanceId:
+          type:
+          - string
+          - 'null'
+        KaseyaOneOrganizationId:
+          type:
+          - string
+          - 'null'
+        search:
+          $ref: '#/components/schemas/K1SearchCriteriaDto'
+      additionalProperties: false
+    K1LookupOutputResponseDto:
+      type: object
+      properties:
+        Value:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1LookupOutputDto'
+        Next_link:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

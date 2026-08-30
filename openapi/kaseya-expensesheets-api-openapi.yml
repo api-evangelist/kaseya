@@ -1,0 +1,185 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Expense Sheets API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: ExpenseSheets
+paths:
+  /v2/my/expensesheets/lookup:
+    get:
+      tags:
+      - ExpenseSheets
+      operationId: GetExpenseSheetsLookups
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ExpenseSheetLookupDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExpenseSheetLookupDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ExpenseSheetLookupDtoListResponse'
+  /v2/my/expensesheets:
+    post:
+      tags:
+      - ExpenseSheets
+      operationId: PostExpenseSheet
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ExpenseSheetPostInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExpenseSheetPostInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ExpenseSheetPostInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ExpenseSheetPostInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ExpenseSheetOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExpenseSheetOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ExpenseSheetOutputDtoResponse'
+components:
+  schemas:
+    ExpenseSheetOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ExpenseSheetOutputDto'
+      additionalProperties: false
+    ExpenseSheetPostInputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        UserId:
+          type: integer
+          format: int32
+        StatusId:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Notes:
+          type:
+          - string
+          - 'null'
+        EndPeriod:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ExpenseSheetLookupDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ExpenseSheetLookupDto'
+      additionalProperties: false
+    ExpenseSheetLookupDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ExpenseSheetOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        UserId:
+          type: integer
+          format: int32
+        StatusId:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Notes:
+          type:
+          - string
+          - 'null'
+        EndPeriod:
+          type: string
+          format: date-time
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

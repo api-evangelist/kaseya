@@ -1,0 +1,385 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Rmm API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Rmm
+paths:
+  /v2/rmm/{integrationType}:
+    get:
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses: {}
+      deprecated: true
+      tags:
+      - Rmm
+    post:
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/IntegrationSettingDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationSettingDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationSettingDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/IntegrationSettingDto'
+      responses: {}
+      deprecated: true
+      tags:
+      - Rmm
+    put:
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/IntegrationSettingDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationSettingDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationSettingDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/IntegrationSettingDto'
+      responses: {}
+      deprecated: true
+      tags:
+      - Rmm
+    patch:
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+      responses: {}
+      deprecated: true
+      tags:
+      - Rmm
+  /v2/rmm/{integrationType}/mappings/{entityType}:
+    get:
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: entityType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Filter.ExternalIds
+        in: query
+        schema:
+          type: string
+      - name: Filter.PsaIds
+        in: query
+        schema:
+          type: string
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses: {}
+      deprecated: true
+      tags:
+      - Rmm
+    post:
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: entityType
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ImportEntityMappingInputDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ImportEntityMappingInputDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ImportEntityMappingInputDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ImportEntityMappingInputDto'
+      responses: {}
+      deprecated: true
+      tags:
+      - Rmm
+    delete:
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: entityType
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DeleteEntityMappingInputDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DeleteEntityMappingInputDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DeleteEntityMappingInputDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DeleteEntityMappingInputDto'
+      responses: {}
+      deprecated: true
+      tags:
+      - Rmm
+  /v2/rmm/{integrationType}/mappings/status/{jobId}:
+    get:
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses: {}
+      deprecated: true
+      tags:
+      - Rmm
+components:
+  schemas:
+    DefaultOptions:
+      type: object
+      properties:
+        QueueId:
+          type: integer
+          format: int32
+        PriorityId:
+          type: integer
+          format: int32
+        StatusId:
+          type: integer
+          format: int32
+        TicketSourceId:
+          type: integer
+          format: int32
+        TicketTypeId:
+          type: integer
+          format: int32
+        TicketNoteTypeId:
+          type: integer
+          format: int32
+        ResolutionStatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ReopenStatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    OperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
+    DeleteEntityMappingInputDto:
+      type: object
+      properties:
+        ExternalId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Operation:
+      type: object
+      properties:
+        OperationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type:
+          - string
+          - 'null'
+        op:
+          type:
+          - string
+          - 'null'
+        from:
+          type:
+          - string
+          - 'null'
+        value: {}
+      additionalProperties: false
+    IntegrationSettingDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        IsEnabled:
+          type: boolean
+        Username:
+          type:
+          - string
+          - 'null'
+        PasswordOrToken:
+          type:
+          - string
+          - 'null'
+        TargetUrl:
+          type:
+          - string
+          - 'null'
+        UseAccessToken:
+          type: boolean
+        IsAutoAccountPushEnabled:
+          type: boolean
+        IsAssetNightlySyncEnabled:
+          type: boolean
+        IsParentModeConfigEnabled:
+          type: boolean
+        ParentModeRootOrg:
+          type:
+          - string
+          - 'null'
+        RemoteControl:
+          $ref: '#/components/schemas/RemoteControl'
+        DefaultOptions:
+          $ref: '#/components/schemas/DefaultOptions'
+      additionalProperties: false
+    ImportEntityMappingInputDto:
+      type: object
+      properties:
+        ExternalId:
+          type:
+          - string
+          - 'null'
+        PsaId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    RemoteControl:
+      type: object
+      properties:
+        IsEnabled:
+          type: boolean
+        ClientId:
+          type:
+          - string
+          - 'null'
+        ClientSecret:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

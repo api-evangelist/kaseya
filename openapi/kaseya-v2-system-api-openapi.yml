@@ -1,0 +1,232 @@
+openapi: 3.2.0
+info:
+  title: Datto RMM /v2/system API
+  description: Datto RMM (Remote Monitoring and Management) REST API
+  license:
+    name: '©Datto, Inc. - All rights reserved. '
+    url: http://www.datto.com/
+  version: 2.0.0 (Build 235_0add0e4d537431f30405d568ccb46b6d7af1f183)
+servers:
+- url: https://syrah-api.centrastage.net/api
+  description: Generated server url
+tags:
+- name: /v2/system
+  description: RMM API System operations
+paths:
+  /v2/system/status:
+    get:
+      tags:
+      - /v2/system
+      summary: Fetches the system status (start date, status and version).
+      description: An API access token is not necessary.
+      operationId: getStatus
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/system/status
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/system/status
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+  /v2/system/request_rate:
+    get:
+      tags:
+      - /v2/system
+      summary: Fetches the request rate status for the authenticated user's account.
+      operationId: get
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/system/request_rate
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/system/request_rate
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/system/request_rate
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/system/request_rate
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  slidingTimeWindowSizeSeconds:
+                    type: integer
+                    format: int64
+                  accountUid:
+                    type: string
+                  accountCount:
+                    type: integer
+                    format: int64
+                  accountRateLimit:
+                    type: integer
+                    format: int64
+                  accountCutOffRatio:
+                    type: number
+                    format: float
+                  accountWriteRateLimit:
+                    type: integer
+                    format: int32
+                  accountWriteCount:
+                    type: integer
+                    format: int64
+                  operationWriteStatus:
+                    type: object
+                    additionalProperties:
+                      $ref: '#/components/schemas/OperationRateStatus'
+  /v2/system/pagination:
+    get:
+      tags:
+      - /v2/system
+      summary: Fetches the pagination configurations.
+      operationId: getPaginationConfigurations
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/system/pagination
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/system/pagination
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/system/pagination
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/system/pagination
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Pagination configuration
+                properties:
+                  max:
+                    type: integer
+                    format: int32
+                    description: Default and maximum number of elements per AEM page (except alerts pagination)
+components:
+  schemas:
+    StatusResponse:
+      type: object
+      properties:
+        version:
+          type: string
+        status:
+          type: string
+        started:
+          type: string
+          format: date-time
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
+    OperationRateStatus:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int32

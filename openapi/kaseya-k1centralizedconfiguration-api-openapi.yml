@@ -1,0 +1,115 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 K1 Centralized Configuration API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: K1CentralizedConfiguration
+paths:
+  /v2/kaseya-one/centralized-configuration/notification:
+    post:
+      tags:
+      - K1CentralizedConfiguration
+      operationId: PostK1CentralizedConfigurations
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/K1ActionNotificationDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/K1ActionNotificationDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/K1ActionNotificationDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/K1ActionNotificationDto'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    K1ActionNotificationDto:
+      type: object
+      properties:
+        KaseyaOneOrganizationId:
+          type:
+          - string
+          - 'null'
+        Id:
+          type:
+          - string
+          - 'null'
+        ActionEventType:
+          type:
+          - string
+          - 'null'
+        Event:
+          $ref: '#/components/schemas/K1CentralizedConfigurationEventDto'
+        EventType:
+          type:
+          - string
+          - 'null'
+        AppClientIdentifier:
+          type:
+          - string
+          - 'null'
+        TargetProducts:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    K1CentralizedConfigurationEventDto:
+      type: object
+      properties:
+        eventId:
+          type:
+          - string
+          - 'null'
+        timestamp:
+          type: integer
+          format: int64
+        kaseyaOneOrganizationId:
+          type:
+          - string
+          - 'null'
+        salesforceId:
+          type:
+          - string
+          - 'null'
+        sourceInstanceId:
+          type:
+          - string
+          - 'null'
+        isLogInWithKaseyaOneEnabled:
+          type: boolean
+        isRequireLogInWithKaseyaOneEnabled:
+          type: boolean
+        isAutomaticUserProvisioningEnabled:
+          type: boolean
+        isAutomaticUserDeprovisioningEnabled:
+          type: boolean
+        isAccessGroupsEnabled:
+          type: boolean
+        event_type:
+          type:
+          - string
+          - 'null'
+        source_product:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

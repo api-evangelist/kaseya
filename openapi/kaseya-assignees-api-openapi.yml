@@ -1,0 +1,329 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Assignees API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Assignees
+paths:
+  /v2/hr/assignees:
+    get:
+      tags:
+      - Assignees
+      operationId: GetAssignees
+      parameters:
+      - name: Name
+        in: query
+        schema:
+          type: string
+      - name: Ids
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: EmployeesOnly
+        in: query
+        schema:
+          type: boolean
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AssigneeOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssigneeOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AssigneeOutputDtoIEnumerableResponse'
+  /v2/hr/assignees/lookup:
+    get:
+      tags:
+      - Assignees
+      operationId: GetAssigneeLookups
+      parameters:
+      - name: Filter.Ids
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: Filter.Name
+        in: query
+        schema:
+          type: string
+      - name: Filter.ExcludedIds
+        in: query
+        schema:
+          type: string
+      - name: Filter.AccountId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AssigneeLookupOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssigneeLookupOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AssigneeLookupOutputDtoIEnumerableResponse'
+  /v2/hr/assignees/count:
+    get:
+      tags:
+      - Assignees
+      operationId: GetAssigneesCount
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Int32Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Int32Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Int32Response'
+  /v2/hr/assignees/{assigneeId}/roles:
+    get:
+      tags:
+      - Assignees
+      operationId: GetEmployeeRoleLookups
+      parameters:
+      - name: assigneeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RoleLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RoleLookupOutputDtoListResponse'
+components:
+  schemas:
+    RoleLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+      additionalProperties: false
+    AssigneeLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AssigneeLookupOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    AssigneeOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AssigneeOutputDto'
+      additionalProperties: false
+    RoleLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RoleLookupOutputDto'
+      additionalProperties: false
+    Int32Response:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type: integer
+          format: int32
+      additionalProperties: false
+    AssigneeLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Url:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        JobTitle:
+          type:
+          - string
+          - 'null'
+        PictureName:
+          type:
+          - string
+          - 'null'
+        PictureURL:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AssigneeOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        FirstName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PictureName:
+          type:
+          - string
+          - 'null'
+        PictureUrl:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

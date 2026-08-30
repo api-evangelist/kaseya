@@ -1,0 +1,441 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Qbd Vendors API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: QbdVendors
+paths:
+  /v2/integration/qbd/vendors:
+    post:
+      tags:
+      - QbdVendors
+      operationId: ImportVendors
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbAccountImportDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbAccountImportDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbAccountImportDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbAccountImportDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+    get:
+      tags:
+      - QbdVendors
+      operationId: GetVendors
+      parameters:
+      - name: Filter.AccountName
+        in: query
+        schema:
+          type: string
+      - name: ExternalTenantId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QbAccountExportDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QbAccountExportDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QbAccountExportDtoListPagedResponse'
+  /v2/integration/qbd/vendors/byids:
+    get:
+      tags:
+      - QbdVendors
+      operationId: GetVendorsByIds
+      parameters:
+      - name: ExternalTenantId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: AccountNumbers
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QbAccountExportDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QbAccountExportDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QbAccountExportDtoListResponse'
+components:
+  schemas:
+    QbTaxItemDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Active:
+          type: boolean
+        RateValue:
+          type: number
+          format: double
+        IsGroup:
+          type: boolean
+        TaxAgency:
+          type:
+          - string
+          - 'null'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        SalesTaxRateList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbTaxItemDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbAccountExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbAccountExportDto'
+      additionalProperties: false
+    QbAccountExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbAccountExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbAccountExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Website:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        CreditLimit:
+          type:
+          - number
+          - 'null'
+          format: double
+        NetDays:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TaxRate:
+          type:
+          - number
+          - 'null'
+          format: double
+        ParentId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsBilling:
+          type:
+          - boolean
+          - 'null'
+        DateAcquired:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        IsTaxable:
+          type:
+          - boolean
+          - 'null'
+        SalesTaxItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TaxId:
+          type:
+          - string
+          - 'null'
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        CurrencyCode:
+          type:
+          - string
+          - 'null'
+        AccountType:
+          type:
+          - string
+          - 'null'
+        BusinessType:
+          type:
+          - string
+          - 'null'
+        ExternalAccountId:
+          type:
+          - string
+          - 'null'
+        ExternalParentId:
+          type:
+          - string
+          - 'null'
+        ExternalTaxId:
+          type:
+          - string
+          - 'null'
+        ShipAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+        BillAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+      additionalProperties: false
+    QbAccountImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Code:
+          type:
+          - string
+          - 'null'
+        TaxId:
+          type:
+          - string
+          - 'null'
+        Taxable:
+          type: boolean
+        CreditLimit:
+          type: number
+          format: double
+        NetDays:
+          type: integer
+          format: int32
+        WebAddressURI:
+          type:
+          - string
+          - 'null'
+        CurrencyValue:
+          type:
+          - string
+          - 'null'
+        IsBilling:
+          type: boolean
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        TaxItem:
+          $ref: '#/components/schemas/QbTaxItemDto'
+        ParentAccount:
+          $ref: '#/components/schemas/QbAccountImportDto'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        ShipAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+        BillAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+      additionalProperties: false
+    QbAddressDto:
+      type: object
+      properties:
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        MobileNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+        ContactName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

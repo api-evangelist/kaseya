@@ -1,0 +1,243 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Product Quotations API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: ProductQuotations
+paths:
+  /v2/crm/productquotes/summary:
+    get:
+      tags:
+      - ProductQuotations
+      operationId: GetProductQuotationsListSummary
+      parameters:
+      - name: Filter.AccountId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.StatusIds
+        in: query
+        schema:
+          type: string
+      - name: Filter.CreatedOnFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.CreatedOnTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductQuotationsListSummaryOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductQuotationsListSummaryOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductQuotationsListSummaryOutputDtoIEnumerablePagedResponse'
+  /v2/crm/productquotes/{productQuotationId}:
+    get:
+      tags:
+      - ProductQuotations
+      operationId: GetProductQuotation
+      parameters:
+      - name: productQuotationId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductQuotationOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductQuotationOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductQuotationOutputDtoResponse'
+components:
+  schemas:
+    ProductQuotationsListSummaryOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductQuotationsListSummaryOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ProductQuotationsListSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        QuotationNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        ExpiryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    ProductQuotationOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        QuotationNumber:
+          type:
+          - string
+          - 'null'
+        QuotationDate:
+          type: string
+          format: date-time
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        ShipByMethodId:
+          type: integer
+          format: int32
+        ShipByMethod:
+          type:
+          - string
+          - 'null'
+        ShipByDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        PONumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        Amount:
+          type:
+          - number
+          - 'null'
+          format: double
+        SalesRepresentativeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesRepresentativeName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProductQuotationOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ProductQuotationOutputDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

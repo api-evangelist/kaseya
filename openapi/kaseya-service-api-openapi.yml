@@ -1,0 +1,1081 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Service API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Service
+paths:
+  /v2/admin/finance/services/lookup:
+    get:
+      tags:
+      - Service
+      operationId: GetServicesLookup
+      parameters:
+      - name: Filter.Id
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.Name
+        in: query
+        schema:
+          type: string
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ServiceLookupOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLookupOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLookupOutputDtoIEnumerablePagedResponse'
+  /v2/admin/finance/services/{serviceId}:
+    get:
+      tags:
+      - Service
+      operationId: GetService
+      parameters:
+      - name: serviceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ServiceOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ServiceOutputDtoResponse'
+    put:
+      tags:
+      - Service
+      operationId: PutService
+      parameters:
+      - name: serviceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ServiceInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ServiceInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ServiceInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ServiceOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ServiceOutputDtoResponse'
+    delete:
+      tags:
+      - Service
+      operationId: DeleteService
+      parameters:
+      - name: serviceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+  /v2/admin/finance/services/{serviceId}/backgroundjob:
+    get:
+      tags:
+      - Service
+      operationId: GetServiceInProgressJob
+      parameters:
+      - name: serviceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ServiceBackgroundJobOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceBackgroundJobOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ServiceBackgroundJobOutputDtoResponse'
+  /v2/admin/finance/services/services:
+    post:
+      tags:
+      - Service
+      operationId: PostService
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ServiceInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ServiceInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ServiceInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ServiceOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ServiceOutputDtoResponse'
+  /v2/admin/finance/services/search:
+    post:
+      tags:
+      - Service
+      operationId: GetServicesList
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ServicesListInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServicesListInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ServicesListInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ServicesListInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ServiceListOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceListOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ServiceListOutputDtoIEnumerablePagedResponse'
+  /v2/admin/finance/services:
+    delete:
+      tags:
+      - Service
+      operationId: DeleteServices
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/BatchDeleteServicesInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchDeleteServicesInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/BatchDeleteServicesInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/BatchDeleteServicesInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+    patch:
+      tags:
+      - Service
+      operationId: PatchServices
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/BatchServiceDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchServiceDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/BatchServiceDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/BatchServiceDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+  /v2/admin/finance/services/{serviceId}/relatedservices/search:
+    post:
+      tags:
+      - Service
+      operationId: GetRelatedServicesList
+      parameters:
+      - name: serviceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RelatedServicesListInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RelatedServicesListInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RelatedServicesListInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RelatedServicesListInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RelatedServicesListOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RelatedServicesListOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RelatedServicesListOutputDtoIEnumerablePagedResponse'
+  /v2/admin/finance/services/{serviceId}/relatedservices/bulkupdate:
+    post:
+      tags:
+      - Service
+      operationId: UpdateRelatedServicesList
+      parameters:
+      - name: serviceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RelatedServicesListBulkUpdateInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RelatedServicesListBulkUpdateInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RelatedServicesListBulkUpdateInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RelatedServicesListBulkUpdateInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+components:
+  schemas:
+    BatchDeleteServicesInputDto:
+      type: object
+      properties:
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ServiceOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ServiceOutputDto'
+      additionalProperties: false
+    RelatedServicesListOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RelatedServicesListOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ServiceBackgroundJobOutputDto:
+      type: object
+      properties:
+        JobId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+      additionalProperties: false
+    RelatedServicesListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/RelatedServicesListFilterDto'
+      additionalProperties: false
+    ServiceBackgroundJobOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ServiceBackgroundJobOutputDto'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ServiceOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        UnitCost:
+          type: number
+          format: double
+        UnitPrice:
+          type: number
+          format: double
+        CategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Category:
+          type:
+          - string
+          - 'null'
+        SubCategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubCategory:
+          type:
+          - string
+          - 'null'
+        UnitOfMeasureId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        UnitOfMeasure:
+          type:
+          - string
+          - 'null'
+        IncomeAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IncomeAccountCode:
+          type:
+          - string
+          - 'null'
+        IncomeAccountName:
+          type:
+          - string
+          - 'null'
+        ExpenseAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExpenseAccountCode:
+          type:
+          - string
+          - 'null'
+        ExpenseAccountName:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        IsTaxable:
+          type: boolean
+        CreatedOn:
+          type: string
+          format: date-time
+        CreatedBy:
+          type: integer
+          format: int32
+        ModifiedOn:
+          type: string
+          format: date-time
+        ModifiedBy:
+          type: integer
+          format: int32
+        Margin:
+          type:
+          - number
+          - 'null'
+          format: double
+        MarginType:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    ServicesListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/ServicesListFilterDto'
+      additionalProperties: false
+    RelatedServicesListFilterDto:
+      type: object
+      properties:
+        ServiceName:
+          type:
+          - string
+          - 'null'
+        ServiceDescription:
+          type:
+          - string
+          - 'null'
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AccountName:
+          type:
+          - string
+          - 'null'
+        EffectiveDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        EffectiveDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractStartDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractStartDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractEndDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractEndDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        UnitCost:
+          type:
+          - number
+          - 'null'
+          format: double
+        UnitPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+      additionalProperties: false
+    ServiceListOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ServiceListOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ServiceListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        UnitCost:
+          type: number
+          format: double
+        UnitPrice:
+          type: number
+          format: double
+        CategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Category:
+          type:
+          - string
+          - 'null'
+        Margin:
+          type:
+          - number
+          - 'null'
+          format: double
+        MarginType:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubCategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubCategory:
+          type:
+          - string
+          - 'null'
+        UnitOfMeasureId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        UnitOfMeasure:
+          type:
+          - string
+          - 'null'
+        IncomeAccountCode:
+          type:
+          - string
+          - 'null'
+        IncomeAccountName:
+          type:
+          - string
+          - 'null'
+        ExpenseAccountCode:
+          type:
+          - string
+          - 'null'
+        ExpenseAccountName:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        IsTaxable:
+          type: boolean
+        CreatedOn:
+          type: string
+          format: date-time
+        CreatedBy:
+          type: integer
+          format: int32
+        ModifiedOn:
+          type: string
+          format: date-time
+        ModifiedBy:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ServicesListFilterDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        CategoryIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        SubCategoryIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        UnitOfMeasureIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        IsActive:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsTaxable:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Description:
+          type:
+          - string
+          - 'null'
+        IncomeAccount:
+          type:
+          - string
+          - 'null'
+        ExpenseAccount:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ServiceLookupOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ServiceLookupOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    RelatedServicesBulkUpdateValues:
+      type: object
+      properties:
+        ServiceName:
+          type:
+          - string
+          - 'null'
+        ServiceDescription:
+          type:
+          - string
+          - 'null'
+        UnitPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        UnitCost:
+          type:
+          - number
+          - 'null'
+          format: double
+        EffectiveDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    RelatedServicesListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ServiceId:
+          type: integer
+          format: int32
+        ContractId:
+          type: integer
+          format: int32
+        AccountId:
+          type: integer
+          format: int32
+        ServiceName:
+          type:
+          - string
+          - 'null'
+        ServiceDescription:
+          type:
+          - string
+          - 'null'
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AccountName:
+          type:
+          - string
+          - 'null'
+        EffectiveDate:
+          type: string
+          format: date-time
+        ContractStartDate:
+          type: string
+          format: date-time
+        ContractEndDate:
+          type: string
+          format: date-time
+        UnitCost:
+          type: number
+          format: double
+        UnitPrice:
+          type: number
+          format: double
+        MarginType:
+          type: integer
+          format: int32
+        Margin:
+          type: number
+          format: double
+        ExcludeFromContractBulkUpdates:
+          type: boolean
+      additionalProperties: false
+    ServiceLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    BatchServiceDto:
+      type: object
+      properties:
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        CategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubCategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        UnitOfMeasureId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        IsTaxable:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    ServiceInputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        UnitCost:
+          type:
+          - number
+          - 'null'
+          format: double
+        UnitPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        CategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubCategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        UnitOfMeasureId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IncomeAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExpenseAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsActive:
+          type: boolean
+        IsTaxable:
+          type: boolean
+        Margin:
+          type:
+          - number
+          - 'null'
+          format: double
+        MarginType:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    RelatedServicesListBulkUpdateInputDto:
+      type: object
+      properties:
+        SelectedClientContractServices:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RelatedServicesBulkUpdateSelectedContractServices'
+        Values:
+          $ref: '#/components/schemas/RelatedServicesBulkUpdateValues'
+      additionalProperties: false
+    RelatedServicesBulkUpdateSelectedContractServices:
+      type: object
+      properties:
+        ClientContractId:
+          type: integer
+          format: int32
+        ClientContractServiceId:
+          type: integer
+          format: int32
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

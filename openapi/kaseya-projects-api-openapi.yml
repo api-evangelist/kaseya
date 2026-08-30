@@ -1,0 +1,1254 @@
+openapi: 3.2.0
+info:
+  title: Kaseya Projects API
+  version: '1.0'
+  description: 'Operations tagged Projects across 2 of this provider''s published API definitions: kaseya-autotask-psa-openapi-original.json, kaseya-bms-openapi-original.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+- url: https://api.bms.kaseya.com
+tags:
+- name: Projects
+paths:
+  /V1.0/Projects/query:
+    get:
+      tags:
+      - Projects
+      operationId: Projects_UrlParameterQuery
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ProjectModel_Project'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ProjectModel_Project'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Projects
+      operationId: Projects_Query
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ProjectModel_Project'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ProjectModel_Project'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Projects/{id}:
+    get:
+      tags:
+      - Projects
+      operationId: Projects_QueryItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_ProjectModel_Project'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_ProjectModel_Project'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Projects/query/count:
+    get:
+      tags:
+      - Projects
+      operationId: Projects_UrlParameterQueryCount
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Projects
+      operationId: Projects_QueryCount
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Projects:
+    put:
+      tags:
+      - Projects
+      operationId: Projects_UpdateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectModel'
+        required: true
+    post:
+      tags:
+      - Projects
+      operationId: Projects_CreateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectModel'
+        required: true
+    patch:
+      tags:
+      - Projects
+      operationId: Projects_PatchEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Projects/entityInformation:
+    get:
+      tags:
+      - Projects
+      operationId: Projects_QueryEntityInformation
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Projects/entityInformation/fields:
+    get:
+      tags:
+      - Projects
+      operationId: Projects_QueryFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Projects/entityInformation/userDefinedFields:
+    get:
+      tags:
+      - Projects
+      operationId: Projects_QueryUserDefinedFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /v2/project/projects/summary:
+    get:
+      tags:
+      - Projects
+      operationId: GetProjectsListSummary
+      parameters:
+      - name: Filter.AccountId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.StatusIds
+        in: query
+        schema:
+          type: string
+      - name: Filter.StartDateFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.StartDateTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProjectsListSummaryOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectsListSummaryOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProjectsListSummaryOutputDtoIEnumerablePagedResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/project/projects/{projectId}:
+    get:
+      tags:
+      - Projects
+      operationId: GetProject
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProjectOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProjectOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/project/projects/lookup:
+    get:
+      tags:
+      - Projects
+      operationId: GetProjectsLookup
+      parameters:
+      - name: Filter.Name
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProjectLookupOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectLookupOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProjectLookupOutputDtoIEnumerablePagedResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+components:
+  schemas:
+    ItemQueryResultModel_ProjectModel_Project:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ProjectModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    QueryActionResult_ProjectModel_Project:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    Object:
+      type: object
+      properties: {}
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    ProjectModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        actualBilledHours:
+          format: double
+          type: number
+        actualHours:
+          format: double
+          type: number
+        changeOrdersBudget:
+          format: double
+          type: number
+        changeOrdersRevenue:
+          format: double
+          type: number
+        companyID:
+          format: int32
+          type: integer
+        companyOwnerResourceID:
+          format: int32
+          type: integer
+        completedDateTime:
+          format: date-time
+          type: string
+        completedPercentage:
+          format: int32
+          type: integer
+        contractID:
+          format: int32
+          type: integer
+        createDateTime:
+          format: date-time
+          type: string
+        creatorResourceID:
+          format: int32
+          type: integer
+        department:
+          format: int32
+          type: integer
+        description:
+          type: string
+        duration:
+          format: int32
+          type: integer
+        endDateTime:
+          format: date-time
+          type: string
+        estimatedSalesCost:
+          format: double
+          type: number
+        estimatedTime:
+          format: double
+          type: number
+        extProjectNumber:
+          type: string
+        extProjectType:
+          format: int32
+          type: integer
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        laborEstimatedCosts:
+          format: double
+          type: number
+        laborEstimatedMarginPercentage:
+          format: double
+          type: number
+        laborEstimatedRevenue:
+          format: double
+          type: number
+        lastActivityDateTime:
+          format: date-time
+          type: string
+        lastActivityPersonType:
+          format: int32
+          type: integer
+        lastActivityResourceID:
+          format: int32
+          type: integer
+        opportunityID:
+          format: int32
+          type: integer
+        organizationalLevelAssociationID:
+          format: int32
+          type: integer
+        originalEstimatedRevenue:
+          format: double
+          type: number
+        projectCostEstimatedMarginPercentage:
+          format: double
+          type: number
+        projectCostsBudget:
+          format: double
+          type: number
+        projectCostsRevenue:
+          format: double
+          type: number
+        projectLeadResourceID:
+          format: int32
+          type: integer
+        projectName:
+          type: string
+        projectNumber:
+          type: string
+        projectType:
+          format: int32
+          type: integer
+        purchaseOrderNumber:
+          type: string
+        sgda:
+          format: double
+          type: number
+        startDateTime:
+          format: date-time
+          type: string
+        status:
+          format: int32
+          type: integer
+        statusDateTime:
+          format: date-time
+          type: string
+        statusDetail:
+          type: string
+        userDefinedFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinedField'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    ProjectOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ProjectNumber:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        ContractId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContractName:
+          type:
+          - string
+          - 'null'
+        ManagerId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ManagerName:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        PriorityId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PriorityName:
+          type:
+          - string
+          - 'null'
+        StartDate:
+          type: string
+          format: date-time
+        DueDate:
+          type: string
+          format: date-time
+        CompletionDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        PlannedHours:
+          type: number
+          format: double
+        UsedHours:
+          type: number
+          format: double
+        PlannedBudget:
+          type: number
+          format: double
+        ActualBudget:
+          type: number
+          format: double
+      additionalProperties: false
+    ProjectLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ProjectLookupOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProjectLookupOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProjectOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ProjectOutputDto'
+      additionalProperties: false
+    ProjectsListSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        ProjectNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - string
+          - 'null'
+        StatusName:
+          type:
+          - string
+          - 'null'
+        PriorityId:
+          type:
+          - string
+          - 'null'
+        PriorityName:
+          type:
+          - string
+          - 'null'
+        StartDate:
+          type: string
+          format: date-time
+        DueDate:
+          type: string
+          format: date-time
+        CreatedOn:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ProjectsListSummaryOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProjectsListSummaryOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT
+x-refined-from:
+- kaseya-autotask-psa-openapi-original.json
+- kaseya-bms-openapi-original.json

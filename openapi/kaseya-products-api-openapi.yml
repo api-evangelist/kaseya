@@ -1,0 +1,1579 @@
+openapi: 3.2.0
+info:
+  title: Kaseya Products API
+  version: '1.0'
+  description: 'Operations tagged Products across 2 of this provider''s published API definitions: kaseya-autotask-psa-openapi-original.json, kaseya-bms-openapi-original.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+- url: https://api.bms.kaseya.com
+tags:
+- name: Products
+paths:
+  /V1.0/Products/query:
+    get:
+      tags:
+      - Products
+      operationId: Products_UrlParameterQuery
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ProductModel_Product'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ProductModel_Product'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Products
+      operationId: Products_Query
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ProductModel_Product'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ProductModel_Product'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Products/{id}:
+    get:
+      tags:
+      - Products
+      operationId: Products_QueryItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_ProductModel_Product'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_ProductModel_Product'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Products/query/count:
+    get:
+      tags:
+      - Products
+      operationId: Products_UrlParameterQueryCount
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Products
+      operationId: Products_QueryCount
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Products:
+    put:
+      tags:
+      - Products
+      operationId: Products_UpdateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductModel'
+        required: true
+    post:
+      tags:
+      - Products
+      operationId: Products_CreateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductModel'
+        required: true
+    patch:
+      tags:
+      - Products
+      operationId: Products_PatchEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Products/entityInformation:
+    get:
+      tags:
+      - Products
+      operationId: Products_QueryEntityInformation
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Products/entityInformation/fields:
+    get:
+      tags:
+      - Products
+      operationId: Products_QueryFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Products/entityInformation/userDefinedFields:
+    get:
+      tags:
+      - Products
+      operationId: Products_QueryUserDefinedFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /v2/inventory/products/searchselect:
+    get:
+      tags:
+      - Products
+      operationId: GetProductsListSearchSelect
+      parameters:
+      - name: Filter.ProductNumber
+        in: query
+        schema:
+          type: string
+      - name: Filter.ProductName
+        in: query
+        schema:
+          type: string
+      - name: Filter.ProductDescription
+        in: query
+        schema:
+          type: string
+      - name: Filter.SKU
+        in: query
+        schema:
+          type: string
+      - name: Filter.UPC
+        in: query
+        schema:
+          type: string
+      - name: Filter.Color
+        in: query
+        schema:
+          type: string
+      - name: Filter.ProductTypeIds
+        in: query
+        schema:
+          type: string
+      - name: Filter.Category
+        in: query
+        schema:
+          type: string
+      - name: Filter.Brand
+        in: query
+        schema:
+          type: string
+      - name: Filter.ProductManufacturer
+        in: query
+        schema:
+          type: string
+      - name: Filter.SerialNumber
+        in: query
+        schema:
+          type: string
+      - name: Filter.WarehouseIds
+        in: query
+        schema:
+          type: string
+      - name: Filter.ExcludedId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductsListSearchSelectOutputDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductsListSearchSelectOutputDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductsListSearchSelectOutputDtoListPagedResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/inventory/products/{productIndexId}/pricingLevels:
+    get:
+      tags:
+      - Products
+      operationId: GetPricingLevels
+      parameters:
+      - name: productIndexId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PricingLevelLookupDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricingLevelLookupDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PricingLevelLookupDtoListResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/inventory/products/{productIndexId}/suppliers/lookup:
+    get:
+      tags:
+      - Products
+      operationId: GetSupplierLookups
+      parameters:
+      - name: productIndexId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SupplierLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupplierLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SupplierLookupOutputDtoListResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/inventory/products/{productIndexId}/weightedcost:
+    get:
+      tags:
+      - Products
+      operationId: GetProductWeightedCost
+      parameters:
+      - name: productIndexId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: warehouseId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WeightedCostOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeightedCostOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WeightedCostOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/inventory/products/{productIndexId}/defaultcost:
+    get:
+      tags:
+      - Products
+      operationId: GetProductDefaultCost
+      parameters:
+      - name: productIndexId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DefaultCostOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultCostOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DefaultCostOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/inventory/products/{productIndexId}/{typeId}/stockitems/lookup:
+    get:
+      tags:
+      - Products
+      operationId: GetProductsInStock
+      parameters:
+      - name: productIndexId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: typeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: wareHouseId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: stockByLocationId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: projectId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductsInStockOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductsInStockOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductsInStockOutputDtoListResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/inventory/products/categories:
+    post:
+      tags:
+      - Products
+      operationId: PostProductCategories
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ProductCategoriesInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCategoriesInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ProductCategoriesInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ProductCategoriesInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductCategoriesOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductCategoriesOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductCategoriesOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/inventory/products/categories/lookup:
+    get:
+      tags:
+      - Products
+      operationId: GetProductCategoriesLookup
+      parameters:
+      - name: Filter.Name
+        in: query
+        schema:
+          type: string
+      - name: Filter.IsActive
+        in: query
+        schema:
+          type: boolean
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductCategoryLookupOutputDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductCategoryLookupOutputDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductCategoryLookupOutputDtoListPagedResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+components:
+  schemas:
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    QueryActionResult_ProductModel_Product:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    ItemQueryResultModel_ProductModel_Product:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ProductModel'
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Object:
+      type: object
+      properties: {}
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    ProductModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        billingType:
+          format: int32
+          type: integer
+        chargeBillingCodeID:
+          format: int32
+          type: integer
+        createdByResourceID:
+          format: int32
+          type: integer
+        createdTime:
+          format: date-time
+          type: string
+        defaultVendorID:
+          format: int32
+          type: integer
+        description:
+          type: string
+        doesNotRequireProcurement:
+          type: boolean
+        externalProductID:
+          type: string
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        internalProductID:
+          type: string
+        isActive:
+          type: boolean
+        isEligibleForRma:
+          type: boolean
+        isSerialized:
+          type: boolean
+        link:
+          type: string
+        manufacturerName:
+          type: string
+        manufacturerProductName:
+          type: string
+        markupRate:
+          format: double
+          type: number
+        msrp:
+          format: double
+          type: number
+        name:
+          type: string
+        periodType:
+          format: int32
+          type: integer
+        priceCostMethod:
+          format: int32
+          type: integer
+        productBillingCodeID:
+          format: int32
+          type: integer
+        productCategory:
+          format: int32
+          type: integer
+        sku:
+          type: string
+        unitCost:
+          format: double
+          type: number
+        unitPrice:
+          format: double
+          type: number
+        vendorProductNumber:
+          type: string
+        defaultInstalledProductCategoryID:
+          format: int32
+          type: integer
+        userDefinedFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinedField'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    WeightedCostOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WeightedCostOutputDto'
+      additionalProperties: false
+    ProductsListSearchSelectOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductsListSearchSelectOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProductCategoryLookupOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductCategoryLookupOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    DefaultCostOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/DefaultCostOutputDto'
+      additionalProperties: false
+    DefaultCostOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        DefaultCost:
+          type: number
+          format: double
+      additionalProperties: false
+    WeightedCostOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        WeightedCost:
+          type: number
+          format: double
+      additionalProperties: false
+    ProductsInStockOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        LotNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProductsListSearchSelectOutputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        ProductIndexId:
+          type: integer
+          format: int32
+        ProductNumber:
+          type:
+          - string
+          - 'null'
+        ProductName:
+          type:
+          - string
+          - 'null'
+        ProductDescription:
+          type:
+          - string
+          - 'null'
+        UPC:
+          type:
+          - string
+          - 'null'
+        Warehouse:
+          type:
+          - string
+          - 'null'
+        WarehouseId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        QTYInStock:
+          type:
+          - number
+          - 'null'
+          format: double
+        QTYAvailable:
+          type:
+          - number
+          - 'null'
+          format: double
+        QTYCommitted:
+          type:
+          - number
+          - 'null'
+          format: double
+        QTYOnOrder:
+          type:
+          - number
+          - 'null'
+          format: double
+        Color:
+          type:
+          - string
+          - 'null'
+        WeightedLandedCost:
+          type:
+          - number
+          - 'null'
+          format: double
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        IsSerialized:
+          type:
+          - boolean
+          - 'null'
+        StockByLocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    ProductCategoriesOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    SupplierLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProductCategoriesOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ProductCategoriesOutputDto'
+      additionalProperties: false
+    PricingLevelLookupDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PricingLevelLookupDto'
+      additionalProperties: false
+    PricingLevelLookupDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Price:
+          type: number
+          format: double
+        Margin:
+          type: number
+          format: double
+        IsActive:
+          type: boolean
+        IsDefault:
+          type: boolean
+      additionalProperties: false
+    ProductCategoryLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    ProductsInStockOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductsInStockOutputDto'
+      additionalProperties: false
+    SupplierLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SupplierLookupOutputDto'
+      additionalProperties: false
+    ProductCategoriesInputDto:
+      required:
+      - IsActive
+      - Name
+      type: object
+      properties:
+        Name:
+          minLength: 1
+          type: string
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT
+x-refined-from:
+- kaseya-autotask-psa-openapi-original.json
+- kaseya-bms-openapi-original.json

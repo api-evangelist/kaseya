@@ -1,0 +1,1332 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Accounts API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Accounts
+paths:
+  /v2/crm/accounts/lookup:
+    get:
+      tags:
+      - Accounts
+      operationId: GetAccounts
+      parameters:
+      - name: Filter.Ids
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: Filter.Name
+        in: query
+        schema:
+          type: string
+      - name: Filter.WithSecurityScope
+        in: query
+        schema:
+          type: boolean
+      - name: Filter.WithInactiveAccounts
+        in: query
+        schema:
+          type: boolean
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountLookupOutputDtoListResponse'
+  /v2/crm/accounts/summary:
+    get:
+      tags:
+      - Accounts
+      operationId: GetAccountsListSummary
+      parameters:
+      - name: Filter.AccountName
+        in: query
+        schema:
+          type: string
+      - name: Filter.AccountCode
+        in: query
+        schema:
+          type: string
+      - name: Filter.AccountTypeId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.AccountTypeName
+        in: query
+        schema:
+          type: string
+      - name: Filter.CreatedOnFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.CreatedOnTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.ModifiedOnFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.ModifiedOnTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.IsActive
+        in: query
+        schema:
+          type: boolean
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDtoIEnumerablePagedResponse'
+  /v2/crm/accounts/summary/{id}:
+    get:
+      tags:
+      - Accounts
+      operationId: GetAccountSummary
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDto'
+  /v2/crm/accounts/{accountId}/locations/lookup:
+    get:
+      tags:
+      - Accounts
+      operationId: GetAccountLocations
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountLocationLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountLocationLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountLocationLookupOutputDtoListResponse'
+  /v2/crm/accounts/{accountId}/locations/{locationId}:
+    get:
+      tags:
+      - Accounts
+      operationId: GetAccountLocation
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: locationId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountLocationOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountLocationOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountLocationOutputDtoResponse'
+  /v2/crm/accounts/{accountId}/contacts/lookup:
+    get:
+      tags:
+      - Accounts
+      operationId: GetAccountContacts
+      parameters:
+      - name: Filter.Name
+        in: query
+        schema:
+          type: string
+      - name: Filter.LocationId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ContactLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ContactLookupOutputDtoListResponse'
+  /v2/crm/accounts/{accountId}/contacts/{contactId}/summaryinfo:
+    get:
+      tags:
+      - Accounts
+      operationId: GetAccountContactSummaryInfo
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: contactId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ContactSummaryInfoOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactSummaryInfoOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ContactSummaryInfoOutputDtoResponse'
+  /v2/crm/accounts/{accountId}/alerts/{accountAlertType}:
+    get:
+      tags:
+      - Accounts
+      operationId: GetAccountAlert
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: accountAlertType
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/AccountAlertType'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountAlertOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountAlertOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountAlertOutputDtoResponse'
+  /v2/crm/accounts:
+    post:
+      tags:
+      - Accounts
+      operationId: PostAccount
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AccountPostInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountPostInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AccountPostInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AccountPostInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDtoResponse'
+  /v2/crm/accounts/{id}:
+    put:
+      tags:
+      - Accounts
+      operationId: PutAccount
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AccountPutInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountPutInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AccountPutInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AccountPutInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDtoResponse'
+    patch:
+      tags:
+      - Accounts
+      operationId: PatchAccount
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Operation'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountSummaryOutputDtoResponse'
+components:
+  schemas:
+    AccountSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ParentId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        AccountTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountType:
+          type:
+          - string
+          - 'null'
+        AccountName:
+          type:
+          - string
+          - 'null'
+        BusinessTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        BusinessType:
+          type:
+          - string
+          - 'null'
+        ServiceTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ServiceType:
+          type:
+          - string
+          - 'null'
+        AccountManagerId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountManagerUserName:
+          type:
+          - string
+          - 'null'
+        CurrencyId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CurrencyName:
+          type:
+          - string
+          - 'null'
+        CreditLimit:
+          type:
+          - number
+          - 'null'
+          format: double
+        NetDays:
+          type:
+          - number
+          - 'null'
+          format: double
+        SalesTaxItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesTaxItemName:
+          type:
+          - string
+          - 'null'
+        Website:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        ClassId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClassName:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        IsBilling:
+          type: boolean
+        AcquiredDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        TenantName:
+          type:
+          - string
+          - 'null'
+        Locations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AccountLocationOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ContactLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactLookupOutputDto'
+      additionalProperties: false
+    ContactSummaryInfoOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ContactSummaryInfoOutputDto'
+      additionalProperties: false
+    AccountLocationLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AccountLocationLookupOutputDto'
+      additionalProperties: false
+    AccountPostInputDto:
+      required:
+      - AccountManagerId
+      - AccountName
+      - AccountTypeId
+      - BusinessTypeId
+      - Locations
+      type: object
+      properties:
+        ParentId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        AccountTypeId:
+          type: integer
+          format: int32
+        AccountName:
+          minLength: 1
+          type: string
+        Description:
+          type:
+          - string
+          - 'null'
+        Website:
+          type:
+          - string
+          - 'null'
+        BusinessTypeId:
+          type: integer
+          format: int32
+        ServiceTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CurrencyId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesTaxItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClassId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountManagerId:
+          type: integer
+          format: int32
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        AcquiredDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreditLimit:
+          type:
+          - number
+          - 'null'
+          format: double
+        NetDays:
+          type:
+          - number
+          - 'null'
+          format: double
+        Locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountLocationInputDto'
+        RouteInvoiceToParent:
+          type: boolean
+      additionalProperties: false
+    AccountSummaryOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/AccountSummaryOutputDto'
+      additionalProperties: false
+    AccountAlertType:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    AccountLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AccountLookupOutputDto'
+      additionalProperties: false
+    OperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
+    Operation:
+      type: object
+      properties:
+        OperationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type:
+          - string
+          - 'null'
+        op:
+          type:
+          - string
+          - 'null'
+        from:
+          type:
+          - string
+          - 'null'
+        value: {}
+      additionalProperties: false
+    AccountSummaryOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AccountSummaryOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    AccountLocationOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/AccountLocationOutputDto'
+      additionalProperties: false
+    AccountLocationInputDto:
+      required:
+      - Addresses
+      - LocationName
+      type: object
+      properties:
+        LocationName:
+          minLength: 1
+          type: string
+        IsMain:
+          type: boolean
+        IsActive:
+          type: boolean
+        Addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountLocationAddressInputDto'
+      additionalProperties: false
+    ContactSummaryInfoOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ContactName:
+          type:
+          - string
+          - 'null'
+        ContactPhone:
+          type:
+          - string
+          - 'null'
+        ContactEmailAddress:
+          type:
+          - string
+          - 'null'
+        ClientName:
+          type:
+          - string
+          - 'null'
+        LocationName:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type: integer
+          format: int32
+        AccountType:
+          type:
+          - string
+          - 'null'
+        Website:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+        latitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        longitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        TenantId:
+          type: integer
+          format: int32
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    AccountLocationOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LocationName:
+          type:
+          - string
+          - 'null'
+        IsMain:
+          type: boolean
+        IsActive:
+          type: boolean
+        TimeZoneId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        DateFormatId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TimeFormatId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Addresses:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AccountAddressOutputDto'
+      additionalProperties: false
+    AccountLocationLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        IsMain:
+          type: boolean
+      additionalProperties: false
+    AccountPutInputDto:
+      required:
+      - AccountManagerId
+      - AccountName
+      - AccountTypeId
+      - BusinessTypeId
+      type: object
+      properties:
+        ParentId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        AccountTypeId:
+          type: integer
+          format: int32
+        AccountName:
+          minLength: 1
+          type: string
+        Description:
+          type:
+          - string
+          - 'null'
+        Website:
+          type:
+          - string
+          - 'null'
+        BusinessTypeId:
+          type: integer
+          format: int32
+        ServiceTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CurrencyId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesTaxItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClassId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountManagerId:
+          type: integer
+          format: int32
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        AcquiredDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreditLimit:
+          type:
+          - number
+          - 'null'
+          format: double
+        NetDays:
+          type:
+          - number
+          - 'null'
+          format: double
+        RouteInvoiceToParent:
+          type: boolean
+      additionalProperties: false
+    AccountAddressOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        CountryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Country:
+          type:
+          - string
+          - 'null'
+        Phone:
+          type:
+          - string
+          - 'null'
+        Fax:
+          type:
+          - string
+          - 'null'
+        Latitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        Longitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        IsMain:
+          type: boolean
+        IsBilling:
+          type: boolean
+        AddressTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AddressType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ContactLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type: integer
+          format: int32
+        LocationName:
+          type:
+          - string
+          - 'null'
+        Phone:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AccountLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        TenantName:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    AccountAlertOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/AccountAlertOutputDto'
+      additionalProperties: false
+    AccountLocationAddressInputDto:
+      type: object
+      properties:
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        CountryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Country:
+          type:
+          - string
+          - 'null'
+        Phone:
+          type:
+          - string
+          - 'null'
+        Fax:
+          type:
+          - string
+          - 'null'
+        Latitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        Longitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        IsMain:
+          type: boolean
+        IsBilling:
+          type: boolean
+        AddressTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AddressType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AccountAlertOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Details:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

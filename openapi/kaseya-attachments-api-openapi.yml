@@ -1,0 +1,511 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Attachments API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Attachments
+paths:
+  /v2/system/attachments/{moduleId}/{objectId}:
+    get:
+      tags:
+      - Attachments
+      operationId: GetAttachments
+      parameters:
+      - name: objectId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AttachmentOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttachmentOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AttachmentOutputDtoIEnumerablePagedResponse'
+    post:
+      tags:
+      - Attachments
+      operationId: Post
+      parameters:
+      - name: objectId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                formFile:
+                  type: string
+                  format: binary
+            encoding:
+              formFile:
+                style: form
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AttachmentOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttachmentOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AttachmentOutputDtoIEnumerableResponse'
+  /v2/system/attachments/{moduleId}/{objectId}/{attachmentId}:
+    get:
+      tags:
+      - Attachments
+      operationId: GetAttachment
+      parameters:
+      - name: attachmentId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: objectId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AttachmentOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttachmentOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AttachmentOutputDtoResponse'
+    delete:
+      tags:
+      - Attachments
+      operationId: DeleteAttachment
+      parameters:
+      - name: attachmentId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: objectId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+    put:
+      tags:
+      - Attachments
+      operationId: PutAttachment
+      parameters:
+      - name: attachmentId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: objectId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AttachmentPutInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttachmentPutInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AttachmentPutInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AttachmentPutInputDto'
+      responses:
+        '200':
+          description: OK
+  /v2/system/attachments/{moduleId}/{objectId}/{attachmentId}/download:
+    get:
+      tags:
+      - Attachments
+      operationId: DownloadAttachment
+      parameters:
+      - name: attachmentId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: objectId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: width
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: height
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/File'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/File'
+  /v2/system/attachments/{moduleId}:
+    post:
+      tags:
+      - Attachments
+      operationId: PostTempAttachment
+      parameters:
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                File:
+                  type: string
+                  format: binary
+            encoding:
+              File:
+                style: form
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TempAttachmentOuputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TempAttachmentOuputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TempAttachmentOuputDtoResponse'
+  /v2/system/attachments:
+    delete:
+      tags:
+      - Attachments
+      operationId: DeleteAttachments
+      parameters:
+      - name: attachmentIds
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+  /v2/system/attachments/temp:
+    delete:
+      tags:
+      - Attachments
+      operationId: DeleteTempAttachments
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/*+json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    TempAttachmentOuputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Alias:
+          type:
+          - string
+          - 'null'
+        FileType:
+          type:
+          - string
+          - 'null'
+        IsUploadedToBlob:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    File:
+      type: object
+      additionalProperties: false
+    AttachmentOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        OriginalFileName:
+          type:
+          - string
+          - 'null'
+        AliasName:
+          type:
+          - string
+          - 'null'
+        FileType:
+          type:
+          - string
+          - 'null'
+        ObjectId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModuleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Url:
+          type:
+          - string
+          - 'null'
+        WebUrl:
+          type:
+          - string
+          - 'null'
+        CreatedById:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        IsUploadedToBlob:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    AttachmentPutInputDto:
+      required:
+      - Name
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    AttachmentOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/AttachmentOutputDto'
+      additionalProperties: false
+    TempAttachmentOuputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TempAttachmentOuputDto'
+      additionalProperties: false
+    AttachmentOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AttachmentOutputDto'
+      additionalProperties: false
+    AttachmentOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AttachmentOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

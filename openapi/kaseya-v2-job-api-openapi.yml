@@ -1,0 +1,546 @@
+openapi: 3.2.0
+info:
+  title: Datto RMM /v2/job API
+  description: Datto RMM (Remote Monitoring and Management) REST API
+  license:
+    name: '©Datto, Inc. - All rights reserved. '
+    url: http://www.datto.com/
+  version: 2.0.0 (Build 235_0add0e4d537431f30405d568ccb46b6d7af1f183)
+servers:
+- url: https://syrah-api.centrastage.net/api
+  description: Generated server url
+tags:
+- name: /v2/job
+  description: Operations on jobs
+paths:
+  /v2/job/{jobUid}:
+    get:
+      tags:
+      - /v2/job
+      summary: Fetches data of the job identified by the given job Uid.
+      operationId: get_1
+      parameters:
+      - name: jobUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/job/{jobUid}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/job/{jobUid}
+        '404':
+          description: Job was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/job/{jobUid}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/job/{jobUid}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/job/{jobUid}
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Job data
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  dateCreated:
+                    type: string
+                    format: date-time
+                  name:
+                    type: string
+                  uid:
+                    type: string
+                  status:
+                    type: string
+                    enum:
+                    - active
+                    - completed
+  /v2/job/{jobUid}/results/{deviceUid}:
+    get:
+      tags:
+      - /v2/job
+      summary: Fetches job results of the job identified by the job Uid for device identified by the device Uid.
+      operationId: getJobResults
+      parameters:
+      - name: jobUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/job/{jobUid}/results/{deviceUid}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/job/{jobUid}/results/{deviceUid}
+        '404':
+          description: Job or device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/job/{jobUid}/results/{deviceUid}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/job/{jobUid}/results/{deviceUid}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/job/{jobUid}/results/{deviceUid}
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Job results data
+                properties:
+                  jobUid:
+                    type: string
+                  deviceUid:
+                    type: string
+                  ranOn:
+                    type: string
+                    format: date-time
+                  jobDeploymentStatus:
+                    type: string
+                    enum:
+                    - Expired
+                    - Pending
+                    - Running
+                    - Success
+                    - Warning
+                    - Retired
+                    - Failure
+                  componentResults:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/JobComponentResult'
+  /v2/job/{jobUid}/results/{deviceUid}/stdout:
+    get:
+      tags:
+      - /v2/job
+      summary: Fetches data of the job's StdOut identified by the given job Uid and device Uid.
+      operationId: getStdOut
+      parameters:
+      - name: jobUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/job/{jobUid}/results/{deviceUid}/stdout
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/job/{jobUid}/results/{deviceUid}/stdout
+        '200':
+          description: StdOut data was found.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JobStdData'
+        '404':
+          description: Job or device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/job/{jobUid}/results/{deviceUid}/stdout
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/job/{jobUid}/results/{deviceUid}/stdout
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/job/{jobUid}/results/{deviceUid}/stdout
+  /v2/job/{jobUid}/results/{deviceUid}/stderr:
+    get:
+      tags:
+      - /v2/job
+      summary: Fetches data of the job's StdErr identified by the given job Uid and device Uid.
+      operationId: getStdErr
+      parameters:
+      - name: jobUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/job/{jobUid}/results/{deviceUid}/stderr
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/job/{jobUid}/results/{deviceUid}/stderr
+        '200':
+          description: StdErr data was found.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JobStdData'
+        '404':
+          description: Job or device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/job/{jobUid}/results/{deviceUid}/stderr
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/job/{jobUid}/results/{deviceUid}/stderr
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/job/{jobUid}/results/{deviceUid}/stderr
+  /v2/job/{jobUid}/components:
+    get:
+      tags:
+      - /v2/job
+      summary: Fetches components of the job identified by the given job Uid.
+      operationId: getJobComponents
+      parameters:
+      - name: jobUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/job/{jobUid}/components
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/job/{jobUid}/components
+        '404':
+          description: Job was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/job/{jobUid}/components
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/job/{jobUid}/components
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/job/{jobUid}/components
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Job components page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  jobComponents:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/JobComponent'
+components:
+  schemas:
+    JobComponentVariable:
+      type: object
+      description: Job component variable data
+      properties:
+        name:
+          type: string
+          description: Variable name has to match one of component's variables
+        value:
+          type: string
+          description: Value has to be convertible to the type specified in component variable
+    PaginationData:
+      type: object
+      description: Pagination data
+      properties:
+        count:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    JobComponentResult:
+      type: object
+      description: Job component result data
+      properties:
+        componentUid:
+          type: string
+        componentName:
+          type: string
+        componentStatus:
+          type: string
+          enum:
+          - Success
+          - Failure
+        numberOfWarnings:
+          type: integer
+          format: int32
+        hasStdOut:
+          type: boolean
+        hasStdErr:
+          type: boolean
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
+    JobStdData:
+      type: object
+      description: Job Std data
+      properties:
+        componentUid:
+          type: string
+        componentName:
+          type: string
+        stdData:
+          type: string
+    JobComponent:
+      type: object
+      description: Job component data
+      properties:
+        uid:
+          type: string
+        name:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobComponentVariable'

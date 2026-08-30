@@ -1,0 +1,220 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Employees API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Employees
+paths:
+  /v2/hr/employees/lookup:
+    get:
+      tags:
+      - Employees
+      operationId: GetEmployeesLookup
+      parameters:
+      - name: Filter.Ids
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: Filter.Name
+        in: query
+        schema:
+          type: string
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EmployeeLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeLookupOutputDtoListResponse'
+  /v2/hr/employees/searchselect:
+    get:
+      tags:
+      - Employees
+      operationId: GetEmployeesListSearchSelect
+      parameters:
+      - name: Filter.Ids
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: Filter.Filter_Text
+        in: query
+        schema:
+          type: string
+      - name: Filter.IsActive
+        in: query
+        schema:
+          type: boolean
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EmployeesListSearchSelectOutputDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeesListSearchSelectOutputDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EmployeesListSearchSelectOutputDtoListPagedResponse'
+components:
+  schemas:
+    EmployeeLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EmployeesListSearchSelectOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/EmployeesListSearchSelectOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    EmployeesListSearchSelectOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        FirstName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        Username:
+          type:
+          - string
+          - 'null'
+        JobTitle:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    EmployeeLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/EmployeeLookupOutputDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

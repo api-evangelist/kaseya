@@ -1,0 +1,1080 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 RMM Integration API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: RMMIntegration
+paths:
+  /v2/rmm/{integrationType}/status:
+    get:
+      tags:
+      - RMMIntegration
+      operationId: GetRMMIntegrationStatus
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IntegrationStatusOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationStatusOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationStatusOutputDtoResponse'
+  /v2/rmm/integrations:
+    get:
+      tags:
+      - RMMIntegration
+      operationId: GetRMMSettings
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RMMSettingsDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RMMSettingsDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RMMSettingsDtoListResponse'
+  /v2/rmm/{integrationType}/tickets:
+    post:
+      tags:
+      - RMMIntegration
+      operationId: PostTickets
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationTicketInputDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationTicketInputDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationTicketInputDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationTicketInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+  /v2/rmm/{integrationType}/tickets/resolve:
+    post:
+      tags:
+      - RMMIntegration
+      operationId: ResolveTickets
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationTicketResolveInputDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationTicketResolveInputDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationTicketResolveInputDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationTicketResolveInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+  /v2/rmm/{integrationType}/tickets/duplicate:
+    post:
+      tags:
+      - RMMIntegration
+      operationId: DuplicateTickets
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationTicketDuplicateInputDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationTicketDuplicateInputDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationTicketDuplicateInputDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationTicketDuplicateInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+  /v2/rmm/{integrationType}/tickets/status/{jobId}:
+    get:
+      tags:
+      - RMMIntegration
+      operationId: GetJobstatus
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IntegrationTicketJobStatusOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationTicketJobStatusOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationTicketJobStatusOutputDtoResponse'
+  /v2/rmm/{integrationType}/assets:
+    post:
+      tags:
+      - RMMIntegration
+      operationId: PostAssets
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationtAssetInputDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationtAssetInputDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationtAssetInputDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationtAssetInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+    put:
+      tags:
+      - RMMIntegration
+      operationId: PutAssets
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationtAssetInputDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationtAssetInputDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationtAssetInputDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationtAssetInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+  /v2/rmm/{integrationType}/assets/deactivate:
+    put:
+      tags:
+      - RMMIntegration
+      operationId: DeactivateAssets
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationDeactivateAssetInputDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationDeactivateAssetInputDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationDeactivateAssetInputDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationDeactivateAssetInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+  /v2/rmm/{integrationType}/assets/status/{jobId}:
+    get:
+      tags:
+      - RMMIntegration
+      operationId: GetAssetJobStatus
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IntegrationAssetJobStatusOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationAssetJobStatusOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationAssetJobStatusOutputDtoResponse'
+  /v2/rmm/{integrationType}/remotesessions/{assetId}:
+    get:
+      tags:
+      - RMMIntegration
+      operationId: GetRemoteSessions
+      parameters:
+      - name: integrationType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: assetId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RemoteSessionsOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RemoteSessionsOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RemoteSessionsOutputDtoResponse'
+components:
+  schemas:
+    IntegrationDeactivateAssetInputDto:
+      type: object
+      properties:
+        TransactionId:
+          type:
+          - string
+          - 'null'
+        AssetId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationStatusOutputDto:
+      type: object
+      properties:
+        IsEnabled:
+          type: boolean
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    AssetDetailsInputDto:
+      type: object
+      properties:
+        AssetManufacturer:
+          type:
+          - string
+          - 'null'
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        ModelNumber:
+          type:
+          - string
+          - 'null'
+        ProductName:
+          type:
+          - string
+          - 'null'
+        MachineVersion:
+          type:
+          - string
+          - 'null'
+        OsType:
+          type:
+          - string
+          - 'null'
+        OsInfo:
+          type:
+          - string
+          - 'null'
+        MajorVersion:
+          type:
+          - string
+          - 'null'
+        MinorVersion:
+          type:
+          - string
+          - 'null'
+        LoginName:
+          type:
+          - string
+          - 'null'
+        LastLoginName:
+          type:
+          - string
+          - 'null'
+        CurrentUser:
+          type:
+          - string
+          - 'null'
+        FirstCheckIn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastCheckIn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastReboot:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AssetTag:
+          type:
+          - string
+          - 'null'
+        MaxMemorySize:
+          type:
+          - string
+          - 'null'
+        MaxMemorySlots:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AssetMotherboardInfoInputDto:
+      type: object
+      properties:
+        MotherboardManufacturer:
+          type:
+          - string
+          - 'null'
+        MotherboardProductCode:
+          type:
+          - string
+          - 'null'
+        MotherboardVersion:
+          type:
+          - string
+          - 'null'
+        MotherboardSerialNumber:
+          type:
+          - string
+          - 'null'
+        BusSpeed:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationTicketInputDto:
+      type: object
+      properties:
+        TransactionId:
+          type:
+          - string
+          - 'null'
+        AlertRefId:
+          type:
+          - string
+          - 'null'
+        Organization:
+          $ref: '#/components/schemas/IntegrationAccountInputDto'
+        Title:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        OpenDate:
+          type: string
+          format: date-time
+        Asset:
+          $ref: '#/components/schemas/IntegrationTicketAssetInputDto'
+        DuplicationCount:
+          type: integer
+          format: int32
+        LastOccurence:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    AssetDiskVolumeInputDto:
+      type: object
+      properties:
+        Drive:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+        Format:
+          type:
+          - string
+          - 'null'
+        FreeMBytes:
+          type: integer
+          format: int64
+        UsedMBytes:
+          type: integer
+          format: int64
+        TotalMBytes:
+          type: integer
+          format: int64
+        Label:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationAssetJobStatusOutputDto:
+      type: object
+      properties:
+        JobId:
+          type: integer
+          format: int64
+        JobStatus:
+          type:
+          - string
+          - 'null'
+        ActionType:
+          type: integer
+          format: int32
+        Details:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IntegrationAssetJobDetailOutput'
+      additionalProperties: false
+    IntegrationTicketJobStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/IntegrationTicketJobStatusOutputDto'
+      additionalProperties: false
+    IntegrationAssetJobStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/IntegrationAssetJobStatusOutputDto'
+      additionalProperties: false
+    IntegrationTicketJobStatusOutputDto:
+      type: object
+      properties:
+        JobId:
+          type: integer
+          format: int64
+        JobStatus:
+          type:
+          - string
+          - 'null'
+        ActionType:
+          type: integer
+          format: int32
+        Details:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IntegrationTicketJobDetailOutputDto'
+      additionalProperties: false
+    IntegrationTicketJobDetailOutputDto:
+      type: object
+      properties:
+        StatusCode:
+          type:
+          - string
+          - 'null'
+        StatusMessage:
+          type:
+          - string
+          - 'null'
+        TransactionId:
+          type:
+          - string
+          - 'null'
+        AlertRefId:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        TicketId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    RMMSettingsDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RMMSettingsDto'
+      additionalProperties: false
+    IntegrationTicketDuplicateInputDto:
+      type: object
+      properties:
+        TransactionId:
+          type:
+          - string
+          - 'null'
+        AlertRefId:
+          type:
+          - string
+          - 'null'
+        DuplicationCount:
+          type: integer
+          format: int32
+        LastOccurence:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ReopenTicket:
+          type: boolean
+      additionalProperties: false
+    IntegrationTicketResolveInputDto:
+      type: object
+      properties:
+        TransactionId:
+          type:
+          - string
+          - 'null'
+        AlertRefId:
+          type:
+          - string
+          - 'null'
+        ResolutionNote:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationtAssetInputDto:
+      type: object
+      properties:
+        TransactionId:
+          type:
+          - string
+          - 'null'
+        AssetId:
+          type:
+          - string
+          - 'null'
+        AgentId:
+          type:
+          - string
+          - 'null'
+        Organization:
+          $ref: '#/components/schemas/IntegrationAccountInputDto'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        MachineGroupId:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type:
+          - string
+          - 'null'
+        AdditionalInfo:
+          $ref: '#/components/schemas/AssetAdditionalInfoInputDto'
+        AssetDetails:
+          $ref: '#/components/schemas/AssetDetailsInputDto'
+        AssetNetworkDetails:
+          $ref: '#/components/schemas/AssetNetworkDetailsInputDto'
+        AssetMotherboardInfo:
+          $ref: '#/components/schemas/AssetMotherboardInfoInputDto'
+        AssetChassisInfo:
+          $ref: '#/components/schemas/AssetChassisInfoInputDto'
+        AssetDiskVolumes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AssetDiskVolumeInputDto'
+      additionalProperties: false
+    IntegrationJobOutputDto:
+      type: object
+      properties:
+        JobId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    RMMSettingsDto:
+      type: object
+      properties:
+        Type:
+          type: integer
+          format: int32
+        Enabled:
+          type: boolean
+        Target:
+          type:
+          - string
+          - 'null'
+        EnableRemoteConnect:
+          type: boolean
+        ShowServerAddressOnTicket:
+          type: boolean
+      additionalProperties: false
+    AssetAdditionalInfoInputDto:
+      type: object
+      properties:
+        AcquisitionDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        WarrantyExpDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ExpiryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Barcode:
+          type:
+          - string
+          - 'null'
+        PurchaseCost:
+          type:
+          - number
+          - 'null'
+          format: double
+      additionalProperties: false
+    IntegrationJobOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/IntegrationJobOutputDto'
+      additionalProperties: false
+    RemoteSessionsOutputDto:
+      type: object
+      properties:
+        AuthorizationLink:
+          type:
+          - string
+          - 'null'
+        Sessions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PulsewayRemoteSessionEntity'
+        IsOffline:
+          type: boolean
+      additionalProperties: false
+    AssetNetworkDetailsInputDto:
+      type: object
+      properties:
+        IpAddress:
+          type:
+          - string
+          - 'null'
+        SubnetMask:
+          type:
+          - string
+          - 'null'
+        DefaultGateway:
+          type:
+          - string
+          - 'null'
+        MacAddress:
+          type:
+          - string
+          - 'null'
+        DNSServers:
+          type:
+          - string
+          - 'null'
+        ConnectionGatewayIp:
+          type:
+          - string
+          - 'null'
+        WinsEnabled:
+          type: boolean
+        PrimaryWinsServer:
+          type:
+          - string
+          - 'null'
+        SecondaryWinsServer:
+          type:
+          - string
+          - 'null'
+        DHCPEnabled:
+          type: boolean
+        DHCPServer:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/IntegrationStatusOutputDto'
+      additionalProperties: false
+    IntegrationAssetJobDetailOutput:
+      type: object
+      properties:
+        StatusCode:
+          type:
+          - string
+          - 'null'
+        StatusMessage:
+          type:
+          - string
+          - 'null'
+        TransactionId:
+          type:
+          - string
+          - 'null'
+        AssetId:
+          type:
+          - string
+          - 'null'
+        PsaAssetId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    PulsewayRemoteSessionEntity:
+      type: object
+      properties:
+        Token:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Read_Only:
+          type: boolean
+        Is_Active:
+          type: boolean
+        Is_Console_Session:
+          type: boolean
+      additionalProperties: false
+    RemoteSessionsOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/RemoteSessionsOutputDto'
+      additionalProperties: false
+    AssetChassisInfoInputDto:
+      type: object
+      properties:
+        ChassisManufacturer:
+          type:
+          - string
+          - 'null'
+        ChassisSerialNumber:
+          type:
+          - string
+          - 'null'
+        ChassisVersion:
+          type:
+          - string
+          - 'null'
+        ChassisAssetTag:
+          type:
+          - string
+          - 'null'
+        ChassisType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationAccountInputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationTicketAssetInputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        AgentId:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

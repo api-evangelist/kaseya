@@ -1,0 +1,1930 @@
+openapi: 3.2.0
+info:
+  title: Datto RMM /v2/account API
+  description: Datto RMM (Remote Monitoring and Management) REST API
+  license:
+    name: '©Datto, Inc. - All rights reserved. '
+    url: http://www.datto.com/
+  version: 2.0.0 (Build 235_0add0e4d537431f30405d568ccb46b6d7af1f183)
+servers:
+- url: https://syrah-api.centrastage.net/api
+  description: Generated server url
+tags:
+- name: /v2/account
+  description: Operations on accounts
+paths:
+  /v2/account/variable:
+    put:
+      tags:
+      - /v2/account
+      summary: Creates an account variable
+      operationId: createAccountVariable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Variable_Creation_Request'
+        required: true
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/account/variable
+        '409':
+          description: Request aborted due to concurrent write access to this record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/account/variable
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/account/variable
+        '400':
+          description: Request parameters are invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v2/account/variable
+        '404':
+          description: Variable was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/account/variable
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/account/variable
+        '200':
+          description: OK
+  /v2/account/variable/{variableId}:
+    post:
+      tags:
+      - /v2/account
+      summary: Updates the account variable identified by the given variable Id.
+      operationId: updateAccountVariable
+      parameters:
+      - name: variableId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Variable_Update_Request'
+        required: true
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/account/variable/{variableId}
+        '409':
+          description: Request aborted due to concurrent write access to this record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/account/variable/{variableId}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/account/variable/{variableId}
+        '400':
+          description: Request parameters are invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v2/account/variable/{variableId}
+        '404':
+          description: Variable was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/account/variable/{variableId}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/account/variable/{variableId}
+        '200':
+          description: OK
+    delete:
+      tags:
+      - /v2/account
+      summary: Deletes the account variable identified by the given variable Id.
+      operationId: deleteAccountVariable
+      parameters:
+      - name: variableId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/account/variable/{variableId}
+        '409':
+          description: Request aborted due to concurrent write access to this record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/account/variable/{variableId}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/account/variable/{variableId}
+        '400':
+          description: Request parameters are invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v2/account/variable/{variableId}
+        '404':
+          description: Variable was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/account/variable/{variableId}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/account/variable/{variableId}
+        '200':
+          description: OK
+  /v2/account:
+    get:
+      tags:
+      - /v2/account
+      summary: Fetches the authenticated user's account data.
+      operationId: getUserAccount
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/account
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/account
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/account
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/account
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Account data
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  name:
+                    type: string
+                  descriptor:
+                    $ref: '#/components/schemas/Account_Descriptor'
+                  uid:
+                    type: string
+                  currency:
+                    type: string
+                  devicesStatus:
+                    $ref: '#/components/schemas/AccountDevicesStatus'
+  /v2/account/variables:
+    get:
+      tags:
+      - /v2/account
+      summary: Fetches the account variables.
+      operationId: getAccountVariables
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/account/variables
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/account/variables
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/account/variables
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/account/variables
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Variables page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  variables:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Variable'
+                    uniqueItems: true
+  /v2/account/users:
+    get:
+      tags:
+      - /v2/account
+      summary: Fetches the authentication users records of the authenticated user's account.
+      operationId: getUsers
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/account/users
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/account/users
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/account/users
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/account/users
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Users page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AuthUser'
+  /v2/account/sites:
+    get:
+      tags:
+      - /v2/account
+      summary: Fetches the site records of the authenticated user's account.
+      operationId: getSites
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: siteName
+        in: query
+        description: Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed.
+        required: false
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/account/sites
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/account/sites
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/account/sites
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/account/sites
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Sites page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  sites:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Site'
+  /v2/account/dnet-site-mappings:
+    get:
+      tags:
+      - /v2/account
+      summary: Fetches the sites records with its mapped dnet network id for the authenticated user's account.
+      operationId: getDnetSiteMappings
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/account/dnet-site-mappings
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/account/dnet-site-mappings
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/account/dnet-site-mappings
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/account/dnet-site-mappings
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Dnet site mappings page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  dnetSiteMappings:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DnetSiteMappingsDto'
+  /v2/account/devices:
+    get:
+      tags:
+      - /v2/account
+      summary: Fetches the devices of the authenticated user's account.
+      operationId: getUserAccountDevices_1
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: filterId
+        in: query
+        description: Optional. If applied, this filter exclusively determines the results.
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: hostname
+        in: query
+        description: Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed.
+        required: false
+        schema:
+          type: string
+      - name: deviceType
+        in: query
+        description: Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed.
+        required: false
+        schema:
+          type: string
+      - name: operatingSystem
+        in: query
+        description: Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed.
+        required: false
+        schema:
+          type: string
+      - name: siteName
+        in: query
+        description: Optional. Filters results based on the provided value using the LIKE operator. Partial matches are allowed.
+        required: false
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/account/devices
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/account/devices
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/account/devices
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/account/devices
+        '404':
+          description: Filter was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/account/devices
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Devices page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  devices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+  /v2/account/components:
+    get:
+      tags:
+      - /v2/account
+      summary: Fetches the components records of the authenticated user's account.
+      operationId: getComponents
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/account/components
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/account/components
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/account/components
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/account/components
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Components page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  components:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Component'
+  /v2/account/alerts/resolved:
+    get:
+      tags:
+      - /v2/account
+      summary: Fetches resolved alerts of the authenticated user's account.
+      description: If the muted parameter is not provided, both muted and umuted alerts will be queried.
+      operationId: getUserAccountClosedAlerts
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: muted
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/account/alerts/resolved
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/account/alerts/resolved
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/account/alerts/resolved
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/account/alerts/resolved
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Alerts page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  alerts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Alert'
+  /v2/account/alerts/open:
+    get:
+      tags:
+      - /v2/account
+      summary: Fetches open alerts of the authenticated user's account.
+      description: If the muted parameter is not provided, both muted and umuted alerts will be queried.
+      operationId: getUserAccountOpenAlerts
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: muted
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/account/alerts/open
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/account/alerts/open
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/account/alerts/open
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/account/alerts/open
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Alerts page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  alerts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Alert'
+components:
+  schemas:
+    ProxySettings:
+      type: object
+      description: Site's Proxy Settings
+      properties:
+        host:
+          type: string
+        password:
+          type: string
+        port:
+          type: integer
+          format: int32
+        type:
+          type: string
+          enum:
+          - http
+          - socks4
+          - socks5
+        username:
+          type: string
+    WindowsPerformanceContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          value:
+            type: number
+            format: float
+    TemperatureContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          degree:
+            type: number
+            format: float
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    EndpointSecurityThreatContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          esAlertId:
+            type: string
+          description:
+            type: string
+    AuthUser:
+      type: object
+      description: Authentication user data
+      properties:
+        lastName:
+          type: string
+        firstName:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        telephone:
+          type: string
+        status:
+          type: string
+        created:
+          type: string
+          format: date-time
+        lastAccess:
+          type: string
+          format: date-time
+        disabled:
+          type: boolean
+    Variable_Creation_Request:
+      type: object
+      description: Variable creation data
+      properties:
+        name:
+          type: string
+          description: Variable name
+        value:
+          type: string
+          description: Variable value
+        masked:
+          type: boolean
+          description: Variable masking (hiding)
+    ResponseAction:
+      type: object
+      properties:
+        actionTime:
+          type: string
+          format: date-time
+        actionType:
+          type: string
+          enum:
+          - EMAIL_SENT
+          - EMAIL_SEND_ERROR
+          - TICKET_PENDING
+          - TICKET_CREATED
+          - TICKET_CREATION_ERROR
+          - TICKET_CLOSED_CALL
+          - COMPONENT
+          - WEBHOOK_EXECUTED
+          - WEBHOOK_EXECUTION_ERROR
+        description:
+          type: string
+        actionReference:
+          type: string
+        actionReferenceInt:
+          type: string
+    FileSystemContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          sample:
+            type: number
+            format: float
+          threshold:
+            type: number
+            format: float
+          path:
+            type: string
+          objectType:
+            type: string
+            enum:
+            - FILE
+            - DIRECTORY
+          condition:
+            type: string
+            enum:
+            - ABOVE_THRESHOLD
+            - BELOW_THRESHOLD
+            - REMOVED
+            - CREATED
+    Variable_Update_Request:
+      type: object
+      description: Variable update data
+      properties:
+        name:
+          type: string
+          description: Variable name
+        value:
+          type: string
+          description: Variable value
+    StatusContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          processName:
+            type: string
+          status:
+            type: string
+            enum:
+            - STOPPED
+            - STARTPENDING
+            - STOPPENDING
+            - RUNNING
+            - CONTINUEPENDING
+            - PAUSEPENDING
+            - PAUSED
+    ActionContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          packageName:
+            type: string
+          actionType:
+            type: string
+            enum:
+            - INSTALLED
+            - UNINSTALLED
+            - VERSION_CHANGED
+          prevVersion:
+            type: string
+          version:
+            type: string
+    DiskUsageContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          diskName:
+            type: string
+          totalVolume:
+            type: number
+            format: float
+          freeSpace:
+            type: number
+            format: float
+          unitOfMeasure:
+            type: string
+            enum:
+            - PERCENT
+            - USED
+            - FREE
+          diskNameDesignation:
+            type: string
+            enum:
+            - ANY_VOLUME
+            - ALL_VOLUMES
+            - SINGLE_VOLUME
+    EndpointSecurityWindowsDefenderContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          esAlertId:
+            type: string
+          description:
+            type: string
+    WmiContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          value:
+            type: string
+    SecCenterContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          productName:
+            type: string
+          alertType:
+            type: string
+            enum:
+            - DISABLED
+            - NOT_UPTODATE
+    PatchManagement:
+      type: object
+      description: Patch management data
+      properties:
+        patchStatus:
+          type: string
+          enum:
+          - NoPolicy
+          - NoData
+          - RebootRequired
+          - InstallError
+          - ApprovedPending
+          - FullyPatched
+        patchesApprovedPending:
+          type: integer
+          format: int64
+        patchesNotApproved:
+          type: integer
+          format: int64
+        patchesInstalled:
+          type: integer
+          format: int64
+    ScriptContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          samples:
+            type: object
+            additionalProperties:
+              type: string
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
+    AlertMonitorInfo:
+      type: object
+      description: Alert monitor information
+      properties:
+        sendsEmails:
+          type: boolean
+        createsTicket:
+          type: boolean
+    RansomWareContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          state:
+            type: integer
+            format: int32
+          confidenceFactor:
+            type: integer
+            format: int32
+          affectedDirectories:
+            type: array
+            items:
+              type: string
+          watchPaths:
+            type: array
+            items:
+              type: string
+          rwextension:
+            type: string
+          metaAlertTime:
+            type: string
+            format: date-time
+          alertTime:
+            type: string
+            format: date-time
+    Antivirus:
+      type: object
+      description: Device antivirus data
+      properties:
+        antivirusProduct:
+          type: string
+        antivirusStatus:
+          type: string
+          enum:
+          - RunningAndUpToDate
+          - RunningAndNotUpToDate
+          - NotRunning
+          - NotDetected
+    SNMPProbeContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          ipAddress:
+            type: string
+          OID:
+            type: string
+          ruleName:
+            type: string
+          responseValue:
+            type: string
+          deviceName:
+            type: string
+          monitorName:
+            type: string
+          oid:
+            type: string
+    AccountDevicesStatus:
+      type: object
+      description: Account Devices Status
+      properties:
+        numberOfDevices:
+          type: integer
+          format: int64
+        numberOfOnlineDevices:
+          type: integer
+          format: int64
+        numberOfOfflineDevices:
+          type: integer
+          format: int64
+        numberOfOnDemandDevices:
+          type: integer
+          format: int64
+        numberOfManagedDevices:
+          type: integer
+          format: int64
+    Component:
+      type: object
+      description: Component data
+      properties:
+        id:
+          type: integer
+          format: int64
+        credentialsRequired:
+          type: boolean
+        uid:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        categoryCode:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComponentVariable'
+    Site:
+      type: object
+      description: Site data
+      properties:
+        id:
+          type: integer
+          format: int64
+        uid:
+          type: string
+          description: Unique alphanumeric UID of this site
+        accountUid:
+          type: string
+          description: Unique alphanumeric UID of the account to which this site belongs
+        name:
+          type: string
+        description:
+          type: string
+        notes:
+          type: string
+        onDemand:
+          type: boolean
+        splashtopAutoInstall:
+          type: boolean
+        proxySettings:
+          $ref: '#/components/schemas/ProxySettings'
+        devicesStatus:
+          $ref: '#/components/schemas/DevicesStatus'
+        autotaskCompanyName:
+          type: string
+        autotaskCompanyId:
+          type: string
+        portalUrl:
+          type: string
+    AlertContext:
+      discriminator:
+        propertyName: '@class'
+      properties:
+        '@class':
+          type: string
+      required:
+      - '@class'
+    DevicesStatus:
+      type: object
+      description: Devices Status
+      properties:
+        numberOfDevices:
+          type: integer
+          format: int64
+        numberOfOnlineDevices:
+          type: integer
+          format: int64
+        numberOfOfflineDevices:
+          type: integer
+          format: int64
+    Variable:
+      type: object
+      description: Variable data
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        value:
+          type: string
+        masked:
+          type: boolean
+    Alert:
+      type: object
+      description: Alert data
+      properties:
+        alertUid:
+          type: string
+        priority:
+          type: string
+          enum:
+          - Critical
+          - High
+          - Moderate
+          - Low
+          - Information
+          - Unknown
+        diagnostics:
+          type: string
+        resolved:
+          type: boolean
+        resolvedBy:
+          type: string
+        resolvedOn:
+          type: string
+          format: date-time
+        muted:
+          type: boolean
+        ticketNumber:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        alertMonitorInfo:
+          $ref: '#/components/schemas/AlertMonitorInfo'
+        alertContext:
+          oneOf:
+          - $ref: '#/components/schemas/ActionContext'
+          - $ref: '#/components/schemas/AntivirusContext'
+          - $ref: '#/components/schemas/BackupManagementContext'
+          - $ref: '#/components/schemas/CustomSNMPContext'
+          - $ref: '#/components/schemas/DiskHealthContext'
+          - $ref: '#/components/schemas/DiskUsageContext'
+          - $ref: '#/components/schemas/EndpointSecurityThreatContext'
+          - $ref: '#/components/schemas/EndpointSecurityWindowsDefenderContext'
+          - $ref: '#/components/schemas/EventLogContext'
+          - $ref: '#/components/schemas/FanContext'
+          - $ref: '#/components/schemas/FileSystemContext'
+          - $ref: '#/components/schemas/NetworkMonitorContext'
+          - $ref: '#/components/schemas/OnlineOfflineStatusContext'
+          - $ref: '#/components/schemas/PatchContext'
+          - $ref: '#/components/schemas/PingContext'
+          - $ref: '#/components/schemas/PrinterContext'
+          - $ref: '#/components/schemas/PsuContext'
+          - $ref: '#/components/schemas/RansomWareContext'
+          - $ref: '#/components/schemas/ResourceUsageContext'
+          - $ref: '#/components/schemas/SNMPProbeContext'
+          - $ref: '#/components/schemas/ScriptContext'
+          - $ref: '#/components/schemas/SecCenterContext'
+          - $ref: '#/components/schemas/SecurityManagementContext'
+          - $ref: '#/components/schemas/StatusContext'
+          - $ref: '#/components/schemas/TemperatureContext'
+          - $ref: '#/components/schemas/WindowsPerformanceContext'
+          - $ref: '#/components/schemas/WmiContext'
+        alertSourceInfo:
+          $ref: '#/components/schemas/AlertSourceInfo'
+        responseActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseAction'
+        autoresolveMins:
+          type: integer
+          format: int32
+    PsuContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          reason:
+            type: string
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    NetworkMonitorContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          description:
+            type: string
+    FanContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          reason:
+            type: string
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    PingContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          instanceName:
+            type: string
+          roundtripTime:
+            type: integer
+            format: int32
+          reasons:
+            type: array
+            items:
+              type: string
+    PatchContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          patchUid:
+            type: string
+          policyUid:
+            type: string
+          result:
+            type: string
+          info:
+            type: string
+    ResourceUsageContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          processName:
+            type: string
+          sample:
+            type: number
+            format: float
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    DnetSiteMappingsDto:
+      type: object
+      description: Dnet site mappings data
+      properties:
+        id:
+          type: integer
+          format: int64
+        uid:
+          type: string
+          description: Unique alphanumeric UID of this site
+        accountUid:
+          type: string
+          description: Unique alphanumeric UID of the account to which this site belongs
+        name:
+          type: string
+        description:
+          type: string
+        dattoNetworkingNetworkIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        portalUrl:
+          type: string
+    AlertSourceInfo:
+      type: object
+      description: Alert source information data
+      properties:
+        deviceUid:
+          type: string
+        deviceName:
+          type: string
+        siteUid:
+          type: string
+        siteName:
+          type: string
+    SecurityManagementContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          status:
+            type: integer
+            format: int32
+          productName:
+            type: string
+          infoTime:
+            type: integer
+            format: int32
+          virusName:
+            type: string
+          infectedFiles:
+            type: array
+            items:
+              type: string
+          productNotUpdatedForDays:
+            type: integer
+            format: int32
+          systemRemainsInfectedForHours:
+            type: integer
+            format: int32
+          expiryLicenseForDays:
+            type: integer
+            format: int32
+    Account_Descriptor:
+      type: object
+      description: Account description data
+      properties:
+        bilingEmail:
+          type: string
+        deviceLimit:
+          type: integer
+          format: int32
+        timeZone:
+          type: string
+    Device:
+      type: object
+      description: Device data
+      properties:
+        id:
+          type: integer
+          format: int64
+        uid:
+          type: string
+        siteId:
+          type: integer
+          format: int64
+        siteUid:
+          type: string
+        siteName:
+          type: string
+        deviceType:
+          $ref: '#/components/schemas/DevicesType'
+        hostname:
+          type: string
+        intIpAddress:
+          type: string
+        operatingSystem:
+          type: string
+        lastLoggedInUser:
+          type: string
+        domain:
+          type: string
+        cagVersion:
+          type: string
+        displayVersion:
+          type: string
+        extIpAddress:
+          type: string
+        description:
+          type: string
+        a64Bit:
+          type: boolean
+        rebootRequired:
+          type: boolean
+        online:
+          type: boolean
+        suspended:
+          type: boolean
+        deleted:
+          type: boolean
+        lastSeen:
+          type: string
+          format: date-time
+        lastReboot:
+          type: string
+          format: date-time
+        lastAuditDate:
+          type: string
+          format: date-time
+        creationDate:
+          type: string
+          format: date-time
+        snmpEnabled:
+          type: boolean
+        deviceClass:
+          type: string
+          enum:
+          - device
+          - printer
+          - esxihost
+          - rmmnetworkdevice
+          - unknown
+        portalUrl:
+          type: string
+        warrantyDate:
+          type: string
+        antivirus:
+          $ref: '#/components/schemas/Antivirus'
+        patchManagement:
+          $ref: '#/components/schemas/PatchManagement'
+        softwareStatus:
+          type: string
+        webRemoteUrl:
+          type: string
+        networkProbe:
+          type: boolean
+        onboardedViaNetworkMonitor:
+          type: boolean
+    DiskHealthContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          reason:
+            type: string
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    OnlineOfflineStatusContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          status:
+            type: string
+            enum:
+            - ONLINE
+            - OFFLINE
+    PaginationData:
+      type: object
+      description: Pagination data
+      properties:
+        count:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    CustomSNMPContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          displayName:
+            type: string
+          currentValue:
+            type: string
+          monitorInstance:
+            type: string
+    AntivirusContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          status:
+            type: string
+            enum:
+            - NOTDETECTED
+            - NOTRUNNING
+            - RUNNINGNOTUPTODATE
+          productName:
+            type: string
+    EventLogContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          logName:
+            type: string
+          code:
+            type: string
+          type:
+            type: string
+          source:
+            type: string
+          description:
+            type: string
+          triggerCount:
+            type: integer
+            format: int32
+          lastTriggered:
+            type: string
+            format: date-time
+          causedSuspension:
+            type: boolean
+    BackupManagementContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          errorMessage:
+            type: string
+          timeout:
+            type: integer
+            format: int32
+    ComponentVariable:
+      type: object
+      description: Component's variables data
+      properties:
+        name:
+          type: string
+        defaultVal:
+          type: string
+        type:
+          type: string
+        direction:
+          type: boolean
+        description:
+          type: string
+        variablesIdx:
+          type: integer
+          format: int32
+    DevicesType:
+      type: object
+      description: Devices Type
+      properties:
+        category:
+          type: string
+        type:
+          type: string
+    PrinterContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          ipAddress:
+            type: string
+          macAddress:
+            type: string
+          markerSupplyIndex:
+            type: integer
+            format: int32
+          currentLevel:
+            type: integer
+            format: int32

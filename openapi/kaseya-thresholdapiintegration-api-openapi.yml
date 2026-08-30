@@ -1,0 +1,70 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Datto|Autotask PSA Rest Threshold API Integration API
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+tags:
+- name: ThresholdApiIntegration
+paths:
+  /V1.0/ThresholdInformation:
+    get:
+      tags:
+      - ThresholdApiIntegration
+      operationId: ThresholdApiIntegration_QueryThresholdInformation
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThresholdStatusResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ThresholdStatusResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+components:
+  schemas:
+    ThresholdStatusResultModel:
+      type: object
+      properties:
+        externalRequestThreshold:
+          format: int32
+          type: integer
+          readOnly: true
+        requestThresholdTimeframe:
+          format: int32
+          type: integer
+          readOnly: true
+        currentTimeframeRequestCount:
+          format: int32
+          type: integer
+          readOnly: true

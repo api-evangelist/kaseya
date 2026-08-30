@@ -1,0 +1,89 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Warehouse API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Warehouse
+paths:
+  /v2/inventory/warehouses/lookup:
+    get:
+      tags:
+      - Warehouse
+      operationId: GetWarehouseLookups
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WarehouseOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WarehouseOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WarehouseOutputDtoListResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    WarehouseOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WarehouseOutputDto'
+      additionalProperties: false
+    WarehouseOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

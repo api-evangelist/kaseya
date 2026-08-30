@@ -1,0 +1,321 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Webhook Delivery Log API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: WebhookDeliveryLog
+paths:
+  /v2/admin/webhooks/{webhookId}/logs/search:
+    post:
+      tags:
+      - WebhookDeliveryLog
+      operationId: GetWebhookDeliveryLogsList
+      parameters:
+      - name: webhookId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/WebhookDeliveryLogListInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookDeliveryLogListInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/WebhookDeliveryLogListInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/WebhookDeliveryLogListInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WebhookDeliveryLogListOutputDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookDeliveryLogListOutputDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WebhookDeliveryLogListOutputDtoListPagedResponse'
+  /v2/admin/webhooks/logs/{logId}:
+    get:
+      tags:
+      - WebhookDeliveryLog
+      operationId: GetWebhookDeliveryLog
+      parameters:
+      - name: logId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WebhookDeliveryLogOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookDeliveryLogOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WebhookDeliveryLogOutputDtoResponse'
+  /v2/admin/webhooks/redeliver/{logId}:
+    post:
+      tags:
+      - WebhookDeliveryLog
+      operationId: PostWebhookDeliveryLogsRedelivery
+      parameters:
+      - name: logId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+components:
+  schemas:
+    WebhookDeliveryLogListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        IsReDelivered:
+          type: boolean
+        WebhookId:
+          type: integer
+          format: int32
+        EventId:
+          type: integer
+          format: int32
+        IsDelivered:
+          type: boolean
+        DeliveryDate:
+          type: string
+          format: date-time
+        CreatedOn:
+          type: string
+          format: date-time
+        CreatedBy:
+          type: integer
+          format: int32
+        ParentLogId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    WebhookDeliveryLogListOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WebhookDeliveryLogListOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    WebhookDeliveryLogListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/WebhookDeliveryLogListFilterDto'
+      additionalProperties: false
+    WebhookDeliveryLogOutputDto:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        RequestHeader:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+        RequestPayload:
+          type:
+          - string
+          - 'null'
+        ResponseStatusCode:
+          type: integer
+          format: int32
+        ResponseHeaders:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+        ResponseBody:
+          type:
+          - string
+          - 'null'
+        WebhookId:
+          type: integer
+          format: int32
+        DeliveryDate:
+          type: string
+          format: date-time
+        IsReDelivered:
+          type: boolean
+        IsDelivered:
+          type: boolean
+        CreatedOn:
+          type: string
+          format: date-time
+        CreatedBy:
+          type: integer
+          format: int32
+        ParentLogId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    WebhookDeliveryLogListFilterDto:
+      type: object
+      properties:
+        State:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        Id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        Events:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        FromDeliveryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ToDeliveryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    WebhookDeliveryLogOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WebhookDeliveryLogOutputDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

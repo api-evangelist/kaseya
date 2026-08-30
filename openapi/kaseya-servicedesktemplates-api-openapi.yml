@@ -1,0 +1,446 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Service Desk Templates API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: ServiceDeskTemplates
+paths:
+  /v2/servicedesk/templates/tickets/lookup:
+    get:
+      tags:
+      - ServiceDeskTemplates
+      operationId: GetTicketTemplateLookups
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TicketTemplateLookupOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketTemplateLookupOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TicketTemplateLookupOutputDtoIEnumerableResponse'
+  /v2/servicedesk/templates/tickets/{templateId}:
+    get:
+      tags:
+      - ServiceDeskTemplates
+      operationId: GetTicketTemplate
+      parameters:
+      - name: templateId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TicketTemplateOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketTemplateOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TicketTemplateOutputDtoResponse'
+  /v2/servicedesk/templates/notes/lookup:
+    get:
+      tags:
+      - ServiceDeskTemplates
+      operationId: GetTicketNoteTemplateLookups
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TicketNoteTemplateLookupOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketNoteTemplateLookupOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TicketNoteTemplateLookupOutputDtoIEnumerableResponse'
+  /v2/servicedesk/templates/notes/{templateId}/{ticketId}:
+    get:
+      tags:
+      - ServiceDeskTemplates
+      operationId: GetTicketNoteTemplateDetailsByTicketId
+      parameters:
+      - name: templateId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: ticketId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TicketNoteTemplateDetailsOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketNoteTemplateDetailsOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TicketNoteTemplateDetailsOutputDtoIEnumerableResponse'
+  /v2/servicedesk/templates/timelogs/lookup:
+    get:
+      tags:
+      - ServiceDeskTemplates
+      operationId: GetTicketTimeEntryTemplateLookups
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TicketTimeEntryTemplateLookupOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketTimeEntryTemplateLookupOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TicketTimeEntryTemplateLookupOutputDtoIEnumerableResponse'
+  /v2/servicedesk/templates/timelogs/{templateId}/{ticketId}:
+    get:
+      tags:
+      - ServiceDeskTemplates
+      operationId: GetTicketTimelogTemplateDetailsByTicketId
+      parameters:
+      - name: templateId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: ticketId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TicketTimeEntryTemplateDetailsOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketTimeEntryTemplateDetailsOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TicketTimeEntryTemplateDetailsOutputDtoIEnumerableResponse'
+components:
+  schemas:
+    TicketTimeEntryTemplateLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Notes:
+          type:
+          - string
+          - 'null'
+        InternalNotes:
+          type:
+          - string
+          - 'null'
+        RoleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        WorkTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Timespent:
+          type: number
+          format: double
+      additionalProperties: false
+    TicketTimeEntryTemplateDetailsOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketTimeEntryTemplateDetailsOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    TicketTemplateOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Title:
+          type:
+          - string
+          - 'null'
+        IssueTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubIssueTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PriorityId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        QueueId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        AssigneeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssigneeName:
+          type:
+          - string
+          - 'null'
+        TicketTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExpectedTimeToResolve:
+          type:
+          - number
+          - 'null'
+          format: double
+        Details:
+          type:
+          - string
+          - 'null'
+        TimeToResolveTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        WorkTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    TicketTimeEntryTemplateLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketTimeEntryTemplateLookupOutputDto'
+      additionalProperties: false
+    TicketNoteTemplateDetailsOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketNoteTemplateDetailsOutputDto'
+      additionalProperties: false
+    TicketNoteTemplateDetailsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Details:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketTemplateLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketTimeEntryTemplateDetailsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Notes:
+          type:
+          - string
+          - 'null'
+        InternalNotes:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketTemplateLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketTemplateLookupOutputDto'
+      additionalProperties: false
+    TicketNoteTemplateLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsInternal:
+          type: boolean
+      additionalProperties: false
+    TicketTemplateOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketTemplateOutputDto'
+      additionalProperties: false
+    TicketNoteTemplateLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketNoteTemplateLookupOutputDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

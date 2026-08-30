@@ -1,0 +1,206 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Qbd Sales Tax Items API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: QbdSalesTaxItems
+paths:
+  /v2/integration/qbd/salestaxitems:
+    get:
+      tags:
+      - QbdSalesTaxItems
+      operationId: GetSalesTaxItems
+      parameters:
+      - name: Filter.Name
+        in: query
+        schema:
+          type: string
+      - name: ExternalTenantId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QbSalesTaxItemExportDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QbSalesTaxItemExportDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QbSalesTaxItemExportDtoListPagedResponse'
+  /v2/integration/qbd/salestaxitems/byids:
+    get:
+      tags:
+      - QbdSalesTaxItems
+      operationId: GetSalesTaxItemsByIds
+      parameters:
+      - name: ExternalTenantId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: SalesTaxItemIds
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QbSalesTaxItemExportDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QbSalesTaxItemExportDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QbSalesTaxItemExportDtoListResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbSalesTaxItemExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbSalesTaxItemExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    QbSalesTaxItemExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbSalesTaxItemExportDto'
+      additionalProperties: false
+    QbSalesTaxItemExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        TaxRate:
+          type: number
+          format: double
+        IsTaxGroup:
+          type: boolean
+        Vendor:
+          type:
+          - string
+          - 'null'
+        VendorId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ParentId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExternalSalesTaxItemId:
+          type:
+          - string
+          - 'null'
+        ExternalVendorId:
+          type:
+          - string
+          - 'null'
+        SalesTaxItemsIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

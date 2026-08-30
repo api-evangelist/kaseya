@@ -1,0 +1,926 @@
+openapi: 3.2.0
+info:
+  title: Datto RMM /v2/audit API
+  description: Datto RMM (Remote Monitoring and Management) REST API
+  license:
+    name: '©Datto, Inc. - All rights reserved. '
+    url: http://www.datto.com/
+  version: 2.0.0 (Build 235_0add0e4d537431f30405d568ccb46b6d7af1f183)
+servers:
+- url: https://syrah-api.centrastage.net/api
+  description: Generated server url
+tags:
+- name: /v2/audit
+  description: Operations on audit data
+paths:
+  /v2/audit/printer/{deviceUid}:
+    get:
+      tags:
+      - /v2/audit
+      summary: Fetches audit data of the printer identified the given device Uid.
+      description: The device class must be of type "printer".
+      operationId: getPrinterAudit
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/audit/printer/{deviceUid}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/audit/printer/{deviceUid}
+        '404':
+          description: Printer was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/audit/printer/{deviceUid}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/audit/printer/{deviceUid}
+        '400':
+          description: The device identified by the given device UID is not of class printer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v2/audit/printer/{deviceUid}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/audit/printer/{deviceUid}
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Printer audit data
+                properties:
+                  portalUrl:
+                    type: string
+                  snmpInfo:
+                    $ref: '#/components/schemas/SnmpInfo'
+                  printerMarkerSupplies:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PrinterMarkerSupply'
+                  printer:
+                    $ref: '#/components/schemas/Printer'
+                  systemInfo:
+                    $ref: '#/components/schemas/PrinterSystemInfo'
+                  nics:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NetworkInterface'
+  /v2/audit/esxihost/{deviceUid}:
+    get:
+      tags:
+      - /v2/audit
+      summary: Fetches audit data of the ESXi host identified the given device Uid.
+      description: The device class must be of type "esxihost".
+      operationId: getEsxiHostAudit
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/audit/esxihost/{deviceUid}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/audit/esxihost/{deviceUid}
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/audit/esxihost/{deviceUid}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/audit/esxihost/{deviceUid}
+        '400':
+          description: The device identified by the given device UID is not of class ESXi host.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v2/audit/esxihost/{deviceUid}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/audit/esxihost/{deviceUid}
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ESXi Host audit data
+                properties:
+                  portalUrl:
+                    type: string
+                  systemInfo:
+                    $ref: '#/components/schemas/ESXiSystemInfo'
+                  guests:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Guest'
+                  processors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ESXiProcessor'
+                  nics:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ESXiNic'
+                  physicalMemory:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PhysicalMemory'
+                  datastores:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ESXiDatastore'
+  /v2/audit/device/{deviceUid}:
+    get:
+      tags:
+      - /v2/audit
+      summary: Fetches audit data of the generic device identified the given device Uid.
+      description: The device class must be of type "device".
+      operationId: getDeviceAudit
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/audit/device/{deviceUid}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/audit/device/{deviceUid}
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/audit/device/{deviceUid}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/audit/device/{deviceUid}
+        '400':
+          description: The device identified by the given device UID is not of class device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v2/audit/device/{deviceUid}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/audit/device/{deviceUid}
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Device audit data
+                properties:
+                  portalUrl:
+                    type: string
+                  webRemoteUrl:
+                    type: string
+                  systemInfo:
+                    $ref: '#/components/schemas/SystemInfo'
+                  nics:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NetworkInterface'
+                  bios:
+                    $ref: '#/components/schemas/Bios'
+                  baseBoard:
+                    $ref: '#/components/schemas/BaseBoard'
+                  displays:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Display'
+                  logicalDisks:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LogicalDisk'
+                  mobileInfo:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MobileInfo'
+                  processors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Processor'
+                  videoBoards:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VideoBoard'
+                  attachedDevices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AttachedDevice'
+                  snmpInfo:
+                    $ref: '#/components/schemas/SnmpInfo'
+                  physicalMemory:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PhysicalMemory'
+  /v2/audit/device/{deviceUid}/software:
+    get:
+      tags:
+      - /v2/audit
+      summary: Fetches audited software of the generic device identified the given device Uid.
+      description: The device class must be of type "device".
+      operationId: getDeviceAuditSoftware
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/audit/device/{deviceUid}/software
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/audit/device/{deviceUid}/software
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/audit/device/{deviceUid}/software
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/audit/device/{deviceUid}/software
+        '400':
+          description: The device identified by the given device UID is not of class device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v2/audit/device/{deviceUid}/software
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/audit/device/{deviceUid}/software
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Software page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  software:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Software'
+  /v2/audit/device/macAddress/{macAddress}:
+    get:
+      tags:
+      - /v2/audit
+      summary: 'Fetches audit data of the generic device(s) identified the given MAC address in format: XXXXXXXXXXXX'
+      description: The device class must be of type "device".
+      operationId: getDeviceAuditByMacAddress
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/audit/device/macAddress/{macAddress}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/audit/device/macAddress/{macAddress}
+        '200':
+          description: Audit data was found.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeviceAudit'
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/audit/device/macAddress/{macAddress}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/audit/device/macAddress/{macAddress}
+        '400':
+          description: The device identified by the given device MAC address is not of class device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v2/audit/device/macAddress/{macAddress}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/audit/device/macAddress/{macAddress}
+components:
+  schemas:
+    LogicalDisk:
+      type: object
+      description: Logical disk audit data
+      properties:
+        description:
+          type: string
+        diskIdentifier:
+          type: string
+        freespace:
+          type: integer
+          format: int64
+        size:
+          type: integer
+          format: int64
+    Guest:
+      type: object
+      description: Guest audit data
+      properties:
+        guestName:
+          type: string
+        processorSpeedTotal:
+          type: integer
+          format: int32
+        memorySizeTotal:
+          type: integer
+          format: int64
+        numberOfSnapshots:
+          type: integer
+          format: int32
+        datastores:
+          type: string
+    ESXiDataExtent:
+      type: object
+      description: Data extent audit data
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        mediaType:
+          type: string
+        status:
+          type: string
+    ESXiSystemInfo:
+      type: object
+      description: ESXi host system info audit data
+      properties:
+        manufacturer:
+          type: string
+        model:
+          type: string
+        name:
+          type: string
+        numberOfSnapshots:
+          type: integer
+          format: int32
+        serviceTag:
+          type: string
+    NetworkInterface:
+      type: object
+      description: Network interface audit data
+      properties:
+        instance:
+          type: string
+        ipv4:
+          type: string
+        ipv6:
+          type: string
+        macAddress:
+          type: string
+        type:
+          type: string
+    Bios:
+      type: object
+      description: Bios audit data
+      properties:
+        instance:
+          type: string
+        releaseDate:
+          type: string
+          format: date-time
+        serialNumber:
+          type: string
+        smBiosVersion:
+          type: string
+    PrinterMarkerSupply:
+      type: object
+      description: Printer marker supply audit data
+      properties:
+        description:
+          type: string
+        maxCapacity:
+          type: string
+        suppliesLevel:
+          type: string
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
+    SystemInfo:
+      type: object
+      description: System info audit data
+      properties:
+        manufacturer:
+          type: string
+        model:
+          type: string
+        totalPhysicalMemory:
+          type: integer
+          format: int64
+        username:
+          type: string
+        dotNetVersion:
+          type: string
+        totalCpuCores:
+          type: integer
+          format: int32
+    Printer:
+      type: object
+      description: Printer audit data
+      properties:
+        printedPageCount:
+          type: integer
+          format: int64
+    MobileInfo:
+      type: object
+      description: Mobile info audit data
+      properties:
+        iccid:
+          type: string
+        imei:
+          type: string
+        number:
+          type: string
+        operator:
+          type: string
+    Display:
+      type: object
+      description: Display audit data
+      properties:
+        instance:
+          type: string
+        screenHeight:
+          type: integer
+          format: int32
+        screenWidth:
+          type: integer
+          format: int32
+    BaseBoard:
+      type: object
+      description: Baseboard audit data
+      properties:
+        manufacturer:
+          type: string
+        product:
+          type: string
+    PhysicalMemory:
+      type: object
+      description: Physical memory audit data
+      properties:
+        module:
+          type: string
+        size:
+          type: integer
+          format: int64
+        type:
+          type: string
+        speed:
+          type: string
+        serialNumber:
+          type: string
+        partNumber:
+          type: string
+        bank:
+          type: string
+    Software:
+      type: object
+      description: Software audit data
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+    ESXiProcessor:
+      type: object
+      description: ESXi processor audit data
+      properties:
+        frequency:
+          type: number
+          format: double
+        name:
+          type: string
+        numberOfCores:
+          type: integer
+          format: int32
+    ESXiNic:
+      type: object
+      description: ESXi newtwork adapter audit data
+      properties:
+        name:
+          type: string
+        ipv4:
+          type: string
+        ipv6:
+          type: string
+        macAddress:
+          type: string
+        speed:
+          type: string
+        type:
+          type: string
+    SnmpInfo:
+      type: object
+      description: SNMP info audit data
+      properties:
+        snmpName:
+          type: string
+        snmpContact:
+          type: string
+        snmpDescription:
+          type: string
+        snmpLocation:
+          type: string
+        snmpUptime:
+          type: string
+        nicManufacturer:
+          type: string
+        objectId:
+          type: string
+        snmpSerial:
+          type: string
+    ESXiDatastore:
+      type: object
+      description: ESXi datastore audit data
+      properties:
+        datastoreName:
+          type: string
+        subscriptionPercent:
+          type: integer
+          format: int32
+        freeSpace:
+          type: integer
+          format: int64
+        size:
+          type: integer
+          format: int64
+        fileSystem:
+          type: string
+        status:
+          type: string
+        dataExtents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ESXiDataExtent'
+    PaginationData:
+      type: object
+      description: Pagination data
+      properties:
+        count:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    PrinterSystemInfo:
+      type: object
+      description: Printer system info audit data
+      properties:
+        manufacturer:
+          type: string
+        model:
+          type: string
+    AttachedDevice:
+      type: object
+      description: Attached device audit data
+      properties:
+        deviceName:
+          type: string
+        deviceType:
+          type: string
+        driverFile:
+          type: string
+        driverFileLastModified:
+          type: string
+          format: date-time
+        driverManufacturer:
+          type: string
+        driverName:
+          type: string
+        driverVersion:
+          type: string
+        portName:
+          type: string
+    VideoBoard:
+      type: object
+      description: Videoboard audit data
+      properties:
+        displayAdapter:
+          type: string
+    Processor:
+      type: object
+      description: Processor audit data
+      properties:
+        name:
+          type: string
+    DeviceAudit:
+      type: object
+      description: Device audit data
+      properties:
+        portalUrl:
+          type: string
+        webRemoteUrl:
+          type: string
+        systemInfo:
+          $ref: '#/components/schemas/SystemInfo'
+        nics:
+          type: array
+          items:
+            $ref: '#/components/schemas/NetworkInterface'
+        bios:
+          $ref: '#/components/schemas/Bios'
+        baseBoard:
+          $ref: '#/components/schemas/BaseBoard'
+        displays:
+          type: array
+          items:
+            $ref: '#/components/schemas/Display'
+        logicalDisks:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogicalDisk'
+        mobileInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/MobileInfo'
+        processors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Processor'
+        videoBoards:
+          type: array
+          items:
+            $ref: '#/components/schemas/VideoBoard'
+        attachedDevices:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttachedDevice'
+        snmpInfo:
+          $ref: '#/components/schemas/SnmpInfo'
+        physicalMemory:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhysicalMemory'

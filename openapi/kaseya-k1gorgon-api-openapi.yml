@@ -1,0 +1,212 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 K1 Gorgon API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: K1Gorgon
+paths:
+  /v2/kaseya-one/gorgon/instance-provisioning:
+    post:
+      tags:
+      - K1Gorgon
+      operationId: PostK1GorgonProvisioningNotifications
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/K1GorgonProvisioningNotificationsDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/K1GorgonProvisioningNotificationsDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/K1GorgonProvisioningNotificationsDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/K1GorgonProvisioningNotificationsDto'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    K1GorgonActionDetailsDto:
+      type: object
+      properties:
+        SubDomain:
+          type:
+          - string
+          - 'null'
+        SendWelcomeEmail:
+          type: boolean
+        Licenses:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1GorgonLicenseDto'
+        Zone:
+          type:
+          - string
+          - 'null'
+        ExpiryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    K1GorgonContractActionDto:
+      type: object
+      properties:
+        Action:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1GorgonShippingDto:
+      type: object
+      properties:
+        Address:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        Zip:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1GorgonContactDto:
+      type: object
+      properties:
+        CompanyName:
+          type:
+          - string
+          - 'null'
+        RootFirstName:
+          type:
+          - string
+          - 'null'
+        RootLastName:
+          type:
+          - string
+          - 'null'
+        RootEmail:
+          type:
+          - string
+          - 'null'
+        RootPhone:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1GorgonProvisioningNotificationsDto:
+      type: object
+      properties:
+        Event:
+          $ref: '#/components/schemas/K1GorgonProvisioningPayload'
+      additionalProperties: false
+    K1GorgonProvisioningPayload:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        CustomerIdentifiers:
+          $ref: '#/components/schemas/K1GorgonCustomerIdentifiersDto'
+        Contact:
+          $ref: '#/components/schemas/K1GorgonContactDto'
+        Tenant:
+          $ref: '#/components/schemas/K1GorgonTenantDto'
+        Shipping:
+          $ref: '#/components/schemas/K1GorgonShippingDto'
+        Contract:
+          $ref: '#/components/schemas/K1GorgonContractActionDto'
+        ActionType:
+          type:
+          - string
+          - 'null'
+        ActionDetails:
+          $ref: '#/components/schemas/K1GorgonActionDetailsDto'
+        PlanId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    K1GorgonLicenseDto:
+      type: object
+      properties:
+        LicenseType:
+          type:
+          - string
+          - 'null'
+        AdjustQuantity:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        BaseQuantity:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    K1GorgonTenantDto:
+      type: object
+      properties:
+        Zone:
+          type:
+          - string
+          - 'null'
+        InstanceId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1GorgonCustomerIdentifiersDto:
+      type: object
+      properties:
+        SalesForceId:
+          type:
+          - string
+          - 'null'
+        NetSuiteId:
+          type:
+          - string
+          - 'null'
+        ResellerUuid:
+          type:
+          - string
+          - 'null'
+        K1OrgId:
+          type:
+          - string
+          - 'null'
+        AutoTaskDbId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

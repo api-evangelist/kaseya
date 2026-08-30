@@ -1,0 +1,485 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Security API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Security
+paths:
+  /v2/security/authenticate:
+    post:
+      tags:
+      - Security
+      operationId: Authenticate
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - GrantType
+              type: object
+              properties:
+                UserName:
+                  type: string
+                Password:
+                  type: string
+                MFACode:
+                  type: string
+                Tenant:
+                  type: string
+                GrantType:
+                  type: string
+                SamlResponse:
+                  type: string
+                SamlKey:
+                  type: string
+                ItcToken:
+                  type: string
+                ClientId:
+                  type: string
+                ClientSecret:
+                  type: string
+                RedirectUri:
+                  type: string
+                Code:
+                  type: string
+            encoding:
+              UserName:
+                style: form
+              Password:
+                style: form
+              MFACode:
+                style: form
+              Tenant:
+                style: form
+              GrantType:
+                style: form
+              SamlResponse:
+                style: form
+              SamlKey:
+                style: form
+              ItcToken:
+                style: form
+              ClientId:
+                style: form
+              ClientSecret:
+                style: form
+              RedirectUri:
+                style: form
+              Code:
+                style: form
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TokenOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TokenOutputDtoResponse'
+  /v2/security/ssostatus:
+    get:
+      tags:
+      - Security
+      operationId: SsoStatus
+      parameters:
+      - name: Tenant
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SsoStatusResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SsoStatusResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SsoStatusResponse'
+  /v2/security/refreshtoken:
+    post:
+      tags:
+      - Security
+      operationId: RefreshToken
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - AccessToken
+              type: object
+              properties:
+                AccessToken:
+                  type: string
+                RefreshToken:
+                  type: string
+            encoding:
+              AccessToken:
+                style: form
+              RefreshToken:
+                style: form
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TokenOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TokenOutputDtoResponse'
+  /v2/security/userinfo:
+    get:
+      tags:
+      - Security
+      operationId: UserInfo
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UserInfoOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfoOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserInfoOutputDtoResponse'
+components:
+  schemas:
+    SsoStatusResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/SsoStatus'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    SsoStatus:
+      type: object
+      properties:
+        Enabled:
+          type: boolean
+        LoginEndpointUrl:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    UserInfoOutputDto:
+      type: object
+      properties:
+        UserId:
+          type: integer
+          format: int32
+        FullName:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        TimeStamp:
+          type: string
+          format: date-time
+        TimeZoneValue:
+          type: number
+          format: float
+        TimeZoneName:
+          type:
+          - string
+          - 'null'
+        OlsonTimeZoneName:
+          type:
+          - string
+          - 'null'
+        DateFormat:
+          type:
+          - string
+          - 'null'
+        TimeFormat:
+          type:
+          - string
+          - 'null'
+        TimeFormatWithSeconds:
+          type:
+          - string
+          - 'null'
+        TenantId:
+          type: integer
+          format: int32
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        LocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        BusinessName:
+          type:
+          - string
+          - 'null'
+        UserAccessRights:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UserAccessRight'
+        SpecialFeatures:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SpecialFeature'
+        ViewsMenus:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Menu'
+        QueuesMenus:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Menu'
+        CurrencyCode:
+          type:
+          - string
+          - 'null'
+        CultureCode:
+          type:
+          - string
+          - 'null'
+        FilesVersionNumber:
+          type:
+          - string
+          - 'null'
+        NewTicketingUI:
+          type: boolean
+        IsUserSystemAdmin:
+          type: boolean
+        ProductName:
+          type:
+          - string
+          - 'null'
+        PictureUrl:
+          type:
+          - string
+          - 'null'
+        OpenIdRealmId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Menu:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        NavigationUrl:
+          type:
+          - string
+          - 'null'
+        Order:
+          type: integer
+          format: int32
+        ParentId:
+          type: integer
+          format: int32
+        ListingIdEnum:
+          type: integer
+          format: int32
+        MenuCategoryId:
+          type: integer
+          format: int32
+        Icon:
+          type:
+          - string
+          - 'null'
+        IsShownInMenu:
+          type: boolean
+        IsModifiable:
+          type: boolean
+        AddForm:
+          type:
+          - string
+          - 'null'
+        AddFormTitle:
+          type:
+          - string
+          - 'null'
+        HasCustomFields:
+          type: boolean
+        MainForm:
+          type:
+          - string
+          - 'null'
+        Title:
+          type:
+          - string
+          - 'null'
+        TitleAlias:
+          type:
+          - string
+          - 'null'
+        Target:
+          type: integer
+          format: int32
+        DynamicMenuRefId:
+          type: integer
+          format: int32
+        ObjectId:
+          type:
+          - string
+          - 'null'
+        ObjectName:
+          type:
+          - string
+          - 'null'
+        IsReactEnabled:
+          type: boolean
+        TargetName:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      additionalProperties: false
+    UserInfoOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/UserInfoOutputDto'
+      additionalProperties: false
+    SpecialFeature:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+      additionalProperties: false
+    UserAccessRight:
+      type: object
+      properties:
+        CanView:
+          type: boolean
+        CanModify:
+          type: boolean
+        CanDelete:
+          type: boolean
+        MainMenuId:
+          type: integer
+          format: int32
+        MenuCategoryId:
+          type: integer
+          format: int32
+        ListingIDEnum:
+          type: integer
+          format: int32
+      additionalProperties: false
+    TokenOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TokenOutputDto'
+      additionalProperties: false
+    TokenOutputDto:
+      type: object
+      properties:
+        AccessToken:
+          type:
+          - string
+          - 'null'
+        RefreshToken:
+          type:
+          - string
+          - 'null'
+        AccessTokenExpireOn:
+          type: string
+          format: date-time
+        RefreshTokenExpireOn:
+          type: string
+          format: date-time
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

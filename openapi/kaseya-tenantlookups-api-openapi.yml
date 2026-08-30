@@ -1,0 +1,150 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Tenant Lookups API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: TenantLookups
+paths:
+  /v2/system/tenantlookup/{tableName}:
+    get:
+      tags:
+      - TenantLookups
+      operationId: GetTenantLookups
+      parameters:
+      - name: tableName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TenantLookupOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantLookupOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TenantLookupOutputDtoIEnumerableResponse'
+    post:
+      tags:
+      - TenantLookups
+      operationId: CreateTenantLookup
+      parameters:
+      - name: tableName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TenantLookupInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantLookupInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TenantLookupInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TenantLookupInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TenantLookupOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantLookupOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TenantLookupOutputDtoIEnumerableResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    TenantLookupInputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    TenantLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TenantLookupOutputDto'
+      additionalProperties: false
+    TenantLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        IsDefault:
+          type: boolean
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

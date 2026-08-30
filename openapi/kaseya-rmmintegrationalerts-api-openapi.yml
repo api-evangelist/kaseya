@@ -1,0 +1,136 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 RMM Integration Alerts API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: RMMIntegrationAlerts
+paths:
+  /v2/rmm/dattormm/alerts:
+    post:
+      tags:
+      - RMMIntegrationAlerts
+      operationId: PostAlert
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/DattoRMMAlertInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DattoRMMAlertInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DattoRMMAlertInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/DattoRMMAlertInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    IntegrationJobOutputDto:
+      type: object
+      properties:
+        JobId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DattoRMMAlertInputDto:
+      type: object
+      properties:
+        DeviceUid:
+          type:
+          - string
+          - 'null'
+        DeviceHostname:
+          type:
+          - string
+          - 'null'
+        SiteUid:
+          type:
+          - string
+          - 'null'
+        SiteName:
+          type:
+          - string
+          - 'null'
+        AlertUid:
+          type:
+          - string
+          - 'null'
+        Alert:
+          type:
+          - string
+          - 'null'
+        AlertMessage:
+          type:
+          - string
+          - 'null'
+        Criticality:
+          type:
+          - string
+          - 'null'
+        MonitorType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationJobOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/IntegrationJobOutputDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

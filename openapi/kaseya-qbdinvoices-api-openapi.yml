@@ -1,0 +1,450 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Qbd Invoices API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: QbdInvoices
+paths:
+  /v2/integration/qbd/invoices:
+    get:
+      tags:
+      - QbdInvoices
+      operationId: GetInvoices
+      parameters:
+      - name: Filter.InvoiceNumber
+        in: query
+        schema:
+          type: string
+      - name: Filter.AccountName
+        in: query
+        schema:
+          type: string
+      - name: Filter.StartDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.EndDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.ClassName
+        in: query
+        schema:
+          type: string
+      - name: ExternalTenantId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QbInvoiceExportDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QbInvoiceExportDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QbInvoiceExportDtoListPagedResponse'
+    put:
+      tags:
+      - QbdInvoices
+      operationId: UpdateInvoiceQbReference
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbInvoiceReferenceInputDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbInvoiceReferenceInputDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbInvoiceReferenceInputDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbInvoiceReferenceInputDto'
+      responses:
+        '200':
+          description: OK
+  /v2/integration/qbd/invoices/detail:
+    get:
+      tags:
+      - QbdInvoices
+      operationId: GetInvoiceDetails
+      parameters:
+      - name: ExternalTenantId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: InvoiceNumbers
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QbInvoiceDetailExportDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QbInvoiceDetailExportDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QbInvoiceDetailExportDtoListResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbInvoiceReferenceInputDto:
+      type: object
+      properties:
+        InvoiceId:
+          type: integer
+          format: int32
+        QbInvoiceId:
+          type:
+          - string
+          - 'null'
+        QbInvoiceNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbInvoiceExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ClientId:
+          type:
+          - string
+          - 'null'
+        ClientName:
+          type:
+          - string
+          - 'null'
+        InvoiceNumber:
+          type:
+          - string
+          - 'null'
+        InvoiceDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        InvoiceFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        InvoiceTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Discount:
+          type: number
+          format: double
+        TaxRate:
+          type: number
+          format: double
+        TotalPrice:
+          type: number
+          format: double
+        TotalTax:
+          type: number
+          format: double
+        GrandTotal:
+          type:
+          - number
+          - 'null'
+          format: double
+        Notes:
+          type:
+          - string
+          - 'null'
+        BillAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+        PONumber:
+          type:
+          - string
+          - 'null'
+        PaidAmount:
+          type: number
+          format: double
+        PaymentDue:
+          type: number
+          format: double
+        SalesTaxItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesTaxName:
+          type:
+          - string
+          - 'null'
+        ClassName:
+          type:
+          - string
+          - 'null'
+        ClassId:
+          type:
+          - string
+          - 'null'
+        ClassNamePath:
+          type:
+          - string
+          - 'null'
+        SalesRep:
+          type:
+          - string
+          - 'null'
+        ProjectName:
+          type:
+          - string
+          - 'null'
+        ChildAccountName:
+          type:
+          - string
+          - 'null'
+        NetDays:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExternalClientId:
+          type:
+          - string
+          - 'null'
+        ExternalTaxId:
+          type:
+          - string
+          - 'null'
+        ExternalClassId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbInvoiceDetailExportDto:
+      type: object
+      properties:
+        InvoiceId:
+          type: integer
+          format: int32
+        InvoiceDetailId:
+          type: integer
+          format: int32
+        ItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ItemName:
+          type:
+          - string
+          - 'null'
+        ItemDescription:
+          type:
+          - string
+          - 'null'
+        Qty:
+          type: number
+          format: double
+        UnitPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        TotalPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        ValueDate:
+          type: string
+          format: date-time
+        RecordSource:
+          type: integer
+          format: int32
+        IsTaxable:
+          type: boolean
+        ClassId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClassName:
+          type:
+          - string
+          - 'null'
+        Code:
+          type:
+          - string
+          - 'null'
+        ExternalItemId:
+          type:
+          - string
+          - 'null'
+        ExternalClassId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbInvoiceExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbInvoiceExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    QbInvoiceDetailExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbInvoiceDetailExportDto'
+      additionalProperties: false
+    QbAddressDto:
+      type: object
+      properties:
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        MobileNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+        ContactName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

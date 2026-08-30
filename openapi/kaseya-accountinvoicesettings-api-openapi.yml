@@ -1,0 +1,420 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Datto|Autotask PSA Rest Account Invoice Settings API
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+tags:
+- name: AccountInvoiceSettings
+paths:
+  /V1.0/Companies/{id}/invoiceSettings:
+    get:
+      tags:
+      - AccountInvoiceSettings
+      operationId: AccountInvoiceSettings_Get
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInvoiceSettingsResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountInvoiceSettingsResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    put:
+      tags:
+      - AccountInvoiceSettings
+      operationId: AccountInvoiceSettings_Put
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccountInvoiceSettingsModel'
+        required: true
+  /V1.0/Companies/{id}/invoiceSettings/contactRecipients:
+    post:
+      tags:
+      - AccountInvoiceSettings
+      operationId: AccountInvoiceSettings_AddContactRecipients
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddContactRecipientsResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AddContactRecipientsResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateContactRecipientsModel'
+        required: true
+  /V1.0/Companies/{id}/invoiceSettings/contactRecipients/{contactId}:
+    delete:
+      tags:
+      - AccountInvoiceSettings
+      operationId: AccountInvoiceSettings_DeleteContactRecipient
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: contactId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/Companies/{id}/invoiceSettings/resourceRecipients:
+    post:
+      tags:
+      - AccountInvoiceSettings
+      operationId: AccountInvoiceSettings_AddResourceRecipients
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddResourceRecipientsResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AddResourceRecipientsResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateResourceRecipientsModel'
+        required: true
+  /V1.0/Companies/{id}/invoiceSettings/resourceRecipients/{resourceId}:
+    delete:
+      tags:
+      - AccountInvoiceSettings
+      operationId: AccountInvoiceSettings_DeleteResourceRecipient
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: resourceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+components:
+  schemas:
+    AccountInvoiceSettingsResultModel:
+      type: object
+      properties:
+        taxExempt:
+          type: boolean
+        taxRegionId:
+          format: int32
+          type: integer
+        taxId:
+          type: string
+        invoiceEmailingEnabled:
+          type: boolean
+        contactRecipients:
+          type: array
+          items:
+            format: int32
+            type: integer
+        resourceRecipients:
+          type: array
+          items:
+            format: int32
+            type: integer
+        otherEmails:
+          type: string
+    UpdateContactRecipientsModel:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            format: int32
+            type: integer
+    AddContactRecipientsResultModel:
+      type: object
+      properties:
+        contactRecipients:
+          type: array
+          items:
+            format: int32
+            type: integer
+            readOnly: true
+    UpdateResourceRecipientsModel:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            format: int32
+            type: integer
+    AddResourceRecipientsResultModel:
+      type: object
+      properties:
+        resourceRecipients:
+          type: array
+          items:
+            format: int32
+            type: integer
+            readOnly: true
+    Object:
+      type: object
+      properties: {}
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    UpdateAccountInvoiceSettingsModel:
+      type: object
+      properties:
+        taxExempt:
+          type: boolean
+        taxRegionId:
+          format: int32
+          type: integer
+        taxId:
+          type: string
+        invoiceEmailingEnabled:
+          type: boolean
+        otherEmails:
+          type: string

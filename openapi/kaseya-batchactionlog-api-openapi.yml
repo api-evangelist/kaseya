@@ -1,0 +1,133 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Batch Action Log API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: BatchActionLog
+paths:
+  /v2/system/batchAction/logs/{jobId}:
+    get:
+      tags:
+      - BatchActionLog
+      operationId: GetAllBatchActionLogs
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JobLogsDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobLogsDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JobLogsDtoIEnumerablePagedResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    JobLogsDto:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        Type:
+          $ref: '#/components/schemas/LogTypeEnum'
+        Action:
+          type:
+          - string
+          - 'null'
+        Message:
+          type:
+          - string
+          - 'null'
+        Date:
+          type: string
+          format: date-time
+      additionalProperties: false
+    JobLogsDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/JobLogsDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    LogTypeEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

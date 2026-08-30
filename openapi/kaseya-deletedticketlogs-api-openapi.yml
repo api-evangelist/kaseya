@@ -1,0 +1,631 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Datto|Autotask PSA Rest Deleted Ticket Logs API
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+tags:
+- name: DeletedTicketLogs
+paths:
+  /V1.0/DeletedTicketLogs/query:
+    get:
+      tags:
+      - DeletedTicketLogs
+      operationId: DeletedTicketLogs_UrlParameterQuery
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_DeletedTicketLogModel_DeletedTicketLog'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_DeletedTicketLogModel_DeletedTicketLog'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - DeletedTicketLogs
+      operationId: DeletedTicketLogs_Query
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_DeletedTicketLogModel_DeletedTicketLog'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_DeletedTicketLogModel_DeletedTicketLog'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+  /V1.0/DeletedTicketLogs/{id}:
+    get:
+      tags:
+      - DeletedTicketLogs
+      operationId: DeletedTicketLogs_QueryItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_DeletedTicketLogModel_DeletedTicketLog'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_DeletedTicketLogModel_DeletedTicketLog'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/DeletedTicketLogs/query/count:
+    get:
+      tags:
+      - DeletedTicketLogs
+      operationId: DeletedTicketLogs_UrlParameterQueryCount
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - DeletedTicketLogs
+      operationId: DeletedTicketLogs_QueryCount
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+  /V1.0/DeletedTicketLogs/entityInformation:
+    get:
+      tags:
+      - DeletedTicketLogs
+      operationId: DeletedTicketLogs_QueryEntityInformation
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/DeletedTicketLogs/entityInformation/fields:
+    get:
+      tags:
+      - DeletedTicketLogs
+      operationId: DeletedTicketLogs_QueryFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/DeletedTicketLogs/entityInformation/userDefinedFields:
+    get:
+      tags:
+      - DeletedTicketLogs
+      operationId: DeletedTicketLogs_QueryUserDefinedFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+components:
+  schemas:
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    QueryActionResult_DeletedTicketLogModel_DeletedTicketLog:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeletedTicketLogModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    Object:
+      type: object
+      properties: {}
+    DeletedTicketLogModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        ticketID:
+          format: int32
+          type: integer
+        ticketNumber:
+          type: string
+        ticketTitle:
+          type: string
+        deletedByResourceID:
+          format: int32
+          type: integer
+        deletedDateTime:
+          format: date-time
+          type: string
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    ItemQueryResultModel_DeletedTicketLogModel_DeletedTicketLog:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/DeletedTicketLogModel'
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string

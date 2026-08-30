@@ -1,0 +1,305 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Time Logs API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: TimeLogs
+paths:
+  /v2/timelogs:
+    get:
+      tags:
+      - TimeLogs
+      operationId: GetAllTimeLogs
+      parameters:
+      - name: Filter.TimeEntrySourceId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.TicketId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.ProjectId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.UserId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.AccountId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.IsPosted
+        in: query
+        schema:
+          type: boolean
+      - name: Filter.IsApproved
+        in: query
+        schema:
+          type: boolean
+      - name: Filter.IsBilled
+        in: query
+        schema:
+          type: boolean
+      - name: Filter.IsBillable
+        in: query
+        schema:
+          type: boolean
+      - name: Filter.StartDateFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.StartDateTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.CreatedOnFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.CreatedOnTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.ModifiedOnFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.ModifiedOnTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TimeLogOutputDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeLogOutputDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TimeLogOutputDtoListPagedResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    TimeLogOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TimeLogOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    TimeLogOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Timespent:
+          type:
+          - number
+          - 'null'
+          format: double
+        OverTimeSpent:
+          type: number
+          format: double
+        TimesheetId:
+          type: integer
+          format: int32
+        WeekStart:
+          type: string
+          format: date-time
+        WeekEnd:
+          type: string
+          format: date-time
+        TimeEntrySourceId:
+          type: integer
+          format: int32
+        TicketId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ProjectId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        UserId:
+          type: integer
+          format: int32
+        FirstName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        RoleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Role:
+          type:
+          - string
+          - 'null'
+        WorkTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        WorkType:
+          type:
+          - string
+          - 'null'
+        Notes:
+          type:
+          - string
+          - 'null'
+        InternalNotes:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        IsPosted:
+          type: boolean
+        IsApproved:
+          type: boolean
+        IsBilled:
+          type: boolean
+        IsBillable:
+          type: boolean
+        StartDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        StartTime:
+          type:
+          - string
+          - 'null'
+          format: date-span
+        EndTime:
+          type:
+          - string
+          - 'null'
+          format: date-span
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        ModifiedByName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

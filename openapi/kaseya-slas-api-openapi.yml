@@ -1,0 +1,93 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 SL As API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: SLAs
+paths:
+  /v2/system/slas/lookup:
+    get:
+      tags:
+      - SLAs
+      operationId: GetSLALookups
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SLALookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SLALookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SLALookupOutputDtoListResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    SLALookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    SLALookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SLALookupOutputDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

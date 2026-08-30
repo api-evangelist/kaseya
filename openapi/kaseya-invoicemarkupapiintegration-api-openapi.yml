@@ -1,0 +1,191 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Datto|Autotask PSA Rest Invoice Markup API Integration API
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+tags:
+- name: InvoiceMarkupApiIntegration
+paths:
+  /V1.0/Invoices/{id}/InvoiceMarkupHtml:
+    get:
+      tags:
+      - InvoiceMarkupApiIntegration
+      operationId: InvoiceMarkupApiIntegration_QueryInvoiceMarkupHtml
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceMarkupResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceMarkupResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/Invoices/{id}/InvoiceMarkupXml:
+    get:
+      tags:
+      - InvoiceMarkupApiIntegration
+      operationId: InvoiceMarkupApiIntegration_QueryInvoiceMarkupXml
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceMarkupResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceMarkupResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/Invoices/{id}/InvoicePdf:
+    get:
+      tags:
+      - InvoiceMarkupApiIntegration
+      operationId: InvoiceMarkupApiIntegration_QueryInvoicePdf
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileQueryResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FileQueryResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+components:
+  schemas:
+    Byte:
+      type: object
+      properties: {}
+    FileQueryResultModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+          readOnly: true
+        contentType:
+          type: string
+          readOnly: true
+        fileName:
+          type: string
+          readOnly: true
+        fileSize:
+          format: int32
+          type: integer
+          readOnly: true
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Byte'
+            readOnly: true
+    InvoiceMarkupResultModel:
+      type: object
+      properties:
+        invoiceMarkup:
+          type: string

@@ -1,0 +1,193 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Workforce Planner Logs API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: WorkforcePlannerLogs
+paths:
+  /v2/admin/workforceplannerlogs/search:
+    post:
+      tags:
+      - WorkforcePlannerLogs
+      operationId: GetWorkforcePlannerLogsList
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/WorkforcePlannerLogListInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkforcePlannerLogListInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/WorkforcePlannerLogListInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/WorkforcePlannerLogListInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WorkforcePlannerLogListOutputDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkforcePlannerLogListOutputDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WorkforcePlannerLogListOutputDtoListPagedResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    WorkforcePlannerLogListFilter:
+      type: object
+      properties:
+        EventIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        Creator:
+          type:
+          - string
+          - 'null'
+        TimestampFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        TimestampTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ProjectName:
+          type:
+          - string
+          - 'null'
+        TaskTitle:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    WorkforcePlannerLogListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/WorkforcePlannerLogListFilter'
+      additionalProperties: false
+    WorkforcePlannerLogListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        Timestamp:
+          type: string
+          format: date-time
+        EventName:
+          type:
+          - string
+          - 'null'
+        ProjectId:
+          type: integer
+          format: int32
+        ProjectName:
+          type:
+          - string
+          - 'null'
+        TaskTitle:
+          type:
+          - string
+          - 'null'
+        TaskLink:
+          type:
+          - string
+          - 'null'
+        Message:
+          type:
+          - string
+          - 'null'
+        Creator:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    WorkforcePlannerLogListOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WorkforcePlannerLogListOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,346 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Qbd Reimbursements API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: QbdReimbursements
+paths:
+  /v2/integration/qbd/reimbursements:
+    get:
+      tags:
+      - QbdReimbursements
+      operationId: GetReimbursements
+      parameters:
+      - name: Filter.EmployeeName
+        in: query
+        schema:
+          type: string
+      - name: Filter.StartDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.EndDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: ExternalTenantId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QbReimbursementExportDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QbReimbursementExportDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QbReimbursementExportDtoListPagedResponse'
+    put:
+      tags:
+      - QbdReimbursements
+      operationId: UpdateReimbursementQbReference
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbReimbursementsReferenceInputDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbReimbursementsReferenceInputDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbReimbursementsReferenceInputDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbReimbursementsReferenceInputDto'
+      responses:
+        '200':
+          description: OK
+  /v2/integration/qbd/reimbursements/detail:
+    get:
+      tags:
+      - QbdReimbursements
+      operationId: GetReimbursementDetails
+      parameters:
+      - name: ExternalTenantId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ReimbursementIds
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QbReimbursementDetailExportDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QbReimbursementDetailExportDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QbReimbursementDetailExportDtoListResponse'
+components:
+  schemas:
+    QbReimbursementDetailExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbReimbursementDetailExportDto'
+      additionalProperties: false
+    QbReimbursementExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbReimbursementExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    QbReimbursementDetailExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ReimbursementId:
+          type: integer
+          format: int32
+        ItemId:
+          type: integer
+          format: int32
+        ItemName:
+          type:
+          - string
+          - 'null'
+        Notes:
+          type:
+          - string
+          - 'null'
+        ItemQty:
+          type:
+          - number
+          - 'null'
+          format: double
+        Amount:
+          type: number
+          format: double
+        Discount:
+          type:
+          - number
+          - 'null'
+          format: double
+        IsTaxable:
+          type: boolean
+        RecordSourceId:
+          type:
+          - string
+          - 'null'
+        RecordSource:
+          type:
+          - string
+          - 'null'
+        VendorBilledAmount:
+          type:
+          - number
+          - 'null'
+          format: double
+        VendorBillDue:
+          type:
+          - number
+          - 'null'
+          format: double
+        StatusId:
+          type: integer
+          format: int32
+        ExternalItemId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbReimbursementsReferenceInputDto:
+      type: object
+      properties:
+        ReimbursementId:
+          type: integer
+          format: int32
+        QbReimbursementId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbReimbursementExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        EmployeeId:
+          type: integer
+          format: int32
+        EmployeeName:
+          type:
+          - string
+          - 'null'
+        VendorName:
+          type:
+          - string
+          - 'null'
+        ReferenceNumber:
+          type:
+          - string
+          - 'null'
+        Amount:
+          type: number
+          format: double
+        ReimbursementDate:
+          type: string
+          format: date-time
+        Memo:
+          type:
+          - string
+          - 'null'
+        ShipAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+      additionalProperties: false
+    QbAddressDto:
+      type: object
+      properties:
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        MobileNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+        ContactName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

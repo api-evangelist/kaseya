@@ -1,0 +1,111 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 VSA API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: VSA
+paths:
+  /v2/integrations/vsa/accessinfo/{integrationTypeId}:
+    get:
+      tags:
+      - VSA
+      operationId: GetVsaAccessInfo
+      parameters:
+      - name: integrationTypeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+          default: 2
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/VSAAccessInfoDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VSAAccessInfoDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/VSAAccessInfoDtoResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    KLCStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
+    VSAAccessInfoDto:
+      type: object
+      properties:
+        Target:
+          type:
+          - string
+          - 'null'
+        Status:
+          $ref: '#/components/schemas/KLCStatus'
+        AccessToken:
+          type:
+          - string
+          - 'null'
+        ExpiresOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    VSAAccessInfoDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/VSAAccessInfoDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

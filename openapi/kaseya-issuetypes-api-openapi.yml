@@ -1,0 +1,147 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Issue Types API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: IssueTypes
+paths:
+  /v2/system/issuetypes/lookup:
+    get:
+      tags:
+      - IssueTypes
+      operationId: GetIssueTypeLookups
+      parameters:
+      - name: Filter.Name
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IssueTypeLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueTypeLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IssueTypeLookupOutputDtoListResponse'
+  /v2/system/issuetypes/{issueTypeId}/issuesubtypes/lookup:
+    get:
+      tags:
+      - IssueTypes
+      operationId: GetIssueSubTypeLookups
+      parameters:
+      - name: issueTypeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IssueSubTypeLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueSubTypeLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IssueSubTypeLookupOutputDtoListResponse'
+components:
+  schemas:
+    IssueSubTypeLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IssueSubTypeLookupOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    IssueTypeLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IssueTypeLookupOutputDto'
+      additionalProperties: false
+    IssueTypeLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    IssueSubTypeLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

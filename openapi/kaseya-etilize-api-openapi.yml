@@ -1,0 +1,603 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Etilize API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Etilize
+paths:
+  /v2/integrations/etilize/search:
+    post:
+      tags:
+      - Etilize
+      operationId: SearchProducts
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EtilizeSearchInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EtilizeSearchInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EtilizeSearchInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EtilizeSearchInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EtilizeSearchOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EtilizeSearchOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EtilizeSearchOutputDtoResponse'
+  /v2/integrations/etilize/products/{productId}:
+    get:
+      tags:
+      - Etilize
+      operationId: GetEtilizeProduct
+      parameters:
+      - name: productId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EtilizeProductOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EtilizeProductOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EtilizeProductOutputDtoResponse'
+  /v2/integrations/etilize/products/pricing:
+    get:
+      tags:
+      - Etilize
+      operationId: GetDistributorsPricing
+      parameters:
+      - name: MfrNumber
+        in: query
+        schema:
+          type: string
+      - name: SkuNumber
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DistributorIntegrationProductPricingOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DistributorIntegrationProductPricingOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DistributorIntegrationProductPricingOutputDtoListResponse'
+  /v2/integrations/etilize/distributors/integrations/status:
+    get:
+      tags:
+      - Etilize
+      operationId: GetDistributorsIntegrationsStatus
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DistributorIntegrationStatusOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DistributorIntegrationStatusOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DistributorIntegrationStatusOutputDtoListResponse'
+components:
+  schemas:
+    EtilizeSearchOutputDto:
+      type: object
+      properties:
+        Type:
+          type:
+          - string
+          - 'null'
+        Message:
+          type:
+          - string
+          - 'null'
+        Products:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductDto'
+        CategoryFilters:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FilterDto'
+        ManufacturerFilters:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FilterDto'
+        AttributeFilters:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FeatureDto'
+        Count:
+          type: integer
+          format: int32
+      additionalProperties: false
+    FeatureDto:
+      type: object
+      properties:
+        Value:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FilterDto'
+        Count:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Id:
+          type: integer
+          format: int64
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ProductDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Title:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        UPC:
+          type:
+          - string
+          - 'null'
+        ImageURL:
+          type:
+          - string
+          - 'null'
+        MFR:
+          type:
+          - string
+          - 'null'
+        UNSPSC:
+          type:
+          - string
+          - 'null'
+        SKU:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProductResource:
+      type: object
+      properties:
+        Status:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+        Url:
+          type:
+          - string
+          - 'null'
+        MaxSize:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DistributorIntegrationStatusOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DistributorIntegrationStatusOutputDto'
+      additionalProperties: false
+    AttributeValueDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        ValueId:
+          type: integer
+          format: int64
+      additionalProperties: false
+    EtilizeSearchOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/EtilizeSearchOutputDto'
+      additionalProperties: false
+    DistributorIntegrationProductPricingOutputDto:
+      type: object
+      properties:
+        Exception:
+          type:
+          - string
+          - 'null'
+        StatusCode:
+          $ref: '#/components/schemas/HttpStatusCode'
+        PartNumber:
+          type:
+          - string
+          - 'null'
+        BasePrice:
+          type: number
+          format: double
+        RetailPrice:
+          type: number
+          format: double
+        PromotedPrice:
+          type: number
+          format: double
+        Status:
+          type:
+          - string
+          - 'null'
+        Availability:
+          type:
+          - string
+          - 'null'
+        DistributorTypeId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProductSku:
+      type: object
+      properties:
+        Number:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EtilizeSearchInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Filter:
+          $ref: '#/components/schemas/EtilizeSearchFilterDto'
+      additionalProperties: false
+    ProductManufacturer:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Name:
+          type:
+          - string
+          - 'null'
+        Number:
+          type:
+          - string
+          - 'null'
+        HasLogo:
+          type: boolean
+        MaxLogoWidth:
+          type: integer
+          format: int32
+        MaxLogoHeight:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProductSkus:
+      type: object
+      properties:
+        Sku:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductSku'
+      additionalProperties: false
+    ProductResources:
+      type: object
+      properties:
+        Resource:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductResource'
+      additionalProperties: false
+    HttpStatusCode:
+      enum:
+      - 100
+      - 101
+      - 200
+      - 201
+      - 202
+      - 203
+      - 204
+      - 205
+      - 206
+      - 300
+      - 301
+      - 302
+      - 303
+      - 304
+      - 305
+      - 306
+      - 307
+      - 400
+      - 401
+      - 402
+      - 403
+      - 404
+      - 405
+      - 406
+      - 407
+      - 408
+      - 409
+      - 410
+      - 411
+      - 412
+      - 413
+      - 414
+      - 415
+      - 416
+      - 417
+      - 426
+      - 500
+      - 501
+      - 502
+      - 503
+      - 504
+      - 505
+      type: integer
+      format: int32
+    DistributorIntegrationStatusOutputDto:
+      type: object
+      properties:
+        ProductSkuType:
+          $ref: '#/components/schemas/ProductSkuTypeEnum'
+        IsConnected:
+          type: boolean
+      additionalProperties: false
+    ProductCategory:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Name:
+          type:
+          - string
+          - 'null'
+        ParId:
+          type: integer
+          format: int64
+      additionalProperties: false
+    FilterDto:
+      type: object
+      properties:
+        Count:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Id:
+          type: integer
+          format: int64
+      additionalProperties: false
+    EtilizeProductOutputDto:
+      type: object
+      properties:
+        Type:
+          type:
+          - string
+          - 'null'
+        Message:
+          type:
+          - string
+          - 'null'
+        ProductId:
+          type: integer
+          format: int64
+        Category:
+          $ref: '#/components/schemas/ProductCategory'
+        Manufacturer:
+          $ref: '#/components/schemas/ProductManufacturer'
+        Descriptions:
+          $ref: '#/components/schemas/ProductDescriptions'
+        Resources:
+          $ref: '#/components/schemas/ProductResources'
+        Skus:
+          $ref: '#/components/schemas/ProductSkus'
+      additionalProperties: false
+    ProductDescription:
+      type: object
+      properties:
+        Content:
+          type:
+          - string
+          - 'null'
+        Type:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProductSkuTypeEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    DistributorIntegrationProductPricingOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DistributorIntegrationProductPricingOutputDto'
+      additionalProperties: false
+    ProductDescriptions:
+      type: object
+      properties:
+        Description:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductDescription'
+      additionalProperties: false
+    EtilizeSearchFilterDto:
+      type: object
+      properties:
+        Keyword:
+          type:
+          - string
+          - 'null'
+        SkuTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ManufacturerIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int64
+        CategoryIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int64
+        AttributeValueIds:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AttributeValueDto'
+      additionalProperties: false
+    EtilizeProductOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/EtilizeProductOutputDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

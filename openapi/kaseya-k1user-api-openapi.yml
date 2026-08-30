@@ -1,0 +1,192 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 K1 User API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: K1User
+paths:
+  /v2/kaseya-one/users/search:
+    post:
+      tags:
+      - K1User
+      operationId: K1GetUsersList
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/K1UserListInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/K1UserListInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/K1UserListInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/K1UserListInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/K1UserListOutputDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/K1UserListOutputDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/K1UserListOutputDto'
+  /v2/kaseya-one/users/deprovisioning/notifications:
+    post:
+      tags:
+      - K1User
+      operationId: PostK1UserDeprovisioningNotifications
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/K1UserDeprovisioningNotificationsDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/K1UserDeprovisioningNotificationsDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/K1UserDeprovisioningNotificationsDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/K1UserDeprovisioningNotificationsDto'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    K1UserDeprovisioningEventsDto:
+      type: object
+      properties:
+        KaseyaOneOrganizationId:
+          type:
+          - string
+          - 'null'
+        AccessGroupIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        UserEmail:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1UserDeprovisioningNotificationsDto:
+      type: object
+      properties:
+        ActionEventType:
+          type:
+          - string
+          - 'null'
+        Events:
+          $ref: '#/components/schemas/K1UserDeprovisioningEventsDto'
+        EventType:
+          type:
+          - string
+          - 'null'
+        AppClientIdentifier:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1UserListOutputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        FirstName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        Username:
+          type:
+          - string
+          - 'null'
+        Email:
+          type:
+          - string
+          - 'null'
+        Status:
+          type:
+          - string
+          - 'null'
+        SecurityLevel:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    K1UserListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PageNumber:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        InstanceId:
+          type:
+          - string
+          - 'null'
+        KaseyaOneOrganizationId:
+          type:
+          - string
+          - 'null'
+        SearchText:
+          type:
+          - string
+          - 'null'
+        SortBy:
+          type:
+          - string
+          - 'null'
+        SortOrder:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,1501 @@
+openapi: 3.2.0
+info:
+  title: Kaseya Tasks API
+  version: '1.0'
+  description: 'Operations tagged Tasks across 2 of this provider''s published API definitions: kaseya-autotask-psa-openapi-original.json, kaseya-bms-openapi-original.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+- url: https://api.bms.kaseya.com
+tags:
+- name: Tasks
+paths:
+  /V1.0/Tasks/query:
+    get:
+      tags:
+      - Tasks
+      operationId: Tasks_UrlParameterQuery
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_TaskModel_Task'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_TaskModel_Task'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Tasks
+      operationId: Tasks_Query
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_TaskModel_Task'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_TaskModel_Task'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Tasks/{id}:
+    get:
+      tags:
+      - Tasks
+      operationId: Tasks_QueryItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_TaskModel_Task'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_TaskModel_Task'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Tasks/query/count:
+    get:
+      tags:
+      - Tasks
+      operationId: Tasks_UrlParameterQueryCount
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Tasks
+      operationId: Tasks_QueryCount
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Tasks/entityInformation:
+    get:
+      tags:
+      - Tasks
+      operationId: Tasks_QueryEntityInformation
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Tasks/entityInformation/fields:
+    get:
+      tags:
+      - Tasks
+      operationId: Tasks_QueryFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Tasks/entityInformation/userDefinedFields:
+    get:
+      tags:
+      - Tasks
+      operationId: Tasks_QueryUserDefinedFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /v2/project/tasks/searchselect:
+    post:
+      tags:
+      - Tasks
+      operationId: SearchAndSelectTaskList
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/GetTaskListSearchSelectInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetTaskListSearchSelectInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GetTaskListSearchSelectInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GetTaskListSearchSelectInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TaskListSearchSelectOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListSearchSelectOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TaskListSearchSelectOutputDtoIEnumerableResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/project/tasks:
+    post:
+      tags:
+      - Tasks
+      operationId: GetTasksList
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TasksListInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TasksListInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TasksListInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TasksListInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TasksListOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TasksListOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TasksListOutputDtoIEnumerableResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/project/tasks/{taskId}/relateditems:
+    get:
+      tags:
+      - Tasks
+      operationId: GetTaskRelatedItems
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TaskRelatedItemsOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskRelatedItemsOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TaskRelatedItemsOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+components:
+  schemas:
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    TaskModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        assignedResourceID:
+          format: int32
+          type: integer
+        assignedResourceRoleID:
+          format: int32
+          type: integer
+        billingCodeID:
+          format: int32
+          type: integer
+        canClientPortalUserCompleteTask:
+          type: boolean
+        companyLocationID:
+          format: int32
+          type: integer
+        completedByResourceID:
+          format: int32
+          type: integer
+        completedByType:
+          format: int32
+          type: integer
+        completedDateTime:
+          format: date-time
+          type: string
+        createDateTime:
+          format: date-time
+          type: string
+        creatorResourceID:
+          format: int32
+          type: integer
+        creatorType:
+          format: int32
+          type: integer
+        departmentID:
+          format: int32
+          type: integer
+        description:
+          type: string
+        endDateTime:
+          format: date-time
+          type: string
+        estimatedHours:
+          format: double
+          type: number
+        externalID:
+          type: string
+        hoursToBeScheduled:
+          format: double
+          type: number
+        isTaskBillable:
+          type: boolean
+        isVisibleInClientPortal:
+          type: boolean
+        lastActivityDateTime:
+          format: date-time
+          type: string
+        lastActivityPersonType:
+          format: int32
+          type: integer
+        lastActivityResourceID:
+          format: int32
+          type: integer
+        phaseID:
+          format: int32
+          type: integer
+        priority:
+          format: int32
+          type: integer
+        priorityLabel:
+          format: int32
+          type: integer
+        projectID:
+          format: int32
+          type: integer
+        purchaseOrderNumber:
+          type: string
+        remainingHours:
+          format: double
+          type: number
+        startDateTime:
+          format: date-time
+          type: string
+        status:
+          format: int32
+          type: integer
+        taskCategoryID:
+          format: int32
+          type: integer
+        taskNumber:
+          type: string
+        taskType:
+          format: int32
+          type: integer
+        title:
+          type: string
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_Task_Int64'
+          readOnly: true
+        userDefinedFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinedField'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    ParameterExpression:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        isByRef:
+          type: boolean
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Expression_Func_Task_Int64:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParameterExpression'
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        body:
+          $ref: '#/components/schemas/Expression'
+          readOnly: true
+        returnType:
+          type: string
+          readOnly: true
+        tailCall:
+          type: boolean
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    ItemQueryResultModel_TaskModel_Task:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/TaskModel'
+    QueryActionResult_TaskModel_Task:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    Expression:
+      type: object
+      properties:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    TaskRelatedItemsOutputDto:
+      type: object
+      properties:
+        Title:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Dependencies:
+          $ref: '#/components/schemas/TaskDependencyDto'
+        RelatedTickets:
+          $ref: '#/components/schemas/TaskRelatedTicketDto'
+      additionalProperties: false
+    TaskListSearchSelectOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TaskListSearchSelectOutputDto'
+      additionalProperties: false
+    TaskRelatedTicketDto:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          format: int32
+        Items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TaskRelatedTicket'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    TaskDependency:
+      type: object
+      properties:
+        TypeId:
+          type: integer
+          format: int32
+        TaskId:
+          type: integer
+          format: int32
+        TaskName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TasksListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PageNumber:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/TasksListFilterDto'
+      additionalProperties: false
+    TasksListFilterDto:
+      type: object
+      properties:
+        ProjectIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        TaskName:
+          type:
+          - string
+          - 'null'
+        AccountIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        Unassigned:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        MyProjects:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    GetTaskListSearchSelectInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/TaskSearchSelectFilterDto'
+      additionalProperties: false
+    TaskListSearchSelectOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        TicketTaskId:
+          type: integer
+          format: int32
+        TicketId:
+          type: integer
+          format: int32
+        TaskId:
+          type: integer
+          format: int32
+        TaskName:
+          type:
+          - string
+          - 'null'
+        ProjectName:
+          type:
+          - string
+          - 'null'
+        ProjectNumber:
+          type:
+          - string
+          - 'null'
+        TaskStatus:
+          type:
+          - string
+          - 'null'
+        EndDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    TaskRelatedItemsOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TaskRelatedItemsOutputDto'
+      additionalProperties: false
+    TaskDependencyDto:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          format: int32
+        Items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TaskDependency'
+      additionalProperties: false
+    TasksListOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TasksListOutputDto'
+      additionalProperties: false
+    TaskSearchSelectFilterDto:
+      type: object
+      properties:
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ProjectName:
+          type:
+          - string
+          - 'null'
+        ProjectNumber:
+          type:
+          - string
+          - 'null'
+        TaskName:
+          type:
+          - string
+          - 'null'
+        TaskStatusIds:
+          type:
+          - string
+          - 'null'
+        ExcludeClosed:
+          type: boolean
+        ExcludedId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    TasksListOutputDto:
+      type: object
+      properties:
+        TaskId:
+          type: integer
+          format: int32
+        TaskName:
+          type:
+          - string
+          - 'null'
+        TaskDescription:
+          type:
+          - string
+          - 'null'
+        ProjectName:
+          type:
+          - string
+          - 'null'
+        ProjectColor:
+          type:
+          - string
+          - 'null'
+        PlannedHours:
+          type: number
+          format: double
+        StartDate:
+          type: string
+          format: date-time
+        EndDate:
+          type: string
+          format: date-time
+        AccountId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    TaskRelatedTicket:
+      type: object
+      properties:
+        TicketId:
+          type: integer
+          format: int32
+        TicketTitle:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT
+x-refined-from:
+- kaseya-autotask-psa-openapi-original.json
+- kaseya-bms-openapi-original.json

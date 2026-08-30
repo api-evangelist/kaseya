@@ -1,0 +1,471 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 K1 Integrated Customer Billing API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: K1IntegratedCustomerBilling
+paths:
+  /v2/admin/k1/modules:
+    get:
+      tags:
+      - K1IntegratedCustomerBilling
+      operationId: GetK1SSOModules
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1SSOModuleOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1SSOModuleOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1SSOModuleOutputDtoListResponse'
+  /v2/admin/k1/status:
+    get:
+      tags:
+      - K1IntegratedCustomerBilling
+      operationId: GetK1Status
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1StatusOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1StatusOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1StatusOutputDtoResponse'
+  /v2/admin/k1/organizationmappings:
+    get:
+      tags:
+      - K1IntegratedCustomerBilling
+      operationId: GetK1ProductOrganizationMappings
+      parameters:
+      - name: SourceProductId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: SourceOrganizationName
+        in: query
+        schema:
+          type: string
+      - name: SourceTenantId
+        in: query
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1ProductOrganizationMappingsGetOutputDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1ProductOrganizationMappingsGetOutputDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1ProductOrganizationMappingsGetOutputDtoListPagedResponse'
+    post:
+      tags:
+      - K1IntegratedCustomerBilling
+      operationId: PostK1ProductOrganizationMappings
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/K1ProductOrganizationMappingsPostInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/K1ProductOrganizationMappingsPostInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/K1ProductOrganizationMappingsPostInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/K1ProductOrganizationMappingsPostInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1ProductOrganizationMappingsPostOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1ProductOrganizationMappingsPostOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1ProductOrganizationMappingsPostOutputDtoResponse'
+  /v2/admin/k1/organizationmappings/search:
+    post:
+      tags:
+      - K1IntegratedCustomerBilling
+      operationId: SearchK1ProductOrganizationMappings
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/K1ProductOrganizationMappingsSearchFilterDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/K1ProductOrganizationMappingsSearchFilterDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/K1ProductOrganizationMappingsSearchFilterDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/K1ProductOrganizationMappingsSearchFilterDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/K1ProductOrganizationMappingsListOutputDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/K1ProductOrganizationMappingsListOutputDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/K1ProductOrganizationMappingsListOutputDtoListPagedResponse'
+components:
+  schemas:
+    K1SSOModuleOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        ActiveProductImageUrl:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1ProductOrganizationMappingsPostOutputDto:
+      type: object
+      properties:
+        AccountId:
+          type: integer
+          format: int32
+        SourceProductId:
+          type: integer
+          format: int32
+        SourceOrganizations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1SourceOrganizationOutputDto'
+      additionalProperties: false
+    K1StatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/K1StatusOutputDto'
+      additionalProperties: false
+    K1ProductSubOrganizationOutputDto:
+      type: object
+      properties:
+        SourceOrganizationId:
+          type:
+          - string
+          - 'null'
+        SourceOrganizationName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1ProductOrganizationMappingsGetOutputDto:
+      type: object
+      properties:
+        SourceOrganizationId:
+          type:
+          - string
+          - 'null'
+        SourceOrganizationName:
+          type:
+          - string
+          - 'null'
+        SourceProductId:
+          type:
+          - string
+          - 'null'
+        SubOrganizations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1ProductSubOrganizationOutputDto'
+      additionalProperties: false
+    K1SSOModuleOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1SSOModuleOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    K1SourceOrganizationInputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        ParentId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1StatusOutputDto:
+      type: object
+      properties:
+        IsConnected:
+          type: boolean
+        OrganizationId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1ProductOrganizationMappingsGetOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1ProductOrganizationMappingsGetOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    K1ProductOrganizationMappingDto:
+      type: object
+      properties:
+        SourceProductId:
+          type: integer
+          format: int32
+        SourceOrganizations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1SourceOrganizationOutputDto'
+      additionalProperties: false
+    K1ProductOrganizationMappingsSearchFilter:
+      required:
+      - SourceProductIds
+      type: object
+      properties:
+        AccountName:
+          type:
+          - string
+          - 'null'
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        SourceProductIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+        IsActive:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    K1ProductOrganizationMappingsPostOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/K1ProductOrganizationMappingsPostOutputDto'
+      additionalProperties: false
+    K1ProductOrganizationMappingsPostInputDto:
+      type: object
+      properties:
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SourceProductId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SourceOrganizations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1SourceOrganizationInputDto'
+      additionalProperties: false
+    K1ProductOrganizationMappingsSearchFilterDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/K1ProductOrganizationMappingsSearchFilter'
+      additionalProperties: false
+    K1ProductOrganizationMappingsListOutputDto:
+      type: object
+      properties:
+        AccountId:
+          type: integer
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        OrganizationMappings:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1ProductOrganizationMappingDto'
+      additionalProperties: false
+    K1ProductOrganizationMappingsListOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1ProductOrganizationMappingsListOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    K1SourceOrganizationOutputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        ParentId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,82 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Company Settings API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: CompanySettings
+paths:
+  /v2/admin/companysettings:
+    get:
+      tags:
+      - CompanySettings
+      operationId: GetCompanySettings
+      parameters:
+      - name: SettingKey
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringObjectIDictionaryResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringObjectIDictionaryResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringObjectIDictionaryResponse'
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    StringObjectIDictionaryResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

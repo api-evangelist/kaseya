@@ -1,0 +1,664 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Views API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Views
+paths:
+  /v2/system/views:
+    get:
+      tags:
+      - Views
+      operationId: GetViews
+      parameters:
+      - name: Filter.ModuleId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ViewOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ViewOutputDtoIEnumerableResponse'
+  /v2/system/views/{viewId}:
+    get:
+      tags:
+      - Views
+      operationId: GetViewSearchValues
+      parameters:
+      - name: viewId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SearchValuesOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchValuesOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SearchValuesOutputDtoIEnumerableResponse'
+    delete:
+      tags:
+      - Views
+      operationId: DeleteView
+      parameters:
+      - name: viewId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+  /v2/system/views/{viewId}/details:
+    get:
+      tags:
+      - Views
+      operationId: GetViewDetailsValues
+      parameters:
+      - name: viewId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ViewDetailsOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewDetailsOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ViewDetailsOutputDtoResponse'
+  /v2/system/views/{moduleId}:
+    post:
+      tags:
+      - Views
+      operationId: PostView
+      parameters:
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ViewDetailsInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViewDetailsInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ViewDetailsInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ViewDetailsInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ViewOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ViewOutputDtoResponse'
+  /v2/system/views/{moduleId}/{viewId}:
+    put:
+      tags:
+      - Views
+      operationId: PutView
+      parameters:
+      - name: viewId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ViewDetailsPutInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViewDetailsPutInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ViewDetailsPutInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ViewDetailsPutInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ViewOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ViewOutputDtoResponse'
+  /v2/system/views/{moduleId}/{viewId}/info:
+    put:
+      tags:
+      - Views
+      operationId: PutViewInfo
+      parameters:
+      - name: viewId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ViewInfoInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViewInfoInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ViewInfoInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ViewInfoInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ViewOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ViewOutputDtoResponse'
+  /v2/system/views/{viewId}/sharesettings:
+    get:
+      tags:
+      - Views
+      operationId: GetViewShareSettings
+      parameters:
+      - name: viewId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ViewShareSettingsOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewShareSettingsOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ViewShareSettingsOutputDtoResponse'
+  /v2/system/views/{moduleId}/{viewId}/sharesettings:
+    put:
+      tags:
+      - Views
+      operationId: PutViewShareSettings
+      parameters:
+      - name: viewId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ViewShareSettingsInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViewShareSettingsInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ViewShareSettingsInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ViewShareSettingsInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ViewDetailsOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewDetailsOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ViewDetailsOutputDtoResponse'
+components:
+  schemas:
+    ViewShareSettingsOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ViewShareSettingsOutputDto'
+      additionalProperties: false
+    ViewOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ViewName:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+        SharedWithMe:
+          type: integer
+          format: int32
+        ViewOwner:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SearchValuesOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SearchValuesOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    SearchValuesOutputDto:
+      type: object
+      properties:
+        ListingSearchId:
+          type: integer
+          format: int32
+        SearchField:
+          type:
+          - string
+          - 'null'
+        SearchValue:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ViewDetailsInputDto:
+      type: object
+      properties:
+        FavoriteSearchId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+        IsPublic:
+          type: boolean
+        SortExpression:
+          type:
+          - string
+          - 'null'
+        SortDirection:
+          type:
+          - string
+          - 'null'
+        SearchValues:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SearchValuesInputDto'
+        Columns:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ListingColumnSummaryDto'
+      additionalProperties: false
+    ViewDetailsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Name:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+        IsPublic:
+          type: boolean
+        SortExpression:
+          type:
+          - string
+          - 'null'
+        SortDirection:
+          type:
+          - string
+          - 'null'
+        SharedWithMe:
+          type: integer
+          format: int32
+        ModuleId:
+          type: integer
+          format: int32
+        SearchValues:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SearchValuesOutputDto'
+        Columns:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ListingColumnSummaryDto'
+      additionalProperties: false
+    ViewShareSettingsOutputDto:
+      type: object
+      properties:
+        IsPublic:
+          type: boolean
+        Users:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ViewShareEntityDto'
+        Queues:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ViewShareEntityDto'
+      additionalProperties: false
+    ViewShareSettingsInputDto:
+      type: object
+      properties:
+        IsPublic:
+          type: boolean
+        UserIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        QueueIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    ViewDetailsOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ViewDetailsOutputDto'
+      additionalProperties: false
+    SearchValuesInputDto:
+      type: object
+      properties:
+        ListingSearchId:
+          type: integer
+          format: int32
+        SearchValue:
+          type:
+          - string
+          - 'null'
+        ControlType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ViewShareEntityDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ViewInfoInputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ViewOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ViewOutputDto'
+      additionalProperties: false
+    ViewOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ViewOutputDto'
+      additionalProperties: false
+    ViewDetailsPutInputDto:
+      type: object
+      properties:
+        SortExpression:
+          type:
+          - string
+          - 'null'
+        SortDirection:
+          type:
+          - string
+          - 'null'
+        SearchValues:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SearchValuesInputDto'
+        Columns:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ListingColumnSummaryDto'
+      additionalProperties: false
+    ListingColumnSummaryDto:
+      type: object
+      properties:
+        ListingColumnId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CustomFieldId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Width:
+          type: number
+          format: double
+        Order:
+          type: integer
+          format: int32
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

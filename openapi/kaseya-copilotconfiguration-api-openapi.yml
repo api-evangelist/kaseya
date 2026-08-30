@@ -1,0 +1,219 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Copilot Configuration API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: CopilotConfiguration
+paths:
+  /v2/admin/copilot/configuration:
+    get:
+      tags:
+      - CopilotConfiguration
+      operationId: GetCopilotConfigurations
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CopilotConfigurationOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CopilotConfigurationOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CopilotConfigurationOutputDtoListResponse'
+    post:
+      tags:
+      - CopilotConfiguration
+      operationId: PostCopilotConfiguration
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CopilotConfigurationInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CopilotConfigurationInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CopilotConfigurationInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CopilotConfigurationInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CopilotConfigurationOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CopilotConfigurationOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CopilotConfigurationOutputDtoResponse'
+  /v2/admin/copilot/configuration/{id}:
+    put:
+      tags:
+      - CopilotConfiguration
+      operationId: PutCopilotConfiguration
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CopilotConfigurationInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CopilotConfigurationInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CopilotConfigurationInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CopilotConfigurationInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CopilotConfigurationOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CopilotConfigurationOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CopilotConfigurationOutputDtoResponse'
+components:
+  schemas:
+    CopilotConfigurationValueDto:
+      type: object
+      properties:
+        IsTicketSmartSummaryEnabled:
+          type:
+          - boolean
+          - 'null'
+        IsWritingAssistantEnabled:
+          type:
+          - boolean
+          - 'null'
+        IsTicketResolutionEnabled:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    CopilotConfigurationInputDto:
+      type: object
+      properties:
+        IsEnabled:
+          type: boolean
+        Value:
+          $ref: '#/components/schemas/CopilotConfigurationValueDto'
+        ModuleId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    CopilotConfigurationOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/CopilotConfigurationOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    CopilotConfigurationOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CopilotConfigurationOutputDto'
+      additionalProperties: false
+    CopilotConfigurationOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        IsEnabled:
+          type: boolean
+        Value: {}
+        ModuleId:
+          type: integer
+          format: int32
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

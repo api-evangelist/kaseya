@@ -1,0 +1,2483 @@
+openapi: 3.2.0
+info:
+  title: Datto RMM /v2/device API
+  description: Datto RMM (Remote Monitoring and Management) REST API
+  license:
+    name: '©Datto, Inc. - All rights reserved. '
+    url: http://www.datto.com/
+  version: 2.0.0 (Build 235_0add0e4d537431f30405d568ccb46b6d7af1f183)
+servers:
+- url: https://syrah-api.centrastage.net/api
+  description: Generated server url
+tags:
+- name: /v2/device
+  description: Operations on devices
+paths:
+  /v2/device/{deviceUid}/site/{siteUid}:
+    put:
+      tags:
+      - /v2/device
+      summary: Moves a device from one site to another site.
+      operationId: moveDevice
+      parameters:
+      - name: deviceUid
+        in: path
+        description: The UID of the device to move to a different site
+        required: true
+        schema:
+          type: string
+      - name: siteUid
+        in: path
+        description: The UID of the target site
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/device/{deviceUid}/site/{siteUid}
+        '409':
+          description: Request aborted due to concurrent write access to this record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/device/{deviceUid}/site/{siteUid}
+        '404':
+          description: Device and/or site not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/device/{deviceUid}/site/{siteUid}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/device/{deviceUid}/site/{siteUid}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/device/{deviceUid}/site/{siteUid}
+        '200':
+          description: OK
+  /v2/device/{deviceUid}/quickjob:
+    put:
+      tags:
+      - /v2/device
+      summary: Creates a quick job on the device identified by the given device Uid.
+      operationId: createQuickJob
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateQuickJobRequest'
+        required: true
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/device/{deviceUid}/quickjob
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/device/{deviceUid}/quickjob
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/device/{deviceUid}/quickjob
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/device/{deviceUid}/quickjob
+        '400':
+          description: Request data is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v2/device/{deviceUid}/quickjob
+        '401':
+          description: Request cannot be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/device/{deviceUid}/quickjob
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Create Quick Job Response
+                properties:
+                  jobComponents:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/JobComponent'
+                  job:
+                    $ref: '#/components/schemas/Job'
+  /v2/device/{deviceUid}/warranty:
+    post:
+      tags:
+      - /v2/device
+      summary: Sets the warranty of a device identified by the given device Uid.
+      description: 'The warrantyDate field should be a ISO 8601 string with this format: yyyy-mm-dd. The warranty date can also be set to null.'
+      operationId: setWarrantyData
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Warranty'
+        required: true
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/device/{deviceUid}/warranty
+        '409':
+          description: Request aborted due to concurrent write access to this record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/device/{deviceUid}/warranty
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/device/{deviceUid}/warranty
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/device/{deviceUid}/warranty
+        '400':
+          description: Request is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v2/device/{deviceUid}/warranty
+        '401':
+          description: Request cannot be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/device/{deviceUid}/warranty
+        '200':
+          description: OK
+  /v2/device/{deviceUid}/udf:
+    post:
+      tags:
+      - /v2/device
+      summary: Sets the user defined fields of a device identified by the given device Uid.
+      description: All UDF values are accepted as strings. Any user defined field supplied with an empty or null value will be deleted. All user defined fields not supplied will retain their current values. The API attempts to parse string values into their configured types (BOOLEAN/NUMBER/DATE). If a value cannot be parsed to match its configured type, it will be stored as a string and flagged as a type mismatch.
+      operationId: setUdfFields_1
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Udf'
+        required: true
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/device/{deviceUid}/udf
+        '409':
+          description: Request aborted due to concurrent write access to this record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/device/{deviceUid}/udf
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/device/{deviceUid}/udf
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/device/{deviceUid}/udf
+        '400':
+          description: Request is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v2/device/{deviceUid}/udf
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/device/{deviceUid}/udf
+        '200':
+          description: OK
+  /v2/device/{deviceUid}:
+    get:
+      tags:
+      - /v2/device
+      summary: Fetches data of the device identified by the given device Uid.
+      operationId: getByUid_1
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/device/{deviceUid}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/device/{deviceUid}
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/device/{deviceUid}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/device/{deviceUid}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/device/{deviceUid}
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Device data
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  uid:
+                    type: string
+                  siteId:
+                    type: integer
+                    format: int64
+                  siteUid:
+                    type: string
+                  siteName:
+                    type: string
+                  deviceType:
+                    $ref: '#/components/schemas/DevicesType'
+                  hostname:
+                    type: string
+                  intIpAddress:
+                    type: string
+                  operatingSystem:
+                    type: string
+                  lastLoggedInUser:
+                    type: string
+                  domain:
+                    type: string
+                  cagVersion:
+                    type: string
+                  displayVersion:
+                    type: string
+                  extIpAddress:
+                    type: string
+                  description:
+                    type: string
+                  a64Bit:
+                    type: boolean
+                  rebootRequired:
+                    type: boolean
+                  online:
+                    type: boolean
+                  suspended:
+                    type: boolean
+                  deleted:
+                    type: boolean
+                  lastSeen:
+                    type: string
+                    format: date-time
+                  lastReboot:
+                    type: string
+                    format: date-time
+                  lastAuditDate:
+                    type: string
+                    format: date-time
+                  creationDate:
+                    type: string
+                    format: date-time
+                  snmpEnabled:
+                    type: boolean
+                  deviceClass:
+                    type: string
+                    enum:
+                    - device
+                    - printer
+                    - esxihost
+                    - rmmnetworkdevice
+                    - unknown
+                  portalUrl:
+                    type: string
+                  warrantyDate:
+                    type: string
+                  antivirus:
+                    $ref: '#/components/schemas/Antivirus'
+                  patchManagement:
+                    $ref: '#/components/schemas/PatchManagement'
+                  softwareStatus:
+                    type: string
+                  webRemoteUrl:
+                    type: string
+                  networkProbe:
+                    type: boolean
+                  onboardedViaNetworkMonitor:
+                    type: boolean
+  /v2/device/{deviceUid}/patches:
+    get:
+      tags:
+      - /v2/device
+      summary: Fetches the patches of the device identified by the given device Uid.
+      description: Returns a paginated list of patches for the device. The optional installStatus parameter filters results by INSTALLED, APPROVED_PENDING or NOT_APPROVED. When omitted, all patches for the device are returned.
+      operationId: getDevicePatches
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: installStatus
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - INSTALLED
+          - APPROVED_PENDING
+          - NOT_APPROVED
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/device/{deviceUid}/patches
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/device/{deviceUid}/patches
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/device/{deviceUid}/patches
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/device/{deviceUid}/patches
+        '400':
+          description: Request is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v2/device/{deviceUid}/patches
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/device/{deviceUid}/patches
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Patches page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  patches:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Patch'
+  /v2/device/{deviceUid}/alerts/resolved:
+    get:
+      tags:
+      - /v2/device
+      summary: Fetches the resolved alerts of the device identified by the given device Uid.
+      description: If the muted parameter is not provided, both muted and umuted alerts will be queried.
+      operationId: getDeviceResolvedAlerts
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: muted
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/device/{deviceUid}/alerts/resolved
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/device/{deviceUid}/alerts/resolved
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/device/{deviceUid}/alerts/resolved
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/device/{deviceUid}/alerts/resolved
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/device/{deviceUid}/alerts/resolved
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Alerts page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  alerts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Alert'
+  /v2/device/{deviceUid}/alerts/open:
+    get:
+      tags:
+      - /v2/device
+      summary: Fetches the open alerts of the device identified by the given device Uid.
+      description: If the muted parameter is not provided, both muted and umuted alerts will be queried.
+      operationId: getDeviceOpenAlerts
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: muted
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/device/{deviceUid}/alerts/open
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/device/{deviceUid}/alerts/open
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/device/{deviceUid}/alerts/open
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/device/{deviceUid}/alerts/open
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/device/{deviceUid}/alerts/open
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Alerts page
+                properties:
+                  pageDetails:
+                    $ref: '#/components/schemas/PaginationData'
+                  alerts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Alert'
+  /v2/device/macAddress/{macAddress}:
+    get:
+      tags:
+      - /v2/device
+      summary: 'Fetches data of the device(s) identified by the given MAC address in format: XXXXXXXXXXXX'
+      operationId: getByMacAddress_1
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/device/macAddress/{macAddress}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/device/macAddress/{macAddress}
+        '200':
+          description: Device was found.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/device/macAddress/{macAddress}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/device/macAddress/{macAddress}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/device/macAddress/{macAddress}
+  /v2/device/id/{deviceId}:
+    get:
+      tags:
+      - /v2/device
+      summary: Fetches data of the device identified by the given device Id.
+      operationId: getById_1
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v2/device/id/{deviceId}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v2/device/id/{deviceId}
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v2/device/id/{deviceId}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v2/device/id/{deviceId}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v2/device/id/{deviceId}
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Device data
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  uid:
+                    type: string
+                  siteId:
+                    type: integer
+                    format: int64
+                  siteUid:
+                    type: string
+                  siteName:
+                    type: string
+                  deviceType:
+                    $ref: '#/components/schemas/DevicesType'
+                  hostname:
+                    type: string
+                  intIpAddress:
+                    type: string
+                  operatingSystem:
+                    type: string
+                  lastLoggedInUser:
+                    type: string
+                  domain:
+                    type: string
+                  cagVersion:
+                    type: string
+                  displayVersion:
+                    type: string
+                  extIpAddress:
+                    type: string
+                  description:
+                    type: string
+                  a64Bit:
+                    type: boolean
+                  rebootRequired:
+                    type: boolean
+                  online:
+                    type: boolean
+                  suspended:
+                    type: boolean
+                  deleted:
+                    type: boolean
+                  lastSeen:
+                    type: string
+                    format: date-time
+                  lastReboot:
+                    type: string
+                    format: date-time
+                  lastAuditDate:
+                    type: string
+                    format: date-time
+                  creationDate:
+                    type: string
+                    format: date-time
+                  snmpEnabled:
+                    type: boolean
+                  deviceClass:
+                    type: string
+                    enum:
+                    - device
+                    - printer
+                    - esxihost
+                    - rmmnetworkdevice
+                    - unknown
+                  portalUrl:
+                    type: string
+                  warrantyDate:
+                    type: string
+                  antivirus:
+                    $ref: '#/components/schemas/Antivirus'
+                  patchManagement:
+                    $ref: '#/components/schemas/PatchManagement'
+                  softwareStatus:
+                    type: string
+                  webRemoteUrl:
+                    type: string
+                  networkProbe:
+                    type: boolean
+                  onboardedViaNetworkMonitor:
+                    type: boolean
+components:
+  schemas:
+    WindowsPerformanceContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          value:
+            type: number
+            format: float
+    TemperatureContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          degree:
+            type: number
+            format: float
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    CreateQuickJobRequest:
+      type: object
+      properties:
+        jobName:
+          type: string
+        jobComponent:
+          $ref: '#/components/schemas/JobComponentRequest'
+      required:
+      - jobComponent
+      - jobName
+    EndpointSecurityThreatContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          esAlertId:
+            type: string
+          description:
+            type: string
+    JobComponent:
+      type: object
+      description: Job component data
+      properties:
+        uid:
+          type: string
+        name:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobComponentVariable'
+    ResponseAction:
+      type: object
+      properties:
+        actionTime:
+          type: string
+          format: date-time
+        actionType:
+          type: string
+          enum:
+          - EMAIL_SENT
+          - EMAIL_SEND_ERROR
+          - TICKET_PENDING
+          - TICKET_CREATED
+          - TICKET_CREATION_ERROR
+          - TICKET_CLOSED_CALL
+          - COMPONENT
+          - WEBHOOK_EXECUTED
+          - WEBHOOK_EXECUTION_ERROR
+        description:
+          type: string
+        actionReference:
+          type: string
+        actionReferenceInt:
+          type: string
+    Patch:
+      type: object
+      description: Patch data for a device
+      properties:
+        patchId:
+          type: string
+        category:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+          enum:
+          - SOFTWARE
+          - DRIVER
+        title:
+          type: string
+        description:
+          type: string
+        releaseDate:
+          type: string
+        severity:
+          type: string
+          enum:
+          - CRITICAL
+          - IMPORTANT
+          - MODERATE
+          - LOW
+          - UNSPECIFIED
+        maxSize:
+          type: integer
+          format: int64
+        rebootRequired:
+          type: boolean
+        requireUserInput:
+          type: boolean
+        kbArticleId:
+          type: string
+        installStatus:
+          type: string
+          enum:
+          - INSTALLED
+          - APPROVED_PENDING
+          - NOT_APPROVED
+        manualOverride:
+          type: boolean
+    FileSystemContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          sample:
+            type: number
+            format: float
+          threshold:
+            type: number
+            format: float
+          path:
+            type: string
+          objectType:
+            type: string
+            enum:
+            - FILE
+            - DIRECTORY
+          condition:
+            type: string
+            enum:
+            - ABOVE_THRESHOLD
+            - BELOW_THRESHOLD
+            - REMOVED
+            - CREATED
+    StatusContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          processName:
+            type: string
+          status:
+            type: string
+            enum:
+            - STOPPED
+            - STARTPENDING
+            - STOPPENDING
+            - RUNNING
+            - CONTINUEPENDING
+            - PAUSEPENDING
+            - PAUSED
+    ActionContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          packageName:
+            type: string
+          actionType:
+            type: string
+            enum:
+            - INSTALLED
+            - UNINSTALLED
+            - VERSION_CHANGED
+          prevVersion:
+            type: string
+          version:
+            type: string
+    DiskUsageContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          diskName:
+            type: string
+          totalVolume:
+            type: number
+            format: float
+          freeSpace:
+            type: number
+            format: float
+          unitOfMeasure:
+            type: string
+            enum:
+            - PERCENT
+            - USED
+            - FREE
+          diskNameDesignation:
+            type: string
+            enum:
+            - ANY_VOLUME
+            - ALL_VOLUMES
+            - SINGLE_VOLUME
+    EndpointSecurityWindowsDefenderContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          esAlertId:
+            type: string
+          description:
+            type: string
+    WmiContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          value:
+            type: string
+    SecCenterContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          productName:
+            type: string
+          alertType:
+            type: string
+            enum:
+            - DISABLED
+            - NOT_UPTODATE
+    PatchManagement:
+      type: object
+      description: Patch management data
+      properties:
+        patchStatus:
+          type: string
+          enum:
+          - NoPolicy
+          - NoData
+          - RebootRequired
+          - InstallError
+          - ApprovedPending
+          - FullyPatched
+        patchesApprovedPending:
+          type: integer
+          format: int64
+        patchesNotApproved:
+          type: integer
+          format: int64
+        patchesInstalled:
+          type: integer
+          format: int64
+    ScriptContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          samples:
+            type: object
+            additionalProperties:
+              type: string
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
+    AlertMonitorInfo:
+      type: object
+      description: Alert monitor information
+      properties:
+        sendsEmails:
+          type: boolean
+        createsTicket:
+          type: boolean
+    Job:
+      type: object
+      description: Job data
+      properties:
+        id:
+          type: integer
+          format: int64
+        dateCreated:
+          type: string
+          format: date-time
+        name:
+          type: string
+        uid:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - completed
+    RansomWareContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          state:
+            type: integer
+            format: int32
+          confidenceFactor:
+            type: integer
+            format: int32
+          affectedDirectories:
+            type: array
+            items:
+              type: string
+          watchPaths:
+            type: array
+            items:
+              type: string
+          rwextension:
+            type: string
+          metaAlertTime:
+            type: string
+            format: date-time
+          alertTime:
+            type: string
+            format: date-time
+    Antivirus:
+      type: object
+      description: Device antivirus data
+      properties:
+        antivirusProduct:
+          type: string
+        antivirusStatus:
+          type: string
+          enum:
+          - RunningAndUpToDate
+          - RunningAndNotUpToDate
+          - NotRunning
+          - NotDetected
+    SNMPProbeContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          ipAddress:
+            type: string
+          OID:
+            type: string
+          ruleName:
+            type: string
+          responseValue:
+            type: string
+          deviceName:
+            type: string
+          monitorName:
+            type: string
+          oid:
+            type: string
+    AlertContext:
+      discriminator:
+        propertyName: '@class'
+      properties:
+        '@class':
+          type: string
+      required:
+      - '@class'
+    Alert:
+      type: object
+      description: Alert data
+      properties:
+        alertUid:
+          type: string
+        priority:
+          type: string
+          enum:
+          - Critical
+          - High
+          - Moderate
+          - Low
+          - Information
+          - Unknown
+        diagnostics:
+          type: string
+        resolved:
+          type: boolean
+        resolvedBy:
+          type: string
+        resolvedOn:
+          type: string
+          format: date-time
+        muted:
+          type: boolean
+        ticketNumber:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        alertMonitorInfo:
+          $ref: '#/components/schemas/AlertMonitorInfo'
+        alertContext:
+          oneOf:
+          - $ref: '#/components/schemas/ActionContext'
+          - $ref: '#/components/schemas/AntivirusContext'
+          - $ref: '#/components/schemas/BackupManagementContext'
+          - $ref: '#/components/schemas/CustomSNMPContext'
+          - $ref: '#/components/schemas/DiskHealthContext'
+          - $ref: '#/components/schemas/DiskUsageContext'
+          - $ref: '#/components/schemas/EndpointSecurityThreatContext'
+          - $ref: '#/components/schemas/EndpointSecurityWindowsDefenderContext'
+          - $ref: '#/components/schemas/EventLogContext'
+          - $ref: '#/components/schemas/FanContext'
+          - $ref: '#/components/schemas/FileSystemContext'
+          - $ref: '#/components/schemas/NetworkMonitorContext'
+          - $ref: '#/components/schemas/OnlineOfflineStatusContext'
+          - $ref: '#/components/schemas/PatchContext'
+          - $ref: '#/components/schemas/PingContext'
+          - $ref: '#/components/schemas/PrinterContext'
+          - $ref: '#/components/schemas/PsuContext'
+          - $ref: '#/components/schemas/RansomWareContext'
+          - $ref: '#/components/schemas/ResourceUsageContext'
+          - $ref: '#/components/schemas/SNMPProbeContext'
+          - $ref: '#/components/schemas/ScriptContext'
+          - $ref: '#/components/schemas/SecCenterContext'
+          - $ref: '#/components/schemas/SecurityManagementContext'
+          - $ref: '#/components/schemas/StatusContext'
+          - $ref: '#/components/schemas/TemperatureContext'
+          - $ref: '#/components/schemas/WindowsPerformanceContext'
+          - $ref: '#/components/schemas/WmiContext'
+        alertSourceInfo:
+          $ref: '#/components/schemas/AlertSourceInfo'
+        responseActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseAction'
+        autoresolveMins:
+          type: integer
+          format: int32
+    PsuContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          reason:
+            type: string
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    NetworkMonitorContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          description:
+            type: string
+    FanContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          reason:
+            type: string
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    PingContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          instanceName:
+            type: string
+          roundtripTime:
+            type: integer
+            format: int32
+          reasons:
+            type: array
+            items:
+              type: string
+    Udf:
+      type: object
+      description: User defined fields
+      properties:
+        udf1:
+          type: string
+        udf2:
+          type: string
+        udf3:
+          type: string
+        udf4:
+          type: string
+        udf5:
+          type: string
+        udf6:
+          type: string
+        udf7:
+          type: string
+        udf8:
+          type: string
+        udf9:
+          type: string
+        udf10:
+          type: string
+        udf11:
+          type: string
+        udf12:
+          type: string
+        udf13:
+          type: string
+        udf14:
+          type: string
+        udf15:
+          type: string
+        udf16:
+          type: string
+        udf17:
+          type: string
+        udf18:
+          type: string
+        udf19:
+          type: string
+        udf20:
+          type: string
+        udf21:
+          type: string
+        udf22:
+          type: string
+        udf23:
+          type: string
+        udf24:
+          type: string
+        udf25:
+          type: string
+        udf26:
+          type: string
+        udf27:
+          type: string
+        udf28:
+          type: string
+        udf29:
+          type: string
+        udf30:
+          type: string
+        udf31:
+          type: string
+        udf32:
+          type: string
+        udf33:
+          type: string
+        udf34:
+          type: string
+        udf35:
+          type: string
+        udf36:
+          type: string
+        udf37:
+          type: string
+        udf38:
+          type: string
+        udf39:
+          type: string
+        udf40:
+          type: string
+        udf41:
+          type: string
+        udf42:
+          type: string
+        udf43:
+          type: string
+        udf44:
+          type: string
+        udf45:
+          type: string
+        udf46:
+          type: string
+        udf47:
+          type: string
+        udf48:
+          type: string
+        udf49:
+          type: string
+        udf50:
+          type: string
+        udf51:
+          type: string
+        udf52:
+          type: string
+        udf53:
+          type: string
+        udf54:
+          type: string
+        udf55:
+          type: string
+        udf56:
+          type: string
+        udf57:
+          type: string
+        udf58:
+          type: string
+        udf59:
+          type: string
+        udf60:
+          type: string
+        udf61:
+          type: string
+        udf62:
+          type: string
+        udf63:
+          type: string
+        udf64:
+          type: string
+        udf65:
+          type: string
+        udf66:
+          type: string
+        udf67:
+          type: string
+        udf68:
+          type: string
+        udf69:
+          type: string
+        udf70:
+          type: string
+        udf71:
+          type: string
+        udf72:
+          type: string
+        udf73:
+          type: string
+        udf74:
+          type: string
+        udf75:
+          type: string
+        udf76:
+          type: string
+        udf77:
+          type: string
+        udf78:
+          type: string
+        udf79:
+          type: string
+        udf80:
+          type: string
+        udf81:
+          type: string
+        udf82:
+          type: string
+        udf83:
+          type: string
+        udf84:
+          type: string
+        udf85:
+          type: string
+        udf86:
+          type: string
+        udf87:
+          type: string
+        udf88:
+          type: string
+        udf89:
+          type: string
+        udf90:
+          type: string
+        udf91:
+          type: string
+        udf92:
+          type: string
+        udf93:
+          type: string
+        udf94:
+          type: string
+        udf95:
+          type: string
+        udf96:
+          type: string
+        udf97:
+          type: string
+        udf98:
+          type: string
+        udf99:
+          type: string
+        udf100:
+          type: string
+        udf101:
+          type: string
+        udf102:
+          type: string
+        udf103:
+          type: string
+        udf104:
+          type: string
+        udf105:
+          type: string
+        udf106:
+          type: string
+        udf107:
+          type: string
+        udf108:
+          type: string
+        udf109:
+          type: string
+        udf110:
+          type: string
+        udf111:
+          type: string
+        udf112:
+          type: string
+        udf113:
+          type: string
+        udf114:
+          type: string
+        udf115:
+          type: string
+        udf116:
+          type: string
+        udf117:
+          type: string
+        udf118:
+          type: string
+        udf119:
+          type: string
+        udf120:
+          type: string
+        udf121:
+          type: string
+        udf122:
+          type: string
+        udf123:
+          type: string
+        udf124:
+          type: string
+        udf125:
+          type: string
+        udf126:
+          type: string
+        udf127:
+          type: string
+        udf128:
+          type: string
+        udf129:
+          type: string
+        udf130:
+          type: string
+        udf131:
+          type: string
+        udf132:
+          type: string
+        udf133:
+          type: string
+        udf134:
+          type: string
+        udf135:
+          type: string
+        udf136:
+          type: string
+        udf137:
+          type: string
+        udf138:
+          type: string
+        udf139:
+          type: string
+        udf140:
+          type: string
+        udf141:
+          type: string
+        udf142:
+          type: string
+        udf143:
+          type: string
+        udf144:
+          type: string
+        udf145:
+          type: string
+        udf146:
+          type: string
+        udf147:
+          type: string
+        udf148:
+          type: string
+        udf149:
+          type: string
+        udf150:
+          type: string
+        udf151:
+          type: string
+        udf152:
+          type: string
+        udf153:
+          type: string
+        udf154:
+          type: string
+        udf155:
+          type: string
+        udf156:
+          type: string
+        udf157:
+          type: string
+        udf158:
+          type: string
+        udf159:
+          type: string
+        udf160:
+          type: string
+        udf161:
+          type: string
+        udf162:
+          type: string
+        udf163:
+          type: string
+        udf164:
+          type: string
+        udf165:
+          type: string
+        udf166:
+          type: string
+        udf167:
+          type: string
+        udf168:
+          type: string
+        udf169:
+          type: string
+        udf170:
+          type: string
+        udf171:
+          type: string
+        udf172:
+          type: string
+        udf173:
+          type: string
+        udf174:
+          type: string
+        udf175:
+          type: string
+        udf176:
+          type: string
+        udf177:
+          type: string
+        udf178:
+          type: string
+        udf179:
+          type: string
+        udf180:
+          type: string
+        udf181:
+          type: string
+        udf182:
+          type: string
+        udf183:
+          type: string
+        udf184:
+          type: string
+        udf185:
+          type: string
+        udf186:
+          type: string
+        udf187:
+          type: string
+        udf188:
+          type: string
+        udf189:
+          type: string
+        udf190:
+          type: string
+        udf191:
+          type: string
+        udf192:
+          type: string
+        udf193:
+          type: string
+        udf194:
+          type: string
+        udf195:
+          type: string
+        udf196:
+          type: string
+        udf197:
+          type: string
+        udf198:
+          type: string
+        udf199:
+          type: string
+        udf200:
+          type: string
+        udf201:
+          type: string
+        udf202:
+          type: string
+        udf203:
+          type: string
+        udf204:
+          type: string
+        udf205:
+          type: string
+        udf206:
+          type: string
+        udf207:
+          type: string
+        udf208:
+          type: string
+        udf209:
+          type: string
+        udf210:
+          type: string
+        udf211:
+          type: string
+        udf212:
+          type: string
+        udf213:
+          type: string
+        udf214:
+          type: string
+        udf215:
+          type: string
+        udf216:
+          type: string
+        udf217:
+          type: string
+        udf218:
+          type: string
+        udf219:
+          type: string
+        udf220:
+          type: string
+        udf221:
+          type: string
+        udf222:
+          type: string
+        udf223:
+          type: string
+        udf224:
+          type: string
+        udf225:
+          type: string
+        udf226:
+          type: string
+        udf227:
+          type: string
+        udf228:
+          type: string
+        udf229:
+          type: string
+        udf230:
+          type: string
+        udf231:
+          type: string
+        udf232:
+          type: string
+        udf233:
+          type: string
+        udf234:
+          type: string
+        udf235:
+          type: string
+        udf236:
+          type: string
+        udf237:
+          type: string
+        udf238:
+          type: string
+        udf239:
+          type: string
+        udf240:
+          type: string
+        udf241:
+          type: string
+        udf242:
+          type: string
+        udf243:
+          type: string
+        udf244:
+          type: string
+        udf245:
+          type: string
+        udf246:
+          type: string
+        udf247:
+          type: string
+        udf248:
+          type: string
+        udf249:
+          type: string
+        udf250:
+          type: string
+        udf251:
+          type: string
+        udf252:
+          type: string
+        udf253:
+          type: string
+        udf254:
+          type: string
+        udf255:
+          type: string
+        udf256:
+          type: string
+        udf257:
+          type: string
+        udf258:
+          type: string
+        udf259:
+          type: string
+        udf260:
+          type: string
+        udf261:
+          type: string
+        udf262:
+          type: string
+        udf263:
+          type: string
+        udf264:
+          type: string
+        udf265:
+          type: string
+        udf266:
+          type: string
+        udf267:
+          type: string
+        udf268:
+          type: string
+        udf269:
+          type: string
+        udf270:
+          type: string
+        udf271:
+          type: string
+        udf272:
+          type: string
+        udf273:
+          type: string
+        udf274:
+          type: string
+        udf275:
+          type: string
+        udf276:
+          type: string
+        udf277:
+          type: string
+        udf278:
+          type: string
+        udf279:
+          type: string
+        udf280:
+          type: string
+        udf281:
+          type: string
+        udf282:
+          type: string
+        udf283:
+          type: string
+        udf284:
+          type: string
+        udf285:
+          type: string
+        udf286:
+          type: string
+        udf287:
+          type: string
+        udf288:
+          type: string
+        udf289:
+          type: string
+        udf290:
+          type: string
+        udf291:
+          type: string
+        udf292:
+          type: string
+        udf293:
+          type: string
+        udf294:
+          type: string
+        udf295:
+          type: string
+        udf296:
+          type: string
+        udf297:
+          type: string
+        udf298:
+          type: string
+        udf299:
+          type: string
+        udf300:
+          type: string
+    PatchContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          patchUid:
+            type: string
+          policyUid:
+            type: string
+          result:
+            type: string
+          info:
+            type: string
+    ResourceUsageContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          processName:
+            type: string
+          sample:
+            type: number
+            format: float
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    AlertSourceInfo:
+      type: object
+      description: Alert source information data
+      properties:
+        deviceUid:
+          type: string
+        deviceName:
+          type: string
+        siteUid:
+          type: string
+        siteName:
+          type: string
+    SecurityManagementContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          status:
+            type: integer
+            format: int32
+          productName:
+            type: string
+          infoTime:
+            type: integer
+            format: int32
+          virusName:
+            type: string
+          infectedFiles:
+            type: array
+            items:
+              type: string
+          productNotUpdatedForDays:
+            type: integer
+            format: int32
+          systemRemainsInfectedForHours:
+            type: integer
+            format: int32
+          expiryLicenseForDays:
+            type: integer
+            format: int32
+    JobComponentVariable:
+      type: object
+      description: Job component variable data
+      properties:
+        name:
+          type: string
+          description: Variable name has to match one of component's variables
+        value:
+          type: string
+          description: Value has to be convertible to the type specified in component variable
+    Device:
+      type: object
+      description: Device data
+      properties:
+        id:
+          type: integer
+          format: int64
+        uid:
+          type: string
+        siteId:
+          type: integer
+          format: int64
+        siteUid:
+          type: string
+        siteName:
+          type: string
+        deviceType:
+          $ref: '#/components/schemas/DevicesType'
+        hostname:
+          type: string
+        intIpAddress:
+          type: string
+        operatingSystem:
+          type: string
+        lastLoggedInUser:
+          type: string
+        domain:
+          type: string
+        cagVersion:
+          type: string
+        displayVersion:
+          type: string
+        extIpAddress:
+          type: string
+        description:
+          type: string
+        a64Bit:
+          type: boolean
+        rebootRequired:
+          type: boolean
+        online:
+          type: boolean
+        suspended:
+          type: boolean
+        deleted:
+          type: boolean
+        lastSeen:
+          type: string
+          format: date-time
+        lastReboot:
+          type: string
+          format: date-time
+        lastAuditDate:
+          type: string
+          format: date-time
+        creationDate:
+          type: string
+          format: date-time
+        snmpEnabled:
+          type: boolean
+        deviceClass:
+          type: string
+          enum:
+          - device
+          - printer
+          - esxihost
+          - rmmnetworkdevice
+          - unknown
+        portalUrl:
+          type: string
+        warrantyDate:
+          type: string
+        antivirus:
+          $ref: '#/components/schemas/Antivirus'
+        patchManagement:
+          $ref: '#/components/schemas/PatchManagement'
+        softwareStatus:
+          type: string
+        webRemoteUrl:
+          type: string
+        networkProbe:
+          type: boolean
+        onboardedViaNetworkMonitor:
+          type: boolean
+    DiskHealthContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          reason:
+            type: string
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    OnlineOfflineStatusContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          status:
+            type: string
+            enum:
+            - ONLINE
+            - OFFLINE
+    PaginationData:
+      type: object
+      description: Pagination data
+      properties:
+        count:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    JobComponentRequest:
+      type: object
+      description: Job component request data
+      properties:
+        componentUid:
+          type: string
+          description: Component UID. List of components for the account could be retrieved via account resource
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobComponentVariable'
+    CustomSNMPContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          displayName:
+            type: string
+          currentValue:
+            type: string
+          monitorInstance:
+            type: string
+    EventLogContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          logName:
+            type: string
+          code:
+            type: string
+          type:
+            type: string
+          source:
+            type: string
+          description:
+            type: string
+          triggerCount:
+            type: integer
+            format: int32
+          lastTriggered:
+            type: string
+            format: date-time
+          causedSuspension:
+            type: boolean
+    AntivirusContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          status:
+            type: string
+            enum:
+            - NOTDETECTED
+            - NOTRUNNING
+            - RUNNINGNOTUPTODATE
+          productName:
+            type: string
+    BackupManagementContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          errorMessage:
+            type: string
+          timeout:
+            type: integer
+            format: int32
+    DevicesType:
+      type: object
+      description: Devices Type
+      properties:
+        category:
+          type: string
+        type:
+          type: string
+    Warranty:
+      type: object
+      description: Device's warranty data
+      properties:
+        warrantyDate:
+          type: string
+    PrinterContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          ipAddress:
+            type: string
+          macAddress:
+            type: string
+          markerSupplyIndex:
+            type: integer
+            format: int32
+          currentLevel:
+            type: integer
+            format: int32

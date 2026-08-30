@@ -1,0 +1,340 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Qbd Discounts API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: QbdDiscounts
+paths:
+  /v2/integration/qbd/discounts:
+    post:
+      tags:
+      - QbdDiscounts
+      operationId: ImportDiscounts
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbItemImportDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbItemImportDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbItemImportDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbItemImportDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+    get:
+      tags:
+      - QbdDiscounts
+      operationId: GetDiscounts
+      parameters:
+      - name: Filter.ItemName
+        in: query
+        schema:
+          type: string
+      - name: ExternalTenantId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QbDiscountTypeExportDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QbDiscountTypeExportDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QbDiscountTypeExportDtoListPagedResponse'
+  /v2/integration/qbd/discounts/byids:
+    get:
+      tags:
+      - QbdDiscounts
+      operationId: GetDiscountsByIds
+      parameters:
+      - name: ExternalTenantId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ItemNumbers
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QbDiscountTypeExportDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QbDiscountTypeExportDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QbDiscountTypeExportDtoListResponse'
+components:
+  schemas:
+    QbDiscountTypeExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbDiscountTypeExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    QbItemImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Number:
+          type:
+          - string
+          - 'null'
+        InStockQty:
+          type:
+          - number
+          - 'null'
+          format: double
+        IsStockedItem:
+          type: boolean
+        Sku:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        IsTaxable:
+          type: boolean
+        IsActive:
+          type: boolean
+        DiscountIsPercent:
+          type: boolean
+        UnitPrice:
+          type: number
+          format: double
+        PurchaseCost:
+          type: number
+          format: double
+        IncomeAccount:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        ExpenseAccount:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        AssetAccount:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbDiscountTypeExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ItemCode:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        DiscountIsPercent:
+          type: boolean
+        DiscountRate:
+          type: number
+          format: double
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        IncomeAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExpenseAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsTaxable:
+          type: boolean
+        ExternalItemId:
+          type:
+          - string
+          - 'null'
+        ExternalIncomeId:
+          type:
+          - string
+          - 'null'
+        ExternalExpenseId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbAccountCodeImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Code:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        AccountTypeName:
+          type:
+          - string
+          - 'null'
+        ParentAccountCode:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbDiscountTypeExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbDiscountTypeExportDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

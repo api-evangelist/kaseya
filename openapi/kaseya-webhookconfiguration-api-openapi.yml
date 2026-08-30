@@ -1,0 +1,552 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Webhook Configuration API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: WebhookConfiguration
+paths:
+  /v2/admin/webhooks/search:
+    post:
+      tags:
+      - WebhookConfiguration
+      operationId: GetWebhookConfigurationsList
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfigurationListInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfigurationListInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfigurationListInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfigurationListInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WebhookConfigurationListOutputDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookConfigurationListOutputDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WebhookConfigurationListOutputDtoListPagedResponse'
+  /v2/admin/webhooks/{id}:
+    get:
+      tags:
+      - WebhookConfiguration
+      operationId: GetWebhookConfiguration
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WebhookConfigurationOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookConfigurationOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WebhookConfigurationOutputDtoResponse'
+    put:
+      tags:
+      - WebhookConfiguration
+      operationId: PutWebhookConfiguration
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfigurationInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfigurationInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfigurationInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfigurationInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WebhookConfigurationOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookConfigurationOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WebhookConfigurationOutputDtoResponse'
+    delete:
+      tags:
+      - WebhookConfiguration
+      operationId: DeleteWebhookConfiguration
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+  /v2/admin/webhooks:
+    post:
+      tags:
+      - WebhookConfiguration
+      operationId: PostWebhookConfiguration
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfigurationInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfigurationInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfigurationInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfigurationInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WebhookConfigurationOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookConfigurationOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WebhookConfigurationOutputDtoResponse'
+    delete:
+      tags:
+      - WebhookConfiguration
+      operationId: DeleteWebhooks
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Int32BatchIdsDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Int32BatchIdsDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Int32BatchIdsDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Int32BatchIdsDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+    patch:
+      tags:
+      - WebhookConfiguration
+      operationId: PatchWebhooks
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/BatchWebhooksDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchWebhooksDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/BatchWebhooksDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/BatchWebhooksDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+  /v2/admin/webhooks/events/lookup:
+    get:
+      tags:
+      - WebhookConfiguration
+      operationId: GetWebhookEventsLookup
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WebhookEventOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookEventOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WebhookEventOutputDtoListResponse'
+components:
+  schemas:
+    WebhookConfigurationListFilterDto:
+      type: object
+      properties:
+        PayloadUrl:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        IsEnabled:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    WebhookEventOutputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        CategoryName:
+          type:
+          - string
+          - 'null'
+        CategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    WebhookConfigurationListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        PayloadUrl:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        IsEnabled:
+          type: boolean
+        RecentDelivery:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        UseCount:
+          type: integer
+          format: int32
+      additionalProperties: false
+    BatchWebhooksDto:
+      type: object
+      properties:
+        ModuleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        IsEnabled:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    WebhookConfigurationListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/WebhookConfigurationListFilterDto'
+      additionalProperties: false
+    WebhookConfigurationInputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        PayloadURL:
+          type:
+          - string
+          - 'null'
+        IsEnabled:
+          type: boolean
+        Secret:
+          type:
+          - string
+          - 'null'
+        ContentType:
+          type: integer
+          format: int32
+        SendAllEvents:
+          type: boolean
+        Events:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    WebhookConfigurationListOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WebhookConfigurationListOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Int32BatchIdsDto:
+      type: object
+      properties:
+        ModuleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    WebhookConfigurationOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WebhookConfigurationOutputDto'
+      additionalProperties: false
+    WebhookEventOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WebhookEventOutputDto'
+      additionalProperties: false
+    WebhookConfigurationOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        IsEnabled:
+          type: boolean
+        PayloadUrl:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        ContentType:
+          type: integer
+          format: int32
+        SendAllEvents:
+          type: boolean
+        Events:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        HasSecret:
+          type: boolean
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

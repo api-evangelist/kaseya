@@ -1,0 +1,1861 @@
+openapi: 3.2.0
+info:
+  title: Kaseya Invoices API
+  version: '1.0'
+  description: 'Operations tagged Invoices across 2 of this provider''s published API definitions: kaseya-autotask-psa-openapi-original.json, kaseya-bms-openapi-original.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+- url: https://api.bms.kaseya.com
+tags:
+- name: Invoices
+paths:
+  /V1.0/Invoices/query:
+    get:
+      tags:
+      - Invoices
+      operationId: Invoices_UrlParameterQuery
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_InvoiceModel_Invoice'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_InvoiceModel_Invoice'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Invoices
+      operationId: Invoices_Query
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_InvoiceModel_Invoice'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_InvoiceModel_Invoice'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Invoices/{id}:
+    get:
+      tags:
+      - Invoices
+      operationId: Invoices_QueryItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_InvoiceModel_Invoice'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_InvoiceModel_Invoice'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Invoices/query/count:
+    get:
+      tags:
+      - Invoices
+      operationId: Invoices_UrlParameterQueryCount
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Invoices
+      operationId: Invoices_QueryCount
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Invoices:
+    put:
+      tags:
+      - Invoices
+      operationId: Invoices_UpdateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceModel'
+        required: true
+    patch:
+      tags:
+      - Invoices
+      operationId: Invoices_PatchEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Invoices/entityInformation:
+    get:
+      tags:
+      - Invoices
+      operationId: Invoices_QueryEntityInformation
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Invoices/entityInformation/fields:
+    get:
+      tags:
+      - Invoices
+      operationId: Invoices_QueryFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Invoices/entityInformation/userDefinedFields:
+    get:
+      tags:
+      - Invoices
+      operationId: Invoices_QueryUserDefinedFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /v2/finance/invoices/summary:
+    get:
+      tags:
+      - Invoices
+      operationId: GetInvoicesSummaryList
+      parameters:
+      - name: Filter.Id
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.InvoiceNumber
+        in: query
+        schema:
+          type: string
+      - name: Filter.AccountId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.AccountName
+        in: query
+        schema:
+          type: string
+      - name: Filter.StatusId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.CreatedFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.CreatedTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.PostedToAccounting
+        in: query
+        schema:
+          type: boolean
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InvoiceSummaryOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceSummaryOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceSummaryOutputDtoListResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/finance/invoices/{id}:
+    get:
+      tags:
+      - Invoices
+      operationId: GetInvoice
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InvoiceOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/finance/invoices/details:
+    post:
+      tags:
+      - Invoices
+      operationId: GetInvoiceDetailsList
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InvoiceDetailsListSearchSelectInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceDetailsListSearchSelectInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceDetailsListSearchSelectInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InvoiceDetailsListSearchSelectInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InvoiceLineItemsOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceLineItemsOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceLineItemsOutputDtoListResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/finance/invoices/discounts:
+    post:
+      tags:
+      - Invoices
+      operationId: GetInvoiceDiscountsList
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InvoiceDetailsListSearchSelectInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceDetailsListSearchSelectInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceDetailsListSearchSelectInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InvoiceDetailsListSearchSelectInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InvoiceDiscountLineItemsOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceDiscountLineItemsOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceDiscountLineItemsOutputDtoListResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/finance/invoices/marksent:
+    patch:
+      tags:
+      - Invoices
+      operationId: MarkInvoicesAsSent
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InvoiceBatchInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceBatchInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceBatchInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InvoiceBatchInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+components:
+  schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    InvoiceModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        batchID:
+          format: int32
+          type: integer
+        comments:
+          type: string
+        companyID:
+          format: int32
+          type: integer
+        createDateTime:
+          format: date-time
+          type: string
+        creatorResourceID:
+          format: int32
+          type: integer
+        dueDate:
+          format: date-time
+          type: string
+        fromDate:
+          format: date-time
+          type: string
+        invoiceDateTime:
+          format: date-time
+          type: string
+        invoiceEditorTemplateID:
+          format: int32
+          type: integer
+        invoiceNumber:
+          type: string
+        invoiceTotal:
+          format: double
+          type: number
+        isVoided:
+          type: boolean
+        orderNumber:
+          type: string
+        paidDate:
+          format: date-time
+          type: string
+        paymentTerm:
+          format: int32
+          type: integer
+        taxGroup:
+          format: int32
+          type: integer
+        taxRegionName:
+          type: string
+        toDate:
+          format: date-time
+          type: string
+        totalTaxValue:
+          format: double
+          type: number
+        voidedByResourceID:
+          format: int32
+          type: integer
+        voidedDate:
+          format: date-time
+          type: string
+        webServiceDate:
+          format: date-time
+          type: string
+        invoiceStatus:
+          format: int32
+          type: integer
+        invoiceTaxMethodExternalCode:
+          type: string
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    ItemQueryResultModel_InvoiceModel_Invoice:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/InvoiceModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    Object:
+      type: object
+      properties: {}
+    QueryActionResult_InvoiceModel_Invoice:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    InvoiceSummaryOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/InvoiceSummaryOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    InvoiceDiscountLineItemsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        InvoiceId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        InvoiceNumber:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        GLAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        GLAccountCode:
+          type:
+          - string
+          - 'null'
+        GLAccountName:
+          type:
+          - string
+          - 'null'
+        Value:
+          type:
+          - number
+          - 'null'
+          format: double
+        ClassId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClassName:
+          type:
+          - string
+          - 'null'
+        CreatedById:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedByUserName:
+          type:
+          - string
+          - 'null'
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedById:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedByUserName:
+          type:
+          - string
+          - 'null'
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        IsTaxable:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    InvoiceLineItemsOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/InvoiceLineItemsOutputDto'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    InvoiceDiscountLineItemsOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/InvoiceDiscountLineItemsOutputDto'
+      additionalProperties: false
+    InvoiceLineItemsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        InvoiceId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        InvoiceNumber:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        GLAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        GLAccountCode:
+          type:
+          - string
+          - 'null'
+        GLAccountName:
+          type:
+          - string
+          - 'null'
+        ClassId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClassName:
+          type:
+          - string
+          - 'null'
+        Qty:
+          type:
+          - number
+          - 'null'
+          format: double
+        UnitPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        TotalPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        ValueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractId:
+          type: integer
+          format: int32
+        ContractName:
+          type:
+          - string
+          - 'null'
+        IsTaxable:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    InvoiceSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        InvoiceNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        Notes:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        AccountLocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountLocationName:
+          type:
+          - string
+          - 'null'
+        ProjectId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ProjectName:
+          type:
+          - string
+          - 'null'
+        PONumber:
+          type:
+          - string
+          - 'null'
+        SalesTaxItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesTaxItemName:
+          type:
+          - string
+          - 'null'
+        SalesRepId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesRepName:
+          type:
+          - string
+          - 'null'
+        ClassId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClassName:
+          type:
+          - string
+          - 'null'
+        Discount:
+          type:
+          - number
+          - 'null'
+          format: double
+        SalesTaxRate:
+          type:
+          - number
+          - 'null'
+          format: double
+        TotalPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        TotalTax:
+          type:
+          - number
+          - 'null'
+          format: double
+        GrandTotal:
+          type:
+          - number
+          - 'null'
+          format: double
+        PaymentDue:
+          type:
+          - number
+          - 'null'
+          format: double
+        PaidAmount:
+          type:
+          - number
+          - 'null'
+          format: double
+        InvoiceDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        InvoiceFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        InvoiceTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        SentOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContactFirstName:
+          type:
+          - string
+          - 'null'
+        ContactLastName:
+          type:
+          - string
+          - 'null'
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        CountryName:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        Extension:
+          type:
+          - string
+          - 'null'
+        MobileNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        SentByUserName:
+          type:
+          - string
+          - 'null'
+        CreatedById:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedByUserName:
+          type:
+          - string
+          - 'null'
+        ModifiedById:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedByUserName:
+          type:
+          - string
+          - 'null'
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        PostedToAccounting:
+          type:
+          - boolean
+          - 'null'
+        PostedToAccountingOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AccountingAppReference:
+          type:
+          - string
+          - 'null'
+        GeneratedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    InvoiceDetailsListFilterDto:
+      type: object
+      properties:
+        ListInvoiceIds:
+          type:
+          - string
+          - 'null'
+        ListStatusId:
+          type:
+          - string
+          - 'null'
+        InvoiceDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        InvoiceDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        PostedToAccounting:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    InvoiceOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        InvoiceNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        Notes:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        AccountLocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountLocationName:
+          type:
+          - string
+          - 'null'
+        ProjectId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ProjectName:
+          type:
+          - string
+          - 'null'
+        PONumber:
+          type:
+          - string
+          - 'null'
+        SalesTaxItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesTaxItemName:
+          type:
+          - string
+          - 'null'
+        SalesRepId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesRepName:
+          type:
+          - string
+          - 'null'
+        ClassId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClassName:
+          type:
+          - string
+          - 'null'
+        Discount:
+          type:
+          - number
+          - 'null'
+          format: double
+        SalesTaxRate:
+          type:
+          - number
+          - 'null'
+          format: double
+        TotalPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        TotalTax:
+          type:
+          - number
+          - 'null'
+          format: double
+        GrandTotal:
+          type:
+          - number
+          - 'null'
+          format: double
+        PaymentDue:
+          type:
+          - number
+          - 'null'
+          format: double
+        PaidAmount:
+          type:
+          - number
+          - 'null'
+          format: double
+        InvoiceDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        InvoiceFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        InvoiceTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        SentOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContactFirstName:
+          type:
+          - string
+          - 'null'
+        ContactLastName:
+          type:
+          - string
+          - 'null'
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        CountryName:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        Extension:
+          type:
+          - string
+          - 'null'
+        MobileNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        SentByUserName:
+          type:
+          - string
+          - 'null'
+        CreatedById:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedByUserName:
+          type:
+          - string
+          - 'null'
+        ModifiedById:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedByUserName:
+          type:
+          - string
+          - 'null'
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        PostedToAccounting:
+          type:
+          - boolean
+          - 'null'
+        PostedToAccountingOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AccountingAppReference:
+          type:
+          - string
+          - 'null'
+        GeneratedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LineItems:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/InvoiceLineItemsOutputDto'
+        DiscountItems:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/InvoiceDiscountLineItemsOutputDto'
+      additionalProperties: false
+    InvoiceBatchInputDto:
+      type: object
+      properties:
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    InvoiceOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/InvoiceOutputDto'
+      additionalProperties: false
+    InvoiceDetailsListSearchSelectInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/InvoiceDetailsListFilterDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT
+x-refined-from:
+- kaseya-autotask-psa-openapi-original.json
+- kaseya-bms-openapi-original.json

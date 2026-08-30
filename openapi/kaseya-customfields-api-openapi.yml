@@ -1,0 +1,319 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Custom Fields API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: CustomFields
+paths:
+  /v2/system/customFields/{moduleId}:
+    get:
+      tags:
+      - CustomFields
+      operationId: GetCustomFieldsMetaData
+      parameters:
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: withInactive
+        in: query
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CustomFieldOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldOutputDtoIEnumerableResponse'
+  /v2/system/customFields/{moduleId}/{objectId}:
+    get:
+      tags:
+      - CustomFields
+      operationId: GetCustomFieldsData
+      parameters:
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: objectId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CustomFieldDataOutputDtoIEnumerableResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldDataOutputDtoIEnumerableResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldDataOutputDtoIEnumerableResponse'
+  /v2/system/customFields/data/{moduleId}/{entityId}/{customFieldId}:
+    put:
+      tags:
+      - CustomFields
+      operationId: PutCustomFieldData
+      parameters:
+      - name: moduleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: entityId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: customFieldId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CustomFieldDataPutInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomFieldDataPutInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CustomFieldDataPutInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CustomFieldDataPutInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CustomFieldDataPutOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldDataPutOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldDataPutOutputDtoResponse'
+components:
+  schemas:
+    CustomFieldOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldOutputDto'
+      additionalProperties: false
+    CustomFieldDataPutInputDto:
+      type: object
+      properties:
+        Value:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CustomFieldOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        DataType:
+          type: integer
+          format: int32
+        IsRequired:
+          type: boolean
+        ErrorMessage:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        Settings:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldSettingsOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    CustomFieldDataOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldDataOutputDto'
+      additionalProperties: false
+    CustomFieldDataPutOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Value:
+          type:
+          - string
+          - 'null'
+        EntityId:
+          type: integer
+          format: int32
+        CustomFieldName:
+          type:
+          - string
+          - 'null'
+        CustomFieldId:
+          type: integer
+          format: int32
+        ModuleName:
+          type:
+          - string
+          - 'null'
+        ModuleId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    CustomFieldDataPutOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/CustomFieldDataPutOutputDto'
+      additionalProperties: false
+    CustomFieldDataOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Data:
+          type:
+          - string
+          - 'null'
+        SettingsId:
+          type: integer
+          format: int32
+        CustomFieldType:
+          type: integer
+          format: int32
+        CustomFieldId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    CustomFieldSettingsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

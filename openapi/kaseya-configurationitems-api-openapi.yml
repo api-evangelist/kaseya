@@ -1,0 +1,1078 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Datto|Autotask PSA Rest Configuration Items API
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+tags:
+- name: ConfigurationItems
+paths:
+  /V1.0/ConfigurationItems/query:
+    get:
+      tags:
+      - ConfigurationItems
+      operationId: ConfigurationItems_UrlParameterQuery
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ConfigurationItemModel_InstalledProduct'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ConfigurationItemModel_InstalledProduct'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - ConfigurationItems
+      operationId: ConfigurationItems_Query
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ConfigurationItemModel_InstalledProduct'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ConfigurationItemModel_InstalledProduct'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+  /V1.0/ConfigurationItems/{id}:
+    get:
+      tags:
+      - ConfigurationItems
+      operationId: ConfigurationItems_QueryItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_ConfigurationItemModel_InstalledProduct'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_ConfigurationItemModel_InstalledProduct'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/ConfigurationItems/query/count:
+    get:
+      tags:
+      - ConfigurationItems
+      operationId: ConfigurationItems_UrlParameterQueryCount
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - ConfigurationItems
+      operationId: ConfigurationItems_QueryCount
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+  /V1.0/ConfigurationItems:
+    put:
+      tags:
+      - ConfigurationItems
+      operationId: ConfigurationItems_UpdateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigurationItemModel'
+        required: true
+    post:
+      tags:
+      - ConfigurationItems
+      operationId: ConfigurationItems_CreateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigurationItemModel'
+        required: true
+    patch:
+      tags:
+      - ConfigurationItems
+      operationId: ConfigurationItems_PatchEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigurationItemModel'
+        required: true
+  /V1.0/ConfigurationItems/entityInformation:
+    get:
+      tags:
+      - ConfigurationItems
+      operationId: ConfigurationItems_QueryEntityInformation
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/ConfigurationItems/entityInformation/fields:
+    get:
+      tags:
+      - ConfigurationItems
+      operationId: ConfigurationItems_QueryFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/ConfigurationItems/entityInformation/userDefinedFields:
+    get:
+      tags:
+      - ConfigurationItems
+      operationId: ConfigurationItems_QueryUserDefinedFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+components:
+  schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    ConfigurationItemModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        apiVendorID:
+          format: int32
+          type: integer
+        configurationItemCategoryID:
+          format: int32
+          type: integer
+        companyID:
+          format: int32
+          type: integer
+        companyLocationID:
+          format: int32
+          type: integer
+        configurationItemType:
+          format: int32
+          type: integer
+        contactID:
+          format: int32
+          type: integer
+        contractID:
+          format: int32
+          type: integer
+        contractServiceBundleID:
+          format: int32
+          type: integer
+        contractServiceID:
+          format: int32
+          type: integer
+        createDate:
+          format: date-time
+          type: string
+        createdByPersonID:
+          format: int32
+          type: integer
+        dailyCost:
+          format: double
+          type: number
+        dattoAvailableKilobytes:
+          format: int64
+          type: integer
+        dattoDeviceMemoryMegabytes:
+          format: int32
+          type: integer
+        dattoDrivesErrors:
+          type: boolean
+        dattoHostname:
+          type: string
+        dattoInternalIP:
+          type: string
+        dattoKernelVersionID:
+          format: int32
+          type: integer
+        dattoLastCheckInDateTime:
+          format: date-time
+          type: string
+        dattoNICSpeedKilobitsPerSecond:
+          format: int32
+          type: integer
+        dattoNumberOfAgents:
+          format: int32
+          type: integer
+        dattoNumberOfDrives:
+          format: int32
+          type: integer
+        dattoNumberOfVolumes:
+          format: int32
+          type: integer
+        dattoOffsiteUsedBytes:
+          format: int64
+          type: integer
+        dattoOSVersionID:
+          format: int32
+          type: integer
+        dattoPercentageUsed:
+          format: double
+          type: number
+        dattoProtectedKilobytes:
+          format: int64
+          type: integer
+        dattoRemoteIP:
+          type: string
+        dattoSerialNumber:
+          type: string
+        dattoUptimeSeconds:
+          format: int32
+          type: integer
+        dattoUsedKilobytes:
+          format: int64
+          type: integer
+        dattoZFSVersionID:
+          format: int32
+          type: integer
+        deviceNetworkingID:
+          type: string
+        domain:
+          type: string
+        domainRegistrarID:
+          format: int32
+          type: integer
+        domainRegistrationDateTime:
+          format: date-time
+          type: string
+        domainLastUpdatedDateTime:
+          format: date-time
+          type: string
+        domainExpirationDateTime:
+          format: date-time
+          type: string
+        hourlyCost:
+          format: double
+          type: number
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        installDate:
+          format: date-time
+          type: string
+        installedByContactID:
+          format: int32
+          type: integer
+        installedByID:
+          format: int32
+          type: integer
+        isActive:
+          type: boolean
+        lastActivityPersonID:
+          format: int32
+          type: integer
+        lastActivityPersonType:
+          format: int32
+          type: integer
+        lastModifiedTime:
+          format: date-time
+          type: string
+        location:
+          type: string
+        monthlyCost:
+          format: double
+          type: number
+        notes:
+          type: string
+        numberOfUsers:
+          format: double
+          type: number
+        parentConfigurationItemID:
+          format: int32
+          type: integer
+        perUseCost:
+          format: double
+          type: number
+        productID:
+          format: int32
+          type: integer
+        referenceNumber:
+          type: string
+        referenceTitle:
+          type: string
+        rmmDeviceAuditAntivirusStatusID:
+          format: int32
+          type: integer
+        rmmDeviceAuditArchitectureID:
+          format: int32
+          type: integer
+        rmmDeviceAuditBackupStatusID:
+          format: int32
+          type: integer
+        rmmDeviceAuditDescription:
+          type: string
+        rmmDeviceAuditDeviceTypeID:
+          format: int32
+          type: integer
+        rmmDeviceAuditDisplayAdaptorID:
+          format: int32
+          type: integer
+        rmmDeviceAuditDomainID:
+          format: int32
+          type: integer
+        rmmDeviceAuditExternalIPAddress:
+          type: string
+        rmmDeviceAuditHostname:
+          type: string
+        rmmDeviceAuditIPAddress:
+          type: string
+        rmmDeviceAuditLastUser:
+          type: string
+        rmmDeviceAuditMacAddress:
+          type: string
+        rmmDeviceAuditManufacturerID:
+          format: int32
+          type: integer
+        rmmDeviceAuditFirmwareID:
+          format: int32
+          type: integer
+        rmmDeviceAuditMemoryBytes:
+          format: int64
+          type: integer
+        rmmDeviceAuditMissingPatchCount:
+          format: int32
+          type: integer
+        rmmDeviceAuditMobileNetworkOperatorID:
+          format: int32
+          type: integer
+        rmmDeviceAuditMobileNumber:
+          type: string
+        rmmDeviceAuditModelID:
+          format: int32
+          type: integer
+        rmmDeviceAuditMotherboardID:
+          format: int32
+          type: integer
+        rmmDeviceAuditOperatingSystem:
+          type: string
+        rmmDeviceAuditPatchStatusID:
+          format: int32
+          type: integer
+        rmmDeviceAuditProcessorID:
+          format: int32
+          type: integer
+        rmmDeviceAuditServicePackID:
+          format: int32
+          type: integer
+        rmmDeviceAuditSNMPContact:
+          type: string
+        rmmDeviceAuditSNMPLocation:
+          type: string
+        rmmDeviceAuditSNMPName:
+          type: string
+        rmmDeviceAuditSoftwareStatusID:
+          format: int32
+          type: integer
+        rmmDeviceAuditStorageBytes:
+          format: int64
+          type: integer
+        rmmDeviceID:
+          format: int64
+          type: integer
+        rmmDeviceUID:
+          type: string
+        rmmVsaxDeviceID:
+          type: string
+        rmmOpenAlertCount:
+          format: int32
+          type: integer
+        serialNumber:
+          type: string
+        serviceBundleID:
+          format: int32
+          type: integer
+        serviceID:
+          format: int32
+          type: integer
+        serviceLevelAgreementID:
+          format: int32
+          type: integer
+        setupFee:
+          format: double
+          type: number
+        sourceChargeID:
+          format: int32
+          type: integer
+        sourceChargeType:
+          format: int32
+          type: integer
+        sslSource:
+          type: string
+        sslCommonName:
+          type: string
+        sslValidFromDateTime:
+          format: date-time
+          type: string
+        sslValidUntilDateTime:
+          format: date-time
+          type: string
+        sslIssuedBy:
+          type: string
+        sslOrganization:
+          type: string
+        sslOrganizationUnit:
+          type: string
+        sslLocation:
+          type: string
+        sslSerialNumber:
+          type: string
+        sslSignatureAlgorithm:
+          type: string
+        vendorID:
+          format: int32
+          type: integer
+        warrantyExpirationDate:
+          format: date-time
+          type: string
+        rmmIsInMaintenanceMode:
+          type: boolean
+        rmmIsMobileDeviceManagementEnrolled:
+          type: boolean
+        rmmDeviceUrl:
+          type: string
+        userDefinedFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinedField'
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    Object:
+      type: object
+      properties: {}
+    ItemQueryResultModel_ConfigurationItemModel_InstalledProduct:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ConfigurationItemModel'
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    QueryActionResult_ConfigurationItemModel_InstalledProduct:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationItemModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string

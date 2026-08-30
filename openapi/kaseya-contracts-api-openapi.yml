@@ -1,0 +1,1993 @@
+openapi: 3.2.0
+info:
+  title: Kaseya Contracts API
+  version: '1.0'
+  description: 'Operations tagged Contracts across 2 of this provider''s published API definitions: kaseya-autotask-psa-openapi-original.json, kaseya-bms-openapi-original.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+- url: https://api.bms.kaseya.com
+tags:
+- name: Contracts
+paths:
+  /V1.0/Contracts/query:
+    get:
+      tags:
+      - Contracts
+      operationId: Contracts_UrlParameterQuery
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ContractModel_Contract'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ContractModel_Contract'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Contracts
+      operationId: Contracts_Query
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ContractModel_Contract'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_ContractModel_Contract'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Contracts/{id}:
+    get:
+      tags:
+      - Contracts
+      operationId: Contracts_QueryItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_ContractModel_Contract'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_ContractModel_Contract'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Contracts/query/count:
+    get:
+      tags:
+      - Contracts
+      operationId: Contracts_UrlParameterQueryCount
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Contracts
+      operationId: Contracts_QueryCount
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Contracts:
+    put:
+      tags:
+      - Contracts
+      operationId: Contracts_UpdateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractModel'
+        required: true
+    post:
+      tags:
+      - Contracts
+      operationId: Contracts_CreateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractModel'
+        required: true
+    patch:
+      tags:
+      - Contracts
+      operationId: Contracts_PatchEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Contracts/entityInformation:
+    get:
+      tags:
+      - Contracts
+      operationId: Contracts_QueryEntityInformation
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Contracts/entityInformation/fields:
+    get:
+      tags:
+      - Contracts
+      operationId: Contracts_QueryFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Contracts/entityInformation/userDefinedFields:
+    get:
+      tags:
+      - Contracts
+      operationId: Contracts_QueryUserDefinedFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /v2/finance/contracts/lookup:
+    get:
+      tags:
+      - Contracts
+      operationId: GetContractLookups
+      parameters:
+      - name: Ids
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: AccountId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Name
+        in: query
+        schema:
+          type: string
+      - name: ExcludeExpiredContracts
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ContractLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ContractLookupOutputDtoListResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/finance/contracts/recurringservices:
+    post:
+      tags:
+      - Contracts
+      operationId: PostRecurringServiceContract
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RecurringServicesContractPostInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecurringServicesContractPostInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RecurringServicesContractPostInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RecurringServicesContractPostInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RecurringServicesContractPostOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecurringServicesContractPostOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RecurringServicesContractPostOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/finance/contracts/recurringservices/{contractId}:
+    put:
+      tags:
+      - Contracts
+      operationId: PutRecurringServiceContract
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RecurringServicesContractPutInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecurringServicesContractPutInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RecurringServicesContractPutInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RecurringServicesContractPutInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RecurringServicesContractPutOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecurringServicesContractPutOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RecurringServicesContractPutOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/finance/contracts/summary:
+    get:
+      tags:
+      - Contracts
+      operationId: GetContractsSummary
+      parameters:
+      - name: Filter.ContractType
+        in: query
+        schema:
+          type: string
+      - name: Filter.ContractName
+        in: query
+        schema:
+          type: string
+      - name: Filter.BillingCycle
+        in: query
+        schema:
+          type: string
+      - name: Filter.AccountName
+        in: query
+        schema:
+          type: string
+      - name: Filter.Status
+        in: query
+        schema:
+          type: string
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ClientContractSummaryOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientContractSummaryOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ClientContractSummaryOutputDtoIEnumerablePagedResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/finance/contracts/recurringservices/{contractId}/services:
+    post:
+      tags:
+      - Contracts
+      operationId: PostRecurringServices
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RecurringServicePostInputDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RecurringServicePostInputDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RecurringServicePostInputDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RecurringServicePostInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RecurringServicePostOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecurringServicePostOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RecurringServicePostOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/finance/contracts/{contractId}/activate:
+    put:
+      tags:
+      - Contracts
+      operationId: ActivateContract
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ActivatedContractOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivatedContractOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ActivatedContractOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/finance/contracts/{contractId}/deactivate:
+    put:
+      tags:
+      - Contracts
+      operationId: DeactivateContract
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeactivatedContractOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeactivatedContractOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeactivatedContractOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+components:
+  schemas:
+    ContractModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        billingPreference:
+          format: int32
+          type: integer
+        billToCompanyContactID:
+          format: int32
+          type: integer
+        billToCompanyID:
+          format: int32
+          type: integer
+        companyID:
+          format: int32
+          type: integer
+        contactID:
+          format: int32
+          type: integer
+        contactName:
+          type: string
+        contractCategory:
+          format: int32
+          type: integer
+        contractExclusionSetID:
+          format: int32
+          type: integer
+        contractName:
+          type: string
+        contractNumber:
+          type: string
+        contractPeriodType:
+          format: int32
+          type: integer
+        contractType:
+          format: int32
+          type: integer
+        description:
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        estimatedCost:
+          format: double
+          type: number
+        estimatedHours:
+          format: double
+          type: number
+        estimatedRevenue:
+          format: double
+          type: number
+        exclusionContractID:
+          format: int64
+          type: integer
+        internalCurrencyOverageBillingRate:
+          format: double
+          type: number
+        internalCurrencySetupFee:
+          format: double
+          type: number
+        isCompliant:
+          type: boolean
+        isDefaultContract:
+          type: boolean
+        lastModifiedDateTime:
+          format: date-time
+          type: string
+        opportunityID:
+          format: int32
+          type: integer
+        organizationalLevelAssociationID:
+          format: int32
+          type: integer
+        overageBillingRate:
+          format: double
+          type: number
+        purchaseOrderNumber:
+          type: string
+        renewedContractID:
+          format: int64
+          type: integer
+        serviceLevelAgreementID:
+          format: int32
+          type: integer
+        setupFee:
+          format: double
+          type: number
+        setupFeeBillingCodeID:
+          format: int64
+          type: integer
+        startDate:
+          format: date-time
+          type: string
+        status:
+          format: int32
+          type: integer
+        timeReportingRequiresStartAndStopTimes:
+          format: int32
+          type: integer
+        userDefinedFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinedField'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    QueryActionResult_ContractModel_Contract:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    Object:
+      type: object
+      properties: {}
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    ItemQueryResultModel_ContractModel_Contract:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ContractModel'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    ContractLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type:
+          - boolean
+          - 'null'
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAName:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        EndDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    RecurringServicesContractPutOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAName:
+          type:
+          - string
+          - 'null'
+        ReferenceNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        ContractNumber:
+          type:
+          - string
+          - 'null'
+        BillingCycleId:
+          type: integer
+          format: int32
+        BillingCycleName:
+          type:
+          - string
+          - 'null'
+        ContractBillingPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        StartDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        EndDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        IsDefaultContract:
+          type:
+          - boolean
+          - 'null'
+        IssueInvoiceOnId:
+          type:
+          - boolean
+          - 'null'
+        IssueInvoiceOnName:
+          type:
+          - string
+          - 'null'
+        IsFiscalBilling:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    RecurringServicePostInputDto:
+      type: object
+      properties:
+        ServiceId:
+          type: integer
+          format: int32
+        ServiceName:
+          type:
+          - string
+          - 'null'
+        ServiceDescription:
+          type:
+          - string
+          - 'null'
+        Units:
+          type: integer
+          format: int32
+        UnitCost:
+          type: number
+          format: double
+        UnitPrice:
+          type: number
+          format: double
+        EffectiveDate:
+          type: string
+          format: date-time
+        SortOrder:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    DeactivatedContractOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/DeactivatedContractOutputDto'
+      additionalProperties: false
+    DeactivatedContractOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ContractName:
+          type:
+          - string
+          - 'null'
+        ContractDescription:
+          type:
+          - string
+          - 'null'
+        ContractNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type: integer
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    RecurringServicesContractPutInputDto:
+      type: object
+      properties:
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ReferenceNumber:
+          type:
+          - string
+          - 'null'
+        BillingCycleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StartDate:
+          type: string
+          format: date-time
+        EndDate:
+          type: string
+          format: date-time
+        IsDefaultContract:
+          type:
+          - boolean
+          - 'null'
+        IssueInvoiceOn:
+          type:
+          - boolean
+          - 'null'
+        IsFiscalBilling:
+          type:
+          - boolean
+          - 'null'
+        IsNotificationEnabled:
+          type:
+          - boolean
+          - 'null'
+        NotificationEmails:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ClientContractSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AccountName:
+          type:
+          - string
+          - 'null'
+        ContractType:
+          type:
+          - string
+          - 'null'
+        ContractBillingPrice:
+          type: number
+          format: double
+        Status:
+          type:
+          - string
+          - 'null'
+        ContractNumber:
+          type:
+          - string
+          - 'null'
+        BillingCycle:
+          type:
+          - string
+          - 'null'
+        StartDate:
+          type: string
+          format: date-time
+        EndDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    RecurringServicesContractPostInputDto:
+      type: object
+      properties:
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ReferenceNumber:
+          type:
+          - string
+          - 'null'
+        BillingCycleId:
+          type: integer
+          format: int32
+        StartDate:
+          type: string
+          format: date-time
+        EndDate:
+          type: string
+          format: date-time
+        IssueInvoiceOn:
+          type:
+          - boolean
+          - 'null'
+        IsDefaultContract:
+          type:
+          - boolean
+          - 'null'
+        IsFiscalBilling:
+          type:
+          - boolean
+          - 'null'
+        IsNotificationEnabled:
+          type: boolean
+        NotificationEmails:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        Services:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RecurringServicesContractServicePostInputDto'
+      additionalProperties: false
+    ContractLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContractLookupOutputDto'
+      additionalProperties: false
+    RecurringServicesContractServicePostOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ServiceId:
+          type: integer
+          format: int32
+        ServiceName:
+          type:
+          - string
+          - 'null'
+        ServiceDescription:
+          type:
+          - string
+          - 'null'
+        ContractId:
+          type: integer
+          format: int32
+        ContractName:
+          type:
+          - string
+          - 'null'
+        TotalCost:
+          type: number
+          format: double
+        TotalPrice:
+          type: number
+          format: double
+        Units:
+          type: number
+          format: double
+        UnitCost:
+          type: number
+          format: double
+        UnitPrice:
+          type: number
+          format: double
+        EffectiveDate:
+          type: string
+          format: date-time
+        SortOrder:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ActivatedContractOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ContractName:
+          type:
+          - string
+          - 'null'
+        ContractDescription:
+          type:
+          - string
+          - 'null'
+        ContractNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type: integer
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    RecurringServicesContractPostOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/RecurringServicesContractPostOutputDto'
+      additionalProperties: false
+    RecurringServicesContractPutOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/RecurringServicesContractPutOutputDto'
+      additionalProperties: false
+    RecurringServicePostOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/RecurringServicePostOutputDto'
+      additionalProperties: false
+    RecurringServicesContractServicePostInputDto:
+      type: object
+      properties:
+        ServiceId:
+          type: integer
+          format: int32
+        ServiceName:
+          type:
+          - string
+          - 'null'
+        ServiceDescription:
+          type:
+          - string
+          - 'null'
+        Units:
+          type: integer
+          format: int32
+        UnitCost:
+          type: number
+          format: double
+        UnitPrice:
+          type: number
+          format: double
+        EffectiveDate:
+          type: string
+          format: date-time
+        SortOrder:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ClientContractSummaryOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ClientContractSummaryOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    RecurringServicePostOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ServiceId:
+          type: integer
+          format: int32
+        ServiceName:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        ContractId:
+          type: integer
+          format: int32
+        ContractName:
+          type:
+          - string
+          - 'null'
+        TotalCost:
+          type: number
+          format: double
+        TotalPrice:
+          type: number
+          format: double
+        Units:
+          type: number
+          format: double
+        UnitCost:
+          type: number
+          format: double
+        UnitPrice:
+          type: number
+          format: double
+        Margin:
+          type: number
+          format: double
+        OriginalUnitPrice:
+          type: number
+          format: double
+        OriginalUnitCost:
+          type: number
+          format: double
+        EffectiveDate:
+          type: string
+          format: date-time
+        SortOrder:
+          type: integer
+          format: int32
+      additionalProperties: false
+    RecurringServicesContractPostOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAName:
+          type:
+          - string
+          - 'null'
+        ReferenceNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        ContractNumber:
+          type:
+          - string
+          - 'null'
+        BillingCycleId:
+          type: integer
+          format: int32
+        BillingCycleName:
+          type:
+          - string
+          - 'null'
+        ContractBillingPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        StartDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        EndDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        IsDefaultContract:
+          type:
+          - boolean
+          - 'null'
+        IssueInvoiceOnId:
+          type:
+          - boolean
+          - 'null'
+        IssueInvoiceOnName:
+          type:
+          - string
+          - 'null'
+        IsFiscalBilling:
+          type:
+          - boolean
+          - 'null'
+        IsNotificationEnabled:
+          type: boolean
+        NotificationEmails:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        Services:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RecurringServicesContractServicePostOutputDto'
+      additionalProperties: false
+    ActivatedContractOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ActivatedContractOutputDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT
+x-refined-from:
+- kaseya-autotask-psa-openapi-original.json
+- kaseya-bms-openapi-original.json

@@ -1,0 +1,374 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Chart Of Account API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: ChartOfAccount
+paths:
+  /v2/admin/finance/chartofaccounts:
+    get:
+      tags:
+      - ChartOfAccount
+      operationId: GetChartOfAccounts
+      parameters:
+      - name: Filter.Id
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.Code
+        in: query
+        schema:
+          type: string
+      - name: Filter.Name
+        in: query
+        schema:
+          type: string
+      - name: Filter.TypeId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.ParentId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.IsActive
+        in: query
+        schema:
+          type: boolean
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountOutputDtoIEnumerablePagedResponse'
+      deprecated: true
+  /v2/admin/finance/chartofaccounts/lookup/{parentAccountCodeId}:
+    get:
+      tags:
+      - ChartOfAccount
+      operationId: GetChartOfAccountsLookup
+      parameters:
+      - name: parentAccountCodeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountLookupOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountLookupOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountLookupOutputDtoIEnumerablePagedResponse'
+      deprecated: true
+  /v2/admin/finance/chartofaccounts/types:
+    get:
+      tags:
+      - ChartOfAccount
+      operationId: GetChartOfAccountTypes
+      parameters:
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountTypeOutputDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountTypeOutputDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountTypeOutputDtoListPagedResponse'
+      deprecated: true
+  /v2/admin/finance/chartofaccounts/types/lookup:
+    get:
+      tags:
+      - ChartOfAccount
+      operationId: GetChartOfAccountTypesLookUp
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountTypeLookupOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountTypeLookupOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountTypeLookupOutputDtoIEnumerablePagedResponse'
+      deprecated: true
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ChartOfAccountTypeLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    ChartOfAccountTypeOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    ChartOfAccountLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Code:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type: integer
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    ChartOfAccountTypeLookupOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChartOfAccountTypeLookupOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ChartOfAccountLookupOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChartOfAccountLookupOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ChartOfAccountOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChartOfAccountOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ChartOfAccountOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Code:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type: integer
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        ParentId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ParentName:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    ChartOfAccountTypeOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChartOfAccountTypeOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

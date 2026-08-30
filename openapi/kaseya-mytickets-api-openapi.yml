@@ -1,0 +1,1016 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 My Tickets API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: MyTickets
+paths:
+  /v2/servicedesk/mytickets:
+    get:
+      tags:
+      - MyTickets
+      operationId: GetMyTickets
+      parameters:
+      - name: Filter.IsRecurringTickets
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.Title
+        in: query
+        schema:
+          type: string
+      - name: Filter.Account
+        in: query
+        schema:
+          type: string
+      - name: Filter.AccountCode
+        in: query
+        schema:
+          type: string
+      - name: Filter.TicketNumber
+        in: query
+        schema:
+          type: string
+      - name: Filter.Details
+        in: query
+        schema:
+          type: string
+      - name: Filter.ContactName
+        in: query
+        schema:
+          type: string
+      - name: Filter.StatusNames
+        in: query
+        schema:
+          type: string
+      - name: Filter.QueueNames
+        in: query
+        schema:
+          type: string
+      - name: Filter.PriorityNames
+        in: query
+        schema:
+          type: string
+      - name: Filter.TicketTypeNames
+        in: query
+        schema:
+          type: string
+      - name: Filter.IssueTypeNames
+        in: query
+        schema:
+          type: string
+      - name: Filter.ServiceLevelAgreementNames
+        in: query
+        schema:
+          type: string
+      - name: Filter.SubIssueTypeNames
+        in: query
+        schema:
+          type: string
+      - name: Filter.SourceIds
+        in: query
+        schema:
+          type: string
+      - name: Filter.OwnerIds
+        in: query
+        schema:
+          type: string
+      - name: Filter.AssignedToMe
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.ExcludeCompleted
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.CreatedByMe
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.MyQueuesAssigned
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.MyQueuesNotAssigned
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.SecondaryAssignee
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.OpenDateFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.OpenDateTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.CompletedDateFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.CompletedDateTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.CreatedOnFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.CreatedOnTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.HardwareAssetName
+        in: query
+        schema:
+          type: string
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/MyTicketListDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyTicketListDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MyTicketListDtoIEnumerablePagedResponse'
+      deprecated: true
+  /v2/servicedesk/mytickets/search:
+    post:
+      tags:
+      - MyTickets
+      operationId: SearchMyTickets
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/GetMyTicketsInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetMyTicketsInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GetMyTicketsInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GetMyTicketsInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/MyTicketListDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyTicketListDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MyTicketListDtoIEnumerablePagedResponse'
+  /v2/clientportal/mytickets/search:
+    post:
+      tags:
+      - MyTickets
+      operationId: SearchClientPortalMyTickets
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ClientPortalMyTicketsInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientPortalMyTicketsInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ClientPortalMyTicketsInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ClientPortalMyTicketsInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ClientPortalTicketListDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientPortalTicketListDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ClientPortalTicketListDtoListPagedResponse'
+components:
+  schemas:
+    ClientPortalTicketListDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ClientPortalTicketListDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    MyTicketFilterDto:
+      type: object
+      properties:
+        IsRecurringTickets:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Title:
+          type:
+          - string
+          - 'null'
+        Account:
+          type:
+          - string
+          - 'null'
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        ContactName:
+          type:
+          - string
+          - 'null'
+        StatusNames:
+          type:
+          - string
+          - 'null'
+        QueueNames:
+          type:
+          - string
+          - 'null'
+        PriorityNames:
+          type:
+          - string
+          - 'null'
+        TicketTypeNames:
+          type:
+          - string
+          - 'null'
+        IssueTypeNames:
+          type:
+          - string
+          - 'null'
+        ServiceLevelAgreementNames:
+          type:
+          - string
+          - 'null'
+        SubIssueTypeNames:
+          type:
+          - string
+          - 'null'
+        SourceIds:
+          type:
+          - string
+          - 'null'
+        OwnerIds:
+          type:
+          - string
+          - 'null'
+        AssignedToMe:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExcludeCompleted:
+          type: integer
+          format: int32
+        CreatedByMe:
+          type: integer
+          format: int32
+        MyQueuesAssigned:
+          type: integer
+          format: int32
+        MyQueuesNotAssigned:
+          type: integer
+          format: int32
+        SecondaryAssignee:
+          type: integer
+          format: int32
+        OpenDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        OpenDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        HardwareAssetName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ClientPortalTicketListDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        Title:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        AccountName:
+          type:
+          - string
+          - 'null'
+        ContactId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactName:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        StatusColor:
+          type:
+          - string
+          - 'null'
+        StatusForeColor:
+          type:
+          - string
+          - 'null'
+        StatusOrder:
+          type: integer
+          format: int32
+        PriorityId:
+          type: integer
+          format: int32
+        PriorityName:
+          type:
+          - string
+          - 'null'
+        PriorityColor:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        IssueTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IssueTypeName:
+          type:
+          - string
+          - 'null'
+        ContractId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContractNumber:
+          type:
+          - string
+          - 'null'
+        ContractName:
+          type:
+          - string
+          - 'null'
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAName:
+          type:
+          - string
+          - 'null'
+        OpenDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    MyTicketListDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        TenantName:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        Title:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        LocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        AccountName:
+          type:
+          - string
+          - 'null'
+        ContactId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactName:
+          type:
+          - string
+          - 'null'
+        QueueId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        QueueName:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        StatusColor:
+          type:
+          - string
+          - 'null'
+        StatusForeColor:
+          type:
+          - string
+          - 'null'
+        StatusOrder:
+          type: integer
+          format: int32
+        PriorityId:
+          type: integer
+          format: int32
+        PriorityName:
+          type:
+          - string
+          - 'null'
+        PriorityColor:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        IssueTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IssueTypeName:
+          type:
+          - string
+          - 'null'
+        SubIssueTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubIssueTypeName:
+          type:
+          - string
+          - 'null'
+        ContractId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContractNumber:
+          type:
+          - string
+          - 'null'
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AssigneeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssigneeName:
+          type:
+          - string
+          - 'null'
+        WorkTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        WorkTypeName:
+          type:
+          - string
+          - 'null'
+        TicketRecurringMasterId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Recurring:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAStatusEventId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SourceId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAObjectiveId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAName:
+          type:
+          - string
+          - 'null'
+        IsScheduled:
+          type: integer
+          format: int32
+        HasMetSLA:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ActualPauseMinutes:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ActualFirstResponseMinutes:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ActualResolutionMinutes:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsSLAPaused:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAStatusEnum:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OpenDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ReOpenedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastActivityUpdate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ResolutionTargetTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ResolutionActualTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        FirstResponseTargetTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        FirstResponseActualTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        SLALastPausedTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        SLALastResumedTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastStatusUpdate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastPriorityUpdate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastQueueUpdate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        CustomFields:
+          type:
+          - string
+          - 'null'
+        HardwareAssetName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ClientPortalMyTicketFilterDto:
+      type: object
+      properties:
+        Title:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        StatusNames:
+          type:
+          - string
+          - 'null'
+        PriorityNames:
+          type:
+          - string
+          - 'null'
+        TicketTypeNames:
+          type:
+          - string
+          - 'null'
+        IssueTypeNames:
+          type:
+          - string
+          - 'null'
+        ServiceLevelAgreementNames:
+          type:
+          - string
+          - 'null'
+        ExcludeCompleted:
+          type: integer
+          format: int32
+        OpenDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        OpenDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    ClientPortalMyTicketsInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/ClientPortalMyTicketFilterDto'
+      additionalProperties: false
+    MyTicketListDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/MyTicketListDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    GetMyTicketsInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/MyTicketFilterDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

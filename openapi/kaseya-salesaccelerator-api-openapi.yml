@@ -1,0 +1,326 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Sales Accelerator API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: SalesAccelerator
+paths:
+  /v2/crm/salesaccelerator/dashboard/summary:
+    get:
+      tags:
+      - SalesAccelerator
+      operationId: GetSalesAcceleratorSummary
+      parameters:
+      - name: AccountName
+        in: query
+        schema:
+          type: string
+      - name: ServiceName
+        in: query
+        schema:
+          type: string
+      - name: AccountType
+        in: query
+        schema:
+          type: string
+      - name: ServiceCategoryIds
+        in: query
+        schema:
+          type: string
+      - name: ServiceSubCategoryIds
+        in: query
+        schema:
+          type: string
+      - name: UnitOfMeasureIds
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SalesAcceleratorSummaryOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SalesAcceleratorSummaryOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SalesAcceleratorSummaryOutputDtoResponse'
+  /v2/crm/salesaccelerator/dashboard/data:
+    get:
+      tags:
+      - SalesAccelerator
+      operationId: GetSalesAcceleratorData
+      parameters:
+      - name: AccountName
+        in: query
+        schema:
+          type: string
+      - name: ServiceName
+        in: query
+        schema:
+          type: string
+      - name: AccountType
+        in: query
+        schema:
+          type: string
+      - name: ServiceCategoryIds
+        in: query
+        schema:
+          type: string
+      - name: ServiceSubCategoryIds
+        in: query
+        schema:
+          type: string
+      - name: UnitOfMeasureIds
+        in: query
+        schema:
+          type: string
+      - name: StartRow
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: EndRow
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SalesAcceleratorAccountServicesOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SalesAcceleratorAccountServicesOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SalesAcceleratorAccountServicesOutputDtoIEnumerablePagedResponse'
+components:
+  schemas:
+    SalesAcceleratorSummaryOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/SalesAcceleratorSummaryOutputDto'
+      additionalProperties: false
+    SalesAcceleratorHighestServiceDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Value:
+          type: number
+          format: double
+      additionalProperties: false
+    SalesAcceleratorServicesSummaryDto:
+      type: object
+      properties:
+        Services:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SalesAcceleratorServiceDto'
+        HighestPriceService:
+          $ref: '#/components/schemas/SalesAcceleratorHighestServiceDto'
+        HighestMarginService:
+          $ref: '#/components/schemas/SalesAcceleratorHighestServiceDto'
+        AveragePenetration:
+          type: number
+          format: double
+        IsAllNotConfigured:
+          type: boolean
+      additionalProperties: false
+    SalesAcceleratorAccountsSummaryDto:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          format: int32
+        TotalPotential:
+          type: number
+          format: double
+        TotalSold:
+          type: number
+          format: double
+      additionalProperties: false
+    SalesAcceleratorAccountServicesOutputDto:
+      type: object
+      properties:
+        Account:
+          $ref: '#/components/schemas/SalesAcceleratorAccountDataDto'
+        Services:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SalesAcceleratorServiceDataDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    SalesAcceleratorServiceDataDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Potential:
+          type:
+          - number
+          - 'null'
+          format: double
+        Sold:
+          type:
+          - number
+          - 'null'
+          format: double
+      additionalProperties: false
+    SalesAcceleratorAccountServicesOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SalesAcceleratorAccountServicesOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    SalesAcceleratorServiceDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        UnitPrice:
+          type: number
+          format: double
+        CategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubCategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        UnitOfMeasureId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Penetration:
+          type: number
+          format: double
+        AveragePriceSold:
+          type: number
+          format: double
+        TotalPotential:
+          type: number
+          format: double
+        TotalSold:
+          type: number
+          format: double
+      additionalProperties: false
+    SalesAcceleratorSummaryOutputDto:
+      type: object
+      properties:
+        AccountsSummary:
+          $ref: '#/components/schemas/SalesAcceleratorAccountsSummaryDto'
+        ServicesSummary:
+          $ref: '#/components/schemas/SalesAcceleratorServicesSummaryDto'
+      additionalProperties: false
+    SalesAcceleratorAccountDataDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Potential:
+          type: number
+          format: double
+        Sold:
+          type: number
+          format: double
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

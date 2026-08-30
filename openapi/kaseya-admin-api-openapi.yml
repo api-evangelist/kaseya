@@ -1,0 +1,53 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Admin API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Admin
+paths:
+  /v2/admin/companysettings:
+    put:
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CompanySettingsPutInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompanySettingsPutInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CompanySettingsPutInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CompanySettingsPutInputDto'
+      responses: {}
+      deprecated: true
+      tags:
+      - Admin
+components:
+  schemas:
+    CompanySettingsPutInputDto:
+      required:
+      - ModuleId
+      - Settings
+      type: object
+      properties:
+        ModuleId:
+          type: integer
+          format: int32
+        Settings:
+          type: object
+          additionalProperties: {}
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,728 @@
+openapi: 3.2.0
+info:
+  title: Datto RMM /v3/device API
+  description: Datto RMM (Remote Monitoring and Management) REST API
+  license:
+    name: '©Datto, Inc. - All rights reserved. '
+    url: http://www.datto.com/
+  version: 2.0.0 (Build 235_0add0e4d537431f30405d568ccb46b6d7af1f183)
+servers:
+- url: https://syrah-api.centrastage.net/api
+  description: Generated server url
+tags:
+- name: /v3/device
+  description: Operations on devices (v3 API)
+paths:
+  /v3/device/{deviceUid}/udf:
+    post:
+      tags:
+      - /v3/device
+      summary: Sets the user defined fields of a device identified by the given device Uid.
+      description: 'V3 enforces strict type validation: each UDF must match its configured type (STRING/BOOLEAN/NUMBER/DATE). Type mismatches are rejected. Set value to null to delete a UDF.'
+      operationId: setUdfFields
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetUserDefinedFieldsRequest'
+        required: true
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v3/device/{deviceUid}/udf
+        '409':
+          description: Request aborted due to concurrent write access to this record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v3/device/{deviceUid}/udf
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v3/device/{deviceUid}/udf
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v3/device/{deviceUid}/udf
+        '400':
+          description: Request is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 400
+                error: Bad Request
+                path: /v3/device/{deviceUid}/udf
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v3/device/{deviceUid}/udf
+        '200':
+          description: OK
+      deprecated: true
+  /v3/device/{deviceUid}:
+    get:
+      tags:
+      - /v3/device
+      summary: Fetches data of the device identified by the given device Uid.
+      operationId: getByUid
+      parameters:
+      - name: deviceUid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v3/device/{deviceUid}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v3/device/{deviceUid}
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v3/device/{deviceUid}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v3/device/{deviceUid}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v3/device/{deviceUid}
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Device data with structured UDF format
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  uid:
+                    type: string
+                  siteId:
+                    type: integer
+                    format: int64
+                  siteUid:
+                    type: string
+                  siteName:
+                    type: string
+                  deviceType:
+                    $ref: '#/components/schemas/DevicesType'
+                  hostname:
+                    type: string
+                  intIpAddress:
+                    type: string
+                  operatingSystem:
+                    type: string
+                  lastLoggedInUser:
+                    type: string
+                  domain:
+                    type: string
+                  cagVersion:
+                    type: string
+                  displayVersion:
+                    type: string
+                  extIpAddress:
+                    type: string
+                  description:
+                    type: string
+                  a64Bit:
+                    type: boolean
+                  rebootRequired:
+                    type: boolean
+                  online:
+                    type: boolean
+                  suspended:
+                    type: boolean
+                  deleted:
+                    type: boolean
+                  lastSeen:
+                    type: string
+                    format: date-time
+                  lastReboot:
+                    type: string
+                    format: date-time
+                  lastAuditDate:
+                    type: string
+                    format: date-time
+                  creationDate:
+                    type: string
+                    format: date-time
+                  snmpEnabled:
+                    type: boolean
+                  deviceClass:
+                    type: string
+                    enum:
+                    - device
+                    - printer
+                    - esxihost
+                    - rmmnetworkdevice
+                    - unknown
+                  portalUrl:
+                    type: string
+                  warrantyDate:
+                    type: string
+                  antivirus:
+                    $ref: '#/components/schemas/Antivirus'
+                  patchManagement:
+                    $ref: '#/components/schemas/PatchManagement'
+                  softwareStatus:
+                    type: string
+                  webRemoteUrl:
+                    type: string
+                  networkProbe:
+                    type: boolean
+                  onboardedViaNetworkMonitor:
+                    type: boolean
+                  udfs:
+                    type: array
+                    description: User defined fields in structured format
+                    items:
+                      $ref: '#/components/schemas/UdfItem'
+  /v3/device/macAddress/{macAddress}:
+    get:
+      tags:
+      - /v3/device
+      summary: 'Fetches data of the device(s) identified by the given MAC address in format: XXXXXXXXXXXX'
+      operationId: getByMacAddress
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v3/device/macAddress/{macAddress}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v3/device/macAddress/{macAddress}
+        '200':
+          description: Device was found.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeviceV3'
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v3/device/macAddress/{macAddress}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v3/device/macAddress/{macAddress}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v3/device/macAddress/{macAddress}
+  /v3/device/id/{deviceId}:
+    get:
+      tags:
+      - /v3/device
+      summary: Fetches data of the device identified by the given device Id.
+      operationId: getById
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 500
+                error: Internal Server Error
+                path: /v3/device/id/{deviceId}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 409
+                error: Conflict
+                path: /v3/device/id/{deviceId}
+        '404':
+          description: Device was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 404
+                error: Not Found
+                path: /v3/device/id/{deviceId}
+        '403':
+          description: Authenticated user doesn't have access to this resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 403
+                error: Forbidden
+                path: /v3/device/id/{deviceId}
+        '401':
+          description: Request can not be authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                timestamp: 1781181715656
+                status: 401
+                error: Unauthorized
+                path: /v3/device/id/{deviceId}
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Device data with structured UDF format
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  uid:
+                    type: string
+                  siteId:
+                    type: integer
+                    format: int64
+                  siteUid:
+                    type: string
+                  siteName:
+                    type: string
+                  deviceType:
+                    $ref: '#/components/schemas/DevicesType'
+                  hostname:
+                    type: string
+                  intIpAddress:
+                    type: string
+                  operatingSystem:
+                    type: string
+                  lastLoggedInUser:
+                    type: string
+                  domain:
+                    type: string
+                  cagVersion:
+                    type: string
+                  displayVersion:
+                    type: string
+                  extIpAddress:
+                    type: string
+                  description:
+                    type: string
+                  a64Bit:
+                    type: boolean
+                  rebootRequired:
+                    type: boolean
+                  online:
+                    type: boolean
+                  suspended:
+                    type: boolean
+                  deleted:
+                    type: boolean
+                  lastSeen:
+                    type: string
+                    format: date-time
+                  lastReboot:
+                    type: string
+                    format: date-time
+                  lastAuditDate:
+                    type: string
+                    format: date-time
+                  creationDate:
+                    type: string
+                    format: date-time
+                  snmpEnabled:
+                    type: boolean
+                  deviceClass:
+                    type: string
+                    enum:
+                    - device
+                    - printer
+                    - esxihost
+                    - rmmnetworkdevice
+                    - unknown
+                  portalUrl:
+                    type: string
+                  warrantyDate:
+                    type: string
+                  antivirus:
+                    $ref: '#/components/schemas/Antivirus'
+                  patchManagement:
+                    $ref: '#/components/schemas/PatchManagement'
+                  softwareStatus:
+                    type: string
+                  webRemoteUrl:
+                    type: string
+                  networkProbe:
+                    type: boolean
+                  onboardedViaNetworkMonitor:
+                    type: boolean
+                  udfs:
+                    type: array
+                    description: User defined fields in structured format
+                    items:
+                      $ref: '#/components/schemas/UdfItem'
+components:
+  schemas:
+    PatchManagement:
+      type: object
+      description: Patch management data
+      properties:
+        patchStatus:
+          type: string
+          enum:
+          - NoPolicy
+          - NoData
+          - RebootRequired
+          - InstallError
+          - ApprovedPending
+          - FullyPatched
+        patchesApprovedPending:
+          type: integer
+          format: int64
+        patchesNotApproved:
+          type: integer
+          format: int64
+        patchesInstalled:
+          type: integer
+          format: int64
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
+    UdfItem:
+      type: object
+      description: User defined field with type-safe value storage
+      properties:
+        ordinal:
+          type: integer
+          format: int32
+          description: Ordinal position of the UDF (1-300)
+          maximum: 300
+          minimum: 1
+        type:
+          type: string
+          description: Type of the UDF value
+          enum:
+          - STRING
+          - BOOLEAN
+          - NUMBER
+          - DATE
+        valueBoolean:
+          type: boolean
+          description: Value when type is BOOLEAN
+        valueString:
+          type: string
+          description: Value when type is STRING
+        valueDate:
+          type: string
+          format: date
+          description: 'Value when type is DATE (Format: yyyy-MM-dd)'
+        valueNumber:
+          type: number
+          description: Value when type is NUMBER
+        label:
+          type: string
+          description: Custom label for this UDF from the account settings
+        typeMisMatch:
+          type: boolean
+          description: Indicates type mismatch with expected configuration. Only appears in GET responses when data was updated via V2 API or UI.
+      required:
+      - ordinal
+      - type
+    Antivirus:
+      type: object
+      description: Device antivirus data
+      properties:
+        antivirusProduct:
+          type: string
+        antivirusStatus:
+          type: string
+          enum:
+          - RunningAndUpToDate
+          - RunningAndNotUpToDate
+          - NotRunning
+          - NotDetected
+    DeviceV3:
+      type: object
+      description: Device data with structured UDF format
+      properties:
+        id:
+          type: integer
+          format: int64
+        uid:
+          type: string
+        siteId:
+          type: integer
+          format: int64
+        siteUid:
+          type: string
+        siteName:
+          type: string
+        deviceType:
+          $ref: '#/components/schemas/DevicesType'
+        hostname:
+          type: string
+        intIpAddress:
+          type: string
+        operatingSystem:
+          type: string
+        lastLoggedInUser:
+          type: string
+        domain:
+          type: string
+        cagVersion:
+          type: string
+        displayVersion:
+          type: string
+        extIpAddress:
+          type: string
+        description:
+          type: string
+        a64Bit:
+          type: boolean
+        rebootRequired:
+          type: boolean
+        online:
+          type: boolean
+        suspended:
+          type: boolean
+        deleted:
+          type: boolean
+        lastSeen:
+          type: string
+          format: date-time
+        lastReboot:
+          type: string
+          format: date-time
+        lastAuditDate:
+          type: string
+          format: date-time
+        creationDate:
+          type: string
+          format: date-time
+        snmpEnabled:
+          type: boolean
+        deviceClass:
+          type: string
+          enum:
+          - device
+          - printer
+          - esxihost
+          - rmmnetworkdevice
+          - unknown
+        portalUrl:
+          type: string
+        warrantyDate:
+          type: string
+        antivirus:
+          $ref: '#/components/schemas/Antivirus'
+        patchManagement:
+          $ref: '#/components/schemas/PatchManagement'
+        softwareStatus:
+          type: string
+        webRemoteUrl:
+          type: string
+        networkProbe:
+          type: boolean
+        onboardedViaNetworkMonitor:
+          type: boolean
+        udfs:
+          type: array
+          description: User defined fields in structured format
+          items:
+            $ref: '#/components/schemas/UdfItem'
+    DevicesType:
+      type: object
+      description: Devices Type
+      properties:
+        category:
+          type: string
+        type:
+          type: string
+    UdfItemRequest:
+      type: object
+      description: User defined field value for update operation. Only one value field can be non-null. If all value fields are null, the UDF will be removed.
+      properties:
+        ordinal:
+          type: integer
+          format: int32
+          description: Ordinal position of the UDF (1-300)
+          maximum: 300
+          minimum: 1
+        valueBoolean:
+          type: boolean
+          description: Value when type is BOOLEAN
+        valueString:
+          type: string
+          description: Value when type is STRING
+        valueDate:
+          type: string
+          format: date
+          description: 'Value when type is DATE (Format: yyyy-MM-dd)'
+        valueNumber:
+          type: number
+          description: Value when type is NUMBER
+      required:
+      - ordinal
+    SetUserDefinedFieldsRequest:
+      type: object
+      description: Request to set user defined fields on a device
+      properties:
+        udfs:
+          type: array
+          description: List of user defined fields to set
+          items:
+            $ref: '#/components/schemas/UdfItemRequest'
+      required:
+      - udfs

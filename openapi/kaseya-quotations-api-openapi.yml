@@ -1,0 +1,537 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Quotations API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Quotations
+paths:
+  /v2/crm/quotes/summary:
+    get:
+      tags:
+      - Quotations
+      operationId: GetQuotationsListSummary
+      parameters:
+      - name: Filter.AccountId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.StatusIds
+        in: query
+        schema:
+          type: string
+      - name: Filter.CreatedOnFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.CreatedOnTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QuotationsListSummaryOutputDtoIEnumerablePagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotationsListSummaryOutputDtoIEnumerablePagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QuotationsListSummaryOutputDtoIEnumerablePagedResponse'
+  /v2/crm/quotes/{quotationId}:
+    get:
+      tags:
+      - Quotations
+      operationId: GetQuotation
+      parameters:
+      - name: quotationId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QuotationOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotationOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QuotationOutputDtoResponse'
+  /v2/crm/quotes/{quotationId}/lineItems/{lineItemId}:
+    get:
+      tags:
+      - Quotations
+      operationId: GetLineItem
+      parameters:
+      - name: quotationId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: lineItemId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QuotationLineItemOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotationLineItemOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QuotationLineItemOutputDtoResponse'
+    put:
+      tags:
+      - Quotations
+      operationId: PutQuotationLineItem
+      parameters:
+      - name: quotationId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: lineItemId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/QuotationLineItemInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuotationLineItemInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/QuotationLineItemInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/QuotationLineItemInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QuotationLineItemOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotationLineItemOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QuotationLineItemOutputDtoResponse'
+  /v2/crm/quotes/{quotationId}/lineItems/{itemTypeId}/{distributerTypeId}:
+    post:
+      tags:
+      - Quotations
+      operationId: PostQuotationLineItem
+      parameters:
+      - name: quotationId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: itemTypeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: distributerTypeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/QuotationLineItemInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuotationLineItemInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/QuotationLineItemInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/QuotationLineItemInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QuotationLineItemOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotationLineItemOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QuotationLineItemOutputDtoResponse'
+components:
+  schemas:
+    QuotationLineItemOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        QuotationId:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        OriginalUnitPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        UnitPrice:
+          type: number
+          format: double
+        UnitCost:
+          type: number
+          format: double
+        Quantity:
+          type:
+          - number
+          - 'null'
+          format: double
+        Discount:
+          type: number
+          format: double
+        TTC:
+          type:
+          - number
+          - 'null'
+          format: double
+        Total:
+          type:
+          - number
+          - 'null'
+          format: double
+        TaxRate:
+          type:
+          - number
+          - 'null'
+          format: double
+        Taxable:
+          type: boolean
+        IsDistributerItem:
+          type: boolean
+        ExtDistReference:
+          type:
+          - string
+          - 'null'
+        Margin:
+          type: number
+          format: double
+        MarginType:
+          type: integer
+          format: int32
+        DistributorTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Image:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QuotationOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/QuotationOutputDto'
+      additionalProperties: false
+    QuotationLineItemOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/QuotationLineItemOutputDto'
+      additionalProperties: false
+    QuotationOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        QuotationNumber:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        ExpiryDate:
+          type: string
+          format: date-time
+        CreatedOn:
+          type: string
+          format: date-time
+        CreatedById:
+          type: integer
+          format: int32
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        OpportunityId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OpportunityTitle:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        LocationName:
+          type:
+          - string
+          - 'null'
+        SalesRepresentativeFirstName:
+          type:
+          - string
+          - 'null'
+        SalesRepresentativeLastName:
+          type:
+          - string
+          - 'null'
+        SalesRepresentativeUserId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    QuotationLineItemInputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        ExtDistReference:
+          type:
+          - string
+          - 'null'
+        Image:
+          type:
+          - string
+          - 'null'
+        UnitPrice:
+          type: number
+          format: double
+        UnitCost:
+          type: number
+          format: double
+        Quantity:
+          type:
+          - number
+          - 'null'
+          format: double
+        Margin:
+          type: number
+          format: double
+        MarginType:
+          type: integer
+          format: int32
+        Discount:
+          type: number
+          format: double
+        Taxable:
+          type: boolean
+      additionalProperties: false
+    QuotationsListSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        QuotationNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        ExpiryDate:
+          type: string
+          format: date-time
+        CreatedOn:
+          type: string
+          format: date-time
+      additionalProperties: false
+    QuotationsListSummaryOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QuotationsListSummaryOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

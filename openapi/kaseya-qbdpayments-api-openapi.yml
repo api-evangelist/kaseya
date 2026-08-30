@@ -1,0 +1,296 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Qbd Payments API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: QbdPayments
+paths:
+  /v2/integration/qbd/payments:
+    post:
+      tags:
+      - QbdPayments
+      operationId: ImportPayments
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbPaymentImportDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbPaymentImportDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbPaymentImportDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbPaymentImportDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+components:
+  schemas:
+    QbTaxItemDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Active:
+          type: boolean
+        RateValue:
+          type: number
+          format: double
+        IsGroup:
+          type: boolean
+        TaxAgency:
+          type:
+          - string
+          - 'null'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        SalesTaxRateList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbTaxItemDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbPaymentLineImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Amount:
+          type: number
+          format: double
+        Discount:
+          type: number
+          format: double
+        Balance:
+          type: number
+          format: double
+        InvoiceId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbAccountImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Code:
+          type:
+          - string
+          - 'null'
+        TaxId:
+          type:
+          - string
+          - 'null'
+        Taxable:
+          type: boolean
+        CreditLimit:
+          type: number
+          format: double
+        NetDays:
+          type: integer
+          format: int32
+        WebAddressURI:
+          type:
+          - string
+          - 'null'
+        CurrencyValue:
+          type:
+          - string
+          - 'null'
+        IsBilling:
+          type: boolean
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        TaxItem:
+          $ref: '#/components/schemas/QbTaxItemDto'
+        ParentAccount:
+          $ref: '#/components/schemas/QbAccountImportDto'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        ShipAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+        BillAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+      additionalProperties: false
+    QbAddressDto:
+      type: object
+      properties:
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        MobileNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+        ContactName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbPaymentImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Amount:
+          type: number
+          format: double
+        PaymentMethod:
+          type:
+          - string
+          - 'null'
+        PaymentDate:
+          type: string
+          format: date-time
+        Memo:
+          type:
+          - string
+          - 'null'
+        Reference:
+          type:
+          - string
+          - 'null'
+        ExternalCustomer:
+          $ref: '#/components/schemas/QbAccountImportDto'
+        Lines:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbPaymentLineImportDto'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

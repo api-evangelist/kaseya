@@ -1,0 +1,72 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Datto|Autotask PSA Rest Module Access API Integration API
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+tags:
+- name: ModuleAccessApiIntegration
+paths:
+  /V1.0/Modules:
+    get:
+      tags:
+      - ModuleAccessApiIntegration
+      operationId: ModuleAccessApiIntegration_QueryModuleAccess
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModuleAccessResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ModuleAccessResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+components:
+  schemas:
+    ModuleAccessResultModel:
+      type: object
+      properties:
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair_2'
+    KeyValuePair_2:
+      type: object
+      properties:
+        key:
+          format: int32
+          type: integer
+          readOnly: true
+        value:
+          type: boolean
+          readOnly: true

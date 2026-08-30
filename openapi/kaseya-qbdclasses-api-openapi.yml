@@ -1,0 +1,253 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Qbd Classes API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: QbdClasses
+paths:
+  /v2/integration/qbd/classlists:
+    post:
+      tags:
+      - QbdClasses
+      operationId: ImportClassLists
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbCLassListImportDto'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbCLassListImportDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbCLassListImportDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QbCLassListImportDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponse'
+    get:
+      tags:
+      - QbdClasses
+      operationId: GetClassLists
+      parameters:
+      - name: Filter.ClassName
+        in: query
+        schema:
+          type: string
+      - name: ExternalTenantId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QbClassListExportDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QbClassListExportDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QbClassListExportDtoListPagedResponse'
+  /v2/integration/qbd/classlists/byids:
+    get:
+      tags:
+      - QbdClasses
+      operationId: GetClassListsByIds
+      parameters:
+      - name: ExternalTenantId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ClassListNumbers
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QbClassListExportDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QbClassListExportDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QbClassListExportDtoListResponse'
+components:
+  schemas:
+    QbClassListExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbClassListExportDto'
+      additionalProperties: false
+    QbClassListExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbClassListExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbCLassListImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        ParentClassList:
+          $ref: '#/components/schemas/QbCLassListImportDto'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbClassListExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        ParentId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExternalClassListId:
+          type:
+          - string
+          - 'null'
+        ExternalParentId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

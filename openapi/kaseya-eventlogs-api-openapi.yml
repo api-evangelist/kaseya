@@ -1,0 +1,138 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Event Logs API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: EventLogs
+paths:
+  /v2/system/eventLog:
+    post:
+      tags:
+      - EventLogs
+      operationId: PostEventLog
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EventLogPostInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventLogPostInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EventLogPostInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EventLogPostInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EventLogOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventLogOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EventLogOutputDtoResponse'
+components:
+  schemas:
+    EventLogPostInputDto:
+      type: object
+      properties:
+        EventLogType:
+          $ref: '#/components/schemas/EventLogType'
+        RecordId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    EventLogOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    EventLogType:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      format: int32
+    EventLogOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/EventLogOutputDto'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

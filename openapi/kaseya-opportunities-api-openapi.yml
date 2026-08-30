@@ -1,0 +1,1684 @@
+openapi: 3.2.0
+info:
+  title: Kaseya Opportunities API
+  version: '1.0'
+  description: 'Operations tagged Opportunities across 2 of this provider''s published API definitions: kaseya-autotask-psa-openapi-original.json, kaseya-bms-openapi-original.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+- url: https://api.bms.kaseya.com
+tags:
+- name: Opportunities
+paths:
+  /V1.0/Opportunities/query:
+    get:
+      tags:
+      - Opportunities
+      operationId: Opportunities_UrlParameterQuery
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_OpportunityModel_Opportunity'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_OpportunityModel_Opportunity'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Opportunities
+      operationId: Opportunities_Query
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_OpportunityModel_Opportunity'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_OpportunityModel_Opportunity'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Opportunities/{id}:
+    get:
+      tags:
+      - Opportunities
+      operationId: Opportunities_QueryItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_OpportunityModel_Opportunity'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_OpportunityModel_Opportunity'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Opportunities/query/count:
+    get:
+      tags:
+      - Opportunities
+      operationId: Opportunities_UrlParameterQueryCount
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - Opportunities
+      operationId: Opportunities_QueryCount
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Opportunities:
+    put:
+      tags:
+      - Opportunities
+      operationId: Opportunities_UpdateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityModel'
+        required: true
+    post:
+      tags:
+      - Opportunities
+      operationId: Opportunities_CreateEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityModel'
+        required: true
+    patch:
+      tags:
+      - Opportunities
+      operationId: Opportunities_PatchEntity
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityModel'
+        required: true
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Opportunities/entityInformation:
+    get:
+      tags:
+      - Opportunities
+      operationId: Opportunities_QueryEntityInformation
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Opportunities/entityInformation/fields:
+    get:
+      tags:
+      - Opportunities
+      operationId: Opportunities_QueryFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /V1.0/Opportunities/entityInformation/userDefinedFields:
+    get:
+      tags:
+      - Opportunities
+      operationId: Opportunities_QueryUserDefinedFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://webservices2.autotask.net/ATServicesRest
+  /v2/crm/opportunities/{id}:
+    get:
+      tags:
+      - Opportunities
+      operationId: GetOpportunity
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OpportunityOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    put:
+      tags:
+      - Opportunities
+      operationId: PutOpportunity
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/OpportunityInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/OpportunityInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OpportunityOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/crm/opportunities:
+    get:
+      tags:
+      - Opportunities
+      operationId: GetAllOpportunities
+      parameters:
+      - name: Filter.StatusId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.AccountId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.TypeId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.SalesRepresentativeUserId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: Filter.InPipeline
+        in: query
+        schema:
+          type: boolean
+      - name: Filter.CreatedOnFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.CreatedOnTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.ModifiedOnFrom
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Filter.ModifiedOnTo
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: Sort
+        in: query
+        schema:
+          type: string
+      - name: Exclude
+        in: query
+        schema:
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OpportunityOutputDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityOutputDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityOutputDtoListPagedResponse'
+      security:
+      - bearerAuth: []
+    post:
+      tags:
+      - Opportunities
+      operationId: PostOpportunity
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/OpportunityInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/OpportunityInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OpportunityOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/crm/opportunities/{id}/notes:
+    get:
+      tags:
+      - Opportunities
+      operationId: GetOpportunityNotes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: PageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OpportunityNoteOutputDtoListPagedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityNoteOutputDtoListPagedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityNoteOutputDtoListPagedResponse'
+      security:
+      - bearerAuth: []
+    post:
+      tags:
+      - Opportunities
+      operationId: PostOpportunityNote
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/OpportunityNotePostInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityNotePostInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityNotePostInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/OpportunityNotePostInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OpportunityNoteOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityNoteOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityNoteOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/crm/opportunities/{opportunityId}/notes/{noteId}:
+    put:
+      tags:
+      - Opportunities
+      operationId: PutOpportunityNote
+      parameters:
+      - name: opportunityId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: noteId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/OpportunityNotePutInputDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityNotePutInputDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityNotePutInputDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/OpportunityNotePutInputDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OpportunityNoteOutputDtoResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityNoteOutputDtoResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityNoteOutputDtoResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+  /v2/crm/opportunities/statuses/Lookup:
+    get:
+      tags:
+      - Opportunities
+      operationId: GetOpportunityStatusLookups
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OpportunityStatusLookupOutputDtoListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityStatusLookupOutputDtoListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityStatusLookupOutputDtoListResponse'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.bms.kaseya.com
+components:
+  schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    QueryActionResult_OpportunityModel_Opportunity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpportunityModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    OpportunityModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        advancedField1:
+          format: double
+          type: number
+        advancedField2:
+          format: double
+          type: number
+        advancedField3:
+          format: double
+          type: number
+        advancedField4:
+          format: double
+          type: number
+        advancedField5:
+          format: double
+          type: number
+        amount:
+          format: double
+          type: number
+        assessmentScore:
+          format: double
+          type: number
+        barriers:
+          type: string
+        closedDate:
+          format: date-time
+          type: string
+        companyID:
+          format: int32
+          type: integer
+        contactID:
+          format: int32
+          type: integer
+        cost:
+          format: double
+          type: number
+        createDate:
+          format: date-time
+          type: string
+        creatorResourceID:
+          format: int32
+          type: integer
+        description:
+          type: string
+        helpNeeded:
+          type: string
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        lastActivity:
+          format: date-time
+          type: string
+        leadSource:
+          format: int32
+          type: integer
+        lossReason:
+          format: int32
+          type: integer
+        lossReasonDetail:
+          type: string
+        lostDate:
+          format: date-time
+          type: string
+        market:
+          type: string
+        monthlyCost:
+          format: double
+          type: number
+        monthlyRevenue:
+          format: double
+          type: number
+        nextStep:
+          type: string
+        onetimeCost:
+          format: double
+          type: number
+        onetimeRevenue:
+          format: double
+          type: number
+        opportunityCategoryID:
+          format: int32
+          type: integer
+        organizationalLevelAssociationID:
+          format: int32
+          type: integer
+        ownerResourceID:
+          format: int32
+          type: integer
+        primaryCompetitor:
+          format: int32
+          type: integer
+        probability:
+          format: int32
+          type: integer
+        productID:
+          format: int32
+          type: integer
+        projectedCloseDate:
+          format: date-time
+          type: string
+        promisedFulfillmentDate:
+          format: date-time
+          type: string
+        promotionName:
+          type: string
+        quarterlyCost:
+          format: double
+          type: number
+        quarterlyRevenue:
+          format: double
+          type: number
+        rating:
+          format: int32
+          type: integer
+        relationshipAssessmentScore:
+          format: double
+          type: number
+        revenueSpread:
+          format: int32
+          type: integer
+        revenueSpreadUnit:
+          type: string
+        salesOrderID:
+          format: int32
+          type: integer
+        salesProcessPercentComplete:
+          format: double
+          type: number
+        semiannualCost:
+          format: double
+          type: number
+        semiannualRevenue:
+          format: double
+          type: number
+        stage:
+          format: int32
+          type: integer
+        startDate:
+          format: date-time
+          type: string
+        status:
+          format: int32
+          type: integer
+        technicalAssessmentScore:
+          format: double
+          type: number
+        throughDate:
+          format: date-time
+          type: string
+        title:
+          type: string
+        totalAmountMonths:
+          format: int32
+          type: integer
+        useQuoteTotals:
+          type: boolean
+        winReason:
+          format: int32
+          type: integer
+        winReasonDetail:
+          type: string
+        yearlyCost:
+          format: double
+          type: number
+        yearlyRevenue:
+          format: double
+          type: number
+        userDefinedFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinedField'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    ItemQueryResultModel_OpportunityModel_Opportunity:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/OpportunityModel'
+    Object:
+      type: object
+      properties: {}
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    OpportunityNotePostInputDto:
+      required:
+      - Note
+      type: object
+      properties:
+        Note:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    OpportunityStatusLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Probability:
+          type: number
+          format: double
+        IsActive:
+          type: boolean
+        IsPipeline:
+          type: boolean
+        StatusActionId:
+          type: integer
+          format: int32
+        StatusActionName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    OpportunityOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OpportunityOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    OpportunityNoteOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/OpportunityNoteOutputDto'
+      additionalProperties: false
+    OpportunityOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Subject:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        Status:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        AccountLocationId:
+          type: integer
+          format: int32
+        AccountLocationName:
+          type:
+          - string
+          - 'null'
+        ContactId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactFirstName:
+          type:
+          - string
+          - 'null'
+        ContactLastName:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type: integer
+          format: int32
+        Type:
+          type:
+          - string
+          - 'null'
+        Probability:
+          type: number
+          format: double
+        Rating:
+          type:
+          - string
+          - 'null'
+        RatingId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        LeadSource:
+          type:
+          - string
+          - 'null'
+        LeadSourceId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesRepresentativeFirstName:
+          type:
+          - string
+          - 'null'
+        SalesRepresentativeLastName:
+          type:
+          - string
+          - 'null'
+        SalesRepresentativeUserId:
+          type: integer
+          format: int32
+        Amount:
+          type: number
+          format: double
+        InPipeline:
+          type: boolean
+        Description:
+          type:
+          - string
+          - 'null'
+        CustomerPO:
+          type:
+          - string
+          - 'null'
+        CloseDate:
+          type: string
+          format: date-time
+        ProbabilityAdjustedRevenue:
+          type: number
+          format: double
+      additionalProperties: false
+    OpportunityInputDto:
+      required:
+      - AccountId
+      - AccountLocationId
+      - Amount
+      - CloseDate
+      - Probability
+      - RatingId
+      - SalesRepresentativeUserId
+      - StatusId
+      - Subject
+      - TypeId
+      type: object
+      properties:
+        Subject:
+          minLength: 1
+          type: string
+        StatusId:
+          type: integer
+          format: int32
+        AccountId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        AccountLocationId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        ContactId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeId:
+          type: integer
+          format: int32
+        Probability:
+          type: number
+          format: double
+        RatingId:
+          type: integer
+          format: int32
+        LeadSourceId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesRepresentativeUserId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        Amount:
+          type: number
+          format: double
+        Description:
+          type:
+          - string
+          - 'null'
+        CustomerPO:
+          type:
+          - string
+          - 'null'
+        CloseDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    OpportunityNotePutInputDto:
+      required:
+      - Note
+      type: object
+      properties:
+        Note:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    OpportunityNoteOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OpportunityNoteOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    OpportunityOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/OpportunityOutputDto'
+      additionalProperties: false
+    OpportunityStatusLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OpportunityStatusLookupOutputDto'
+      additionalProperties: false
+    OpportunityNoteOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Note:
+          type:
+          - string
+          - 'null'
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        ModifiedByName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT
+x-refined-from:
+- kaseya-autotask-psa-openapi-original.json
+- kaseya-bms-openapi-original.json

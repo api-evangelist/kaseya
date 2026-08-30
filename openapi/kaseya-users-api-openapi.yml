@@ -1,0 +1,58 @@
+openapi: 3.2.0
+info:
+  title: BMS API 2.0 Users API
+  description: Documentation of APIs Version 2.0
+  version: '2.0'
+servers:
+- url: https://api.bms.kaseya.com
+security:
+- bearerAuth: []
+tags:
+- name: Users
+paths:
+  /v2/system/users/{userId}/profilepic/download:
+    get:
+      tags:
+      - Users
+      operationId: DownloadProfilePicture
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: width
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: height
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/File'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/File'
+components:
+  schemas:
+    File:
+      type: object
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: JWT Authorization header using the Bearer scheme.
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,948 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Datto|Autotask PSA Rest Document Checklist Items API
+servers:
+- url: https://webservices2.autotask.net/ATServicesRest
+tags:
+- name: DocumentChecklistItems
+paths:
+  /V1.0/DocumentChecklistItems/query:
+    get:
+      tags:
+      - DocumentChecklistItems
+      operationId: DocumentChecklistItems_UrlParameterQuery
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_DocumentChecklistItemModel_DocumentChecklistItem'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_DocumentChecklistItemModel_DocumentChecklistItem'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - DocumentChecklistItems
+      operationId: DocumentChecklistItems_Query
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_DocumentChecklistItemModel_DocumentChecklistItem'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryActionResult_DocumentChecklistItemModel_DocumentChecklistItem'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+  /V1.0/DocumentChecklistItems/{id}:
+    get:
+      tags:
+      - DocumentChecklistItems
+      operationId: DocumentChecklistItems_QueryItem
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_DocumentChecklistItemModel_DocumentChecklistItem'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemQueryResultModel_DocumentChecklistItemModel_DocumentChecklistItem'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/DocumentChecklistItems/query/count:
+    get:
+      tags:
+      - DocumentChecklistItems
+      operationId: DocumentChecklistItems_UrlParameterQueryCount
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - DocumentChecklistItems
+      operationId: DocumentChecklistItems_QueryCount
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryCountResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryModel'
+        required: true
+  /V1.0/DocumentChecklistItems/entityInformation:
+    get:
+      tags:
+      - DocumentChecklistItems
+      operationId: DocumentChecklistItems_QueryEntityInformation
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/DocumentChecklistItems/entityInformation/fields:
+    get:
+      tags:
+      - DocumentChecklistItems
+      operationId: DocumentChecklistItems_QueryFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /V1.0/DocumentChecklistItems/entityInformation/userDefinedFields:
+    get:
+      tags:
+      - DocumentChecklistItems
+      operationId: DocumentChecklistItems_QueryUserDefinedFieldDefinitions
+      parameters:
+      - name: ApiIntegrationCode
+        in: header
+        description: API Integration Code
+        required: true
+        schema:
+          type: string
+      - name: UserName
+        in: header
+        description: User Name
+        required: true
+        schema:
+          type: string
+      - name: Secret
+        in: header
+        description: Secret
+        required: true
+        schema:
+          type: string
+      - name: ImpersonationResourceId
+        in: header
+        description: Impersonation Resource Key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserDefinedFieldInformationResultModel'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+components:
+  schemas:
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    DocumentChecklistItemModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        documentID:
+          format: int32
+          type: integer
+        isImportant:
+          type: boolean
+        itemName:
+          type: string
+        position:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_DocumentChecklistItem_Int64'
+          readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    ParameterExpression:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        isByRef:
+          type: boolean
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    Object:
+      type: object
+      properties: {}
+    ItemQueryResultModel_DocumentChecklistItemModel_DocumentChecklistItem:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/DocumentChecklistItemModel'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Expression_Func_DocumentChecklistItem_Int64:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParameterExpression'
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        body:
+          $ref: '#/components/schemas/Expression'
+          readOnly: true
+        returnType:
+          type: string
+          readOnly: true
+        tailCall:
+          type: boolean
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    QueryActionResult_DocumentChecklistItemModel_DocumentChecklistItem:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentChecklistItemModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    Expression:
+      type: object
+      properties:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
