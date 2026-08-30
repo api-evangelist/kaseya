@@ -208,6 +208,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -413,6 +415,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - API Version
+  tags_raw:
   - ApiVersion
   properties:
   - type: OpenAPI
@@ -1277,6 +1281,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Billing Codes
+  tags_raw:
   - BillingCodes
   properties:
   - type: OpenAPI
@@ -1893,6 +1899,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - 'Company: Categories'
+  tags_raw:
   - CompanyCategories
   properties:
   - type: OpenAPI
@@ -2166,6 +2174,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Company Settings
+  tags_raw:
   - CompanySettings
   properties:
   - type: OpenAPI
@@ -3695,6 +3705,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Contact Groups
+  tags_raw:
   - ContactGroups
   properties:
   - type: OpenAPI
@@ -5593,6 +5605,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Currency
+  tags_raw:
   - Currencies
   properties:
   - type: OpenAPI
@@ -5627,6 +5641,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Custom Fields
+  tags_raw:
   - CustomFields
   properties:
   - type: OpenAPI
@@ -5833,6 +5849,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Document Attachments
+  tags_raw:
   - DocumentAttachments
   properties:
   - type: OpenAPI
@@ -5902,6 +5920,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Document Categories
+  tags_raw:
   - DocumentCategories
   properties:
   - type: OpenAPI
@@ -6735,6 +6755,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Email Templates
+  tags_raw:
   - EmailTemplates
   properties:
   - type: OpenAPI
@@ -6837,6 +6859,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Event Logs
+  tags_raw:
   - EventLogs
   properties:
   - type: OpenAPI
@@ -6940,6 +6964,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Expense Items
+  tags_raw:
   - ExpenseItems
   properties:
   - type: OpenAPI
@@ -7078,6 +7104,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Expense Reports
+  tags_raw:
   - ExpenseReports
   properties:
   - type: OpenAPI
@@ -7455,6 +7483,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Inventory Items
+  tags_raw:
   - InventoryItems
   properties:
   - type: OpenAPI
@@ -7559,6 +7589,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Inventory Locations
+  tags_raw:
   - InventoryLocations
   properties:
   - type: OpenAPI
@@ -7593,6 +7625,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Inventory Products
+  tags_raw:
   - InventoryProducts
   properties:
   - type: OpenAPI
@@ -8009,6 +8043,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Invoice Templates
+  tags_raw:
   - InvoiceTemplates
   properties:
   - type: OpenAPI
@@ -8043,6 +8079,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Issue Types
+  tags_raw:
   - IssueTypes
   properties:
   - type: OpenAPI
@@ -8385,6 +8423,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Knowledge Base Articles
+  tags_raw:
   - KnowledgeBaseArticles
   properties:
   - type: OpenAPI
@@ -8455,6 +8495,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Knowledge Base Categories
+  tags_raw:
   - KnowledgeBaseCategories
   properties:
   - type: OpenAPI
@@ -8694,6 +8736,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Notification History
+  tags_raw:
   - NotificationHistory
   properties:
   - type: OpenAPI
@@ -9038,6 +9082,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Payment Terms
+  tags_raw:
   - PaymentTerms
   properties:
   - type: OpenAPI
@@ -9550,6 +9596,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -9994,6 +10042,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -10028,6 +10078,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Project Statuses
+  tags_raw:
   - ProjectStatuses
   properties:
   - type: OpenAPI
@@ -10235,6 +10287,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Purchase Orders
+  tags_raw:
   - PurchaseOrders
   properties:
   - type: OpenAPI
@@ -10881,6 +10935,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Quote Items
+  tags_raw:
   - QuoteItems
   properties:
   - type: OpenAPI
@@ -11329,6 +11385,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Resource Roles
+  tags_raw:
   - ResourceRoles
   properties:
   - type: OpenAPI
@@ -11779,6 +11837,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - RMM
+  tags_raw:
   - Rmm
   properties:
   - type: OpenAPI
@@ -12018,6 +12078,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Sales Orders
+  tags_raw:
   - SalesOrders
   properties:
   - type: OpenAPI
@@ -12154,6 +12216,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Security Roles
+  tags_raw:
   - SecurityRoles
   properties:
   - type: OpenAPI
@@ -12325,6 +12389,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Service Calls
+  tags_raw:
   - ServiceCalls
   properties:
   - type: OpenAPI
@@ -12670,6 +12736,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Service Desk
+  tags_raw:
   - Servicedesk
   properties:
   - type: OpenAPI
@@ -13012,6 +13080,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Status
+  tags_raw:
   - Statuses
   properties:
   - type: OpenAPI
@@ -13115,6 +13185,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -13319,6 +13391,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Tag Groups
+  tags_raw:
   - TagGroups
   properties:
   - type: OpenAPI
@@ -13387,6 +13461,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Task Attachments
+  tags_raw:
   - TaskAttachments
   properties:
   - type: OpenAPI
@@ -13660,6 +13736,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
@@ -13797,6 +13875,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Tax Categories
+  tags_raw:
   - TaxCategories
   properties:
   - type: OpenAPI
@@ -13865,6 +13945,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Tax Regions
+  tags_raw:
   - TaxRegions
   properties:
   - type: OpenAPI
@@ -13899,6 +13981,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Teams.channel
+  tags_raw:
   - TeamsChannel
   properties:
   - type: OpenAPI
@@ -14142,6 +14226,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Ticket Attachments
+  tags_raw:
   - TicketAttachments
   properties:
   - type: OpenAPI
@@ -15419,6 +15505,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Time Entries
+  tags_raw:
   - TimeEntries
   properties:
   - type: OpenAPI
@@ -15522,6 +15610,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Time Logs
+  tags_raw:
   - TimeLogs
   properties:
   - type: OpenAPI
@@ -15556,6 +15646,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Time Off Requests
+  tags_raw:
   - TimeOffRequests
   properties:
   - type: OpenAPI
@@ -15867,6 +15959,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -15900,7 +15994,8 @@ apis:
   description: Operations on accounts
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v2/account
   properties:
   - type: OpenAPI
@@ -15934,7 +16029,8 @@ apis:
   description: Fetching RMM Activity Logs
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v2/activity-logs
   properties:
   - type: OpenAPI
@@ -15968,7 +16064,8 @@ apis:
   description: Operations on alerts
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v2/alert
   properties:
   - type: OpenAPI
@@ -16002,7 +16099,8 @@ apis:
   description: Operations on audit data
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v2/audit
   properties:
   - type: OpenAPI
@@ -16036,7 +16134,8 @@ apis:
   description: Operations on devices
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v2/device
   properties:
   - type: OpenAPI
@@ -16070,7 +16169,8 @@ apis:
   description: Operations on filters
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v2/filter
   properties:
   - type: OpenAPI
@@ -16104,7 +16204,8 @@ apis:
   description: Operations on jobs
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v2/job
   properties:
   - type: OpenAPI
@@ -16138,7 +16239,8 @@ apis:
   description: Operations on sites
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v2/site
   properties:
   - type: OpenAPI
@@ -16172,7 +16274,8 @@ apis:
   description: RMM API System operations
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v2/system
   properties:
   - type: OpenAPI
@@ -16206,7 +16309,8 @@ apis:
   description: Operations on users
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v2/user
   properties:
   - type: OpenAPI
@@ -16240,7 +16344,8 @@ apis:
   description: Operations on accounts (v3 API)
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v3/account
   properties:
   - type: OpenAPI
@@ -16274,7 +16379,8 @@ apis:
   description: Operations on devices (v3 API)
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v3/device
   properties:
   - type: OpenAPI
@@ -16308,7 +16414,8 @@ apis:
   description: Operations on sites (v3 API)
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
-  tags:
+  tags: []
+  tags_raw:
   - /v3/site
   properties:
   - type: OpenAPI
@@ -16479,6 +16586,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Webhook Configuration
+  tags_raw:
   - WebhookConfiguration
   properties:
   - type: OpenAPI
@@ -16581,6 +16690,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Workflows
+  tags_raw:
   - Workflow
   properties:
   - type: OpenAPI
@@ -16717,6 +16828,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Work Types
+  tags_raw:
   - WorkTypes
   properties:
   - type: OpenAPI
