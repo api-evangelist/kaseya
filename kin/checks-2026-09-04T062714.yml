@@ -1,19 +1,23 @@
 ---
 kin_checks:
   slug: kaseya
-  schema_version: 0.17.2
-  scored_at: '2026-09-01'
-  run_ts: 2026-09-01T063623
+  schema_version: 0.18.2
+  scored_at: '2026-09-04'
+  run_ts: 2026-09-04T062714
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.17.2.yml; counts below let you verify that.
+    in rubric/scoring-0.18.2.yml; counts below let you verify that.
   counts:
-    total: 130
-    earned: 44
+    total: 132
+    earned: 42
     partial: 18
-    missed: 44
-    na: 24
+    missed: 47
+    na: 25
   checks:
   - id: maintainer_present
+    status: missed
+  - id: human_url_per_api
+    status: missed
+  - id: base_url_per_api
     status: missed
   - id: well_known_published
     status: missed
@@ -28,6 +32,8 @@ kin_checks:
   - id: webhooks_or_callbacks
     status: missed
     detail: 0 of 484 openapi documents pass
+  - id: inbound_contract_published
+    status: missed
   - id: json_schema_present
     status: missed
   - id: json_schema_per_resource
