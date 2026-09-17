@@ -148,40 +148,6 @@ apis:
     url: https://helpdesk.kaseya.com/hc/en-gb/articles/4438175877521-myITprocess-API
   - type: APIReference
     url: https://reporting.live.myitprocess.com/index.html
-- aid: kaseya:kaseya-accountcodes-api
-  name: Kaseya Account Codes API
-  description: The AccountCodes API from Kaseya — 1 operation(s) for accountcodes.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - AccountCodes
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-accountcodes-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-accountinvoicesettings-api
   name: Kaseya Account Invoice Settings API
   description: The AccountInvoiceSettings API from Kaseya — 5 operation(s) for accountinvoicesettings.
@@ -228,40 +194,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-accounts-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-accounttypes-api
-  name: Kaseya Account Types API
-  description: The AccountTypes API from Kaseya — 1 operation(s) for accounttypes.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - AccountTypes
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-accounttypes-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -399,42 +331,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-agentprocedure-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-apiversion-api
-  name: Kaseya API Version API
-  description: The ApiVersion API from Kaseya — 1 operation(s) for apiversion.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - API Version
-  tags_raw:
-  - ApiVersion
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-apiversion-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -1289,42 +1185,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-billingcodes-api
-  name: Kaseya Billing Codes API
-  description: The BillingCodes API from Kaseya — 6 operation(s) for billingcodes.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Billing Codes
-  tags_raw:
-  - BillingCodes
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-billingcodes-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-billingitemapprovallevels-api
   name: Kaseya Billing Item Approval Levels API
   description: >-
@@ -1907,42 +1767,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-companycategories-api
-  name: Kaseya Company Categories API
-  description: The CompanyCategories API from Kaseya — 7 operation(s) for companycategories.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - 'Company: Categories'
-  tags_raw:
-  - CompanyCategories
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-companycategories-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-companycontactschild-api
   name: Kaseya Company Contacts Child API
   description: The CompanyContactsChild API from Kaseya — 5 operation(s) for companycontactschild.
@@ -1953,40 +1777,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-companycontactschild-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-companylocations-api
-  name: Kaseya Company Locations API
-  description: The CompanyLocations API from Kaseya — 6 operation(s) for companylocations.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - CompanyLocations
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-companylocations-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -2158,42 +1948,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-companynoteschild-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-companysettings-api
-  name: Kaseya Company Settings API
-  description: The CompanySettings API from Kaseya — 1 operation(s) for companysettings.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Company Settings
-  tags_raw:
-  - CompanySettings
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-companysettings-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -3689,42 +3443,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-contactgroupcontactschild-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-contactgroups-api
-  name: Kaseya Contact Groups API
-  description: The ContactGroups API from Kaseya — 7 operation(s) for contactgroups.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Contact Groups
-  tags_raw:
-  - ContactGroups
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-contactgroups-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -5649,42 +5367,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-customfields-api
-  name: Kaseya Custom Fields API
-  description: The CustomFields API from Kaseya — 3 operation(s) for customfields.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Custom Fields
-  tags_raw:
-  - CustomFields
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-customfields-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-dashboard-api
   name: Kaseya Dashboard API
   description: The Dashboard API from Kaseya — 18 operation(s) for dashboard.
@@ -5857,42 +5539,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-documentattachments-api
-  name: Kaseya Document Attachments API
-  description: The DocumentAttachments API from Kaseya — 5 operation(s) for documentattachments.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Document Attachments
-  tags_raw:
-  - DocumentAttachments
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-documentattachments-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-documentattachmentschild-api
   name: Kaseya Document Attachments Child API
   description: >-
@@ -5904,42 +5550,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-documentattachmentschild-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-documentcategories-api
-  name: Kaseya Document Categories API
-  description: The DocumentCategories API from Kaseya — 7 operation(s) for documentcategories.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Document Categories
-  tags_raw:
-  - DocumentCategories
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-documentcategories-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -6763,42 +6373,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-emailtemplates-api
-  name: Kaseya Email Templates API
-  description: The EmailTemplates API from Kaseya — 1 operation(s) for emailtemplates.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Email Templates
-  tags_raw:
-  - EmailTemplates
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-emailtemplates-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-employees-api
   name: Kaseya Employees API
   description: The Employees API from Kaseya — 2 operation(s) for employees.
@@ -6843,42 +6417,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-etilize-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-eventlogs-api
-  name: Kaseya Event Logs API
-  description: The EventLogs API from Kaseya — 1 operation(s) for eventlogs.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Event Logs
-  tags_raw:
-  - EventLogs
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-eventlogs-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -6948,42 +6486,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-expenseitemattachmentschild-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-expenseitems-api
-  name: Kaseya Expense Items API
-  description: The ExpenseItems API from Kaseya — 6 operation(s) for expenseitems.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Expense Items
-  tags_raw:
-  - ExpenseItems
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-expenseitems-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -7112,42 +6614,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-expensereports-api
-  name: Kaseya Expense Reports API
-  description: The ExpenseReports API from Kaseya — 7 operation(s) for expensereports.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Expense Reports
-  tags_raw:
-  - ExpenseReports
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-expensereports-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-expensesheets-api
   name: Kaseya Expense Sheets API
   description: The ExpenseSheets API from Kaseya — 2 operation(s) for expensesheets.
@@ -7158,40 +6624,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-expensesheets-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-expensetypes-api
-  name: Kaseya Expense Types API
-  description: The ExpenseTypes API from Kaseya — 1 operation(s) for expensetypes.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - ExpenseTypes
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-expensetypes-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -7491,42 +6923,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-inventoryitems-api
-  name: Kaseya Inventory Items API
-  description: The InventoryItems API from Kaseya — 7 operation(s) for inventoryitems.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Inventory Items
-  tags_raw:
-  - InventoryItems
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-inventoryitems-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-inventoryitemserialnumbers-api
   name: Kaseya Inventory Item Serial Numbers API
   description: >-
@@ -7573,78 +6969,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-inventoryitemserialnumberschild-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-inventorylocations-api
-  name: Kaseya Inventory Locations API
-  description: The InventoryLocations API from Kaseya — 7 operation(s) for inventorylocations.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Inventory Locations
-  tags_raw:
-  - InventoryLocations
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-inventorylocations-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-inventoryproducts-api
-  name: Kaseya Inventory Products API
-  description: The InventoryProducts API from Kaseya — 7 operation(s) for inventoryproducts.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Inventory Products
-  tags_raw:
-  - InventoryProducts
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-inventoryproducts-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -8051,78 +7375,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-invoicetemplates-api
-  name: Kaseya Invoice Templates API
-  description: The InvoiceTemplates API from Kaseya — 6 operation(s) for invoicetemplates.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Invoice Templates
-  tags_raw:
-  - InvoiceTemplates
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-invoicetemplates-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-issuetypes-api
-  name: Kaseya Issue Types API
-  description: The IssueTypes API from Kaseya — 2 operation(s) for issuetypes.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Issue Types
-  tags_raw:
-  - IssueTypes
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-issuetypes-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-itg-api
   name: Kaseya ITG API
   description: The ITG API from Kaseya — 16 operation(s) for itg.
@@ -8133,40 +7385,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-itg-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-jobtitle-api
-  name: Kaseya Job Title API
-  description: The JobTitle API from Kaseya — 1 operation(s) for jobtitle.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - JobTitle
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-jobtitle-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -8431,42 +7649,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-knowledgebasearticles-api
-  name: Kaseya Knowledge Base Articles API
-  description: The KnowledgeBaseArticles API from Kaseya — 6 operation(s) for knowledgebasearticles.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Knowledge Base Articles
-  tags_raw:
-  - KnowledgeBaseArticles
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-knowledgebasearticles-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-knowledgebasearticleschild-api
   name: Kaseya Knowledge Base Articles Child API
   description: >-
@@ -8478,43 +7660,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-knowledgebasearticleschild-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-knowledgebasecategories-api
-  name: Kaseya Knowledge Base Categories API
-  description: >-
-    The KnowledgeBaseCategories API from Kaseya — 7 operation(s) for knowledgebasecategories.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Knowledge Base Categories
-  tags_raw:
-  - KnowledgeBaseCategories
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-knowledgebasecategories-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -8720,42 +7865,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-mytickets-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-notificationhistory-api
-  name: Kaseya Notification History API
-  description: The NotificationHistory API from Kaseya — 6 operation(s) for notificationhistory.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Notification History
-  tags_raw:
-  - NotificationHistory
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-notificationhistory-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -9066,42 +8175,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-organizationalresourceschild-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-paymentterms-api
-  name: Kaseya Payment Terms API
-  description: The PaymentTerms API from Kaseya — 7 operation(s) for paymentterms.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Payment Terms
-  tags_raw:
-  - PaymentTerms
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-paymentterms-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -10086,42 +9159,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-projectstatuses-api
-  name: Kaseya Project Statuses API
-  description: The ProjectStatuses API from Kaseya — 5 operation(s) for projectstatuses.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Project Statuses
-  tags_raw:
-  - ProjectStatuses
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-projectstatuses-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-purchaseapprovals-api
   name: Kaseya Purchase Approvals API
   description: The PurchaseApprovals API from Kaseya — 7 operation(s) for purchaseapprovals.
@@ -10271,42 +9308,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-purchaseorderitemschild-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-purchaseorders-api
-  name: Kaseya Purchase Orders API
-  description: The PurchaseOrders API from Kaseya — 7 operation(s) for purchaseorders.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Purchase Orders
-  tags_raw:
-  - PurchaseOrders
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-purchaseorders-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -10943,42 +9944,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-quoteitems-api
-  name: Kaseya Quote Items API
-  description: The QuoteItems API from Kaseya — 6 operation(s) for quoteitems.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Quote Items
-  tags_raw:
-  - QuoteItems
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-quoteitems-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-quoteitemschild-api
   name: Kaseya Quote Items Child API
   description: The QuoteItemsChild API from Kaseya — 5 operation(s) for quoteitemschild.
@@ -11057,40 +10022,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-quotes-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-quotetemplates-api
-  name: Kaseya Quote Templates API
-  description: The QuoteTemplates API from Kaseya — 6 operation(s) for quotetemplates.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - QuoteTemplates
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-quotetemplates-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -11369,42 +10300,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-resourcerolequeueschild-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-resourceroles-api
-  name: Kaseya Resource Roles API
-  description: The ResourceRoles API from Kaseya — 6 operation(s) for resourceroles.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Resource Roles
-  tags_raw:
-  - ResourceRoles
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-resourceroles-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -12086,42 +10981,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-salesorders-api
-  name: Kaseya Sales Orders API
-  description: The SalesOrders API from Kaseya — 7 operation(s) for salesorders.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Sales Orders
-  tags_raw:
-  - SalesOrders
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-salesorders-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-salesorderschild-api
   name: Kaseya Sales Orders Child API
   description: The SalesOrdersChild API from Kaseya — 5 operation(s) for salesorderschild.
@@ -12156,40 +11015,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-schedulerjobs-api
-  name: Kaseya Scheduler Jobs API
-  description: The SchedulerJobs API from Kaseya — 1 operation(s) for schedulerjobs.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - SchedulerJobs
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-schedulerjobs-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-security-api
   name: Kaseya Security API
   description: The Security API from Kaseya — 4 operation(s) for security.
@@ -12200,42 +11025,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-security-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-securityroles-api
-  name: Kaseya Security Roles API
-  description: The SecurityRoles API from Kaseya — 1 operation(s) for securityroles.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Security Roles
-  tags_raw:
-  - SecurityRoles
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-securityroles-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -12952,40 +11741,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-shippingtypes-api
-  name: Kaseya Shipping Types API
-  description: The ShippingTypes API from Kaseya — 6 operation(s) for shippingtypes.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - ShippingTypes
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-shippingtypes-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-skills-api
   name: Kaseya Skills API
   description: The Skills API from Kaseya — 6 operation(s) for skills.
@@ -13399,42 +12154,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-taggroups-api
-  name: Kaseya Tag Groups API
-  description: The TagGroups API from Kaseya — 7 operation(s) for taggroups.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Tag Groups
-  tags_raw:
-  - TagGroups
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-taggroups-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-tags-api
   name: Kaseya Tags API
   description: The Tags API from Kaseya — 7 operation(s) for tags.
@@ -13445,42 +12164,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-tags-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-taskattachments-api
-  name: Kaseya Task Attachments API
-  description: The TaskAttachments API from Kaseya — 5 operation(s) for taskattachments.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Task Attachments
-  tags_raw:
-  - TaskAttachments
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-taskattachments-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -13883,42 +12566,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-taxcategories-api
-  name: Kaseya Tax Categories API
-  description: The TaxCategories API from Kaseya — 7 operation(s) for taxcategories.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Tax Categories
-  tags_raw:
-  - TaxCategories
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-taxcategories-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-taxes-api
   name: Kaseya Taxes API
   description: The Taxes API from Kaseya — 7 operation(s) for taxes.
@@ -13929,78 +12576,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-taxes-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-taxregions-api
-  name: Kaseya Tax Regions API
-  description: The TaxRegions API from Kaseya — 7 operation(s) for taxregions.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Tax Regions
-  tags_raw:
-  - TaxRegions
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-taxregions-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-teamschannel-api
-  name: Kaseya Teams Channel API
-  description: The TeamsChannel API from Kaseya — 6 operation(s) for teamschannel.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Teams.channel
-  tags_raw:
-  - TeamsChannel
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-teamschannel-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -14210,42 +12785,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-ticketadditionalcontactschild-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-ticketattachments-api
-  name: Kaseya Ticket Attachments API
-  description: The TicketAttachments API from Kaseya — 5 operation(s) for ticketattachments.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Ticket Attachments
-  tags_raw:
-  - TicketAttachments
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-ticketattachments-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -15513,42 +14052,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-timeentries-api
-  name: Kaseya Time Entries API
-  description: The TimeEntries API from Kaseya — 7 operation(s) for timeentries.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Time Entries
-  tags_raw:
-  - TimeEntries
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-timeentries-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-timeentryattachments-api
   name: Kaseya Time Entry Attachments API
   description: The TimeEntryAttachments API from Kaseya — 5 operation(s) for timeentryattachments.
@@ -15594,78 +14097,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kaseya-timeentryattachmentschild-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-timelogs-api
-  name: Kaseya Time Logs API
-  description: The TimeLogs API from Kaseya — 1 operation(s) for timelogs.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Time Logs
-  tags_raw:
-  - TimeLogs
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-timelogs-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-timeoffrequests-api
-  name: Kaseya Time Off Requests API
-  description: The TimeOffRequests API from Kaseya — 6 operation(s) for timeoffrequests.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Time Off Requests
-  tags_raw:
-  - TimeOffRequests
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-timeoffrequests-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -16594,42 +15025,6 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-webhookconfiguration-api
-  name: Kaseya Webhook Configuration API
-  description: The WebhookConfiguration API from Kaseya — 4 operation(s) for webhookconfiguration.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
-  tags:
-  - Webhook Configuration
-  tags_raw:
-  - WebhookConfiguration
-  properties:
-  - type: OpenAPI
-    url: openapi/kaseya-webhookconfiguration-api-openapi.yml
-  - type: Documentation
-    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  - type: APIReference
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Console
-    url: https://api.bms.kaseya.com/swagger/index.html
-  - type: Webhooks
-    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
-  - type: Documentation
-    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
-  - type: APIReference
-    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
-  - type: Authentication
-    url: >-
-      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
-  - type: RateLimits
-    url: >-
-      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
-  - type: Documentation
-    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
-  - type: APIReference
-    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
-  - type: RateLimits
-    url: rate-limits/kaseya-rate-limits.yml
 - aid: kaseya:kaseya-webhookdeliverylog-api
   name: Kaseya Webhook Delivery Log API
   description: The WebhookDeliveryLog API from Kaseya — 3 operation(s) for webhookdeliverylog.
@@ -16836,18 +15231,17 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-worktypes-api
-  name: Kaseya Work Types API
-  description: The WorkTypes API from Kaseya — 1 operation(s) for worktypes.
+- aid: kaseya:kaseya-zoneinformationapiintegration-api
+  name: Kaseya Zone Information API Integration API
+  description: >-
+    The ZoneInformationApiIntegration API from Kaseya — 1 operation(s) for zoneinformationapiintegration.
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
-  - Work Types
-  tags_raw:
-  - WorkTypes
+  - ZoneInformationApiIntegration
   properties:
   - type: OpenAPI
-    url: openapi/kaseya-worktypes-api-openapi.yml
+    url: openapi/kaseya-zoneinformationapiintegration-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
@@ -16872,17 +15266,1548 @@ apis:
     url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
   - type: RateLimits
     url: rate-limits/kaseya-rate-limits.yml
-- aid: kaseya:kaseya-zoneinformationapiintegration-api
-  name: Kaseya Zone Information API Integration API
-  description: >-
-    The ZoneInformationApiIntegration API from Kaseya — 1 operation(s) for zoneinformationapiintegration.
-  humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
-  baseURL: https://api.bms.kaseya.com
+- aid: kaseya:kaseya-account-codes-api
+  name: Kaseya Account Codes API
+  description: The Account Codes API from Kaseya — 1 operation(s) for account codes.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
   tags:
-  - ZoneInformationApiIntegration
+  - Account Codes
   properties:
   - type: OpenAPI
-    url: openapi/kaseya-zoneinformationapiintegration-api-openapi.yml
+    url: openapi/kaseya-account-codes-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-account-types-api
+  name: Kaseya Account Types API
+  description: The Account Types API from Kaseya — 1 operation(s) for account types.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Account Types
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-account-types-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-api-version-api
+  name: Kaseya API Version API
+  description: The API Version API from Kaseya — 1 operation(s) for api version.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - API Version
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-api-version-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-billing-codes-api
+  name: Kaseya Billing Codes API
+  description: The Billing Codes API from Kaseya — 6 operation(s) for billing codes.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Billing Codes
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-billing-codes-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-company-categories-api
+  name: 'Kaseya Company: Categories API'
+  description: 'The Company: Categories API from Kaseya — 7 operation(s) for company: categories.'
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - 'Company: Categories'
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-company-categories-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-company-locations-api
+  name: Kaseya Company Locations API
+  description: The Company Locations API from Kaseya — 6 operation(s) for company locations.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Company Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-company-locations-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-company-settings-api
+  name: Kaseya Company Settings API
+  description: The Company Settings API from Kaseya — 1 operation(s) for company settings.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Company Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-company-settings-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-contact-groups-api
+  name: Kaseya Contact Groups API
+  description: The Contact Groups API from Kaseya — 7 operation(s) for contact groups.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Contact Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-contact-groups-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-custom-fields-api
+  name: Kaseya Custom Fields API
+  description: The Custom Fields API from Kaseya — 3 operation(s) for custom fields.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Custom Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-custom-fields-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-document-attachments-api
+  name: Kaseya Document Attachments API
+  description: The Document Attachments API from Kaseya — 5 operation(s) for document attachments.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Document Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-document-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-document-categories-api
+  name: Kaseya Document Categories API
+  description: The Document Categories API from Kaseya — 7 operation(s) for document categories.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Document Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-document-categories-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-email-templates-api
+  name: Kaseya Email Templates API
+  description: The Email Templates API from Kaseya — 1 operation(s) for email templates.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Email Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-email-templates-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-event-logs-api
+  name: Kaseya Event Logs API
+  description: The Event Logs API from Kaseya — 1 operation(s) for event logs.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Event Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-event-logs-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-expense-items-api
+  name: Kaseya Expense Items API
+  description: The Expense Items API from Kaseya — 6 operation(s) for expense items.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Expense Items
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-expense-items-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-expense-reports-api
+  name: Kaseya Expense Reports API
+  description: The Expense Reports API from Kaseya — 7 operation(s) for expense reports.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Expense Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-expense-reports-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-expense-types-api
+  name: Kaseya Expense Types API
+  description: The Expense Types API from Kaseya — 1 operation(s) for expense types.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Expense Types
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-expense-types-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-inventory-items-api
+  name: Kaseya Inventory Items API
+  description: The Inventory Items API from Kaseya — 7 operation(s) for inventory items.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Inventory Items
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-inventory-items-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-inventory-locations-api
+  name: Kaseya Inventory Locations API
+  description: The Inventory Locations API from Kaseya — 7 operation(s) for inventory locations.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Inventory Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-inventory-locations-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-inventory-products-api
+  name: Kaseya Inventory Products API
+  description: The Inventory Products API from Kaseya — 7 operation(s) for inventory products.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Inventory Products
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-inventory-products-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-invoice-templates-api
+  name: Kaseya Invoice Templates API
+  description: The Invoice Templates API from Kaseya — 6 operation(s) for invoice templates.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Invoice Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-invoice-templates-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-issue-types-api
+  name: Kaseya Issue Types API
+  description: The Issue Types API from Kaseya — 2 operation(s) for issue types.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Issue Types
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-issue-types-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-job-title-api
+  name: Kaseya Job Title API
+  description: The Job Title API from Kaseya — 1 operation(s) for job title.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Job Title
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-job-title-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-knowledge-base-articles-api
+  name: Kaseya Knowledge Base Articles API
+  description: >-
+    The Knowledge Base Articles API from Kaseya — 6 operation(s) for knowledge base articles.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Knowledge Base Articles
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-knowledge-base-articles-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-knowledge-base-categories-api
+  name: Kaseya Knowledge Base Categories API
+  description: >-
+    The Knowledge Base Categories API from Kaseya — 7 operation(s) for knowledge base categories.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Knowledge Base Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-knowledge-base-categories-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-notification-history-api
+  name: Kaseya Notification History API
+  description: The Notification History API from Kaseya — 6 operation(s) for notification history.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Notification History
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-notification-history-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-payment-terms-api
+  name: Kaseya Payment Terms API
+  description: The Payment Terms API from Kaseya — 7 operation(s) for payment terms.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Payment Terms
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-payment-terms-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-project-statuses-api
+  name: Kaseya Project Statuses API
+  description: The Project Statuses API from Kaseya — 5 operation(s) for project statuses.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Project Statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-project-statuses-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-purchase-orders-api
+  name: Kaseya Purchase Orders API
+  description: The Purchase Orders API from Kaseya — 7 operation(s) for purchase orders.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Purchase Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-purchase-orders-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-quote-items-api
+  name: Kaseya Quote Items API
+  description: The Quote Items API from Kaseya — 6 operation(s) for quote items.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Quote Items
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-quote-items-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-quote-templates-api
+  name: Kaseya Quote Templates API
+  description: The Quote Templates API from Kaseya — 6 operation(s) for quote templates.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Quote Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-quote-templates-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-resource-roles-api
+  name: Kaseya Resource Roles API
+  description: The Resource Roles API from Kaseya — 6 operation(s) for resource roles.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Resource Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-resource-roles-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-sales-orders-api
+  name: Kaseya Sales Orders API
+  description: The Sales Orders API from Kaseya — 7 operation(s) for sales orders.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Sales Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-sales-orders-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-scheduler-jobs-api
+  name: Kaseya Scheduler/Jobs API
+  description: The Scheduler/Jobs API from Kaseya — 1 operation(s) for scheduler/jobs.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Scheduler/Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-scheduler-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-security-roles-api
+  name: Kaseya Security/Roles API
+  description: The Security/Roles API from Kaseya — 1 operation(s) for security/roles.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Security/Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-security-roles-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-shipping-types-api
+  name: Kaseya Shipping Types API
+  description: The Shipping Types API from Kaseya — 6 operation(s) for shipping types.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Shipping Types
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-shipping-types-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-tag-groups-api
+  name: Kaseya Tag Groups API
+  description: The Tag Groups API from Kaseya — 7 operation(s) for tag groups.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Tag Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-tag-groups-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-task-attachments-api
+  name: Kaseya Task Attachments API
+  description: The Task Attachments API from Kaseya — 5 operation(s) for task attachments.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Task Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-task-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-tax-categories-api
+  name: Kaseya Tax Categories API
+  description: The Tax Categories API from Kaseya — 7 operation(s) for tax categories.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Tax Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-tax-categories-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-tax-regions-api
+  name: Kaseya Tax Regions API
+  description: The Tax Regions API from Kaseya — 7 operation(s) for tax regions.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Tax Regions
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-tax-regions-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-teams-channel-api
+  name: Kaseya Teams channel API
+  description: The Teams channel API from Kaseya — 6 operation(s) for teams channel.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Teams channel
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-teams-channel-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-ticket-attachments-api
+  name: Kaseya Ticket Attachments API
+  description: The Ticket Attachments API from Kaseya — 5 operation(s) for ticket attachments.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Ticket Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-ticket-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-time-entries-api
+  name: Kaseya Time Entries API
+  description: The Time Entries API from Kaseya — 7 operation(s) for time entries.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Time Entries
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-time-entries-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-time-logs-api
+  name: Kaseya Time Logs API
+  description: The Time Logs API from Kaseya — 1 operation(s) for time logs.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Time Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-time-logs-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-time-off-requests-api
+  name: Kaseya Time Off Requests API
+  description: The Time Off Requests API from Kaseya — 6 operation(s) for time off requests.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Time Off Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-time-off-requests-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-webhook-configuration-api
+  name: Kaseya Webhook Configuration API
+  description: The Webhook Configuration API from Kaseya — 4 operation(s) for webhook configuration.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Webhook Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-webhook-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
+  - type: APIReference
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Console
+    url: https://api.bms.kaseya.com/swagger/index.html
+  - type: Webhooks
+    url: https://help.bms.kaseya.com/help/Content/Integration/bms_webhook_integration.htm
+  - type: Documentation
+    url: https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm
+  - type: APIReference
+    url: https://webservices2.autotask.net/atservicesrest/swagger/ui/index
+  - type: Authentication
+    url: >-
+      https://ww2.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Security_Auth.htm
+  - type: RateLimits
+    url: >-
+      https://www.autotask.net/help/developerhelp/Content/APIs/REST/General_Topics/REST_Thresholds_Limits.htm
+  - type: Documentation
+    url: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
+  - type: APIReference
+    url: https://syrah-api.centrastage.net/api/swagger-ui/index.html
+  - type: RateLimits
+    url: rate-limits/kaseya-rate-limits.yml
+- aid: kaseya:kaseya-work-types-api
+  name: Kaseya Work Types API
+  description: The Work Types API from Kaseya — 1 operation(s) for work types.
+  humanURL: https://api.itglue.com/developer/
+  baseURL: https://api.itglue.com
+  tags:
+  - Work Types
+  properties:
+  - type: OpenAPI
+    url: openapi/kaseya-work-types-api-openapi.yml
   - type: Documentation
     url: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   - type: APIReference
