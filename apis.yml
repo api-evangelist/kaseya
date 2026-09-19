@@ -142,6 +142,10 @@ apis:
   tags:
   - IT Strategy
   - Reporting
+  - Assessment
+  tags_raw:
+  - IT Strategy
+  - Reporting
   - Assessments
   properties:
   - type: Documentation
@@ -5373,6 +5377,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Dashboards
+  tags_raw:
   - Dashboard
   properties:
   - type: OpenAPI
@@ -7690,6 +7696,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Listings
+  tags_raw:
   - Listing
   properties:
   - type: OpenAPI
@@ -7724,6 +7732,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
@@ -11055,6 +11065,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Services
+  tags_raw:
   - Service
   properties:
   - type: OpenAPI
@@ -12572,6 +12584,8 @@ apis:
   humanURL: https://help.bms.kaseya.com/help/Content/BMS%20API/bms-api-v2-bms-rest-apis.html
   baseURL: https://api.bms.kaseya.com
   tags:
+  - Tax
+  tags_raw:
   - Taxes
   properties:
   - type: OpenAPI
@@ -15272,6 +15286,8 @@ apis:
   humanURL: https://api.itglue.com/developer/
   baseURL: https://api.itglue.com
   tags:
+  - AccountCodes
+  tags_raw:
   - Account Codes
   properties:
   - type: OpenAPI
@@ -15442,6 +15458,8 @@ apis:
   humanURL: https://api.itglue.com/developer/
   baseURL: https://api.itglue.com
   tags:
+  - CompanyLocations
+  tags_raw:
   - Company Locations
   properties:
   - type: OpenAPI
@@ -15986,6 +16004,8 @@ apis:
   humanURL: https://api.itglue.com/developer/
   baseURL: https://api.itglue.com
   tags:
+  - JobTitle
+  tags_raw:
   - Job Title
   properties:
   - type: OpenAPI
@@ -16430,6 +16450,8 @@ apis:
   humanURL: https://api.itglue.com/developer/
   baseURL: https://api.itglue.com
   tags:
+  - ShippingTypes
+  tags_raw:
   - Shipping Types
   properties:
   - type: OpenAPI
