@@ -1,0 +1,20 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.kaseya.com/request/pricing/
+sources:
+- https://www.kaseya.com/request/pricing/
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120317
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: negotiated
+published: false
+note: Request-pricing page; no numeric prices, only a claim of reducing software costs 'by up to one-third'
+  and a form to request customized pricing.
+plan_count: 1
+plans:
+- name: Custom pricing request
+  price_text: Get pricing
+  period: none
