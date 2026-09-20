@@ -1,0 +1,914 @@
+slug: kaseya
+provider: Kaseya
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 96
+edges:
+- tag: Opportunities
+  spec_file: kaseya-opportunities-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.93
+  evidence: POST /V1.0/Opportunities Opportunities_CreateEntity; GET /v2/crm/opportunities/{id} GetOpportunity;
+    schema OpportunityStatusLookupOutputDto
+  reason: Full CRUD over CRM sales opportunities with status lookups — plainly opportunity and pipeline
+    management.
+- tag: Projects
+  spec_file: kaseya-projects-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.9
+  evidence: POST /V1.0/Projects  Projects_CreateEntity ; GET /v2/project/projects/summary  GetProjectsListSummary
+  reason: Full CRUD and reporting over Project entities in the PSA — direct realisation of project execution/tracking.
+- tag: Quotes
+  spec_file: kaseya-quotes-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.9
+  evidence: POST /V1.0/Quotes  Quotes_CreateEntity, PUT /V1.0/Quotes  Quotes_UpdateEntity, schema QuoteModel
+  reason: Full CRUD over sales quotes in a professional services automation suite — this is the configure/price/quote
+    surface of the lead-to-order process.
+- tag: PhasesChild
+  spec_file: kaseya-phaseschild-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.88
+  evidence: POST /V1.0/Projects/{parentId}/Phases  PhasesChild_CreateEntity
+  reason: Creates and updates phases beneath a project, which is project work breakdown/schedule structuring
+    — project execution and planning.
+- tag: PurchaseOrders
+  spec_file: kaseya-purchaseorders-api-openapi.yml
+  capability_id: BC-500.30
+  capability_id_l1: BC-500
+  capability_name: Purchase Order Management
+  confidence: 0.88
+  evidence: POST /V1.0/PurchaseOrders  PurchaseOrders_CreateEntity; schema PurchaseOrderModel
+  reason: Full lifecycle create/update/query of purchase orders in the PSA business-management product;
+    plainly purchase order management.
+- tag: TasksChild
+  spec_file: kaseya-taskschild-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.88
+  evidence: POST /V1.0/Projects/{parentId}/Tasks  TasksChild_CreateEntity
+  reason: Tasks are created and updated as children of a Project, unambiguously project work-breakdown/task
+    management in the PSA.
+- tag: Tickets
+  spec_file: kaseya-tickets-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.88
+  evidence: GET /v2/servicedesk/tickets/{ticketId}/notes  GetTicketNotes; POST /V1.0/Tickets  Tickets_CreateEntity
+  reason: Full CRUD and query over service-desk tickets in Autotask PSA and Kaseya BMS, including ticket
+    notes, checklists and attachments. This is incident/service-request handling — IT Service Management.
+- tag: ChartOfAccount
+  spec_file: kaseya-chartofaccount-api-openapi.yml
+  capability_id: BC-200.10
+  capability_id_l1: BC-200
+  capability_name: General Ledger Management
+  confidence: 0.85
+  evidence: GET /v2/admin/finance/chartofaccounts  GetChartOfAccounts; GetChartOfAccountTypes; schema
+    ChartOfAccountOutputDto
+  reason: Operations expose the finance chart of accounts and account types under /admin/finance, which
+    is core general ledger / chart-of-accounts structure maintenance rather than any technical construct.
+- tag: PriceListMaterialCodes
+  spec_file: kaseya-pricelistmaterialcodes-api-openapi.yml
+  capability_id: BC-440.20
+  capability_id_l1: BC-440
+  capability_name: Price List Management
+  confidence: 0.85
+  evidence: PUT /V1.0/PriceListMaterialCodes  PriceListMaterialCodes_UpdateEntity; PriceListMaterialCodeModel
+  reason: Maintains the price-list entries for material codes, i.e. price book maintenance for billable
+    items.
+- tag: PriceListProductTiers
+  spec_file: kaseya-pricelistproducttiers-api-openapi.yml
+  capability_id: BC-440.20
+  capability_id_l1: BC-440
+  capability_name: Price List Management
+  confidence: 0.85
+  evidence: PriceListProductTierModel; PATCH /V1.0/PriceListProductTiers
+  reason: Maintains tiered pricing rows within the PSA price list, which is price book / list price maintenance.
+- tag: PriceListProducts
+  spec_file: kaseya-pricelistproducts-api-openapi.yml
+  capability_id: BC-440.20
+  capability_id_l1: BC-440
+  capability_name: Price List Management
+  confidence: 0.85
+  evidence: PriceListProductModel; PUT /V1.0/PriceListProducts  PriceListProducts_UpdateEntity
+  reason: Read and update of product entries on the price list — list price / price book maintenance.
+- tag: QueueTickets
+  spec_file: kaseya-queuetickets-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.85
+  evidence: GET /v2/servicedesk/queuetickets  GetQueueTickets; POST /v2/servicedesk/queuetickets/search  SearchQueueTickets;
+    TicketListDto, TicketFilterDto
+  reason: Service-desk ticket retrieval and search within queues in the BMS PSA — classic IT service management
+    incident/ticket handling for MSPs and internal IT teams.
+- tag: Quotations
+  spec_file: kaseya-quotations-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.85
+  evidence: GET /v2/crm/quotes/{quotationId}  GetQuotation; POST /v2/crm/quotes/{quotationId}/lineItems/{itemTypeId}/{distributerTypeId}  PostQuotationLineItem
+  reason: CRM quotation header and line-item management (retrieve, create, update quote lines with item
+    and distributor types) — configure/price/quote functionality in the sales process.
+- tag: Servicedesk
+  spec_file: kaseya-servicedesk-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.85
+  evidence: POST /v2/servicedesk/tickets/{ticketId}/ticketresolution/generate; POST /v2/servicedesk/tickets/notes/rephrase
+  reason: Operations create, retrieve and AI-generate ticket resolutions and summaries for service-desk
+    tickets — plainly incident/service-request handling, i.e. IT Service Management.
+- tag: Tasks
+  spec_file: kaseya-tasks-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.85
+  evidence: POST /v2/project/tasks  GetTasksList; GET /v2/project/tasks/{taskId}/relateditems
+  reason: Both Autotask PSA and BMS surfaces expose project task lists and related items (TaskModel),
+    i.e. work item tracking inside professional-services project delivery — Project Management.
+- tag: TicketChangeRequestApprovals
+  spec_file: kaseya-ticketchangerequestapprovals-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.85
+  evidence: GET /V1.0/TicketChangeRequestApprovals/query — TicketChangeRequestApprovalModel
+  reason: Change request approvals attached to service tickets are the change-management element of ITSM,
+    which BC-600.30 explicitly covers (incident, problem, change).
+- tag: TicketChangeRequestApprovalsChild
+  spec_file: kaseya-ticketchangerequestapprovalschild-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.85
+  evidence: POST /V1.0/Tickets/{parentId}/ChangeRequestApprovals  TicketChangeRequestApprovalsChild_CreateEntity
+  reason: Creates and deletes change-request approvals on a ticket — change approval workflow in an IT
+    service management (PSA) tool.
+- tag: TicketNotes
+  spec_file: kaseya-ticketnotes-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.85
+  evidence: GET /V1.0/TicketNotes/query  TicketNotes_UrlParameterQuery, schema TicketNoteModel
+  reason: 'Datto Autotask PSA service-desk ticketing: notes recorded against IT service tickets, which
+    is incident/service-request handling under IT Service Management.'
+- tag: TicketNotesChild
+  spec_file: kaseya-ticketnoteschild-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.85
+  evidence: POST /V1.0/Tickets/{parentId}/Notes  TicketNotesChild_CreateEntity
+  reason: Creating and updating work notes on IT service tickets in a PSA/service-desk product — incident
+    and service request management under ITSM.
+- tag: Invoices
+  spec_file: kaseya-invoices-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.82
+  evidence: GET /v2/finance/invoices/{id}  GetInvoice ; PUT /V1.0/Invoices  Invoices_UpdateEntity
+  reason: Customer invoice records in the PSA/BMS finance module, including invoice summaries and discount
+    line items — customer invoicing under Accounts Receivable Management.
+- tag: PurchaseOrderItems
+  spec_file: kaseya-purchaseorderitems-api-openapi.yml
+  capability_id: BC-500.30
+  capability_id_l1: BC-500
+  capability_name: Purchase Order Management
+  confidence: 0.82
+  evidence: GET /V1.0/PurchaseOrderItems/query; schema PurchaseOrderItemModel
+  reason: CRUD/query surface over purchase order line items in the PSA product — purchase order management.
+- tag: PurchaseOrderItemsChild
+  spec_file: kaseya-purchaseorderitemschild-api-openapi.yml
+  capability_id: BC-500.30
+  capability_id_l1: BC-500
+  capability_name: Purchase Order Management
+  confidence: 0.82
+  evidence: POST /V1.0/PurchaseOrders/{parentId}/Items  PurchaseOrderItemsChild_CreateEntity
+  reason: Create/update of line items nested under a purchase order — purchase order management.
+- tag: TimeOffRequestsChild
+  spec_file: kaseya-timeoffrequestschild-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.82
+  evidence: POST /V1.0/Resources/{parentId}/TimeOffRequests  TimeOffRequestsChild_CreateEntity
+  reason: Creates and updates time-off (leave) requests for a given resource (staff member), i.e. employee
+    leave administration under HR operations.
+- tag: Accounts
+  spec_file: kaseya-accounts-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.8
+  evidence: GET /v2/crm/accounts/lookup, POST /v2/crm/accounts PostAccount, GET /v2/crm/accounts/{accountId}/contacts/lookup,
+    schemas AccountPostInputDto, AccountAddressOutputDto, ContactLookupOutputDto
+  reason: CRUD over CRM account master records with associated locations and contacts — this is customer
+    master data maintenance in the PSA's CRM module.
+- tag: K1AccessControls
+  spec_file: kaseya-k1accesscontrols-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: GetK1AccessControlSettings; GetK1AccessControlAccessGroups; PostK1AccessControlMapping; GetK1LauncherUrl
+  reason: Operations manage access control settings, access groups and identity mappings between Kaseya
+    One and the product, plus an SSO launcher URL — identity and access management, not a business-domain
+    capability.
+- tag: PriceListRoles
+  spec_file: kaseya-pricelistroles-api-openapi.yml
+  capability_id: BC-440.20
+  capability_id_l1: BC-440
+  capability_name: Price List Management
+  confidence: 0.8
+  evidence: PriceListRoleModel; PUT /V1.0/PriceListRoles  PriceListRoles_UpdateEntity
+  reason: Maintains billing rates for labour roles within the price list, again price book maintenance
+    rather than a role/permission construct (the schema is PriceListRoleModel, not a security role).
+- tag: ProductQuotations
+  spec_file: kaseya-productquotations-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.8
+  evidence: GET /v2/crm/productquotes/summary  GetProductQuotationsListSummary
+  reason: BMS CRM endpoints retrieving product quotations and quote summaries — the quoting step of the
+    lead-to-order motion, i.e. quote management.
+- tag: QuoteItems
+  spec_file: kaseya-quoteitems-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.8
+  evidence: GET /V1.0/QuoteItems/query  QuoteItems_UrlParameterQuery; QuoteItemModel
+  reason: Autotask PSA entity API for querying quote line items, which are the priced components of a
+    customer sales quote — quote and configuration management. Operations are generic query/metadata endpoints,
+    so slightly lower confidence.
+- tag: QuoteItemsChild
+  spec_file: kaseya-quoteitemschild-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.8
+  evidence: POST /V1.0/Quotes/{parentId}/Items  QuoteItemsChild_CreateEntity; DELETE /V1.0/Quotes/{parentId}/Items/{id}
+  reason: Full CRUD over line items belonging to a parent Quote in Autotask PSA — building and maintaining
+    customer sales quotes, i.e. quote and configuration management.
+- tag: TimeOffRequests
+  spec_file: kaseya-timeoffrequests-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.8
+  evidence: 'GET /V1.0/TimeOffRequests/query ... schemas: TimeOffRequestModel'
+  reason: Operations query and inspect employee time-off (leave) request records in the PSA, which is
+    leave administration within HR operations/employee records. Sub-capability choice (HR Operations vs.
+    Compensation & Benefits) carries some ambiguity.
+- tag: CompanyContactsChild
+  spec_file: kaseya-companycontactschild-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.78
+  evidence: POST /V1.0/Companies/{parentId}/Contacts  CompanyContactsChild_CreateEntity ... ContactModel
+  reason: CRUD over contact records belonging to a customer company in the PSA — maintenance of customer
+    contact master data.
+- tag: Contacts
+  spec_file: kaseya-contacts-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.78
+  evidence: GET /v2/crm/contacts/summary  GetContactsListSummary; PUT /v2/crm/contacts/{id}  PutContact
+  reason: The operations read and maintain customer contact master records in the PSA/CRM (paths explicitly
+    under /crm/contacts, schema ContactModel), which is customer data management. Some ambiguity as contacts
+    also feed sales and service processes.
+- tag: InventoryStockedItems
+  spec_file: kaseya-inventorystockeditems-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.78
+  evidence: GET /V1.0/InventoryStockedItems/query — schema InventoryStockedItemModel
+  reason: Autotask PSA entity representing stocked inventory units held against inventory products/locations;
+    query surface over stock holdings realises Inventory Management. Which L2 (stock level vs accuracy)
+    is not determinable, so L1 only.
+- tag: InventoryStockedItemsChild
+  spec_file: kaseya-inventorystockeditemschild-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.78
+  evidence: GET /V1.0/InventoryProducts/{parentId}/StockedItems ; PUT /V1.0/InventoryProducts/{parentId}/StockedItems
+  reason: Read and update of stocked item records under an inventory product — maintenance of stock holdings,
+    Inventory Management. No single L2 clearly evidenced.
+- tag: TaskPredecessorsChild
+  spec_file: kaseya-taskpredecessorschild-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.78
+  evidence: POST /V1.0/Tasks/{parentId}/Predecessors  TaskPredecessorsChild_CreateEntity
+  reason: Creates/updates predecessor dependencies on a project task, i.e. maintaining the project schedule
+    network. Maps to project execution and planning.
+- tag: TimeOffRequestsApproveChild
+  spec_file: kaseya-timeoffrequestsapprovechild-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.78
+  evidence: GET /V1.0/TimeOffRequests/{parentId}/Approve  TimeOffRequestsApproveChild_CreateEntity
+  reason: Creates an approval against a parent time-off request — leave request approval workflow, part
+    of HR operations/leave administration.
+- tag: TimeOffRequestsRejectChild
+  spec_file: kaseya-timeoffrequestsrejectchild-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.78
+  evidence: POST /V1.0/TimeOffRequests/{parentId}/Reject  TimeOffRequestsRejectChild_CreateEntity
+  reason: Posts a rejection (TimeOffRequestRejectModel) against a parent leave request — leave request
+    approval/rejection workflow in HR operations.
+- tag: /v2/audit
+  spec_file: kaseya-v2-audit-api-openapi.yml
+  capability_id: BC-600
+  capability_id_l1: BC-600
+  capability_name: Information Technology Management
+  confidence: 0.75
+  evidence: '"Fetches audit data of the generic device identified the given device Uid"; "getDeviceAuditSoftware  Fetches
+    audited software"; schemas LogicalDisk, Bios, PhysicalMemory, Software'
+  reason: Endpoint hardware/software audit (inventory) data from an RMM tool — an IT management capability.
+    Ambiguous between IT Infrastructure Management and IT Application/Operations Management, so L2 is
+    left unmapped.
+- tag: Companies
+  spec_file: kaseya-companies-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.75
+  evidence: POST /V1.0/Companies  Companies_CreateEntity; schema QueryActionResult_CompanyModel_Account
+  reason: Full CRUD over the PSA customer account master record (CompanyModel maps to the underlying Account
+    entity), i.e. maintenance of the customer master in a professional-services/CRM system.
+- tag: CompanyWebhooks
+  spec_file: kaseya-companywebhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.75
+  evidence: POST /V1.0/CompanyWebhooks  CompanyWebhooks_CreateEntity; DELETE /V1.0/CompanyWebhooks/{id}  CompanyWebhooks_DeleteEntity
+  reason: Create, update and delete of webhook subscriptions that push Company entity events to integrator
+    endpoints — squarely outbound webhook and event subscription lifecycle management.
+- tag: InventoryItems
+  spec_file: kaseya-inventoryitems-api-openapi.yml
+  capability_id: BC-530.10
+  capability_id_l1: BC-530
+  capability_name: Stock Level Management
+  confidence: 0.75
+  evidence: POST /V1.0/InventoryItems  InventoryItems_CreateEntity ... InventoryItemModel
+  reason: Autotask PSA inventory items represent quantities of stocked products held at inventory locations,
+    with full create/update lifecycle. This is stock-level management within Inventory Management; some
+    ambiguity between stock-level and allocation sub-capabilities.
+- tag: InventoryTransfers
+  spec_file: kaseya-inventorytransfers-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.75
+  evidence: POST /V1.0/InventoryTransfers — InventoryTransferModel
+  reason: Create and query inventory transfer records moving stock between locations in the PSA inventory
+    module; Inventory Management at L1 (transfer is not cleanly one of the listed L2s).
+- tag: MyTickets
+  spec_file: kaseya-mytickets-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.75
+  evidence: GET /v2/servicedesk/mytickets GetMyTickets; POST /v2/clientportal/mytickets/search SearchClientPortalMyTickets
+  reason: Service-desk ticket retrieval and search, including client-portal ticket views — this is ITSM
+    ticket handling in a PSA product; some ambiguity with customer inquiry management.
+- tag: Phases
+  spec_file: kaseya-phases-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.75
+  evidence: ItemQueryResultModel_PhaseModel_Phase; GET /V1.0/Phases/query
+  reason: PhaseModel in Autotask PSA is the project phase entity (the sibling child endpoint is /V1.0/Projects/{parentId}/Phases),
+    so these query operations serve project planning and tracking. Slight discount because this tag itself
+    only shows read/query operations.
+- tag: PriceListServiceBundles
+  spec_file: kaseya-pricelistservicebundles-api-openapi.yml
+  capability_id: BC-440.20
+  capability_id_l1: BC-440
+  capability_name: Price List Management
+  confidence: 0.75
+  evidence: GET /V1.0/PriceListServiceBundles/query — schema "PriceListServiceBundleModel"
+  reason: Autotask PSA entity holding price-list entries for service bundles; the operations query and
+    update priced catalogue rows, which is price book / price list maintenance rather than any operational
+    capability.
+- tag: PriceListServices
+  spec_file: kaseya-pricelistservices-api-openapi.yml
+  capability_id: BC-440.20
+  capability_id_l1: BC-440
+  capability_name: Price List Management
+  confidence: 0.75
+  evidence: PUT /V1.0/PriceListServices  PriceListServices_UpdateEntity — schema "PriceListServiceModel"
+  reason: CRUD over price-list rows for services, i.e. maintenance of list prices in the PSA price book,
+    matching Price List Management.
+- tag: PurchaseApprovals
+  spec_file: kaseya-purchaseapprovals-api-openapi.yml
+  capability_id: BC-500.30
+  capability_id_l1: BC-500
+  capability_name: Purchase Order Management
+  confidence: 0.75
+  evidence: PurchaseApprovalModel ; PUT /V1.0/PurchaseApprovals  PurchaseApprovals_UpdateEntity
+  reason: Autotask entity governing approval of purchase orders in the procurement module — PO approval
+    step of Purchase Order Management.
+- tag: PurchaseOrderItemReceiving
+  spec_file: kaseya-purchaseorderitemreceiving-api-openapi.yml
+  capability_id: BC-500.40
+  capability_id_l1: BC-500
+  capability_name: Procure-to-Pay Operations Management
+  confidence: 0.75
+  evidence: PurchaseOrderItemReceivingModel ; Expression_Func_PurchaseOrderReceive_Int64
+  reason: Records receipt of purchase order line items, i.e. the goods-receipt step of procure-to-pay
+    operations.
+- tag: RMMIntegration
+  spec_file: kaseya-rmmintegration-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.75
+  evidence: POST /v2/rmm/{integrationType}/tickets  PostTickets, POST /v2/rmm/{integrationType}/tickets/resolve  ResolveTickets,
+    POST /v2/rmm/{integrationType}/assets  PostAssets
+  reason: Ingests remote-monitoring events into the PSA as service tickets and synchronises managed assets,
+    i.e. incident/ticket handling and CMDB feed for an IT service desk. Maps to IT Service Management;
+    some ambiguity because asset sync also touches infrastructure management.
+- tag: ServiceDeskTemplates
+  spec_file: kaseya-servicedesktemplates-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.75
+  evidence: GET /v2/servicedesk/templates/tickets/lookup  GetTicketTemplateLookups; TicketNoteTemplateDetailsOutputDto
+  reason: Service-desk ticket, note and time-entry templates in Kaseya BMS — templating for ticket handling
+    is part of IT Service Management (incident/service request handling). Read-only template lookups temper
+    confidence slightly.
+- tag: TaskPredecessors
+  spec_file: kaseya-taskpredecessors-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.75
+  evidence: 'GET /V1.0/TaskPredecessors/query ... schemas: TaskPredecessorModel'
+  reason: Task predecessor relationships express dependency links between project tasks — classic project
+    scheduling/planning data in the Autotask PSA project module, so Project Management.
+- tag: TicketAdditionalConfigurationItems
+  spec_file: kaseya-ticketadditionalconfigurationitems-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.75
+  evidence: GET /V1.0/TicketAdditionalConfigurationItems/query; schema TicketAdditionalConfigurationItemModel
+    ... TicketAdditionalInstalledProduct
+  reason: Links service-desk tickets to configuration items / installed products in an MSP PSA — core
+    ITSM ticket and CI association rather than any generic contact or product capability.
+- tag: TicketAdditionalConfigurationItemsChild
+  spec_file: kaseya-ticketadditionalconfigurationitemschild-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.75
+  evidence: POST /V1.0/Tickets/{parentId}/AdditionalConfigurationItems  TicketAdditionalConfigurationItemsChild_CreateEntity
+  reason: Child collection attaching additional configuration items to a specific ticket; this is IT service
+    management ticket handling with CI linkage.
+- tag: TicketCategories
+  spec_file: kaseya-ticketcategories-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.75
+  evidence: GET /V1.0/TicketCategories/query; schema TicketCategoryModel
+  reason: Maintains ticket category definitions that drive service-desk ticket classification and layouts
+    — configuration of the ITSM ticketing process.
+- tag: TicketChecklistItems
+  spec_file: kaseya-ticketchecklistitems-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.75
+  evidence: GET /V1.0/TicketChecklistItems/query — TicketChecklistItemModel
+  reason: Checklist tasks on service-desk tickets, part of ticket resolution workflow in the Autotask
+    PSA — IT Service Management.
+- tag: TicketChecklistItemsChild
+  spec_file: kaseya-ticketchecklistitemschild-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.75
+  evidence: POST /V1.0/Tickets/{parentId}/ChecklistItems  TicketChecklistItemsChild_CreateEntity
+  reason: Manages checklist items within a specific ticket, supporting structured ticket resolution in
+    the PSA service desk (ITSM).
+- tag: TicketNoteAttachmentsChild
+  spec_file: kaseya-ticketnoteattachmentschild-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.75
+  evidence: POST /V1.0/TicketNotes/{parentId}/Attachments  TicketNoteAttachmentsChild_CreateEntity, schema
+    TicketNoteAttachmentModel
+  reason: Autotask PSA is a service-desk/PSA product; these operations attach files to service-ticket
+    notes, i.e. documentation within incident/service request handling (IT Service Management). Slightly
+    lower confidence because attachment handling is partly generic file plumbing.
+- tag: /v2/device
+  spec_file: kaseya-v2-device-api-openapi.yml
+  capability_id: BC-600.40
+  capability_id_l1: BC-600
+  capability_name: IT Operations Management
+  confidence: 0.72
+  evidence: '"createQuickJob  Creates a quick job on the device"; "getDevicePatches"; "getDeviceOpenAlerts  Fetches
+    the open alerts of the device"; schema PatchManagement'
+  reason: 'Remote monitoring and management of endpoints: patch status, open/resolved alerts, and job
+    execution — day-to-day IT operations monitoring and automation, not business-domain alerting.'
+- tag: /v3/device
+  spec_file: kaseya-v3-device-api-openapi.yml
+  capability_id: BC-600
+  capability_id_l1: BC-600
+  capability_name: Information Technology Management
+  confidence: 0.72
+  evidence: '"getByUid  Fetches data of the device identified by the given device Uid"; "setUdfFields  Sets
+    the user defined fields of a device"; schemas DeviceV3, PatchManagement, Antivirus'
+  reason: Managed endpoint records with patch and antivirus state — IT management of the device estate;
+    sub-capability left open between infrastructure and operations management.
+- tag: AccountInvoiceSettings
+  spec_file: kaseya-accountinvoicesettings-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.72
+  evidence: '"GET /V1.0/Companies/{id}/invoiceSettings"; "AccountInvoiceSettings_AddContactRecipients";
+    schema UpdateAccountInvoiceSettingsModel'
+  reason: Per-customer-company invoicing configuration and invoice recipient management in the PSA — customer
+    invoicing setup, i.e. accounts receivable. Could alternatively sit under billing/invoicing for services,
+    hence not higher.
+- tag: HardwareAsset
+  spec_file: kaseya-hardwareasset-api-openapi.yml
+  capability_id: BC-600
+  capability_id_l1: BC-600
+  capability_name: Information Technology Management
+  confidence: 0.72
+  evidence: POST /v2/servicedesk/hardwareasset  PostHardwareAsset; GET /v2/servicedesk/hardwareasset/{assetId}/tickets;
+    GET /v2/servicedesk/hardwareasset/{deviceId}/status
+  reason: CRUD over hardware/device asset records under the service-desk area, with linkage to tickets
+    and device status — IT asset/configuration management for MSP and internal IT operations. L2 left
+    null as the evidence straddles IT Service Management (CMDB/tickets) and IT Infrastructure Management
+    (device register).
+- tag: InventoryStockedItemsAddChild
+  spec_file: kaseya-inventorystockeditemsaddchild-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.72
+  evidence: POST /V1.0/InventoryProducts/{parentId}/StockedItemsAdd — InventoryStockedItemAddModel
+  reason: Creates stock-addition records against an inventory product, i.e. receiving/adjusting stock
+    quantities — Inventory Management at L1.
+- tag: InventoryStockedItemsRemoveChild
+  spec_file: kaseya-inventorystockeditemsremovechild-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.72
+  evidence: POST /V1.0/InventoryProducts/{parentId}/StockedItemsRemove — InventoryStockedItemRemoveModel
+  reason: Creates stock-removal records against an inventory product, reducing on-hand stock — Inventory
+    Management at L1.
+- tag: InvoiceMarkupApiIntegration
+  spec_file: kaseya-invoicemarkupapiintegration-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.72
+  evidence: GET /V1.0/Invoices/{id}/InvoiceMarkupHtml ; GET /V1.0/Invoices/{id}/InvoicePdf
+  reason: Retrieval of rendered customer invoice documents (HTML/XML/PDF) from the PSA billing module
+    — invoice generation/delivery under Accounts Receivable Management.
+- tag: PO
+  spec_file: kaseya-po-api-openapi.yml
+  capability_id: BC-500.30
+  capability_id_l1: BC-500
+  capability_name: Purchase Order Management
+  confidence: 0.72
+  evidence: GET /v2/inventory/purchaseorders/lookup  GetPOLookups
+  reason: The single operation exposes purchase-order lookup data in the BMS inventory module, so the
+    object of the API is procurement purchase orders. Confidence held below 0.8 because it is only a lookup
+    helper rather than PO creation/approval.
+- tag: PurchaseOrderItemReceivingChild
+  spec_file: kaseya-purchaseorderitemreceivingchild-api-openapi.yml
+  capability_id: BC-500.40
+  capability_id_l1: BC-500
+  capability_name: Procure-to-Pay Operations Management
+  confidence: 0.72
+  evidence: POST /V1.0/PurchaseOrderItems/{parentId}/Receiving  PurchaseOrderItemReceivingChild_CreateEntity;
+    schema PurchaseOrderItemReceivingModel
+  reason: Operations record receipt of purchase order line items against a PO, which is procure-to-pay
+    execution (receipts) rather than PO creation itself.
+- tag: QbdInvoices
+  spec_file: kaseya-qbdinvoices-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.72
+  evidence: GET /v2/integration/qbd/invoices  GetInvoices; PUT /v2/integration/qbd/invoices  UpdateInvoiceQbReference
+  reason: Exports customer invoices and their line detail to the accounting system and records the QuickBooks
+    reference — customer invoicing / receivables accounting.
+- tag: ServiceCallTicketsChild
+  spec_file: kaseya-servicecallticketschild-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.72
+  evidence: GET /V1.0/ServiceCalls/{parentId}/Tickets  ServiceCallTicketsChild_Query; schema ServiceCallTicketModel
+  reason: Autotask PSA surface associating support tickets with scheduled service calls — ticket/service-desk
+    workflow for an MSP, which realises IT Service Management. Some ambiguity as the entity is primarily
+    a scheduling link, hence moderate confidence.
+- tag: /v2/alert
+  spec_file: kaseya-v2-alert-api-openapi.yml
+  capability_id: BC-600.40
+  capability_id_l1: BC-600
+  capability_name: IT Operations Management
+  confidence: 0.7
+  evidence: POST /v2/alert/{alertUid}/resolve  resolveAlert  Resolves the alert identified by the given
+    alert Uid.
+  reason: Alerts here are Datto RMM monitoring alerts (schemas AlertMonitorInfo, AlertSourceInfo) raised
+    on managed endpoints and resolved by IT staff — IT operations monitoring, not financial-crime or business
+    alerting. Could arguably sit under IT Service Management incident handling, hence 0.7.
+- tag: Contracts
+  spec_file: kaseya-contracts-api-openapi.yml
+  capability_id: BC-150.10
+  capability_id_l1: BC-150
+  capability_name: Contract Management
+  confidence: 0.7
+  evidence: POST /V1.0/Contracts  Contracts_CreateEntity; GET /v2/finance/contracts/lookup; schema RecurringServicesContractPutOutputDto
+  reason: Create, update, patch and query of customer contracts (including recurring-services contracts)
+    in Autotask PSA and BMS. This is squarely customer contract lifecycle management. Not mapped to a
+    Software & Technology subscription capability because the entity is a general PSA contract record
+    covering time-and-materials, fixed-price and recurring types, not a SaaS subscription construct.
+- tag: Employees
+  spec_file: kaseya-employees-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.7
+  evidence: GET /v2/hr/employees/lookup  GetEmployeesLookup
+  reason: The operations sit under the BMS /v2/hr/ namespace and return employee records, so the surface
+    exposes employee master data held in the HR module. Only lookup/search-select operations exist, so
+    this is HR record access rather than a broader HCM process — moderate confidence.
+- tag: InventoryStockedItemsTransferChild
+  spec_file: kaseya-inventorystockeditemstransferchild-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.7
+  evidence: POST /V1.0/InventoryProducts/{parentId}/StockedItemsTransfer — InventoryStockedItemTransferModel
+  reason: Creates transfers of stocked items between inventory locations — stock movement within Inventory
+    Management.
+- tag: K1User
+  spec_file: kaseya-k1user-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /v2/kaseya-one/users/search  K1GetUsersList; POST /v2/kaseya-one/users/deprovisioning/notifications
+  reason: User listing plus deprovisioning notifications is user account lifecycle (leaver) handling across
+    federated Kaseya One identity — identity and access management rather than HR record keeping.
+- tag: KnowledgeBaseArticles
+  spec_file: kaseya-knowledgebasearticles-api-openapi.yml
+  capability_id: BC-830
+  capability_id_l1: BC-830
+  capability_name: Knowledge Management
+  confidence: 0.7
+  evidence: GET /V1.0/KnowledgeBaseArticles/query  KnowledgeBaseArticles_UrlParameterQuery; schema KnowledgeBaseArticleModel
+  reason: Query surface over knowledge base articles in the PSA — organisational knowledge artefacts.
+    Read-only querying does not clearly indicate capture vs curation vs self-service delivery, so no sub-capability.
+- tag: KnowledgeBaseCategories
+  spec_file: kaseya-knowledgebasecategories-api-openapi.yml
+  capability_id: BC-830.20
+  capability_id_l1: BC-830
+  capability_name: Knowledge Curation & Taxonomy Management
+  confidence: 0.7
+  evidence: POST /V1.0/KnowledgeBaseCategories  KnowledgeBaseCategories_CreateEntity; schema KnowledgeBaseCategoryModel
+  reason: Managing the category structure that classifies knowledge base articles is knowledge taxonomy/curation
+    within Knowledge Management.
+- tag: OpportunityCategories
+  spec_file: kaseya-opportunitycategories-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.7
+  evidence: GET /V1.0/OpportunityCategories/query; schema OpportunityCategoryModel
+  reason: Maintains classification categories applied to sales opportunities — configuration within opportunity/pipeline
+    management.
+- tag: ProjectNotes
+  spec_file: kaseya-projectnotes-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.7
+  evidence: GET /V1.0/ProjectNotes/query ; schema ProjectNoteModel
+  reason: Notes recorded against projects in the Autotask PSA project module — part of project tracking
+    and status documentation.
+- tag: ProjectNotesChild
+  spec_file: kaseya-projectnoteschild-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.7
+  evidence: POST /V1.0/Projects/{parentId}/Notes  ProjectNotesChild_CreateEntity
+  reason: Create/update notes under a parent Project; project progress documentation within PSA project
+    management.
+- tag: QuoteTemplates
+  spec_file: kaseya-quotetemplates-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.7
+  evidence: GET /V1.0/QuoteTemplates/query, schema QuoteTemplateModel and QueryActionResult_QuoteTemplateModel_QuoteTemplate
+  reason: Read-only catalogue of quote document templates within a PSA's quoting module — directly supports
+    quote generation, so Quote & Configuration Management.
+- tag: ResourceTimeOffAdditionalChild
+  spec_file: kaseya-resourcetimeoffadditionalchild-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.7
+  evidence: PUT /V1.0/Resources/{parentId}/TimeOffAdditional  ResourceTimeOffAdditionalChild_UpdateEntity
+  reason: Read and update of additional time-off records for an individual staff resource (ResourceTimeOffAdditionalModel)
+    — employee leave/absence record administration, part of HR Operations.
+- tag: ResourceTimeOffApprovers
+  spec_file: kaseya-resourcetimeoffapprovers-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.7
+  evidence: GET /V1.0/ResourceTimeOffApprovers/query ... ResourceTimeOffApproverModel
+  reason: Entity defines who approves a staff resource's time-off requests, i.e. leave-approval administration
+    for employees — HR Operations Management.
+- tag: ResourceTimeOffApproversChild
+  spec_file: kaseya-resourcetimeoffapproverschild-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.7
+  evidence: GET /V1.0/Resources/{parentId}/TimeOffApprovers  ResourceTimeOffApproversChild_Query
+  reason: Per-resource list of time-off approvers (ResourceTimeOffApproverModel); leave approval routing
+    for employees sits in HR Operations Management.
+- tag: ResourceTimeOffBalancesChild
+  spec_file: kaseya-resourcetimeoffbalanceschild-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.7
+  evidence: GET /V1.0/Resources/{parentId}/TimeOffBalances — ItemQueryResultModel_ResourceTimeOffBalanceModel_ResourceTimeOffBalance
+  reason: Exposes per-staff-member (resource) time-off / leave balances by year, which is employee record
+    and leave administration territory within HR operations rather than any IT capability. Confidence
+    moderated because the surface is read-only lookup within a PSA tool.
+- tag: SalesAccelerator
+  spec_file: kaseya-salesaccelerator-api-openapi.yml
+  capability_id: BC-410
+  capability_id_l1: BC-410
+  capability_name: Sales Management
+  confidence: 0.7
+  evidence: GET /v2/crm/salesaccelerator/dashboard/summary  GetSalesAcceleratorSummary — SalesAcceleratorAccountsSummaryDto,
+    SalesAcceleratorHighestServiceDto
+  reason: CRM dashboard summarising accounts and services to drive selling activity — clearly sales management,
+    but the summaries could serve pipeline generation or sales analytics, so no L2 is asserted.
+- tag: SalesOrdersChild
+  spec_file: kaseya-salesorderschild-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.7
+  evidence: GET /V1.0/Opportunities/{parentId}/SalesOrders  SalesOrdersChild_Query
+  reason: Sales orders are nested under Opportunities in the path, directly tying them to the opportunity/deal
+    lifecycle in the CRM.
+- tag: SurveyResults
+  spec_file: kaseya-surveyresults-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.7
+  evidence: GET /V1.0/SurveyResults/query  SurveyResults_UrlParameterQuery; schema SurveyResultsModel
+  reason: Query access to survey response results in a service-desk/PSA system — the captured feedback
+    from customers after service delivery, i.e. customer feedback (survey/NPS) management. Read-only generic
+    query surface caps confidence.
+- tag: Surveys
+  spec_file: kaseya-surveys-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.7
+  evidence: GET /V1.0/Surveys/query  Surveys_UrlParameterQuery; schema SurveyModel
+  reason: Exposes the survey definitions used by the PSA to solicit customer satisfaction feedback on
+    service tickets, mapping to customer feedback/survey management. Evidence is a plain query surface,
+    so 0.7.
+- tag: TaskSecondaryResources
+  spec_file: kaseya-tasksecondaryresources-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.7
+  evidence: 'GET /V1.0/TaskSecondaryResources/query ... schemas: TaskSecondaryResourceModel'
+  reason: Additional resources assigned to project tasks in the PSA — task resource assignment within
+    project execution. Could arguably be resource/capacity planning, hence not higher.
+- tag: TaskSecondaryResourcesChild
+  spec_file: kaseya-tasksecondaryresourceschild-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.7
+  evidence: POST /V1.0/Tasks/{parentId}/SecondaryResources  TaskSecondaryResourcesChild_CreateEntity
+  reason: Assigning and removing secondary resources on a specific project task; project task staffing/execution
+    management.
+- tag: TicketAdditionalContacts
+  spec_file: kaseya-ticketadditionalcontacts-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.7
+  evidence: GET /V1.0/TicketAdditionalContacts/query; schema TicketAdditionalContactModel
+  reason: Manages additional contacts associated with service tickets in the PSA service desk. Contacts
+    here are ticket participants, so the capability is ITSM ticket management, not customer master data.
+- tag: TicketAdditionalContactsChild
+  spec_file: kaseya-ticketadditionalcontactschild-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.7
+  evidence: POST /V1.0/Tickets/{parentId}/AdditionalContacts  TicketAdditionalContactsChild_CreateEntity
+  reason: Adds/removes additional contacts under a parent ticket — ticket collaboration data within IT
+    service management.
+- tag: TicketChecklistLibraries
+  spec_file: kaseya-ticketchecklistlibraries-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.7
+  evidence: POST /V1.0/TicketChecklistLibraries  TicketChecklistLibraries_CreateEntity
+  reason: Reusable checklist libraries applied to service tickets — standardised ticket workflow templates
+    in the PSA service desk, i.e. IT Service Management.
+- tag: TicketChecklistLibrariesChild
+  spec_file: kaseya-ticketchecklistlibrarieschild-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.7
+  evidence: POST /V1.0/Tickets/{parentId}/ChecklistLibraries  TicketChecklistLibrariesChild_CreateEntity
+  reason: Applies a checklist library to an individual ticket, part of service-desk ticket handling in
+    the PSA (ITSM).
+- tag: TicketHistory
+  spec_file: kaseya-tickethistory-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.7
+  evidence: GET /V1.0/TicketHistory/query — TicketHistoryModel
+  reason: Audit history of service-desk ticket changes in the PSA; a ticket lifecycle record supporting
+    IT Service Management, though it is a read-only audit surface.
+- tag: TicketSecondaryResources
+  spec_file: kaseya-ticketsecondaryresources-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.7
+  evidence: GET /V1.0/TicketSecondaryResources/query, schema TicketSecondaryResourceModel
+  reason: Associates additional resources (technicians) with service-desk tickets in the PSA, i.e. ticket
+    assignment within IT Service Management. Confidence tempered as 'Resource' could also be read as a
+    scheduling/staffing construct.
+- tag: TicketSecondaryResourcesChild
+  spec_file: kaseya-ticketsecondaryresourceschild-api-openapi.yml
+  capability_id: BC-600.30
+  capability_id_l1: BC-600
+  capability_name: IT Service Management
+  confidence: 0.7
+  evidence: POST /V1.0/Tickets/{parentId}/SecondaryResources  TicketSecondaryResourcesChild_CreateEntity
+  reason: Adds/removes secondary assigned resources on a specific ticket, a ticket-assignment function
+    of IT Service Management in the Autotask PSA service desk.
