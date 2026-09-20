@@ -50,7 +50,8 @@ edges:
   reason: Creates and updates phases beneath a project, which is project work breakdown/schedule structuring
     — project execution and planning.
 - tag: PurchaseOrders
-  spec_file: kaseya-purchaseorders-api-openapi.yml
+  spec_file: kaseya-purchase-orders-api-openapi.yml
+  reanchored_from: kaseya-purchaseorders-api-openapi.yml
   capability_id: BC-500.30
   capability_id_l1: BC-500
   capability_name: Purchase Order Management
@@ -257,7 +258,8 @@ edges:
   reason: BMS CRM endpoints retrieving product quotations and quote summaries — the quoting step of the
     lead-to-order motion, i.e. quote management.
 - tag: QuoteItems
-  spec_file: kaseya-quoteitems-api-openapi.yml
+  spec_file: kaseya-quote-items-api-openapi.yml
+  reanchored_from: kaseya-quoteitems-api-openapi.yml
   capability_id: BC-410.40
   capability_id_l1: BC-410
   capability_name: Quote & Configuration Management
@@ -276,7 +278,8 @@ edges:
   reason: Full CRUD over line items belonging to a parent Quote in Autotask PSA — building and maintaining
     customer sales quotes, i.e. quote and configuration management.
 - tag: TimeOffRequests
-  spec_file: kaseya-timeoffrequests-api-openapi.yml
+  spec_file: kaseya-time-off-requests-api-openapi.yml
+  reanchored_from: kaseya-timeoffrequests-api-openapi.yml
   capability_id: BC-300.70
   capability_id_l1: BC-300
   capability_name: HR Operations Management
@@ -380,7 +383,8 @@ edges:
   reason: Create, update and delete of webhook subscriptions that push Company entity events to integrator
     endpoints — squarely outbound webhook and event subscription lifecycle management.
 - tag: InventoryItems
-  spec_file: kaseya-inventoryitems-api-openapi.yml
+  spec_file: kaseya-inventory-items-api-openapi.yml
+  reanchored_from: kaseya-inventoryitems-api-openapi.yml
   capability_id: BC-530.10
   capability_id_l1: BC-530
   capability_name: Stock Level Management
@@ -701,7 +705,8 @@ edges:
   reason: User listing plus deprovisioning notifications is user account lifecycle (leaver) handling across
     federated Kaseya One identity — identity and access management rather than HR record keeping.
 - tag: KnowledgeBaseArticles
-  spec_file: kaseya-knowledgebasearticles-api-openapi.yml
+  spec_file: kaseya-knowledge-base-articles-api-openapi.yml
+  reanchored_from: kaseya-knowledgebasearticles-api-openapi.yml
   capability_id: BC-830
   capability_id_l1: BC-830
   capability_name: Knowledge Management
@@ -710,7 +715,8 @@ edges:
   reason: Query surface over knowledge base articles in the PSA — organisational knowledge artefacts.
     Read-only querying does not clearly indicate capture vs curation vs self-service delivery, so no sub-capability.
 - tag: KnowledgeBaseCategories
-  spec_file: kaseya-knowledgebasecategories-api-openapi.yml
+  spec_file: kaseya-knowledge-base-categories-api-openapi.yml
+  reanchored_from: kaseya-knowledgebasecategories-api-openapi.yml
   capability_id: BC-830.20
   capability_id_l1: BC-830
   capability_name: Knowledge Curation & Taxonomy Management
@@ -746,7 +752,8 @@ edges:
   reason: Create/update notes under a parent Project; project progress documentation within PSA project
     management.
 - tag: QuoteTemplates
-  spec_file: kaseya-quotetemplates-api-openapi.yml
+  spec_file: kaseya-quote-templates-api-openapi.yml
+  reanchored_from: kaseya-quotetemplates-api-openapi.yml
   capability_id: BC-410.40
   capability_id_l1: BC-410
   capability_name: Quote & Configuration Management
