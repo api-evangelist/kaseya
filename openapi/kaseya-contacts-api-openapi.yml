@@ -58,6 +58,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contacts url parameter query
+      x-summary-source: derived
     post:
       tags:
       - Contacts
@@ -107,6 +109,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Contacts query
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Contacts/{id}:
@@ -159,6 +163,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contacts query item
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Contacts/query/count:
@@ -210,6 +216,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contacts url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - Contacts
@@ -259,6 +267,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Contacts query count
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Contacts/entityInformation:
@@ -305,6 +315,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contacts query entity information
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Contacts/entityInformation/fields:
@@ -351,6 +363,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contacts query field definitions
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Contacts/entityInformation/userDefinedFields:
@@ -397,6 +411,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contacts query user defined field definitions
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /v2/crm/contacts/summary:
@@ -433,6 +449,8 @@ paths:
                 $ref: '#/components/schemas/ContactSummaryOutputDtoResponse'
       security:
       - bearerAuth: []
+      summary: Post contact summary info
+      x-summary-source: derived
     get:
       tags:
       - Contacts
@@ -520,6 +538,8 @@ paths:
                 $ref: '#/components/schemas/ContactsSummaryOutputDtoIEnumerablePagedResponse'
       security:
       - bearerAuth: []
+      summary: Get contacts list summary
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/crm/contacts/summary/{id}:
@@ -549,6 +569,8 @@ paths:
                 $ref: '#/components/schemas/ContactsSummaryOutputDto'
       security:
       - bearerAuth: []
+      summary: Get contact summary
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/crm/contacts/{id}:
@@ -592,6 +614,8 @@ paths:
                 $ref: '#/components/schemas/ContactOutputDtoResponse'
       security:
       - bearerAuth: []
+      summary: Put contact
+      x-summary-source: derived
     patch:
       tags:
       - Contacts
@@ -640,6 +664,8 @@ paths:
                 $ref: '#/components/schemas/ContactOutputDtoResponse'
       security:
       - bearerAuth: []
+      summary: Patch contact
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/crm/contacts/search:
@@ -736,6 +762,8 @@ paths:
                 $ref: '#/components/schemas/ContactsSearchSelectOutputDtoListResponse'
       security:
       - bearerAuth: []
+      summary: Get contacts search
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/crm/contacts/{Id}:
@@ -755,6 +783,8 @@ paths:
           description: OK
       security:
       - bearerAuth: []
+      summary: Delete contact
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/crm/contacts/{contactId}/emails:
@@ -806,6 +836,8 @@ paths:
                 $ref: '#/components/schemas/ContactEmailPatchResultDtoResponse'
       security:
       - bearerAuth: []
+      summary: Patch contact emails
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/crm/contacts/{contactId}/phones:
@@ -857,19 +889,122 @@ paths:
                 $ref: '#/components/schemas/ContactPhonePatchResultDtoResponse'
       security:
       - bearerAuth: []
+      summary: Patch contact phones
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
 components:
   schemas:
-    QueryActionResult_ContactModel_Contact:
+    Expression:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    ItemQueryResultModel_ContactModel_Contact:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ContactModel'
     PickListValue:
       type: object
       properties:
@@ -888,15 +1023,37 @@ components:
           type: boolean
         isSystem:
           type: boolean
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    QueryCountResultModel:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        queryCount:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
           format: int32
           type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     ParameterExpression:
       type: object
       properties:
@@ -1001,11 +1158,6 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    ItemQueryResultModel_ContactModel_Contact:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ContactModel'
     FieldInformationResultModel:
       type: object
       properties:
@@ -1014,67 +1166,60 @@ components:
           items:
             $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
-    Object:
-      type: object
-      properties: {}
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
+    EntityInformationModel:
       type: object
       properties:
         name:
           type: string
-        dataType:
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
           type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
+        field:
           type: string
-        isPickList:
+        udf:
           type: boolean
-        picklistValues:
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
           type: array
           items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
+            $ref: '#/components/schemas/Filter'
     Expression_Func_Contact_Int64:
       type: object
       properties:
@@ -1190,148 +1335,16 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    UserDefinedField:
+    FieldInformationModel:
       type: object
       properties:
         name:
           type: string
-        value:
-          type: string
-    Expression:
-      type: object
-      properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
+        dataType:
           type: string
         length:
           format: int32
           type: integer
-        description:
-          type: string
         isRequired:
           type: boolean
         isReadOnly:
@@ -1350,64 +1363,11 @@ components:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
           type: string
-        defaultValue:
-          type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    EntityInformationModel:
+    RestUserAccessLevel:
       type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
+      properties: {}
     ContactModel:
       type: object
       properties:
@@ -1520,6 +1480,204 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserDefinedField'
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    QueryActionResult_ContactModel_Contact:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    RelatedItemOperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    ContactSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        FirstName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type: integer
+          format: int32
+        LocationName:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        CustomFieldsData:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldDataOutputDto'
+      additionalProperties: false
+    ContactPhoneOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Phone:
+          type:
+          - string
+          - 'null'
+        PhoneTypeId:
+          type: integer
+          format: int32
+        PhoneType:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+      additionalProperties: false
+    OperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
+    ContactEmailPatchOperationDto:
+      type: object
+      properties:
+        Operation:
+          $ref: '#/components/schemas/RelatedItemOperationType'
+        NewEmailAddress:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsDefault:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
     ContactsSummaryOutputDto:
       type: object
       properties:
@@ -1600,30 +1758,90 @@ components:
         CanRecieveInvoices:
           type: boolean
       additionalProperties: false
-    ErrorInfo:
+    ContactPhonePatchResultDtoResponse:
       type: object
       properties:
-        Code:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ContactPhonePatchResultDto'
+      additionalProperties: false
+    CustomFieldDataOutputDto:
+      type: object
+      properties:
+        Id:
           type: integer
           format: int32
-        Message:
+        Name:
           type:
           - string
           - 'null'
-        Details:
+        Data:
           type:
           - string
           - 'null'
-        StackStrace:
+        SettingsId:
+          type: integer
+          format: int32
+        CustomFieldType:
+          type: integer
+          format: int32
+        CustomFieldId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ContactPutInputDto:
+      type: object
+      properties:
+        AccountId:
+          type: integer
+          format: int32
+        LocationId:
+          type: integer
+          format: int32
+        FirstName:
           type:
           - string
           - 'null'
-        SubErrors:
+        MiddleName:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            type: string
+        LastName:
+          type:
+          - string
+          - 'null'
+        JobTitle:
+          type:
+          - string
+          - 'null'
+        Poc:
+          type: boolean
+        IsActive:
+          type: boolean
+        ReceiveInvoices:
+          type: boolean
+        BillByContact:
+          type: boolean
+        EffectiveDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    ContactOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ContactOutputDto'
       additionalProperties: false
     ContactOutputDto:
       type: object
@@ -1723,328 +1941,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ContactPhonePatchResultDto:
-      type: object
-      properties:
-        Added:
-          type: integer
-          format: int32
-        Updated:
-          type: integer
-          format: int32
-        Deleted:
-          type: integer
-          format: int32
-        Phones:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ContactPhoneOutputDto'
-      additionalProperties: false
-    PhoneInputDto:
-      type: object
-      properties:
-        PhoneNumber:
-          type:
-          - string
-          - 'null'
-        PhoneTypeId:
-          type: integer
-          format: int32
-        IsDefault:
-          type: boolean
-      additionalProperties: false
-    OperationType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-      format: int32
-    Operation:
-      type: object
-      properties:
-        OperationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
-          type:
-          - string
-          - 'null'
-        op:
-          type:
-          - string
-          - 'null'
-        from:
-          type:
-          - string
-          - 'null'
-        value: {}
-      additionalProperties: false
-    ContactPhoneOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        CreatedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ModifiedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        Phone:
-          type:
-          - string
-          - 'null'
-        PhoneTypeId:
-          type: integer
-          format: int32
-        PhoneType:
-          type:
-          - string
-          - 'null'
-        IsDefault:
-          type: boolean
-      additionalProperties: false
-    CustomFieldDataOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Data:
-          type:
-          - string
-          - 'null'
-        SettingsId:
-          type: integer
-          format: int32
-        CustomFieldType:
-          type: integer
-          format: int32
-        CustomFieldId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    CustomFieldDataInputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        CustomFieldId:
-          type: integer
-          format: int32
-        Data:
-          type:
-          - string
-          - 'null'
-        SettingsId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    ContactEmailPatchResultDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ContactEmailPatchResultDto'
-      additionalProperties: false
-    ContactsSummaryOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ContactsSummaryOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ContactEmailPatchOperationDto:
-      type: object
-      properties:
-        Operation:
-          $ref: '#/components/schemas/RelatedItemOperationType'
-        NewEmailAddress:
-          type:
-          - string
-          - 'null'
-        EmailAddress:
-          type:
-          - string
-          - 'null'
-        TypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsDefault:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    ContactPhonePatchOperationDto:
-      type: object
-      properties:
-        Operation:
-          $ref: '#/components/schemas/RelatedItemOperationType'
-        PhoneNumber:
-          type:
-          - string
-          - 'null'
-        NewPhoneNumber:
-          type:
-          - string
-          - 'null'
-        TypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsDefault:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    ContactEmailPatchResultDto:
-      type: object
-      properties:
-        Added:
-          type: integer
-          format: int32
-        Updated:
-          type: integer
-          format: int32
-        Deleted:
-          type: integer
-          format: int32
-        Emails:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ContactEmailOutputDto'
-      additionalProperties: false
-    RelatedItemOperationType:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    ContactPutInputDto:
-      type: object
-      properties:
-        AccountId:
-          type: integer
-          format: int32
-        LocationId:
-          type: integer
-          format: int32
-        FirstName:
-          type:
-          - string
-          - 'null'
-        MiddleName:
-          type:
-          - string
-          - 'null'
-        LastName:
-          type:
-          - string
-          - 'null'
-        JobTitle:
-          type:
-          - string
-          - 'null'
-        Poc:
-          type: boolean
-        IsActive:
-          type: boolean
-        ReceiveInvoices:
-          type: boolean
-        BillByContact:
-          type: boolean
-        EffectiveDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    ContactSummaryOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ContactSummaryOutputDto'
-      additionalProperties: false
-    ContactPhonePatchResultDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ContactPhonePatchResultDto'
-      additionalProperties: false
-    ContactsSearchSelectOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ContactsSearchSelectOutputDto'
-      additionalProperties: false
     ContactEmailOutputDto:
       type: object
       properties:
@@ -2085,6 +1981,208 @@ components:
         IsDefault:
           type: boolean
       additionalProperties: false
+    ContactEmailPatchResultDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ContactEmailPatchResultDto'
+      additionalProperties: false
+    CustomFieldDataInputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CustomFieldId:
+          type: integer
+          format: int32
+        Data:
+          type:
+          - string
+          - 'null'
+        SettingsId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    PhoneInputDto:
+      type: object
+      properties:
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        PhoneTypeId:
+          type: integer
+          format: int32
+        IsDefault:
+          type: boolean
+      additionalProperties: false
+    ContactsSummaryOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactsSummaryOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ContactPhonePatchResultDto:
+      type: object
+      properties:
+        Added:
+          type: integer
+          format: int32
+        Updated:
+          type: integer
+          format: int32
+        Deleted:
+          type: integer
+          format: int32
+        Phones:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactPhoneOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ContactEmailPatchResultDto:
+      type: object
+      properties:
+        Added:
+          type: integer
+          format: int32
+        Updated:
+          type: integer
+          format: int32
+        Deleted:
+          type: integer
+          format: int32
+        Emails:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactEmailOutputDto'
+      additionalProperties: false
+    ContactPhonePatchOperationDto:
+      type: object
+      properties:
+        Operation:
+          $ref: '#/components/schemas/RelatedItemOperationType'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        NewPhoneNumber:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsDefault:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    ContactInputDto:
+      type: object
+      properties:
+        FirstName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        LocationId:
+          type: integer
+          format: int32
+        Phones:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PhoneInputDto'
+        Emails:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/EmailInputDto'
+        CustomFieldsData:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldDataInputDto'
+      additionalProperties: false
+    Operation:
+      type: object
+      properties:
+        OperationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type:
+          - string
+          - 'null'
+        op:
+          type:
+          - string
+          - 'null'
+        from:
+          type:
+          - string
+          - 'null'
+        value: {}
+      additionalProperties: false
     EmailInputDto:
       type: object
       properties:
@@ -2098,7 +2196,7 @@ components:
         IsDefault:
           type: boolean
       additionalProperties: false
-    ContactOutputDtoResponse:
+    ContactSummaryOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -2107,50 +2205,22 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/ContactOutputDto'
+          $ref: '#/components/schemas/ContactSummaryOutputDto'
       additionalProperties: false
-    ContactSummaryOutputDto:
+    ContactsSearchSelectOutputDtoListResponse:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
-        FirstName:
-          type:
-          - string
-          - 'null'
-        LastName:
-          type:
-          - string
-          - 'null'
-        AccountId:
-          type: integer
-          format: int32
-        AccountName:
-          type:
-          - string
-          - 'null'
-        LocationId:
-          type: integer
-          format: int32
-        LocationName:
-          type:
-          - string
-          - 'null'
-        PhoneNumber:
-          type:
-          - string
-          - 'null'
-        EmailAddress:
-          type:
-          - string
-          - 'null'
-        CustomFieldsData:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/CustomFieldDataOutputDto'
+            $ref: '#/components/schemas/ContactsSearchSelectOutputDto'
       additionalProperties: false
     ContactsSearchSelectOutputDto:
       type: object
@@ -2194,42 +2264,6 @@ components:
           type: boolean
         HasClientPortalAccess:
           type: boolean
-      additionalProperties: false
-    ContactInputDto:
-      type: object
-      properties:
-        FirstName:
-          type:
-          - string
-          - 'null'
-        LastName:
-          type:
-          - string
-          - 'null'
-        AccountId:
-          type: integer
-          format: int32
-        LocationId:
-          type: integer
-          format: int32
-        Phones:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PhoneInputDto'
-        Emails:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/EmailInputDto'
-        CustomFieldsData:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CustomFieldDataInputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

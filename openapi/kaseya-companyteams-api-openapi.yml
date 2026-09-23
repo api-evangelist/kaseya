@@ -56,6 +56,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company teams url parameter query
+      x-summary-source: derived
     post:
       tags:
       - CompanyTeams
@@ -105,6 +107,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Company teams query
+      x-summary-source: derived
   /V1.0/CompanyTeams/{id}:
     get:
       tags:
@@ -155,6 +159,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company teams query item
+      x-summary-source: derived
   /V1.0/CompanyTeams/query/count:
     get:
       tags:
@@ -204,6 +210,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company teams url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - CompanyTeams
@@ -253,6 +261,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Company teams query count
+      x-summary-source: derived
   /V1.0/CompanyTeams/entityInformation:
     get:
       tags:
@@ -297,6 +307,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company teams query entity information
+      x-summary-source: derived
   /V1.0/CompanyTeams/entityInformation/fields:
     get:
       tags:
@@ -341,6 +353,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company teams query field definitions
+      x-summary-source: derived
   /V1.0/CompanyTeams/entityInformation/userDefinedFields:
     get:
       tags:
@@ -385,58 +399,13 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company teams query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    PickListValue:
+    Expression:
       type: object
       properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    CompanyTeamModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        companyID:
-          format: int64
-          type: integer
-        isAssociatedAsComanaged:
-          type: boolean
-        resourceID:
-          format: int64
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_AccountTeam_Int64'
-          readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    ParameterExpression:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
         nodeType:
           enum:
           - Add
@@ -526,40 +495,12 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        name:
+        type:
           type: string
-          readOnly: true
-        isByRef:
-          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    Object:
-      type: object
-      properties: {}
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     Expression_Func_AccountTeam_Int64:
       type: object
       properties:
@@ -675,20 +616,24 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    QueryActionResult_CompanyTeamModel_AccountTeam:
+    PickListValue:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompanyTeamModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    ItemQueryResultModel_CompanyTeamModel_AccountTeam:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/CompanyTeamModel'
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -697,45 +642,35 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    EntityInformationResultModel:
+    QueryModel:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
+        maxRecords:
           format: int32
           type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
+        includeFields:
           type: array
           items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    Expression:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    ParameterExpression:
       type: object
       properties:
+        type:
+          type: string
+          readOnly: true
         nodeType:
           enum:
           - Add
@@ -825,71 +760,23 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        type:
+        name:
           type: string
+          readOnly: true
+        isByRef:
+          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    QueryModel:
+    FieldInformationResultModel:
       type: object
       properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
+        fields:
           type: array
           items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     EntityInformationModel:
       type: object
       properties:
@@ -926,6 +813,15 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    QueryActionResult_CompanyTeamModel_AccountTeam:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompanyTeamModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     Filter:
       type: object
       properties:
@@ -944,3 +840,123 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    CompanyTeamModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        companyID:
+          format: int64
+          type: integer
+        isAssociatedAsComanaged:
+          type: boolean
+        resourceID:
+          format: int64
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_AccountTeam_Int64'
+          readOnly: true
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    ItemQueryResultModel_CompanyTeamModel_AccountTeam:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/CompanyTeamModel'
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer

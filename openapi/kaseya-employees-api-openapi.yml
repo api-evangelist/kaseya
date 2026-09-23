@@ -58,6 +58,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/EmployeeLookupOutputDtoListResponse'
+      summary: Get employees lookup
+      x-summary-source: derived
   /v2/hr/employees/searchselect:
     get:
       tags:
@@ -110,20 +112,11 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/EmployeesListSearchSelectOutputDtoListPagedResponse'
+      summary: Get employees list search select
+      x-summary-source: derived
 components:
   schemas:
-    EmployeeLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    EmployeesListSearchSelectOutputDtoListPagedResponse:
+    EmployeeLookupOutputDtoListResponse:
       type: object
       properties:
         Success:
@@ -136,35 +129,7 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/EmployeesListSearchSelectOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
+            $ref: '#/components/schemas/EmployeeLookupOutputDto'
       additionalProperties: false
     EmployeesListSearchSelectOutputDto:
       type: object
@@ -197,7 +162,43 @@ components:
           - boolean
           - 'null'
       additionalProperties: false
-    EmployeeLookupOutputDtoListResponse:
+    EmployeeLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    EmployeesListSearchSelectOutputDtoListPagedResponse:
       type: object
       properties:
         Success:
@@ -210,7 +211,10 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/EmployeeLookupOutputDto'
+            $ref: '#/components/schemas/EmployeesListSearchSelectOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
       additionalProperties: false
   securitySchemes:
     bearerAuth:

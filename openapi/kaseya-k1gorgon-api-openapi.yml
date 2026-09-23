@@ -32,8 +32,64 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Post K1 gorgon provisioning notifications
+      x-summary-source: derived
 components:
   schemas:
+    K1GorgonProvisioningNotificationsDto:
+      type: object
+      properties:
+        Event:
+          $ref: '#/components/schemas/K1GorgonProvisioningPayload'
+      additionalProperties: false
+    K1GorgonContactDto:
+      type: object
+      properties:
+        CompanyName:
+          type:
+          - string
+          - 'null'
+        RootFirstName:
+          type:
+          - string
+          - 'null'
+        RootLastName:
+          type:
+          - string
+          - 'null'
+        RootEmail:
+          type:
+          - string
+          - 'null'
+        RootPhone:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1GorgonCustomerIdentifiersDto:
+      type: object
+      properties:
+        SalesForceId:
+          type:
+          - string
+          - 'null'
+        NetSuiteId:
+          type:
+          - string
+          - 'null'
+        ResellerUuid:
+          type:
+          - string
+          - 'null'
+        K1OrgId:
+          type:
+          - string
+          - 'null'
+        AutoTaskDbId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     K1GorgonActionDetailsDto:
       type: object
       properties:
@@ -67,59 +123,17 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    K1GorgonShippingDto:
+    K1GorgonTenantDto:
       type: object
       properties:
-        Address:
+        Zone:
           type:
           - string
           - 'null'
-        City:
+        InstanceId:
           type:
           - string
           - 'null'
-        State:
-          type:
-          - string
-          - 'null'
-        Zip:
-          type:
-          - string
-          - 'null'
-        Country:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    K1GorgonContactDto:
-      type: object
-      properties:
-        CompanyName:
-          type:
-          - string
-          - 'null'
-        RootFirstName:
-          type:
-          - string
-          - 'null'
-        RootLastName:
-          type:
-          - string
-          - 'null'
-        RootEmail:
-          type:
-          - string
-          - 'null'
-        RootPhone:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    K1GorgonProvisioningNotificationsDto:
-      type: object
-      properties:
-        Event:
-          $ref: '#/components/schemas/K1GorgonProvisioningPayload'
       additionalProperties: false
     K1GorgonProvisioningPayload:
       type: object
@@ -150,6 +164,30 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
+    K1GorgonShippingDto:
+      type: object
+      properties:
+        Address:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        Zip:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     K1GorgonLicenseDto:
       type: object
       properties:
@@ -167,42 +205,6 @@ components:
           - integer
           - 'null'
           format: int32
-      additionalProperties: false
-    K1GorgonTenantDto:
-      type: object
-      properties:
-        Zone:
-          type:
-          - string
-          - 'null'
-        InstanceId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    K1GorgonCustomerIdentifiersDto:
-      type: object
-      properties:
-        SalesForceId:
-          type:
-          - string
-          - 'null'
-        NetSuiteId:
-          type:
-          - string
-          - 'null'
-        ResellerUuid:
-          type:
-          - string
-          - 'null'
-        K1OrgId:
-          type:
-          - string
-          - 'null'
-        AutoTaskDbId:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

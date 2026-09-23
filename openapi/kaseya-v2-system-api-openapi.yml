@@ -17,7 +17,7 @@ paths:
     get:
       tags:
       - /v2/system
-      summary: Fetches the system status (start date, status and version).
+      summary: Fetches the system status (start date, status and version)
       description: An API access token is not necessary.
       operationId: getStatus
       responses:
@@ -53,7 +53,7 @@ paths:
     get:
       tags:
       - /v2/system
-      summary: Fetches the request rate status for the authenticated user's account.
+      summary: Fetches the request rate status for the authenticated user's account
       operationId: get
       responses:
         '500':
@@ -134,7 +134,7 @@ paths:
     get:
       tags:
       - /v2/system
-      summary: Fetches the pagination configurations.
+      summary: Fetches the pagination configurations
       operationId: getPaginationConfigurations
       responses:
         '500':
@@ -194,6 +194,15 @@ paths:
                     description: Default and maximum number of elements per AEM page (except alerts pagination)
 components:
   schemas:
+    OperationRateStatus:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int32
     StatusResponse:
       type: object
       properties:
@@ -221,12 +230,3 @@ components:
         path:
           type: string
           description: Request path that produced the error
-    OperationRateStatus:
-      type: object
-      properties:
-        limit:
-          type: integer
-          format: int32
-        count:
-          type: integer
-          format: int32

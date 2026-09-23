@@ -56,6 +56,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Task secondary resources url parameter query
+      x-summary-source: derived
     post:
       tags:
       - TaskSecondaryResources
@@ -105,6 +107,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Task secondary resources query
+      x-summary-source: derived
   /V1.0/TaskSecondaryResources/{id}:
     get:
       tags:
@@ -155,6 +159,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Task secondary resources query item
+      x-summary-source: derived
   /V1.0/TaskSecondaryResources/query/count:
     get:
       tags:
@@ -204,6 +210,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Task secondary resources url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - TaskSecondaryResources
@@ -253,6 +261,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Task secondary resources query count
+      x-summary-source: derived
   /V1.0/TaskSecondaryResources/entityInformation:
     get:
       tags:
@@ -297,6 +307,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Task secondary resources query entity information
+      x-summary-source: derived
   /V1.0/TaskSecondaryResources/entityInformation/fields:
     get:
       tags:
@@ -341,6 +353,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Task secondary resources query field definitions
+      x-summary-source: derived
   /V1.0/TaskSecondaryResources/entityInformation/userDefinedFields:
     get:
       tags:
@@ -385,59 +399,13 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Task secondary resources query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    TaskSecondaryResourceModel:
+    Expression:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        resourceID:
-          format: int32
-          type: integer
-        roleID:
-          format: int32
-          type: integer
-        taskID:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_TaskSecondaryResource_Int64'
-          readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    ParameterExpression:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
         nodeType:
           enum:
           - Add
@@ -527,54 +495,12 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        name:
+        type:
           type: string
-          readOnly: true
-        isByRef:
-          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryActionResult_TaskSecondaryResourceModel_TaskSecondaryResource:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TaskSecondaryResourceModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    Object:
-      type: object
-      properties: {}
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    ItemQueryResultModel_TaskSecondaryResourceModel_TaskSecondaryResource:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/TaskSecondaryResourceModel'
     Expression_Func_TaskSecondaryResource_Int64:
       type: object
       properties:
@@ -690,6 +616,29 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    ItemQueryResultModel_TaskSecondaryResourceModel_TaskSecondaryResource:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/TaskSecondaryResourceModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -698,45 +647,35 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    EntityInformationResultModel:
+    QueryModel:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
+        maxRecords:
           format: int32
           type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
+        includeFields:
           type: array
           items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    Expression:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    ParameterExpression:
       type: object
       properties:
+        type:
+          type: string
+          readOnly: true
         nodeType:
           enum:
           - Add
@@ -826,71 +765,41 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        type:
+        name:
           type: string
+          readOnly: true
+        isByRef:
+          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    QueryModel:
+    TaskSecondaryResourceModel:
       type: object
       properties:
-        maxRecords:
+        id:
+          format: int64
+          type: integer
+        resourceID:
           format: int32
           type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Field:
+        roleID:
+          format: int32
+          type: integer
+        taskID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_TaskSecondaryResource_Int64'
+          readOnly: true
+    FieldInformationResultModel:
       type: object
       properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
+        fields:
           type: array
           items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     EntityInformationModel:
       type: object
       properties:
@@ -927,6 +836,15 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    QueryActionResult_TaskSecondaryResourceModel_TaskSecondaryResource:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskSecondaryResourceModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     Filter:
       type: object
       properties:
@@ -945,3 +863,101 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer

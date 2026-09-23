@@ -28,6 +28,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/SettingsOutputDtoResponse'
+      summary: Get system settings
+      x-summary-source: derived
 components:
   schemas:
     ErrorInfo:
@@ -54,6 +56,17 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    SettingsOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/SettingsOutputDto'
       additionalProperties: false
     SettingsOutputDto:
       type: object
@@ -139,17 +152,6 @@ components:
             type:
             - boolean
             - 'null'
-      additionalProperties: false
-    SettingsOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/SettingsOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

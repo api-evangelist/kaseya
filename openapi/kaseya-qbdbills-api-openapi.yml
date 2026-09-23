@@ -66,6 +66,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbBillExportDtoListPagedResponse'
+      summary: Get bills
+      x-summary-source: derived
     put:
       tags:
       - QbdBills
@@ -95,6 +97,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Update bill qb reference
+      x-summary-source: derived
   /v2/integration/qbd/bills/detail:
     get:
       tags:
@@ -124,6 +128,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbBillDetailExportDtoListResponse'
+      summary: Get bill details
+      x-summary-source: derived
 components:
   schemas:
     QbBillExportDto:
@@ -174,6 +180,69 @@ components:
           $ref: '#/components/schemas/QbAddressDto'
         BillAddress:
           $ref: '#/components/schemas/QbAddressDto'
+      additionalProperties: false
+    QbBillDetailExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbBillDetailExportDto'
+      additionalProperties: false
+    QbAddressDto:
+      type: object
+      properties:
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        MobileNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+        ContactName:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -276,69 +345,6 @@ components:
         TotalRecords:
           type: integer
           format: int32
-      additionalProperties: false
-    QbAddressDto:
-      type: object
-      properties:
-        Address1:
-          type:
-          - string
-          - 'null'
-        Address2:
-          type:
-          - string
-          - 'null'
-        State:
-          type:
-          - string
-          - 'null'
-        City:
-          type:
-          - string
-          - 'null'
-        ZipCode:
-          type:
-          - string
-          - 'null'
-        EmailAddress:
-          type:
-          - string
-          - 'null'
-        PhoneNumber:
-          type:
-          - string
-          - 'null'
-        MobileNumber:
-          type:
-          - string
-          - 'null'
-        FaxNumber:
-          type:
-          - string
-          - 'null'
-        Country:
-          type:
-          - string
-          - 'null'
-        ContactName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    QbBillDetailExportDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbBillDetailExportDto'
       additionalProperties: false
     QbBillReferenceInputDto:
       type: object

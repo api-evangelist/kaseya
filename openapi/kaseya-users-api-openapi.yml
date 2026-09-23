@@ -45,6 +45,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/File'
+      summary: Download profile picture
+      x-summary-source: derived
 components:
   schemas:
     File:

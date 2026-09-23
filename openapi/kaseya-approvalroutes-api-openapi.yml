@@ -28,33 +28,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ApprovalRouteLookupOutputDtoListResponse'
+      summary: Get approval routes lookup
+      x-summary-source: derived
 components:
   schemas:
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     ApprovalRouteLookupOutputDtoListResponse:
       type: object
       properties:
@@ -82,6 +59,31 @@ components:
           - 'null'
         IsActive:
           type: boolean
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
   securitySchemes:
     bearerAuth:

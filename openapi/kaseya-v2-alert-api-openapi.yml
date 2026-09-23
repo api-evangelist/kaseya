@@ -17,7 +17,7 @@ paths:
     post:
       tags:
       - /v2/alert
-      summary: Alerts can no longer be un-muted, as of the 8.9.0 release.
+      summary: Alerts can no longer be un-muted, as of the 8.9.0 release
       operationId: unmuteAlert
       parameters:
       - name: alertUid
@@ -55,7 +55,7 @@ paths:
     post:
       tags:
       - /v2/alert
-      summary: Resolves the alert identified by the given alert Uid.
+      summary: Resolves the alert identified by the given alert Uid
       operationId: resolveAlert
       parameters:
       - name: alertUid
@@ -114,7 +114,7 @@ paths:
     post:
       tags:
       - /v2/alert
-      summary: Alerts can no longer be muted, as of the 8.9.0 release.
+      summary: Alerts can no longer be muted, as of the 8.9.0 release
       operationId: muteAlert
       parameters:
       - name: alertUid
@@ -152,7 +152,7 @@ paths:
     get:
       tags:
       - /v2/alert
-      summary: Fetches data of the alert identified by the given alert Uid.
+      summary: Fetches data of the alert identified by the given alert Uid
       operationId: getAlert
       parameters:
       - name: alertUid
@@ -262,6 +262,18 @@ components:
           type: string
       required:
       - '@class'
+    AlertSourceInfo:
+      type: object
+      description: Alert source information data
+      properties:
+        deviceUid:
+          type: string
+        deviceName:
+          type: string
+        siteUid:
+          type: string
+        siteName:
+          type: string
     ErrorResponse:
       description: Default error response body
       properties:
@@ -310,16 +322,4 @@ components:
         actionReference:
           type: string
         actionReferenceInt:
-          type: string
-    AlertSourceInfo:
-      type: object
-      description: Alert source information data
-      properties:
-        deviceUid:
-          type: string
-        deviceName:
-          type: string
-        siteUid:
-          type: string
-        siteName:
           type: string

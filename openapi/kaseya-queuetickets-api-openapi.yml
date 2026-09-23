@@ -269,6 +269,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/TicketListDtoListPagedResponse'
       deprecated: true
+      summary: Get queue tickets
+      x-summary-source: derived
   /v2/servicedesk/queuetickets/search:
     post:
       tags:
@@ -301,33 +303,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketListDtoListPagedResponse'
+      summary: Search queue tickets
+      x-summary-source: derived
 components:
   schemas:
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     GetTicketsInputDto:
       type: object
       properties:
@@ -918,6 +897,31 @@ components:
         TotalRecords:
           type: integer
           format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
   securitySchemes:
     bearerAuth:

@@ -50,6 +50,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/StringResponse'
+      summary: Import vendors
+      x-summary-source: derived
     get:
       tags:
       - QbdVendors
@@ -95,6 +97,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbAccountExportDtoListPagedResponse'
+      summary: Get vendors
+      x-summary-source: derived
   /v2/integration/qbd/vendors/byids:
     get:
       tags:
@@ -124,70 +128,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbAccountExportDtoListResponse'
+      summary: Get vendors by ids
+      x-summary-source: derived
 components:
   schemas:
-    QbTaxItemDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        Active:
-          type: boolean
-        RateValue:
-          type: number
-          format: double
-        IsGroup:
-          type: boolean
-        TaxAgency:
-          type:
-          - string
-          - 'null'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-        SalesTaxRateList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbTaxItemDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     QbAccountExportDtoListResponse:
       type: object
       properties:
@@ -220,19 +164,6 @@ components:
         TotalRecords:
           type: integer
           format: int32
-      additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     QbAccountExportDto:
       type: object
@@ -331,6 +262,129 @@ components:
         BillAddress:
           $ref: '#/components/schemas/QbAddressDto'
       additionalProperties: false
+    QbTaxItemDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Active:
+          type: boolean
+        RateValue:
+          type: number
+          format: double
+        IsGroup:
+          type: boolean
+        TaxAgency:
+          type:
+          - string
+          - 'null'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        SalesTaxRateList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbTaxItemDto'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbAddressDto:
+      type: object
+      properties:
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        MobileNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+        ContactName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
     QbAccountImportDto:
       type: object
       properties:
@@ -384,54 +438,6 @@ components:
           $ref: '#/components/schemas/QbAddressDto'
         BillAddress:
           $ref: '#/components/schemas/QbAddressDto'
-      additionalProperties: false
-    QbAddressDto:
-      type: object
-      properties:
-        Address1:
-          type:
-          - string
-          - 'null'
-        Address2:
-          type:
-          - string
-          - 'null'
-        State:
-          type:
-          - string
-          - 'null'
-        City:
-          type:
-          - string
-          - 'null'
-        ZipCode:
-          type:
-          - string
-          - 'null'
-        EmailAddress:
-          type:
-          - string
-          - 'null'
-        PhoneNumber:
-          type:
-          - string
-          - 'null'
-        MobileNumber:
-          type:
-          - string
-          - 'null'
-        FaxNumber:
-          type:
-          - string
-          - 'null'
-        Country:
-          type:
-          - string
-          - 'null'
-        ContactName:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

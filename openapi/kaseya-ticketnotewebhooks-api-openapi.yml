@@ -56,6 +56,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket note webhooks url parameter query
+      x-summary-source: derived
     post:
       tags:
       - TicketNoteWebhooks
@@ -105,6 +107,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Ticket note webhooks query
+      x-summary-source: derived
   /V1.0/TicketNoteWebhooks/{id}:
     get:
       tags:
@@ -155,6 +159,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket note webhooks query item
+      x-summary-source: derived
     delete:
       tags:
       - TicketNoteWebhooks
@@ -204,6 +210,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket note webhooks delete entity
+      x-summary-source: derived
   /V1.0/TicketNoteWebhooks/query/count:
     get:
       tags:
@@ -253,6 +261,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket note webhooks url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - TicketNoteWebhooks
@@ -302,6 +312,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Ticket note webhooks query count
+      x-summary-source: derived
   /V1.0/TicketNoteWebhooks:
     put:
       tags:
@@ -352,6 +364,8 @@ paths:
             schema:
               $ref: '#/components/schemas/TicketNoteWebhookModel'
         required: true
+      summary: Ticket note webhooks update entity
+      x-summary-source: derived
     post:
       tags:
       - TicketNoteWebhooks
@@ -401,6 +415,8 @@ paths:
             schema:
               $ref: '#/components/schemas/TicketNoteWebhookModel'
         required: true
+      summary: Ticket note webhooks create entity
+      x-summary-source: derived
     patch:
       tags:
       - TicketNoteWebhooks
@@ -450,6 +466,8 @@ paths:
             schema:
               $ref: '#/components/schemas/TicketNoteWebhookModel'
         required: true
+      summary: Ticket note webhooks patch entity
+      x-summary-source: derived
   /V1.0/TicketNoteWebhooks/entityInformation:
     get:
       tags:
@@ -494,6 +512,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket note webhooks query entity information
+      x-summary-source: derived
   /V1.0/TicketNoteWebhooks/entityInformation/fields:
     get:
       tags:
@@ -538,6 +558,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket note webhooks query field definitions
+      x-summary-source: derived
   /V1.0/TicketNoteWebhooks/entityInformation/userDefinedFields:
     get:
       tags:
@@ -582,157 +604,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket note webhooks query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    QueryActionResult_TicketNoteWebhookModel_TicketNoteWebhook:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketNoteWebhookModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    TicketNoteWebhookModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        deactivationUrl:
-          type: string
-        isActive:
-          type: boolean
-        isReady:
-          type: boolean
-        isSubscribedToCreateEvents:
-          type: boolean
-        isSubscribedToDeleteEvents:
-          type: boolean
-        isSubscribedToUpdateEvents:
-          type: boolean
-        name:
-          type: string
-        notificationEmailAddress:
-          type: string
-        ownerResourceID:
-          format: int32
-          type: integer
-        secretKey:
-          type: string
-        sendThresholdExceededNotification:
-          type: boolean
-        webhookGUID:
-          type: string
-        webhookUrl:
-          type: string
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Object:
-      type: object
-      properties: {}
-    ItemQueryResultModel_TicketNoteWebhookModel_TicketNoteWebhook:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/TicketNoteWebhookModel'
     Field:
       type: object
       properties:
@@ -769,9 +644,60 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+    ItemQueryResultModel_TicketNoteWebhookModel_TicketNoteWebhook:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/TicketNoteWebhookModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
       type: object
       properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -826,22 +752,120 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    QueryActionResult_TicketNoteWebhookModel_TicketNoteWebhook:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketNoteWebhookModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    PagingModel:
+    TicketNoteWebhookModel:
       type: object
       properties:
-        count:
-          format: int32
+        id:
+          format: int64
           type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
+        deactivationUrl:
           type: string
-        nextPageUrl:
+        isActive:
+          type: boolean
+        isReady:
+          type: boolean
+        isSubscribedToCreateEvents:
+          type: boolean
+        isSubscribedToDeleteEvents:
+          type: boolean
+        isSubscribedToUpdateEvents:
+          type: boolean
+        name:
+          type: string
+        notificationEmailAddress:
+          type: string
+        ownerResourceID:
+          format: int32
+          type: integer
+        secretKey:
+          type: string
+        sendThresholdExceededNotification:
+          type: boolean
+        webhookGUID:
+          type: string
+        webhookUrl:
           type: string

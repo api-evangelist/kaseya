@@ -66,6 +66,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AccountLookupOutputDtoListResponse'
+      summary: Get accounts
+      x-summary-source: derived
   /v2/crm/accounts/summary:
     get:
       tags:
@@ -144,6 +146,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AccountSummaryOutputDtoIEnumerablePagedResponse'
+      summary: Get accounts list summary
+      x-summary-source: derived
   /v2/crm/accounts/summary/{id}:
     get:
       tags:
@@ -169,6 +173,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AccountSummaryOutputDto'
+      summary: Get account summary
+      x-summary-source: derived
   /v2/crm/accounts/{accountId}/locations/lookup:
     get:
       tags:
@@ -194,6 +200,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AccountLocationLookupOutputDtoListResponse'
+      summary: Get account locations
+      x-summary-source: derived
   /v2/crm/accounts/{accountId}/locations/{locationId}:
     get:
       tags:
@@ -225,6 +233,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AccountLocationOutputDtoResponse'
+      summary: Get account location
+      x-summary-source: derived
   /v2/crm/accounts/{accountId}/contacts/lookup:
     get:
       tags:
@@ -277,6 +287,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ContactLookupOutputDtoListResponse'
+      summary: Get account contacts
+      x-summary-source: derived
   /v2/crm/accounts/{accountId}/contacts/{contactId}/summaryinfo:
     get:
       tags:
@@ -308,6 +320,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ContactSummaryInfoOutputDtoResponse'
+      summary: Get account contact summary info
+      x-summary-source: derived
   /v2/crm/accounts/{accountId}/alerts/{accountAlertType}:
     get:
       tags:
@@ -338,6 +352,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AccountAlertOutputDtoResponse'
+      summary: Get account alert
+      x-summary-source: derived
   /v2/crm/accounts:
     post:
       tags:
@@ -370,6 +386,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AccountSummaryOutputDtoResponse'
+      summary: Post account
+      x-summary-source: derived
   /v2/crm/accounts/{id}:
     put:
       tags:
@@ -409,6 +427,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AccountSummaryOutputDtoResponse'
+      summary: Put account
+      x-summary-source: derived
     patch:
       tags:
       - Accounts
@@ -455,8 +475,120 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AccountSummaryOutputDtoResponse'
+      summary: Patch account
+      x-summary-source: derived
 components:
   schemas:
+    AccountLocationLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        IsMain:
+          type: boolean
+      additionalProperties: false
+    AccountLocationAddressInputDto:
+      type: object
+      properties:
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        CountryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Country:
+          type:
+          - string
+          - 'null'
+        Phone:
+          type:
+          - string
+          - 'null'
+        Fax:
+          type:
+          - string
+          - 'null'
+        Latitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        Longitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        IsMain:
+          type: boolean
+        IsBilling:
+          type: boolean
+        AddressTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AddressType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AccountLocationLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AccountLocationLookupOutputDto'
+      additionalProperties: false
+    OperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
     AccountSummaryOutputDto:
       type: object
       properties:
@@ -597,428 +729,6 @@ components:
           items:
             $ref: '#/components/schemas/AccountLocationOutputDto'
       additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    ContactLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ContactLookupOutputDto'
-      additionalProperties: false
-    ContactSummaryInfoOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ContactSummaryInfoOutputDto'
-      additionalProperties: false
-    AccountLocationLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AccountLocationLookupOutputDto'
-      additionalProperties: false
-    AccountPostInputDto:
-      required:
-      - AccountManagerId
-      - AccountName
-      - AccountTypeId
-      - BusinessTypeId
-      - Locations
-      type: object
-      properties:
-        ParentId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountCode:
-          type:
-          - string
-          - 'null'
-        AccountTypeId:
-          type: integer
-          format: int32
-        AccountName:
-          minLength: 1
-          type: string
-        Description:
-          type:
-          - string
-          - 'null'
-        Website:
-          type:
-          - string
-          - 'null'
-        BusinessTypeId:
-          type: integer
-          format: int32
-        ServiceTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CurrencyId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SalesTaxItemId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ClassId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountManagerId:
-          type: integer
-          format: int32
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        AcquiredDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreditLimit:
-          type:
-          - number
-          - 'null'
-          format: double
-        NetDays:
-          type:
-          - number
-          - 'null'
-          format: double
-        Locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccountLocationInputDto'
-        RouteInvoiceToParent:
-          type: boolean
-      additionalProperties: false
-    AccountSummaryOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/AccountSummaryOutputDto'
-      additionalProperties: false
-    AccountAlertType:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    AccountLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AccountLookupOutputDto'
-      additionalProperties: false
-    OperationType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-      format: int32
-    Operation:
-      type: object
-      properties:
-        OperationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
-          type:
-          - string
-          - 'null'
-        op:
-          type:
-          - string
-          - 'null'
-        from:
-          type:
-          - string
-          - 'null'
-        value: {}
-      additionalProperties: false
-    AccountSummaryOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AccountSummaryOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    AccountLocationOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/AccountLocationOutputDto'
-      additionalProperties: false
-    AccountLocationInputDto:
-      required:
-      - Addresses
-      - LocationName
-      type: object
-      properties:
-        LocationName:
-          minLength: 1
-          type: string
-        IsMain:
-          type: boolean
-        IsActive:
-          type: boolean
-        Addresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccountLocationAddressInputDto'
-      additionalProperties: false
-    ContactSummaryInfoOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        ContactName:
-          type:
-          - string
-          - 'null'
-        ContactPhone:
-          type:
-          - string
-          - 'null'
-        ContactEmailAddress:
-          type:
-          - string
-          - 'null'
-        ClientName:
-          type:
-          - string
-          - 'null'
-        LocationName:
-          type:
-          - string
-          - 'null'
-        LocationId:
-          type: integer
-          format: int32
-        AccountType:
-          type:
-          - string
-          - 'null'
-        Website:
-          type:
-          - string
-          - 'null'
-        PhoneNumber:
-          type:
-          - string
-          - 'null'
-        FaxNumber:
-          type:
-          - string
-          - 'null'
-        Address1:
-          type:
-          - string
-          - 'null'
-        Address2:
-          type:
-          - string
-          - 'null'
-        City:
-          type:
-          - string
-          - 'null'
-        State:
-          type:
-          - string
-          - 'null'
-        ZipCode:
-          type:
-          - string
-          - 'null'
-        Country:
-          type:
-          - string
-          - 'null'
-        latitude:
-          type:
-          - number
-          - 'null'
-          format: double
-        longitude:
-          type:
-          - number
-          - 'null'
-          format: double
-        TenantId:
-          type: integer
-          format: int32
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        AccountId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    AccountLocationOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        CreatedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ModifiedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LocationName:
-          type:
-          - string
-          - 'null'
-        IsMain:
-          type: boolean
-        IsActive:
-          type: boolean
-        TimeZoneId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        DateFormatId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TimeFormatId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Addresses:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AccountAddressOutputDto'
-      additionalProperties: false
-    AccountLocationLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        AccountId:
-          type: integer
-          format: int32
-        IsMain:
-          type: boolean
-      additionalProperties: false
     AccountPutInputDto:
       required:
       - AccountManagerId
@@ -1097,6 +807,150 @@ components:
           format: double
         RouteInvoiceToParent:
           type: boolean
+      additionalProperties: false
+    AccountSummaryOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/AccountSummaryOutputDto'
+      additionalProperties: false
+    AccountLocationOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LocationName:
+          type:
+          - string
+          - 'null'
+        IsMain:
+          type: boolean
+        IsActive:
+          type: boolean
+        TimeZoneId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        DateFormatId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TimeFormatId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Addresses:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AccountAddressOutputDto'
+      additionalProperties: false
+    AccountSummaryOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AccountSummaryOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ContactLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type: integer
+          format: int32
+        LocationName:
+          type:
+          - string
+          - 'null'
+        Phone:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AccountLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AccountLookupOutputDto'
+      additionalProperties: false
+    AccountAlertType:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    ContactSummaryInfoOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ContactSummaryInfoOutputDto'
       additionalProperties: false
     AccountAddressOutputDto:
       type: object
@@ -1189,31 +1043,30 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ContactLookupOutputDto:
+    ErrorInfo:
       type: object
       properties:
-        Id:
+        Code:
           type: integer
           format: int32
-        Name:
+        Message:
           type:
           - string
           - 'null'
-        LocationId:
-          type: integer
-          format: int32
-        LocationName:
+        Details:
           type:
           - string
           - 'null'
-        Phone:
+        StackStrace:
           type:
           - string
           - 'null'
-        EmailAddress:
+        SubErrors:
           type:
-          - string
+          - array
           - 'null'
+          items:
+            type: string
       additionalProperties: false
     AccountLookupOutputDto:
       type: object
@@ -1243,9 +1096,169 @@ components:
         Result:
           $ref: '#/components/schemas/AccountAlertOutputDto'
       additionalProperties: false
-    AccountLocationAddressInputDto:
+    ContactLookupOutputDtoListResponse:
       type: object
       properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactLookupOutputDto'
+      additionalProperties: false
+    Operation:
+      type: object
+      properties:
+        OperationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type:
+          - string
+          - 'null'
+        op:
+          type:
+          - string
+          - 'null'
+        from:
+          type:
+          - string
+          - 'null'
+        value: {}
+      additionalProperties: false
+    AccountPostInputDto:
+      required:
+      - AccountManagerId
+      - AccountName
+      - AccountTypeId
+      - BusinessTypeId
+      - Locations
+      type: object
+      properties:
+        ParentId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        AccountTypeId:
+          type: integer
+          format: int32
+        AccountName:
+          minLength: 1
+          type: string
+        Description:
+          type:
+          - string
+          - 'null'
+        Website:
+          type:
+          - string
+          - 'null'
+        BusinessTypeId:
+          type: integer
+          format: int32
+        ServiceTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CurrencyId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesTaxItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClassId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountManagerId:
+          type: integer
+          format: int32
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        AcquiredDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreditLimit:
+          type:
+          - number
+          - 'null'
+          format: double
+        NetDays:
+          type:
+          - number
+          - 'null'
+          format: double
+        Locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountLocationInputDto'
+        RouteInvoiceToParent:
+          type: boolean
+      additionalProperties: false
+    ContactSummaryInfoOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ContactName:
+          type:
+          - string
+          - 'null'
+        ContactPhone:
+          type:
+          - string
+          - 'null'
+        ContactEmailAddress:
+          type:
+          - string
+          - 'null'
+        ClientName:
+          type:
+          - string
+          - 'null'
+        LocationName:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type: integer
+          format: int32
+        AccountType:
+          type:
+          - string
+          - 'null'
+        Website:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
         Address1:
           type:
           - string
@@ -1266,50 +1279,48 @@ components:
           type:
           - string
           - 'null'
-        CountryId:
-          type:
-          - integer
-          - 'null'
-          format: int32
         Country:
           type:
           - string
           - 'null'
-        Phone:
-          type:
-          - string
-          - 'null'
-        Fax:
-          type:
-          - string
-          - 'null'
-        Latitude:
+        latitude:
           type:
           - number
           - 'null'
           format: double
-        Longitude:
+        longitude:
           type:
           - number
           - 'null'
           format: double
-        EmailAddress:
+        TenantId:
+          type: integer
+          format: int32
+        IsActive:
           type:
-          - string
+          - boolean
           - 'null'
+        AccountId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    AccountLocationInputDto:
+      required:
+      - Addresses
+      - LocationName
+      type: object
+      properties:
+        LocationName:
+          minLength: 1
+          type: string
         IsMain:
           type: boolean
-        IsBilling:
+        IsActive:
           type: boolean
-        AddressTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AddressType:
-          type:
-          - string
-          - 'null'
+        Addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountLocationAddressInputDto'
       additionalProperties: false
     AccountAlertOutputDto:
       type: object
@@ -1323,6 +1334,17 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    AccountLocationOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/AccountLocationOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

@@ -28,6 +28,10 @@ paths:
       deprecated: true
       tags:
       - Servicedesk
+      summary: Create servicedesk tickets by ticket id ticketresolution generate
+      x-summary-source: derived
+      operationId: postV2ServicedeskTicketsByTicketIdTicketresolutionGenerate
+      x-operation-id-source: derived
   /v2/servicedesk/tickets/{ticketId}/ticketresolution:
     post:
       parameters:
@@ -55,6 +59,10 @@ paths:
       deprecated: true
       tags:
       - Servicedesk
+      summary: Create servicedesk tickets by ticket id ticketresolution
+      x-summary-source: derived
+      operationId: postV2ServicedeskTicketsByTicketIdTicketresolution
+      x-operation-id-source: derived
     put:
       parameters:
       - name: ticketId
@@ -81,6 +89,10 @@ paths:
       deprecated: true
       tags:
       - Servicedesk
+      summary: Replace servicedesk tickets by ticket id ticketresolution
+      x-summary-source: derived
+      operationId: putV2ServicedeskTicketsByTicketIdTicketresolution
+      x-operation-id-source: derived
     get:
       parameters:
       - name: ticketId
@@ -93,6 +105,10 @@ paths:
       deprecated: true
       tags:
       - Servicedesk
+      summary: Get servicedesk tickets by ticket id ticketresolution
+      x-summary-source: derived
+      operationId: getV2ServicedeskTicketsByTicketIdTicketresolution
+      x-operation-id-source: derived
   /v2/servicedesk/tickets/{ticketId}/ticketresolution/refine:
     post:
       parameters:
@@ -120,6 +136,10 @@ paths:
       deprecated: true
       tags:
       - Servicedesk
+      summary: Create servicedesk tickets by ticket id ticketresolution refine
+      x-summary-source: derived
+      operationId: postV2ServicedeskTicketsByTicketIdTicketresolutionRefine
+      x-operation-id-source: derived
   /v2/servicedesk/tickets/{ticketId}/ticketsummary/generate:
     post:
       parameters:
@@ -133,6 +153,10 @@ paths:
       deprecated: true
       tags:
       - Servicedesk
+      summary: Create servicedesk tickets by ticket id ticketsummary generate
+      x-summary-source: derived
+      operationId: postV2ServicedeskTicketsByTicketIdTicketsummaryGenerate
+      x-operation-id-source: derived
   /v2/servicedesk/tickets/{ticketId}/ticketsummary:
     put:
       parameters:
@@ -160,6 +184,10 @@ paths:
       deprecated: true
       tags:
       - Servicedesk
+      summary: Replace servicedesk tickets by ticket id ticketsummary
+      x-summary-source: derived
+      operationId: putV2ServicedeskTicketsByTicketIdTicketsummary
+      x-operation-id-source: derived
     get:
       parameters:
       - name: ticketId
@@ -172,6 +200,10 @@ paths:
       deprecated: true
       tags:
       - Servicedesk
+      summary: Get servicedesk tickets by ticket id ticketsummary
+      x-summary-source: derived
+      operationId: getV2ServicedeskTicketsByTicketIdTicketsummary
+      x-operation-id-source: derived
   /v2/servicedesk/tickets/notes/rephrase:
     post:
       requestBody:
@@ -192,33 +224,12 @@ paths:
       deprecated: true
       tags:
       - Servicedesk
+      summary: Create servicedesk tickets notes rephrase
+      x-summary-source: derived
+      operationId: postV2ServicedeskTicketsNotesRephrase
+      x-operation-id-source: derived
 components:
   schemas:
-    TicketRephraseNoteInputDto:
-      required:
-      - Details
-      type: object
-      properties:
-        Details:
-          minLength: 1
-          type: string
-      additionalProperties: false
-    TicketSmartResolutionSummaryPutInputDto:
-      type: object
-      properties:
-        Summary:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketSmartSummaryPutInputDto:
-      type: object
-      properties:
-        Summary:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     TicketSmartResolutionSummaryPostInputDto:
       type: object
       properties:
@@ -229,6 +240,31 @@ components:
         DurationInMilliseconds:
           type: integer
           format: int32
+      additionalProperties: false
+    TicketRephraseNoteInputDto:
+      required:
+      - Details
+      type: object
+      properties:
+        Details:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    TicketSmartSummaryPutInputDto:
+      type: object
+      properties:
+        Summary:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketSmartResolutionSummaryPutInputDto:
+      type: object
+      properties:
+        Summary:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

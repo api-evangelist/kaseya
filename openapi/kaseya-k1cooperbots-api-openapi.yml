@@ -47,6 +47,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1LookupOutputResponseDto'
+      summary: Get work types lookup
+      x-summary-source: derived
   /v2/kaseya-one/worktypes/lookup/{id}:
     get:
       tags:
@@ -72,6 +74,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1LookupOutputDto'
+      summary: Get work type lookup
+      x-summary-source: derived
   /v2/kaseya-one/resources/lookup:
     post:
       tags:
@@ -109,6 +113,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1LookupOutputResponseDto'
+      summary: Get K1 resources lookup
+      x-summary-source: derived
   /v2/kaseya-one/resources/lookup/{id}:
     get:
       tags:
@@ -134,6 +140,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1LookupOutputDto'
+      summary: Get K1 resource lookup
+      x-summary-source: derived
   /v2/kaseya-one/resources/roles/lookup:
     post:
       tags:
@@ -171,6 +179,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1LookupOutputResponseDto'
+      summary: Get K1 roles lookup
+      x-summary-source: derived
   /v2/kaseya-one/resources/roles/lookup/{id}:
     get:
       tags:
@@ -196,6 +206,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1LookupOutputDto'
+      summary: Get K1 role lookup
+      x-summary-source: derived
   /v2/kaseya-one/tickets/statuses/lookup:
     post:
       tags:
@@ -233,6 +245,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1LookupOutputResponseDto'
+      summary: Get K1 ticket statuses lookup
+      x-summary-source: derived
   /v2/kaseya-one/tickets/statuses/lookup/{id}:
     get:
       tags:
@@ -258,16 +272,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1LookupOutputDto'
+      summary: Get K1 ticket statuses lookup
+      x-summary-source: derived
 components:
   schemas:
-    K1SearchCriteriaDto:
-      type: object
-      properties:
-        term:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     K1RolesLookupInputDto:
       type: object
       properties:
@@ -282,6 +290,20 @@ components:
         search:
           $ref: '#/components/schemas/K1SearchCriteriaDto'
         TimeSpentBy:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1LookupOutputResponseDto:
+      type: object
+      properties:
+        Value:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1LookupOutputDto'
+        Next_link:
           type:
           - string
           - 'null'
@@ -320,16 +342,10 @@ components:
         search:
           $ref: '#/components/schemas/K1SearchCriteriaDto'
       additionalProperties: false
-    K1LookupOutputResponseDto:
+    K1SearchCriteriaDto:
       type: object
       properties:
-        Value:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/K1LookupOutputDto'
-        Next_link:
+        term:
           type:
           - string
           - 'null'

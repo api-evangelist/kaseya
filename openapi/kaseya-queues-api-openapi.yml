@@ -28,6 +28,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QueueLookupOutputDtoIEnumerableResponse'
+      summary: Get queue lookups
+      x-summary-source: derived
 components:
   schemas:
     QueueLookupOutputDtoIEnumerableResponse:
@@ -44,6 +46,19 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/QueueLookupOutputDto'
+      additionalProperties: false
+    QueueLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -69,19 +84,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    QueueLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
       additionalProperties: false
   securitySchemes:
     bearerAuth:

@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Account invoice settings get
+      x-summary-source: derived
     put:
       tags:
       - AccountInvoiceSettings
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateAccountInvoiceSettingsModel'
         required: true
+      summary: Account invoice settings put
+      x-summary-source: derived
   /V1.0/Companies/{id}/invoiceSettings/contactRecipients:
     post:
       tags:
@@ -168,6 +172,8 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateContactRecipientsModel'
         required: true
+      summary: Account invoice settings add contact recipients
+      x-summary-source: derived
   /V1.0/Companies/{id}/invoiceSettings/contactRecipients/{contactId}:
     delete:
       tags:
@@ -224,6 +230,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Account invoice settings delete contact recipient
+      x-summary-source: derived
   /V1.0/Companies/{id}/invoiceSettings/resourceRecipients:
     post:
       tags:
@@ -280,6 +288,8 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateResourceRecipientsModel'
         required: true
+      summary: Account invoice settings add resource recipients
+      x-summary-source: derived
   /V1.0/Companies/{id}/invoiceSettings/resourceRecipients/{resourceId}:
     delete:
       tags:
@@ -336,8 +346,39 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Account invoice settings delete resource recipient
+      x-summary-source: derived
 components:
   schemas:
+    AddContactRecipientsResultModel:
+      type: object
+      properties:
+        contactRecipients:
+          type: array
+          items:
+            format: int32
+            type: integer
+            readOnly: true
+    AddResourceRecipientsResultModel:
+      type: object
+      properties:
+        resourceRecipients:
+          type: array
+          items:
+            format: int32
+            type: integer
+            readOnly: true
+    Object:
+      type: object
+      properties: {}
+    UpdateContactRecipientsModel:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            format: int32
+            type: integer
     AccountInvoiceSettingsResultModel:
       type: object
       properties:
@@ -362,48 +403,6 @@ components:
             type: integer
         otherEmails:
           type: string
-    UpdateContactRecipientsModel:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            format: int32
-            type: integer
-    AddContactRecipientsResultModel:
-      type: object
-      properties:
-        contactRecipients:
-          type: array
-          items:
-            format: int32
-            type: integer
-            readOnly: true
-    UpdateResourceRecipientsModel:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            format: int32
-            type: integer
-    AddResourceRecipientsResultModel:
-      type: object
-      properties:
-        resourceRecipients:
-          type: array
-          items:
-            format: int32
-            type: integer
-            readOnly: true
-    Object:
-      type: object
-      properties: {}
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
     UpdateAccountInvoiceSettingsModel:
       type: object
       properties:
@@ -418,3 +417,16 @@ components:
           type: boolean
         otherEmails:
           type: string
+    UpdateResourceRecipientsModel:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            format: int32
+            type: integer
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'

@@ -22,6 +22,10 @@ paths:
       deprecated: true
       tags:
       - Rmm
+      summary: Get rmm by integration type
+      x-summary-source: derived
+      operationId: getV2RmmByIntegrationType
+      x-operation-id-source: derived
     post:
       parameters:
       - name: integrationType
@@ -47,6 +51,10 @@ paths:
       deprecated: true
       tags:
       - Rmm
+      summary: Create rmm by integration type
+      x-summary-source: derived
+      operationId: postV2RmmByIntegrationType
+      x-operation-id-source: derived
     put:
       parameters:
       - name: integrationType
@@ -72,6 +80,10 @@ paths:
       deprecated: true
       tags:
       - Rmm
+      summary: Replace rmm by integration type
+      x-summary-source: derived
+      operationId: putV2RmmByIntegrationType
+      x-operation-id-source: derived
     patch:
       parameters:
       - name: integrationType
@@ -105,6 +117,10 @@ paths:
       deprecated: true
       tags:
       - Rmm
+      summary: Update rmm by integration type
+      x-summary-source: derived
+      operationId: patchV2RmmByIntegrationType
+      x-operation-id-source: derived
   /v2/rmm/{integrationType}/mappings/{entityType}:
     get:
       parameters:
@@ -148,6 +164,10 @@ paths:
       deprecated: true
       tags:
       - Rmm
+      summary: Get rmm by integration type mappings by entity type
+      x-summary-source: derived
+      operationId: getV2RmmByIntegrationTypeMappingsByEntityType
+      x-operation-id-source: derived
     post:
       parameters:
       - name: integrationType
@@ -186,6 +206,10 @@ paths:
       deprecated: true
       tags:
       - Rmm
+      summary: Create rmm by integration type mappings by entity type
+      x-summary-source: derived
+      operationId: postV2RmmByIntegrationTypeMappingsByEntityType
+      x-operation-id-source: derived
     delete:
       parameters:
       - name: integrationType
@@ -224,6 +248,10 @@ paths:
       deprecated: true
       tags:
       - Rmm
+      summary: Delete rmm by integration type mappings by entity type
+      x-summary-source: derived
+      operationId: deleteV2RmmByIntegrationTypeMappingsByEntityType
+      x-operation-id-source: derived
   /v2/rmm/{integrationType}/mappings/status/{jobId}:
     get:
       parameters:
@@ -242,6 +270,10 @@ paths:
       deprecated: true
       tags:
       - Rmm
+      summary: Get rmm by integration type mappings status by job id
+      x-summary-source: derived
+      operationId: getV2RmmByIntegrationTypeMappingsStatusByJobId
+      x-operation-id-source: derived
 components:
   schemas:
     DefaultOptions:
@@ -276,43 +308,16 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    OperationType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-      format: int32
-    DeleteEntityMappingInputDto:
+    ImportEntityMappingInputDto:
       type: object
       properties:
         ExternalId:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    Operation:
-      type: object
-      properties:
-        OperationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
-          type:
-          - string
-          - 'null'
-        op:
-          type:
-          - string
-          - 'null'
-        from:
-          type:
-          - string
-          - 'null'
-        value: {}
+        PsaId:
+          type: integer
+          format: int32
       additionalProperties: false
     IntegrationSettingDto:
       type: object
@@ -352,17 +357,6 @@ components:
         DefaultOptions:
           $ref: '#/components/schemas/DefaultOptions'
       additionalProperties: false
-    ImportEntityMappingInputDto:
-      type: object
-      properties:
-        ExternalId:
-          type:
-          - string
-          - 'null'
-        PsaId:
-          type: integer
-          format: int32
-      additionalProperties: false
     RemoteControl:
       type: object
       properties:
@@ -377,6 +371,44 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    Operation:
+      type: object
+      properties:
+        OperationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type:
+          - string
+          - 'null'
+        op:
+          type:
+          - string
+          - 'null'
+        from:
+          type:
+          - string
+          - 'null'
+        value: {}
+      additionalProperties: false
+    DeleteEntityMappingInputDto:
+      type: object
+      properties:
+        ExternalId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    OperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
   securitySchemes:
     bearerAuth:
       type: http

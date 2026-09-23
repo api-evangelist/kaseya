@@ -58,6 +58,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Tasks url parameter query
+      x-summary-source: derived
     post:
       tags:
       - Tasks
@@ -107,6 +109,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Tasks query
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Tasks/{id}:
@@ -159,6 +163,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Tasks query item
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Tasks/query/count:
@@ -210,6 +216,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Tasks url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - Tasks
@@ -259,6 +267,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Tasks query count
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Tasks/entityInformation:
@@ -305,6 +315,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Tasks query entity information
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Tasks/entityInformation/fields:
@@ -351,6 +363,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Tasks query field definitions
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Tasks/entityInformation/userDefinedFields:
@@ -397,6 +411,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Tasks query user defined field definitions
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /v2/project/tasks/searchselect:
@@ -433,6 +449,8 @@ paths:
                 $ref: '#/components/schemas/TaskListSearchSelectOutputDtoIEnumerableResponse'
       security:
       - bearerAuth: []
+      summary: Search and select task list
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/project/tasks:
@@ -469,6 +487,8 @@ paths:
                 $ref: '#/components/schemas/TasksListOutputDtoIEnumerableResponse'
       security:
       - bearerAuth: []
+      summary: Get tasks list
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/project/tasks/{taskId}/relateditems:
@@ -498,150 +518,15 @@ paths:
                 $ref: '#/components/schemas/TaskRelatedItemsOutputDtoResponse'
       security:
       - bearerAuth: []
+      summary: Get task related items
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
 components:
   schemas:
-    PickListValue:
+    Expression:
       type: object
       properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    TaskModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        assignedResourceID:
-          format: int32
-          type: integer
-        assignedResourceRoleID:
-          format: int32
-          type: integer
-        billingCodeID:
-          format: int32
-          type: integer
-        canClientPortalUserCompleteTask:
-          type: boolean
-        companyLocationID:
-          format: int32
-          type: integer
-        completedByResourceID:
-          format: int32
-          type: integer
-        completedByType:
-          format: int32
-          type: integer
-        completedDateTime:
-          format: date-time
-          type: string
-        createDateTime:
-          format: date-time
-          type: string
-        creatorResourceID:
-          format: int32
-          type: integer
-        creatorType:
-          format: int32
-          type: integer
-        departmentID:
-          format: int32
-          type: integer
-        description:
-          type: string
-        endDateTime:
-          format: date-time
-          type: string
-        estimatedHours:
-          format: double
-          type: number
-        externalID:
-          type: string
-        hoursToBeScheduled:
-          format: double
-          type: number
-        isTaskBillable:
-          type: boolean
-        isVisibleInClientPortal:
-          type: boolean
-        lastActivityDateTime:
-          format: date-time
-          type: string
-        lastActivityPersonType:
-          format: int32
-          type: integer
-        lastActivityResourceID:
-          format: int32
-          type: integer
-        phaseID:
-          format: int32
-          type: integer
-        priority:
-          format: int32
-          type: integer
-        priorityLabel:
-          format: int32
-          type: integer
-        projectID:
-          format: int32
-          type: integer
-        purchaseOrderNumber:
-          type: string
-        remainingHours:
-          format: double
-          type: number
-        startDateTime:
-          format: date-time
-          type: string
-        status:
-          format: int32
-          type: integer
-        taskCategoryID:
-          format: int32
-          type: integer
-        taskNumber:
-          type: string
-        taskType:
-          format: int32
-          type: integer
-        title:
-          type: string
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_Task_Int64'
-          readOnly: true
-        userDefinedFields:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserDefinedField'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    ParameterExpression:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
         nodeType:
           enum:
           - Add
@@ -731,40 +616,17 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        name:
+        type:
           type: string
-          readOnly: true
-        isByRef:
-          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    FieldInformationResultModel:
+    ItemQueryResultModel_TaskModel_Task:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    Object:
-      type: object
-      properties: {}
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        item:
+          $ref: '#/components/schemas/TaskModel'
     Expression_Func_Task_Int64:
       type: object
       properties:
@@ -880,20 +742,31 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    ItemQueryResultModel_TaskModel_Task:
+    UserDefinedField:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/TaskModel'
-    QueryActionResult_TaskModel_Task:
+        name:
+          type: string
+        value:
+          type: string
+    PickListValue:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TaskModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -902,52 +775,35 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    EntityInformationResultModel:
+    QueryModel:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
+        maxRecords:
           format: int32
           type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
+        includeFields:
           type: array
           items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    UserDefinedField:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    ParameterExpression:
       type: object
       properties:
-        name:
+        type:
           type: string
-        value:
-          type: string
-    Expression:
-      type: object
-      properties:
+          readOnly: true
         nodeType:
           enum:
           - Add
@@ -1037,71 +893,130 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        type:
+        name:
           type: string
+          readOnly: true
+        isByRef:
+          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    QueryModel:
+    FieldInformationResultModel:
       type: object
       properties:
-        maxRecords:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    TaskModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        assignedResourceID:
           format: int32
           type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Field:
-      type: object
-      properties:
-        name:
+        assignedResourceRoleID:
+          format: int32
+          type: integer
+        billingCodeID:
+          format: int32
+          type: integer
+        canClientPortalUserCompleteTask:
+          type: boolean
+        companyLocationID:
+          format: int32
+          type: integer
+        completedByResourceID:
+          format: int32
+          type: integer
+        completedByType:
+          format: int32
+          type: integer
+        completedDateTime:
+          format: date-time
           type: string
-        label:
+        createDateTime:
+          format: date-time
           type: string
-        type:
-          type: string
-        length:
+        creatorResourceID:
+          format: int32
+          type: integer
+        creatorType:
+          format: int32
+          type: integer
+        departmentID:
           format: int32
           type: integer
         description:
           type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
+        endDateTime:
+          format: date-time
           type: string
-        isPickList:
+        estimatedHours:
+          format: double
+          type: number
+        externalID:
+          type: string
+        hoursToBeScheduled:
+          format: double
+          type: number
+        isTaskBillable:
           type: boolean
-        picklistValues:
+        isVisibleInClientPortal:
+          type: boolean
+        lastActivityDateTime:
+          format: date-time
+          type: string
+        lastActivityPersonType:
+          format: int32
+          type: integer
+        lastActivityResourceID:
+          format: int32
+          type: integer
+        phaseID:
+          format: int32
+          type: integer
+        priority:
+          format: int32
+          type: integer
+        priorityLabel:
+          format: int32
+          type: integer
+        projectID:
+          format: int32
+          type: integer
+        purchaseOrderNumber:
+          type: string
+        remainingHours:
+          format: double
+          type: number
+        startDateTime:
+          format: date-time
+          type: string
+        status:
+          format: int32
+          type: integer
+        taskCategoryID:
+          format: int32
+          type: integer
+        taskNumber:
+          type: string
+        taskType:
+          format: int32
+          type: integer
+        title:
+          type: string
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_Task_Int64'
+          readOnly: true
+        userDefinedFields:
           type: array
           items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
+            $ref: '#/components/schemas/UserDefinedField'
     EntityInformationModel:
       type: object
       properties:
@@ -1156,22 +1071,113 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    TaskRelatedItemsOutputDto:
+    FieldInformationModel:
       type: object
       properties:
-        Title:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        Dependencies:
-          $ref: '#/components/schemas/TaskDependencyDto'
-        RelatedTickets:
-          $ref: '#/components/schemas/TaskRelatedTicketDto'
-      additionalProperties: false
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Object:
+      type: object
+      properties: {}
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    QueryActionResult_TaskModel_Task:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     TaskListSearchSelectOutputDtoIEnumerableResponse:
       type: object
       properties:
@@ -1187,70 +1193,14 @@ components:
           items:
             $ref: '#/components/schemas/TaskListSearchSelectOutputDto'
       additionalProperties: false
-    TaskRelatedTicketDto:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-          format: int32
-        Items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TaskRelatedTicket'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    TaskDependency:
-      type: object
-      properties:
-        TypeId:
-          type: integer
-          format: int32
-        TaskId:
-          type: integer
-          format: int32
-        TaskName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TasksListInputDto:
+    GetTaskListSearchSelectInputDto:
       type: object
       properties:
         PageSize:
-          type:
-          - integer
-          - 'null'
+          type: integer
           format: int32
         PageNumber:
-          type:
-          - integer
-          - 'null'
+          type: integer
           format: int32
         StartRowIndex:
           type: integer
@@ -1269,7 +1219,25 @@ components:
           - string
           - 'null'
         Filter:
-          $ref: '#/components/schemas/TasksListFilterDto'
+          $ref: '#/components/schemas/TaskSearchSelectFilterDto'
+      additionalProperties: false
+    TaskRelatedTicket:
+      type: object
+      properties:
+        TicketId:
+          type: integer
+          format: int32
+        TicketTitle:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     TasksListFilterDto:
       type: object
@@ -1302,93 +1270,6 @@ components:
           - integer
           - 'null'
           format: int32
-      additionalProperties: false
-    GetTaskListSearchSelectInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/TaskSearchSelectFilterDto'
-      additionalProperties: false
-    TaskListSearchSelectOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        TicketTaskId:
-          type: integer
-          format: int32
-        TicketId:
-          type: integer
-          format: int32
-        TaskId:
-          type: integer
-          format: int32
-        TaskName:
-          type:
-          - string
-          - 'null'
-        ProjectName:
-          type:
-          - string
-          - 'null'
-        ProjectNumber:
-          type:
-          - string
-          - 'null'
-        TaskStatus:
-          type:
-          - string
-          - 'null'
-        EndDate:
-          type: string
-          format: date-time
-      additionalProperties: false
-    TaskRelatedItemsOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TaskRelatedItemsOutputDto'
-      additionalProperties: false
-    TaskDependencyDto:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-          format: int32
-        Items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TaskDependency'
       additionalProperties: false
     TasksListOutputDtoIEnumerableResponse:
       type: object
@@ -1437,6 +1318,165 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
+    TaskRelatedItemsOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TaskRelatedItemsOutputDto'
+      additionalProperties: false
+    TasksListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PageNumber:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/TasksListFilterDto'
+      additionalProperties: false
+    TaskListSearchSelectOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        TicketTaskId:
+          type: integer
+          format: int32
+        TicketId:
+          type: integer
+          format: int32
+        TaskId:
+          type: integer
+          format: int32
+        TaskName:
+          type:
+          - string
+          - 'null'
+        ProjectName:
+          type:
+          - string
+          - 'null'
+        ProjectNumber:
+          type:
+          - string
+          - 'null'
+        TaskStatus:
+          type:
+          - string
+          - 'null'
+        EndDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    TaskDependency:
+      type: object
+      properties:
+        TypeId:
+          type: integer
+          format: int32
+        TaskId:
+          type: integer
+          format: int32
+        TaskName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TaskDependencyDto:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          format: int32
+        Items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TaskDependency'
+      additionalProperties: false
+    TaskRelatedTicketDto:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          format: int32
+        Items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TaskRelatedTicket'
+      additionalProperties: false
+    TaskRelatedItemsOutputDto:
+      type: object
+      properties:
+        Title:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Dependencies:
+          $ref: '#/components/schemas/TaskDependencyDto'
+        RelatedTickets:
+          $ref: '#/components/schemas/TaskRelatedTicketDto'
+      additionalProperties: false
     TasksListOutputDto:
       type: object
       properties:
@@ -1471,24 +1511,6 @@ components:
         AccountId:
           type: integer
           format: int32
-      additionalProperties: false
-    TaskRelatedTicket:
-      type: object
-      properties:
-        TicketId:
-          type: integer
-          format: int32
-        TicketTitle:
-          type:
-          - string
-          - 'null'
-        AccountId:
-          type: integer
-          format: int32
-        AccountName:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

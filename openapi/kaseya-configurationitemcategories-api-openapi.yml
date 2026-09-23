@@ -56,6 +56,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item categories url parameter query
+      x-summary-source: derived
     post:
       tags:
       - ConfigurationItemCategories
@@ -105,6 +107,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Configuration item categories query
+      x-summary-source: derived
   /V1.0/ConfigurationItemCategories/{id}:
     get:
       tags:
@@ -155,6 +159,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item categories query item
+      x-summary-source: derived
   /V1.0/ConfigurationItemCategories/query/count:
     get:
       tags:
@@ -204,6 +210,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item categories url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - ConfigurationItemCategories
@@ -253,6 +261,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Configuration item categories query count
+      x-summary-source: derived
   /V1.0/ConfigurationItemCategories:
     put:
       tags:
@@ -303,6 +313,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ConfigurationItemCategoryModel'
         required: true
+      summary: Configuration item categories update entity
+      x-summary-source: derived
     post:
       tags:
       - ConfigurationItemCategories
@@ -352,6 +364,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ConfigurationItemCategoryModel'
         required: true
+      summary: Configuration item categories create entity
+      x-summary-source: derived
     patch:
       tags:
       - ConfigurationItemCategories
@@ -401,6 +415,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ConfigurationItemCategoryModel'
         required: true
+      summary: Configuration item categories patch entity
+      x-summary-source: derived
   /V1.0/ConfigurationItemCategories/entityInformation:
     get:
       tags:
@@ -445,6 +461,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item categories query entity information
+      x-summary-source: derived
   /V1.0/ConfigurationItemCategories/entityInformation/fields:
     get:
       tags:
@@ -489,6 +507,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item categories query field definitions
+      x-summary-source: derived
   /V1.0/ConfigurationItemCategories/entityInformation/userDefinedFields:
     get:
       tags:
@@ -533,137 +553,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item categories query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    ConfigurationItemCategoryModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        displayColorRGB:
-          format: int32
-          type: integer
-        isActive:
-          type: boolean
-        isClientPortalDefault:
-          type: boolean
-        isGlobalDefault:
-          type: boolean
-        name:
-          type: string
-        nickname:
-          type: string
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    ItemQueryResultModel_ConfigurationItemCategoryModel_InstalledProductCategory:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ConfigurationItemCategoryModel'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Object:
-      type: object
-      properties: {}
     Field:
       type: object
       properties:
@@ -700,15 +593,55 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryActionResult_ConfigurationItemCategoryModel_InstalledProductCategory:
+    EntityInformationResultModel:
       type: object
       properties:
-        items:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
           type: array
           items:
-            $ref: '#/components/schemas/ConfigurationItemCategoryModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -745,6 +678,11 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    ItemQueryResultModel_ConfigurationItemCategoryModel_InstalledProductCategory:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ConfigurationItemCategoryModel'
     Filter:
       type: object
       properties:
@@ -763,22 +701,106 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
+    ConfigurationItemCategoryModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        displayColorRGB:
+          format: int32
+          type: integer
+        isActive:
+          type: boolean
+        isClientPortalDefault:
+          type: boolean
+        isGlobalDefault:
+          type: boolean
+        name:
+          type: string
+        nickname:
+          type: string
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    QueryActionResult_ConfigurationItemCategoryModel_InstalledProductCategory:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationItemCategoryModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string

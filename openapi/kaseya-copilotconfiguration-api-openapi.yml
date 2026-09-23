@@ -28,6 +28,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/CopilotConfigurationOutputDtoListResponse'
+      summary: Get copilot configurations
+      x-summary-source: derived
     post:
       tags:
       - CopilotConfiguration
@@ -59,6 +61,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/CopilotConfigurationOutputDtoResponse'
+      summary: Post copilot configuration
+      x-summary-source: derived
   /v2/admin/copilot/configuration/{id}:
     put:
       tags:
@@ -98,35 +102,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/CopilotConfigurationOutputDtoResponse'
+      summary: Put copilot configuration
+      x-summary-source: derived
 components:
   schemas:
-    CopilotConfigurationValueDto:
-      type: object
-      properties:
-        IsTicketSmartSummaryEnabled:
-          type:
-          - boolean
-          - 'null'
-        IsWritingAssistantEnabled:
-          type:
-          - boolean
-          - 'null'
-        IsTicketResolutionEnabled:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    CopilotConfigurationInputDto:
-      type: object
-      properties:
-        IsEnabled:
-          type: boolean
-        Value:
-          $ref: '#/components/schemas/CopilotConfigurationValueDto'
-        ModuleId:
-          type: integer
-          format: int32
-      additionalProperties: false
     CopilotConfigurationOutputDtoResponse:
       type: object
       properties:
@@ -137,46 +116,6 @@ components:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
           $ref: '#/components/schemas/CopilotConfigurationOutputDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    CopilotConfigurationOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CopilotConfigurationOutputDto'
       additionalProperties: false
     CopilotConfigurationOutputDto:
       type: object
@@ -210,6 +149,73 @@ components:
         ModuleId:
           type: integer
           format: int32
+      additionalProperties: false
+    CopilotConfigurationOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CopilotConfigurationOutputDto'
+      additionalProperties: false
+    CopilotConfigurationInputDto:
+      type: object
+      properties:
+        IsEnabled:
+          type: boolean
+        Value:
+          $ref: '#/components/schemas/CopilotConfigurationValueDto'
+        ModuleId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    CopilotConfigurationValueDto:
+      type: object
+      properties:
+        IsTicketSmartSummaryEnabled:
+          type:
+          - boolean
+          - 'null'
+        IsWritingAssistantEnabled:
+          type:
+          - boolean
+          - 'null'
+        IsTicketResolutionEnabled:
+          type:
+          - boolean
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

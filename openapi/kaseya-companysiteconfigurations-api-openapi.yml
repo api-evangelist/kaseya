@@ -56,6 +56,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company site configurations url parameter query
+      x-summary-source: derived
     post:
       tags:
       - CompanySiteConfigurations
@@ -105,6 +107,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Company site configurations query
+      x-summary-source: derived
   /V1.0/CompanySiteConfigurations/{id}:
     get:
       tags:
@@ -155,6 +159,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company site configurations query item
+      x-summary-source: derived
   /V1.0/CompanySiteConfigurations/query/count:
     get:
       tags:
@@ -204,6 +210,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company site configurations url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - CompanySiteConfigurations
@@ -253,6 +261,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Company site configurations query count
+      x-summary-source: derived
   /V1.0/CompanySiteConfigurations/entityInformation:
     get:
       tags:
@@ -297,6 +307,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company site configurations query entity information
+      x-summary-source: derived
   /V1.0/CompanySiteConfigurations/entityInformation/fields:
     get:
       tags:
@@ -341,6 +353,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company site configurations query field definitions
+      x-summary-source: derived
   /V1.0/CompanySiteConfigurations/entityInformation/userDefinedFields:
     get:
       tags:
@@ -385,59 +399,13 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company site configurations query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    CompanySiteConfigurationModel:
+    Expression:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        companyID:
-          format: int32
-          type: integer
-        locationName:
-          type: string
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_AccountLocation_Int64'
-          readOnly: true
-        userDefinedFields:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserDefinedField'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    ParameterExpression:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
         nodeType:
           enum:
           - Add
@@ -527,40 +495,46 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        name:
+        type:
           type: string
-          readOnly: true
-        isByRef:
-          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    FieldInformationResultModel:
+    UserDefinedField:
       type: object
       properties:
-        fields:
+        name:
+          type: string
+        value:
+          type: string
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    QueryActionResult_CompanySiteConfigurationModel_AccountLocation:
+      type: object
+      properties:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    Object:
-      type: object
-      properties: {}
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+            $ref: '#/components/schemas/CompanySiteConfigurationModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     Expression_Func_AccountLocation_Int64:
       type: object
       properties:
@@ -676,20 +650,6 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    ItemQueryResultModel_CompanySiteConfigurationModel_AccountLocation:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/CompanySiteConfigurationModel'
-    QueryActionResult_CompanySiteConfigurationModel_AccountLocation:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompanySiteConfigurationModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -698,52 +658,53 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    EntityInformationResultModel:
+    QueryModel:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
+        maxRecords:
           format: int32
           type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
+        includeFields:
           type: array
           items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    UserDefinedField:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    CompanySiteConfigurationModel:
       type: object
       properties:
-        name:
+        id:
+          format: int64
+          type: integer
+        companyID:
+          format: int32
+          type: integer
+        locationName:
           type: string
-        value:
-          type: string
-    Expression:
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_AccountLocation_Int64'
+          readOnly: true
+        userDefinedFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinedField'
+    ParameterExpression:
       type: object
       properties:
+        type:
+          type: string
+          readOnly: true
         nodeType:
           enum:
           - Add
@@ -833,71 +794,23 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        type:
+        name:
           type: string
+          readOnly: true
+        isByRef:
+          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    QueryModel:
+    FieldInformationResultModel:
       type: object
       properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
+        fields:
           type: array
           items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     EntityInformationModel:
       type: object
       properties:
@@ -952,3 +865,106 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    ItemQueryResultModel_CompanySiteConfigurationModel_AccountLocation:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/CompanySiteConfigurationModel'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer

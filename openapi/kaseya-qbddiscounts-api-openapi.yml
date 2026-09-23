@@ -50,6 +50,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/StringResponse'
+      summary: Import discounts
+      x-summary-source: derived
     get:
       tags:
       - QbdDiscounts
@@ -95,6 +97,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbDiscountTypeExportDtoListPagedResponse'
+      summary: Get discounts
+      x-summary-source: derived
   /v2/integration/qbd/discounts/byids:
     get:
       tags:
@@ -124,8 +128,62 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbDiscountTypeExportDtoListResponse'
+      summary: Get discounts by ids
+      x-summary-source: derived
 components:
   schemas:
+    QbDiscountTypeExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ItemCode:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        DiscountIsPercent:
+          type: boolean
+        DiscountRate:
+          type: number
+          format: double
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        IncomeAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExpenseAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsTaxable:
+          type: boolean
+        ExternalItemId:
+          type:
+          - string
+          - 'null'
+        ExternalIncomeId:
+          type:
+          - string
+          - 'null'
+        ExternalExpenseId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     QbDiscountTypeExportDtoListPagedResponse:
       type: object
       properties:
@@ -197,79 +255,15 @@ components:
         AssetAccount:
           $ref: '#/components/schemas/QbAccountCodeImportDto'
       additionalProperties: false
-    ErrorInfo:
+    StringResponse:
       type: object
       properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    QbDiscountTypeExportDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        ItemCode:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        DiscountIsPercent:
+        Success:
           type: boolean
-        DiscountRate:
-          type: number
-          format: double
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        IncomeAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ExpenseAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsTaxable:
-          type: boolean
-        ExternalItemId:
-          type:
-          - string
-          - 'null'
-        ExternalIncomeId:
-          type:
-          - string
-          - 'null'
-        ExternalExpenseId:
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - string
           - 'null'
@@ -304,19 +298,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     QbDiscountTypeExportDtoListResponse:
       type: object
       properties:
@@ -331,6 +312,31 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/QbDiscountTypeExportDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
   securitySchemes:
     bearerAuth:

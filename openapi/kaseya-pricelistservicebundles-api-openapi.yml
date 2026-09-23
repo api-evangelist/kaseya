@@ -56,6 +56,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Price list service bundles url parameter query
+      x-summary-source: derived
     post:
       tags:
       - PriceListServiceBundles
@@ -105,6 +107,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Price list service bundles query
+      x-summary-source: derived
   /V1.0/PriceListServiceBundles/{id}:
     get:
       tags:
@@ -155,6 +159,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Price list service bundles query item
+      x-summary-source: derived
   /V1.0/PriceListServiceBundles/query/count:
     get:
       tags:
@@ -204,6 +210,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Price list service bundles url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - PriceListServiceBundles
@@ -253,6 +261,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Price list service bundles query count
+      x-summary-source: derived
   /V1.0/PriceListServiceBundles:
     put:
       tags:
@@ -303,6 +313,8 @@ paths:
             schema:
               $ref: '#/components/schemas/PriceListServiceBundleModel'
         required: true
+      summary: Price list service bundles update entity
+      x-summary-source: derived
     patch:
       tags:
       - PriceListServiceBundles
@@ -352,6 +364,8 @@ paths:
             schema:
               $ref: '#/components/schemas/PriceListServiceBundleModel'
         required: true
+      summary: Price list service bundles patch entity
+      x-summary-source: derived
   /V1.0/PriceListServiceBundles/entityInformation:
     get:
       tags:
@@ -396,6 +410,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Price list service bundles query entity information
+      x-summary-source: derived
   /V1.0/PriceListServiceBundles/entityInformation/fields:
     get:
       tags:
@@ -440,6 +456,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Price list service bundles query field definitions
+      x-summary-source: derived
   /V1.0/PriceListServiceBundles/entityInformation/userDefinedFields:
     get:
       tags:
@@ -484,17 +502,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Price list service bundles query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    QueryActionResult_PriceListServiceBundleModel_PriceListServiceBundle:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PriceListServiceBundleModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
     PriceListServiceBundleModel:
       type: object
       properties:
@@ -512,113 +523,6 @@ components:
           type: number
         usesInternalCurrencyPrice:
           type: boolean
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    ItemQueryResultModel_PriceListServiceBundleModel_PriceListServiceBundle:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/PriceListServiceBundleModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Object:
-      type: object
-      properties: {}
     Field:
       type: object
       properties:
@@ -655,9 +559,55 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
       type: object
       properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -712,22 +662,92 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    QueryActionResult_PriceListServiceBundleModel_PriceListServiceBundle:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceListServiceBundleModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    ItemQueryResultModel_PriceListServiceBundleModel_PriceListServiceBundle:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/PriceListServiceBundleModel'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string

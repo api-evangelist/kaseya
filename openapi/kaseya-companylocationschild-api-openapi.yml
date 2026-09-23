@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company locations child query
+      x-summary-source: derived
     put:
       tags:
       - CompanyLocationsChild
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CompanyLocationModel'
         required: true
+      summary: Company locations child update entity
+      x-summary-source: derived
     post:
       tags:
       - CompanyLocationsChild
@@ -167,6 +171,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CompanyLocationModel'
         required: true
+      summary: Company locations child create entity
+      x-summary-source: derived
     patch:
       tags:
       - CompanyLocationsChild
@@ -222,6 +228,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CompanyLocationModel'
         required: true
+      summary: Company locations child patch entity
+      x-summary-source: derived
   /V1.0/Companies/{parentId}/Locations/{id}:
     get:
       tags:
@@ -278,6 +286,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company locations child query item
+      x-summary-source: derived
     delete:
       tags:
       - CompanyLocationsChild
@@ -333,6 +343,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company locations child delete entity
+      x-summary-source: derived
   /V1.0/Companies/{parentId}/Locations/entityInformation:
     get:
       tags:
@@ -382,6 +394,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company locations child query entity information
+      x-summary-source: derived
   /V1.0/Companies/{parentId}/Locations/entityInformation/fields:
     get:
       tags:
@@ -431,6 +445,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company locations child query field definitions
+      x-summary-source: derived
   /V1.0/Companies/{parentId}/Locations/entityInformation/userDefinedFields:
     get:
       tags:
@@ -480,8 +496,108 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company locations child query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
+    Expression:
+      type: object
+      properties:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
     ParameterExpression:
       type: object
       properties:
@@ -582,183 +698,6 @@ components:
           readOnly: true
         isByRef:
           type: boolean
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryActionResult_CompanyLocationModel_AccountPhysicalLocation:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompanyLocationModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    Expression:
-      type: object
-      properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
           readOnly: true
         canReduce:
           type: boolean
@@ -878,9 +817,6 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    Object:
-      type: object
-      properties: {}
     Field:
       type: object
       properties:
@@ -917,6 +853,42 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    ItemQueryResultModel_CompanyLocationModel_AccountPhysicalLocation:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/CompanyLocationModel'
     CompanyLocationModel:
       type: object
       properties:
@@ -968,9 +940,24 @@ components:
         soapParentPropertyId:
           $ref: '#/components/schemas/Expression_Func_AccountPhysicalLocation_Int64'
           readOnly: true
-    RestUserAccessLevel:
+    PickListValue:
       type: object
-      properties: {}
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -1007,27 +994,58 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    QueryActionResult_CompanyLocationModel_AccountPhysicalLocation:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompanyLocationModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_CompanyLocationModel_AccountPhysicalLocation:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/CompanyLocationModel'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string

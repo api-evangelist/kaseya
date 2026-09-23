@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Tasks child query
+      x-summary-source: derived
     put:
       tags:
       - TasksChild
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/TaskModel'
         required: true
+      summary: Tasks child update entity
+      x-summary-source: derived
     post:
       tags:
       - TasksChild
@@ -167,6 +171,8 @@ paths:
             schema:
               $ref: '#/components/schemas/TaskModel'
         required: true
+      summary: Tasks child create entity
+      x-summary-source: derived
     patch:
       tags:
       - TasksChild
@@ -222,6 +228,8 @@ paths:
             schema:
               $ref: '#/components/schemas/TaskModel'
         required: true
+      summary: Tasks child patch entity
+      x-summary-source: derived
   /V1.0/Projects/{parentId}/Tasks/{id}:
     get:
       tags:
@@ -278,6 +286,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Tasks child query item
+      x-summary-source: derived
   /V1.0/Projects/{parentId}/Tasks/entityInformation:
     get:
       tags:
@@ -327,6 +337,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Tasks child query entity information
+      x-summary-source: derived
   /V1.0/Projects/{parentId}/Tasks/entityInformation/fields:
     get:
       tags:
@@ -376,6 +388,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Tasks child query field definitions
+      x-summary-source: derived
   /V1.0/Projects/{parentId}/Tasks/entityInformation/userDefinedFields:
     get:
       tags:
@@ -425,8 +439,108 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Tasks child query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
+    Expression:
+      type: object
+      properties:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
     ParameterExpression:
       type: object
       properties:
@@ -531,332 +645,6 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    ItemQueryResultModel_TaskModel_Task:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/TaskModel'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    UserDefinedField:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    Expression:
-      type: object
-      properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    Object:
-      type: object
-      properties: {}
-    TaskModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        assignedResourceID:
-          format: int32
-          type: integer
-        assignedResourceRoleID:
-          format: int32
-          type: integer
-        billingCodeID:
-          format: int32
-          type: integer
-        canClientPortalUserCompleteTask:
-          type: boolean
-        companyLocationID:
-          format: int32
-          type: integer
-        completedByResourceID:
-          format: int32
-          type: integer
-        completedByType:
-          format: int32
-          type: integer
-        completedDateTime:
-          format: date-time
-          type: string
-        createDateTime:
-          format: date-time
-          type: string
-        creatorResourceID:
-          format: int32
-          type: integer
-        creatorType:
-          format: int32
-          type: integer
-        departmentID:
-          format: int32
-          type: integer
-        description:
-          type: string
-        endDateTime:
-          format: date-time
-          type: string
-        estimatedHours:
-          format: double
-          type: number
-        externalID:
-          type: string
-        hoursToBeScheduled:
-          format: double
-          type: number
-        isTaskBillable:
-          type: boolean
-        isVisibleInClientPortal:
-          type: boolean
-        lastActivityDateTime:
-          format: date-time
-          type: string
-        lastActivityPersonType:
-          format: int32
-          type: integer
-        lastActivityResourceID:
-          format: int32
-          type: integer
-        phaseID:
-          format: int32
-          type: integer
-        priority:
-          format: int32
-          type: integer
-        priorityLabel:
-          format: int32
-          type: integer
-        projectID:
-          format: int32
-          type: integer
-        purchaseOrderNumber:
-          type: string
-        remainingHours:
-          format: double
-          type: number
-        startDateTime:
-          format: date-time
-          type: string
-        status:
-          format: int32
-          type: integer
-        taskCategoryID:
-          format: int32
-          type: integer
-        taskNumber:
-          type: string
-        taskType:
-          format: int32
-          type: integer
-        title:
-          type: string
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_Task_Int64'
-          readOnly: true
-        userDefinedFields:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserDefinedField'
     Field:
       type: object
       properties:
@@ -893,37 +681,11 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    QueryActionResult_TaskModel_Task:
+    ItemQueryResultModel_TaskModel_Task:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TaskModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        item:
+          $ref: '#/components/schemas/TaskModel'
     Expression_Func_Task_Int64:
       type: object
       properties:
@@ -1039,3 +801,257 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    TaskModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        assignedResourceID:
+          format: int32
+          type: integer
+        assignedResourceRoleID:
+          format: int32
+          type: integer
+        billingCodeID:
+          format: int32
+          type: integer
+        canClientPortalUserCompleteTask:
+          type: boolean
+        companyLocationID:
+          format: int32
+          type: integer
+        completedByResourceID:
+          format: int32
+          type: integer
+        completedByType:
+          format: int32
+          type: integer
+        completedDateTime:
+          format: date-time
+          type: string
+        createDateTime:
+          format: date-time
+          type: string
+        creatorResourceID:
+          format: int32
+          type: integer
+        creatorType:
+          format: int32
+          type: integer
+        departmentID:
+          format: int32
+          type: integer
+        description:
+          type: string
+        endDateTime:
+          format: date-time
+          type: string
+        estimatedHours:
+          format: double
+          type: number
+        externalID:
+          type: string
+        hoursToBeScheduled:
+          format: double
+          type: number
+        isTaskBillable:
+          type: boolean
+        isVisibleInClientPortal:
+          type: boolean
+        lastActivityDateTime:
+          format: date-time
+          type: string
+        lastActivityPersonType:
+          format: int32
+          type: integer
+        lastActivityResourceID:
+          format: int32
+          type: integer
+        phaseID:
+          format: int32
+          type: integer
+        priority:
+          format: int32
+          type: integer
+        priorityLabel:
+          format: int32
+          type: integer
+        projectID:
+          format: int32
+          type: integer
+        purchaseOrderNumber:
+          type: string
+        remainingHours:
+          format: double
+          type: number
+        startDateTime:
+          format: date-time
+          type: string
+        status:
+          format: int32
+          type: integer
+        taskCategoryID:
+          format: int32
+          type: integer
+        taskNumber:
+          type: string
+        taskType:
+          format: int32
+          type: integer
+        title:
+          type: string
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_Task_Int64'
+          readOnly: true
+        userDefinedFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinedField'
+    Object:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    QueryActionResult_TaskModel_Task:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'

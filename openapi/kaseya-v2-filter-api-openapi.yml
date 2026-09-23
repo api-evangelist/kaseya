@@ -17,7 +17,7 @@ paths:
     get:
       tags:
       - /v2/filter
-      summary: Fetches the default device filters.
+      summary: Fetches the default device filters
       operationId: getDefaultsFilters
       parameters:
       - name: page
@@ -94,7 +94,7 @@ paths:
     get:
       tags:
       - /v2/filter
-      summary: Fetches the custom device filters for the user (using administrator role).
+      summary: Fetches the custom device filters for the user (using administrator role)
       operationId: getCustomFilters
       parameters:
       - name: page

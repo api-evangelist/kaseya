@@ -44,6 +44,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AgentProcedureOutputDtoListResponse'
+      summary: Get agent procedures
+      x-summary-source: derived
 components:
   schemas:
     ErrorInfo:

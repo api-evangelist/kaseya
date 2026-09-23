@@ -56,6 +56,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Surveys url parameter query
+      x-summary-source: derived
     post:
       tags:
       - Surveys
@@ -105,6 +107,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Surveys query
+      x-summary-source: derived
   /V1.0/Surveys/{id}:
     get:
       tags:
@@ -155,6 +159,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Surveys query item
+      x-summary-source: derived
   /V1.0/Surveys/query/count:
     get:
       tags:
@@ -204,6 +210,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Surveys url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - Surveys
@@ -253,6 +261,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Surveys query count
+      x-summary-source: derived
   /V1.0/Surveys/entityInformation:
     get:
       tags:
@@ -297,6 +307,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Surveys query entity information
+      x-summary-source: derived
   /V1.0/Surveys/entityInformation/fields:
     get:
       tags:
@@ -341,6 +353,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Surveys query field definitions
+      x-summary-source: derived
   /V1.0/Surveys/entityInformation/userDefinedFields:
     get:
       tags:
@@ -385,32 +399,24 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Surveys query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
+    Field:
       type: object
       properties:
         name:
           type: string
-        dataType:
+        label:
+          type: string
+        type:
           type: string
         length:
           format: int32
           type: integer
+        description:
+          type: string
         isRequired:
           type: boolean
         isReadOnly:
@@ -429,8 +435,38 @@ components:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
           type: string
+        defaultValue:
+          type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
+    ItemQueryResultModel_SurveyModel_Survey:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/SurveyModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Object:
+      type: object
+      properties: {}
     FieldInformationResultModel:
       type: object
       properties:
@@ -439,20 +475,6 @@ components:
           items:
             $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
-    ItemQueryResultModel_SurveyModel_Survey:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/SurveyModel'
-    QueryActionResult_SurveyModel_Survey:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SurveyModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
     PickListValue:
       type: object
       properties:
@@ -507,6 +529,38 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
     QueryModel:
       type: object
       properties:
@@ -530,23 +584,16 @@ components:
           value: 0
           udf: false
           items: []
-    Object:
-      type: object
-      properties: {}
-    Field:
+    FieldInformationModel:
       type: object
       properties:
         name:
           type: string
-        label:
-          type: string
-        type:
+        dataType:
           type: string
         length:
           format: int32
           type: integer
-        description:
-          type: string
         isRequired:
           type: boolean
         isReadOnly:
@@ -565,13 +612,20 @@ components:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
           type: string
-        defaultValue:
-          type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
     RestUserAccessLevel:
       type: object
       properties: {}
+    QueryActionResult_SurveyModel_Survey:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     SurveyModel:
       type: object
       properties:
@@ -583,42 +637,4 @@ components:
         displayName:
           type: string
         name:
-          type: string
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
           type: string

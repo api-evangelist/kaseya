@@ -28,6 +28,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ServiceCategoryLookupOutputDtoIEnumerableResponse'
+      summary: Get service categories lookup
+      x-summary-source: derived
   /v2/admin/finance/servicecategory/{categoryId}/servicesubcategory/lookup:
     get:
       tags:
@@ -53,8 +55,21 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ServiceCategoryLookupOutputDtoIEnumerableResponse'
+      summary: Get service sub categories lookup
+      x-summary-source: derived
 components:
   schemas:
+    ServiceCategoryLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -79,17 +94,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    ServiceCategoryLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     ServiceCategoryLookupOutputDtoIEnumerableResponse:
       type: object

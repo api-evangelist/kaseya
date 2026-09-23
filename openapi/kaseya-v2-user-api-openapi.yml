@@ -17,7 +17,7 @@ paths:
     post:
       tags:
       - /v2/user
-      summary: Resets the authenticated user's API access and secret keys.
+      summary: Resets the authenticated user's API access and secret keys
       operationId: resetApiKeys
       responses:
         '500':

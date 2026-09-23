@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource roles child query
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/Roles/{id}:
     get:
       tags:
@@ -113,6 +115,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource roles child query item
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/Roles/entityInformation:
     get:
       tags:
@@ -162,6 +166,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource roles child query entity information
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/Roles/entityInformation/fields:
     get:
       tags:
@@ -211,6 +217,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource roles child query field definitions
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/Roles/entityInformation/userDefinedFields:
     get:
       tags:
@@ -260,119 +268,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource roles child query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    QueryActionResult_ResourceRoleModel_ResourceRole:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceRoleModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_ResourceRoleModel_ResourceRole:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ResourceRoleModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    ResourceRoleModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        departmentID:
-          format: int64
-          type: integer
-        isActive:
-          type: boolean
-        queueID:
-          format: int64
-          type: integer
-        resourceID:
-          format: int64
-          type: integer
-        roleID:
-          format: int64
-          type: integer
-        soapParentPropertyId:
-          format: int64
-          type: integer
-          readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    Object:
-      type: object
-      properties: {}
     Field:
       type: object
       properties:
@@ -409,9 +308,84 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+    ResourceRoleModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        departmentID:
+          format: int64
+          type: integer
+        isActive:
+          type: boolean
+        queueID:
+          format: int64
+          type: integer
+        resourceID:
+          format: int64
+          type: integer
+        roleID:
+          format: int64
+          type: integer
+        soapParentPropertyId:
+          format: int64
+          type: integer
+          readOnly: true
+    Object:
       type: object
       properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    ItemQueryResultModel_ResourceRoleModel_ResourceRole:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ResourceRoleModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -448,17 +422,53 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    PagingModel:
+    QueryActionResult_ResourceRoleModel_ResourceRole:
       type: object
       properties:
-        count:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceRoleModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
           type: string
-        nextPageUrl:
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
           type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'

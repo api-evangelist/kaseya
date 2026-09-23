@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Article attachments child query
+      x-summary-source: derived
     post:
       tags:
       - ArticleAttachmentsChild
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ArticleAttachmentModel'
         required: true
+      summary: Article attachments child create entity
+      x-summary-source: derived
   /V1.0/KnowledgeBaseArticles/{parentId}/Attachments/{id}:
     get:
       tags:
@@ -168,6 +172,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Article attachments child query item
+      x-summary-source: derived
     delete:
       tags:
       - ArticleAttachmentsChild
@@ -223,8 +229,70 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Article attachments child delete entity
+      x-summary-source: derived
 components:
   schemas:
+    ArticleAttachmentModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        articleID:
+          format: int32
+          type: integer
+        attachDate:
+          format: date-time
+          type: string
+        attachedByContactID:
+          format: int64
+          type: integer
+        attachedByResourceID:
+          format: int64
+          type: integer
+        attachmentType:
+          type: string
+        contentType:
+          type: string
+        creatorType:
+          format: int32
+          type: integer
+        fileSize:
+          format: double
+          type: number
+        fullPath:
+          type: string
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        opportunityID:
+          format: int64
+          type: integer
+        parentAttachmentID:
+          format: int32
+          type: integer
+        parentID:
+          format: int64
+          type: integer
+        publish:
+          format: int32
+          type: integer
+        title:
+          type: string
+        data:
+          format: byte
+          type: string
+        parentType:
+          format: int32
+          type: integer
+          readOnly: true
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_AttachmentInfo_Int64'
+          readOnly: true
+        isTaskAttachment:
+          type: boolean
+          readOnly: true
     ParameterExpression:
       type: object
       properties:
@@ -430,66 +498,6 @@ components:
     Object:
       type: object
       properties: {}
-    ArticleAttachmentModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        articleID:
-          format: int32
-          type: integer
-        attachDate:
-          format: date-time
-          type: string
-        attachedByContactID:
-          format: int64
-          type: integer
-        attachedByResourceID:
-          format: int64
-          type: integer
-        attachmentType:
-          type: string
-        contentType:
-          type: string
-        creatorType:
-          format: int32
-          type: integer
-        fileSize:
-          format: double
-          type: number
-        fullPath:
-          type: string
-        impersonatorCreatorResourceID:
-          format: int32
-          type: integer
-        opportunityID:
-          format: int64
-          type: integer
-        parentAttachmentID:
-          format: int32
-          type: integer
-        parentID:
-          format: int64
-          type: integer
-        publish:
-          format: int32
-          type: integer
-        title:
-          type: string
-        data:
-          format: byte
-          type: string
-        parentType:
-          format: int32
-          type: integer
-          readOnly: true
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_AttachmentInfo_Int64'
-          readOnly: true
-        isTaskAttachment:
-          type: boolean
-          readOnly: true
     Expression_Func_AttachmentInfo_Int64:
       type: object
       properties:

@@ -56,6 +56,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company webhooks url parameter query
+      x-summary-source: derived
     post:
       tags:
       - CompanyWebhooks
@@ -105,6 +107,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Company webhooks query
+      x-summary-source: derived
   /V1.0/CompanyWebhooks/{id}:
     get:
       tags:
@@ -155,6 +159,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company webhooks query item
+      x-summary-source: derived
     delete:
       tags:
       - CompanyWebhooks
@@ -204,6 +210,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company webhooks delete entity
+      x-summary-source: derived
   /V1.0/CompanyWebhooks/query/count:
     get:
       tags:
@@ -253,6 +261,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company webhooks url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - CompanyWebhooks
@@ -302,6 +312,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Company webhooks query count
+      x-summary-source: derived
   /V1.0/CompanyWebhooks:
     put:
       tags:
@@ -352,6 +364,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CompanyWebhookModel'
         required: true
+      summary: Company webhooks update entity
+      x-summary-source: derived
     post:
       tags:
       - CompanyWebhooks
@@ -401,6 +415,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CompanyWebhookModel'
         required: true
+      summary: Company webhooks create entity
+      x-summary-source: derived
     patch:
       tags:
       - CompanyWebhooks
@@ -450,6 +466,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CompanyWebhookModel'
         required: true
+      summary: Company webhooks patch entity
+      x-summary-source: derived
   /V1.0/CompanyWebhooks/entityInformation:
     get:
       tags:
@@ -494,6 +512,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company webhooks query entity information
+      x-summary-source: derived
   /V1.0/CompanyWebhooks/entityInformation/fields:
     get:
       tags:
@@ -538,6 +558,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company webhooks query field definitions
+      x-summary-source: derived
   /V1.0/CompanyWebhooks/entityInformation/userDefinedFields:
     get:
       tags:
@@ -582,75 +604,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Company webhooks query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    QueryActionResult_CompanyWebhookModel_AccountWebhook:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompanyWebhookModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
     CompanyWebhookModel:
       type: object
       properties:
@@ -684,55 +641,6 @@ components:
           type: string
         webhookUrl:
           type: string
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Object:
-      type: object
-      properties: {}
-    ItemQueryResultModel_CompanyWebhookModel_AccountWebhook:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/CompanyWebhookModel'
     Field:
       type: object
       properties:
@@ -769,9 +677,60 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
       type: object
       properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    ItemQueryResultModel_CompanyWebhookModel_AccountWebhook:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/CompanyWebhookModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -826,22 +785,87 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    QueryActionResult_CompanyWebhookModel_AccountWebhook:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompanyWebhookModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string

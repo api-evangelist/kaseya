@@ -53,6 +53,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/JobLogsDtoIEnumerablePagedResponse'
+      summary: Get all batch action logs
+      x-summary-source: derived
 components:
   schemas:
     ErrorInfo:

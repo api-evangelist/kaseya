@@ -51,8 +51,21 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Metadata api integration query entity information
+      x-summary-source: derived
 components:
   schemas:
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    GlobalEntityInformationResultModel:
+      type: object
+      properties:
+        entityDescriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityInformationResultModel'
+            readOnly: true
     EntityInformationModel:
       type: object
       properties:
@@ -89,20 +102,9 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
     EntityInformationResultModel:
       type: object
       properties:
         info:
           $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true
-    GlobalEntityInformationResultModel:
-      type: object
-      properties:
-        entityDescriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityInformationResultModel'
-            readOnly: true

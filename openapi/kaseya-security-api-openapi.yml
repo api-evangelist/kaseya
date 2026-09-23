@@ -85,6 +85,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TokenOutputDtoResponse'
+      summary: Authenticate
+      x-summary-source: derived
   /v2/security/ssostatus:
     get:
       tags:
@@ -113,6 +115,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/SsoStatusResponse'
+      summary: Sso status
+      x-summary-source: derived
   /v2/security/refreshtoken:
     post:
       tags:
@@ -148,6 +152,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TokenOutputDtoResponse'
+      summary: Refresh token
+      x-summary-source: derived
   /v2/security/userinfo:
     get:
       tags:
@@ -166,8 +172,129 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/UserInfoOutputDtoResponse'
+      summary: User info
+      x-summary-source: derived
 components:
   schemas:
+    UserInfoOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/UserInfoOutputDto'
+      additionalProperties: false
+    SpecialFeature:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+      additionalProperties: false
+    UserAccessRight:
+      type: object
+      properties:
+        CanView:
+          type: boolean
+        CanModify:
+          type: boolean
+        CanDelete:
+          type: boolean
+        MainMenuId:
+          type: integer
+          format: int32
+        MenuCategoryId:
+          type: integer
+          format: int32
+        ListingIDEnum:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Menu:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        NavigationUrl:
+          type:
+          - string
+          - 'null'
+        Order:
+          type: integer
+          format: int32
+        ParentId:
+          type: integer
+          format: int32
+        ListingIdEnum:
+          type: integer
+          format: int32
+        MenuCategoryId:
+          type: integer
+          format: int32
+        Icon:
+          type:
+          - string
+          - 'null'
+        IsShownInMenu:
+          type: boolean
+        IsModifiable:
+          type: boolean
+        AddForm:
+          type:
+          - string
+          - 'null'
+        AddFormTitle:
+          type:
+          - string
+          - 'null'
+        HasCustomFields:
+          type: boolean
+        MainForm:
+          type:
+          - string
+          - 'null'
+        Title:
+          type:
+          - string
+          - 'null'
+        TitleAlias:
+          type:
+          - string
+          - 'null'
+        Target:
+          type: integer
+          format: int32
+        DynamicMenuRefId:
+          type: integer
+          format: int32
+        ObjectId:
+          type:
+          - string
+          - 'null'
+        ObjectName:
+          type:
+          - string
+          - 'null'
+        IsReactEnabled:
+          type: boolean
+        TargetName:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      additionalProperties: false
     SsoStatusResponse:
       type: object
       properties:
@@ -203,16 +330,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    SsoStatus:
-      type: object
-      properties:
-        Enabled:
-          type: boolean
-        LoginEndpointUrl:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     UserInfoOutputDto:
       type: object
@@ -329,136 +446,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Menu:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        NavigationUrl:
-          type:
-          - string
-          - 'null'
-        Order:
-          type: integer
-          format: int32
-        ParentId:
-          type: integer
-          format: int32
-        ListingIdEnum:
-          type: integer
-          format: int32
-        MenuCategoryId:
-          type: integer
-          format: int32
-        Icon:
-          type:
-          - string
-          - 'null'
-        IsShownInMenu:
-          type: boolean
-        IsModifiable:
-          type: boolean
-        AddForm:
-          type:
-          - string
-          - 'null'
-        AddFormTitle:
-          type:
-          - string
-          - 'null'
-        HasCustomFields:
-          type: boolean
-        MainForm:
-          type:
-          - string
-          - 'null'
-        Title:
-          type:
-          - string
-          - 'null'
-        TitleAlias:
-          type:
-          - string
-          - 'null'
-        Target:
-          type: integer
-          format: int32
-        DynamicMenuRefId:
-          type: integer
-          format: int32
-        ObjectId:
-          type:
-          - string
-          - 'null'
-        ObjectName:
-          type:
-          - string
-          - 'null'
-        IsReactEnabled:
-          type: boolean
-        TargetName:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-      additionalProperties: false
-    UserInfoOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/UserInfoOutputDto'
-      additionalProperties: false
-    SpecialFeature:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-      additionalProperties: false
-    UserAccessRight:
-      type: object
-      properties:
-        CanView:
-          type: boolean
-        CanModify:
-          type: boolean
-        CanDelete:
-          type: boolean
-        MainMenuId:
-          type: integer
-          format: int32
-        MenuCategoryId:
-          type: integer
-          format: int32
-        ListingIDEnum:
-          type: integer
-          format: int32
-      additionalProperties: false
-    TokenOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TokenOutputDto'
-      additionalProperties: false
     TokenOutputDto:
       type: object
       properties:
@@ -476,6 +463,27 @@ components:
         RefreshTokenExpireOn:
           type: string
           format: date-time
+      additionalProperties: false
+    TokenOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TokenOutputDto'
+      additionalProperties: false
+    SsoStatus:
+      type: object
+      properties:
+        Enabled:
+          type: boolean
+        LoginEndpointUrl:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

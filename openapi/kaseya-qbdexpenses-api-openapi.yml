@@ -50,6 +50,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/StringResponse'
+      summary: Import expenses
+      x-summary-source: derived
     get:
       tags:
       - QbdExpenses
@@ -95,6 +97,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbExpenseTypeExportDtoListPagedResponse'
+      summary: Get expenses
+      x-summary-source: derived
   /v2/integration/qbd/expenses/byids:
     get:
       tags:
@@ -124,6 +128,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbExpenseTypeExportDtoListResponse'
+      summary: Get expenses by ids
+      x-summary-source: derived
 components:
   schemas:
     QbExpenseTypeExportDto:
@@ -178,21 +184,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    QbExpenseTypeExportDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbExpenseTypeExportDto'
-      additionalProperties: false
     QbItemImportDto:
       type: object
       properties:
@@ -246,7 +237,7 @@ components:
         AssetAccount:
           $ref: '#/components/schemas/QbAccountCodeImportDto'
       additionalProperties: false
-    QbExpenseTypeExportDtoListPagedResponse:
+    QbExpenseTypeExportDtoListResponse:
       type: object
       properties:
         Success:
@@ -260,34 +251,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/QbExpenseTypeExportDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
       additionalProperties: false
     QbAccountCodeImportDto:
       type: object
@@ -331,6 +294,49 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbExpenseTypeExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbExpenseTypeExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
       additionalProperties: false
   securitySchemes:
     bearerAuth:

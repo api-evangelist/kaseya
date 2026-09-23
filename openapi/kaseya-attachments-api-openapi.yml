@@ -59,6 +59,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AttachmentOutputDtoIEnumerablePagedResponse'
+      summary: Get attachments
+      x-summary-source: derived
     post:
       tags:
       - Attachments
@@ -101,6 +103,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AttachmentOutputDtoIEnumerableResponse'
+      summary: Post
+      x-summary-source: derived
   /v2/system/attachments/{moduleId}/{objectId}/{attachmentId}:
     get:
       tags:
@@ -138,6 +142,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AttachmentOutputDtoResponse'
+      summary: Get attachment
+      x-summary-source: derived
     delete:
       tags:
       - Attachments
@@ -164,6 +170,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Delete attachment
+      x-summary-source: derived
     put:
       tags:
       - Attachments
@@ -204,6 +212,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Put attachment
+      x-summary-source: derived
   /v2/system/attachments/{moduleId}/{objectId}/{attachmentId}/download:
     get:
       tags:
@@ -251,6 +261,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/File'
+      summary: Download attachment
+      x-summary-source: derived
   /v2/system/attachments/{moduleId}:
     post:
       tags:
@@ -288,6 +300,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TempAttachmentOuputDtoResponse'
+      summary: Post temp attachment
+      x-summary-source: derived
   /v2/system/attachments:
     delete:
       tags:
@@ -301,6 +315,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Delete attachments
+      x-summary-source: derived
   /v2/system/attachments/temp:
     delete:
       tags:
@@ -331,6 +347,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Delete temp attachments
+      x-summary-source: derived
 components:
   schemas:
     TempAttachmentOuputDto:
@@ -353,8 +371,28 @@ components:
           - boolean
           - 'null'
       additionalProperties: false
-    File:
+    AttachmentPutInputDto:
+      required:
+      - Name
       type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    AttachmentOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/AttachmentOutputDto'
       additionalProperties: false
     AttachmentOutputDto:
       type: object
@@ -411,6 +449,21 @@ components:
           - boolean
           - 'null'
       additionalProperties: false
+    AttachmentOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AttachmentOutputDto'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -436,54 +489,8 @@ components:
           items:
             type: string
       additionalProperties: false
-    AttachmentPutInputDto:
-      required:
-      - Name
+    File:
       type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          minLength: 1
-          type: string
-      additionalProperties: false
-    AttachmentOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/AttachmentOutputDto'
-      additionalProperties: false
-    TempAttachmentOuputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TempAttachmentOuputDto'
-      additionalProperties: false
-    AttachmentOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AttachmentOutputDto'
       additionalProperties: false
     AttachmentOutputDtoIEnumerablePagedResponse:
       type: object
@@ -502,6 +509,17 @@ components:
         TotalRecords:
           type: integer
           format: int32
+      additionalProperties: false
+    TempAttachmentOuputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TempAttachmentOuputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

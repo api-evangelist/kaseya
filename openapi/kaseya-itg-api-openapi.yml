@@ -28,6 +28,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ITGAccessInfoDtoResponse'
+      summary: Get ITG access info
+      x-summary-source: derived
   /v2/integrations/itglue/servicedesk/ticketsync:
     get:
       tags:
@@ -85,6 +87,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketSyncOutputDtoIEnumerablePagedResponse'
+      summary: Get tickets sync
+      x-summary-source: derived
   /v2/integrations/itglue/servicedesk/ticketsync/{ticketId}:
     get:
       tags:
@@ -110,6 +114,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketSyncOutputDtoResponse'
+      summary: Get ticket sync
+      x-summary-source: derived
   /v2/integrations/itglue/servicedesk/globalsearch:
     get:
       tags:
@@ -155,6 +161,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketGlobalSearchOutputIEnumerableResponse'
+      summary: Get ticket global search
+      x-summary-source: derived
   /v2/integrations/itglue/{subjectId}/suggestedresources/{subjectType}:
     get:
       tags:
@@ -189,6 +197,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/SuggestedResourceOutputDtoIEnumerableResponse'
+      summary: Get ITG suggested resources
+      x-summary-source: derived
   /v2/integrations/itglue/{subjectId}/suggestedresources/{subjectType}/count:
     get:
       tags:
@@ -219,6 +229,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/SuggestedResourceCountOutputDtoResponse'
+      summary: Get ITG suggested resources count
+      x-summary-source: derived
   /v2/integrations/itglue/passwords/{passwordId}:
     get:
       tags:
@@ -244,6 +256,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/StringResponse'
+      summary: Get ITG password value
+      x-summary-source: derived
   /v2/integrations/itglue/status:
     get:
       tags:
@@ -262,6 +276,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ITGlueIntegrationOutputDtoResponse'
+      summary: Get itg status
+      x-summary-source: derived
   /v2/integrations/itglue/accounts/{accountId}/lookup:
     get:
       tags:
@@ -287,6 +303,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ITGLookupOutputDtoResponse'
+      summary: Get itg account lookup
+      x-summary-source: derived
   /v2/integrations/itglue/contacts/{contactId}/lookup:
     get:
       tags:
@@ -312,6 +330,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ITGLookupOutputDtoResponse'
+      summary: Get itg contact lookup
+      x-summary-source: derived
   /v2/integrations/itglue/locations/{locationId}/lookup:
     get:
       tags:
@@ -337,6 +357,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ITGLookupOutputDtoResponse'
+      summary: Get itg location lookup
+      x-summary-source: derived
   /v2/integrations/itglue/hardwareassets/{hardwareassetId}/lookup:
     get:
       tags:
@@ -362,6 +384,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ITGLookupOutputDtoResponse'
+      summary: Get itg asset lookup
+      x-summary-source: derived
   /v2/integrations/itglue/checklists/{checklistId}/tasks:
     get:
       tags:
@@ -397,6 +421,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ChecklistTaskOutputDtoListResponse'
+      summary: Get itg checklist tasks
+      x-summary-source: derived
   /v2/integrations/itglue/checklists:
     get:
       tags:
@@ -436,6 +462,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ChecklistOutputDtoListResponse'
+      summary: Get itg checklists
+      x-summary-source: derived
   /v2/integrations/itglue/contacts/{itgContactId}/notes:
     get:
       tags:
@@ -461,6 +489,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ITGContactNotesOutputDtoResponse'
+      summary: Get itg contact notes
+      x-summary-source: derived
     put:
       tags:
       - ITG
@@ -499,6 +529,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ITGContactNotesOutputDtoResponse'
+      summary: Put ITG contact notes
+      x-summary-source: derived
   /v2/integrations/itglue/accounts/{itgAccountId}/notes:
     get:
       tags:
@@ -524,6 +556,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ITGOrganizationNotesOutputDtoResponse'
+      summary: Get itg organization notes
+      x-summary-source: derived
     put:
       tags:
       - ITG
@@ -562,9 +596,51 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ITGOrganizationNotesOutputDtoResponse'
+      summary: Put ITG organization notes
+      x-summary-source: derived
 components:
   schemas:
-    ChecklistTaskOutputDto:
+    ITGlueIntegrationOutputDto:
+      type: object
+      properties:
+        MasterTenantId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ITGlueAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        IsEnabled:
+          type: boolean
+        Subdomain:
+          type:
+          - string
+          - 'null'
+        Region:
+          type: integer
+          format: int32
+        IsTicketSyncEnabled:
+          type: boolean
+      additionalProperties: false
+    ChecklistTaskOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChecklistTaskOutputDto'
+      additionalProperties: false
+    ChecklistOutputDto:
       type: object
       properties:
         Id:
@@ -578,9 +654,18 @@ components:
           type:
           - string
           - 'null'
-        order:
-          type: integer
-          format: int32
+        createdByName:
+          type:
+          - string
+          - 'null'
+        createdOn:
+          type: string
+          format: date-time
+        updatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
       additionalProperties: false
     ITGAccessInfoDto:
       type: object
@@ -607,7 +692,39 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ITGAccessInfoDtoResponse:
+    ITGContactNotesOutputDto:
+      type: object
+      properties:
+        Notes:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ChecklistTaskOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        name:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        order:
+          type: integer
+          format: int32
+      additionalProperties: false
+    SuggestedResourceTypeEnum:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    ITGContactNotesOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -616,7 +733,137 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/ITGAccessInfoDto'
+          $ref: '#/components/schemas/ITGContactNotesOutputDto'
+      additionalProperties: false
+    SuggestedResourceOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SuggestedResourceOutputDto'
+      additionalProperties: false
+    SuggestedResourceOutputDto:
+      type: object
+      properties:
+        ResourceId:
+          type: integer
+          format: int64
+        ResourceType:
+          type:
+          - string
+          - 'null'
+        ResourceUrl:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        OrganizationName:
+          type:
+          - string
+          - 'null'
+        CreatedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        UpdatedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        VaultId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ITGLookupOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ITGLookupOutputDto'
+      additionalProperties: false
+    TicketSyncOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketSyncOutputDto'
+      additionalProperties: false
+    TicketSyncOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketSyncOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    SuggestedResourceCountOutputDto:
+      type: object
+      properties:
+        SuggestedPasswords:
+          type: integer
+          format: int32
+        SuggestedDocuments:
+          type: integer
+          format: int32
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketGlobalSearchOutputIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketGlobalSearchOutput'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -643,7 +890,7 @@ components:
           items:
             type: string
       additionalProperties: false
-    ITGLookupOutputDtoResponse:
+    ITGOrganizationNotesOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -652,7 +899,34 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/ITGLookupOutputDto'
+          $ref: '#/components/schemas/ITGOrganizationNotesOutputDto'
+      additionalProperties: false
+    OrganizationNotesPutInputDto:
+      type: object
+      properties:
+        Notes:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ITGOrganizationNotesOutputDto:
+      type: object
+      properties:
+        Notes:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SuggestedResourceCountOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/SuggestedResourceCountOutputDto'
       additionalProperties: false
     ChecklistOutputDtoListResponse:
       type: object
@@ -668,6 +942,36 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/ChecklistOutputDto'
+      additionalProperties: false
+    ITGlueIntegrationOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ITGlueIntegrationOutputDto'
+      additionalProperties: false
+    ITGLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ContactNotesPutInputDto:
+      type: object
+      properties:
+        Notes:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     TicketGlobalSearchOutput:
       type: object
@@ -839,7 +1143,7 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
-    StringResponse:
+    ITGAccessInfoDtoResponse:
       type: object
       properties:
         Success:
@@ -848,43 +1152,7 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    SuggestedResourceOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SuggestedResourceOutputDto'
-      additionalProperties: false
-    ITGOrganizationNotesOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ITGOrganizationNotesOutputDto'
-      additionalProperties: false
-    OrganizationNotesPutInputDto:
-      type: object
-      properties:
-        Notes:
-          type:
-          - string
-          - 'null'
+          $ref: '#/components/schemas/ITGAccessInfoDto'
       additionalProperties: false
     TicketSyncOutputDto:
       type: object
@@ -902,238 +1170,6 @@ components:
           - string
           - 'null'
           format: date-time
-      additionalProperties: false
-    ITGContactNotesOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ITGContactNotesOutputDto'
-      additionalProperties: false
-    ITGLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int64
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ChecklistTaskOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ChecklistTaskOutputDto'
-      additionalProperties: false
-    TicketSyncOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketSyncOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    TicketSyncOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketSyncOutputDto'
-      additionalProperties: false
-    ITGOrganizationNotesOutputDto:
-      type: object
-      properties:
-        Notes:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    SuggestedResourceOutputDto:
-      type: object
-      properties:
-        ResourceId:
-          type: integer
-          format: int64
-        ResourceType:
-          type:
-          - string
-          - 'null'
-        ResourceUrl:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        OrganizationName:
-          type:
-          - string
-          - 'null'
-        CreatedAt:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        UpdatedAt:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        VaultId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    SuggestedResourceCountOutputDto:
-      type: object
-      properties:
-        SuggestedPasswords:
-          type: integer
-          format: int32
-        SuggestedDocuments:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ITGlueIntegrationOutputDto:
-      type: object
-      properties:
-        MasterTenantId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ITGlueAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        IsEnabled:
-          type: boolean
-        Subdomain:
-          type:
-          - string
-          - 'null'
-        Region:
-          type: integer
-          format: int32
-        IsTicketSyncEnabled:
-          type: boolean
-      additionalProperties: false
-    ChecklistOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int64
-        name:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        createdByName:
-          type:
-          - string
-          - 'null'
-        createdOn:
-          type: string
-          format: date-time
-        updatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    TicketGlobalSearchOutputIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketGlobalSearchOutput'
-      additionalProperties: false
-    ContactNotesPutInputDto:
-      type: object
-      properties:
-        Notes:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    SuggestedResourceCountOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/SuggestedResourceCountOutputDto'
-      additionalProperties: false
-    SuggestedResourceTypeEnum:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    ITGContactNotesOutputDto:
-      type: object
-      properties:
-        Notes:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ITGlueIntegrationOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ITGlueIntegrationOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item notes child query
+      x-summary-source: derived
     put:
       tags:
       - ConfigurationItemNotesChild
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ConfigurationItemNoteModel'
         required: true
+      summary: Configuration item notes child update entity
+      x-summary-source: derived
     post:
       tags:
       - ConfigurationItemNotesChild
@@ -167,6 +171,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ConfigurationItemNoteModel'
         required: true
+      summary: Configuration item notes child create entity
+      x-summary-source: derived
     patch:
       tags:
       - ConfigurationItemNotesChild
@@ -222,6 +228,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ConfigurationItemNoteModel'
         required: true
+      summary: Configuration item notes child patch entity
+      x-summary-source: derived
   /V1.0/ConfigurationItems/{parentId}/Notes/{id}:
     get:
       tags:
@@ -278,6 +286,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item notes child query item
+      x-summary-source: derived
   /V1.0/ConfigurationItems/{parentId}/Notes/entityInformation:
     get:
       tags:
@@ -327,6 +337,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item notes child query entity information
+      x-summary-source: derived
   /V1.0/ConfigurationItems/{parentId}/Notes/entityInformation/fields:
     get:
       tags:
@@ -376,6 +388,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item notes child query field definitions
+      x-summary-source: derived
   /V1.0/ConfigurationItems/{parentId}/Notes/entityInformation/userDefinedFields:
     get:
       tags:
@@ -425,41 +439,107 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item notes child query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    ConfigurationItemNoteModel:
+    Expression:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        configurationItemID:
-          format: int32
-          type: integer
-        createDateTime:
-          format: date-time
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
           type: string
-        creatorResourceID:
-          format: int32
-          type: integer
-        description:
+          readOnly: true
+        type:
           type: string
-        impersonatorCreatorResourceID:
-          format: int32
-          type: integer
-        impersonatorUpdaterResourceID:
-          format: int32
-          type: integer
-        lastActivityDate:
-          format: date-time
-          type: string
-        noteType:
-          format: int32
-          type: integer
-        title:
-          type: string
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_InstalledProductNote_Int64'
+          readOnly: true
+        canReduce:
+          type: boolean
           readOnly: true
     ParameterExpression:
       type: object
@@ -565,6 +645,136 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    QueryActionResult_ConfigurationItemNoteModel_InstalledProductNote:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationItemNoteModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -573,12 +783,9 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    EntityInformationResultModel:
+    RestUserAccessLevel:
       type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
+      properties: {}
     FieldInformationModel:
       type: object
       properties:
@@ -609,147 +816,6 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    ItemQueryResultModel_ConfigurationItemNoteModel_InstalledProductNote:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ConfigurationItemNoteModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    QueryActionResult_ConfigurationItemNoteModel_InstalledProductNote:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConfigurationItemNoteModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    Expression:
-      type: object
-      properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    Object:
-      type: object
-      properties: {}
     Expression_Func_InstalledProductNote_Int64:
       type: object
       properties:
@@ -865,97 +931,47 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    Field:
+    ItemQueryResultModel_ConfigurationItemNoteModel_InstalledProductNote:
       type: object
       properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
+        item:
+          $ref: '#/components/schemas/ConfigurationItemNoteModel'
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    PagingModel:
+    ConfigurationItemNoteModel:
       type: object
       properties:
-        count:
+        id:
+          format: int64
+          type: integer
+        configurationItemID:
           format: int32
           type: integer
-        requestCount:
+        createDateTime:
+          format: date-time
+          type: string
+        creatorResourceID:
           format: int32
           type: integer
+        description:
+          type: string
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        impersonatorUpdaterResourceID:
+          format: int32
+          type: integer
+        lastActivityDate:
+          format: date-time
+          type: string
+        noteType:
+          format: int32
+          type: integer
+        title:
+          type: string
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_InstalledProductNote_Int64'
           readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string

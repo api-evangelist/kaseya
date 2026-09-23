@@ -17,7 +17,7 @@ paths:
     get:
       tags:
       - /v2/activity-logs
-      summary: Fetches the activity logs.
+      summary: Fetches the activity logs
       operationId: getActivities
       parameters:
       - name: size
@@ -194,6 +194,19 @@ paths:
                 path: /v2/activity-logs
 components:
   schemas:
+    ActivityLogsPage:
+      type: object
+      description: Activity logs page
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/PaginationData'
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityLog'
+        error:
+          type: string
+          description: Shows error information when request fails at the database layer
     SiteBasicDto:
       type: object
       description: Site information
@@ -216,6 +229,19 @@ components:
         prevPageUrl:
           type: string
         nextPageUrl:
+          type: string
+    UserDto:
+      type: object
+      description: User information
+      properties:
+        id:
+          type: integer
+          format: int64
+        userName:
+          type: string
+        firstName:
+          type: string
+        lastName:
           type: string
     ErrorResponse:
       description: Default error response body
@@ -270,29 +296,3 @@ components:
           type: boolean
         hasStdErr:
           type: boolean
-    UserDto:
-      type: object
-      description: User information
-      properties:
-        id:
-          type: integer
-          format: int64
-        userName:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-    ActivityLogsPage:
-      type: object
-      description: Activity logs page
-      properties:
-        pageDetails:
-          $ref: '#/components/schemas/PaginationData'
-        activities:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActivityLog'
-        error:
-          type: string
-          description: Shows error information when request fails at the database layer

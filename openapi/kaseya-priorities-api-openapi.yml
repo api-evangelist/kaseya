@@ -28,8 +28,27 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/PriorityLookupOutputDtoIEnumerableResponse'
+      summary: Get priority lookups
+      x-summary-source: derived
 components:
   schemas:
+    PriorityLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Color:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -54,23 +73,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    PriorityLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Color:
-          type:
-          - string
-          - 'null'
-        IsDefault:
-          type: boolean
       additionalProperties: false
     PriorityLookupOutputDtoIEnumerableResponse:
       type: object

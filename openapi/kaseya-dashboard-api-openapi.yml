@@ -28,6 +28,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketsCountByBasicStatusOutputDtoResponse'
+      summary: Get tickets count by basic status
+      x-summary-source: derived
   /v2/servicedesk/dashboard/ticketscount/bypriority:
     get:
       tags:
@@ -61,6 +63,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketsCountByPriorityOutputDtoListResponse'
+      summary: Get tickets count by priority
+      x-summary-source: derived
   /v2/servicedesk/dashboard/ticketscount/byassigneepriority:
     get:
       tags:
@@ -106,6 +110,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketsCountByAssigneePriorityDataOutputDtoResponse'
+      summary: Get tickets count by assignee priority
+      x-summary-source: derived
   /v2/servicedesk/dashboard/timebytechnician:
     get:
       tags:
@@ -147,6 +153,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TimeLoggedByTechnicianDataOutputDtoResponse'
+      summary: Get time logged by technician
+      x-summary-source: derived
   /v2/servicedesk/dashboard/ticketsdue:
     get:
       tags:
@@ -184,6 +192,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketsDueOutputDtoListPagedResponse'
+      summary: Get tickets due
+      x-summary-source: derived
   /v2/servicedesk/dashboard/ticketscount/bystatus:
     get:
       tags:
@@ -213,6 +223,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketsCountByStatusOutputDtoListResponse'
+      summary: Get tickets count by status
+      x-summary-source: derived
   /v2/servicedesk/dashboard/ticketsupcoming:
     get:
       tags:
@@ -250,6 +262,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketsUpcomingOutputDtoListPagedResponse'
+      summary: Get tickets upcoming
+      x-summary-source: derived
   /v2/servicedesk/dashboard/ticketscount/byqueue:
     get:
       tags:
@@ -283,6 +297,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketsCountByQueueOutputDtoListResponse'
+      summary: Get tickets count by queue
+      x-summary-source: derived
   /v2/servicedesk/dashboard/ticketscount/byissuetype:
     get:
       tags:
@@ -328,6 +344,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketsCountByIssueTypeOutputDtoResponse'
+      summary: Get tickets count by issue type
+      x-summary-source: derived
   /v2/crm/dashboard/topopportunities:
     get:
       tags:
@@ -357,6 +375,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/DashboardOpportunityOutputDtoListResponse'
+      summary: Get top opportunities
+      x-summary-source: derived
   /v2/crm/dashboard/nextopportunities:
     get:
       tags:
@@ -386,6 +406,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/DashboardOpportunityOutputDtoListResponse'
+      summary: Get next opportunities
+      x-summary-source: derived
   /v2/crm/dashboard/openpipeline:
     get:
       tags:
@@ -415,6 +437,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/OpenPipelinesOutputDtoResponse'
+      summary: Get open pipelines
+      x-summary-source: derived
   /v2/crm/dashboard/pipelinetotals:
     get:
       tags:
@@ -444,6 +468,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/PipelineTotalsOutputDtoResponse'
+      summary: Get pipeline totals
+      x-summary-source: derived
   /v2/crm/dashboard/activitiesdue:
     get:
       tags:
@@ -473,6 +499,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ActivitiesDueOutputDtoResponse'
+      summary: Get activities due
+      x-summary-source: derived
   /v2/crm/dashboard/recurringservices/performance/totals:
     get:
       tags:
@@ -507,6 +535,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/RecurringServicesPerformanceTotalsOutputDtoResponse'
+      summary: Get recurring services performance totals
+      x-summary-source: derived
   /v2/crm/dashboard/recurringservices/performance:
     get:
       tags:
@@ -541,6 +571,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/RecurringServicesPerformanceOutputDtoListResponse'
+      summary: Get recurring services performance
+      x-summary-source: derived
   /v2/crm/dashboard/leaderboard:
     get:
       tags:
@@ -570,6 +602,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/SalesLeaderboardOutputDtoListResponse'
+      summary: Get sales leaderboard
+      x-summary-source: derived
   /v2/crm/dashboard/quotations/summary:
     get:
       tags:
@@ -588,8 +622,108 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/DashboardQuotationsSummaryOutputDtoResponse'
+      summary: Get dashboard quotations summary
+      x-summary-source: derived
 components:
   schemas:
+    TicketsCountByBasicStatusOutputDto:
+      type: object
+      properties:
+        OverDue:
+          type: integer
+          format: int32
+        Closed:
+          type: integer
+          format: int32
+        Created:
+          type: integer
+          format: int32
+        ClosedToday:
+          type: integer
+          format: int32
+      additionalProperties: false
+    TimeLoggedByTechnicianDataOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TimeLoggedByTechnicianDataOutputDto'
+      additionalProperties: false
+    DashboardQuotationsSummaryOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/DashboardQuotationsSummaryOutputDto'
+      additionalProperties: false
+    PipelineTotalsOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/PipelineTotalsOutputDto'
+      additionalProperties: false
+    TicketsCountByPriorityOutputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Color:
+          type:
+          - string
+          - 'null'
+        TicketsCount:
+          type: integer
+          format: int32
+      additionalProperties: false
+    SalesLeaderboardOutputDto:
+      type: object
+      properties:
+        UserId:
+          type: integer
+          format: int32
+        UserFullName:
+          type:
+          - string
+          - 'null'
+        TotalValue:
+          type: number
+          format: double
+        PictureURL:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketsCountByAssigneePriorityDataOutputDto:
+      type: object
+      properties:
+        Counts:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketsCountByAssigneePriorityOutputDto'
+        TopPerformers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PerformerOutputDto'
+      additionalProperties: false
     RecurringServicesPerformanceOutputDto:
       type: object
       properties:
@@ -599,6 +733,121 @@ components:
         Date:
           type: string
           format: date-time
+      additionalProperties: false
+    OpenPipelinesOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/OpenPipelinesOutputDto'
+      additionalProperties: false
+    RecurringServicesPerformanceOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RecurringServicesPerformanceOutputDto'
+      additionalProperties: false
+    PipelineOpportunityOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Account:
+          type:
+          - string
+          - 'null'
+        TotalValue:
+          type: number
+          format: double
+        Probability:
+          type: number
+          format: double
+        CloseDate:
+          type: string
+          format: date-time
+        Status:
+          type:
+          - string
+          - 'null'
+        CreatedOn:
+          type: string
+          format: date-time
+        LastActivityNotes:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketsUpcomingOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketsUpcomingOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    TimeLoggedByTechnicianDataOutputDto:
+      type: object
+      properties:
+        Durations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TimeLoggedByTechnicianOutputDto'
+        TopPerformers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PerformerOutputDto'
+      additionalProperties: false
+    TimeLoggedByTechnicianOutputDto:
+      type: object
+      properties:
+        UserId:
+          type: integer
+          format: int32
+        FullName:
+          type:
+          - string
+          - 'null'
+        ProjectTasksTime:
+          type: number
+          format: double
+        AdminTime:
+          type: number
+          format: double
+        TicketsTime:
+          type: number
+          format: double
       additionalProperties: false
     TicketsCountByIssueTypeOutputDto:
       type: object
@@ -619,30 +868,16 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
-    ErrorInfo:
+    TicketsCountByIssueTypeOutputDtoResponse:
       type: object
       properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketsCountByIssueTypeOutputDto'
       additionalProperties: false
     ActivitiesDueOutputDto:
       type: object
@@ -656,17 +891,6 @@ components:
         TotalCount:
           type: integer
           format: int32
-      additionalProperties: false
-    TicketsCountByBasicStatusOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketsCountByBasicStatusOutputDto'
       additionalProperties: false
     TicketsUpcomingOutputDto:
       type: object
@@ -704,6 +928,46 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    TicketsCountByQueueOutputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        TicketsCount:
+          type: integer
+          format: int32
+      additionalProperties: false
+    PerformerOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketsDueOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketsDueOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
     OpenPipelinesOutputDto:
       type: object
       properties:
@@ -714,22 +978,6 @@ components:
           items:
             $ref: '#/components/schemas/PipelineOpportunityOutputDto'
         TotalCount:
-          type: integer
-          format: int32
-      additionalProperties: false
-    TicketsCountByBasicStatusOutputDto:
-      type: object
-      properties:
-        OverDue:
-          type: integer
-          format: int32
-        Closed:
-          type: integer
-          format: int32
-        Created:
-          type: integer
-          format: int32
-        ClosedToday:
           type: integer
           format: int32
       additionalProperties: false
@@ -746,75 +994,15 @@ components:
           type: number
           format: double
       additionalProperties: false
-    RecurringServicesPerformanceOutputDtoListResponse:
+    PipelineTotalsOutputDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RecurringServicesPerformanceOutputDto'
-      additionalProperties: false
-    PerformerOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketsCountByIssueTypeOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketsCountByIssueTypeOutputDto'
-      additionalProperties: false
-    TicketsCountByPriorityOutputDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        Color:
-          type:
-          - string
-          - 'null'
-        TicketsCount:
-          type: integer
-          format: int32
-      additionalProperties: false
-    SalesLeaderboardOutputDto:
-      type: object
-      properties:
-        UserId:
-          type: integer
-          format: int32
-        UserFullName:
-          type:
-          - string
-          - 'null'
-        TotalValue:
+        TotalOpenPipeline:
           type: number
           format: double
-        PictureURL:
-          type:
-          - string
-          - 'null'
+        TotalWeightedPipeline:
+          type: number
+          format: double
       additionalProperties: false
     TicketsCountByQueueOutputDtoListResponse:
       type: object
@@ -831,6 +1019,63 @@ components:
           items:
             $ref: '#/components/schemas/TicketsCountByQueueOutputDto'
       additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    TicketsCountByAssigneePriorityOutputDto:
+      type: object
+      properties:
+        UserId:
+          type: integer
+          format: int32
+        FullName:
+          type:
+          - string
+          - 'null'
+        PriorityId:
+          type: integer
+          format: int32
+        TicketsCount:
+          type: integer
+          format: int32
+      additionalProperties: false
+    SalesLeaderboardOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SalesLeaderboardOutputDto'
+      additionalProperties: false
     RecurringServicesPerformanceTotalsOutputDtoResponse:
       type: object
       properties:
@@ -841,6 +1086,81 @@ components:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
           $ref: '#/components/schemas/RecurringServicesPerformanceTotalsOutputDto'
+      additionalProperties: false
+    DashboardOpportunityOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DashboardOpportunityOutputDto'
+      additionalProperties: false
+    TicketsCountByStatusOutputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Color:
+          type:
+          - string
+          - 'null'
+        FontColor:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type: integer
+          format: int32
+        Order:
+          type: integer
+          format: int32
+        TicketsCount:
+          type: integer
+          format: int32
+      additionalProperties: false
+    DashboardQuotationsSummaryOutputDto:
+      type: object
+      properties:
+        Pending:
+          type: integer
+          format: int32
+        AmountsSent:
+          type: number
+          format: double
+        AmountsDue:
+          type: number
+          format: double
+      additionalProperties: false
+    TicketsCountByBasicStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketsCountByBasicStatusOutputDto'
+      additionalProperties: false
+    TicketsCountByAssigneePriorityDataOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketsCountByAssigneePriorityDataOutputDto'
       additionalProperties: false
     ActivityDueOutputDto:
       type: object
@@ -884,21 +1204,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    SalesLeaderboardOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SalesLeaderboardOutputDto'
-      additionalProperties: false
     DashboardOpportunityOutputDto:
       type: object
       properties:
@@ -922,67 +1227,6 @@ components:
         CloseDate:
           type: string
           format: date-time
-      additionalProperties: false
-    DashboardOpportunityOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DashboardOpportunityOutputDto'
-      additionalProperties: false
-    PipelineOpportunityOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Account:
-          type:
-          - string
-          - 'null'
-        TotalValue:
-          type: number
-          format: double
-        Probability:
-          type: number
-          format: double
-        CloseDate:
-          type: string
-          format: date-time
-        Status:
-          type:
-          - string
-          - 'null'
-        CreatedOn:
-          type: string
-          format: date-time
-        LastActivityNotes:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ActivitiesDueOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ActivitiesDueOutputDto'
       additionalProperties: false
     TicketsDueOutputDto:
       type: object
@@ -1020,95 +1264,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    PipelineTotalsOutputDto:
-      type: object
-      properties:
-        TotalOpenPipeline:
-          type: number
-          format: double
-        TotalWeightedPipeline:
-          type: number
-          format: double
-      additionalProperties: false
-    TicketsUpcomingOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketsUpcomingOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    PipelineTotalsOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/PipelineTotalsOutputDto'
-      additionalProperties: false
-    TicketsCountByAssigneePriorityOutputDto:
-      type: object
-      properties:
-        UserId:
-          type: integer
-          format: int32
-        FullName:
-          type:
-          - string
-          - 'null'
-        PriorityId:
-          type: integer
-          format: int32
-        TicketsCount:
-          type: integer
-          format: int32
-      additionalProperties: false
-    TicketsCountByStatusOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketsCountByStatusOutputDto'
-      additionalProperties: false
-    TicketsDueOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketsDueOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
     TicketsCountByPriorityOutputDtoListResponse:
       type: object
       properties:
@@ -1124,7 +1279,7 @@ components:
           items:
             $ref: '#/components/schemas/TicketsCountByPriorityOutputDto'
       additionalProperties: false
-    OpenPipelinesOutputDtoResponse:
+    ActivitiesDueOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -1133,9 +1288,9 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/OpenPipelinesOutputDto'
+          $ref: '#/components/schemas/ActivitiesDueOutputDto'
       additionalProperties: false
-    TimeLoggedByTechnicianDataOutputDtoResponse:
+    TicketsCountByStatusOutputDtoListResponse:
       type: object
       properties:
         Success:
@@ -1144,130 +1299,11 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/TimeLoggedByTechnicianDataOutputDto'
-      additionalProperties: false
-    TicketsCountByStatusOutputDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        Color:
-          type:
-          - string
-          - 'null'
-        FontColor:
-          type:
-          - string
-          - 'null'
-        TypeId:
-          type: integer
-          format: int32
-        Order:
-          type: integer
-          format: int32
-        TicketsCount:
-          type: integer
-          format: int32
-      additionalProperties: false
-    TicketsCountByQueueOutputDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        TicketsCount:
-          type: integer
-          format: int32
-      additionalProperties: false
-    TimeLoggedByTechnicianOutputDto:
-      type: object
-      properties:
-        UserId:
-          type: integer
-          format: int32
-        FullName:
-          type:
-          - string
-          - 'null'
-        ProjectTasksTime:
-          type: number
-          format: double
-        AdminTime:
-          type: number
-          format: double
-        TicketsTime:
-          type: number
-          format: double
-      additionalProperties: false
-    TimeLoggedByTechnicianDataOutputDto:
-      type: object
-      properties:
-        Durations:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/TimeLoggedByTechnicianOutputDto'
-        TopPerformers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PerformerOutputDto'
-      additionalProperties: false
-    TicketsCountByAssigneePriorityDataOutputDto:
-      type: object
-      properties:
-        Counts:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketsCountByAssigneePriorityOutputDto'
-        TopPerformers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PerformerOutputDto'
-      additionalProperties: false
-    DashboardQuotationsSummaryOutputDto:
-      type: object
-      properties:
-        Pending:
-          type: integer
-          format: int32
-        AmountsSent:
-          type: number
-          format: double
-        AmountsDue:
-          type: number
-          format: double
-      additionalProperties: false
-    DashboardQuotationsSummaryOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/DashboardQuotationsSummaryOutputDto'
-      additionalProperties: false
-    TicketsCountByAssigneePriorityDataOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketsCountByAssigneePriorityDataOutputDto'
+            $ref: '#/components/schemas/TicketsCountByStatusOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

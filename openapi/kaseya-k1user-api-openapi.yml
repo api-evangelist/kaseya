@@ -48,6 +48,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/K1UserListOutputDto'
+      summary: K1 get users list
+      x-summary-source: derived
   /v2/kaseya-one/users/deprovisioning/notifications:
     post:
       tags:
@@ -70,26 +72,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Post K1 user deprovisioning notifications
+      x-summary-source: derived
 components:
   schemas:
-    K1UserDeprovisioningEventsDto:
-      type: object
-      properties:
-        KaseyaOneOrganizationId:
-          type:
-          - string
-          - 'null'
-        AccessGroupIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        UserEmail:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     K1UserDeprovisioningNotificationsDto:
       type: object
       properties:
@@ -141,6 +127,24 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    K1UserDeprovisioningEventsDto:
+      type: object
+      properties:
+        KaseyaOneOrganizationId:
+          type:
+          - string
+          - 'null'
+        AccessGroupIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        UserEmail:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     K1UserListInputDto:
       type: object

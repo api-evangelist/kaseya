@@ -42,6 +42,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/WorkforcePlannerListOutputDtoListResponse'
+      summary: Get workforce planner
+      x-summary-source: derived
   /v2/calendar/workforceplanner/task/{taskId}/taskmemberhour:
     put:
       tags:
@@ -71,6 +73,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Put workforce planner period
+      x-summary-source: derived
   /v2/calendar/workforceplanner/taskmemberhours/{taskMemberHourId}/warnings/{warningCode}/dismiss:
     put:
       tags:
@@ -92,6 +96,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Dismiss workforce planner period warning
+      x-summary-source: derived
   /v2/calendar/workforceplanner/taskmemberhours/{taskMemberHourId}/split:
     put:
       tags:
@@ -107,8 +113,25 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Split workforce planner period
+      x-summary-source: derived
 components:
   schemas:
+    WorkforcePlannerListOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WorkforcePlannerListOutputDto'
+      additionalProperties: false
     WorkforcePlannerListOutputDto:
       type: object
       properties:
@@ -228,26 +251,6 @@ components:
           items:
             type: string
       additionalProperties: false
-    WorkforcePlannerPeriodPutInputDto:
-      type: object
-      properties:
-        TaskMemberhourId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        FromDate:
-          type: string
-          format: date-time
-        ToDate:
-          type: string
-          format: date-time
-        AssigneeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
     WorkforcePlannerTasksDto:
       type: object
       properties:
@@ -334,20 +337,37 @@ components:
             type: integer
             format: int32
       additionalProperties: false
-    WorkforcePlannerListOutputDtoListResponse:
+    WorkforcePlannerPeriodPutInputDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        TaskMemberhourId:
           type:
-          - array
+          - integer
           - 'null'
-          items:
-            $ref: '#/components/schemas/WorkforcePlannerListOutputDto'
+          format: int32
+        FromDate:
+          type: string
+          format: date-time
+        ToDate:
+          type: string
+          format: date-time
+        AssigneeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    ShiftDetailEntry:
+      type: object
+      properties:
+        FromTime:
+          type:
+          - string
+          - 'null'
+        ToTime:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     WorkforcePlannerListFilterDto:
       type: object
@@ -390,18 +410,6 @@ components:
           - string
           - 'null'
           format: date-time
-      additionalProperties: false
-    ShiftDetailEntry:
-      type: object
-      properties:
-        FromTime:
-          type:
-          - string
-          - 'null'
-        ToTime:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

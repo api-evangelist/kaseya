@@ -32,6 +32,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Post K1 centralized configurations
+      x-summary-source: derived
 components:
   schemas:
     K1ActionNotificationDto:

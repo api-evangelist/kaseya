@@ -30,6 +30,10 @@ paths:
       deprecated: true
       tags:
       - Admin
+      summary: Replace admin companysettings
+      x-summary-source: derived
+      operationId: putV2AdminCompanysettings
+      x-operation-id-source: derived
 components:
   schemas:
     CompanySettingsPutInputDto:

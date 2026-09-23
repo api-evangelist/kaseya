@@ -53,6 +53,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketListDtoListResponse'
+      summary: Get hardware asset tickets
+      x-summary-source: derived
   /v2/servicedesk/hardwareasset/searchselect:
     get:
       tags:
@@ -141,6 +143,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/HardwareAssetsListSearchSelectOutputDtoIEnumerableResponse'
+      summary: Get hardware assets list search select
+      x-summary-source: derived
   /v2/servicedesk/hardwareasset/{assetId}:
     get:
       tags:
@@ -166,6 +170,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/HardwareAssetOutputDtoResponse'
+      summary: Get hardware asset
+      x-summary-source: derived
     put:
       tags:
       - HardwareAsset
@@ -204,6 +210,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/HardwareAssetOutputDtoResponse'
+      summary: Put hardware asset
+      x-summary-source: derived
   /v2/servicedesk/hardwareasset:
     post:
       tags:
@@ -236,6 +244,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/HardwareAssetOutputDtoResponse'
+      summary: Post hardware asset
+      x-summary-source: derived
   /v2/servicedesk/hardwareasset/{Id}:
     delete:
       tags:
@@ -251,6 +261,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Delete hardware asset
+      x-summary-source: derived
   /v2/servicedesk/hardwareasset/{deviceId}/status:
     get:
       tags:
@@ -275,13 +287,49 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/HardwareAssetStatusOutputDtoResponse'
+      summary: Get device status
+      x-summary-source: derived
 components:
   schemas:
-    HardwareAssetStatusOutputDto:
+    HardwareAssetDiskVolumeDto:
       type: object
       properties:
-        IsOnline:
+        Drive:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+        Format:
+          type:
+          - string
+          - 'null'
+        FreeMBytes:
+          type: integer
+          format: int64
+        UsedMBytes:
+          type: integer
+          format: int64
+        TotalMBytes:
+          type: integer
+          format: int64
+        Label:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    HardwareAssetStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
           type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/HardwareAssetStatusOutputDto'
       additionalProperties: false
     TicketListDtoListResponse:
       type: object
@@ -298,7 +346,7 @@ components:
           items:
             $ref: '#/components/schemas/TicketListDto'
       additionalProperties: false
-    HardwareAssetOutputDtoResponse:
+    HardwareAssetsListSearchSelectOutputDtoIEnumerableResponse:
       type: object
       properties:
         Success:
@@ -307,32 +355,17 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/HardwareAssetOutputDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
           type:
           - array
           - 'null'
           items:
-            type: string
+            $ref: '#/components/schemas/HardwareAssetsListSearchSelectOutputDto'
+      additionalProperties: false
+    HardwareAssetStatusOutputDto:
+      type: object
+      properties:
+        IsOnline:
+          type: boolean
       additionalProperties: false
     HardwareAssetsListSearchSelectOutputDto:
       type: object
@@ -384,16 +417,610 @@ components:
         IsActive:
           type: boolean
       additionalProperties: false
-    HardwareAssetStatusOutputDtoResponse:
+    TicketListDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/HardwareAssetStatusOutputDto'
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        TenantName:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        Title:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        LocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        AccountName:
+          type:
+          - string
+          - 'null'
+        LocationName:
+          type:
+          - string
+          - 'null'
+        ContactId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactName:
+          type:
+          - string
+          - 'null'
+        QueueId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        QueueName:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        StatusColor:
+          type:
+          - string
+          - 'null'
+        StatusForeColor:
+          type:
+          - string
+          - 'null'
+        StatusOrder:
+          type: integer
+          format: int32
+        PriorityId:
+          type: integer
+          format: int32
+        PriorityName:
+          type:
+          - string
+          - 'null'
+        PriorityColor:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        IssueTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IssueTypeName:
+          type:
+          - string
+          - 'null'
+        SubIssueTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubIssueTypeName:
+          type:
+          - string
+          - 'null'
+        ContractId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContractNumber:
+          type:
+          - string
+          - 'null'
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AssigneeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssigneeName:
+          type:
+          - string
+          - 'null'
+        WorkTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        WorkTypeName:
+          type:
+          - string
+          - 'null'
+        TicketRecurringMasterId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Recurring:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAStatusEventId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SourceId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAObjectiveId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAName:
+          type:
+          - string
+          - 'null'
+        IsScheduled:
+          type: integer
+          format: int32
+        HardwareAssetId:
+          type: integer
+          format: int32
+        HasMetSLA:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ActualPauseMinutes:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ActualFirstResponseMinutes:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ActualResolutionMinutes:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsSLAPaused:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAStatusEnum:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OpenDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ReOpenedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastActivityUpdate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ResolutionTargetTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ResolutionActualTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        FirstResponseTargetTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        FirstResponseActualTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        SLALastPausedTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        SLALastResumedTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastStatusUpdate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastPriorityUpdate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastQueueUpdate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        CustomFields:
+          type:
+          - string
+          - 'null'
+        HardwareAssetName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    HardwareAssetInputDto:
+      required:
+      - AccountId
+      - AccountLocationId
+      - CategoryId
+      - Name
+      type: object
+      properties:
+        Name:
+          minLength: 1
+          type: string
+        AccountId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        AccountLocationId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        ContactId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CategoryId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        BrandId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        BusinessImpactId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StateId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        LocationInfo:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        BarCode:
+          type:
+          - string
+          - 'null'
+        AssetTag:
+          type:
+          - string
+          - 'null'
+        VendorId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        ModelNumber:
+          type:
+          - string
+          - 'null'
+        MachineGroupId:
+          type:
+          - string
+          - 'null'
+        IpAddress:
+          type:
+          - string
+          - 'null'
+        SubnetMask:
+          type:
+          - string
+          - 'null'
+        DefaultGateway:
+          type:
+          - string
+          - 'null'
+        DnsServers:
+          type:
+          - string
+          - 'null'
+        DhcpEnabled:
+          type:
+          - boolean
+          - 'null'
+        DhcpServer:
+          type:
+          - string
+          - 'null'
+        WinsEnabled:
+          type:
+          - boolean
+          - 'null'
+        SecondaryWinsServer:
+          type:
+          - string
+          - 'null'
+        ConnectionGatewayIp:
+          type:
+          - string
+          - 'null'
+        OsType:
+          type:
+          - string
+          - 'null'
+        OsInfo:
+          type:
+          - string
+          - 'null'
+        MajorVersion:
+          type:
+          - string
+          - 'null'
+        MinorVersion:
+          type:
+          - string
+          - 'null'
+        MacAddress:
+          type:
+          - string
+          - 'null'
+        LoginName:
+          type:
+          - string
+          - 'null'
+        LastLoginname:
+          type:
+          - string
+          - 'null'
+        CurrentUser:
+          type:
+          - string
+          - 'null'
+        ProductName:
+          type:
+          - string
+          - 'null'
+        MachineVersion:
+          type:
+          - string
+          - 'null'
+        MotherboardManufacturerId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        MotherboardProductCode:
+          type:
+          - string
+          - 'null'
+        MotherboardSerialNumber:
+          type:
+          - string
+          - 'null'
+        MotherboardVersion:
+          type:
+          - string
+          - 'null'
+        ChassisAssetTag:
+          type:
+          - string
+          - 'null'
+        ChassisManufacturerId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ChassisSerialNumber:
+          type:
+          - string
+          - 'null'
+        ChassisType:
+          type:
+          - string
+          - 'null'
+        ChassisVersion:
+          type:
+          - string
+          - 'null'
+        BusSpeed:
+          type:
+          - string
+          - 'null'
+        ManufacturerId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        MaxMemorySize:
+          type:
+          - string
+          - 'null'
+        MaxMemorySlots:
+          type:
+          - string
+          - 'null'
+        PrimaryWinsServer:
+          type:
+          - string
+          - 'null'
+        ComputerName:
+          type:
+          - string
+          - 'null'
+        PurchaseCost:
+          type:
+          - number
+          - 'null'
+          format: double
+        WarrantyExpirationDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ExpirationDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AcquisitionDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        FirstCheckIn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastCheckIn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastReboot:
+          type:
+          - string
+          - 'null'
+          format: date-time
       additionalProperties: false
     HardwareAssetOutputDto:
       type: object
@@ -753,34 +1380,16 @@ components:
           items:
             $ref: '#/components/schemas/Statuses'
       additionalProperties: false
-    HardwareAssetDiskVolumeDto:
+    HardwareAssetOutputDtoResponse:
       type: object
       properties:
-        Drive:
-          type:
-          - string
-          - 'null'
-        Type:
-          type:
-          - string
-          - 'null'
-        Format:
-          type:
-          - string
-          - 'null'
-        FreeMBytes:
-          type: integer
-          format: int64
-        UsedMBytes:
-          type: integer
-          format: int64
-        TotalMBytes:
-          type: integer
-          format: int64
-        Label:
-          type:
-          - string
-          - 'null'
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/HardwareAssetOutputDto'
       additionalProperties: false
     Statuses:
       type: object
@@ -794,601 +1403,6 @@ components:
           - string
           - 'null'
         Color:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    HardwareAssetInputDto:
-      required:
-      - AccountId
-      - AccountLocationId
-      - CategoryId
-      - Name
-      type: object
-      properties:
-        Name:
-          minLength: 1
-          type: string
-        AccountId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        AccountLocationId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        ContactId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CategoryId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        BrandId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SerialNumber:
-          type:
-          - string
-          - 'null'
-        BusinessImpactId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StateId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        LocationInfo:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        BarCode:
-          type:
-          - string
-          - 'null'
-        AssetTag:
-          type:
-          - string
-          - 'null'
-        VendorId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        ModelNumber:
-          type:
-          - string
-          - 'null'
-        MachineGroupId:
-          type:
-          - string
-          - 'null'
-        IpAddress:
-          type:
-          - string
-          - 'null'
-        SubnetMask:
-          type:
-          - string
-          - 'null'
-        DefaultGateway:
-          type:
-          - string
-          - 'null'
-        DnsServers:
-          type:
-          - string
-          - 'null'
-        DhcpEnabled:
-          type:
-          - boolean
-          - 'null'
-        DhcpServer:
-          type:
-          - string
-          - 'null'
-        WinsEnabled:
-          type:
-          - boolean
-          - 'null'
-        SecondaryWinsServer:
-          type:
-          - string
-          - 'null'
-        ConnectionGatewayIp:
-          type:
-          - string
-          - 'null'
-        OsType:
-          type:
-          - string
-          - 'null'
-        OsInfo:
-          type:
-          - string
-          - 'null'
-        MajorVersion:
-          type:
-          - string
-          - 'null'
-        MinorVersion:
-          type:
-          - string
-          - 'null'
-        MacAddress:
-          type:
-          - string
-          - 'null'
-        LoginName:
-          type:
-          - string
-          - 'null'
-        LastLoginname:
-          type:
-          - string
-          - 'null'
-        CurrentUser:
-          type:
-          - string
-          - 'null'
-        ProductName:
-          type:
-          - string
-          - 'null'
-        MachineVersion:
-          type:
-          - string
-          - 'null'
-        MotherboardManufacturerId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        MotherboardProductCode:
-          type:
-          - string
-          - 'null'
-        MotherboardSerialNumber:
-          type:
-          - string
-          - 'null'
-        MotherboardVersion:
-          type:
-          - string
-          - 'null'
-        ChassisAssetTag:
-          type:
-          - string
-          - 'null'
-        ChassisManufacturerId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ChassisSerialNumber:
-          type:
-          - string
-          - 'null'
-        ChassisType:
-          type:
-          - string
-          - 'null'
-        ChassisVersion:
-          type:
-          - string
-          - 'null'
-        BusSpeed:
-          type:
-          - string
-          - 'null'
-        ManufacturerId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        MaxMemorySize:
-          type:
-          - string
-          - 'null'
-        MaxMemorySlots:
-          type:
-          - string
-          - 'null'
-        PrimaryWinsServer:
-          type:
-          - string
-          - 'null'
-        ComputerName:
-          type:
-          - string
-          - 'null'
-        PurchaseCost:
-          type:
-          - number
-          - 'null'
-          format: double
-        WarrantyExpirationDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ExpirationDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        AcquisitionDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        FirstCheckIn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastCheckIn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastReboot:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    HardwareAssetsListSearchSelectOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/HardwareAssetsListSearchSelectOutputDto'
-      additionalProperties: false
-    TicketListDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        CreatedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ModifiedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        TenantName:
-          type:
-          - string
-          - 'null'
-        TicketNumber:
-          type:
-          - string
-          - 'null'
-        Title:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        AccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        LocationId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountCode:
-          type:
-          - string
-          - 'null'
-        AccountName:
-          type:
-          - string
-          - 'null'
-        LocationName:
-          type:
-          - string
-          - 'null'
-        ContactId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ContactName:
-          type:
-          - string
-          - 'null'
-        QueueId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        QueueName:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type: integer
-          format: int32
-        StatusName:
-          type:
-          - string
-          - 'null'
-        StatusColor:
-          type:
-          - string
-          - 'null'
-        StatusForeColor:
-          type:
-          - string
-          - 'null'
-        StatusOrder:
-          type: integer
-          format: int32
-        PriorityId:
-          type: integer
-          format: int32
-        PriorityName:
-          type:
-          - string
-          - 'null'
-        PriorityColor:
-          type:
-          - string
-          - 'null'
-        TypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TypeName:
-          type:
-          - string
-          - 'null'
-        IssueTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IssueTypeName:
-          type:
-          - string
-          - 'null'
-        SubIssueTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SubIssueTypeName:
-          type:
-          - string
-          - 'null'
-        ContractId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ContractNumber:
-          type:
-          - string
-          - 'null'
-        ContractName:
-          type:
-          - string
-          - 'null'
-        AssigneeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssigneeName:
-          type:
-          - string
-          - 'null'
-        WorkTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        WorkTypeName:
-          type:
-          - string
-          - 'null'
-        TicketRecurringMasterId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Recurring:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SLAStatusEventId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SourceId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SLAId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SLAObjectiveId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SLAName:
-          type:
-          - string
-          - 'null'
-        IsScheduled:
-          type: integer
-          format: int32
-        HardwareAssetId:
-          type: integer
-          format: int32
-        HasMetSLA:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ActualPauseMinutes:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ActualFirstResponseMinutes:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ActualResolutionMinutes:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsSLAPaused:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SLAStatusEnum:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        OpenDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        DueDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CompletedDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ReOpenedDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastActivityUpdate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ResolutionTargetTime:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ResolutionActualTime:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        FirstResponseTargetTime:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        FirstResponseActualTime:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        SLALastPausedTime:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        SLALastResumedTime:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastStatusUpdate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastPriorityUpdate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastQueueUpdate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedByName:
-          type:
-          - string
-          - 'null'
-        CustomFields:
-          type:
-          - string
-          - 'null'
-        HardwareAssetName:
           type:
           - string
           - 'null'

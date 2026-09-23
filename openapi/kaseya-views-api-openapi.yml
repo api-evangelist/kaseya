@@ -34,6 +34,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ViewOutputDtoIEnumerableResponse'
+      summary: Get views
+      x-summary-source: derived
   /v2/system/views/{viewId}:
     get:
       tags:
@@ -59,6 +61,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/SearchValuesOutputDtoIEnumerableResponse'
+      summary: Get view search values
+      x-summary-source: derived
     delete:
       tags:
       - Views
@@ -73,6 +77,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Delete view
+      x-summary-source: derived
   /v2/system/views/{viewId}/details:
     get:
       tags:
@@ -98,6 +104,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ViewDetailsOutputDtoResponse'
+      summary: Get view details values
+      x-summary-source: derived
   /v2/system/views/{moduleId}:
     post:
       tags:
@@ -137,6 +145,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ViewOutputDtoResponse'
+      summary: Post view
+      x-summary-source: derived
   /v2/system/views/{moduleId}/{viewId}:
     put:
       tags:
@@ -182,6 +192,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ViewOutputDtoResponse'
+      summary: Put view
+      x-summary-source: derived
   /v2/system/views/{moduleId}/{viewId}/info:
     put:
       tags:
@@ -227,6 +239,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ViewOutputDtoResponse'
+      summary: Put view info
+      x-summary-source: derived
   /v2/system/views/{viewId}/sharesettings:
     get:
       tags:
@@ -252,6 +266,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ViewShareSettingsOutputDtoResponse'
+      summary: Get view share settings
+      x-summary-source: derived
   /v2/system/views/{moduleId}/{viewId}/sharesettings:
     put:
       tags:
@@ -297,6 +313,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ViewDetailsOutputDtoResponse'
+      summary: Put view share settings
+      x-summary-source: derived
 components:
   schemas:
     ViewShareSettingsOutputDtoResponse:
@@ -310,42 +328,10 @@ components:
         Result:
           $ref: '#/components/schemas/ViewShareSettingsOutputDto'
       additionalProperties: false
-    ViewOutputDto:
+    ViewInfoInputDto:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
-        CreatedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ModifiedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ViewName:
-          type:
-          - string
-          - 'null'
-        IsDefault:
-          type: boolean
-        SharedWithMe:
-          type: integer
-          format: int32
-        ViewOwner:
+        Name:
           type:
           - string
           - 'null'
@@ -365,62 +351,42 @@ components:
           items:
             $ref: '#/components/schemas/SearchValuesOutputDto'
       additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    SearchValuesOutputDto:
+    SearchValuesInputDto:
       type: object
       properties:
         ListingSearchId:
           type: integer
           format: int32
-        SearchField:
-          type:
-          - string
-          - 'null'
         SearchValue:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    ViewDetailsInputDto:
-      type: object
-      properties:
-        FavoriteSearchId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Name:
+        ControlType:
           type:
           - string
           - 'null'
-        IsDefault:
-          type: boolean
+      additionalProperties: false
+    ViewShareSettingsOutputDto:
+      type: object
+      properties:
         IsPublic:
           type: boolean
+        Users:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ViewShareEntityDto'
+        Queues:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ViewShareEntityDto'
+      additionalProperties: false
+    ViewDetailsPutInputDto:
+      type: object
+      properties:
         SortExpression:
           type:
           - string
@@ -441,6 +407,17 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/ListingColumnSummaryDto'
+      additionalProperties: false
+    ViewOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ViewOutputDto'
       additionalProperties: false
     ViewDetailsOutputDto:
       type: object
@@ -503,23 +480,144 @@ components:
           items:
             $ref: '#/components/schemas/ListingColumnSummaryDto'
       additionalProperties: false
-    ViewShareSettingsOutputDto:
+    ViewDetailsOutputDtoResponse:
       type: object
       properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ViewDetailsOutputDto'
+      additionalProperties: false
+    ViewShareEntityDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ViewOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ViewOutputDto'
+      additionalProperties: false
+    ViewOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ViewName:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+        SharedWithMe:
+          type: integer
+          format: int32
+        ViewOwner:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ViewDetailsInputDto:
+      type: object
+      properties:
+        FavoriteSearchId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
         IsPublic:
           type: boolean
-        Users:
+        SortExpression:
+          type:
+          - string
+          - 'null'
+        SortDirection:
+          type:
+          - string
+          - 'null'
+        SearchValues:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ViewShareEntityDto'
-        Queues:
+            $ref: '#/components/schemas/SearchValuesInputDto'
+        Columns:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ViewShareEntityDto'
+            $ref: '#/components/schemas/ListingColumnSummaryDto'
       additionalProperties: false
     ViewShareSettingsInputDto:
       type: object
@@ -541,100 +639,20 @@ components:
             type: integer
             format: int32
       additionalProperties: false
-    ViewDetailsOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ViewDetailsOutputDto'
-      additionalProperties: false
-    SearchValuesInputDto:
+    SearchValuesOutputDto:
       type: object
       properties:
         ListingSearchId:
           type: integer
           format: int32
+        SearchField:
+          type:
+          - string
+          - 'null'
         SearchValue:
           type:
           - string
           - 'null'
-        ControlType:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ViewShareEntityDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ViewInfoInputDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ViewOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ViewOutputDto'
-      additionalProperties: false
-    ViewOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ViewOutputDto'
-      additionalProperties: false
-    ViewDetailsPutInputDto:
-      type: object
-      properties:
-        SortExpression:
-          type:
-          - string
-          - 'null'
-        SortDirection:
-          type:
-          - string
-          - 'null'
-        SearchValues:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SearchValuesInputDto'
-        Columns:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ListingColumnSummaryDto'
       additionalProperties: false
     ListingColumnSummaryDto:
       type: object

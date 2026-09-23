@@ -56,6 +56,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Service calls url parameter query
+      x-summary-source: derived
     post:
       tags:
       - ServiceCalls
@@ -105,6 +107,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Service calls query
+      x-summary-source: derived
   /V1.0/ServiceCalls/{id}:
     get:
       tags:
@@ -155,6 +159,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Service calls query item
+      x-summary-source: derived
     delete:
       tags:
       - ServiceCalls
@@ -204,6 +210,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Service calls delete entity
+      x-summary-source: derived
   /V1.0/ServiceCalls/query/count:
     get:
       tags:
@@ -253,6 +261,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Service calls url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - ServiceCalls
@@ -302,6 +312,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Service calls query count
+      x-summary-source: derived
   /V1.0/ServiceCalls:
     put:
       tags:
@@ -352,6 +364,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ServiceCallModel'
         required: true
+      summary: Service calls update entity
+      x-summary-source: derived
     post:
       tags:
       - ServiceCalls
@@ -401,6 +415,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ServiceCallModel'
         required: true
+      summary: Service calls create entity
+      x-summary-source: derived
     patch:
       tags:
       - ServiceCalls
@@ -450,6 +466,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ServiceCallModel'
         required: true
+      summary: Service calls patch entity
+      x-summary-source: derived
   /V1.0/ServiceCalls/entityInformation:
     get:
       tags:
@@ -494,6 +512,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Service calls query entity information
+      x-summary-source: derived
   /V1.0/ServiceCalls/entityInformation/fields:
     get:
       tags:
@@ -538,6 +558,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Service calls query field definitions
+      x-summary-source: derived
   /V1.0/ServiceCalls/entityInformation/userDefinedFields:
     get:
       tags:
@@ -582,49 +604,24 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Service calls query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    QueryActionResult_ServiceCallModel_ServiceCall:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceCallModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    FieldInformationModel:
+    Field:
       type: object
       properties:
         name:
           type: string
-        dataType:
+        label:
+          type: string
+        type:
           type: string
         length:
           format: int32
           type: integer
+        description:
+          type: string
         isRequired:
           type: boolean
         isReadOnly:
@@ -643,8 +640,33 @@ components:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
           type: string
+        defaultValue:
+          type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     FieldInformationResultModel:
       type: object
       properties:
@@ -653,18 +675,6 @@ components:
           items:
             $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
     PickListValue:
       type: object
       properties:
@@ -683,29 +693,42 @@ components:
           type: boolean
         isSystem:
           type: boolean
-    QueryModel:
+    EntityInformationModel:
       type: object
       properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
     ServiceCallModel:
       type: object
       properties:
@@ -756,84 +779,6 @@ components:
         status:
           format: int32
           type: integer
-    Object:
-      type: object
-      properties: {}
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
     Filter:
       type: object
       properties:
@@ -852,11 +797,90 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
     ItemQueryResultModel_ServiceCallModel_ServiceCall:
       type: object
       properties:
         item:
           $ref: '#/components/schemas/ServiceCallModel'
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    QueryActionResult_ServiceCallModel_ServiceCall:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceCallModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
     OperationResultModel:
       type: object
       properties:

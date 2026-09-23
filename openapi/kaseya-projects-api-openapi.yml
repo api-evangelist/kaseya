@@ -58,6 +58,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Projects url parameter query
+      x-summary-source: derived
     post:
       tags:
       - Projects
@@ -107,6 +109,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Projects query
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Projects/{id}:
@@ -159,6 +163,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Projects query item
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Projects/query/count:
@@ -210,6 +216,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Projects url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - Projects
@@ -259,6 +267,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Projects query count
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Projects:
@@ -311,6 +321,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ProjectModel'
         required: true
+      summary: Projects update entity
+      x-summary-source: derived
     post:
       tags:
       - Projects
@@ -360,6 +372,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ProjectModel'
         required: true
+      summary: Projects create entity
+      x-summary-source: derived
     patch:
       tags:
       - Projects
@@ -409,6 +423,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ProjectModel'
         required: true
+      summary: Projects patch entity
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Projects/entityInformation:
@@ -455,6 +471,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Projects query entity information
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Projects/entityInformation/fields:
@@ -501,6 +519,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Projects query field definitions
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Projects/entityInformation/userDefinedFields:
@@ -547,6 +567,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Projects query user defined field definitions
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /v2/project/projects/summary:
@@ -607,6 +629,8 @@ paths:
                 $ref: '#/components/schemas/ProjectsListSummaryOutputDtoIEnumerablePagedResponse'
       security:
       - bearerAuth: []
+      summary: Get projects list summary
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/project/projects/{projectId}:
@@ -636,6 +660,8 @@ paths:
                 $ref: '#/components/schemas/ProjectOutputDtoResponse'
       security:
       - bearerAuth: []
+      summary: Get project
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/project/projects/lookup:
@@ -673,133 +699,12 @@ paths:
                 $ref: '#/components/schemas/ProjectLookupOutputDtoIEnumerablePagedResponse'
       security:
       - bearerAuth: []
+      summary: Get projects lookup
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
 components:
   schemas:
-    ItemQueryResultModel_ProjectModel_Project:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ProjectModel'
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryActionResult_ProjectModel_Project:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    UserDefinedField:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Object:
-      type: object
-      properties: {}
     Field:
       type: object
       properties:
@@ -835,6 +740,205 @@ components:
         defaultValue:
           type: string
         isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    ItemQueryResultModel_ProjectModel_Project:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ProjectModel'
+    QueryActionResult_ProjectModel_Project:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
           $ref: '#/components/schemas/Object'
     ProjectModel:
       type: object
@@ -966,82 +1070,89 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserDefinedField'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    EntityInformationModel:
+    ProjectLookupOutputDto:
       type: object
       properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    Filter:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProjectLookupOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
+        Success:
           type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
-          type: array
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
           items:
-            $ref: '#/components/schemas/Filter'
-    OperationResultModel:
+            $ref: '#/components/schemas/ProjectLookupOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProjectsListSummaryOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
+        Success:
+          type: boolean
           readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProjectsListSummaryOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProjectOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ProjectOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
     ProjectOutputDto:
       type: object
       properties:
@@ -1120,71 +1231,6 @@ components:
           type: number
           format: double
       additionalProperties: false
-    ProjectLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    ProjectLookupOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProjectLookupOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ProjectOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ProjectOutputDto'
-      additionalProperties: false
     ProjectsListSummaryOutputDto:
       type: object
       properties:
@@ -1224,24 +1270,6 @@ components:
         CreatedOn:
           type: string
           format: date-time
-      additionalProperties: false
-    ProjectsListSummaryOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProjectsListSummaryOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
       additionalProperties: false
   securitySchemes:
     bearerAuth:

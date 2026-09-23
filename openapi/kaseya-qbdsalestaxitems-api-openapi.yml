@@ -56,6 +56,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbSalesTaxItemExportDtoListPagedResponse'
+      summary: Get sales tax items
+      x-summary-source: derived
   /v2/integration/qbd/salestaxitems/byids:
     get:
       tags:
@@ -85,6 +87,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbSalesTaxItemExportDtoListResponse'
+      summary: Get sales tax items by ids
+      x-summary-source: derived
 components:
   schemas:
     ErrorInfo:
@@ -111,39 +115,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    QbSalesTaxItemExportDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbSalesTaxItemExportDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    QbSalesTaxItemExportDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbSalesTaxItemExportDto'
       additionalProperties: false
     QbSalesTaxItemExportDto:
       type: object
@@ -197,6 +168,39 @@ components:
           items:
             type: integer
             format: int32
+      additionalProperties: false
+    QbSalesTaxItemExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbSalesTaxItemExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    QbSalesTaxItemExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbSalesTaxItemExportDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

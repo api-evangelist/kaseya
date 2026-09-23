@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   version: v1
-  title: Datto|Autotask PSA Rest Configuration Item Webhook Udf Fields Child API
+  title: Datto|Autotask PSA Rest Configuration Item Webhook Udf…
 servers:
 - url: https://webservices2.autotask.net/ATServicesRest
 tags:
@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item webhook udf fields child query
+      x-summary-source: derived
     put:
       tags:
       - ConfigurationItemWebhookUdfFieldsChild
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ConfigurationItemWebhookUdfFieldModel'
         required: true
+      summary: Configuration item webhook udf fields child update entity
+      x-summary-source: derived
     post:
       tags:
       - ConfigurationItemWebhookUdfFieldsChild
@@ -167,6 +171,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ConfigurationItemWebhookUdfFieldModel'
         required: true
+      summary: Configuration item webhook udf fields child create entity
+      x-summary-source: derived
     patch:
       tags:
       - ConfigurationItemWebhookUdfFieldsChild
@@ -222,6 +228,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ConfigurationItemWebhookUdfFieldModel'
         required: true
+      summary: Configuration item webhook udf fields child patch entity
+      x-summary-source: derived
   /V1.0/ConfigurationItemWebhooks/{parentId}/UdfFields/{id}:
     get:
       tags:
@@ -278,6 +286,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item webhook udf fields child query item
+      x-summary-source: derived
     delete:
       tags:
       - ConfigurationItemWebhookUdfFieldsChild
@@ -333,6 +343,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item webhook udf fields child delete entity
+      x-summary-source: derived
   /V1.0/ConfigurationItemWebhooks/{parentId}/UdfFields/entityInformation:
     get:
       tags:
@@ -382,6 +394,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item webhook udf fields child query entity information
+      x-summary-source: derived
   /V1.0/ConfigurationItemWebhooks/{parentId}/UdfFields/entityInformation/fields:
     get:
       tags:
@@ -431,6 +445,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item webhook udf fields child query field definitions
+      x-summary-source: derived
   /V1.0/ConfigurationItemWebhooks/{parentId}/UdfFields/entityInformation/userDefinedFields:
     get:
       tags:
@@ -480,8 +496,108 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item webhook udf fields child query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
+    Expression:
+      type: object
+      properties:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
     ParameterExpression:
       type: object
       properties:
@@ -586,201 +702,6 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    ConfigurationItemWebhookUdfFieldModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        isDisplayAlwaysField:
-          type: boolean
-        isSubscribedField:
-          type: boolean
-        udfFieldID:
-          format: int32
-          type: integer
-        webhookID:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_InstalledProductWebhookUdfField_Int64'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    Expression:
-      type: object
-      properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    Object:
-      type: object
-      properties: {}
-    ItemQueryResultModel_ConfigurationItemWebhookUdfFieldModel_InstalledProductWebhookUdfField:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ConfigurationItemWebhookUdfFieldModel'
     Field:
       type: object
       properties:
@@ -817,9 +738,55 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Object:
       type: object
       properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -856,20 +823,71 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    QueryActionResult_ConfigurationItemWebhookUdfFieldModel_InstalledProductWebhookUdfField:
+    ConfigurationItemWebhookUdfFieldModel:
       type: object
       properties:
-        items:
+        id:
+          format: int64
+          type: integer
+        isDisplayAlwaysField:
+          type: boolean
+        isSubscribedField:
+          type: boolean
+        udfFieldID:
+          format: int32
+          type: integer
+        webhookID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_InstalledProductWebhookUdfField_Int64'
+          readOnly: true
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
           type: array
           items:
-            $ref: '#/components/schemas/ConfigurationItemWebhookUdfFieldModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    OperationResultModel:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    ItemQueryResultModel_ConfigurationItemWebhookUdfFieldModel_InstalledProductWebhookUdfField:
       type: object
       properties:
-        itemId:
+        item:
+          $ref: '#/components/schemas/ConfigurationItemWebhookUdfFieldModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
     Expression_Func_InstalledProductWebhookUdfField_Int64:
       type: object
       properties:
@@ -985,17 +1003,17 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    PagingModel:
+    OperationResultModel:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        itemId:
+          $ref: '#/components/schemas/Object'
+    QueryActionResult_ConfigurationItemWebhookUdfFieldModel_InstalledProductWebhookUdfField:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationItemWebhookUdfFieldModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'

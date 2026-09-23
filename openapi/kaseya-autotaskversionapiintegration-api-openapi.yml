@@ -51,6 +51,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Autotask version api integration query version information
+      x-summary-source: derived
 components:
   schemas:
     AutotaskVersionResultModel:

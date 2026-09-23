@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource attachments child query
+      x-summary-source: derived
     post:
       tags:
       - ResourceAttachmentsChild
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ResourceAttachmentModel'
         required: true
+      summary: Resource attachments child create entity
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/Attachments/{id}:
     get:
       tags:
@@ -168,6 +172,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource attachments child query item
+      x-summary-source: derived
     delete:
       tags:
       - ResourceAttachmentsChild
@@ -223,63 +229,106 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource attachments child delete entity
+      x-summary-source: derived
 components:
   schemas:
-    ResourceAttachmentModel:
+    Expression:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        attachDate:
-          format: date-time
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
           type: string
-        attachedByContactID:
-          format: int64
-          type: integer
-        attachedByResourceID:
-          format: int64
-          type: integer
-        attachmentType:
-          type: string
-        contentType:
-          type: string
-        creatorType:
-          format: int32
-          type: integer
-        fileSize:
-          format: double
-          type: number
-        fullPath:
-          type: string
-        impersonatorCreatorResourceID:
-          format: int32
-          type: integer
-        opportunityID:
-          format: int64
-          type: integer
-        parentID:
-          format: int64
-          type: integer
-        publish:
-          format: int32
-          type: integer
-        resourceID:
-          format: int32
-          type: integer
-        title:
-          type: string
-        data:
-          format: byte
-          type: string
-        parentType:
-          format: int32
-          type: integer
           readOnly: true
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_AttachmentInfo_Int64'
+        type:
+          type: string
           readOnly: true
-        isTaskAttachment:
+        canReduce:
           type: boolean
           readOnly: true
     ParameterExpression:
@@ -382,104 +431,6 @@ components:
           readOnly: true
         isByRef:
           type: boolean
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    Expression:
-      type: object
-      properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
           readOnly: true
         canReduce:
           type: boolean
@@ -607,3 +558,60 @@ components:
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
+    ResourceAttachmentModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        attachDate:
+          format: date-time
+          type: string
+        attachedByContactID:
+          format: int64
+          type: integer
+        attachedByResourceID:
+          format: int64
+          type: integer
+        attachmentType:
+          type: string
+        contentType:
+          type: string
+        creatorType:
+          format: int32
+          type: integer
+        fileSize:
+          format: double
+          type: number
+        fullPath:
+          type: string
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        opportunityID:
+          format: int64
+          type: integer
+        parentID:
+          format: int64
+          type: integer
+        publish:
+          format: int32
+          type: integer
+        resourceID:
+          format: int32
+          type: integer
+        title:
+          type: string
+        data:
+          format: byte
+          type: string
+        parentType:
+          format: int32
+          type: integer
+          readOnly: true
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_AttachmentInfo_Int64'
+          readOnly: true
+        isTaskAttachment:
+          type: boolean
+          readOnly: true

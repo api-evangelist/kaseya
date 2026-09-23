@@ -66,6 +66,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ProductQuotationsListSummaryOutputDtoIEnumerablePagedResponse'
+      summary: Get product quotations list summary
+      x-summary-source: derived
   /v2/crm/productquotes/{productQuotationId}:
     get:
       tags:
@@ -91,6 +93,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ProductQuotationOutputDtoResponse'
+      summary: Get product quotation
+      x-summary-source: derived
 components:
   schemas:
     ProductQuotationsListSummaryOutputDtoIEnumerablePagedResponse:
@@ -135,34 +139,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    ProductQuotationsListSummaryOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        QuotationNumber:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type: integer
-          format: int32
-        StatusName:
-          type:
-          - string
-          - 'null'
-        ExpiryDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
       additionalProperties: false
     ProductQuotationOutputDto:
       type: object
@@ -223,6 +199,34 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    ProductQuotationsListSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        QuotationNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        ExpiryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
       additionalProperties: false
     ProductQuotationOutputDtoResponse:
       type: object

@@ -60,6 +60,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbAccountCodeExportDtoListPagedResponse'
+      summary: Get account codes
+      x-summary-source: derived
     post:
       tags:
       - QbdAccountCodes
@@ -99,6 +101,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/StringResponse'
+      summary: Import account codes
+      x-summary-source: derived
   /v2/integration/qbd/accountcodes/byids:
     get:
       tags:
@@ -128,8 +132,68 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbAccountCodeExportDtoListResponse'
+      summary: Get account codes by ids
+      x-summary-source: derived
 components:
   schemas:
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbAccountCodeImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Code:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        AccountTypeName:
+          type:
+          - string
+          - 'null'
+        ParentAccountCode:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbAccountCodeExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbAccountCodeExportDto'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -212,64 +276,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    QbAccountCodeImportDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Code:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        AccountTypeName:
-          type:
-          - string
-          - 'null'
-        ParentAccountCode:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    QbAccountCodeExportDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbAccountCodeExportDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

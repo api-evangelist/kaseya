@@ -36,8 +36,20 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/VSAAccessInfoDtoResponse'
+      summary: Get vsa access info
+      x-summary-source: derived
 components:
   schemas:
+    KLCStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
     ErrorInfo:
       type: object
       properties:
@@ -63,16 +75,17 @@ components:
           items:
             type: string
       additionalProperties: false
-    KLCStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      type: integer
-      format: int32
+    VSAAccessInfoDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/VSAAccessInfoDto'
+      additionalProperties: false
     VSAAccessInfoDto:
       type: object
       properties:
@@ -91,17 +104,6 @@ components:
           - string
           - 'null'
           format: date-time
-      additionalProperties: false
-    VSAAccessInfoDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/VSAAccessInfoDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

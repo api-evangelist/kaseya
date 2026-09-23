@@ -56,6 +56,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ServiceLookupOutputDtoIEnumerablePagedResponse'
+      summary: Get services lookup
+      x-summary-source: derived
   /v2/admin/finance/services/{serviceId}:
     get:
       tags:
@@ -81,6 +83,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ServiceOutputDtoResponse'
+      summary: Get service
+      x-summary-source: derived
     put:
       tags:
       - Service
@@ -119,6 +123,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ServiceOutputDtoResponse'
+      summary: Put service
+      x-summary-source: derived
     delete:
       tags:
       - Service
@@ -133,6 +139,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Delete service
+      x-summary-source: derived
   /v2/admin/finance/services/{serviceId}/backgroundjob:
     get:
       tags:
@@ -158,6 +166,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ServiceBackgroundJobOutputDtoResponse'
+      summary: Get service in progress job
+      x-summary-source: derived
   /v2/admin/finance/services/services:
     post:
       tags:
@@ -190,6 +200,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ServiceOutputDtoResponse'
+      summary: Post service
+      x-summary-source: derived
   /v2/admin/finance/services/search:
     post:
       tags:
@@ -222,6 +234,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ServiceListOutputDtoIEnumerablePagedResponse'
+      summary: Get services list
+      x-summary-source: derived
   /v2/admin/finance/services:
     delete:
       tags:
@@ -254,6 +268,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/StringResponse'
+      summary: Delete services
+      x-summary-source: derived
     patch:
       tags:
       - Service
@@ -285,6 +301,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/StringResponse'
+      summary: Patch services
+      x-summary-source: derived
   /v2/admin/finance/services/{serviceId}/relatedservices/search:
     post:
       tags:
@@ -324,6 +342,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/RelatedServicesListOutputDtoIEnumerablePagedResponse'
+      summary: Get related services list
+      x-summary-source: derived
   /v2/admin/finance/services/{serviceId}/relatedservices/bulkupdate:
     post:
       tags:
@@ -363,6 +383,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/StringResponse'
+      summary: Update related services list
+      x-summary-source: derived
 components:
   schemas:
     BatchDeleteServicesInputDto:
@@ -375,6 +397,261 @@ components:
           items:
             type: integer
             format: int32
+      additionalProperties: false
+    ServicesListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/ServicesListFilterDto'
+      additionalProperties: false
+    ServiceLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ServiceBackgroundJobOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ServiceBackgroundJobOutputDto'
+      additionalProperties: false
+    RelatedServicesListFilterDto:
+      type: object
+      properties:
+        ServiceName:
+          type:
+          - string
+          - 'null'
+        ServiceDescription:
+          type:
+          - string
+          - 'null'
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AccountName:
+          type:
+          - string
+          - 'null'
+        EffectiveDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        EffectiveDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractStartDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractStartDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractEndDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractEndDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        UnitCost:
+          type:
+          - number
+          - 'null'
+          format: double
+        UnitPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+      additionalProperties: false
+    RelatedServicesListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ServiceId:
+          type: integer
+          format: int32
+        ContractId:
+          type: integer
+          format: int32
+        AccountId:
+          type: integer
+          format: int32
+        ServiceName:
+          type:
+          - string
+          - 'null'
+        ServiceDescription:
+          type:
+          - string
+          - 'null'
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AccountName:
+          type:
+          - string
+          - 'null'
+        EffectiveDate:
+          type: string
+          format: date-time
+        ContractStartDate:
+          type: string
+          format: date-time
+        ContractEndDate:
+          type: string
+          format: date-time
+        UnitCost:
+          type: number
+          format: double
+        UnitPrice:
+          type: number
+          format: double
+        MarginType:
+          type: integer
+          format: int32
+        Margin:
+          type: number
+          format: double
+        ExcludeFromContractBulkUpdates:
+          type: boolean
+      additionalProperties: false
+    RelatedServicesListBulkUpdateInputDto:
+      type: object
+      properties:
+        SelectedClientContractServices:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RelatedServicesBulkUpdateSelectedContractServices'
+        Values:
+          $ref: '#/components/schemas/RelatedServicesBulkUpdateValues'
+      additionalProperties: false
+    ServiceBackgroundJobOutputDto:
+      type: object
+      properties:
+        JobId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+      additionalProperties: false
+    BatchServiceDto:
+      type: object
+      properties:
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        CategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubCategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        UnitOfMeasureId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        IsTaxable:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    RelatedServicesListOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RelatedServicesListOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -400,44 +677,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    ServiceOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ServiceOutputDto'
-      additionalProperties: false
-    RelatedServicesListOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RelatedServicesListOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ServiceBackgroundJobOutputDto:
-      type: object
-      properties:
-        JobId:
-          type:
-          - integer
-          - 'null'
-          format: int64
       additionalProperties: false
     RelatedServicesListInputDto:
       type: object
@@ -467,7 +706,7 @@ components:
         Filter:
           $ref: '#/components/schemas/RelatedServicesListFilterDto'
       additionalProperties: false
-    ServiceBackgroundJobOutputDtoResponse:
+    ServiceLookupOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
         Success:
@@ -476,17 +715,62 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/ServiceBackgroundJobOutputDto'
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ServiceLookupOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
       additionalProperties: false
-    StringResponse:
+    ServicesListFilterDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Name:
+          type:
+          - string
+          - 'null'
+        CategoryIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        SubCategoryIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        UnitOfMeasureIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        IsActive:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsTaxable:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Description:
+          type:
+          - string
+          - 'null'
+        IncomeAccount:
+          type:
+          - string
+          - 'null'
+        ExpenseAccount:
           type:
           - string
           - 'null'
@@ -591,109 +875,13 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    ServicesListInputDto:
+    RelatedServicesBulkUpdateSelectedContractServices:
       type: object
       properties:
-        PageSize:
+        ClientContractId:
           type: integer
           format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/ServicesListFilterDto'
-      additionalProperties: false
-    RelatedServicesListFilterDto:
-      type: object
-      properties:
-        ServiceName:
-          type:
-          - string
-          - 'null'
-        ServiceDescription:
-          type:
-          - string
-          - 'null'
-        ContractName:
-          type:
-          - string
-          - 'null'
-        AccountName:
-          type:
-          - string
-          - 'null'
-        EffectiveDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        EffectiveDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ContractStartDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ContractStartDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ContractEndDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ContractEndDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        UnitCost:
-          type:
-          - number
-          - 'null'
-          format: double
-        UnitPrice:
-          type:
-          - number
-          - 'null'
-          format: double
-      additionalProperties: false
-    ServiceListOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ServiceListOutputDto'
-        TotalRecords:
+        ClientContractServiceId:
           type: integer
           format: int32
       additionalProperties: false
@@ -787,58 +975,7 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    ServicesListFilterDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        CategoryIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        SubCategoryIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        UnitOfMeasureIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        IsActive:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsTaxable:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Description:
-          type:
-          - string
-          - 'null'
-        IncomeAccount:
-          type:
-          - string
-          - 'null'
-        ExpenseAccount:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ServiceLookupOutputDtoIEnumerablePagedResponse:
+    ServiceListOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
         Success:
@@ -851,10 +988,21 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ServiceLookupOutputDto'
+            $ref: '#/components/schemas/ServiceListOutputDto'
         TotalRecords:
           type: integer
           format: int32
+      additionalProperties: false
+    ServiceOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ServiceOutputDto'
       additionalProperties: false
     RelatedServicesBulkUpdateValues:
       type: object
@@ -882,110 +1030,6 @@ components:
           - string
           - 'null'
           format: date-time
-      additionalProperties: false
-    RelatedServicesListOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        ServiceId:
-          type: integer
-          format: int32
-        ContractId:
-          type: integer
-          format: int32
-        AccountId:
-          type: integer
-          format: int32
-        ServiceName:
-          type:
-          - string
-          - 'null'
-        ServiceDescription:
-          type:
-          - string
-          - 'null'
-        ContractName:
-          type:
-          - string
-          - 'null'
-        AccountName:
-          type:
-          - string
-          - 'null'
-        EffectiveDate:
-          type: string
-          format: date-time
-        ContractStartDate:
-          type: string
-          format: date-time
-        ContractEndDate:
-          type: string
-          format: date-time
-        UnitCost:
-          type: number
-          format: double
-        UnitPrice:
-          type: number
-          format: double
-        MarginType:
-          type: integer
-          format: int32
-        Margin:
-          type: number
-          format: double
-        ExcludeFromContractBulkUpdates:
-          type: boolean
-      additionalProperties: false
-    ServiceLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    BatchServiceDto:
-      type: object
-      properties:
-        TargetedIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        CategoryId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SubCategoryId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        UnitOfMeasureId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        IsTaxable:
-          type:
-          - boolean
-          - 'null'
       additionalProperties: false
     ServiceInputDto:
       type: object
@@ -1049,28 +1093,6 @@ components:
           type:
           - integer
           - 'null'
-          format: int32
-      additionalProperties: false
-    RelatedServicesListBulkUpdateInputDto:
-      type: object
-      properties:
-        SelectedClientContractServices:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RelatedServicesBulkUpdateSelectedContractServices'
-        Values:
-          $ref: '#/components/schemas/RelatedServicesBulkUpdateValues'
-      additionalProperties: false
-    RelatedServicesBulkUpdateSelectedContractServices:
-      type: object
-      properties:
-        ClientContractId:
-          type: integer
-          format: int32
-        ClientContractServiceId:
-          type: integer
           format: int32
       additionalProperties: false
   securitySchemes:

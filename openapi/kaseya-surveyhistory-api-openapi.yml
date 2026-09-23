@@ -28,8 +28,25 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/SurveySettingsOutputDtoListResponse'
+      summary: Get survey settings
+      x-summary-source: derived
 components:
   schemas:
+    SurveySettingsOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SurveySettingsOutputDto'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -54,21 +71,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    SurveySettingsOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SurveySettingsOutputDto'
       additionalProperties: false
     SurveySettingsOutputDto:
       type: object

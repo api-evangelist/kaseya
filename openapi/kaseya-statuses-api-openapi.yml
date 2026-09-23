@@ -28,6 +28,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/StatusLookupOutputDtoIEnumerableResponse'
+      summary: Get status lookups
+      x-summary-source: derived
 components:
   schemas:
     ErrorInfo:
@@ -54,6 +56,21 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    StatusLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/StatusLookupOutputDto'
       additionalProperties: false
     StatusLookupOutputDto:
       type: object
@@ -89,21 +106,6 @@ components:
           format: int32
         IsActive:
           type: boolean
-      additionalProperties: false
-    StatusLookupOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/StatusLookupOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

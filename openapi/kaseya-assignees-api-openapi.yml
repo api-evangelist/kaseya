@@ -62,6 +62,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AssigneeOutputDtoIEnumerableResponse'
+      summary: Get assignees
+      x-summary-source: derived
   /v2/hr/assignees/lookup:
     get:
       tags:
@@ -119,6 +121,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AssigneeLookupOutputDtoIEnumerableResponse'
+      summary: Get assignee lookups
+      x-summary-source: derived
   /v2/hr/assignees/count:
     get:
       tags:
@@ -137,6 +141,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Int32Response'
+      summary: Get assignees count
+      x-summary-source: derived
   /v2/hr/assignees/{assigneeId}/roles:
     get:
       tags:
@@ -162,61 +168,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/RoleLookupOutputDtoListResponse'
+      summary: Get employee role lookups
+      x-summary-source: derived
 components:
   schemas:
-    RoleLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsDefault:
-          type: boolean
-      additionalProperties: false
-    AssigneeLookupOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AssigneeLookupOutputDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     AssigneeOutputDtoIEnumerableResponse:
       type: object
       properties:
@@ -232,6 +187,19 @@ components:
           items:
             $ref: '#/components/schemas/AssigneeOutputDto'
       additionalProperties: false
+    RoleLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+      additionalProperties: false
     RoleLookupOutputDtoListResponse:
       type: object
       properties:
@@ -246,18 +214,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/RoleLookupOutputDto'
-      additionalProperties: false
-    Int32Response:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type: integer
-          format: int32
       additionalProperties: false
     AssigneeLookupOutputDto:
       type: object
@@ -289,6 +245,58 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    AssigneeLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AssigneeLookupOutputDto'
+      additionalProperties: false
+    Int32Response:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type: integer
+          format: int32
       additionalProperties: false
     AssigneeOutputDto:
       type: object

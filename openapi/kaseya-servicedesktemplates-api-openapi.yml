@@ -28,6 +28,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketTemplateLookupOutputDtoIEnumerableResponse'
+      summary: Get ticket template lookups
+      x-summary-source: derived
   /v2/servicedesk/templates/tickets/{templateId}:
     get:
       tags:
@@ -53,6 +55,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketTemplateOutputDtoResponse'
+      summary: Get ticket template
+      x-summary-source: derived
   /v2/servicedesk/templates/notes/lookup:
     get:
       tags:
@@ -71,6 +75,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketNoteTemplateLookupOutputDtoIEnumerableResponse'
+      summary: Get ticket note template lookups
+      x-summary-source: derived
   /v2/servicedesk/templates/notes/{templateId}/{ticketId}:
     get:
       tags:
@@ -102,6 +108,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketNoteTemplateDetailsOutputDtoIEnumerableResponse'
+      summary: Get ticket note template details by ticket id
+      x-summary-source: derived
   /v2/servicedesk/templates/timelogs/lookup:
     get:
       tags:
@@ -120,6 +128,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketTimeEntryTemplateLookupOutputDtoIEnumerableResponse'
+      summary: Get ticket time entry template lookups
+      x-summary-source: derived
   /v2/servicedesk/templates/timelogs/{templateId}/{ticketId}:
     get:
       tags:
@@ -151,8 +161,96 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketTimeEntryTemplateDetailsOutputDtoIEnumerableResponse'
+      summary: Get ticket timelog template details by ticket id
+      x-summary-source: derived
 components:
   schemas:
+    TicketTimeEntryTemplateDetailsOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketTimeEntryTemplateDetailsOutputDto'
+      additionalProperties: false
+    TicketNoteTemplateDetailsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Details:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketNoteTemplateDetailsOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketNoteTemplateDetailsOutputDto'
+      additionalProperties: false
+    TicketTemplateLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketTemplateLookupOutputDto'
+      additionalProperties: false
+    TicketTimeEntryTemplateDetailsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Notes:
+          type:
+          - string
+          - 'null'
+        InternalNotes:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketNoteTemplateLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketNoteTemplateLookupOutputDto'
+      additionalProperties: false
     TicketTimeEntryTemplateLookupOutputDto:
       type: object
       properties:
@@ -190,21 +288,6 @@ components:
           type: number
           format: double
       additionalProperties: false
-    TicketTimeEntryTemplateDetailsOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketTimeEntryTemplateDetailsOutputDto'
-      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -229,6 +312,66 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    TicketNoteTemplateLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsInternal:
+          type: boolean
+      additionalProperties: false
+    TicketTemplateOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketTemplateOutputDto'
+      additionalProperties: false
+    TicketTemplateLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketTimeEntryTemplateLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketTimeEntryTemplateLookupOutputDto'
       additionalProperties: false
     TicketTemplateOutputDto:
       type: object
@@ -306,137 +449,6 @@ components:
           - integer
           - 'null'
           format: int32
-      additionalProperties: false
-    TicketTimeEntryTemplateLookupOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketTimeEntryTemplateLookupOutputDto'
-      additionalProperties: false
-    TicketNoteTemplateDetailsOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketNoteTemplateDetailsOutputDto'
-      additionalProperties: false
-    TicketNoteTemplateDetailsOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Details:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketTemplateLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketTimeEntryTemplateDetailsOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Notes:
-          type:
-          - string
-          - 'null'
-        InternalNotes:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketTemplateLookupOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketTemplateLookupOutputDto'
-      additionalProperties: false
-    TicketNoteTemplateLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        TypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StatusId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsInternal:
-          type: boolean
-      additionalProperties: false
-    TicketTemplateOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketTemplateOutputDto'
-      additionalProperties: false
-    TicketNoteTemplateLookupOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketNoteTemplateLookupOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

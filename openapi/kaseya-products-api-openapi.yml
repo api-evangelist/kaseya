@@ -58,6 +58,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Products url parameter query
+      x-summary-source: derived
     post:
       tags:
       - Products
@@ -107,6 +109,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Products query
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Products/{id}:
@@ -159,6 +163,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Products query item
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Products/query/count:
@@ -210,6 +216,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Products url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - Products
@@ -259,6 +267,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Products query count
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Products:
@@ -311,6 +321,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ProductModel'
         required: true
+      summary: Products update entity
+      x-summary-source: derived
     post:
       tags:
       - Products
@@ -360,6 +372,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ProductModel'
         required: true
+      summary: Products create entity
+      x-summary-source: derived
     patch:
       tags:
       - Products
@@ -409,6 +423,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ProductModel'
         required: true
+      summary: Products patch entity
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Products/entityInformation:
@@ -455,6 +471,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Products query entity information
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Products/entityInformation/fields:
@@ -501,6 +519,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Products query field definitions
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /V1.0/Products/entityInformation/userDefinedFields:
@@ -547,6 +567,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Products query user defined field definitions
+      x-summary-source: derived
     servers:
     - url: https://webservices2.autotask.net/ATServicesRest
   /v2/inventory/products/searchselect:
@@ -641,6 +663,8 @@ paths:
                 $ref: '#/components/schemas/ProductsListSearchSelectOutputDtoListPagedResponse'
       security:
       - bearerAuth: []
+      summary: Get products list search select
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/inventory/products/{productIndexId}/pricingLevels:
@@ -670,6 +694,8 @@ paths:
                 $ref: '#/components/schemas/PricingLevelLookupDtoListResponse'
       security:
       - bearerAuth: []
+      summary: Get pricing levels
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/inventory/products/{productIndexId}/suppliers/lookup:
@@ -699,6 +725,8 @@ paths:
                 $ref: '#/components/schemas/SupplierLookupOutputDtoListResponse'
       security:
       - bearerAuth: []
+      summary: Get supplier lookups
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/inventory/products/{productIndexId}/weightedcost:
@@ -734,6 +762,8 @@ paths:
                 $ref: '#/components/schemas/WeightedCostOutputDtoResponse'
       security:
       - bearerAuth: []
+      summary: Get product weighted cost
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/inventory/products/{productIndexId}/defaultcost:
@@ -763,6 +793,8 @@ paths:
                 $ref: '#/components/schemas/DefaultCostOutputDtoResponse'
       security:
       - bearerAuth: []
+      summary: Get product default cost
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/inventory/products/{productIndexId}/{typeId}/stockitems/lookup:
@@ -813,6 +845,8 @@ paths:
                 $ref: '#/components/schemas/ProductsInStockOutputDtoListResponse'
       security:
       - bearerAuth: []
+      summary: Get products in stock
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/inventory/products/categories:
@@ -849,6 +883,8 @@ paths:
                 $ref: '#/components/schemas/ProductCategoriesOutputDtoResponse'
       security:
       - bearerAuth: []
+      summary: Post product categories
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
   /v2/inventory/products/categories/lookup:
@@ -890,151 +926,12 @@ paths:
                 $ref: '#/components/schemas/ProductCategoryLookupOutputDtoListPagedResponse'
       security:
       - bearerAuth: []
+      summary: Get product categories lookup
+      x-summary-source: derived
     servers:
     - url: https://api.bms.kaseya.com
 components:
   schemas:
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    UserDefinedField:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-    QueryActionResult_ProductModel_Product:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    ItemQueryResultModel_ProductModel_Product:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ProductModel'
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    Object:
-      type: object
-      properties: {}
     Field:
       type: object
       properties:
@@ -1071,45 +968,67 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
       type: object
       properties: {}
-    EntityInformationModel:
+    UserDefinedField:
       type: object
       properties:
         name:
           type: string
+        value:
+          type: string
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
           readOnly: true
-        canCreate:
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    ItemQueryResultModel_ProductModel_Product:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ProductModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
           type: boolean
-          readOnly: true
-        canDelete:
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
           type: boolean
-          readOnly: true
-        canQuery:
+        isSystem:
           type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
     ProductModel:
       type: object
       properties:
@@ -1191,26 +1110,145 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserDefinedField'
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    QueryActionResult_ProductModel_Product:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    WeightedCostOutputDtoResponse:
+    ProductsInStockOutputDtoListResponse:
       type: object
       properties:
         Success:
@@ -1219,7 +1257,48 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/WeightedCostOutputDto'
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductsInStockOutputDto'
+      additionalProperties: false
+    PricingLevelLookupDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PricingLevelLookupDto'
+      additionalProperties: false
+    ProductCategoriesOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ProductCategoriesOutputDto'
+      additionalProperties: false
+    SupplierLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     ProductsListSearchSelectOutputDtoListPagedResponse:
       type: object
@@ -1238,99 +1317,6 @@ components:
         TotalRecords:
           type: integer
           format: int32
-      additionalProperties: false
-    ProductCategoryLookupOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProductCategoryLookupOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    DefaultCostOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/DefaultCostOutputDto'
-      additionalProperties: false
-    DefaultCostOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        DefaultCost:
-          type: number
-          format: double
-      additionalProperties: false
-    WeightedCostOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        WeightedCost:
-          type: number
-          format: double
-      additionalProperties: false
-    ProductsInStockOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        SerialNumber:
-          type:
-          - string
-          - 'null'
-        LotNumber:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     ProductsListSearchSelectOutputDto:
       type: object
@@ -1410,6 +1396,168 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
+    ProductCategoryLookupOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductCategoryLookupOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    SupplierLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SupplierLookupOutputDto'
+      additionalProperties: false
+    ProductCategoryLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    WeightedCostOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        WeightedCost:
+          type: number
+          format: double
+      additionalProperties: false
+    ProductCategoriesInputDto:
+      required:
+      - IsActive
+      - Name
+      type: object
+      properties:
+        Name:
+          minLength: 1
+          type: string
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    PricingLevelLookupDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Price:
+          type: number
+          format: double
+        Margin:
+          type: number
+          format: double
+        IsActive:
+          type: boolean
+        IsDefault:
+          type: boolean
+      additionalProperties: false
+    WeightedCostOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WeightedCostOutputDto'
+      additionalProperties: false
+    ProductsInStockOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        LotNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DefaultCostOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        DefaultCost:
+          type: number
+          format: double
+      additionalProperties: false
     ProductCategoriesOutputDto:
       type: object
       properties:
@@ -1447,18 +1595,7 @@ components:
         IsActive:
           type: boolean
       additionalProperties: false
-    SupplierLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ProductCategoriesOutputDtoResponse:
+    DefaultCostOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -1467,106 +1604,7 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/ProductCategoriesOutputDto'
-      additionalProperties: false
-    PricingLevelLookupDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PricingLevelLookupDto'
-      additionalProperties: false
-    PricingLevelLookupDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Price:
-          type: number
-          format: double
-        Margin:
-          type: number
-          format: double
-        IsActive:
-          type: boolean
-        IsDefault:
-          type: boolean
-      additionalProperties: false
-    ProductCategoryLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
-      additionalProperties: false
-    ProductsInStockOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProductsInStockOutputDto'
-      additionalProperties: false
-    SupplierLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SupplierLookupOutputDto'
-      additionalProperties: false
-    ProductCategoriesInputDto:
-      required:
-      - IsActive
-      - Name
-      type: object
-      properties:
-        Name:
-          minLength: 1
-          type: string
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
+          $ref: '#/components/schemas/DefaultCostOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

@@ -28,6 +28,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1AccessControlSettingsOutputDtoResponse'
+      summary: Get K1 access control settings
+      x-summary-source: derived
     put:
       tags:
       - K1AccessControls
@@ -59,6 +61,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1AccessControlSettingsOutputDtoResponse'
+      summary: Put K1 access control settings
+      x-summary-source: derived
     post:
       tags:
       - K1AccessControls
@@ -90,6 +94,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1AccessControlSettingsOutputDtoResponse'
+      summary: Post K1 access control settings
+      x-summary-source: derived
   /v2/admin/k1/accesscontrol/mappings:
     get:
       tags:
@@ -108,6 +114,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1AccessControlMappingsOutputDtoListResponse'
+      summary: Get K1 access control mappings
+      x-summary-source: derived
     post:
       tags:
       - K1AccessControls
@@ -139,6 +147,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1AccessControlMappingOutputDtoResponse'
+      summary: Post K1 access control mapping
+      x-summary-source: derived
   /v2/admin/k1/accesscontrol/accessgroups:
     get:
       tags:
@@ -157,6 +167,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1AccessControlAccessGroupsOutputDtoListResponse'
+      summary: Get K1 access control access groups
+      x-summary-source: derived
   /v2/admin/k1/accesscontrol/mappings/{mappingId}:
     put:
       tags:
@@ -196,6 +208,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1AccessControlMappingOutputDtoResponse'
+      summary: Put K1 access control mapping
+      x-summary-source: derived
     delete:
       tags:
       - K1AccessControls
@@ -210,6 +224,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Delete K1 access control mapping
+      x-summary-source: derived
   /v2/admin/k1/accesscontrol/launcher:
     get:
       tags:
@@ -228,6 +244,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/K1AccessControlSettingsLauncherOutputDtoResponse'
+      summary: Get K1 launcher url
+      x-summary-source: derived
 components:
   schemas:
     K1EnforceLoginExceptionDto:
@@ -246,6 +264,114 @@ components:
           - 'null'
         IsActive:
           type: boolean
+      additionalProperties: false
+    K1AccessControlMappingPostInputDto:
+      required:
+      - AccessGroupId
+      - AccessGroupName
+      - SecurityRoleIds
+      type: object
+      properties:
+        AccessGroupId:
+          minLength: 1
+          type: string
+        AccessGroupName:
+          minLength: 1
+          type: string
+        SecurityRoleIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+        Order:
+          type: integer
+          format: int32
+      additionalProperties: false
+    K1AccessControlMappingsOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1AccessControlMappingsOutputDto'
+      additionalProperties: false
+    K1AccessControlMappingsOutputDto:
+      type: object
+      properties:
+        MappingId:
+          type: integer
+          format: int32
+        AccessGroupId:
+          type:
+          - string
+          - 'null'
+        AccessGroupName:
+          type:
+          - string
+          - 'null'
+        SecurityRoleIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        Order:
+          type: integer
+          format: int32
+      additionalProperties: false
+    K1AccessControlMappingPutInputDto:
+      required:
+      - AccessGroupId
+      - AccessGroupName
+      - Order
+      - SecurityRoleIds
+      type: object
+      properties:
+        AccessGroupId:
+          minLength: 1
+          type: string
+        AccessGroupName:
+          minLength: 1
+          type: string
+        SecurityRoleIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+        Order:
+          type: integer
+          format: int32
+      additionalProperties: false
+    K1AccessControlSettingsOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/K1AccessControlSettingsOutputDto'
+      additionalProperties: false
+    K1AccessControlAccessGroupsOutputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     K1AccessControlMappingOutputDto:
       type: object
@@ -299,7 +425,70 @@ components:
           items:
             type: string
       additionalProperties: false
-    K1AccessControlAccessGroupsOutputDtoListResponse:
+    K1AccessControlSettingsInputDto:
+      required:
+      - DepartmentId
+      - EmployeeRoleId
+      - EmploymentTypeId
+      - JobTitleId
+      - LocationId
+      - ManagerId
+      - SecurityRoleId
+      type: object
+      properties:
+        IsEnabled:
+          type:
+          - boolean
+          - 'null'
+        IsAccessGroupMappingEnabled:
+          type:
+          - boolean
+          - 'null'
+        DepartmentId:
+          type: integer
+          format: int32
+        LocationId:
+          type: integer
+          format: int32
+        ManagerId:
+          type: integer
+          format: int32
+        JobTitleId:
+          type: integer
+          format: int32
+        EmploymentTypeId:
+          type: integer
+          format: int32
+        EmployeeRoleId:
+          type: integer
+          format: int32
+        SecurityRoleId:
+          type: integer
+          format: int32
+        IsDeprovisioningEnabled:
+          type:
+          - boolean
+          - 'null'
+        UserExceptionIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        RoleExceptionIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        IsRequireLoginEnabled:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    K1AccessControlMappingOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -308,23 +497,7 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/K1AccessControlAccessGroupsOutputDto'
-      additionalProperties: false
-    K1AccessControlAccessGroupsOutputDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
+          $ref: '#/components/schemas/K1AccessControlMappingOutputDto'
       additionalProperties: false
     K1AccessControlSettingsOutputDto:
       type: object
@@ -443,187 +616,6 @@ components:
           items:
             $ref: '#/components/schemas/K1EnforceLoginExceptionDto'
       additionalProperties: false
-    K1AccessControlSettingsOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/K1AccessControlSettingsOutputDto'
-      additionalProperties: false
-    K1AccessControlMappingsOutputDto:
-      type: object
-      properties:
-        MappingId:
-          type: integer
-          format: int32
-        AccessGroupId:
-          type:
-          - string
-          - 'null'
-        AccessGroupName:
-          type:
-          - string
-          - 'null'
-        SecurityRoleIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        Order:
-          type: integer
-          format: int32
-      additionalProperties: false
-    K1AccessControlMappingPutInputDto:
-      required:
-      - AccessGroupId
-      - AccessGroupName
-      - Order
-      - SecurityRoleIds
-      type: object
-      properties:
-        AccessGroupId:
-          minLength: 1
-          type: string
-        AccessGroupName:
-          minLength: 1
-          type: string
-        SecurityRoleIds:
-          type: array
-          items:
-            type: integer
-            format: int32
-        Order:
-          type: integer
-          format: int32
-      additionalProperties: false
-    K1AccessControlMappingOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/K1AccessControlMappingOutputDto'
-      additionalProperties: false
-    K1AccessControlMappingPostInputDto:
-      required:
-      - AccessGroupId
-      - AccessGroupName
-      - SecurityRoleIds
-      type: object
-      properties:
-        AccessGroupId:
-          minLength: 1
-          type: string
-        AccessGroupName:
-          minLength: 1
-          type: string
-        SecurityRoleIds:
-          type: array
-          items:
-            type: integer
-            format: int32
-        Order:
-          type: integer
-          format: int32
-      additionalProperties: false
-    K1AccessControlSettingsInputDto:
-      required:
-      - DepartmentId
-      - EmployeeRoleId
-      - EmploymentTypeId
-      - JobTitleId
-      - LocationId
-      - ManagerId
-      - SecurityRoleId
-      type: object
-      properties:
-        IsEnabled:
-          type:
-          - boolean
-          - 'null'
-        IsAccessGroupMappingEnabled:
-          type:
-          - boolean
-          - 'null'
-        DepartmentId:
-          type: integer
-          format: int32
-        LocationId:
-          type: integer
-          format: int32
-        ManagerId:
-          type: integer
-          format: int32
-        JobTitleId:
-          type: integer
-          format: int32
-        EmploymentTypeId:
-          type: integer
-          format: int32
-        EmployeeRoleId:
-          type: integer
-          format: int32
-        SecurityRoleId:
-          type: integer
-          format: int32
-        IsDeprovisioningEnabled:
-          type:
-          - boolean
-          - 'null'
-        UserExceptionIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        RoleExceptionIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        IsRequireLoginEnabled:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    K1AccessControlMappingsOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/K1AccessControlMappingsOutputDto'
-      additionalProperties: false
-    K1AccessControlSettingsLauncherOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/K1AccessControlSettingsLauncherOutputDto'
-      additionalProperties: false
     K1AccessControlSettingsLauncherOutputDto:
       type: object
       properties:
@@ -635,6 +627,32 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    K1AccessControlAccessGroupsOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1AccessControlAccessGroupsOutputDto'
+      additionalProperties: false
+    K1AccessControlSettingsLauncherOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/K1AccessControlSettingsLauncherOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

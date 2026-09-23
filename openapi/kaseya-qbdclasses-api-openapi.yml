@@ -50,6 +50,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/StringResponse'
+      summary: Import class lists
+      x-summary-source: derived
     get:
       tags:
       - QbdClasses
@@ -95,6 +97,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbClassListExportDtoListPagedResponse'
+      summary: Get class lists
+      x-summary-source: derived
   /v2/integration/qbd/classlists/byids:
     get:
       tags:
@@ -124,65 +128,37 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbClassListExportDtoListResponse'
+      summary: Get class lists by ids
+      x-summary-source: derived
 components:
   schemas:
-    QbClassListExportDtoListResponse:
+    QbClassListExportDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbClassListExportDto'
-      additionalProperties: false
-    QbClassListExportDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbClassListExportDto'
-        TotalRecords:
+        Id:
           type: integer
           format: int32
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        ParentId:
+          type:
+          - integer
+          - 'null'
           format: int32
-        Message:
+        ExternalClassListId:
           type:
           - string
           - 'null'
-        Details:
+        ExternalParentId:
           type:
           - string
           - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
       additionalProperties: false
     QbCLassListImportDto:
       type: object
@@ -217,33 +193,63 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    QbClassListExportDto:
+    ErrorInfo:
       type: object
       properties:
-        Id:
+        Code:
           type: integer
           format: int32
-        Name:
+        Message:
           type:
           - string
           - 'null'
-        IsActive:
+        Details:
           type:
-          - boolean
+          - string
           - 'null'
-        ParentId:
+        StackStrace:
           type:
-          - integer
+          - string
           - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbClassListExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbClassListExportDto'
+      additionalProperties: false
+    QbClassListExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbClassListExportDto'
+        TotalRecords:
+          type: integer
           format: int32
-        ExternalClassListId:
-          type:
-          - string
-          - 'null'
-        ExternalParentId:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

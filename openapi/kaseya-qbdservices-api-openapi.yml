@@ -50,6 +50,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/StringResponse'
+      summary: Import services
+      x-summary-source: derived
     get:
       tags:
       - QbdServices
@@ -95,6 +97,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbServiceExportDtoListPagedResponse'
+      summary: Get services
+      x-summary-source: derived
   /v2/integration/qbd/services/byids:
     get:
       tags:
@@ -124,6 +128,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbServiceExportDtoListResponse'
+      summary: Get services by ids
+      x-summary-source: derived
 components:
   schemas:
     QbItemImportDto:
@@ -179,32 +185,50 @@ components:
         AssetAccount:
           $ref: '#/components/schemas/QbAccountCodeImportDto'
       additionalProperties: false
-    ErrorInfo:
+    StringResponse:
       type: object
       properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - string
           - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
       additionalProperties: false
-    QbServiceExportDtoListPagedResponse:
+    QbAccountCodeImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Code:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        AccountTypeName:
+          type:
+          - string
+          - 'null'
+        ParentAccountCode:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbServiceExportDtoListResponse:
       type: object
       properties:
         Success:
@@ -218,9 +242,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/QbServiceExportDto'
-        TotalRecords:
-          type: integer
-          format: int32
       additionalProperties: false
     QbServiceExportDto:
       type: object
@@ -279,50 +300,7 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    QbAccountCodeImportDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Code:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        AccountTypeName:
-          type:
-          - string
-          - 'null'
-        ParentAccountCode:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    QbServiceExportDtoListResponse:
+    QbServiceExportDtoListPagedResponse:
       type: object
       properties:
         Success:
@@ -336,6 +314,34 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/QbServiceExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
   securitySchemes:
     bearerAuth:

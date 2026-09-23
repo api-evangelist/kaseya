@@ -52,6 +52,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ZoneInformationResultModel'
+      summary: Zone information api integration query zone information
+      x-summary-source: derived
 components:
   schemas:
     ZoneInformationResultModel:

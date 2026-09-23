@@ -42,8 +42,29 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/IntegrationJobOutputDtoResponse'
+      summary: Post alert
+      x-summary-source: derived
 components:
   schemas:
+    IntegrationJobOutputDto:
+      type: object
+      properties:
+        JobId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationJobOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/IntegrationJobOutputDto'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -68,14 +89,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    IntegrationJobOutputDto:
-      type: object
-      properties:
-        JobId:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     DattoRMMAlertInputDto:
       type: object
@@ -116,17 +129,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    IntegrationJobOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/IntegrationJobOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

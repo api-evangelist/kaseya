@@ -74,6 +74,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/SoftwareAssetsListSearchSelectOutputDtoIEnumerableResponse'
+      summary: Get software assets list search select
+      x-summary-source: derived
 components:
   schemas:
     ErrorInfo:

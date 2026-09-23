@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contract retainers child query
+      x-summary-source: derived
     put:
       tags:
       - ContractRetainersChild
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ContractRetainerModel'
         required: true
+      summary: Contract retainers child update entity
+      x-summary-source: derived
     post:
       tags:
       - ContractRetainersChild
@@ -167,6 +171,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ContractRetainerModel'
         required: true
+      summary: Contract retainers child create entity
+      x-summary-source: derived
     patch:
       tags:
       - ContractRetainersChild
@@ -222,6 +228,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ContractRetainerModel'
         required: true
+      summary: Contract retainers child patch entity
+      x-summary-source: derived
   /V1.0/Contracts/{parentId}/Retainers/{id}:
     get:
       tags:
@@ -278,6 +286,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contract retainers child query item
+      x-summary-source: derived
   /V1.0/Contracts/{parentId}/Retainers/entityInformation:
     get:
       tags:
@@ -327,6 +337,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contract retainers child query entity information
+      x-summary-source: derived
   /V1.0/Contracts/{parentId}/Retainers/entityInformation/fields:
     get:
       tags:
@@ -376,6 +388,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contract retainers child query field definitions
+      x-summary-source: derived
   /V1.0/Contracts/{parentId}/Retainers/entityInformation/userDefinedFields:
     get:
       tags:
@@ -425,8 +439,108 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contract retainers child query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
+    Expression:
+      type: object
+      properties:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
     ParameterExpression:
       type: object
       properties:
@@ -531,44 +645,20 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    FieldInformationModel:
+    Field:
       type: object
       properties:
         name:
           type: string
-        dataType:
+        label:
+          type: string
+        type:
           type: string
         length:
           format: int32
           type: integer
+        description:
+          type: string
         isRequired:
           type: boolean
         isReadOnly:
@@ -587,8 +677,78 @@ components:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
           type: string
+        defaultValue:
+          type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
+    ContractRetainerModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        amount:
+          format: double
+          type: number
+        amountApproved:
+          format: double
+          type: number
+        contractID:
+          format: int32
+          type: integer
+        datePurchased:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        internalCurrencyAmount:
+          format: double
+          type: number
+        internalCurrencyAmountApproved:
+          format: double
+          type: number
+        invoiceNumber:
+          type: string
+        isPaid:
+          type: boolean
+        paymentID:
+          format: int32
+          type: integer
+        paymentNumber:
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        status:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_ContractRetainer_Int64'
+          readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     FieldInformationResultModel:
       type: object
       properties:
@@ -597,6 +757,24 @@ components:
           items:
             $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -633,24 +811,66 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    PickListValue:
+    QueryActionResult_ContractRetainerModel_ContractRetainer:
       type: object
       properties:
-        value:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractRetainerModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    ItemQueryResultModel_ContractRetainerModel_ContractRetainer:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ContractRetainerModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
           type: string
-        label:
+        dataType:
           type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        length:
           format: int32
           type: integer
-        parentValue:
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
           type: string
-        isActive:
+        isPickList:
           type: boolean
-        isSystem:
-          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     Expression_Func_ContractRetainer_Int64:
       type: object
       properties:
@@ -766,207 +986,3 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    Expression:
-      type: object
-      properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    Object:
-      type: object
-      properties: {}
-    QueryActionResult_ContractRetainerModel_ContractRetainer:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContractRetainerModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    ContractRetainerModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        amount:
-          format: double
-          type: number
-        amountApproved:
-          format: double
-          type: number
-        contractID:
-          format: int32
-          type: integer
-        datePurchased:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
-          type: string
-        internalCurrencyAmount:
-          format: double
-          type: number
-        internalCurrencyAmountApproved:
-          format: double
-          type: number
-        invoiceNumber:
-          type: string
-        isPaid:
-          type: boolean
-        paymentID:
-          format: int32
-          type: integer
-        paymentNumber:
-          type: string
-        startDate:
-          format: date-time
-          type: string
-        status:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_ContractRetainer_Int64'
-          readOnly: true
-    ItemQueryResultModel_ContractRetainerModel_ContractRetainer:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ContractRetainerModel'
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'

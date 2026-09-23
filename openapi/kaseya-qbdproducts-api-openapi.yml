@@ -50,6 +50,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/StringResponse'
+      summary: Import products
+      x-summary-source: derived
     get:
       tags:
       - QbdProducts
@@ -95,6 +97,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbProductExportDtoListPagedResponse'
+      summary: Get products
+      x-summary-source: derived
   /v2/integration/qbd/products/byids:
     get:
       tags:
@@ -124,61 +128,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/QbProductExportDtoListResponse'
+      summary: Get products by ids
+      x-summary-source: derived
 components:
   schemas:
-    QbItemImportDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Number:
-          type:
-          - string
-          - 'null'
-        InStockQty:
-          type:
-          - number
-          - 'null'
-          format: double
-        IsStockedItem:
-          type: boolean
-        Sku:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-        IsTaxable:
-          type: boolean
-        IsActive:
-          type: boolean
-        DiscountIsPercent:
-          type: boolean
-        UnitPrice:
-          type: number
-          format: double
-        PurchaseCost:
-          type: number
-          format: double
-        IncomeAccount:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-        ExpenseAccount:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-        AssetAccount:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-      additionalProperties: false
     QbProductExportDto:
       type: object
       properties:
@@ -237,30 +190,71 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ErrorInfo:
+    QbItemImportDto:
       type: object
       properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
+        Id:
           type:
           - string
           - 'null'
-        Details:
+        Name:
           type:
           - string
           - 'null'
-        StackStrace:
+        Number:
           type:
           - string
           - 'null'
-        SubErrors:
+        InStockQty:
           type:
-          - array
+          - number
           - 'null'
-          items:
-            type: string
+          format: double
+        IsStockedItem:
+          type: boolean
+        Sku:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        IsTaxable:
+          type: boolean
+        IsActive:
+          type: boolean
+        DiscountIsPercent:
+          type: boolean
+        UnitPrice:
+          type: number
+          format: double
+        PurchaseCost:
+          type: number
+          format: double
+        IncomeAccount:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        ExpenseAccount:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        AssetAccount:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     QbAccountCodeImportDto:
       type: object
@@ -292,18 +286,30 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    StringResponse:
+    ErrorInfo:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Code:
+          type: integer
+          format: int32
+        Message:
           type:
           - string
           - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
     QbProductExportDtoListResponse:
       type: object

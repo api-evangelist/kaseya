@@ -56,6 +56,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Integration vendor widgets url parameter query
+      x-summary-source: derived
     post:
       tags:
       - IntegrationVendorWidgets
@@ -105,6 +107,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Integration vendor widgets query
+      x-summary-source: derived
   /V1.0/IntegrationVendorWidgets/{id}:
     get:
       tags:
@@ -155,6 +159,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Integration vendor widgets query item
+      x-summary-source: derived
     delete:
       tags:
       - IntegrationVendorWidgets
@@ -204,6 +210,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Integration vendor widgets delete entity
+      x-summary-source: derived
   /V1.0/IntegrationVendorWidgets/query/count:
     get:
       tags:
@@ -253,6 +261,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Integration vendor widgets url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - IntegrationVendorWidgets
@@ -302,6 +312,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Integration vendor widgets query count
+      x-summary-source: derived
   /V1.0/IntegrationVendorWidgets:
     put:
       tags:
@@ -352,6 +364,8 @@ paths:
             schema:
               $ref: '#/components/schemas/IntegrationVendorWidgetModel'
         required: true
+      summary: Integration vendor widgets update entity
+      x-summary-source: derived
     post:
       tags:
       - IntegrationVendorWidgets
@@ -401,6 +415,8 @@ paths:
             schema:
               $ref: '#/components/schemas/IntegrationVendorWidgetModel'
         required: true
+      summary: Integration vendor widgets create entity
+      x-summary-source: derived
     patch:
       tags:
       - IntegrationVendorWidgets
@@ -450,6 +466,8 @@ paths:
             schema:
               $ref: '#/components/schemas/IntegrationVendorWidgetModel'
         required: true
+      summary: Integration vendor widgets patch entity
+      x-summary-source: derived
   /V1.0/IntegrationVendorWidgets/entityInformation:
     get:
       tags:
@@ -494,6 +512,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Integration vendor widgets query entity information
+      x-summary-source: derived
   /V1.0/IntegrationVendorWidgets/entityInformation/fields:
     get:
       tags:
@@ -538,6 +558,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Integration vendor widgets query field definitions
+      x-summary-source: derived
   /V1.0/IntegrationVendorWidgets/entityInformation/userDefinedFields:
     get:
       tags:
@@ -582,151 +604,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Integration vendor widgets query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Object:
-      type: object
-      properties: {}
-    QueryActionResult_IntegrationVendorWidgetModel_IntegrationVendorWidget:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/IntegrationVendorWidgetModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    IntegrationVendorWidgetModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        createDateTime:
-          format: date-time
-          type: string
-        description:
-          type: string
-        isActive:
-          type: boolean
-        lastModifiedDateTime:
-          format: date-time
-          type: string
-        referenceUrl:
-          type: string
-        secret:
-          type: string
-        title:
-          type: string
-        vendorSuppliedID:
-          type: string
-        widgetKey:
-          type: string
-        width:
-          format: int32
-          type: integer
     Field:
       type: object
       properties:
@@ -763,11 +644,60 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     ItemQueryResultModel_IntegrationVendorWidgetModel_IntegrationVendorWidget:
       type: object
       properties:
         item:
           $ref: '#/components/schemas/IntegrationVendorWidgetModel'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -822,22 +752,116 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    QueryActionResult_IntegrationVendorWidgetModel_IntegrationVendorWidget:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntegrationVendorWidgetModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    IntegrationVendorWidgetModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        createDateTime:
+          format: date-time
+          type: string
+        description:
+          type: string
+        isActive:
+          type: boolean
+        lastModifiedDateTime:
+          format: date-time
+          type: string
+        referenceUrl:
+          type: string
+        secret:
+          type: string
+        title:
+          type: string
+        vendorSuppliedID:
+          type: string
+        widgetKey:
+          type: string
+        width:
+          format: int32
+          type: integer
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string

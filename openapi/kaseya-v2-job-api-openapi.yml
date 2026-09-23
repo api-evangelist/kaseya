@@ -17,7 +17,7 @@ paths:
     get:
       tags:
       - /v2/job
-      summary: Fetches data of the job identified by the given job Uid.
+      summary: Fetches data of the job identified by the given job Uid
       operationId: get_1
       parameters:
       - name: jobUid
@@ -107,7 +107,7 @@ paths:
     get:
       tags:
       - /v2/job
-      summary: Fetches job results of the job identified by the job Uid for device identified by the device Uid.
+      summary: Fetches job results of the job identified by the job Uid for device identified…
       operationId: getJobResults
       parameters:
       - name: jobUid
@@ -208,7 +208,7 @@ paths:
     get:
       tags:
       - /v2/job
-      summary: Fetches data of the job's StdOut identified by the given job Uid and device Uid.
+      summary: Fetches data of the job's StdOut identified by the given job Uid and device Uid
       operationId: getStdOut
       parameters:
       - name: jobUid
@@ -289,7 +289,7 @@ paths:
     get:
       tags:
       - /v2/job
-      summary: Fetches data of the job's StdErr identified by the given job Uid and device Uid.
+      summary: Fetches data of the job's StdErr identified by the given job Uid and device Uid
       operationId: getStdErr
       parameters:
       - name: jobUid
@@ -370,7 +370,7 @@ paths:
     get:
       tags:
       - /v2/job
-      summary: Fetches components of the job identified by the given job Uid.
+      summary: Fetches components of the job identified by the given job Uid
       operationId: getJobComponents
       parameters:
       - name: jobUid
@@ -461,16 +461,6 @@ paths:
                       $ref: '#/components/schemas/JobComponent'
 components:
   schemas:
-    JobComponentVariable:
-      type: object
-      description: Job component variable data
-      properties:
-        name:
-          type: string
-          description: Variable name has to match one of component's variables
-        value:
-          type: string
-          description: Value has to be convertible to the type specified in component variable
     PaginationData:
       type: object
       description: Pagination data
@@ -485,26 +475,6 @@ components:
           type: string
         nextPageUrl:
           type: string
-    JobComponentResult:
-      type: object
-      description: Job component result data
-      properties:
-        componentUid:
-          type: string
-        componentName:
-          type: string
-        componentStatus:
-          type: string
-          enum:
-          - Success
-          - Failure
-        numberOfWarnings:
-          type: integer
-          format: int32
-        hasStdOut:
-          type: boolean
-        hasStdErr:
-          type: boolean
     ErrorResponse:
       description: Default error response body
       properties:
@@ -532,6 +502,16 @@ components:
           type: string
         stdData:
           type: string
+    JobComponentVariable:
+      type: object
+      description: Job component variable data
+      properties:
+        name:
+          type: string
+          description: Variable name has to match one of component's variables
+        value:
+          type: string
+          description: Value has to be convertible to the type specified in component variable
     JobComponent:
       type: object
       description: Job component data
@@ -544,3 +524,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/JobComponentVariable'
+    JobComponentResult:
+      type: object
+      description: Job component result data
+      properties:
+        componentUid:
+          type: string
+        componentName:
+          type: string
+        componentStatus:
+          type: string
+          enum:
+          - Success
+          - Failure
+        numberOfWarnings:
+          type: integer
+          format: int32
+        hasStdOut:
+          type: boolean
+        hasStdErr:
+          type: boolean

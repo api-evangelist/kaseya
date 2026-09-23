@@ -28,6 +28,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ExpenseSheetLookupDtoListResponse'
+      summary: Get expense sheets lookups
+      x-summary-source: derived
   /v2/my/expensesheets:
     post:
       tags:
@@ -60,9 +62,35 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ExpenseSheetOutputDtoResponse'
+      summary: Post expense sheet
+      x-summary-source: derived
 components:
   schemas:
-    ExpenseSheetOutputDtoResponse:
+    ExpenseSheetOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        UserId:
+          type: integer
+          format: int32
+        StatusId:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Notes:
+          type:
+          - string
+          - 'null'
+        EndPeriod:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ExpenseSheetLookupDtoListResponse:
       type: object
       properties:
         Success:
@@ -71,7 +99,50 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/ExpenseSheetOutputDto'
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ExpenseSheetLookupDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ExpenseSheetLookupDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
       additionalProperties: false
     ExpenseSheetPostInputDto:
       type: object
@@ -99,32 +170,7 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    ExpenseSheetLookupDtoListResponse:
+    ExpenseSheetOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -133,49 +179,7 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ExpenseSheetLookupDto'
-      additionalProperties: false
-    ExpenseSheetLookupDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ExpenseSheetOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        UserId:
-          type: integer
-          format: int32
-        StatusId:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Notes:
-          type:
-          - string
-          - 'null'
-        EndPeriod:
-          type: string
-          format: date-time
+          $ref: '#/components/schemas/ExpenseSheetOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

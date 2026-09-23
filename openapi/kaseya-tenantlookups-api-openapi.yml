@@ -34,6 +34,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TenantLookupOutputDtoIEnumerableResponse'
+      summary: Get tenant lookups
+      x-summary-source: derived
     post:
       tags:
       - TenantLookups
@@ -71,6 +73,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TenantLookupOutputDtoIEnumerableResponse'
+      summary: Create tenant lookup
+      x-summary-source: derived
 components:
   schemas:
     ErrorInfo:
@@ -97,20 +101,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    TenantLookupInputDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
       additionalProperties: false
     TenantLookupOutputDtoIEnumerableResponse:
       type: object
@@ -140,6 +130,20 @@ components:
         IsActive:
           type: boolean
         IsDefault:
+          type: boolean
+      additionalProperties: false
+    TenantLookupInputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
           type: boolean
       additionalProperties: false
   securitySchemes:

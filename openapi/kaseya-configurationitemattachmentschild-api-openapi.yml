@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   version: v1
-  title: Datto|Autotask PSA Rest Configuration Item Attachments Child API
+  title: Datto|Autotask PSA Rest Configuration Item Attachments…
 servers:
 - url: https://webservices2.autotask.net/ATServicesRest
 tags:
@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item attachments child query
+      x-summary-source: derived
     post:
       tags:
       - ConfigurationItemAttachmentsChild
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ConfigurationItemAttachmentModel'
         required: true
+      summary: Configuration item attachments child create entity
+      x-summary-source: derived
   /V1.0/ConfigurationItems/{parentId}/Attachments/{id}:
     get:
       tags:
@@ -168,6 +172,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item attachments child query item
+      x-summary-source: derived
     delete:
       tags:
       - ConfigurationItemAttachmentsChild
@@ -223,8 +229,73 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Configuration item attachments child delete entity
+      x-summary-source: derived
 components:
   schemas:
+    ConfigurationItemAttachmentModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        attachDate:
+          format: date-time
+          type: string
+        attachedByContactID:
+          format: int64
+          type: integer
+        attachedByResourceID:
+          format: int64
+          type: integer
+        attachmentType:
+          type: string
+        configurationItemID:
+          format: int32
+          type: integer
+        configurationItemNoteID:
+          format: int32
+          type: integer
+        contentType:
+          type: string
+        creatorType:
+          format: int32
+          type: integer
+        fileSize:
+          format: double
+          type: number
+        fullPath:
+          type: string
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        opportunityID:
+          format: int64
+          type: integer
+        parentAttachmentID:
+          format: int32
+          type: integer
+        parentID:
+          format: int64
+          type: integer
+        publish:
+          format: int32
+          type: integer
+        title:
+          type: string
+        data:
+          format: byte
+          type: string
+        parentType:
+          format: int32
+          type: integer
+          readOnly: true
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_AttachmentInfo_Int64'
+          readOnly: true
+        isTaskAttachment:
+          type: boolean
+          readOnly: true
     ParameterExpression:
       type: object
       properties:
@@ -425,69 +496,6 @@ components:
           type: string
           readOnly: true
         canReduce:
-          type: boolean
-          readOnly: true
-    ConfigurationItemAttachmentModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        attachDate:
-          format: date-time
-          type: string
-        attachedByContactID:
-          format: int64
-          type: integer
-        attachedByResourceID:
-          format: int64
-          type: integer
-        attachmentType:
-          type: string
-        configurationItemID:
-          format: int32
-          type: integer
-        configurationItemNoteID:
-          format: int32
-          type: integer
-        contentType:
-          type: string
-        creatorType:
-          format: int32
-          type: integer
-        fileSize:
-          format: double
-          type: number
-        fullPath:
-          type: string
-        impersonatorCreatorResourceID:
-          format: int32
-          type: integer
-        opportunityID:
-          format: int64
-          type: integer
-        parentAttachmentID:
-          format: int32
-          type: integer
-        parentID:
-          format: int64
-          type: integer
-        publish:
-          format: int32
-          type: integer
-        title:
-          type: string
-        data:
-          format: byte
-          type: string
-        parentType:
-          format: int32
-          type: integer
-          readOnly: true
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_AttachmentInfo_Int64'
-          readOnly: true
-        isTaskAttachment:
           type: boolean
           readOnly: true
     Object:

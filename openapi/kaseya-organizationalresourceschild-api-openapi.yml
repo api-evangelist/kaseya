@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Organizational resources child query
+      x-summary-source: derived
   /V1.0/OrganizationalLevelAssociations/{parentId}/Resources/{id}:
     get:
       tags:
@@ -113,6 +115,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Organizational resources child query item
+      x-summary-source: derived
   /V1.0/OrganizationalLevelAssociations/{parentId}/Resources/entityInformation:
     get:
       tags:
@@ -162,6 +166,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Organizational resources child query entity information
+      x-summary-source: derived
   /V1.0/OrganizationalLevelAssociations/{parentId}/Resources/entityInformation/fields:
     get:
       tags:
@@ -211,6 +217,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Organizational resources child query field definitions
+      x-summary-source: derived
   /V1.0/OrganizationalLevelAssociations/{parentId}/Resources/entityInformation/userDefinedFields:
     get:
       tags:
@@ -260,100 +268,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Organizational resources child query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    ItemQueryResultModel_OrganizationalResourceModel_BusinessDivisionSubdivisionResource:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/OrganizationalResourceModel'
-    Object:
-      type: object
-      properties: {}
     QueryActionResult_OrganizationalResourceModel_BusinessDivisionSubdivisionResource:
       type: object
       properties:
@@ -399,9 +317,60 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
       type: object
       properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    ItemQueryResultModel_OrganizationalResourceModel_BusinessDivisionSubdivisionResource:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/OrganizationalResourceModel'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -438,6 +407,47 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     OrganizationalResourceModel:
       type: object
       properties:

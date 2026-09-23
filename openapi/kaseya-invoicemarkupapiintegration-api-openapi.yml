@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Invoice markup api integration query invoice markup html
+      x-summary-source: derived
   /V1.0/Invoices/{id}/InvoiceMarkupXml:
     get:
       tags:
@@ -107,6 +109,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Invoice markup api integration query invoice markup xml
+      x-summary-source: derived
   /V1.0/Invoices/{id}/InvoicePdf:
     get:
       tags:
@@ -157,11 +161,15 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Invoice markup api integration query invoice pdf
+      x-summary-source: derived
 components:
   schemas:
-    Byte:
+    InvoiceMarkupResultModel:
       type: object
-      properties: {}
+      properties:
+        invoiceMarkup:
+          type: string
     FileQueryResultModel:
       type: object
       properties:
@@ -184,8 +192,6 @@ components:
           items:
             $ref: '#/components/schemas/Byte'
             readOnly: true
-    InvoiceMarkupResultModel:
+    Byte:
       type: object
-      properties:
-        invoiceMarkup:
-          type: string
+      properties: {}

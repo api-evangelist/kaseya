@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource role departments child query
+      x-summary-source: derived
     put:
       tags:
       - ResourceRoleDepartmentsChild
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ResourceRoleDepartmentModel'
         required: true
+      summary: Resource role departments child update entity
+      x-summary-source: derived
     post:
       tags:
       - ResourceRoleDepartmentsChild
@@ -167,6 +171,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ResourceRoleDepartmentModel'
         required: true
+      summary: Resource role departments child create entity
+      x-summary-source: derived
     patch:
       tags:
       - ResourceRoleDepartmentsChild
@@ -222,6 +228,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ResourceRoleDepartmentModel'
         required: true
+      summary: Resource role departments child patch entity
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/RoleDepartments/{id}:
     get:
       tags:
@@ -278,6 +286,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource role departments child query item
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/RoleDepartments/entityInformation:
     get:
       tags:
@@ -327,6 +337,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource role departments child query entity information
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/RoleDepartments/entityInformation/fields:
     get:
       tags:
@@ -376,6 +388,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource role departments child query field definitions
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/RoleDepartments/entityInformation/userDefinedFields:
     get:
       tags:
@@ -425,31 +439,107 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource role departments child query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    ResourceRoleDepartmentModel:
+    Expression:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        departmentID:
-          format: int32
-          type: integer
-        isActive:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
           type: boolean
-        isDefault:
-          type: boolean
-        isDepartmentLead:
-          type: boolean
-        resourceID:
-          format: int32
-          type: integer
-        roleID:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_ResourceRoleDepartment_Int64'
           readOnly: true
     ParameterExpression:
       type: object
@@ -555,6 +645,73 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     Expression_Func_ResourceRoleDepartment_Int64:
       type: object
       properties:
@@ -670,66 +827,29 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    UserDefinedFieldInformationResultModel:
+    ResourceRoleDepartmentModel:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    QueryActionResult_ResourceRoleDepartmentModel_ResourceRoleDepartment:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceRoleDepartmentModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
+        id:
+          format: int64
+          type: integer
+        departmentID:
           format: int32
           type: integer
-        isRequired:
+        isActive:
           type: boolean
-        isReadOnly:
+        isDefault:
           type: boolean
-        isQueryable:
+        isDepartmentLead:
           type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
+        resourceID:
+          format: int32
+          type: integer
+        roleID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_ResourceRoleDepartment_Int64'
           readOnly: true
     PickListValue:
       type: object
@@ -749,146 +869,15 @@ components:
           type: boolean
         isSystem:
           type: boolean
-    Expression:
+    QueryActionResult_ResourceRoleDepartmentModel_ResourceRoleDepartment:
       type: object
       properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    Object:
-      type: object
-      properties: {}
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
+            $ref: '#/components/schemas/ResourceRoleDepartmentModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     EntityInformationModel:
       type: object
       properties:
@@ -925,27 +914,54 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    OperationResultModel:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
     ItemQueryResultModel_ResourceRoleDepartmentModel_ResourceRoleDepartment:
       type: object
       properties:
         item:
           $ref: '#/components/schemas/ResourceRoleDepartmentModel'
-    PagingModel:
+    FieldInformationModel:
       type: object
       properties:
-        count:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
           type: string
-        nextPageUrl:
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
           type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'

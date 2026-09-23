@@ -35,6 +35,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/IntegrationJobInfoDtoResponse'
+      summary: Get job info
+      x-summary-source: derived
   /v2/integration/qbd/entitymappings:
     post:
       tags:
@@ -65,21 +67,35 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Post entity mappings
+      x-summary-source: derived
 components:
   schemas:
-    IntegrationJobInfoDto:
+    IntegrationJobLogDto:
       type: object
       properties:
-        State:
+        Message:
           type:
           - string
           - 'null'
-        JobLogs:
+        Code:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/IntegrationJobLogDto'
+        Date:
+          type: string
+          format: date-time
+      additionalProperties: false
+    IntegrationJobInfoDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/IntegrationJobInfoDto'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -106,6 +122,20 @@ components:
           items:
             type: string
       additionalProperties: false
+    IntegrationJobInfoDto:
+      type: object
+      properties:
+        State:
+          type:
+          - string
+          - 'null'
+        JobLogs:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IntegrationJobLogDto'
+      additionalProperties: false
     QbEntityMappingInputDto:
       type: object
       properties:
@@ -123,32 +153,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    IntegrationJobInfoDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/IntegrationJobInfoDto'
-      additionalProperties: false
-    IntegrationJobLogDto:
-      type: object
-      properties:
-        Message:
-          type:
-          - string
-          - 'null'
-        Code:
-          type:
-          - string
-          - 'null'
-        Date:
-          type: string
-          format: date-time
       additionalProperties: false
   securitySchemes:
     bearerAuth:

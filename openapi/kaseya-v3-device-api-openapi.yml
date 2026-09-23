@@ -17,7 +17,7 @@ paths:
     post:
       tags:
       - /v3/device
-      summary: Sets the user defined fields of a device identified by the given device Uid.
+      summary: Sets the user defined fields of a device identified by the given device Uid
       description: 'V3 enforces strict type validation: each UDF must match its configured type (STRING/BOOLEAN/NUMBER/DATE). Type mismatches are rejected. Set value to null to delete a UDF.'
       operationId: setUdfFields
       parameters:
@@ -106,7 +106,7 @@ paths:
     get:
       tags:
       - /v3/device
-      summary: Fetches data of the device identified by the given device Uid.
+      summary: Fetches data of the device identified by the given device Uid
       operationId: getByUid
       parameters:
       - name: deviceUid
@@ -266,7 +266,7 @@ paths:
     get:
       tags:
       - /v3/device
-      summary: 'Fetches data of the device(s) identified by the given MAC address in format: XXXXXXXXXXXX'
+      summary: Fetches data of the device(s) identified by the given MAC address in format…
       operationId: getByMacAddress
       parameters:
       - name: macAddress
@@ -342,7 +342,7 @@ paths:
     get:
       tags:
       - /v3/device
-      summary: Fetches data of the device identified by the given device Id.
+      summary: Fetches data of the device identified by the given device Id
       operationId: getById
       parameters:
       - name: deviceId
@@ -501,45 +501,6 @@ paths:
                       $ref: '#/components/schemas/UdfItem'
 components:
   schemas:
-    PatchManagement:
-      type: object
-      description: Patch management data
-      properties:
-        patchStatus:
-          type: string
-          enum:
-          - NoPolicy
-          - NoData
-          - RebootRequired
-          - InstallError
-          - ApprovedPending
-          - FullyPatched
-        patchesApprovedPending:
-          type: integer
-          format: int64
-        patchesNotApproved:
-          type: integer
-          format: int64
-        patchesInstalled:
-          type: integer
-          format: int64
-    ErrorResponse:
-      description: Default error response body
-      properties:
-        timestamp:
-          type: integer
-          format: int64
-          description: Epoch millis when the error occurred
-        status:
-          type: integer
-          format: int32
-          description: HTTP status code
-        error:
-          type: string
-          description: HTTP reason phrase
-        path:
-          type: string
-          description: Request path that produced the error
     UdfItem:
       type: object
       description: User defined field with type-safe value storage
@@ -580,19 +541,6 @@ components:
       required:
       - ordinal
       - type
-    Antivirus:
-      type: object
-      description: Device antivirus data
-      properties:
-        antivirusProduct:
-          type: string
-        antivirusStatus:
-          type: string
-          enum:
-          - RunningAndUpToDate
-          - RunningAndNotUpToDate
-          - NotRunning
-          - NotDetected
     DeviceV3:
       type: object
       description: Device data with structured UDF format
@@ -682,14 +630,6 @@ components:
           description: User defined fields in structured format
           items:
             $ref: '#/components/schemas/UdfItem'
-    DevicesType:
-      type: object
-      description: Devices Type
-      properties:
-        category:
-          type: string
-        type:
-          type: string
     UdfItemRequest:
       type: object
       description: User defined field value for update operation. Only one value field can be non-null. If all value fields are null, the UDF will be removed.
@@ -715,6 +655,53 @@ components:
           description: Value when type is NUMBER
       required:
       - ordinal
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
+    PatchManagement:
+      type: object
+      description: Patch management data
+      properties:
+        patchStatus:
+          type: string
+          enum:
+          - NoPolicy
+          - NoData
+          - RebootRequired
+          - InstallError
+          - ApprovedPending
+          - FullyPatched
+        patchesApprovedPending:
+          type: integer
+          format: int64
+        patchesNotApproved:
+          type: integer
+          format: int64
+        patchesInstalled:
+          type: integer
+          format: int64
+    DevicesType:
+      type: object
+      description: Devices Type
+      properties:
+        category:
+          type: string
+        type:
+          type: string
     SetUserDefinedFieldsRequest:
       type: object
       description: Request to set user defined fields on a device
@@ -726,3 +713,16 @@ components:
             $ref: '#/components/schemas/UdfItemRequest'
       required:
       - udfs
+    Antivirus:
+      type: object
+      description: Device antivirus data
+      properties:
+        antivirusProduct:
+          type: string
+        antivirusStatus:
+          type: string
+          enum:
+          - RunningAndUpToDate
+          - RunningAndNotUpToDate
+          - NotRunning
+          - NotDetected

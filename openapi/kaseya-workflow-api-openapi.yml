@@ -35,6 +35,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/WorkflowOutputDtoResponse'
+      summary: Get workflow
+      x-summary-source: derived
     delete:
       tags:
       - Workflow
@@ -49,6 +51,8 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Delete workflow
+      x-summary-source: derived
     put:
       tags:
       - Workflow
@@ -87,6 +91,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/WorkflowOutputDtoResponse'
+      summary: Put workflow
+      x-summary-source: derived
     patch:
       tags:
       - Workflow
@@ -133,6 +139,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/WorkflowOutputDtoResponse'
+      summary: Patch workflow
+      x-summary-source: derived
   /v2/admin/workflows:
     post:
       tags:
@@ -165,6 +173,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/WorkflowOutputDtoResponse'
+      summary: Post workflow
+      x-summary-source: derived
   /v2/admin/workflows/{workflowId}/clone:
     post:
       tags:
@@ -190,6 +200,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/WorkflowCloningOutputDtoResponse'
+      summary: Clone workflow
+      x-summary-source: derived
   /v2/admin/workflows/search:
     post:
       tags:
@@ -222,6 +234,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/WorkflowListOutputDtoListResponse'
+      summary: Get workflows list
+      x-summary-source: derived
   /v2/admin/workflows/timezone/{locationId}:
     get:
       tags:
@@ -247,6 +261,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/WorkflowTimeZoneOutputDtoResponse'
+      summary: Get workflow time zone and working hours
+      x-summary-source: derived
   /v2/admin/workflows/{workflowId}/agentprocedure/{id}/logs:
     get:
       tags:
@@ -278,6 +294,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/AgentProcedureLogsOutputDtoListPagedResponse'
+      summary: Get agent procedure logs
+      x-summary-source: derived
   /v2/admin/workflows/satisfactionscore/lookup:
     get:
       tags:
@@ -296,6 +314,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/SatisfactionScoreOptionsLookupOutputDtoListResponse'
+      summary: Get satisfaction score options lookup
+      x-summary-source: derived
   /v2/admin/workflows/system/servicetype/lookup:
     get:
       tags:
@@ -314,6 +334,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ServiceTypeOptionsLookupOutputDtoListResponse'
+      summary: Get service type options lookup
+      x-summary-source: derived
   /v2/admin/workflows/customfieldoperator:
     get:
       tags:
@@ -332,703 +354,130 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/DataTypeOutputDtoListResponse'
+      summary: Get custom field operators
+      x-summary-source: derived
 components:
   schemas:
-    WorkflowTimeSensitiveOutputDto:
+    WorkflowConditionCustomFieldOutputDto:
       type: object
       properties:
-        IsDuringBusinessHours:
-          type:
-          - boolean
-          - 'null'
-        BranchId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsEnabled:
-          type: boolean
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
+        Id:
           type: integer
           format: int32
-        Message:
+        Name:
           type:
           - string
           - 'null'
-        Details:
+        Data:
           type:
           - string
           - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    WorkflowConditionPostInputDto:
-      type: object
-      properties:
-        StatusIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        StatusIdOperand:
-          type:
-          - integer
-          - 'null'
+        CustomFieldType:
+          type: integer
           format: int32
-        PriorityIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        PriorityIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SLAIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        SLAIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IssueIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        IssueIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SubIssueIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        SubIssueIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SourceIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        SourceIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TicketTypeIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        TicketTypeIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        QueueIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        QueueIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        PrimaryTechIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        PrimaryTechIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Title:
-          type:
-          - string
-          - 'null'
-        TitleOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Detail:
-          type:
-          - string
-          - 'null'
-        DetailOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SatisfactionScoreIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        SatisfactionScoreIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TicketEmailSender:
-          type:
-          - string
-          - 'null'
-        TicketEmailSenderOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ServiceContractIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ServiceContractIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        WorkTypeIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        WorkTypeIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        OpenDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        OpenDateOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        OpenDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        DueDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        DueDateOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        DueDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ActivityDetails:
-          type:
-          - string
-          - 'null'
-        ActivityDetailsOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        OccurrenceCount:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        OccurrenceCountOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountTypeIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AccountTypeIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountNameIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AccountNameIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        LocationIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        LocationIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Description:
-          type:
-          - string
-          - 'null'
-        DescriptionOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ServiceTypeIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ServiceTypeIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountCode:
-          type:
-          - string
-          - 'null'
-        AccountCodeOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountBusinessTypeIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AccountBusinessTypeIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountManagerIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AccountManagerIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountStatusIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AccountStatusIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountAcquiredDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        AccountAcquiredDateOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountAcquiredDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ContactFirstName:
-          type:
-          - string
-          - 'null'
-        ContactFirstNameOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ContactMiddleName:
-          type:
-          - string
-          - 'null'
-        ContactMiddleNameOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ContactLastName:
-          type:
-          - string
-          - 'null'
-        ContactLastNameOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ContactJobTitle:
-          type:
-          - string
-          - 'null'
-        ContactJobTitleOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ContactStatusIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ContactStatusIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ContactPOCIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ContactPOCIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ContactReceiveInvoiceIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ContactReceiveInvoiceIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ContactHasClientPortalAccessIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ContactHasClientPortalAccessIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetName:
-          type:
-          - string
-          - 'null'
-        AssetNameOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetDescription:
-          type:
-          - string
-          - 'null'
-        AssetDescriptionOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetCategoryIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AssetCategoryIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetBusinessImpactIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AssetBusinessImpactIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetStateIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AssetStateIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetStateBrandIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AssetStateBrandIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetManufacturerIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AssetManufacturerIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetMachineGroupId:
-          type:
-          - string
-          - 'null'
-        AssetMachineGroupIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetProductName:
-          type:
-          - string
-          - 'null'
-        AssetProductNameOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetSerialNumber:
-          type:
-          - string
-          - 'null'
-        AssetSerialNumberOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetModelNumber:
-          type:
-          - string
-          - 'null'
-        AssetModelNumberOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetTag:
-          type:
-          - string
-          - 'null'
-        AssetTagOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetAcquisitionDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        AssetAcquisitionDateOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetAcquisitionDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        AssetExpirationDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        AssetExpirationDateOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetExpirationDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        AssetWarrantyExpDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        AssetWarrantyExpDateOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetWarrantyExpDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        AssetBarcode:
-          type:
-          - string
-          - 'null'
-        AssetBarcodeOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssetVendorIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AssetVendorIdOperand:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    WorkflowConditionCustomFieldInputDto:
-      type: object
-      properties:
         CustomFieldId:
           type: integer
           format: int32
         Operand:
           type: integer
           format: int32
-        Value:
-          type:
-          - string
-          - 'null'
+        ModuleId:
+          type: integer
+          format: int32
       additionalProperties: false
-    WorkflowListInputDto:
+    DataTypeOutputDtoListResponse:
       type: object
       properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
+        Success:
+          type: boolean
           readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DataTypeOutputDto'
+      additionalProperties: false
+    WorkflowTimeZoneOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
           readOnly: true
-        Sort:
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WorkflowTimeZoneOutputDto'
+      additionalProperties: false
+    WorkflowNotificationInputDto:
+      type: object
+      properties:
+        AssignedResources:
           type:
-          - string
+          - boolean
           - 'null'
-        Exclude:
+        ResourcesIds:
           type:
-          - string
+          - array
           - 'null'
-        Filter:
-          $ref: '#/components/schemas/WorkflowFilterDto'
+          items:
+            type: integer
+            format: int32
+        AssignedQueues:
+          type:
+          - boolean
+          - 'null'
+        AccountAssociatedResources:
+          type:
+          - boolean
+          - 'null'
+        CreatedByResource:
+          type:
+          - boolean
+          - 'null'
+        TicketContact:
+          type:
+          - boolean
+          - 'null'
+        TicketCC:
+          type:
+          - boolean
+          - 'null'
+        POCs:
+          type:
+          - boolean
+          - 'null'
+        EmailTemplateId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OtherEmails:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        ContactsIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        TeamsChannelIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ShowInternalNotesToOtherEmails:
+          type:
+          - boolean
+          - 'null'
       additionalProperties: false
     WorkflowTriggerInputDto:
       type: object
@@ -1126,129 +575,6 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    WorkflowCloningOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-      additionalProperties: false
-    AgentProcedureLogsOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AgentProcedureLogsOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    DataTypeOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DataTypeOutputDto'
-      additionalProperties: false
-    WorkflowListOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/WorkflowListOutputDto'
-      additionalProperties: false
-    WorkflowNotificationInputDto:
-      type: object
-      properties:
-        AssignedResources:
-          type:
-          - boolean
-          - 'null'
-        ResourcesIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AssignedQueues:
-          type:
-          - boolean
-          - 'null'
-        AccountAssociatedResources:
-          type:
-          - boolean
-          - 'null'
-        CreatedByResource:
-          type:
-          - boolean
-          - 'null'
-        TicketContact:
-          type:
-          - boolean
-          - 'null'
-        TicketCC:
-          type:
-          - boolean
-          - 'null'
-        POCs:
-          type:
-          - boolean
-          - 'null'
-        EmailTemplateId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        OtherEmails:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        ContactsIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        TeamsChannelIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ShowInternalNotesToOtherEmails:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
     WorkflowOutputDto:
       type: object
       properties:
@@ -1280,21 +606,65 @@ components:
         AgentProcedures:
           $ref: '#/components/schemas/WorkflowAgentProcedureOutputDto'
       additionalProperties: false
-    WorkingHoursDto:
+    AgentProcedureLogsOutputDto:
       type: object
       properties:
-        Weekday:
+        Id:
           type:
           - string
           - 'null'
-        StartTime:
+        RunOn:
+          type: string
+          format: date-time
+        WorkflowName:
           type:
           - string
           - 'null'
-        EndTime:
+        AgentProcedureName:
           type:
           - string
           - 'null'
+        AssetName:
+          type:
+          - string
+          - 'null'
+        AgentProcedureId:
+          type: integer
+          format: int64
+        AgentId:
+          type:
+          - string
+          - 'null'
+        Admin:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    OperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
+    WorkflowTimeSensitiveOutputDto:
+      type: object
+      properties:
+        IsDuringBusinessHours:
+          type:
+          - boolean
+          - 'null'
+        BranchId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsEnabled:
+          type: boolean
       additionalProperties: false
     WorkflowConditionOutputDto:
       type: object
@@ -1916,84 +1286,33 @@ components:
           items:
             $ref: '#/components/schemas/WorkflowConditionCustomFieldOutputDto'
       additionalProperties: false
-    OperationType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-      format: int32
-    WorkflowTimeSensitiveInputDto:
+    WorkflowListInputDto:
       type: object
       properties:
-        IsEnabled:
-          type: boolean
-        IsDuringBusinessHours:
-          type:
-          - boolean
-          - 'null'
-        BranchId:
-          type:
-          - integer
-          - 'null'
+        PageSize:
+          type: integer
           format: int32
-      additionalProperties: false
-    WorkflowFilterDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type:
-          - integer
-          - 'null'
+        PageNumber:
+          type: integer
           format: int32
-        CreatedOnFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOnTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    WorkflowOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
+        StartRowIndex:
+          type: integer
+          format: int32
           readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/WorkflowOutputDto'
-      additionalProperties: false
-    Operation:
-      type: object
-      properties:
-        OperationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
           type:
           - string
           - 'null'
-        op:
+        Exclude:
           type:
           - string
           - 'null'
-        from:
-          type:
-          - string
-          - 'null'
-        value: {}
+        Filter:
+          $ref: '#/components/schemas/WorkflowFilterDto'
       additionalProperties: false
     ServiceTypeOptionsLookupOutputDto:
       type: object
@@ -2010,7 +1329,7 @@ components:
         IsActive:
           type: boolean
       additionalProperties: false
-    WorkflowConditionCustomFieldOutputDto:
+    WorkflowListOutputDto:
       type: object
       properties:
         Id:
@@ -2020,53 +1339,990 @@ components:
           type:
           - string
           - 'null'
-        Data:
+        IsActive:
+          type: boolean
+        CreatedOn:
+          type: string
+          format: date-time
+        LastUpdated:
           type:
           - string
           - 'null'
-        CustomFieldType:
-          type: integer
-          format: int32
-        CustomFieldId:
-          type: integer
-          format: int32
-        Operand:
-          type: integer
-          format: int32
-        ModuleId:
+          format: date-time
+      additionalProperties: false
+    AgentProcedureLogsOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AgentProcedureLogsOutputDto'
+        TotalRecords:
           type: integer
           format: int32
       additionalProperties: false
-    AgentProcedureLogsOutputDto:
+    WorkflowOutputDtoResponse:
       type: object
       properties:
-        Id:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WorkflowOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
           type:
           - string
           - 'null'
-        RunOn:
-          type: string
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    WorkflowAgentProcedureInputDto:
+      type: object
+      properties:
+        IsTicketActivityEnabled:
+          type: boolean
+        IsActive:
+          type: boolean
+        ExternalAgentProcedureId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        ExternalAgentProcedureName:
+          type:
+          - string
+          - 'null'
+        SecondaryExternalAgentProcedureId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        SecondaryExternalAgentProcedureName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    WorkflowCloningOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WorkflowCloningOutputDto'
+      additionalProperties: false
+    WorkingHoursDto:
+      type: object
+      properties:
+        Weekday:
+          type:
+          - string
+          - 'null'
+        StartTime:
+          type:
+          - string
+          - 'null'
+        EndTime:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    WorkflowTimeSensitiveInputDto:
+      type: object
+      properties:
+        IsEnabled:
+          type: boolean
+        IsDuringBusinessHours:
+          type:
+          - boolean
+          - 'null'
+        BranchId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    WorkflowConditionPostInputDto:
+      type: object
+      properties:
+        StatusIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        StatusIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PriorityIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        PriorityIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        SLAIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IssueIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        IssueIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubIssueIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        SubIssueIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SourceIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        SourceIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TicketTypeIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        TicketTypeIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        QueueIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        QueueIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PrimaryTechIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        PrimaryTechIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Title:
+          type:
+          - string
+          - 'null'
+        TitleOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Detail:
+          type:
+          - string
+          - 'null'
+        DetailOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SatisfactionScoreIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        SatisfactionScoreIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TicketEmailSender:
+          type:
+          - string
+          - 'null'
+        TicketEmailSenderOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ServiceContractIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ServiceContractIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        WorkTypeIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        WorkTypeIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OpenDateFrom:
+          type:
+          - string
+          - 'null'
           format: date-time
-        WorkflowName:
+        OpenDateOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OpenDateTo:
           type:
           - string
           - 'null'
-        AgentProcedureName:
+          format: date-time
+        DueDateFrom:
           type:
           - string
           - 'null'
+          format: date-time
+        DueDateOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        DueDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ActivityDetails:
+          type:
+          - string
+          - 'null'
+        ActivityDetailsOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OccurrenceCount:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OccurrenceCountOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountTypeIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        AccountTypeIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountNameIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        AccountNameIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        LocationIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        LocationIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Description:
+          type:
+          - string
+          - 'null'
+        DescriptionOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ServiceTypeIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ServiceTypeIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        AccountCodeOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountBusinessTypeIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        AccountBusinessTypeIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountManagerIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        AccountManagerIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountStatusIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        AccountStatusIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountAcquiredDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AccountAcquiredDateOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountAcquiredDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContactFirstName:
+          type:
+          - string
+          - 'null'
+        ContactFirstNameOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactMiddleName:
+          type:
+          - string
+          - 'null'
+        ContactMiddleNameOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactLastName:
+          type:
+          - string
+          - 'null'
+        ContactLastNameOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactJobTitle:
+          type:
+          - string
+          - 'null'
+        ContactJobTitleOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactStatusIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ContactStatusIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactPOCIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ContactPOCIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactReceiveInvoiceIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ContactReceiveInvoiceIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactHasClientPortalAccessIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ContactHasClientPortalAccessIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
         AssetName:
           type:
           - string
           - 'null'
-        AgentProcedureId:
-          type: integer
-          format: int64
-        AgentId:
+        AssetNameOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetDescription:
           type:
           - string
           - 'null'
-        Admin:
+        AssetDescriptionOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetCategoryIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        AssetCategoryIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetBusinessImpactIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        AssetBusinessImpactIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetStateIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        AssetStateIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetStateBrandIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        AssetStateBrandIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetManufacturerIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        AssetManufacturerIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetMachineGroupId:
+          type:
+          - string
+          - 'null'
+        AssetMachineGroupIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetProductName:
+          type:
+          - string
+          - 'null'
+        AssetProductNameOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetSerialNumber:
+          type:
+          - string
+          - 'null'
+        AssetSerialNumberOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetModelNumber:
+          type:
+          - string
+          - 'null'
+        AssetModelNumberOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetTag:
+          type:
+          - string
+          - 'null'
+        AssetTagOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetAcquisitionDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AssetAcquisitionDateOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetAcquisitionDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AssetExpirationDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AssetExpirationDateOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetExpirationDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AssetWarrantyExpDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AssetWarrantyExpDateOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetWarrantyExpDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AssetBarcode:
+          type:
+          - string
+          - 'null'
+        AssetBarcodeOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssetVendorIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        AssetVendorIdOperand:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    WorkflowTimeZoneOutputDto:
+      type: object
+      properties:
+        TimeZoneName:
+          type:
+          - string
+          - 'null'
+        WorkingHours:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WorkingHoursDto'
+      additionalProperties: false
+    WorkflowListOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WorkflowListOutputDto'
+      additionalProperties: false
+    DataTypeOutputDto:
+      type: object
+      properties:
+        DataType:
+          type: integer
+          format: int32
+        Operators:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OperatorDto'
+      additionalProperties: false
+    SatisfactionScoreOptionsLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Value:
+          type: integer
+          format: int32
+      additionalProperties: false
+    WorkflowUpdateInputDto:
+      type: object
+      properties:
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PriorityId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IssueTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubIssueTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TicketTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        QueueId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PrimaryAssigneeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClientContractId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        WorkTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    WorkflowTriggerOutputDto:
+      type: object
+      properties:
+        TicketCreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TicketUpdatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TicketActivityBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ActivityTypeIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        IdleFor:
+          type:
+          - number
+          - 'null'
+          format: double
+        IdleForUnit:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        DueIn:
+          type:
+          - number
+          - 'null'
+          format: double
+        DueInUnit:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OverdueBy:
+          type:
+          - number
+          - 'null'
+          format: double
+        OverdueByUnit:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAFirstResponseDueIn:
+          type:
+          - number
+          - 'null'
+          format: double
+        SLAFirstResponseDueInUnit:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAFirstResponseOverdueBy:
+          type:
+          - number
+          - 'null'
+          format: double
+        SLAFirstResponseOverdueByUnit:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAResolutionDueIn:
+          type:
+          - number
+          - 'null'
+          format: double
+        SLAResolutionDueInUnit:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAResolutionOverdueBy:
+          type:
+          - number
+          - 'null'
+          format: double
+        SLAResolutionOverdueByUnit:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    WorkflowAgentProcedureOutputDto:
+      type: object
+      properties:
+        IsTicketActivityEnabled:
+          type:
+          - boolean
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        ExternalAgentProcedureId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        ExternalAgentProcedureName:
+          type:
+          - string
+          - 'null'
+        SecondaryExternalAgentProcedureId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        SecondaryExternalAgentProcedureName:
           type:
           - string
           - 'null'
@@ -2085,6 +2341,34 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/ServiceTypeOptionsLookupOutputDto'
+      additionalProperties: false
+    WorkflowPostInputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        Triggers:
+          $ref: '#/components/schemas/WorkflowTriggerInputDto'
+        TimeSensitives:
+          $ref: '#/components/schemas/WorkflowTimeSensitiveInputDto'
+        Conditions:
+          $ref: '#/components/schemas/WorkflowConditionPostInputDto'
+        Updates:
+          $ref: '#/components/schemas/WorkflowUpdateInputDto'
+        Notifications:
+          $ref: '#/components/schemas/WorkflowNotificationInputDto'
+        AgentProcedures:
+          $ref: '#/components/schemas/WorkflowAgentProcedureInputDto'
       additionalProperties: false
     WorkflowPutInputDto:
       type: object
@@ -2114,7 +2398,7 @@ components:
         AgentProcedures:
           $ref: '#/components/schemas/WorkflowAgentProcedureInputDto'
       additionalProperties: false
-    WorkflowTimeZoneOutputDtoResponse:
+    SatisfactionScoreOptionsLookupOutputDtoListResponse:
       type: object
       properties:
         Success:
@@ -2123,18 +2407,11 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/WorkflowTimeZoneOutputDto'
-      additionalProperties: false
-    WorkflowCloningOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/WorkflowCloningOutputDto'
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SatisfactionScoreOptionsLookupOutputDto'
       additionalProperties: false
     WorkflowUpdateOutputDto:
       type: object
@@ -2195,156 +2472,6 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    WorkflowAgentProcedureInputDto:
-      type: object
-      properties:
-        IsTicketActivityEnabled:
-          type: boolean
-        IsActive:
-          type: boolean
-        ExternalAgentProcedureId:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        ExternalAgentProcedureName:
-          type:
-          - string
-          - 'null'
-        SecondaryExternalAgentProcedureId:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        SecondaryExternalAgentProcedureName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    WorkflowNotificationOutputDto:
-      type: object
-      properties:
-        AssignedResources:
-          type:
-          - boolean
-          - 'null'
-        ResourcesIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AssignedQueues:
-          type:
-          - boolean
-          - 'null'
-        AccountAssociatedResources:
-          type:
-          - boolean
-          - 'null'
-        CreatedByResource:
-          type:
-          - boolean
-          - 'null'
-        TicketContact:
-          type:
-          - boolean
-          - 'null'
-        TicketCC:
-          type:
-          - boolean
-          - 'null'
-        POCs:
-          type:
-          - boolean
-          - 'null'
-        EmailTemplateId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        OtherEmails:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        ContactsIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        TeamsChannelIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ShowInternalNotesToOtherEmails:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    SatisfactionScoreOptionsLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Value:
-          type: integer
-          format: int32
-      additionalProperties: false
-    WorkflowTimeZoneOutputDto:
-      type: object
-      properties:
-        TimeZoneName:
-          type:
-          - string
-          - 'null'
-        WorkingHours:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/WorkingHoursDto'
-      additionalProperties: false
-    WorkflowPostInputDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        Triggers:
-          $ref: '#/components/schemas/WorkflowTriggerInputDto'
-        TimeSensitives:
-          $ref: '#/components/schemas/WorkflowTimeSensitiveInputDto'
-        Conditions:
-          $ref: '#/components/schemas/WorkflowConditionPostInputDto'
-        Updates:
-          $ref: '#/components/schemas/WorkflowUpdateInputDto'
-        Notifications:
-          $ref: '#/components/schemas/WorkflowNotificationInputDto'
-        AgentProcedures:
-          $ref: '#/components/schemas/WorkflowAgentProcedureInputDto'
-      additionalProperties: false
     OperatorDto:
       type: object
       properties:
@@ -2356,52 +2483,50 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    WorkflowAgentProcedureOutputDto:
-      type: object
-      properties:
-        IsTicketActivityEnabled:
-          type:
-          - boolean
-          - 'null'
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        ExternalAgentProcedureId:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        ExternalAgentProcedureName:
-          type:
-          - string
-          - 'null'
-        SecondaryExternalAgentProcedureId:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        SecondaryExternalAgentProcedureName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    WorkflowListOutputDto:
+    WorkflowCloningOutputDto:
       type: object
       properties:
         Id:
           type: integer
           format: int32
+      additionalProperties: false
+    Operation:
+      type: object
+      properties:
+        OperationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type:
+          - string
+          - 'null'
+        op:
+          type:
+          - string
+          - 'null'
+        from:
+          type:
+          - string
+          - 'null'
+        value: {}
+      additionalProperties: false
+    WorkflowFilterDto:
+      type: object
+      properties:
         Name:
           type:
           - string
           - 'null'
         IsActive:
-          type: boolean
-        CreatedOn:
-          type: string
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOnFrom:
+          type:
+          - string
+          - 'null'
           format: date-time
-        LastUpdated:
+        CreatedOnTo:
           type:
           - string
           - 'null'
@@ -3027,188 +3152,87 @@ components:
           items:
             $ref: '#/components/schemas/WorkflowConditionCustomFieldInputDto'
       additionalProperties: false
-    SatisfactionScoreOptionsLookupOutputDtoListResponse:
+    WorkflowNotificationOutputDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        AssignedResources:
           type:
-          - array
+          - boolean
           - 'null'
-          items:
-            $ref: '#/components/schemas/SatisfactionScoreOptionsLookupOutputDto'
-      additionalProperties: false
-    DataTypeOutputDto:
-      type: object
-      properties:
-        DataType:
-          type: integer
-          format: int32
-        Operators:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/OperatorDto'
-      additionalProperties: false
-    WorkflowUpdateInputDto:
-      type: object
-      properties:
-        AccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StatusId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        PriorityId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SLAId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IssueTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SubIssueTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TicketTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        QueueId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        PrimaryAssigneeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ClientContractId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        WorkTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    WorkflowTriggerOutputDto:
-      type: object
-      properties:
-        TicketCreatedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TicketUpdatedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TicketActivityBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ActivityTypeIds:
+        ResourcesIds:
           type:
           - array
           - 'null'
           items:
             type: integer
             format: int32
-        IdleFor:
+        AssignedQueues:
           type:
-          - number
+          - boolean
           - 'null'
-          format: double
-        IdleForUnit:
+        AccountAssociatedResources:
           type:
-          - integer
+          - boolean
           - 'null'
-          format: int32
-        DueIn:
+        CreatedByResource:
           type:
-          - number
+          - boolean
           - 'null'
-          format: double
-        DueInUnit:
+        TicketContact:
           type:
-          - integer
+          - boolean
           - 'null'
-          format: int32
-        OverdueBy:
+        TicketCC:
           type:
-          - number
+          - boolean
           - 'null'
-          format: double
-        OverdueByUnit:
+        POCs:
           type:
-          - integer
+          - boolean
           - 'null'
-          format: int32
-        SLAFirstResponseDueIn:
-          type:
-          - number
-          - 'null'
-          format: double
-        SLAFirstResponseDueInUnit:
+        EmailTemplateId:
           type:
           - integer
           - 'null'
           format: int32
-        SLAFirstResponseOverdueBy:
+        OtherEmails:
           type:
-          - number
+          - array
           - 'null'
-          format: double
-        SLAFirstResponseOverdueByUnit:
+          items:
+            type: string
+        ContactsIds:
           type:
-          - integer
+          - array
           - 'null'
+          items:
+            type: integer
+            format: int32
+        TeamsChannelIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ShowInternalNotesToOtherEmails:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    WorkflowConditionCustomFieldInputDto:
+      type: object
+      properties:
+        CustomFieldId:
+          type: integer
           format: int32
-        SLAResolutionDueIn:
-          type:
-          - number
-          - 'null'
-          format: double
-        SLAResolutionDueInUnit:
-          type:
-          - integer
-          - 'null'
+        Operand:
+          type: integer
           format: int32
-        SLAResolutionOverdueBy:
+        Value:
           type:
-          - number
+          - string
           - 'null'
-          format: double
-        SLAResolutionOverdueByUnit:
-          type:
-          - integer
-          - 'null'
-          format: int32
       additionalProperties: false
   securitySchemes:
     bearerAuth:

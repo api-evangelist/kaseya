@@ -51,6 +51,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/POLookupDtoListResponse'
+      summary: Get PO lookups
+      x-summary-source: derived
 components:
   schemas:
     POLookupDto:
@@ -63,21 +65,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    POLookupDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/POLookupDto'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -103,6 +90,21 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    POLookupDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/POLookupDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

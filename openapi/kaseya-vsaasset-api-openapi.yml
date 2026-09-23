@@ -52,6 +52,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/TicketListDtoListResponse'
+      summary: Get vsa hardware asset tickets
+      x-summary-source: derived
 components:
   schemas:
     ErrorInfo:
@@ -78,6 +80,21 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    TicketListDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketListDto'
       additionalProperties: false
     TicketListDto:
       type: object
@@ -400,21 +417,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    TicketListDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketListDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

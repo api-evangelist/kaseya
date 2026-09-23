@@ -51,6 +51,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Authenticate api integration query authenticate
+      x-summary-source: derived
 components:
   schemas:
     AuthTokenResultModel:

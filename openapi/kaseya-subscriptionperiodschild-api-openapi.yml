@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Subscription periods child query
+      x-summary-source: derived
   /V1.0/Subscriptions/{parentId}/Periods/{id}:
     get:
       tags:
@@ -113,6 +115,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Subscription periods child query item
+      x-summary-source: derived
   /V1.0/Subscriptions/{parentId}/Periods/entityInformation:
     get:
       tags:
@@ -162,6 +166,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Subscription periods child query entity information
+      x-summary-source: derived
   /V1.0/Subscriptions/{parentId}/Periods/entityInformation/fields:
     get:
       tags:
@@ -211,6 +217,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Subscription periods child query field definitions
+      x-summary-source: derived
   /V1.0/Subscriptions/{parentId}/Periods/entityInformation/userDefinedFields:
     get:
       tags:
@@ -260,95 +268,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Subscription periods child query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    ItemQueryResultModel_SubscriptionPeriodModel_SubscriptionPeriod:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/SubscriptionPeriodModel'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    Object:
-      type: object
-      properties: {}
-    QueryActionResult_SubscriptionPeriodModel_SubscriptionPeriod:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubscriptionPeriodModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
     Field:
       type: object
       properties:
@@ -385,9 +308,69 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+    ItemQueryResultModel_SubscriptionPeriodModel_SubscriptionPeriod:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/SubscriptionPeriodModel'
+    QueryActionResult_SubscriptionPeriodModel_SubscriptionPeriod:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionPeriodModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
       type: object
       properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -424,20 +407,47 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    PagingModel:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        count:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
           type: string
-        nextPageUrl:
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
           type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     SubscriptionPeriodModel:
       type: object
       properties:

@@ -35,6 +35,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ListingSearchOutputDtoIEnumerableResponse'
+      summary: Get listing search columns
+      x-summary-source: derived
   /v2/listing/searchcolumns/{searchColumnId}/values:
     get:
       tags:
@@ -60,6 +62,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/SearchComboItemOutputDtoIEnumerableResponse'
+      summary: Get search combo items
+      x-summary-source: derived
   /v2/listing/listingcolumns/{moduleId}:
     get:
       tags:
@@ -85,9 +89,11 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ListingColumnOutputDtoIEnumerableResponse'
+      summary: Get listing columns
+      x-summary-source: derived
 components:
   schemas:
-    ListingSearchOutputDtoIEnumerableResponse:
+    SearchComboItemOutputDtoIEnumerableResponse:
       type: object
       properties:
         Success:
@@ -100,23 +106,19 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ListingSearchOutputDto'
+            $ref: '#/components/schemas/SearchComboItemOutputDto'
       additionalProperties: false
-    ListingColumnOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ListingColumnOutputDto'
-      additionalProperties: false
+    DataType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
     ErrorInfo:
       type: object
       properties:
@@ -142,17 +144,6 @@ components:
           items:
             type: string
       additionalProperties: false
-    DataType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-      format: int32
     SearchComboItemOutputDto:
       type: object
       properties:
@@ -165,7 +156,7 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    SearchComboItemOutputDtoIEnumerableResponse:
+    ListingColumnOutputDtoIEnumerableResponse:
       type: object
       properties:
         Success:
@@ -178,7 +169,54 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/SearchComboItemOutputDto'
+            $ref: '#/components/schemas/ListingColumnOutputDto'
+      additionalProperties: false
+    ListingSearchOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Label:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+        ControlType:
+          type:
+          - string
+          - 'null'
+        Operator:
+          type:
+          - string
+          - 'null'
+        SearchOrder:
+          type: integer
+          format: int32
+        IsSearchById:
+          type: boolean
+      additionalProperties: false
+    ListingSearchOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ListingSearchOutputDto'
       additionalProperties: false
     ListingColumnOutputDto:
       type: object
@@ -213,38 +251,6 @@ components:
         Width:
           type: number
           format: double
-      additionalProperties: false
-    ListingSearchOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Label:
-          type:
-          - string
-          - 'null'
-        Type:
-          type:
-          - string
-          - 'null'
-        ControlType:
-          type:
-          - string
-          - 'null'
-        Operator:
-          type:
-          - string
-          - 'null'
-        SearchOrder:
-          type: integer
-          format: int32
-        IsSearchById:
-          type: boolean
       additionalProperties: false
   securitySchemes:
     bearerAuth:

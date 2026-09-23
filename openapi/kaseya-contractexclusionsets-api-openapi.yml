@@ -56,6 +56,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contract exclusion sets url parameter query
+      x-summary-source: derived
     post:
       tags:
       - ContractExclusionSets
@@ -105,6 +107,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Contract exclusion sets query
+      x-summary-source: derived
   /V1.0/ContractExclusionSets/{id}:
     get:
       tags:
@@ -155,6 +159,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contract exclusion sets query item
+      x-summary-source: derived
     delete:
       tags:
       - ContractExclusionSets
@@ -204,6 +210,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contract exclusion sets delete entity
+      x-summary-source: derived
   /V1.0/ContractExclusionSets/query/count:
     get:
       tags:
@@ -253,6 +261,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contract exclusion sets url parameter query count
+      x-summary-source: derived
     post:
       tags:
       - ContractExclusionSets
@@ -302,6 +312,8 @@ paths:
             schema:
               $ref: '#/components/schemas/QueryModel'
         required: true
+      summary: Contract exclusion sets query count
+      x-summary-source: derived
   /V1.0/ContractExclusionSets:
     put:
       tags:
@@ -352,6 +364,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ContractExclusionSetModel'
         required: true
+      summary: Contract exclusion sets update entity
+      x-summary-source: derived
     post:
       tags:
       - ContractExclusionSets
@@ -401,6 +415,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ContractExclusionSetModel'
         required: true
+      summary: Contract exclusion sets create entity
+      x-summary-source: derived
     patch:
       tags:
       - ContractExclusionSets
@@ -450,6 +466,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ContractExclusionSetModel'
         required: true
+      summary: Contract exclusion sets patch entity
+      x-summary-source: derived
   /V1.0/ContractExclusionSets/entityInformation:
     get:
       tags:
@@ -494,6 +512,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contract exclusion sets query entity information
+      x-summary-source: derived
   /V1.0/ContractExclusionSets/entityInformation/fields:
     get:
       tags:
@@ -538,6 +558,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contract exclusion sets query field definitions
+      x-summary-source: derived
   /V1.0/ContractExclusionSets/entityInformation/userDefinedFields:
     get:
       tags:
@@ -582,44 +604,24 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Contract exclusion sets query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    ContractExclusionSetModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        description:
-          type: string
-        isActive:
-          type: boolean
-        name:
-          type: string
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
+    Field:
       type: object
       properties:
         name:
           type: string
-        dataType:
+        label:
+          type: string
+        type:
           type: string
         length:
           format: int32
           type: integer
+        description:
+          type: string
         isRequired:
           type: boolean
         isReadOnly:
@@ -638,8 +640,19 @@ components:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
           type: string
+        defaultValue:
+          type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
     FieldInformationResultModel:
       type: object
       properties:
@@ -648,17 +661,29 @@ components:
           items:
             $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
-    ItemQueryResultModel_ContractExclusionSetModel_ContractExclusionSet:
+    QueryActionResult_ContractExclusionSetModel_ContractExclusionSet:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/ContractExclusionSetModel'
-    QueryCountResultModel:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractExclusionSetModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    PagingModel:
       type: object
       properties:
-        queryCount:
+        count:
           format: int32
           type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     PickListValue:
       type: object
       properties:
@@ -713,6 +738,44 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    ContractExclusionSetModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        description:
+          type: string
+        isActive:
+          type: boolean
+        name:
+          type: string
     QueryModel:
       type: object
       properties:
@@ -736,23 +799,22 @@ components:
           value: 0
           udf: false
           items: []
-    Object:
+    QueryCountResultModel:
       type: object
-      properties: {}
-    Field:
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    FieldInformationModel:
       type: object
       properties:
         name:
           type: string
-        label:
-          type: string
-        type:
+        dataType:
           type: string
         length:
           format: int32
           type: integer
-        description:
-          type: string
         isRequired:
           type: boolean
         isReadOnly:
@@ -771,56 +833,18 @@ components:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
           type: string
-        defaultValue:
-          type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
     RestUserAccessLevel:
       type: object
       properties: {}
-    QueryActionResult_ContractExclusionSetModel_ContractExclusionSet:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContractExclusionSetModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    PagingModel:
+    ItemQueryResultModel_ContractExclusionSetModel_ContractExclusionSet:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        item:
+          $ref: '#/components/schemas/ContractExclusionSetModel'

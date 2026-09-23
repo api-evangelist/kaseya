@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   version: v1
-  title: Datto|Autotask PSA Rest Ticket Webhook Excluded Resources Child API
+  title: Datto|Autotask PSA Rest Ticket Webhook Excluded Resources…
 servers:
 - url: https://webservices2.autotask.net/ATServicesRest
 tags:
@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket webhook excluded resources child query
+      x-summary-source: derived
     post:
       tags:
       - TicketWebhookExcludedResourcesChild
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/TicketWebhookExcludedResourceModel'
         required: true
+      summary: Ticket webhook excluded resources child create entity
+      x-summary-source: derived
   /V1.0/TicketWebhooks/{parentId}/ExcludedResources/{id}:
     get:
       tags:
@@ -168,6 +172,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket webhook excluded resources child query item
+      x-summary-source: derived
     delete:
       tags:
       - TicketWebhookExcludedResourcesChild
@@ -223,6 +229,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket webhook excluded resources child delete entity
+      x-summary-source: derived
   /V1.0/TicketWebhooks/{parentId}/ExcludedResources/entityInformation:
     get:
       tags:
@@ -272,6 +280,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket webhook excluded resources child query entity information
+      x-summary-source: derived
   /V1.0/TicketWebhooks/{parentId}/ExcludedResources/entityInformation/fields:
     get:
       tags:
@@ -321,6 +331,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket webhook excluded resources child query field definitions
+      x-summary-source: derived
   /V1.0/TicketWebhooks/{parentId}/ExcludedResources/entityInformation/userDefinedFields:
     get:
       tags:
@@ -370,14 +382,13 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Ticket webhook excluded resources child query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    ParameterExpression:
+    Expression:
       type: object
       properties:
-        type:
-          type: string
-          readOnly: true
         nodeType:
           enum:
           - Add
@@ -467,67 +478,12 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        name:
+        type:
           type: string
-          readOnly: true
-        isByRef:
-          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
     TicketWebhookExcludedResourceModel:
       type: object
       properties:
@@ -543,15 +499,6 @@ components:
         soapParentPropertyId:
           $ref: '#/components/schemas/Expression_Func_TicketWebhookExcludedResource_Int64'
           readOnly: true
-    QueryActionResult_TicketWebhookExcludedResourceModel_TicketWebhookExcludedResource:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketWebhookExcludedResourceModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
     Expression_Func_TicketWebhookExcludedResource_Int64:
       type: object
       properties:
@@ -667,14 +614,12 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    ItemQueryResultModel_TicketWebhookExcludedResourceModel_TicketWebhookExcludedResource:
+    ParameterExpression:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/TicketWebhookExcludedResourceModel'
-    Expression:
-      type: object
-      properties:
+        type:
+          type: string
+          readOnly: true
         nodeType:
           enum:
           - Add
@@ -764,33 +709,15 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        type:
+        name:
           type: string
+          readOnly: true
+        isByRef:
+          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    Object:
-      type: object
-      properties: {}
     Field:
       type: object
       properties:
@@ -827,9 +754,55 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Object:
       type: object
       properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -866,22 +839,63 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    ItemQueryResultModel_TicketWebhookExcludedResourceModel_TicketWebhookExcludedResource:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/TicketWebhookExcludedResourceModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    PagingModel:
+    QueryActionResult_TicketWebhookExcludedResourceModel_TicketWebhookExcludedResource:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketWebhookExcludedResourceModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'

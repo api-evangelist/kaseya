@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   version: v1
-  title: Datto|Autotask PSA Rest Document Configuration Item Category Associations Child API
+  title: Datto|Autotask PSA Rest Document Configuration Item…
 servers:
 - url: https://webservices2.autotask.net/ATServicesRest
 tags:
@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Document configuration item category associations child query
+      x-summary-source: derived
     post:
       tags:
       - DocumentConfigurationItemCategoryAssociationsChild
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/DocumentConfigurationItemCategoryAssociationModel'
         required: true
+      summary: Document configuration item category associations child create entity
+      x-summary-source: derived
   /V1.0/Documents/{parentId}/ConfigurationItemCategoryAssociations/{id}:
     get:
       tags:
@@ -168,6 +172,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Document configuration item category associations child query item
+      x-summary-source: derived
     delete:
       tags:
       - DocumentConfigurationItemCategoryAssociationsChild
@@ -223,6 +229,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Document configuration item category associations child delete entity
+      x-summary-source: derived
   /V1.0/Documents/{parentId}/ConfigurationItemCategoryAssociations/entityInformation:
     get:
       tags:
@@ -272,6 +280,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Document configuration item category associations child query entity information
+      x-summary-source: derived
   /V1.0/Documents/{parentId}/ConfigurationItemCategoryAssociations/entityInformation/fields:
     get:
       tags:
@@ -321,6 +331,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Document configuration item category associations child query field definitions
+      x-summary-source: derived
   /V1.0/Documents/{parentId}/ConfigurationItemCategoryAssociations/entityInformation/userDefinedFields:
     get:
       tags:
@@ -370,22 +382,107 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Document configuration item category associations child query user defined…
+      x-summary-source: derived
 components:
   schemas:
-    DocumentConfigurationItemCategoryAssociationModel:
+    Expression:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        documentID:
-          format: int32
-          type: integer
-        installedProductCategoryID:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_DocumentInstalledProductCategoryAssociation_Int64'
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
           readOnly: true
     ParameterExpression:
       type: object
@@ -491,35 +588,20 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    ItemQueryResultModel_DocumentConfigurationItemCategoryAssociationModel_DocumentInstalledProductCategoryAssociation:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/DocumentConfigurationItemCategoryAssociationModel'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
+    Field:
       type: object
       properties:
         name:
           type: string
-        dataType:
+        label:
+          type: string
+        type:
           type: string
         length:
           format: int32
           type: integer
+        description:
+          type: string
         isRequired:
           type: boolean
         isReadOnly:
@@ -538,8 +620,33 @@ components:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
           type: string
+        defaultValue:
+          type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     FieldInformationResultModel:
       type: object
       properties:
@@ -548,6 +655,24 @@ components:
           items:
             $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -584,122 +709,76 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    PickListValue:
+    DocumentConfigurationItemCategoryAssociationModel:
       type: object
       properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        id:
+          format: int64
+          type: integer
+        documentID:
           format: int32
           type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    Expression:
+        installedProductCategoryID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_DocumentInstalledProductCategoryAssociation_Int64'
+          readOnly: true
+    ItemQueryResultModel_DocumentConfigurationItemCategoryAssociationModel_DocumentInstalledProductCategoryAssociation:
       type: object
       properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
+        item:
+          $ref: '#/components/schemas/DocumentConfigurationItemCategoryAssociationModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    QueryActionResult_DocumentConfigurationItemCategoryAssociationModel_DocumentInstalledProductCategoryAssociation:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentConfigurationItemCategoryAssociationModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
           type: string
-          readOnly: true
-        type:
+        dataType:
           type: string
-          readOnly: true
-        canReduce:
+        length:
+          format: int32
+          type: integer
+        isRequired:
           type: boolean
-          readOnly: true
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
     Expression_Func_DocumentInstalledProductCategoryAssociation_Int64:
       type: object
       properties:
@@ -815,73 +894,8 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    Object:
-      type: object
-      properties: {}
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    QueryActionResult_DocumentConfigurationItemCategoryAssociationModel_DocumentInstalledProductCategoryAssociation:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentConfigurationItemCategoryAssociationModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string

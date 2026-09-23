@@ -28,8 +28,25 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/LocationLookupOutputDtoListResponse'
+      summary: Get locations lookup
+      x-summary-source: derived
 components:
   schemas:
+    LocationLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/LocationLookupOutputDto'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -54,21 +71,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    LocationLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/LocationLookupOutputDto'
       additionalProperties: false
     LocationLookupOutputDto:
       type: object

@@ -75,6 +75,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ChartOfAccountOutputDtoIEnumerablePagedResponse'
       deprecated: true
+      summary: Get chart of accounts
+      x-summary-source: derived
   /v2/admin/finance/chartofaccounts/lookup/{parentAccountCodeId}:
     get:
       tags:
@@ -113,6 +115,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ChartOfAccountLookupOutputDtoIEnumerablePagedResponse'
       deprecated: true
+      summary: Get chart of accounts lookup
+      x-summary-source: derived
   /v2/admin/finance/chartofaccounts/types:
     get:
       tags:
@@ -151,6 +155,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ChartOfAccountTypeOutputDtoListPagedResponse'
       deprecated: true
+      summary: Get chart of account types
+      x-summary-source: derived
   /v2/admin/finance/chartofaccounts/types/lookup:
     get:
       tags:
@@ -170,32 +176,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/ChartOfAccountTypeLookupOutputDtoIEnumerablePagedResponse'
       deprecated: true
+      summary: Get chart of account types look up
+      x-summary-source: derived
 components:
   schemas:
-    ErrorInfo:
+    ChartOfAccountLookupOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - array
           - 'null'
           items:
-            type: string
+            $ref: '#/components/schemas/ChartOfAccountLookupOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
       additionalProperties: false
     ChartOfAccountTypeLookupOutputDto:
       type: object
@@ -214,22 +215,23 @@ components:
         IsActive:
           type: boolean
       additionalProperties: false
-    ChartOfAccountTypeOutputDto:
+    ChartOfAccountOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
-        Id:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChartOfAccountOutputDto'
+        TotalRecords:
           type: integer
           format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
       additionalProperties: false
     ChartOfAccountLookupOutputDto:
       type: object
@@ -254,60 +256,6 @@ components:
           - 'null'
         IsActive:
           type: boolean
-      additionalProperties: false
-    ChartOfAccountTypeLookupOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ChartOfAccountTypeLookupOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ChartOfAccountLookupOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ChartOfAccountLookupOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ChartOfAccountOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ChartOfAccountOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
       additionalProperties: false
     ChartOfAccountOutputDto:
       type: object
@@ -347,6 +295,66 @@ components:
           type:
           - boolean
           - 'null'
+      additionalProperties: false
+    ChartOfAccountTypeLookupOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChartOfAccountTypeLookupOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ChartOfAccountTypeOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
       additionalProperties: false
     ChartOfAccountTypeOutputDtoListPagedResponse:
       type: object

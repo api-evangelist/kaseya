@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   version: v1
-  title: Datto|Autotask PSA Rest Resource Time Off Approvers Child API
+  title: Datto|Autotask PSA Rest Resource Time Off Approvers Child…
 servers:
 - url: https://webservices2.autotask.net/ATServicesRest
 tags:
@@ -57,6 +57,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource time off approvers child query
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/TimeOffApprovers/{id}:
     get:
       tags:
@@ -113,6 +115,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource time off approvers child query item
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/TimeOffApprovers/entityInformation:
     get:
       tags:
@@ -162,6 +166,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource time off approvers child query entity information
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/TimeOffApprovers/entityInformation/fields:
     get:
       tags:
@@ -211,6 +217,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource time off approvers child query field definitions
+      x-summary-source: derived
   /V1.0/Resources/{parentId}/TimeOffApprovers/entityInformation/userDefinedFields:
     get:
       tags:
@@ -260,90 +268,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      summary: Resource time off approvers child query user defined field definitions
+      x-summary-source: derived
 components:
   schemas:
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryActionResult_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceTimeOffApproverModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    Object:
-      type: object
-      properties: {}
     Field:
       type: object
       properties:
@@ -380,6 +308,37 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     ResourceTimeOffApproverModel:
       type: object
       properties:
@@ -399,9 +358,38 @@ components:
           format: int64
           type: integer
           readOnly: true
-    RestUserAccessLevel:
+    PickListValue:
       type: object
-      properties: {}
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    ItemQueryResultModel_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ResourceTimeOffApproverModel'
+    QueryActionResult_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceTimeOffApproverModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     EntityInformationModel:
       type: object
       properties:
@@ -438,22 +426,44 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    PagingModel:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    ItemQueryResultModel_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationModel:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/ResourceTimeOffApproverModel'
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
