@@ -158,41 +158,6 @@ components:
           items:
             $ref: '#/components/schemas/CustomFieldSettingsOutputDto'
       additionalProperties: false
-    CustomFieldDataPutOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/CustomFieldDataPutOutputDto'
-      additionalProperties: false
-    CustomFieldDataOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Data:
-          type:
-          - string
-          - 'null'
-        SettingsId:
-          type: integer
-          format: int32
-        CustomFieldType:
-          type: integer
-          format: int32
-        CustomFieldId:
-          type: integer
-          format: int32
-      additionalProperties: false
     CustomFieldSettingsOutputDto:
       type: object
       properties:
@@ -221,6 +186,38 @@ components:
           items:
             $ref: '#/components/schemas/CustomFieldDataOutputDto'
       additionalProperties: false
+    CustomFieldDataPutInputDto:
+      type: object
+      properties:
+        Value:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CustomFieldDataOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Data:
+          type:
+          - string
+          - 'null'
+        SettingsId:
+          type: integer
+          format: int32
+        CustomFieldType:
+          type: integer
+          format: int32
+        CustomFieldId:
+          type: integer
+          format: int32
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -245,6 +242,17 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    CustomFieldDataPutOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/CustomFieldDataPutOutputDto'
       additionalProperties: false
     CustomFieldDataPutOutputDto:
       type: object
@@ -293,14 +301,6 @@ components:
         ModuleId:
           type: integer
           format: int32
-      additionalProperties: false
-    CustomFieldDataPutInputDto:
-      type: object
-      properties:
-        Value:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     CustomFieldOutputDtoIEnumerableResponse:
       type: object

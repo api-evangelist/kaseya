@@ -386,6 +386,9 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Object:
+      type: object
+      properties: {}
     Expression:
       type: object
       properties:
@@ -484,6 +487,120 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    ItemQueryResultModel_CompanySiteConfigurationModel_AccountLocation:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/CompanySiteConfigurationModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    CompanySiteConfigurationModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        companyID:
+          format: int32
+          type: integer
+        locationName:
+          type: string
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_AccountLocation_Int64'
+          readOnly: true
+        userDefinedFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDefinedField'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
     ParameterExpression:
       type: object
       properties:
@@ -588,6 +705,44 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    QueryActionResult_CompanySiteConfigurationModel_AccountLocation:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompanySiteConfigurationModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -624,36 +779,6 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    Object:
-      type: object
-      properties: {}
-    UserDefinedField:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     FieldInformationResultModel:
       type: object
       properties:
@@ -662,29 +787,13 @@ components:
           items:
             $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
-    PickListValue:
+    UserDefinedField:
       type: object
       properties:
+        name:
+          type: string
         value:
           type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    ItemQueryResultModel_CompanySiteConfigurationModel_AccountLocation:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/CompanySiteConfigurationModel'
     Expression_Func_AccountLocation_Int64:
       type: object
       properties:
@@ -800,112 +909,3 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    QueryActionResult_CompanySiteConfigurationModel_AccountLocation:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompanySiteConfigurationModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    CompanySiteConfigurationModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        companyID:
-          format: int32
-          type: integer
-        locationName:
-          type: string
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_AccountLocation_Int64'
-          readOnly: true
-        userDefinedFields:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserDefinedField'
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'

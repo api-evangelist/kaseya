@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BMS API 2.0 K1 Gorgon API
+  title: BMS API 2.0 K1Gorgon API
   description: Documentation of APIs Version 2.0
   version: '2.0'
 servers:
@@ -36,11 +36,13 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    K1GorgonProvisioningNotificationsDto:
+    K1GorgonContractActionDto:
       type: object
       properties:
-        Event:
-          $ref: '#/components/schemas/K1GorgonProvisioningPayload'
+        Action:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     K1GorgonContactDto:
       type: object
@@ -66,6 +68,24 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    K1GorgonTenantDto:
+      type: object
+      properties:
+        Zone:
+          type:
+          - string
+          - 'null'
+        InstanceId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1GorgonProvisioningNotificationsDto:
+      type: object
+      properties:
+        Event:
+          $ref: '#/components/schemas/K1GorgonProvisioningPayload'
+      additionalProperties: false
     K1GorgonCustomerIdentifiersDto:
       type: object
       properties:
@@ -90,47 +110,26 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    K1GorgonActionDetailsDto:
+    K1GorgonShippingDto:
       type: object
       properties:
-        SubDomain:
+        Address:
           type:
           - string
           - 'null'
-        SendWelcomeEmail:
-          type: boolean
-        Licenses:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/K1GorgonLicenseDto'
-        Zone:
+        City:
           type:
           - string
           - 'null'
-        ExpiryDate:
+        State:
           type:
           - string
           - 'null'
-          format: date-time
-      additionalProperties: false
-    K1GorgonContractActionDto:
-      type: object
-      properties:
-        Action:
+        Zip:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    K1GorgonTenantDto:
-      type: object
-      properties:
-        Zone:
-          type:
-          - string
-          - 'null'
-        InstanceId:
+        Country:
           type:
           - string
           - 'null'
@@ -164,30 +163,6 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    K1GorgonShippingDto:
-      type: object
-      properties:
-        Address:
-          type:
-          - string
-          - 'null'
-        City:
-          type:
-          - string
-          - 'null'
-        State:
-          type:
-          - string
-          - 'null'
-        Zip:
-          type:
-          - string
-          - 'null'
-        Country:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     K1GorgonLicenseDto:
       type: object
       properties:
@@ -205,6 +180,31 @@ components:
           - integer
           - 'null'
           format: int32
+      additionalProperties: false
+    K1GorgonActionDetailsDto:
+      type: object
+      properties:
+        SubDomain:
+          type:
+          - string
+          - 'null'
+        SendWelcomeEmail:
+          type: boolean
+        Licenses:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1GorgonLicenseDto'
+        Zone:
+          type:
+          - string
+          - 'null'
+        ExpiryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
       additionalProperties: false
   securitySchemes:
     bearerAuth:

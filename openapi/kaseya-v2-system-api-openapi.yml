@@ -194,15 +194,6 @@ paths:
                     description: Default and maximum number of elements per AEM page (except alerts pagination)
 components:
   schemas:
-    OperationRateStatus:
-      type: object
-      properties:
-        limit:
-          type: integer
-          format: int32
-        count:
-          type: integer
-          format: int32
     StatusResponse:
       type: object
       properties:
@@ -213,6 +204,15 @@ components:
         started:
           type: string
           format: date-time
+    OperationRateStatus:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int32
     ErrorResponse:
       description: Default error response body
       properties:

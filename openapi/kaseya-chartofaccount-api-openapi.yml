@@ -180,25 +180,7 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ChartOfAccountLookupOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ChartOfAccountLookupOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ChartOfAccountTypeLookupOutputDto:
+    ChartOfAccountTypeOutputDto:
       type: object
       properties:
         Id:
@@ -214,24 +196,6 @@ components:
           - 'null'
         IsActive:
           type: boolean
-      additionalProperties: false
-    ChartOfAccountOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ChartOfAccountOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
       additionalProperties: false
     ChartOfAccountLookupOutputDto:
       type: object
@@ -296,6 +260,23 @@ components:
           - boolean
           - 'null'
       additionalProperties: false
+    ChartOfAccountTypeLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
     ChartOfAccountTypeLookupOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
@@ -310,6 +291,42 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/ChartOfAccountTypeLookupOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ChartOfAccountOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChartOfAccountOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ChartOfAccountLookupOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChartOfAccountLookupOutputDto'
         TotalRecords:
           type: integer
           format: int32
@@ -338,23 +355,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    ChartOfAccountTypeOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
       additionalProperties: false
     ChartOfAccountTypeOutputDtoListPagedResponse:
       type: object

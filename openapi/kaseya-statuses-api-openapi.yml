@@ -32,6 +32,41 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    StatusLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        FontColor:
+          type:
+          - string
+          - 'null'
+        Color:
+          type:
+          - string
+          - 'null'
+        StatusOrder:
+          type: integer
+          format: int32
+        TypeId:
+          type: integer
+          format: int32
+        IsSystemStatus:
+          type: integer
+          format: int32
+        SlaEventId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsActive:
+          type: boolean
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -71,41 +106,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/StatusLookupOutputDto'
-      additionalProperties: false
-    StatusLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        FontColor:
-          type:
-          - string
-          - 'null'
-        Color:
-          type:
-          - string
-          - 'null'
-        StatusOrder:
-          type: integer
-          format: int32
-        TypeId:
-          type: integer
-          format: int32
-        IsSystemStatus:
-          type: integer
-          format: int32
-        SlaEventId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsActive:
-          type: boolean
       additionalProperties: false
   securitySchemes:
     bearerAuth:

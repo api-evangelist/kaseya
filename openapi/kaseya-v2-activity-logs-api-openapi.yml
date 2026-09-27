@@ -207,29 +207,6 @@ components:
         error:
           type: string
           description: Shows error information when request fails at the database layer
-    SiteBasicDto:
-      type: object
-      description: Site information
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-    PaginationData:
-      type: object
-      description: Pagination data
-      properties:
-        count:
-          type: integer
-          format: int32
-        totalCount:
-          type: integer
-          format: int64
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     UserDto:
       type: object
       description: User information
@@ -242,6 +219,15 @@ components:
         firstName:
           type: string
         lastName:
+          type: string
+    SiteBasicDto:
+      type: object
+      description: Site information
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
           type: string
     ErrorResponse:
       description: Default error response body
@@ -296,3 +282,17 @@ components:
           type: boolean
         hasStdErr:
           type: boolean
+    PaginationData:
+      type: object
+      description: Pagination data
+      properties:
+        count:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string

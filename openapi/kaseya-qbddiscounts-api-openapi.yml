@@ -202,6 +202,21 @@ components:
           type: integer
           format: int32
       additionalProperties: false
+    QbDiscountTypeExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbDiscountTypeExportDto'
+      additionalProperties: false
     QbItemImportDto:
       type: object
       properties:
@@ -255,18 +270,30 @@ components:
         AssetAccount:
           $ref: '#/components/schemas/QbAccountCodeImportDto'
       additionalProperties: false
-    StringResponse:
+    ErrorInfo:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Code:
+          type: integer
+          format: int32
+        Message:
           type:
           - string
           - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
     QbAccountCodeImportDto:
       type: object
@@ -298,7 +325,7 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    QbDiscountTypeExportDtoListResponse:
+    StringResponse:
       type: object
       properties:
         Success:
@@ -308,35 +335,8 @@ components:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
           type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbDiscountTypeExportDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
           - string
           - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
       additionalProperties: false
   securitySchemes:
     bearerAuth:

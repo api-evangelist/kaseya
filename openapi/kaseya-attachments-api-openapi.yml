@@ -351,26 +351,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TempAttachmentOuputDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        Alias:
-          type:
-          - string
-          - 'null'
-        FileType:
-          type:
-          - string
-          - 'null'
-        IsUploadedToBlob:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
     AttachmentPutInputDto:
       required:
       - Name
@@ -382,17 +362,6 @@ components:
         Name:
           minLength: 1
           type: string
-      additionalProperties: false
-    AttachmentOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/AttachmentOutputDto'
       additionalProperties: false
     AttachmentOutputDto:
       type: object
@@ -449,7 +418,27 @@ components:
           - boolean
           - 'null'
       additionalProperties: false
-    AttachmentOutputDtoIEnumerableResponse:
+    TempAttachmentOuputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Alias:
+          type:
+          - string
+          - 'null'
+        FileType:
+          type:
+          - string
+          - 'null'
+        IsUploadedToBlob:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    AttachmentOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
         Success:
@@ -463,6 +452,23 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/AttachmentOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    File:
+      type: object
+      additionalProperties: false
+    TempAttachmentOuputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TempAttachmentOuputDto'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -489,10 +495,7 @@ components:
           items:
             type: string
       additionalProperties: false
-    File:
-      type: object
-      additionalProperties: false
-    AttachmentOutputDtoIEnumerablePagedResponse:
+    AttachmentOutputDtoIEnumerableResponse:
       type: object
       properties:
         Success:
@@ -506,11 +509,8 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/AttachmentOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
       additionalProperties: false
-    TempAttachmentOuputDtoResponse:
+    AttachmentOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -519,7 +519,7 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/TempAttachmentOuputDto'
+          $ref: '#/components/schemas/AttachmentOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

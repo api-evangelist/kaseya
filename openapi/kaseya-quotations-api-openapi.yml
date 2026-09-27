@@ -229,7 +229,7 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    QuotationLineItemOutputDtoResponse:
+    QuotationOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -238,7 +238,7 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/QuotationLineItemOutputDto'
+          $ref: '#/components/schemas/QuotationOutputDto'
       additionalProperties: false
     QuotationLineItemInputDto:
       type: object
@@ -285,17 +285,6 @@ components:
         Taxable:
           type: boolean
       additionalProperties: false
-    QuotationOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/QuotationOutputDto'
-      additionalProperties: false
     QuotationsListSummaryOutputDto:
       type: object
       properties:
@@ -326,103 +315,21 @@ components:
           type: string
           format: date-time
       additionalProperties: false
-    ErrorInfo:
+    QuotationsListSummaryOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - array
           - 'null'
           items:
-            type: string
-      additionalProperties: false
-    QuotationOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        QuotationNumber:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StatusName:
-          type:
-          - string
-          - 'null'
-        ExpiryDate:
-          type: string
-          format: date-time
-        CreatedOn:
-          type: string
-          format: date-time
-        CreatedById:
-          type: integer
-          format: int32
-        CreatedByName:
-          type:
-          - string
-          - 'null'
-        OpportunityId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        OpportunityTitle:
-          type:
-          - string
-          - 'null'
-        AccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountName:
-          type:
-          - string
-          - 'null'
-        LocationId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        LocationName:
-          type:
-          - string
-          - 'null'
-        SalesRepresentativeFirstName:
-          type:
-          - string
-          - 'null'
-        SalesRepresentativeLastName:
-          type:
-          - string
-          - 'null'
-        SalesRepresentativeUserId:
+            $ref: '#/components/schemas/QuotationsListSummaryOutputDto'
+        TotalRecords:
           type: integer
           format: int32
       additionalProperties: false
@@ -521,7 +428,107 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    QuotationsListSummaryOutputDtoIEnumerablePagedResponse:
+    QuotationOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        QuotationNumber:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        ExpiryDate:
+          type: string
+          format: date-time
+        CreatedOn:
+          type: string
+          format: date-time
+        CreatedById:
+          type: integer
+          format: int32
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        OpportunityId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OpportunityTitle:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        LocationName:
+          type:
+          - string
+          - 'null'
+        SalesRepresentativeFirstName:
+          type:
+          - string
+          - 'null'
+        SalesRepresentativeLastName:
+          type:
+          - string
+          - 'null'
+        SalesRepresentativeUserId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QuotationLineItemOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -530,14 +537,7 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QuotationsListSummaryOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
+          $ref: '#/components/schemas/QuotationLineItemOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

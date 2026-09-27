@@ -64,21 +64,6 @@ components:
           items:
             type: string
       additionalProperties: false
-    EmailTemplateLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
     EmailTemplateLookupOutputDtoIEnumerableResponse:
       type: object
       properties:
@@ -93,6 +78,21 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/EmailTemplateLookupOutputDto'
+      additionalProperties: false
+    EmailTemplateLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

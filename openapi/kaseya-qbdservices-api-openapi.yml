@@ -132,102 +132,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    QbItemImportDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Number:
-          type:
-          - string
-          - 'null'
-        InStockQty:
-          type:
-          - number
-          - 'null'
-          format: double
-        IsStockedItem:
-          type: boolean
-        Sku:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-        IsTaxable:
-          type: boolean
-        IsActive:
-          type: boolean
-        DiscountIsPercent:
-          type: boolean
-        UnitPrice:
-          type: number
-          format: double
-        PurchaseCost:
-          type: number
-          format: double
-        IncomeAccount:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-        ExpenseAccount:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-        AssetAccount:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-      additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    QbAccountCodeImportDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Code:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        AccountTypeName:
-          type:
-          - string
-          - 'null'
-        ParentAccountCode:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     QbServiceExportDtoListResponse:
       type: object
       properties:
@@ -300,6 +204,59 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    QbItemImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Number:
+          type:
+          - string
+          - 'null'
+        InStockQty:
+          type:
+          - number
+          - 'null'
+          format: double
+        IsStockedItem:
+          type: boolean
+        Sku:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        IsTaxable:
+          type: boolean
+        IsActive:
+          type: boolean
+        DiscountIsPercent:
+          type: boolean
+        UnitPrice:
+          type: number
+          format: double
+        PurchaseCost:
+          type: number
+          format: double
+        IncomeAccount:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        ExpenseAccount:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        AssetAccount:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+      additionalProperties: false
     QbServiceExportDtoListPagedResponse:
       type: object
       properties:
@@ -342,6 +299,49 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    QbAccountCodeImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Code:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        AccountTypeName:
+          type:
+          - string
+          - 'null'
+        ParentAccountCode:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

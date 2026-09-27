@@ -94,17 +94,6 @@ components:
           items:
             type: string
       additionalProperties: false
-    EventLogOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/EventLogOutputDto'
-      additionalProperties: false
     EventLogOutputDto:
       type: object
       properties:
@@ -131,6 +120,17 @@ components:
           - string
           - 'null'
           format: date-time
+      additionalProperties: false
+    EventLogOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/EventLogOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

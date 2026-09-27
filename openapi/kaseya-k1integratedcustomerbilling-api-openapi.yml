@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BMS API 2.0 K1 Integrated Customer Billing API
+  title: BMS API 2.0 K1Integrated Customer Billing API
   description: Documentation of APIs Version 2.0
   version: '2.0'
 servers:
@@ -164,182 +164,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    K1ProductOrganizationMappingsPostOutputDto:
-      type: object
-      properties:
-        AccountId:
-          type: integer
-          format: int32
-        SourceProductId:
-          type: integer
-          format: int32
-        SourceOrganizations:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/K1SourceOrganizationOutputDto'
-      additionalProperties: false
-    K1ProductSubOrganizationOutputDto:
-      type: object
-      properties:
-        SourceOrganizationId:
-          type:
-          - string
-          - 'null'
-        SourceOrganizationName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    K1ProductOrganizationMappingsPostInputDto:
-      type: object
-      properties:
-        AccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SourceProductId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SourceOrganizations:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/K1SourceOrganizationInputDto'
-      additionalProperties: false
-    K1SourceOrganizationInputDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        ParentId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    K1SourceOrganizationOutputDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        ParentId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    K1ProductOrganizationMappingsListOutputDto:
-      type: object
-      properties:
-        AccountId:
-          type: integer
-          format: int32
-        AccountName:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
-        OrganizationMappings:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/K1ProductOrganizationMappingDto'
-      additionalProperties: false
-    K1ProductOrganizationMappingsSearchFilter:
-      required:
-      - SourceProductIds
-      type: object
-      properties:
-        AccountName:
-          type:
-          - string
-          - 'null'
-        AccountCode:
-          type:
-          - string
-          - 'null'
-        SourceProductIds:
-          type: array
-          items:
-            type: integer
-            format: int32
-        IsActive:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    K1ProductOrganizationMappingsSearchFilterDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/K1ProductOrganizationMappingsSearchFilter'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     K1SSOModuleOutputDtoListResponse:
       type: object
       properties:
@@ -354,31 +178,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/K1SSOModuleOutputDto'
-      additionalProperties: false
-    K1SSOModuleOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        ActiveProductImageUrl:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    K1StatusOutputDto:
-      type: object
-      properties:
-        IsConnected:
-          type: boolean
-        OrganizationId:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     K1ProductOrganizationMappingsGetOutputDto:
       type: object
@@ -413,6 +212,214 @@ components:
         Result:
           $ref: '#/components/schemas/K1ProductOrganizationMappingsPostOutputDto'
       additionalProperties: false
+    K1SourceOrganizationOutputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        ParentId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1ProductOrganizationMappingsPostOutputDto:
+      type: object
+      properties:
+        AccountId:
+          type: integer
+          format: int32
+        SourceProductId:
+          type: integer
+          format: int32
+        SourceOrganizations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1SourceOrganizationOutputDto'
+      additionalProperties: false
+    K1ProductOrganizationMappingsListOutputDto:
+      type: object
+      properties:
+        AccountId:
+          type: integer
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        OrganizationMappings:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1ProductOrganizationMappingDto'
+      additionalProperties: false
+    K1StatusOutputDto:
+      type: object
+      properties:
+        IsConnected:
+          type: boolean
+        OrganizationId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1ProductOrganizationMappingsPostInputDto:
+      type: object
+      properties:
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SourceProductId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SourceOrganizations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1SourceOrganizationInputDto'
+      additionalProperties: false
+    K1SSOModuleOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        ActiveProductImageUrl:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1ProductSubOrganizationOutputDto:
+      type: object
+      properties:
+        SourceOrganizationId:
+          type:
+          - string
+          - 'null'
+        SourceOrganizationName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1ProductOrganizationMappingDto:
+      type: object
+      properties:
+        SourceProductId:
+          type: integer
+          format: int32
+        SourceOrganizations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1SourceOrganizationOutputDto'
+      additionalProperties: false
+    K1SourceOrganizationInputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        ParentId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    K1ProductOrganizationMappingsGetOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1ProductOrganizationMappingsGetOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    K1ProductOrganizationMappingsSearchFilterDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/K1ProductOrganizationMappingsSearchFilter'
+      additionalProperties: false
     K1ProductOrganizationMappingsListOutputDtoListPagedResponse:
       type: object
       properties:
@@ -442,36 +449,29 @@ components:
         Result:
           $ref: '#/components/schemas/K1StatusOutputDto'
       additionalProperties: false
-    K1ProductOrganizationMappingsGetOutputDtoListPagedResponse:
+    K1ProductOrganizationMappingsSearchFilter:
+      required:
+      - SourceProductIds
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        AccountName:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/K1ProductOrganizationMappingsGetOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    K1ProductOrganizationMappingDto:
-      type: object
-      properties:
-        SourceProductId:
-          type: integer
-          format: int32
-        SourceOrganizations:
+        AccountCode:
           type:
-          - array
+          - string
           - 'null'
+        SourceProductIds:
+          type: array
           items:
-            $ref: '#/components/schemas/K1SourceOrganizationOutputDto'
+            type: integer
+            format: int32
+        IsActive:
+          type:
+          - integer
+          - 'null'
+          format: int32
       additionalProperties: false
   securitySchemes:
     bearerAuth:

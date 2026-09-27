@@ -54,6 +54,60 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    QbAccountImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Code:
+          type:
+          - string
+          - 'null'
+        TaxId:
+          type:
+          - string
+          - 'null'
+        Taxable:
+          type: boolean
+        CreditLimit:
+          type: number
+          format: double
+        NetDays:
+          type: integer
+          format: int32
+        WebAddressURI:
+          type:
+          - string
+          - 'null'
+        CurrencyValue:
+          type:
+          - string
+          - 'null'
+        IsBilling:
+          type: boolean
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        TaxItem:
+          $ref: '#/components/schemas/QbTaxItemDto'
+        ParentAccount:
+          $ref: '#/components/schemas/QbAccountImportDto'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        ShipAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+        BillAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+      additionalProperties: false
     QbPaymentLineImportDto:
       type: object
       properties:
@@ -111,19 +165,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/QbTaxItemDto'
-      additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     QbAddressDto:
       type: object
@@ -236,59 +277,18 @@ components:
           items:
             type: string
       additionalProperties: false
-    QbAccountImportDto:
+    StringResponse:
       type: object
       properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Code:
-          type:
-          - string
-          - 'null'
-        TaxId:
-          type:
-          - string
-          - 'null'
-        Taxable:
+        Success:
           type: boolean
-        CreditLimit:
-          type: number
-          format: double
-        NetDays:
-          type: integer
-          format: int32
-        WebAddressURI:
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - string
           - 'null'
-        CurrencyValue:
-          type:
-          - string
-          - 'null'
-        IsBilling:
-          type: boolean
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        TaxItem:
-          $ref: '#/components/schemas/QbTaxItemDto'
-        ParentAccount:
-          $ref: '#/components/schemas/QbAccountImportDto'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-        ShipAddress:
-          $ref: '#/components/schemas/QbAddressDto'
-        BillAddress:
-          $ref: '#/components/schemas/QbAddressDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

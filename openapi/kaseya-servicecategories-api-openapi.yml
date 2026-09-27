@@ -59,6 +59,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ServiceCategoryLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ServiceCategoryLookupOutputDto'
+      additionalProperties: false
     ServiceCategoryLookupOutputDto:
       type: object
       properties:
@@ -94,21 +109,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    ServiceCategoryLookupOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ServiceCategoryLookupOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

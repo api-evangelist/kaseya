@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BMS API 2.0 K1 User API
+  title: BMS API 2.0 K1User API
   description: Documentation of APIs Version 2.0
   version: '2.0'
 servers:
@@ -94,40 +94,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    K1UserListOutputDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        FirstName:
-          type:
-          - string
-          - 'null'
-        LastName:
-          type:
-          - string
-          - 'null'
-        Username:
-          type:
-          - string
-          - 'null'
-        Email:
-          type:
-          - string
-          - 'null'
-        Status:
-          type:
-          - string
-          - 'null'
-        SecurityLevel:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     K1UserDeprovisioningEventsDto:
       type: object
       properties:
@@ -187,6 +153,40 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    K1UserListOutputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        FirstName:
+          type:
+          - string
+          - 'null'
+        LastName:
+          type:
+          - string
+          - 'null'
+        Username:
+          type:
+          - string
+          - 'null'
+        Email:
+          type:
+          - string
+          - 'null'
+        Status:
+          type:
+          - string
+          - 'null'
+        SecurityLevel:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
   securitySchemes:
     bearerAuth:

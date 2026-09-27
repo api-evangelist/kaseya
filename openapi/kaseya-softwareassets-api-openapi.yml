@@ -103,6 +103,21 @@ components:
           items:
             type: string
       additionalProperties: false
+    SoftwareAssetsListSearchSelectOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SoftwareAssetsListSearchSelectOutputDto'
+      additionalProperties: false
     SoftwareAssetsListSearchSelectOutputDto:
       type: object
       properties:
@@ -128,21 +143,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    SoftwareAssetsListSearchSelectOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SoftwareAssetsListSearchSelectOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

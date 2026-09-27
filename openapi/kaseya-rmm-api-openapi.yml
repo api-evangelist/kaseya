@@ -276,48 +276,24 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    DefaultOptions:
-      type: object
-      properties:
-        QueueId:
-          type: integer
-          format: int32
-        PriorityId:
-          type: integer
-          format: int32
-        StatusId:
-          type: integer
-          format: int32
-        TicketSourceId:
-          type: integer
-          format: int32
-        TicketTypeId:
-          type: integer
-          format: int32
-        TicketNoteTypeId:
-          type: integer
-          format: int32
-        ResolutionStatusId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ReopenStatusId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    ImportEntityMappingInputDto:
+    OperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
+    DeleteEntityMappingInputDto:
       type: object
       properties:
         ExternalId:
           type:
           - string
           - 'null'
-        PsaId:
-          type: integer
-          format: int32
       additionalProperties: false
     IntegrationSettingDto:
       type: object
@@ -371,6 +347,49 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    ImportEntityMappingInputDto:
+      type: object
+      properties:
+        ExternalId:
+          type:
+          - string
+          - 'null'
+        PsaId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    DefaultOptions:
+      type: object
+      properties:
+        QueueId:
+          type: integer
+          format: int32
+        PriorityId:
+          type: integer
+          format: int32
+        StatusId:
+          type: integer
+          format: int32
+        TicketSourceId:
+          type: integer
+          format: int32
+        TicketTypeId:
+          type: integer
+          format: int32
+        TicketNoteTypeId:
+          type: integer
+          format: int32
+        ResolutionStatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ReopenStatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
     Operation:
       type: object
       properties:
@@ -390,25 +409,6 @@ components:
           - 'null'
         value: {}
       additionalProperties: false
-    DeleteEntityMappingInputDto:
-      type: object
-      properties:
-        ExternalId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    OperationType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-      format: int32
   securitySchemes:
     bearerAuth:
       type: http

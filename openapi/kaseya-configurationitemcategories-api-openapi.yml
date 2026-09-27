@@ -557,91 +557,46 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
     Object:
       type: object
       properties: {}
-    PagingModel:
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    ConfigurationItemCategoryModel:
       type: object
       properties:
-        count:
+        id:
+          format: int64
+          type: integer
+        displayColorRGB:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
         isActive:
           type: boolean
-        isSystem:
+        isClientPortalDefault:
           type: boolean
+        isGlobalDefault:
+          type: boolean
+        name:
+          type: string
+        nickname:
+          type: string
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    QueryActionResult_ConfigurationItemCategoryModel_InstalledProductCategory:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationItemCategoryModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     EntityInformationModel:
       type: object
       properties:
@@ -678,48 +633,36 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    ItemQueryResultModel_ConfigurationItemCategoryModel_InstalledProductCategory:
+    FieldInformationModel:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/ConfigurationItemCategoryModel'
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-    ConfigurationItemCategoryModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        displayColorRGB:
-          format: int32
-          type: integer
-        isActive:
-          type: boolean
-        isClientPortalDefault:
-          type: boolean
-        isGlobalDefault:
-          type: boolean
         name:
           type: string
-        nickname:
+        dataType:
           type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -751,31 +694,67 @@ components:
           value: 0
           udf: false
           items: []
-    QueryCountResultModel:
+    Filter:
       type: object
       properties:
-        queryCount:
-          format: int32
-          type: integer
-    QueryActionResult_ConfigurationItemCategoryModel_InstalledProductCategory:
-      type: object
-      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
         items:
+          description: An Array of Filter objects
           type: array
           items:
-            $ref: '#/components/schemas/ConfigurationItemCategoryModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    FieldInformationModel:
+            $ref: '#/components/schemas/Filter'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Field:
       type: object
       properties:
         name:
           type: string
-        dataType:
+        label:
+          type: string
+        type:
           type: string
         length:
           format: int32
           type: integer
+        description:
+          type: string
         isRequired:
           type: boolean
         isReadOnly:
@@ -794,13 +773,34 @@ components:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
           type: string
+        defaultValue:
+          type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    OperationResultModel:
+    ItemQueryResultModel_ConfigurationItemCategoryModel_InstalledProductCategory:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
+        item:
+          $ref: '#/components/schemas/ConfigurationItemCategoryModel'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string

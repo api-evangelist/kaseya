@@ -132,6 +132,76 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    QbWorkTypeExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbWorkTypeExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    QbWorkTypeExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ItemCode:
+          type:
+          - string
+          - 'null'
+        ItemRate:
+          type:
+          - number
+          - 'null'
+          format: double
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        IncomeAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExpenseAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsTaxable:
+          type: boolean
+        ExternalItemId:
+          type:
+          - string
+          - 'null'
+        ExternalIncomeId:
+          type:
+          - string
+          - 'null'
+        ExternalExpenseId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     QbItemImportDto:
       type: object
       properties:
@@ -185,18 +255,30 @@ components:
         AssetAccount:
           $ref: '#/components/schemas/QbAccountCodeImportDto'
       additionalProperties: false
-    StringResponse:
+    ErrorInfo:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Code:
+          type: integer
+          format: int32
+        Message:
           type:
           - string
           - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
     QbAccountCodeImportDto:
       type: object
@@ -228,49 +310,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    QbWorkTypeExportDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbWorkTypeExportDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     QbWorkTypeExportDtoListResponse:
       type: object
       properties:
@@ -286,54 +325,15 @@ components:
           items:
             $ref: '#/components/schemas/QbWorkTypeExportDto'
       additionalProperties: false
-    QbWorkTypeExportDto:
+    StringResponse:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
-        ItemCode:
-          type:
-          - string
-          - 'null'
-        ItemRate:
-          type:
-          - number
-          - 'null'
-          format: double
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        IncomeAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ExpenseAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsTaxable:
+        Success:
           type: boolean
-        ExternalItemId:
-          type:
-          - string
-          - 'null'
-        ExternalIncomeId:
-          type:
-          - string
-          - 'null'
-        ExternalExpenseId:
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - string
           - 'null'

@@ -38,32 +38,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ColorsLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        ModuleId:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Label:
-          type:
-          - string
-          - 'null'
-        FontColor:
-          type:
-          - string
-          - 'null'
-        BackgroundColor:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -103,6 +77,32 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/ColorsLookupOutputDto'
+      additionalProperties: false
+    ColorsLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ModuleId:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Label:
+          type:
+          - string
+          - 'null'
+        FontColor:
+          type:
+          - string
+          - 'null'
+        BackgroundColor:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

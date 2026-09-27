@@ -169,23 +169,6 @@ paths:
                       $ref: '#/components/schemas/Filter'
 components:
   schemas:
-    ErrorResponse:
-      description: Default error response body
-      properties:
-        timestamp:
-          type: integer
-          format: int64
-          description: Epoch millis when the error occurred
-        status:
-          type: integer
-          format: int32
-          description: HTTP status code
-        error:
-          type: string
-          description: HTTP reason phrase
-        path:
-          type: string
-          description: Request path that produced the error
     Filter:
       type: object
       description: Filter data
@@ -223,3 +206,20 @@ components:
           type: string
         nextPageUrl:
           type: string
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error

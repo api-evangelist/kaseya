@@ -455,107 +455,25 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
     Object:
       type: object
       properties: {}
-    PagingModel:
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    QueryActionResult_BillingItemApprovalLevelModel_BillingItemApprovalLevel:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PickListValue:
+            $ref: '#/components/schemas/BillingItemApprovalLevelModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    QueryCountResultModel:
       type: object
       properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    BillingItemApprovalLevelModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        approvalDateTime:
-          format: date-time
-          type: string
-        approvalLevel:
-          format: int32
-          type: integer
-        approvalResourceID:
-          format: int32
-          type: integer
-        timeEntryID:
+        queryCount:
           format: int32
           type: integer
     EntityInformationModel:
@@ -594,75 +512,6 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    QueryActionResult_BillingItemApprovalLevelModel_BillingItemApprovalLevel:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/BillingItemApprovalLevelModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    ItemQueryResultModel_BillingItemApprovalLevelModel_BillingItemApprovalLevel:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/BillingItemApprovalLevelModel'
     FieldInformationModel:
       type: object
       properties:
@@ -693,11 +542,162 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+    UserDefinedFieldInformationResultModel:
       type: object
-      properties: {}
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    ItemQueryResultModel_BillingItemApprovalLevelModel_BillingItemApprovalLevel:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/BillingItemApprovalLevelModel'
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    BillingItemApprovalLevelModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        approvalDateTime:
+          format: date-time
+          type: string
+        approvalLevel:
+          format: int32
+          type: integer
+        approvalResourceID:
+          format: int32
+          type: integer
+        timeEntryID:
+          format: int32
+          type: integer
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string

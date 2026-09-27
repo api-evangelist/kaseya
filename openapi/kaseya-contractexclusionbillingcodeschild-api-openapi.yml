@@ -386,6 +386,9 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Object:
+      type: object
+      properties: {}
     Expression:
       type: object
       properties:
@@ -484,6 +487,88 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    ItemQueryResultModel_ContractExclusionBillingCodeModel_ContractExclusionAllocationCode:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ContractExclusionBillingCodeModel'
     ParameterExpression:
       type: object
       properties:
@@ -588,82 +673,11 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    Field:
+    OperationResultModel:
       type: object
       properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
+        itemId:
           $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    Object:
-      type: object
-      properties: {}
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryActionResult_ContractExclusionBillingCodeModel_ContractExclusionAllocationCode:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContractExclusionBillingCodeModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     Expression_Func_ContractExclusionAllocationCode_Int64:
       type: object
       properties:
@@ -794,6 +808,12 @@ components:
         soapParentPropertyId:
           $ref: '#/components/schemas/Expression_Func_ContractExclusionAllocationCode_Int64'
           readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
     PickListValue:
       type: object
       properties:
@@ -812,63 +832,20 @@ components:
           type: boolean
         isSystem:
           type: boolean
-    EntityInformationModel:
+    Field:
       type: object
       properties:
         name:
           type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
+        label:
           type: string
-        dataType:
+        type:
           type: string
         length:
           format: int32
           type: integer
+        description:
+          type: string
         isRequired:
           type: boolean
         isReadOnly:
@@ -887,15 +864,38 @@ components:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
           type: string
+        defaultValue:
+          type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    OperationResultModel:
+    FieldInformationResultModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_ContractExclusionBillingCodeModel_ContractExclusionAllocationCode:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PagingModel:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/ContractExclusionBillingCodeModel'
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    QueryActionResult_ContractExclusionBillingCodeModel_ContractExclusionAllocationCode:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractExclusionBillingCodeModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'

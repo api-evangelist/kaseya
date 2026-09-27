@@ -136,49 +136,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    QbAccountCodeImportDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Code:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        AccountTypeName:
-          type:
-          - string
-          - 'null'
-        ParentAccountCode:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     QbAccountCodeExportDtoListResponse:
       type: object
       properties:
@@ -193,49 +150,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/QbAccountCodeExportDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    QbAccountCodeExportDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbAccountCodeExportDto'
-        TotalRecords:
-          type: integer
-          format: int32
       additionalProperties: false
     QbAccountCodeExportDto:
       type: object
@@ -273,6 +187,92 @@ components:
           - string
           - 'null'
         ExternalParentId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbAccountCodeExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbAccountCodeExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbAccountCodeImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Code:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        AccountTypeName:
+          type:
+          - string
+          - 'null'
+        ParentAccountCode:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - string
           - 'null'

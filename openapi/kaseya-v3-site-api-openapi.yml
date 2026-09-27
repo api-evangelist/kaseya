@@ -108,60 +108,6 @@ paths:
                 path: /v3/site/{siteUid}/devices
 components:
   schemas:
-    UdfItem:
-      type: object
-      description: User defined field with type-safe value storage
-      properties:
-        ordinal:
-          type: integer
-          format: int32
-          description: Ordinal position of the UDF (1-300)
-          maximum: 300
-          minimum: 1
-        type:
-          type: string
-          description: Type of the UDF value
-          enum:
-          - STRING
-          - BOOLEAN
-          - NUMBER
-          - DATE
-        valueBoolean:
-          type: boolean
-          description: Value when type is BOOLEAN
-        valueString:
-          type: string
-          description: Value when type is STRING
-        valueDate:
-          type: string
-          format: date
-          description: 'Value when type is DATE (Format: yyyy-MM-dd)'
-        valueNumber:
-          type: number
-          description: Value when type is NUMBER
-        label:
-          type: string
-          description: Custom label for this UDF from the account settings
-        typeMisMatch:
-          type: boolean
-          description: Indicates type mismatch with expected configuration. Only appears in GET responses when data was updated via V2 API or UI.
-      required:
-      - ordinal
-      - type
-    PaginationData:
-      type: object
-      description: Pagination data
-      properties:
-        count:
-          type: integer
-          format: int32
-        totalCount:
-          type: integer
-          format: int64
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     DeviceV3:
       type: object
       description: Device data with structured UDF format
@@ -251,17 +197,19 @@ components:
           description: User defined fields in structured format
           items:
             $ref: '#/components/schemas/UdfItem'
-    DevicesPageV3:
+    Antivirus:
       type: object
-      description: Devices page with structured UDF format
+      description: Device antivirus data
       properties:
-        pageDetails:
-          $ref: '#/components/schemas/PaginationData'
-        devices:
-          type: array
-          description: List of devices with structured UDF format
-          items:
-            $ref: '#/components/schemas/DeviceV3'
+        antivirusProduct:
+          type: string
+        antivirusStatus:
+          type: string
+          enum:
+          - RunningAndUpToDate
+          - RunningAndNotUpToDate
+          - NotRunning
+          - NotDetected
     ErrorResponse:
       description: Default error response body
       properties:
@@ -279,6 +227,17 @@ components:
         path:
           type: string
           description: Request path that produced the error
+    DevicesPageV3:
+      type: object
+      description: Devices page with structured UDF format
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/PaginationData'
+        devices:
+          type: array
+          description: List of devices with structured UDF format
+          items:
+            $ref: '#/components/schemas/DeviceV3'
     PatchManagement:
       type: object
       description: Patch management data
@@ -309,16 +268,57 @@ components:
           type: string
         type:
           type: string
-    Antivirus:
+    UdfItem:
       type: object
-      description: Device antivirus data
+      description: User defined field with type-safe value storage
       properties:
-        antivirusProduct:
+        ordinal:
+          type: integer
+          format: int32
+          description: Ordinal position of the UDF (1-300)
+          maximum: 300
+          minimum: 1
+        type:
           type: string
-        antivirusStatus:
-          type: string
+          description: Type of the UDF value
           enum:
-          - RunningAndUpToDate
-          - RunningAndNotUpToDate
-          - NotRunning
-          - NotDetected
+          - STRING
+          - BOOLEAN
+          - NUMBER
+          - DATE
+        valueBoolean:
+          type: boolean
+          description: Value when type is BOOLEAN
+        valueString:
+          type: string
+          description: Value when type is STRING
+        valueDate:
+          type: string
+          format: date
+          description: 'Value when type is DATE (Format: yyyy-MM-dd)'
+        valueNumber:
+          type: number
+          description: Value when type is NUMBER
+        label:
+          type: string
+          description: Custom label for this UDF from the account settings
+        typeMisMatch:
+          type: boolean
+          description: Indicates type mismatch with expected configuration. Only appears in GET responses when data was updated via V2 API or UI.
+      required:
+      - ordinal
+      - type
+    PaginationData:
+      type: object
+      description: Pagination data
+      properties:
+        count:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string

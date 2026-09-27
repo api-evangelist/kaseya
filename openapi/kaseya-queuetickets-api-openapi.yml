@@ -307,6 +307,24 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    TicketListDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketListDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
     GetTicketsInputDto:
       type: object
       properties:
@@ -334,229 +352,6 @@ components:
           - 'null'
         Filter:
           $ref: '#/components/schemas/TicketFilterDto'
-      additionalProperties: false
-    TicketFilterDto:
-      type: object
-      properties:
-        IsScheduled:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsRecurringTickets:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Title:
-          type:
-          - string
-          - 'null'
-        Account:
-          type:
-          - string
-          - 'null'
-        LocationName:
-          type:
-          - string
-          - 'null'
-        AccountCode:
-          type:
-          - string
-          - 'null'
-        AssigneeName:
-          type:
-          - string
-          - 'null'
-        TicketNumber:
-          type:
-          - string
-          - 'null'
-        CreatedByName:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        ContactName:
-          type:
-          - string
-          - 'null'
-        StatusNames:
-          type:
-          - string
-          - 'null'
-        QueueNames:
-          type:
-          - string
-          - 'null'
-        PriorityNames:
-          type:
-          - string
-          - 'null'
-        TicketTypeNames:
-          type:
-          - string
-          - 'null'
-        IssueTypeNames:
-          type:
-          - string
-          - 'null'
-        ServiceLevelAgreementNames:
-          type:
-          - string
-          - 'null'
-        SubIssueTypeNames:
-          type:
-          - string
-          - 'null'
-        SourceIds:
-          type:
-          - string
-          - 'null'
-        ExcludeCompleted:
-          type: integer
-          format: int32
-        OpenDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        OpenDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CompletedDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CompletedDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastActivityUpdateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastActivityUpdateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOnFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOnTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastStatusUpdateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastStatusUpdateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastPriorityUpdateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastPriorityUpdateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastQueueUpdateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastQueueUpdateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        DueDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        DueDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ResolutionTargetTimeFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ResolutionTargetTimeTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ContactId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        HardwareAssetId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountLocationId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountIds:
-          type:
-          - string
-          - 'null'
-        SLAEventStatusIds:
-          type:
-          - string
-          - 'null'
-        FromDate:
-          type:
-          - string
-          - 'null'
-        ToDate:
-          type:
-          - string
-          - 'null'
-        Value:
-          type:
-          - string
-          - 'null'
-        ActionType:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        HardwareAssetName:
-          type:
-          - string
-          - 'null'
-        OwnerIds:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     TicketListDto:
       type: object
@@ -880,23 +675,228 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    TicketListDtoListPagedResponse:
+    TicketFilterDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        IsScheduled:
           type:
-          - array
+          - integer
           - 'null'
-          items:
-            $ref: '#/components/schemas/TicketListDto'
-        TotalRecords:
+          format: int32
+        IsRecurringTickets:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Title:
+          type:
+          - string
+          - 'null'
+        Account:
+          type:
+          - string
+          - 'null'
+        LocationName:
+          type:
+          - string
+          - 'null'
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        AssigneeName:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        ContactName:
+          type:
+          - string
+          - 'null'
+        StatusNames:
+          type:
+          - string
+          - 'null'
+        QueueNames:
+          type:
+          - string
+          - 'null'
+        PriorityNames:
+          type:
+          - string
+          - 'null'
+        TicketTypeNames:
+          type:
+          - string
+          - 'null'
+        IssueTypeNames:
+          type:
+          - string
+          - 'null'
+        ServiceLevelAgreementNames:
+          type:
+          - string
+          - 'null'
+        SubIssueTypeNames:
+          type:
+          - string
+          - 'null'
+        SourceIds:
+          type:
+          - string
+          - 'null'
+        ExcludeCompleted:
           type: integer
           format: int32
+        OpenDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        OpenDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastActivityUpdateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastActivityUpdateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastStatusUpdateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastStatusUpdateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastPriorityUpdateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastPriorityUpdateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastQueueUpdateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastQueueUpdateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DueDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DueDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ResolutionTargetTimeFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ResolutionTargetTimeTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContactId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        HardwareAssetId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountLocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountIds:
+          type:
+          - string
+          - 'null'
+        SLAEventStatusIds:
+          type:
+          - string
+          - 'null'
+        FromDate:
+          type:
+          - string
+          - 'null'
+        ToDate:
+          type:
+          - string
+          - 'null'
+        Value:
+          type:
+          - string
+          - 'null'
+        ActionType:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        HardwareAssetName:
+          type:
+          - string
+          - 'null'
+        OwnerIds:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     ErrorInfo:
       type: object

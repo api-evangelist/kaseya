@@ -132,6 +132,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    QbBillReferenceInputDto:
+      type: object
+      properties:
+        BillId:
+          type: integer
+          format: int32
+        QbBillId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     QbBillExportDto:
       type: object
       properties:
@@ -244,31 +255,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     QbBillDetailExportDto:
       type: object
       properties:
@@ -328,6 +314,31 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
     QbBillExportDtoListPagedResponse:
       type: object
       properties:
@@ -345,17 +356,6 @@ components:
         TotalRecords:
           type: integer
           format: int32
-      additionalProperties: false
-    QbBillReferenceInputDto:
-      type: object
-      properties:
-        BillId:
-          type: integer
-          format: int32
-        QbBillId:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

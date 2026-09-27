@@ -879,6 +879,178 @@ paths:
     - url: https://api.bms.kaseya.com
 components:
   schemas:
+    Object:
+      type: object
+      properties: {}
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    QueryActionResult_ContractModel_Contract:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -915,53 +1087,6 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    Object:
-      type: object
-      properties: {}
-    UserDefinedField:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryActionResult_ContractModel_Contract:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContractModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     ContractModel:
       type: object
       properties:
@@ -1067,234 +1192,63 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserDefinedField'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
     ItemQueryResultModel_ContractModel_Contract:
       type: object
       properties:
         item:
           $ref: '#/components/schemas/ContractModel'
-    RecurringServicePostOutputDtoResponse:
+    FieldInformationResultModel:
       type: object
       properties:
-        Success:
-          type: boolean
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
           readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/RecurringServicePostOutputDto'
-      additionalProperties: false
-    RecurringServicesContractServicePostOutputDto:
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    ContractLookupOutputDto:
       type: object
       properties:
         Id:
           type: integer
           format: int32
-        CreatedBy:
+        Name:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type:
+          - boolean
+          - 'null'
+        SLAId:
           type:
           - integer
           - 'null'
           format: int32
-        CreatedOn:
+        SLAName:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        EndDate:
           type:
           - string
           - 'null'
           format: date-time
-        ModifiedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ServiceId:
-          type: integer
-          format: int32
-        ServiceName:
-          type:
-          - string
-          - 'null'
-        ServiceDescription:
-          type:
-          - string
-          - 'null'
-        ContractId:
-          type: integer
-          format: int32
-        ContractName:
-          type:
-          - string
-          - 'null'
-        TotalCost:
-          type: number
-          format: double
-        TotalPrice:
-          type: number
-          format: double
-        Units:
-          type: number
-          format: double
-        UnitCost:
-          type: number
-          format: double
-        UnitPrice:
-          type: number
-          format: double
-        EffectiveDate:
-          type: string
-          format: date-time
-        SortOrder:
-          type: integer
-          format: int32
       additionalProperties: false
     RecurringServicesContractPutOutputDto:
       type: object
@@ -1409,7 +1363,73 @@ components:
           - boolean
           - 'null'
       additionalProperties: false
-    ClientContractSummaryOutputDtoIEnumerablePagedResponse:
+    RecurringServicesContractServicePostOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ServiceId:
+          type: integer
+          format: int32
+        ServiceName:
+          type:
+          - string
+          - 'null'
+        ServiceDescription:
+          type:
+          - string
+          - 'null'
+        ContractId:
+          type: integer
+          format: int32
+        ContractName:
+          type:
+          - string
+          - 'null'
+        TotalCost:
+          type: number
+          format: double
+        TotalPrice:
+          type: number
+          format: double
+        Units:
+          type: number
+          format: double
+        UnitCost:
+          type: number
+          format: double
+        UnitPrice:
+          type: number
+          format: double
+        EffectiveDate:
+          type: string
+          format: date-time
+        SortOrder:
+          type: integer
+          format: int32
+      additionalProperties: false
+    DeactivatedContractOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -1418,16 +1438,86 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ClientContractSummaryOutputDto'
-        TotalRecords:
+          $ref: '#/components/schemas/DeactivatedContractOutputDto'
+      additionalProperties: false
+    RecurringServicesContractPutOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/RecurringServicesContractPutOutputDto'
+      additionalProperties: false
+    ActivatedContractOutputDto:
+      type: object
+      properties:
+        Id:
           type: integer
           format: int32
+        ContractName:
+          type:
+          - string
+          - 'null'
+        ContractDescription:
+          type:
+          - string
+          - 'null'
+        ContractNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type: integer
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-    RecurringServicesContractServicePostInputDto:
+    DeactivatedContractOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ContractName:
+          type:
+          - string
+          - 'null'
+        ContractDescription:
+          type:
+          - string
+          - 'null'
+        ContractNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type: integer
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    RecurringServicePostInputDto:
       type: object
       properties:
         ServiceId:
@@ -1457,7 +1547,7 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    DeactivatedContractOutputDtoResponse:
+    RecurringServicesContractPostOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -1466,7 +1556,18 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/DeactivatedContractOutputDto'
+          $ref: '#/components/schemas/RecurringServicesContractPostOutputDto'
+      additionalProperties: false
+    RecurringServicePostOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/RecurringServicePostOutputDto'
       additionalProperties: false
     RecurringServicesContractPostOutputDto:
       type: object
@@ -1595,40 +1696,32 @@ components:
           items:
             $ref: '#/components/schemas/RecurringServicesContractServicePostOutputDto'
       additionalProperties: false
-    ActivatedContractOutputDto:
+    ErrorInfo:
       type: object
       properties:
-        Id:
+        Code:
           type: integer
           format: int32
-        ContractName:
+        Message:
           type:
           - string
           - 'null'
-        ContractDescription:
+        Details:
           type:
           - string
           - 'null'
-        ContractNumber:
+        StackStrace:
           type:
           - string
           - 'null'
-        StatusId:
-          type: integer
-          format: int32
-        StatusName:
+        SubErrors:
           type:
-          - string
+          - array
           - 'null'
-        TypeId:
-          type: integer
-          format: int32
-        TypeName:
-          type:
-          - string
-          - 'null'
+          items:
+            type: string
       additionalProperties: false
-    RecurringServicesContractPutOutputDtoResponse:
+    ClientContractSummaryOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
         Success:
@@ -1637,7 +1730,133 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/RecurringServicesContractPutOutputDto'
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ClientContractSummaryOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    RecurringServicesContractPostInputDto:
+      type: object
+      properties:
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ReferenceNumber:
+          type:
+          - string
+          - 'null'
+        BillingCycleId:
+          type: integer
+          format: int32
+        StartDate:
+          type: string
+          format: date-time
+        EndDate:
+          type: string
+          format: date-time
+        IssueInvoiceOn:
+          type:
+          - boolean
+          - 'null'
+        IsDefaultContract:
+          type:
+          - boolean
+          - 'null'
+        IsFiscalBilling:
+          type:
+          - boolean
+          - 'null'
+        IsNotificationEnabled:
+          type: boolean
+        NotificationEmails:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        Services:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RecurringServicesContractServicePostInputDto'
+      additionalProperties: false
+    ActivatedContractOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ActivatedContractOutputDto'
+      additionalProperties: false
+    RecurringServicesContractPutInputDto:
+      type: object
+      properties:
+        ContractName:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ReferenceNumber:
+          type:
+          - string
+          - 'null'
+        BillingCycleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StartDate:
+          type: string
+          format: date-time
+        EndDate:
+          type: string
+          format: date-time
+        IsDefaultContract:
+          type:
+          - boolean
+          - 'null'
+        IssueInvoiceOn:
+          type:
+          - boolean
+          - 'null'
+        IsFiscalBilling:
+          type:
+          - boolean
+          - 'null'
+        IsNotificationEnabled:
+          type:
+          - boolean
+          - 'null'
+        NotificationEmails:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
     RecurringServicePostOutputDto:
       type: object
@@ -1714,7 +1933,7 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    ActivatedContractOutputDtoResponse:
+    ContractLookupOutputDtoListResponse:
       type: object
       properties:
         Success:
@@ -1723,91 +1942,11 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/ActivatedContractOutputDto'
-      additionalProperties: false
-    ContractLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsDefault:
-          type:
-          - boolean
-          - 'null'
-        SLAId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SLAName:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
-        EndDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    RecurringServicesContractPutInputDto:
-      type: object
-      properties:
-        ContractName:
-          type:
-          - string
-          - 'null'
-        AccountId:
-          type: integer
-          format: int32
-        SLAId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ReferenceNumber:
-          type:
-          - string
-          - 'null'
-        BillingCycleId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StartDate:
-          type: string
-          format: date-time
-        EndDate:
-          type: string
-          format: date-time
-        IsDefaultContract:
-          type:
-          - boolean
-          - 'null'
-        IssueInvoiceOn:
-          type:
-          - boolean
-          - 'null'
-        IsFiscalBilling:
-          type:
-          - boolean
-          - 'null'
-        IsNotificationEnabled:
-          type:
-          - boolean
-          - 'null'
-        NotificationEmails:
           type:
           - array
           - 'null'
           items:
-            type: string
+            $ref: '#/components/schemas/ContractLookupOutputDto'
       additionalProperties: false
     ClientContractSummaryOutputDto:
       type: object
@@ -1849,131 +1988,7 @@ components:
           type: string
           format: date-time
       additionalProperties: false
-    RecurringServicesContractPostOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/RecurringServicesContractPostOutputDto'
-      additionalProperties: false
-    DeactivatedContractOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        ContractName:
-          type:
-          - string
-          - 'null'
-        ContractDescription:
-          type:
-          - string
-          - 'null'
-        ContractNumber:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type: integer
-          format: int32
-        StatusName:
-          type:
-          - string
-          - 'null'
-        TypeId:
-          type: integer
-          format: int32
-        TypeName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    RecurringServicesContractPostInputDto:
-      type: object
-      properties:
-        ContractName:
-          type:
-          - string
-          - 'null'
-        AccountId:
-          type: integer
-          format: int32
-        SLAId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ReferenceNumber:
-          type:
-          - string
-          - 'null'
-        BillingCycleId:
-          type: integer
-          format: int32
-        StartDate:
-          type: string
-          format: date-time
-        EndDate:
-          type: string
-          format: date-time
-        IssueInvoiceOn:
-          type:
-          - boolean
-          - 'null'
-        IsDefaultContract:
-          type:
-          - boolean
-          - 'null'
-        IsFiscalBilling:
-          type:
-          - boolean
-          - 'null'
-        IsNotificationEnabled:
-          type: boolean
-        NotificationEmails:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        Services:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RecurringServicesContractServicePostInputDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    RecurringServicePostInputDto:
+    RecurringServicesContractServicePostInputDto:
       type: object
       properties:
         ServiceId:
@@ -2002,21 +2017,6 @@ components:
         SortOrder:
           type: integer
           format: int32
-      additionalProperties: false
-    ContractLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ContractLookupOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

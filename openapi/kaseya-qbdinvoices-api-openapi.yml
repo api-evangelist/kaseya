@@ -262,127 +262,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    QbInvoiceReferenceInputDto:
-      type: object
-      properties:
-        InvoiceId:
-          type: integer
-          format: int32
-        QbInvoiceId:
-          type:
-          - string
-          - 'null'
-        QbInvoiceNumber:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    QbAddressDto:
-      type: object
-      properties:
-        Address1:
-          type:
-          - string
-          - 'null'
-        Address2:
-          type:
-          - string
-          - 'null'
-        State:
-          type:
-          - string
-          - 'null'
-        City:
-          type:
-          - string
-          - 'null'
-        ZipCode:
-          type:
-          - string
-          - 'null'
-        EmailAddress:
-          type:
-          - string
-          - 'null'
-        PhoneNumber:
-          type:
-          - string
-          - 'null'
-        MobileNumber:
-          type:
-          - string
-          - 'null'
-        FaxNumber:
-          type:
-          - string
-          - 'null'
-        Country:
-          type:
-          - string
-          - 'null'
-        ContactName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    QbInvoiceDetailExportDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbInvoiceDetailExportDto'
-      additionalProperties: false
-    QbInvoiceExportDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbInvoiceExportDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
     QbInvoiceDetailExportDto:
       type: object
       properties:
@@ -447,6 +326,127 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    QbInvoiceExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbInvoiceExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    QbAddressDto:
+      type: object
+      properties:
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        MobileNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+        ContactName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbInvoiceReferenceInputDto:
+      type: object
+      properties:
+        InvoiceId:
+          type: integer
+          format: int32
+        QbInvoiceId:
+          type:
+          - string
+          - 'null'
+        QbInvoiceNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbInvoiceDetailExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbInvoiceDetailExportDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

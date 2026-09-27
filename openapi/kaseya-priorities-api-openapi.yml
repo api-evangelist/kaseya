@@ -32,22 +32,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PriorityLookupOutputDto:
+    PriorityLookupOutputDtoIEnumerableResponse:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Color:
-          type:
-          - string
-          - 'null'
-        IsDefault:
+        Success:
           type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PriorityLookupOutputDto'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -74,20 +72,22 @@ components:
           items:
             type: string
       additionalProperties: false
-    PriorityLookupOutputDtoIEnumerableResponse:
+    PriorityLookupOutputDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Id:
+          type: integer
+          format: int32
+        Name:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/PriorityLookupOutputDto'
+        Color:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
       additionalProperties: false
   securitySchemes:
     bearerAuth:

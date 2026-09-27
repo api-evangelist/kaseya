@@ -350,35 +350,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AddContactRecipientsResultModel:
-      type: object
-      properties:
-        contactRecipients:
-          type: array
-          items:
-            format: int32
-            type: integer
-            readOnly: true
-    AddResourceRecipientsResultModel:
-      type: object
-      properties:
-        resourceRecipients:
-          type: array
-          items:
-            format: int32
-            type: integer
-            readOnly: true
-    Object:
-      type: object
-      properties: {}
-    UpdateContactRecipientsModel:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            format: int32
-            type: integer
     AccountInvoiceSettingsResultModel:
       type: object
       properties:
@@ -403,6 +374,40 @@ components:
             type: integer
         otherEmails:
           type: string
+    Object:
+      type: object
+      properties: {}
+    UpdateResourceRecipientsModel:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            format: int32
+            type: integer
+    AddContactRecipientsResultModel:
+      type: object
+      properties:
+        contactRecipients:
+          type: array
+          items:
+            format: int32
+            type: integer
+            readOnly: true
+    AddResourceRecipientsResultModel:
+      type: object
+      properties:
+        resourceRecipients:
+          type: array
+          items:
+            format: int32
+            type: integer
+            readOnly: true
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     UpdateAccountInvoiceSettingsModel:
       type: object
       properties:
@@ -417,7 +422,7 @@ components:
           type: boolean
         otherEmails:
           type: string
-    UpdateResourceRecipientsModel:
+    UpdateContactRecipientsModel:
       type: object
       properties:
         items:
@@ -425,8 +430,3 @@ components:
           items:
             format: int32
             type: integer
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'

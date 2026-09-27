@@ -1013,35 +1013,556 @@ paths:
                       $ref: '#/components/schemas/Alert'
 components:
   schemas:
-    NetworkMonitorContext:
+    TemperatureContext:
       allOf:
       - $ref: '#/components/schemas/AlertContext'
       - type: object
         properties:
-          description:
+          degree:
+            type: number
+            format: float
+          type:
             type: string
-    PatchManagement:
-      type: object
-      description: Patch management data
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    AlertContext:
+      discriminator:
+        propertyName: '@class'
       properties:
-        patchStatus:
+        '@class':
+          type: string
+      required:
+      - '@class'
+    CustomSNMPContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          displayName:
+            type: string
+          currentValue:
+            type: string
+          monitorInstance:
+            type: string
+    SNMPProbeContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          ipAddress:
+            type: string
+          OID:
+            type: string
+          ruleName:
+            type: string
+          responseValue:
+            type: string
+          deviceName:
+            type: string
+          monitorName:
+            type: string
+          oid:
+            type: string
+    DiskUsageContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          diskName:
+            type: string
+          totalVolume:
+            type: number
+            format: float
+          freeSpace:
+            type: number
+            format: float
+          unitOfMeasure:
+            type: string
+            enum:
+            - PERCENT
+            - USED
+            - FREE
+          diskNameDesignation:
+            type: string
+            enum:
+            - ANY_VOLUME
+            - ALL_VOLUMES
+            - SINGLE_VOLUME
+    DevicesStatus:
+      type: object
+      description: Devices Status
+      properties:
+        numberOfDevices:
+          type: integer
+          format: int64
+        numberOfOnlineDevices:
+          type: integer
+          format: int64
+        numberOfOfflineDevices:
+          type: integer
+          format: int64
+    ComponentVariable:
+      type: object
+      description: Component's variables data
+      properties:
+        name:
+          type: string
+        defaultVal:
+          type: string
+        type:
+          type: string
+        direction:
+          type: boolean
+        description:
+          type: string
+        variablesIdx:
+          type: integer
+          format: int32
+    Variable:
+      type: object
+      description: Variable data
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        value:
+          type: string
+        masked:
+          type: boolean
+    DnetSiteMappingsDto:
+      type: object
+      description: Dnet site mappings data
+      properties:
+        id:
+          type: integer
+          format: int64
+        uid:
+          type: string
+          description: Unique alphanumeric UID of this site
+        accountUid:
+          type: string
+          description: Unique alphanumeric UID of the account to which this site belongs
+        name:
+          type: string
+        description:
+          type: string
+        dattoNetworkingNetworkIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+        portalUrl:
+          type: string
+    DevicesType:
+      type: object
+      description: Devices Type
+      properties:
+        category:
+          type: string
+        type:
+          type: string
+    AlertMonitorInfo:
+      type: object
+      description: Alert monitor information
+      properties:
+        sendsEmails:
+          type: boolean
+        createsTicket:
+          type: boolean
+    Variable_Creation_Request:
+      type: object
+      description: Variable creation data
+      properties:
+        name:
+          type: string
+          description: Variable name
+        value:
+          type: string
+          description: Variable value
+        masked:
+          type: boolean
+          description: Variable masking (hiding)
+    DiskHealthContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          reason:
+            type: string
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    FanContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          reason:
+            type: string
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    PingContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          instanceName:
+            type: string
+          roundtripTime:
+            type: integer
+            format: int32
+          reasons:
+            type: array
+            items:
+              type: string
+    ProxySettings:
+      type: object
+      description: Site's Proxy Settings
+      properties:
+        host:
+          type: string
+        password:
+          type: string
+        port:
+          type: integer
+          format: int32
+        type:
           type: string
           enum:
-          - NoPolicy
-          - NoData
-          - RebootRequired
-          - InstallError
-          - ApprovedPending
-          - FullyPatched
-        patchesApprovedPending:
+          - http
+          - socks4
+          - socks5
+        username:
+          type: string
+    PaginationData:
+      type: object
+      description: Pagination data
+      properties:
+        count:
+          type: integer
+          format: int32
+        totalCount:
           type: integer
           format: int64
-        patchesNotApproved:
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    ResourceUsageContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          processName:
+            type: string
+          sample:
+            type: number
+            format: float
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    Site:
+      type: object
+      description: Site data
+      properties:
+        id:
           type: integer
           format: int64
-        patchesInstalled:
+        uid:
+          type: string
+          description: Unique alphanumeric UID of this site
+        accountUid:
+          type: string
+          description: Unique alphanumeric UID of the account to which this site belongs
+        name:
+          type: string
+        description:
+          type: string
+        notes:
+          type: string
+        onDemand:
+          type: boolean
+        splashtopAutoInstall:
+          type: boolean
+        proxySettings:
+          $ref: '#/components/schemas/ProxySettings'
+        devicesStatus:
+          $ref: '#/components/schemas/DevicesStatus'
+        autotaskCompanyName:
+          type: string
+        autotaskCompanyId:
+          type: string
+        portalUrl:
+          type: string
+    OnlineOfflineStatusContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          status:
+            type: string
+            enum:
+            - ONLINE
+            - OFFLINE
+    EndpointSecurityWindowsDefenderContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          esAlertId:
+            type: string
+          description:
+            type: string
+    Variable_Update_Request:
+      type: object
+      description: Variable update data
+      properties:
+        name:
+          type: string
+          description: Variable name
+        value:
+          type: string
+          description: Variable value
+    ActionContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          packageName:
+            type: string
+          actionType:
+            type: string
+            enum:
+            - INSTALLED
+            - UNINSTALLED
+            - VERSION_CHANGED
+          prevVersion:
+            type: string
+          version:
+            type: string
+    WmiContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          value:
+            type: string
+    EventLogContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          logName:
+            type: string
+          code:
+            type: string
+          type:
+            type: string
+          source:
+            type: string
+          description:
+            type: string
+          triggerCount:
+            type: integer
+            format: int32
+          lastTriggered:
+            type: string
+            format: date-time
+          causedSuspension:
+            type: boolean
+    BackupManagementContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          errorMessage:
+            type: string
+          timeout:
+            type: integer
+            format: int32
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
           type: integer
           format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
+    AuthUser:
+      type: object
+      description: Authentication user data
+      properties:
+        lastName:
+          type: string
+        firstName:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        telephone:
+          type: string
+        status:
+          type: string
+        created:
+          type: string
+          format: date-time
+        lastAccess:
+          type: string
+          format: date-time
+        disabled:
+          type: boolean
+    PsuContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          reason:
+            type: string
+          type:
+            type: string
+            enum:
+            - CPU
+            - MEMORY
+            - TEMPERATURE
+            - FAN
+            - DISKHEALTH
+            - PSU
+            - SNMP_THROUGHPUT
+    AntivirusContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          status:
+            type: string
+            enum:
+            - NOTDETECTED
+            - NOTRUNNING
+            - RUNNINGNOTUPTODATE
+          productName:
+            type: string
+    Component:
+      type: object
+      description: Component data
+      properties:
+        id:
+          type: integer
+          format: int64
+        credentialsRequired:
+          type: boolean
+        uid:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        categoryCode:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComponentVariable'
+    WindowsPerformanceContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          value:
+            type: number
+            format: float
+    SecurityManagementContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          status:
+            type: integer
+            format: int32
+          productName:
+            type: string
+          infoTime:
+            type: integer
+            format: int32
+          virusName:
+            type: string
+          infectedFiles:
+            type: array
+            items:
+              type: string
+          productNotUpdatedForDays:
+            type: integer
+            format: int32
+          systemRemainsInfectedForHours:
+            type: integer
+            format: int32
+          expiryLicenseForDays:
+            type: integer
+            format: int32
+    FileSystemContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          sample:
+            type: number
+            format: float
+          threshold:
+            type: number
+            format: float
+          path:
+            type: string
+          objectType:
+            type: string
+            enum:
+            - FILE
+            - DIRECTORY
+          condition:
+            type: string
+            enum:
+            - ABOVE_THRESHOLD
+            - BELOW_THRESHOLD
+            - REMOVED
+            - CREATED
     Device:
       type: object
       description: Device data
@@ -1126,93 +1647,6 @@ components:
           type: boolean
         onboardedViaNetworkMonitor:
           type: boolean
-    PatchContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          patchUid:
-            type: string
-          policyUid:
-            type: string
-          result:
-            type: string
-          info:
-            type: string
-    Site:
-      type: object
-      description: Site data
-      properties:
-        id:
-          type: integer
-          format: int64
-        uid:
-          type: string
-          description: Unique alphanumeric UID of this site
-        accountUid:
-          type: string
-          description: Unique alphanumeric UID of the account to which this site belongs
-        name:
-          type: string
-        description:
-          type: string
-        notes:
-          type: string
-        onDemand:
-          type: boolean
-        splashtopAutoInstall:
-          type: boolean
-        proxySettings:
-          $ref: '#/components/schemas/ProxySettings'
-        devicesStatus:
-          $ref: '#/components/schemas/DevicesStatus'
-        autotaskCompanyName:
-          type: string
-        autotaskCompanyId:
-          type: string
-        portalUrl:
-          type: string
-    AuthUser:
-      type: object
-      description: Authentication user data
-      properties:
-        lastName:
-          type: string
-        firstName:
-          type: string
-        username:
-          type: string
-        email:
-          type: string
-        telephone:
-          type: string
-        status:
-          type: string
-        created:
-          type: string
-          format: date-time
-        lastAccess:
-          type: string
-          format: date-time
-        disabled:
-          type: boolean
-    DiskHealthContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          reason:
-            type: string
-          type:
-            type: string
-            enum:
-            - CPU
-            - MEMORY
-            - TEMPERATURE
-            - FAN
-            - DISKHEALTH
-            - PSU
-            - SNMP_THROUGHPUT
     StatusContext:
       allOf:
       - $ref: '#/components/schemas/AlertContext'
@@ -1230,106 +1664,33 @@ components:
             - CONTINUEPENDING
             - PAUSEPENDING
             - PAUSED
-    Variable_Update_Request:
-      type: object
-      description: Variable update data
-      properties:
-        name:
-          type: string
-          description: Variable name
-        value:
-          type: string
-          description: Variable value
-    SecCenterContext:
+    RansomWareContext:
       allOf:
       - $ref: '#/components/schemas/AlertContext'
       - type: object
         properties:
-          productName:
-            type: string
-          alertType:
-            type: string
-            enum:
-            - DISABLED
-            - NOT_UPTODATE
-    ResourceUsageContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          processName:
-            type: string
-          sample:
-            type: number
-            format: float
-          type:
-            type: string
-            enum:
-            - CPU
-            - MEMORY
-            - TEMPERATURE
-            - FAN
-            - DISKHEALTH
-            - PSU
-            - SNMP_THROUGHPUT
-    EndpointSecurityWindowsDefenderContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          esAlertId:
-            type: string
-          description:
-            type: string
-    ComponentVariable:
-      type: object
-      description: Component's variables data
-      properties:
-        name:
-          type: string
-        defaultVal:
-          type: string
-        type:
-          type: string
-        direction:
-          type: boolean
-        description:
-          type: string
-        variablesIdx:
-          type: integer
-          format: int32
-    PingContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          instanceName:
-            type: string
-          roundtripTime:
+          state:
             type: integer
             format: int32
-          reasons:
+          confidenceFactor:
+            type: integer
+            format: int32
+          affectedDirectories:
             type: array
             items:
               type: string
-    AlertMonitorInfo:
-      type: object
-      description: Alert monitor information
-      properties:
-        sendsEmails:
-          type: boolean
-        createsTicket:
-          type: boolean
-    OnlineOfflineStatusContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          status:
+          watchPaths:
+            type: array
+            items:
+              type: string
+          rwextension:
             type: string
-            enum:
-            - ONLINE
-            - OFFLINE
+          metaAlertTime:
+            type: string
+            format: date-time
+          alertTime:
+            type: string
+            format: date-time
     ResponseAction:
       type: object
       properties:
@@ -1354,116 +1715,62 @@ components:
           type: string
         actionReferenceInt:
           type: string
-    Antivirus:
-      type: object
-      description: Device antivirus data
-      properties:
-        antivirusProduct:
-          type: string
-        antivirusStatus:
-          type: string
-          enum:
-          - RunningAndUpToDate
-          - RunningAndNotUpToDate
-          - NotRunning
-          - NotDetected
-    Variable_Creation_Request:
-      type: object
-      description: Variable creation data
-      properties:
-        name:
-          type: string
-          description: Variable name
-        value:
-          type: string
-          description: Variable value
-        masked:
-          type: boolean
-          description: Variable masking (hiding)
-    Component:
-      type: object
-      description: Component data
-      properties:
-        id:
-          type: integer
-          format: int64
-        credentialsRequired:
-          type: boolean
-        uid:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        categoryCode:
-          type: string
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/ComponentVariable'
-    WmiContext:
+    PatchContext:
       allOf:
       - $ref: '#/components/schemas/AlertContext'
       - type: object
         properties:
-          value:
+          patchUid:
             type: string
-    CustomSNMPContext:
+          policyUid:
+            type: string
+          result:
+            type: string
+          info:
+            type: string
+    ScriptContext:
       allOf:
       - $ref: '#/components/schemas/AlertContext'
       - type: object
         properties:
-          displayName:
-            type: string
-          currentValue:
-            type: string
-          monitorInstance:
-            type: string
-    DevicesStatus:
-      type: object
-      description: Devices Status
-      properties:
-        numberOfDevices:
-          type: integer
-          format: int64
-        numberOfOnlineDevices:
-          type: integer
-          format: int64
-        numberOfOfflineDevices:
-          type: integer
-          format: int64
-    AntivirusContext:
+          samples:
+            type: object
+            additionalProperties:
+              type: string
+    SecCenterContext:
       allOf:
       - $ref: '#/components/schemas/AlertContext'
       - type: object
         properties:
-          status:
-            type: string
-            enum:
-            - NOTDETECTED
-            - NOTRUNNING
-            - RUNNINGNOTUPTODATE
           productName:
             type: string
-    AccountDevicesStatus:
-      type: object
-      description: Account Devices Status
-      properties:
-        numberOfDevices:
-          type: integer
-          format: int64
-        numberOfOnlineDevices:
-          type: integer
-          format: int64
-        numberOfOfflineDevices:
-          type: integer
-          format: int64
-        numberOfOnDemandDevices:
-          type: integer
-          format: int64
-        numberOfManagedDevices:
-          type: integer
-          format: int64
+          alertType:
+            type: string
+            enum:
+            - DISABLED
+            - NOT_UPTODATE
+    NetworkMonitorContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          description:
+            type: string
+    PrinterContext:
+      allOf:
+      - $ref: '#/components/schemas/AlertContext'
+      - type: object
+        properties:
+          ipAddress:
+            type: string
+          macAddress:
+            type: string
+          markerSupplyIndex:
+            type: integer
+            format: int32
+          currentLevel:
+            type: integer
+            format: int32
     EndpointSecurityThreatContext:
       allOf:
       - $ref: '#/components/schemas/AlertContext'
@@ -1483,281 +1790,6 @@ components:
           type: integer
           format: int32
         timeZone:
-          type: string
-    AlertSourceInfo:
-      type: object
-      description: Alert source information data
-      properties:
-        deviceUid:
-          type: string
-        deviceName:
-          type: string
-        siteUid:
-          type: string
-        siteName:
-          type: string
-    ErrorResponse:
-      description: Default error response body
-      properties:
-        timestamp:
-          type: integer
-          format: int64
-          description: Epoch millis when the error occurred
-        status:
-          type: integer
-          format: int32
-          description: HTTP status code
-        error:
-          type: string
-          description: HTTP reason phrase
-        path:
-          type: string
-          description: Request path that produced the error
-    PsuContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          reason:
-            type: string
-          type:
-            type: string
-            enum:
-            - CPU
-            - MEMORY
-            - TEMPERATURE
-            - FAN
-            - DISKHEALTH
-            - PSU
-            - SNMP_THROUGHPUT
-    DiskUsageContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          diskName:
-            type: string
-          totalVolume:
-            type: number
-            format: float
-          freeSpace:
-            type: number
-            format: float
-          unitOfMeasure:
-            type: string
-            enum:
-            - PERCENT
-            - USED
-            - FREE
-          diskNameDesignation:
-            type: string
-            enum:
-            - ANY_VOLUME
-            - ALL_VOLUMES
-            - SINGLE_VOLUME
-    DevicesType:
-      type: object
-      description: Devices Type
-      properties:
-        category:
-          type: string
-        type:
-          type: string
-    WindowsPerformanceContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          value:
-            type: number
-            format: float
-    FanContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          reason:
-            type: string
-          type:
-            type: string
-            enum:
-            - CPU
-            - MEMORY
-            - TEMPERATURE
-            - FAN
-            - DISKHEALTH
-            - PSU
-            - SNMP_THROUGHPUT
-    Variable:
-      type: object
-      description: Variable data
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        value:
-          type: string
-        masked:
-          type: boolean
-    TemperatureContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          degree:
-            type: number
-            format: float
-          type:
-            type: string
-            enum:
-            - CPU
-            - MEMORY
-            - TEMPERATURE
-            - FAN
-            - DISKHEALTH
-            - PSU
-            - SNMP_THROUGHPUT
-    ScriptContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          samples:
-            type: object
-            additionalProperties:
-              type: string
-    PrinterContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          ipAddress:
-            type: string
-          macAddress:
-            type: string
-          markerSupplyIndex:
-            type: integer
-            format: int32
-          currentLevel:
-            type: integer
-            format: int32
-    FileSystemContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          sample:
-            type: number
-            format: float
-          threshold:
-            type: number
-            format: float
-          path:
-            type: string
-          objectType:
-            type: string
-            enum:
-            - FILE
-            - DIRECTORY
-          condition:
-            type: string
-            enum:
-            - ABOVE_THRESHOLD
-            - BELOW_THRESHOLD
-            - REMOVED
-            - CREATED
-    ActionContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          packageName:
-            type: string
-          actionType:
-            type: string
-            enum:
-            - INSTALLED
-            - UNINSTALLED
-            - VERSION_CHANGED
-          prevVersion:
-            type: string
-          version:
-            type: string
-    SNMPProbeContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          ipAddress:
-            type: string
-          OID:
-            type: string
-          ruleName:
-            type: string
-          responseValue:
-            type: string
-          deviceName:
-            type: string
-          monitorName:
-            type: string
-          oid:
-            type: string
-    BackupManagementContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          errorMessage:
-            type: string
-          timeout:
-            type: integer
-            format: int32
-    EventLogContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          logName:
-            type: string
-          code:
-            type: string
-          type:
-            type: string
-          source:
-            type: string
-          description:
-            type: string
-          triggerCount:
-            type: integer
-            format: int32
-          lastTriggered:
-            type: string
-            format: date-time
-          causedSuspension:
-            type: boolean
-    AlertContext:
-      discriminator:
-        propertyName: '@class'
-      properties:
-        '@class':
-          type: string
-      required:
-      - '@class'
-    PaginationData:
-      type: object
-      description: Pagination data
-      properties:
-        count:
-          type: integer
-          format: int32
-        totalCount:
-          type: integer
-          format: int64
-        prevPageUrl:
-          type: string
-        nextPageUrl:
           type: string
     Alert:
       type: object
@@ -1830,101 +1862,69 @@ components:
         autoresolveMins:
           type: integer
           format: int32
-    RansomWareContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          state:
-            type: integer
-            format: int32
-          confidenceFactor:
-            type: integer
-            format: int32
-          affectedDirectories:
-            type: array
-            items:
-              type: string
-          watchPaths:
-            type: array
-            items:
-              type: string
-          rwextension:
-            type: string
-          metaAlertTime:
-            type: string
-            format: date-time
-          alertTime:
-            type: string
-            format: date-time
-    ProxySettings:
+    PatchManagement:
       type: object
-      description: Site's Proxy Settings
+      description: Patch management data
       properties:
-        host:
-          type: string
-        password:
-          type: string
-        port:
-          type: integer
-          format: int32
-        type:
+        patchStatus:
           type: string
           enum:
-          - http
-          - socks4
-          - socks5
-        username:
-          type: string
-    DnetSiteMappingsDto:
-      type: object
-      description: Dnet site mappings data
-      properties:
-        id:
+          - NoPolicy
+          - NoData
+          - RebootRequired
+          - InstallError
+          - ApprovedPending
+          - FullyPatched
+        patchesApprovedPending:
           type: integer
           format: int64
-        uid:
+        patchesNotApproved:
+          type: integer
+          format: int64
+        patchesInstalled:
+          type: integer
+          format: int64
+    AlertSourceInfo:
+      type: object
+      description: Alert source information data
+      properties:
+        deviceUid:
           type: string
-          description: Unique alphanumeric UID of this site
-        accountUid:
+        deviceName:
           type: string
-          description: Unique alphanumeric UID of the account to which this site belongs
-        name:
+        siteUid:
           type: string
-        description:
+        siteName:
           type: string
-        dattoNetworkingNetworkIds:
-          type: array
-          items:
-            type: integer
-            format: int64
-        portalUrl:
+    AccountDevicesStatus:
+      type: object
+      description: Account Devices Status
+      properties:
+        numberOfDevices:
+          type: integer
+          format: int64
+        numberOfOnlineDevices:
+          type: integer
+          format: int64
+        numberOfOfflineDevices:
+          type: integer
+          format: int64
+        numberOfOnDemandDevices:
+          type: integer
+          format: int64
+        numberOfManagedDevices:
+          type: integer
+          format: int64
+    Antivirus:
+      type: object
+      description: Device antivirus data
+      properties:
+        antivirusProduct:
           type: string
-    SecurityManagementContext:
-      allOf:
-      - $ref: '#/components/schemas/AlertContext'
-      - type: object
-        properties:
-          status:
-            type: integer
-            format: int32
-          productName:
-            type: string
-          infoTime:
-            type: integer
-            format: int32
-          virusName:
-            type: string
-          infectedFiles:
-            type: array
-            items:
-              type: string
-          productNotUpdatedForDays:
-            type: integer
-            format: int32
-          systemRemainsInfectedForHours:
-            type: integer
-            format: int32
-          expiryLicenseForDays:
-            type: integer
-            format: int32
+        antivirusStatus:
+          type: string
+          enum:
+          - RunningAndUpToDate
+          - RunningAndNotUpToDate
+          - NotRunning
+          - NotDetected

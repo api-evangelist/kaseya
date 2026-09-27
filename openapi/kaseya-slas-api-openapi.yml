@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BMS API 2.0 SL As API
+  title: BMS API 2.0 SLAs API
   description: Documentation of APIs Version 2.0
   version: '2.0'
 servers:
@@ -47,6 +47,21 @@ components:
           items:
             $ref: '#/components/schemas/SLALookupOutputDto'
       additionalProperties: false
+    SLALookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+        IsActive:
+          type: boolean
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -71,21 +86,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    SLALookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsDefault:
-          type: boolean
-        IsActive:
-          type: boolean
       additionalProperties: false
   securitySchemes:
     bearerAuth:

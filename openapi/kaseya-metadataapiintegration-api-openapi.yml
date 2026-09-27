@@ -55,9 +55,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RestUserAccessLevel:
-      type: object
-      properties: {}
     GlobalEntityInformationResultModel:
       type: object
       properties:
@@ -66,6 +63,15 @@ components:
           items:
             $ref: '#/components/schemas/EntityInformationResultModel'
             readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
     EntityInformationModel:
       type: object
       properties:
@@ -101,10 +107,4 @@ components:
           readOnly: true
         supportsWebhookCallouts:
           type: boolean
-          readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true

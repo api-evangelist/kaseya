@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BMS API 2.0 K1 Access Controls API
+  title: BMS API 2.0 K1Access Controls API
   description: Documentation of APIs Version 2.0
   version: '2.0'
 servers:
@@ -248,44 +248,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    K1EnforceLoginExceptionDto:
+    K1AccessControlAccessGroupsOutputDtoListResponse:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        EmailAddress:
-          type:
-          - string
-          - 'null'
-        IsActive:
+        Success:
           type: boolean
-      additionalProperties: false
-    K1AccessControlMappingPostInputDto:
-      required:
-      - AccessGroupId
-      - AccessGroupName
-      - SecurityRoleIds
-      type: object
-      properties:
-        AccessGroupId:
-          minLength: 1
-          type: string
-        AccessGroupName:
-          minLength: 1
-          type: string
-        SecurityRoleIds:
-          type: array
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
           items:
-            type: integer
-            format: int32
-        Order:
-          type: integer
-          format: int32
+            $ref: '#/components/schemas/K1AccessControlAccessGroupsOutputDto'
       additionalProperties: false
     K1AccessControlMappingsOutputDtoListResponse:
       type: object
@@ -301,129 +277,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/K1AccessControlMappingsOutputDto'
-      additionalProperties: false
-    K1AccessControlMappingsOutputDto:
-      type: object
-      properties:
-        MappingId:
-          type: integer
-          format: int32
-        AccessGroupId:
-          type:
-          - string
-          - 'null'
-        AccessGroupName:
-          type:
-          - string
-          - 'null'
-        SecurityRoleIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        Order:
-          type: integer
-          format: int32
-      additionalProperties: false
-    K1AccessControlMappingPutInputDto:
-      required:
-      - AccessGroupId
-      - AccessGroupName
-      - Order
-      - SecurityRoleIds
-      type: object
-      properties:
-        AccessGroupId:
-          minLength: 1
-          type: string
-        AccessGroupName:
-          minLength: 1
-          type: string
-        SecurityRoleIds:
-          type: array
-          items:
-            type: integer
-            format: int32
-        Order:
-          type: integer
-          format: int32
-      additionalProperties: false
-    K1AccessControlSettingsOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/K1AccessControlSettingsOutputDto'
-      additionalProperties: false
-    K1AccessControlAccessGroupsOutputDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    K1AccessControlMappingOutputDto:
-      type: object
-      properties:
-        AccessGroupId:
-          type:
-          - string
-          - 'null'
-        MappingId:
-          type: integer
-          format: int32
-        AccessGroupName:
-          type:
-          - string
-          - 'null'
-        SecurityRoleIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        Order:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
       additionalProperties: false
     K1AccessControlSettingsInputDto:
       required:
@@ -488,16 +341,61 @@ components:
           - boolean
           - 'null'
       additionalProperties: false
-    K1AccessControlMappingOutputDtoResponse:
+    K1EnforceLoginExceptionDto:
       type: object
       properties:
-        Success:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        IsActive:
           type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/K1AccessControlMappingOutputDto'
+      additionalProperties: false
+    K1AccessControlMappingOutputDto:
+      type: object
+      properties:
+        AccessGroupId:
+          type:
+          - string
+          - 'null'
+        MappingId:
+          type: integer
+          format: int32
+        AccessGroupName:
+          type:
+          - string
+          - 'null'
+        SecurityRoleIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        Order:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    K1AccessControlAccessGroupsOutputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     K1AccessControlSettingsOutputDto:
       type: object
@@ -616,6 +514,28 @@ components:
           items:
             $ref: '#/components/schemas/K1EnforceLoginExceptionDto'
       additionalProperties: false
+    K1AccessControlSettingsLauncherOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/K1AccessControlSettingsLauncherOutputDto'
+      additionalProperties: false
+    K1AccessControlSettingsOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/K1AccessControlSettingsOutputDto'
+      additionalProperties: false
     K1AccessControlSettingsLauncherOutputDto:
       type: object
       properties:
@@ -628,22 +548,80 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    K1AccessControlAccessGroupsOutputDtoListResponse:
+    ErrorInfo:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/K1AccessControlAccessGroupsOutputDto'
+            type: string
       additionalProperties: false
-    K1AccessControlSettingsLauncherOutputDtoResponse:
+    K1AccessControlMappingPutInputDto:
+      required:
+      - AccessGroupId
+      - AccessGroupName
+      - Order
+      - SecurityRoleIds
+      type: object
+      properties:
+        AccessGroupId:
+          minLength: 1
+          type: string
+        AccessGroupName:
+          minLength: 1
+          type: string
+        SecurityRoleIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+        Order:
+          type: integer
+          format: int32
+      additionalProperties: false
+    K1AccessControlMappingsOutputDto:
+      type: object
+      properties:
+        MappingId:
+          type: integer
+          format: int32
+        AccessGroupId:
+          type:
+          - string
+          - 'null'
+        AccessGroupName:
+          type:
+          - string
+          - 'null'
+        SecurityRoleIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        Order:
+          type: integer
+          format: int32
+      additionalProperties: false
+    K1AccessControlMappingOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -652,7 +630,29 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/K1AccessControlSettingsLauncherOutputDto'
+          $ref: '#/components/schemas/K1AccessControlMappingOutputDto'
+      additionalProperties: false
+    K1AccessControlMappingPostInputDto:
+      required:
+      - AccessGroupId
+      - AccessGroupName
+      - SecurityRoleIds
+      type: object
+      properties:
+        AccessGroupId:
+          minLength: 1
+          type: string
+        AccessGroupName:
+          minLength: 1
+          type: string
+        SecurityRoleIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+        Order:
+          type: integer
+          format: int32
       additionalProperties: false
   securitySchemes:
     bearerAuth:

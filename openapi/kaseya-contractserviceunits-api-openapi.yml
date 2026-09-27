@@ -403,91 +403,27 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     Object:
       type: object
       properties: {}
-    FieldInformationResultModel:
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    QueryActionResult_ContractServiceUnitModel_ContractServiceUnit:
       type: object
       properties:
-        fields:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PickListValue:
+            $ref: '#/components/schemas/ContractServiceUnitModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    QueryCountResultModel:
       type: object
       properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        queryCount:
           format: int32
           type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -524,29 +460,36 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    ItemQueryResultModel_ContractServiceUnitModel_ContractServiceUnit:
+    FieldInformationModel:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/ContractServiceUnitModel'
-    Filter:
-      type: object
-      properties:
-        op:
+        name:
           type: string
-        field:
+        dataType:
           type: string
-        udf:
+        length:
+          format: int32
+          type: integer
+        isRequired:
           type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
           type: array
           items:
-            $ref: '#/components/schemas/Filter'
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -555,12 +498,6 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
     QueryModel:
       type: object
       properties:
@@ -584,15 +521,53 @@ components:
           value: 0
           udf: false
           items: []
-    QueryActionResult_ContractServiceUnitModel_ContractServiceUnit:
+    Filter:
       type: object
       properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
         items:
+          description: An Array of Filter objects
           type: array
           items:
-            $ref: '#/components/schemas/ContractServiceUnitModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
+            $ref: '#/components/schemas/Filter'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    ItemQueryResultModel_ContractServiceUnitModel_ContractServiceUnit:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ContractServiceUnitModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     ContractServiceUnitModel:
       type: object
       properties:
@@ -639,16 +614,20 @@ components:
           format: int64
           type: integer
           readOnly: true
-    FieldInformationModel:
+    Field:
       type: object
       properties:
         name:
           type: string
-        dataType:
+        label:
+          type: string
+        type:
           type: string
         length:
           format: int32
           type: integer
+        description:
+          type: string
         isRequired:
           type: boolean
         isReadOnly:
@@ -667,8 +646,29 @@ components:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
           type: string
+        defaultValue:
+          type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+    FieldInformationResultModel:
       type: object
-      properties: {}
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string

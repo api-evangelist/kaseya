@@ -926,107 +926,18 @@ paths:
     - url: https://api.bms.kaseya.com
 components:
   schemas:
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
     Object:
       type: object
       properties: {}
-    UserDefinedField:
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    QueryCountResultModel:
       type: object
       properties:
-        name:
-          type: string
-        value:
-          type: string
-    PagingModel:
-      type: object
-      properties:
-        count:
+        queryCount:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    QueryActionResult_OpportunityModel_Opportunity:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/OpportunityModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -1063,24 +974,36 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    Filter:
+    FieldInformationModel:
       type: object
       properties:
-        op:
+        name:
           type: string
-        field:
+        dataType:
           type: string
-        udf:
+        length:
+          format: int32
+          type: integer
+        isRequired:
           type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
           type: array
           items:
-            $ref: '#/components/schemas/Filter'
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -1089,12 +1012,6 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
     QueryModel:
       type: object
       properties:
@@ -1294,21 +1211,81 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserDefinedField'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     ItemQueryResultModel_OpportunityModel_Opportunity:
       type: object
       properties:
         item:
           $ref: '#/components/schemas/OpportunityModel'
-    FieldInformationModel:
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    QueryActionResult_OpportunityModel_Opportunity:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpportunityModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    Field:
       type: object
       properties:
         name:
           type: string
-        dataType:
+        label:
+          type: string
+        type:
           type: string
         length:
           format: int32
           type: integer
+        description:
+          type: string
         isRequired:
           type: boolean
         isReadOnly:
@@ -1327,32 +1304,40 @@ components:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
           type: string
+        defaultValue:
+          type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    OperationResultModel:
+    FieldInformationResultModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    OpportunityStatusLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
+        fields:
+          type: array
           items:
-            $ref: '#/components/schemas/OpportunityStatusLookupOutputDto'
-      additionalProperties: false
-    OpportunityNotePutInputDto:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    OpportunityNotePostInputDto:
       required:
       - Note
       type: object
@@ -1360,188 +1345,6 @@ components:
         Note:
           minLength: 1
           type: string
-      additionalProperties: false
-    OpportunityOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/OpportunityOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    OpportunityNoteOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/OpportunityNoteOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    OpportunityInputDto:
-      required:
-      - AccountId
-      - AccountLocationId
-      - Amount
-      - CloseDate
-      - Probability
-      - RatingId
-      - SalesRepresentativeUserId
-      - StatusId
-      - Subject
-      - TypeId
-      type: object
-      properties:
-        Subject:
-          minLength: 1
-          type: string
-        StatusId:
-          type: integer
-          format: int32
-        AccountId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        AccountLocationId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        ContactId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TypeId:
-          type: integer
-          format: int32
-        Probability:
-          type: number
-          format: double
-        RatingId:
-          type: integer
-          format: int32
-        LeadSourceId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SalesRepresentativeUserId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        Amount:
-          type: number
-          format: double
-        Description:
-          type:
-          - string
-          - 'null'
-        CustomerPO:
-          type:
-          - string
-          - 'null'
-        CloseDate:
-          type: string
-          format: date-time
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    OpportunityOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/OpportunityOutputDto'
-      additionalProperties: false
-    OpportunityNoteOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        CreatedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ModifiedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        Note:
-          type:
-          - string
-          - 'null'
-        CreatedByName:
-          type:
-          - string
-          - 'null'
-        ModifiedByName:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     OpportunityOutputDto:
       type: object
@@ -1666,7 +1469,125 @@ components:
           type: number
           format: double
       additionalProperties: false
-    OpportunityNotePostInputDto:
+    OpportunityOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/OpportunityOutputDto'
+      additionalProperties: false
+    OpportunityInputDto:
+      required:
+      - AccountId
+      - AccountLocationId
+      - Amount
+      - CloseDate
+      - Probability
+      - RatingId
+      - SalesRepresentativeUserId
+      - StatusId
+      - Subject
+      - TypeId
+      type: object
+      properties:
+        Subject:
+          minLength: 1
+          type: string
+        StatusId:
+          type: integer
+          format: int32
+        AccountId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        AccountLocationId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        ContactId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeId:
+          type: integer
+          format: int32
+        Probability:
+          type: number
+          format: double
+        RatingId:
+          type: integer
+          format: int32
+        LeadSourceId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesRepresentativeUserId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        Amount:
+          type: number
+          format: double
+        Description:
+          type:
+          - string
+          - 'null'
+        CustomerPO:
+          type:
+          - string
+          - 'null'
+        CloseDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    OpportunityNoteOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OpportunityNoteOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    OpportunityOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OpportunityOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    OpportunityNotePutInputDto:
       required:
       - Note
       type: object
@@ -1700,6 +1621,70 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    OpportunityNoteOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Note:
+          type:
+          - string
+          - 'null'
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        ModifiedByName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     OpportunityNoteOutputDtoResponse:
       type: object
       properties:
@@ -1710,6 +1695,21 @@ components:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
           $ref: '#/components/schemas/OpportunityNoteOutputDto'
+      additionalProperties: false
+    OpportunityStatusLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OpportunityStatusLookupOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

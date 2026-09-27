@@ -107,163 +107,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    WebhookDeliveryLogOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/WebhookDeliveryLogOutputDto'
-      additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    WebhookDeliveryLogListOutputDto:
-      type: object
-      properties:
-        Id:
-          type: string
-          format: uuid
-        IsReDelivered:
-          type: boolean
-        WebhookId:
-          type: integer
-          format: int32
-        EventId:
-          type: integer
-          format: int32
-        IsDelivered:
-          type: boolean
-        DeliveryDate:
-          type: string
-          format: date-time
-        CreatedOn:
-          type: string
-          format: date-time
-        CreatedBy:
-          type: integer
-          format: int32
-        ParentLogId:
-          type: string
-          format: uuid
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    WebhookDeliveryLogListFilterDto:
-      type: object
-      properties:
-        State:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        Id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        Events:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        FromDeliveryDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ToDeliveryDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    WebhookDeliveryLogListInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/WebhookDeliveryLogListFilterDto'
-      additionalProperties: false
-    WebhookDeliveryLogListOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/WebhookDeliveryLogListOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
     WebhookDeliveryLogOutputDto:
       type: object
       properties:
@@ -318,6 +161,163 @@ components:
           - string
           - 'null'
           format: uuid
+      additionalProperties: false
+    WebhookDeliveryLogListFilterDto:
+      type: object
+      properties:
+        State:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        Id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        Events:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        FromDeliveryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ToDeliveryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    WebhookDeliveryLogListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        IsReDelivered:
+          type: boolean
+        WebhookId:
+          type: integer
+          format: int32
+        EventId:
+          type: integer
+          format: int32
+        IsDelivered:
+          type: boolean
+        DeliveryDate:
+          type: string
+          format: date-time
+        CreatedOn:
+          type: string
+          format: date-time
+        CreatedBy:
+          type: integer
+          format: int32
+        ParentLogId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    WebhookDeliveryLogListOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WebhookDeliveryLogListOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    WebhookDeliveryLogOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WebhookDeliveryLogOutputDto'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    WebhookDeliveryLogListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/WebhookDeliveryLogListFilterDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

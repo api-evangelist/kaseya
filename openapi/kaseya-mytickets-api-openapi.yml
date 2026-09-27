@@ -249,99 +249,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    GetMyTicketsInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/MyTicketFilterDto'
-      additionalProperties: false
-    ClientPortalMyTicketFilterDto:
-      type: object
-      properties:
-        Title:
-          type:
-          - string
-          - 'null'
-        TicketNumber:
-          type:
-          - string
-          - 'null'
-        StatusNames:
-          type:
-          - string
-          - 'null'
-        PriorityNames:
-          type:
-          - string
-          - 'null'
-        TicketTypeNames:
-          type:
-          - string
-          - 'null'
-        IssueTypeNames:
-          type:
-          - string
-          - 'null'
-        ServiceLevelAgreementNames:
-          type:
-          - string
-          - 'null'
-        ExcludeCompleted:
-          type: integer
-          format: int32
-        OpenDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        OpenDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CompletedDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CompletedDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOnFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOnTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
     MyTicketFilterDto:
       type: object
       properties:
@@ -464,34 +371,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    ClientPortalMyTicketsInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/ClientPortalMyTicketFilterDto'
       additionalProperties: false
     MyTicketListDto:
       type: object
@@ -808,6 +687,127 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    ClientPortalMyTicketFilterDto:
+      type: object
+      properties:
+        Title:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        StatusNames:
+          type:
+          - string
+          - 'null'
+        PriorityNames:
+          type:
+          - string
+          - 'null'
+        TicketTypeNames:
+          type:
+          - string
+          - 'null'
+        IssueTypeNames:
+          type:
+          - string
+          - 'null'
+        ServiceLevelAgreementNames:
+          type:
+          - string
+          - 'null'
+        ExcludeCompleted:
+          type: integer
+          format: int32
+        OpenDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        OpenDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    GetMyTicketsInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/MyTicketFilterDto'
+      additionalProperties: false
+    ClientPortalMyTicketsInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/ClientPortalMyTicketFilterDto'
+      additionalProperties: false
     MyTicketListDtoIEnumerablePagedResponse:
       type: object
       properties:
@@ -825,6 +825,31 @@ components:
         TotalRecords:
           type: integer
           format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
     ClientPortalTicketListDto:
       type: object
@@ -970,31 +995,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
       additionalProperties: false
     ClientPortalTicketListDtoListPagedResponse:
       type: object

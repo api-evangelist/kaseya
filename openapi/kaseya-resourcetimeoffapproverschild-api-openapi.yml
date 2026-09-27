@@ -272,115 +272,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
     Object:
       type: object
       properties: {}
-    PagingModel:
+    RestUserAccessLevel:
       type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    ResourceTimeOffApproverModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        resourceID:
-          format: int32
-          type: integer
-        approverResourceID:
-          format: int32
-          type: integer
-        approvalLevel:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          format: int64
-          type: integer
-          readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    ItemQueryResultModel_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ResourceTimeOffApproverModel'
+      properties: {}
     QueryActionResult_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
       type: object
       properties:
@@ -426,17 +323,25 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    UserDefinedFieldInformationResultModel:
+    ResourceTimeOffApproverModel:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
+        id:
+          format: int64
+          type: integer
+        resourceID:
+          format: int32
+          type: integer
+        approverResourceID:
+          format: int32
+          type: integer
+        approvalLevel:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          format: int64
+          type: integer
+          readOnly: true
     FieldInformationModel:
       type: object
       properties:
@@ -467,3 +372,98 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    ItemQueryResultModel_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ResourceTimeOffApproverModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string

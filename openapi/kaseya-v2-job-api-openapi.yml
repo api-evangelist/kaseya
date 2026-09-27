@@ -461,20 +461,28 @@ paths:
                       $ref: '#/components/schemas/JobComponent'
 components:
   schemas:
-    PaginationData:
+    JobStdData:
       type: object
-      description: Pagination data
+      description: Job Std data
       properties:
-        count:
-          type: integer
-          format: int32
-        totalCount:
-          type: integer
-          format: int64
-        prevPageUrl:
+        componentUid:
           type: string
-        nextPageUrl:
+        componentName:
           type: string
+        stdData:
+          type: string
+    JobComponent:
+      type: object
+      description: Job component data
+      properties:
+        uid:
+          type: string
+        name:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobComponentVariable'
     ErrorResponse:
       description: Default error response body
       properties:
@@ -492,16 +500,6 @@ components:
         path:
           type: string
           description: Request path that produced the error
-    JobStdData:
-      type: object
-      description: Job Std data
-      properties:
-        componentUid:
-          type: string
-        componentName:
-          type: string
-        stdData:
-          type: string
     JobComponentVariable:
       type: object
       description: Job component variable data
@@ -512,18 +510,6 @@ components:
         value:
           type: string
           description: Value has to be convertible to the type specified in component variable
-    JobComponent:
-      type: object
-      description: Job component data
-      properties:
-        uid:
-          type: string
-        name:
-          type: string
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobComponentVariable'
     JobComponentResult:
       type: object
       description: Job component result data
@@ -544,3 +530,17 @@ components:
           type: boolean
         hasStdErr:
           type: boolean
+    PaginationData:
+      type: object
+      description: Pagination data
+      properties:
+        count:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string

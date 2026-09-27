@@ -55,6 +55,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AccountCodeLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AccountCodeLookupOutputDto'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -92,21 +107,6 @@ components:
           - 'null'
         IsActive:
           type: boolean
-      additionalProperties: false
-    AccountCodeLookupOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AccountCodeLookupOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

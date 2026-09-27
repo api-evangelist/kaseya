@@ -291,81 +291,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    HardwareAssetDiskVolumeDto:
+    Statuses:
       type: object
       properties:
-        Drive:
+        Message:
           type:
           - string
           - 'null'
-        Type:
+        Name:
           type:
           - string
           - 'null'
-        Format:
+        Color:
           type:
           - string
           - 'null'
-        FreeMBytes:
-          type: integer
-          format: int64
-        UsedMBytes:
-          type: integer
-          format: int64
-        TotalMBytes:
-          type: integer
-          format: int64
-        Label:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    HardwareAssetStatusOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/HardwareAssetStatusOutputDto'
-      additionalProperties: false
-    TicketListDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketListDto'
-      additionalProperties: false
-    HardwareAssetsListSearchSelectOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/HardwareAssetsListSearchSelectOutputDto'
-      additionalProperties: false
-    HardwareAssetStatusOutputDto:
-      type: object
-      properties:
-        IsOnline:
-          type: boolean
       additionalProperties: false
     HardwareAssetsListSearchSelectOutputDto:
       type: object
@@ -739,31 +679,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     HardwareAssetInputDto:
       required:
       - AccountId
@@ -1021,6 +936,118 @@ components:
           - string
           - 'null'
           format: date-time
+      additionalProperties: false
+    HardwareAssetStatusOutputDto:
+      type: object
+      properties:
+        IsOnline:
+          type: boolean
+      additionalProperties: false
+    HardwareAssetsListSearchSelectOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/HardwareAssetsListSearchSelectOutputDto'
+      additionalProperties: false
+    HardwareAssetOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/HardwareAssetOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    TicketListDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketListDto'
+      additionalProperties: false
+    HardwareAssetDiskVolumeDto:
+      type: object
+      properties:
+        Drive:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+        Format:
+          type:
+          - string
+          - 'null'
+        FreeMBytes:
+          type: integer
+          format: int64
+        UsedMBytes:
+          type: integer
+          format: int64
+        TotalMBytes:
+          type: integer
+          format: int64
+        Label:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    HardwareAssetStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/HardwareAssetStatusOutputDto'
       additionalProperties: false
     HardwareAssetOutputDto:
       type: object
@@ -1379,33 +1406,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/Statuses'
-      additionalProperties: false
-    HardwareAssetOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/HardwareAssetOutputDto'
-      additionalProperties: false
-    Statuses:
-      type: object
-      properties:
-        Message:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Color:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

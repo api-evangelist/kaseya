@@ -500,6 +500,9 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Object:
+      type: object
+      properties: {}
     Expression:
       type: object
       properties:
@@ -598,7 +601,10 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    ParameterExpression:
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    Expression_Func_QuoteItem_Int64:
       type: object
       properties:
         type:
@@ -693,105 +699,26 @@ components:
           - IsFalse
           type: string
           readOnly: true
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParameterExpression'
+          readOnly: true
         name:
           type: string
           readOnly: true
-        isByRef:
+        body:
+          $ref: '#/components/schemas/Expression'
+          readOnly: true
+        returnType:
+          type: string
+          readOnly: true
+        tailCall:
           type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_QuoteItemModel_QuoteItem:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/QuoteItemModel'
-    Object:
-      type: object
-      properties: {}
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     QueryActionResult_QuoteItemModel_QuoteItem:
       type: object
       properties:
@@ -837,14 +764,6 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
     QuoteItemModel:
       type: object
       properties:
@@ -967,15 +886,15 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    OperationResultModel:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    Expression_Func_QuoteItem_Int64:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    ParameterExpression:
       type: object
       properties:
         type:
@@ -1070,23 +989,104 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        parameters:
-          type: array
-          items:
-            $ref: '#/components/schemas/ParameterExpression'
-          readOnly: true
         name:
           type: string
           readOnly: true
-        body:
-          $ref: '#/components/schemas/Expression'
-          readOnly: true
-        returnType:
-          type: string
-          readOnly: true
-        tailCall:
+        isByRef:
           type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    ItemQueryResultModel_QuoteItemModel_QuoteItem:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/QuoteItemModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string

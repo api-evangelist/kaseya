@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: BMS API 2.0 K1 Cooper Bots API
+  title: BMS API 2.0 K1Cooper Bots API
   description: Documentation of APIs Version 2.0
   version: '2.0'
 servers:
@@ -251,7 +251,7 @@ paths:
     get:
       tags:
       - K1CooperBots
-      operationId: GetK1TicketStatusesLookup
+      operationId: getV2KaseyaOneTicketsStatusesLookupById
       parameters:
       - name: id
         in: path
@@ -274,8 +274,24 @@ paths:
                 $ref: '#/components/schemas/K1LookupOutputDto'
       summary: Get K1 ticket statuses lookup
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: GetK1TicketStatusesLookup
 components:
   schemas:
+    K1LookupOutputResponseDto:
+      type: object
+      properties:
+        Value:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/K1LookupOutputDto'
+        Next_link:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     K1RolesLookupInputDto:
       type: object
       properties:
@@ -294,16 +310,10 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    K1LookupOutputResponseDto:
+    K1SearchCriteriaDto:
       type: object
       properties:
-        Value:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/K1LookupOutputDto'
-        Next_link:
+        term:
           type:
           - string
           - 'null'
@@ -341,14 +351,6 @@ components:
           - 'null'
         search:
           $ref: '#/components/schemas/K1SearchCriteriaDto'
-      additionalProperties: false
-    K1SearchCriteriaDto:
-      type: object
-      properties:
-        term:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

@@ -117,6 +117,70 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ShiftDetailEntry:
+      type: object
+      properties:
+        FromTime:
+          type:
+          - string
+          - 'null'
+        ToTime:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    WorkforcePlannerPeriodPutInputDto:
+      type: object
+      properties:
+        TaskMemberhourId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        FromDate:
+          type: string
+          format: date-time
+        ToDate:
+          type: string
+          format: date-time
+        AssigneeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    WorkforcePlannerListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PageNumber:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/WorkforcePlannerListFilterDto'
+      additionalProperties: false
     WorkforcePlannerListOutputDtoListResponse:
       type: object
       properties:
@@ -193,38 +257,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/WorkforcePlannerTasksDto'
-      additionalProperties: false
-    WorkforcePlannerListInputDto:
-      type: object
-      properties:
-        PageSize:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        PageNumber:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/WorkforcePlannerListFilterDto'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -336,38 +368,6 @@ components:
           items:
             type: integer
             format: int32
-      additionalProperties: false
-    WorkforcePlannerPeriodPutInputDto:
-      type: object
-      properties:
-        TaskMemberhourId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        FromDate:
-          type: string
-          format: date-time
-        ToDate:
-          type: string
-          format: date-time
-        AssigneeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    ShiftDetailEntry:
-      type: object
-      properties:
-        FromTime:
-          type:
-          - string
-          - 'null'
-        ToTime:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     WorkforcePlannerListFilterDto:
       type: object

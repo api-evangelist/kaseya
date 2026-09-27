@@ -262,17 +262,29 @@ components:
           type: string
       required:
       - '@class'
-    AlertSourceInfo:
+    ResponseAction:
       type: object
-      description: Alert source information data
       properties:
-        deviceUid:
+        actionTime:
           type: string
-        deviceName:
+          format: date-time
+        actionType:
           type: string
-        siteUid:
+          enum:
+          - EMAIL_SENT
+          - EMAIL_SEND_ERROR
+          - TICKET_PENDING
+          - TICKET_CREATED
+          - TICKET_CREATION_ERROR
+          - TICKET_CLOSED_CALL
+          - COMPONENT
+          - WEBHOOK_EXECUTED
+          - WEBHOOK_EXECUTION_ERROR
+        description:
           type: string
-        siteName:
+        actionReference:
+          type: string
+        actionReferenceInt:
           type: string
     ErrorResponse:
       description: Default error response body
@@ -299,27 +311,15 @@ components:
           type: boolean
         createsTicket:
           type: boolean
-    ResponseAction:
+    AlertSourceInfo:
       type: object
+      description: Alert source information data
       properties:
-        actionTime:
+        deviceUid:
           type: string
-          format: date-time
-        actionType:
+        deviceName:
           type: string
-          enum:
-          - EMAIL_SENT
-          - EMAIL_SEND_ERROR
-          - TICKET_PENDING
-          - TICKET_CREATED
-          - TICKET_CREATION_ERROR
-          - TICKET_CLOSED_CALL
-          - COMPONENT
-          - WEBHOOK_EXECUTED
-          - WEBHOOK_EXECUTION_ERROR
-        description:
+        siteUid:
           type: string
-        actionReference:
-          type: string
-        actionReferenceInt:
+        siteName:
           type: string

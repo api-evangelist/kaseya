@@ -82,6 +82,13 @@ components:
           items:
             type: string
       additionalProperties: false
+    LogTypeEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
     JobLogsDto:
       type: object
       properties:
@@ -120,13 +127,6 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    LogTypeEnum:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
   securitySchemes:
     bearerAuth:
       type: http

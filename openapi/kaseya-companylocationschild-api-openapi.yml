@@ -500,6 +500,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Object:
+      type: object
+      properties: {}
+    RestUserAccessLevel:
+      type: object
+      properties: {}
     Expression:
       type: object
       properties:
@@ -597,6 +603,145 @@ components:
           readOnly: true
         canReduce:
           type: boolean
+          readOnly: true
+    QueryActionResult_CompanyLocationModel_AccountPhysicalLocation:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompanyLocationModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    ItemQueryResultModel_CompanyLocationModel_AccountPhysicalLocation:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/CompanyLocationModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    CompanyLocationModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        address1:
+          type: string
+        address2:
+          type: string
+        alternatePhone1:
+          type: string
+        alternatePhone2:
+          type: string
+        city:
+          type: string
+        companyID:
+          format: int32
+          type: integer
+        countryID:
+          format: int32
+          type: integer
+        description:
+          type: string
+        fax:
+          type: string
+        isActive:
+          type: boolean
+        isPrimary:
+          type: boolean
+        isTaxExempt:
+          type: boolean
+        overrideCompanyTaxSettings:
+          type: boolean
+        name:
+          type: string
+        phone:
+          type: string
+        postalCode:
+          type: string
+        roundtripDistance:
+          format: double
+          type: number
+        state:
+          type: string
+        taxRegionID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_AccountPhysicalLocation_Int64'
           readOnly: true
     ParameterExpression:
       type: object
@@ -702,6 +847,11 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     Expression_Func_AccountPhysicalLocation_Int64:
       type: object
       properties:
@@ -817,6 +967,30 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -853,15 +1027,14 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
+    FieldInformationResultModel:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    Object:
-      type: object
-      properties: {}
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     PagingModel:
       type: object
       properties:
@@ -876,176 +1049,3 @@ components:
           type: string
         nextPageUrl:
           type: string
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    ItemQueryResultModel_CompanyLocationModel_AccountPhysicalLocation:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/CompanyLocationModel'
-    CompanyLocationModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        address1:
-          type: string
-        address2:
-          type: string
-        alternatePhone1:
-          type: string
-        alternatePhone2:
-          type: string
-        city:
-          type: string
-        companyID:
-          format: int32
-          type: integer
-        countryID:
-          format: int32
-          type: integer
-        description:
-          type: string
-        fax:
-          type: string
-        isActive:
-          type: boolean
-        isPrimary:
-          type: boolean
-        isTaxExempt:
-          type: boolean
-        overrideCompanyTaxSettings:
-          type: boolean
-        name:
-          type: string
-        phone:
-          type: string
-        postalCode:
-          type: string
-        roundtripDistance:
-          format: double
-          type: number
-        state:
-          type: string
-        taxRegionID:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_AccountPhysicalLocation_Int64'
-          readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    QueryActionResult_CompanyLocationModel_AccountPhysicalLocation:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompanyLocationModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'

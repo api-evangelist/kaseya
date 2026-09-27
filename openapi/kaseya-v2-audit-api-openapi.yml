@@ -570,179 +570,13 @@ components:
           format: int32
         datastores:
           type: string
-    Bios:
+    Printer:
       type: object
-      description: Bios audit data
+      description: Printer audit data
       properties:
-        instance:
-          type: string
-        releaseDate:
-          type: string
-          format: date-time
-        serialNumber:
-          type: string
-        smBiosVersion:
-          type: string
-    PrinterSystemInfo:
-      type: object
-      description: Printer system info audit data
-      properties:
-        manufacturer:
-          type: string
-        model:
-          type: string
-    LogicalDisk:
-      type: object
-      description: Logical disk audit data
-      properties:
-        description:
-          type: string
-        diskIdentifier:
-          type: string
-        freespace:
+        printedPageCount:
           type: integer
           format: int64
-        size:
-          type: integer
-          format: int64
-    VideoBoard:
-      type: object
-      description: Videoboard audit data
-      properties:
-        displayAdapter:
-          type: string
-    Processor:
-      type: object
-      description: Processor audit data
-      properties:
-        name:
-          type: string
-    MobileInfo:
-      type: object
-      description: Mobile info audit data
-      properties:
-        iccid:
-          type: string
-        imei:
-          type: string
-        number:
-          type: string
-        operator:
-          type: string
-    SystemInfo:
-      type: object
-      description: System info audit data
-      properties:
-        manufacturer:
-          type: string
-        model:
-          type: string
-        totalPhysicalMemory:
-          type: integer
-          format: int64
-        username:
-          type: string
-        dotNetVersion:
-          type: string
-        totalCpuCores:
-          type: integer
-          format: int32
-    ESXiProcessor:
-      type: object
-      description: ESXi processor audit data
-      properties:
-        frequency:
-          type: number
-          format: double
-        name:
-          type: string
-        numberOfCores:
-          type: integer
-          format: int32
-    ESXiDataExtent:
-      type: object
-      description: Data extent audit data
-      properties:
-        name:
-          type: string
-        size:
-          type: integer
-          format: int64
-        mediaType:
-          type: string
-        status:
-          type: string
-    BaseBoard:
-      type: object
-      description: Baseboard audit data
-      properties:
-        manufacturer:
-          type: string
-        product:
-          type: string
-    ESXiSystemInfo:
-      type: object
-      description: ESXi host system info audit data
-      properties:
-        manufacturer:
-          type: string
-        model:
-          type: string
-        name:
-          type: string
-        numberOfSnapshots:
-          type: integer
-          format: int32
-        serviceTag:
-          type: string
-    ESXiDatastore:
-      type: object
-      description: ESXi datastore audit data
-      properties:
-        datastoreName:
-          type: string
-        subscriptionPercent:
-          type: integer
-          format: int32
-        freeSpace:
-          type: integer
-          format: int64
-        size:
-          type: integer
-          format: int64
-        fileSystem:
-          type: string
-        status:
-          type: string
-        dataExtents:
-          type: array
-          items:
-            $ref: '#/components/schemas/ESXiDataExtent'
-    ErrorResponse:
-      description: Default error response body
-      properties:
-        timestamp:
-          type: integer
-          format: int64
-          description: Epoch millis when the error occurred
-        status:
-          type: integer
-          format: int32
-          description: HTTP status code
-        error:
-          type: string
-          description: HTTP reason phrase
-        path:
-          type: string
-          description: Request path that produced the error
-    Software:
-      type: object
-      description: Software audit data
-      properties:
-        name:
-          type: string
-        version:
-          type: string
     SnmpInfo:
       type: object
       description: SNMP info audit data
@@ -763,31 +597,73 @@ components:
           type: string
         snmpSerial:
           type: string
-    PrinterMarkerSupply:
+    ESXiSystemInfo:
       type: object
-      description: Printer marker supply audit data
+      description: ESXi host system info audit data
+      properties:
+        manufacturer:
+          type: string
+        model:
+          type: string
+        name:
+          type: string
+        numberOfSnapshots:
+          type: integer
+          format: int32
+        serviceTag:
+          type: string
+    LogicalDisk:
+      type: object
+      description: Logical disk audit data
       properties:
         description:
           type: string
-        maxCapacity:
+        diskIdentifier:
           type: string
-        suppliesLevel:
-          type: string
-    ESXiNic:
+        freespace:
+          type: integer
+          format: int64
+        size:
+          type: integer
+          format: int64
+    Display:
       type: object
-      description: ESXi newtwork adapter audit data
+      description: Display audit data
+      properties:
+        instance:
+          type: string
+        screenHeight:
+          type: integer
+          format: int32
+        screenWidth:
+          type: integer
+          format: int32
+    Processor:
+      type: object
+      description: Processor audit data
       properties:
         name:
           type: string
-        ipv4:
+    AttachedDevice:
+      type: object
+      description: Attached device audit data
+      properties:
+        deviceName:
           type: string
-        ipv6:
+        deviceType:
           type: string
-        macAddress:
+        driverFile:
           type: string
-        speed:
+        driverFileLastModified:
           type: string
-        type:
+          format: date-time
+        driverManufacturer:
+          type: string
+        driverName:
+          type: string
+        driverVersion:
+          type: string
+        portName:
           type: string
     DeviceAudit:
       type: object
@@ -837,59 +713,183 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PhysicalMemory'
-    Display:
+    ESXiProcessor:
       type: object
-      description: Display audit data
+      description: ESXi processor audit data
+      properties:
+        frequency:
+          type: number
+          format: double
+        name:
+          type: string
+        numberOfCores:
+          type: integer
+          format: int32
+    PrinterMarkerSupply:
+      type: object
+      description: Printer marker supply audit data
+      properties:
+        description:
+          type: string
+        maxCapacity:
+          type: string
+        suppliesLevel:
+          type: string
+    NetworkInterface:
+      type: object
+      description: Network interface audit data
       properties:
         instance:
           type: string
-        screenHeight:
-          type: integer
-          format: int32
-        screenWidth:
-          type: integer
-          format: int32
-    PaginationData:
+        ipv4:
+          type: string
+        ipv6:
+          type: string
+        macAddress:
+          type: string
+        type:
+          type: string
+    BaseBoard:
       type: object
-      description: Pagination data
+      description: Baseboard audit data
       properties:
-        count:
+        manufacturer:
+          type: string
+        product:
+          type: string
+    ESXiNic:
+      type: object
+      description: ESXi newtwork adapter audit data
+      properties:
+        name:
+          type: string
+        ipv4:
+          type: string
+        ipv6:
+          type: string
+        macAddress:
+          type: string
+        speed:
+          type: string
+        type:
+          type: string
+    ESXiDatastore:
+      type: object
+      description: ESXi datastore audit data
+      properties:
+        datastoreName:
+          type: string
+        subscriptionPercent:
           type: integer
           format: int32
-        totalCount:
+        freeSpace:
           type: integer
           format: int64
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Printer:
-      type: object
-      description: Printer audit data
-      properties:
-        printedPageCount:
+        size:
           type: integer
           format: int64
-    AttachedDevice:
+        fileSystem:
+          type: string
+        status:
+          type: string
+        dataExtents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ESXiDataExtent'
+    Software:
       type: object
-      description: Attached device audit data
+      description: Software audit data
       properties:
-        deviceName:
+        name:
           type: string
-        deviceType:
+        version:
           type: string
-        driverFile:
+    PrinterSystemInfo:
+      type: object
+      description: Printer system info audit data
+      properties:
+        manufacturer:
           type: string
-        driverFileLastModified:
+        model:
+          type: string
+    SystemInfo:
+      type: object
+      description: System info audit data
+      properties:
+        manufacturer:
+          type: string
+        model:
+          type: string
+        totalPhysicalMemory:
+          type: integer
+          format: int64
+        username:
+          type: string
+        dotNetVersion:
+          type: string
+        totalCpuCores:
+          type: integer
+          format: int32
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
+    Bios:
+      type: object
+      description: Bios audit data
+      properties:
+        instance:
+          type: string
+        releaseDate:
           type: string
           format: date-time
-        driverManufacturer:
+        serialNumber:
           type: string
-        driverName:
+        smBiosVersion:
           type: string
-        driverVersion:
+    VideoBoard:
+      type: object
+      description: Videoboard audit data
+      properties:
+        displayAdapter:
           type: string
-        portName:
+    ESXiDataExtent:
+      type: object
+      description: Data extent audit data
+      properties:
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        mediaType:
+          type: string
+        status:
+          type: string
+    MobileInfo:
+      type: object
+      description: Mobile info audit data
+      properties:
+        iccid:
+          type: string
+        imei:
+          type: string
+        number:
+          type: string
+        operator:
           type: string
     PhysicalMemory:
       type: object
@@ -910,17 +910,17 @@ components:
           type: string
         bank:
           type: string
-    NetworkInterface:
+    PaginationData:
       type: object
-      description: Network interface audit data
+      description: Pagination data
       properties:
-        instance:
+        count:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+        prevPageUrl:
           type: string
-        ipv4:
-          type: string
-        ipv6:
-          type: string
-        macAddress:
-          type: string
-        type:
+        nextPageUrl:
           type: string

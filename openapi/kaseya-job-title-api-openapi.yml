@@ -32,6 +32,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    JobTitleLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -56,19 +69,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    JobTitleLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
       additionalProperties: false
     JobTitleLookupOutputDtoListResponse:
       type: object

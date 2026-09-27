@@ -501,32 +501,6 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
     QueryModel:
       type: object
       properties:
@@ -550,110 +524,6 @@ components:
           value: 0
           udf: false
           items: []
-    ParameterExpression:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        isByRef:
-          type: boolean
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
     FieldInformationResultModel:
       type: object
       properties:
@@ -662,42 +532,157 @@ components:
           items:
             $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
-    EntityInformationModel:
+    PagingModel:
       type: object
       properties:
-        name:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
           type: string
-          readOnly: true
-        canCreate:
+        nextPageUrl:
+          type: string
+    ItemQueryResultModel_InventoryStockedItemModel_InventoryStockedItem:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/InventoryStockedItemModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
           type: boolean
-          readOnly: true
-        canDelete:
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
           type: boolean
-          readOnly: true
-        canQuery:
+        isSystem:
           type: boolean
+    InventoryStockedItemModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        availableUnits:
+          format: int32
+          type: integer
+        companyID:
+          format: int32
+          type: integer
+        configurationItemID:
+          format: int32
+          type: integer
+        createDateTime:
+          format: date-time
+          type: string
+        createdByResourceID:
+          format: int32
+          type: integer
+        currentInventoryLocationID:
+          format: int32
+          type: integer
+        deliveredUnits:
+          format: int32
+          type: integer
+        inventoryProductID:
+          format: int32
+          type: integer
+        purchaseOrderItemReceivingID:
+          format: int32
+          type: integer
+        onHandUnits:
+          format: int32
+          type: integer
+        parentInventoryStockedItemID:
+          format: int32
+          type: integer
+        pickedRemovedByResourceID:
+          format: int32
+          type: integer
+        pickedRemovedDateTime:
+          format: date-time
+          type: string
+        pickedUnits:
+          format: int32
+          type: integer
+        purchaseOrderID:
+          format: int32
+          type: integer
+        purchaseOrderItemID:
+          format: int32
+          type: integer
+        quoteItemID:
+          format: int32
+          type: integer
+        removedUnits:
+          format: int32
+          type: integer
+        reservedUnits:
+          format: int32
+          type: integer
+        returnPrice:
+          format: double
+          type: number
+        returnTypeID:
+          format: int32
+          type: integer
+        serialNumber:
+          type: string
+        statusID:
+          format: int32
+          type: integer
+        transferredUnits:
+          format: int32
+          type: integer
+        unitCost:
+          format: double
+          type: number
+        vendorID:
+          format: int32
+          type: integer
+        vendorInvoiceNumber:
+          type: string
+        parentStockedItemReceivedUnits:
+          format: int32
+          type: integer
+        contractChargeID:
+          format: int32
+          type: integer
+        projectChargeID:
+          format: int32
+          type: integer
+        ticketChargeID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_InventoryStockedItem_Int64'
           readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
     Filter:
       type: object
       properties:
@@ -716,36 +701,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    FieldInformationModel:
+    QueryActionResult_InventoryStockedItemModel_InventoryStockedItem:
       type: object
       properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
+            $ref: '#/components/schemas/InventoryStockedItemModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
     Expression_Func_InventoryStockedItem_Int64:
       type: object
       properties:
@@ -861,109 +831,182 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    InventoryStockedItemModel:
+    Object:
       type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        availableUnits:
-          format: int32
-          type: integer
-        companyID:
-          format: int32
-          type: integer
-        configurationItemID:
-          format: int32
-          type: integer
-        createDateTime:
-          format: date-time
-          type: string
-        createdByResourceID:
-          format: int32
-          type: integer
-        currentInventoryLocationID:
-          format: int32
-          type: integer
-        deliveredUnits:
-          format: int32
-          type: integer
-        inventoryProductID:
-          format: int32
-          type: integer
-        purchaseOrderItemReceivingID:
-          format: int32
-          type: integer
-        onHandUnits:
-          format: int32
-          type: integer
-        parentInventoryStockedItemID:
-          format: int32
-          type: integer
-        pickedRemovedByResourceID:
-          format: int32
-          type: integer
-        pickedRemovedDateTime:
-          format: date-time
-          type: string
-        pickedUnits:
-          format: int32
-          type: integer
-        purchaseOrderID:
-          format: int32
-          type: integer
-        purchaseOrderItemID:
-          format: int32
-          type: integer
-        quoteItemID:
-          format: int32
-          type: integer
-        removedUnits:
-          format: int32
-          type: integer
-        reservedUnits:
-          format: int32
-          type: integer
-        returnPrice:
-          format: double
-          type: number
-        returnTypeID:
-          format: int32
-          type: integer
-        serialNumber:
-          type: string
-        statusID:
-          format: int32
-          type: integer
-        transferredUnits:
-          format: int32
-          type: integer
-        unitCost:
-          format: double
-          type: number
-        vendorID:
-          format: int32
-          type: integer
-        vendorInvoiceNumber:
-          type: string
-        parentStockedItemReceivedUnits:
-          format: int32
-          type: integer
-        contractChargeID:
-          format: int32
-          type: integer
-        projectChargeID:
-          format: int32
-          type: integer
-        ticketChargeID:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_InventoryStockedItem_Int64'
-          readOnly: true
+      properties: {}
     RestUserAccessLevel:
       type: object
       properties: {}
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    ParameterExpression:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        isByRef:
+          type: boolean
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
     Field:
       type: object
       properties:
@@ -1000,46 +1043,3 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    Object:
-      type: object
-      properties: {}
-    QueryActionResult_InventoryStockedItemModel_InventoryStockedItem:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/InventoryStockedItemModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    ItemQueryResultModel_InventoryStockedItemModel_InventoryStockedItem:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/InventoryStockedItemModel'
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer

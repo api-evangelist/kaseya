@@ -403,105 +403,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ItemQueryResultModel_DeletedTicketActivityLogModel_DeletedTicketActivityLog:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/DeletedTicketActivityLogModel'
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
     Object:
       type: object
       properties: {}
-    PagingModel:
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    QueryCountResultModel:
       type: object
       properties:
-        count:
+        queryCount:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    QueryActionResult_DeletedTicketActivityLogModel_DeletedTicketActivityLog:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeletedTicketActivityLogModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
     EntityInformationModel:
       type: object
       properties:
@@ -538,24 +451,36 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    Filter:
+    FieldInformationModel:
       type: object
       properties:
-        op:
+        name:
           type: string
-        field:
+        dataType:
           type: string
-        udf:
+        length:
+          format: int32
+          type: integer
+        isRequired:
           type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
           type: array
           items:
-            $ref: '#/components/schemas/Filter'
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -564,12 +489,15 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    QueryCountResultModel:
+    QueryActionResult_DeletedTicketActivityLogModel_DeletedTicketActivityLog:
       type: object
       properties:
-        queryCount:
-          format: int32
-          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeletedTicketActivityLogModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     QueryModel:
       type: object
       properties:
@@ -593,6 +521,111 @@ components:
           value: 0
           udf: false
           items: []
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    ItemQueryResultModel_DeletedTicketActivityLogModel_DeletedTicketActivityLog:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/DeletedTicketActivityLogModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     DeletedTicketActivityLogModel:
       type: object
       properties:
@@ -630,36 +663,3 @@ components:
         deletedDateTime:
           format: date-time
           type: string
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
