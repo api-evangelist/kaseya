@@ -278,6 +278,26 @@ paths:
       x-operation-id-original: GetK1TicketStatusesLookup
 components:
   schemas:
+    K1LookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Value:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     K1LookupOutputResponseDto:
       type: object
       properties:
@@ -291,6 +311,20 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    K1LookupInputDto:
+      type: object
+      properties:
+        InstanceId:
+          type:
+          - string
+          - 'null'
+        KaseyaOneOrganizationId:
+          type:
+          - string
+          - 'null'
+        search:
+          $ref: '#/components/schemas/K1SearchCriteriaDto'
       additionalProperties: false
     K1RolesLookupInputDto:
       type: object
@@ -317,40 +351,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    K1LookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Value:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    K1LookupInputDto:
-      type: object
-      properties:
-        InstanceId:
-          type:
-          - string
-          - 'null'
-        KaseyaOneOrganizationId:
-          type:
-          - string
-          - 'null'
-        search:
-          $ref: '#/components/schemas/K1SearchCriteriaDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

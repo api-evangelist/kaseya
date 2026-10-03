@@ -32,21 +32,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SurveySettingsOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SurveySettingsOutputDto'
-      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -84,6 +69,21 @@ components:
           - 'null'
         IsActive:
           type: boolean
+      additionalProperties: false
+    SurveySettingsOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SurveySettingsOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

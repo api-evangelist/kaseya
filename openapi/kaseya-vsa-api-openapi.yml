@@ -40,25 +40,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    VSAAccessInfoDto:
-      type: object
-      properties:
-        Target:
-          type:
-          - string
-          - 'null'
-        Status:
-          $ref: '#/components/schemas/KLCStatus'
-        AccessToken:
-          type:
-          - string
-          - 'null'
-        ExpiresOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
     VSAAccessInfoDtoResponse:
       type: object
       properties:
@@ -105,6 +86,25 @@ components:
       - 5
       type: integer
       format: int32
+    VSAAccessInfoDto:
+      type: object
+      properties:
+        Target:
+          type:
+          - string
+          - 'null'
+        Status:
+          $ref: '#/components/schemas/KLCStatus'
+        AccessToken:
+          type:
+          - string
+          - 'null'
+        ExpiresOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
   securitySchemes:
     bearerAuth:
       type: http

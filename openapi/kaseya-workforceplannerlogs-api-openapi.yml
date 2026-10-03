@@ -46,6 +46,92 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    WorkforcePlannerLogListFilter:
+      type: object
+      properties:
+        EventIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        Creator:
+          type:
+          - string
+          - 'null'
+        TimestampFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        TimestampTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ProjectName:
+          type:
+          - string
+          - 'null'
+        TaskTitle:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    WorkforcePlannerLogListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/WorkforcePlannerLogListFilter'
+      additionalProperties: false
     WorkforcePlannerLogListOutputDto:
       type: object
       properties:
@@ -83,39 +169,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    WorkforcePlannerLogListFilter:
-      type: object
-      properties:
-        EventIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        Creator:
-          type:
-          - string
-          - 'null'
-        TimestampFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        TimestampTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ProjectName:
-          type:
-          - string
-          - 'null'
-        TaskTitle:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     WorkforcePlannerLogListOutputDtoListPagedResponse:
       type: object
       properties:
@@ -133,59 +186,6 @@ components:
         TotalRecords:
           type: integer
           format: int32
-      additionalProperties: false
-    WorkforcePlannerLogListInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/WorkforcePlannerLogListFilter'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
       additionalProperties: false
   securitySchemes:
     bearerAuth:

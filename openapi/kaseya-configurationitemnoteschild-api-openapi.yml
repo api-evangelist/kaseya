@@ -443,9 +443,11 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Object:
+    OperationResultModel:
       type: object
-      properties: {}
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     Expression:
       type: object
       properties:
@@ -547,6 +549,14 @@ components:
     RestUserAccessLevel:
       type: object
       properties: {}
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
     Expression_Func_InstalledProductNote_Int64:
       type: object
       properties:
@@ -662,123 +672,23 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    QueryActionResult_ConfigurationItemNoteModel_InstalledProductNote:
+    PagingModel:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConfigurationItemNoteModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    EntityInformationModel:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Object:
       type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    ConfigurationItemNoteModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        configurationItemID:
-          format: int32
-          type: integer
-        createDateTime:
-          format: date-time
-          type: string
-        creatorResourceID:
-          format: int32
-          type: integer
-        description:
-          type: string
-        impersonatorCreatorResourceID:
-          format: int32
-          type: integer
-        impersonatorUpdaterResourceID:
-          format: int32
-          type: integer
-        lastActivityDate:
-          format: date-time
-          type: string
-        noteType:
-          format: int32
-          type: integer
-        title:
-          type: string
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_InstalledProductNote_Int64'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
+      properties: {}
     ParameterExpression:
       type: object
       properties:
@@ -883,35 +793,50 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
     EntityInformationResultModel:
       type: object
       properties:
         info:
           $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true
-    PickListValue:
+    FieldInformationModel:
       type: object
       properties:
-        value:
+        name:
           type: string
-        label:
+        dataType:
           type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        length:
           format: int32
           type: integer
-        parentValue:
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
           type: string
-        isActive:
+        isPickList:
           type: boolean
-        isSystem:
-          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     Field:
       type: object
       properties:
@@ -948,30 +873,105 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     ItemQueryResultModel_ConfigurationItemNoteModel_InstalledProductNote:
       type: object
       properties:
         item:
           $ref: '#/components/schemas/ConfigurationItemNoteModel'
+    ConfigurationItemNoteModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        configurationItemID:
+          format: int32
+          type: integer
+        createDateTime:
+          format: date-time
+          type: string
+        creatorResourceID:
+          format: int32
+          type: integer
+        description:
+          type: string
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        impersonatorUpdaterResourceID:
+          format: int32
+          type: integer
+        lastActivityDate:
+          format: date-time
+          type: string
+        noteType:
+          format: int32
+          type: integer
+        title:
+          type: string
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_InstalledProductNote_Int64'
+          readOnly: true
+    QueryActionResult_ConfigurationItemNoteModel_InstalledProductNote:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationItemNoteModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true

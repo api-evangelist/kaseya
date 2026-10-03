@@ -165,6 +165,9 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Byte:
+      type: object
+      properties: {}
     InvoiceMarkupResultModel:
       type: object
       properties:
@@ -192,6 +195,3 @@ components:
           items:
             $ref: '#/components/schemas/Byte'
             readOnly: true
-    Byte:
-      type: object
-      properties: {}

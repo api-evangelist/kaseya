@@ -329,77 +329,45 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Object:
+    OperationResultModel:
       type: object
-      properties: {}
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     RestUserAccessLevel:
       type: object
       properties: {}
-    ConfigurationItemSslSubjectAlternativeNameModel:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        configurationItemID:
-          format: int32
-          type: integer
-        name:
-          type: string
-        soapParentPropertyId:
-          format: int64
-          type: integer
-          readOnly: true
-    ItemQueryResultModel_ConfigurationItemSslSubjectAlternativeNameModel_InstalledProductSslSubjectAlternativeName:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ConfigurationItemSslSubjectAlternativeNameModel'
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    QueryActionResult_ConfigurationItemSslSubjectAlternativeNameModel_InstalledProductSslSubjectAlternativeName:
-      type: object
-      properties:
-        items:
+        fields:
           type: array
           items:
-            $ref: '#/components/schemas/ConfigurationItemSslSubjectAlternativeNameModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Object:
+      type: object
+      properties: {}
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
     FieldInformationModel:
       type: object
       properties:
@@ -430,43 +398,43 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    UserDefinedFieldInformationResultModel:
+    ConfigurationItemSslSubjectAlternativeNameModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        configurationItemID:
+          format: int32
+          type: integer
+        name:
+          type: string
+        soapParentPropertyId:
+          format: int64
+          type: integer
+          readOnly: true
+    ItemQueryResultModel_ConfigurationItemSslSubjectAlternativeNameModel_InstalledProductSslSubjectAlternativeName:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ConfigurationItemSslSubjectAlternativeNameModel'
+    QueryActionResult_ConfigurationItemSslSubjectAlternativeNameModel_InstalledProductSslSubjectAlternativeName:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationItemSslSubjectAlternativeNameModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    FieldInformationResultModel:
       type: object
       properties:
         fields:
           type: array
           items:
-            $ref: '#/components/schemas/Field'
+            $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     Field:
       type: object
       properties:
@@ -503,25 +471,57 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
+    PickListValue:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PagingModel:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    EntityInformationModel:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
+        name:
+          type: string
           readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true

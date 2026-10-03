@@ -147,111 +147,6 @@ components:
           items:
             $ref: '#/components/schemas/QbExpenseTypeExportDto'
       additionalProperties: false
-    QbExpenseTypeExportDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        ItemCode:
-          type:
-          - string
-          - 'null'
-        ItemRate:
-          type:
-          - number
-          - 'null'
-          format: double
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        IncomeAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ExpenseAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsTaxable:
-          type: boolean
-        ExternalItemId:
-          type:
-          - string
-          - 'null'
-        ExternalIncomeId:
-          type:
-          - string
-          - 'null'
-        ExternalExpenseId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    QbItemImportDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Number:
-          type:
-          - string
-          - 'null'
-        InStockQty:
-          type:
-          - number
-          - 'null'
-          format: double
-        IsStockedItem:
-          type: boolean
-        Sku:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-        IsTaxable:
-          type: boolean
-        IsActive:
-          type: boolean
-        DiscountIsPercent:
-          type: boolean
-        UnitPrice:
-          type: number
-          format: double
-        PurchaseCost:
-          type: number
-          format: double
-        IncomeAccount:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-        ExpenseAccount:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-        AssetAccount:
-          $ref: '#/components/schemas/QbAccountCodeImportDto'
-      additionalProperties: false
     QbExpenseTypeExportDtoListPagedResponse:
       type: object
       properties:
@@ -321,6 +216,111 @@ components:
         ParentAccountCode:
           $ref: '#/components/schemas/QbAccountCodeImportDto'
         ExternalTenantId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbItemImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Number:
+          type:
+          - string
+          - 'null'
+        InStockQty:
+          type:
+          - number
+          - 'null'
+          format: double
+        IsStockedItem:
+          type: boolean
+        Sku:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        IsTaxable:
+          type: boolean
+        IsActive:
+          type: boolean
+        DiscountIsPercent:
+          type: boolean
+        UnitPrice:
+          type: number
+          format: double
+        PurchaseCost:
+          type: number
+          format: double
+        IncomeAccount:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        ExpenseAccount:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+        AssetAccount:
+          $ref: '#/components/schemas/QbAccountCodeImportDto'
+      additionalProperties: false
+    QbExpenseTypeExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ItemCode:
+          type:
+          - string
+          - 'null'
+        ItemRate:
+          type:
+          - number
+          - 'null'
+          format: double
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        IncomeAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExpenseAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsTaxable:
+          type: boolean
+        ExternalItemId:
+          type:
+          - string
+          - 'null'
+        ExternalIncomeId:
+          type:
+          - string
+          - 'null'
+        ExternalExpenseId:
           type:
           - string
           - 'null'

@@ -47,21 +47,6 @@ components:
           items:
             $ref: '#/components/schemas/SLALookupOutputDto'
       additionalProperties: false
-    SLALookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsDefault:
-          type: boolean
-        IsActive:
-          type: boolean
-      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -86,6 +71,21 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    SLALookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+        IsActive:
+          type: boolean
       additionalProperties: false
   securitySchemes:
     bearerAuth:

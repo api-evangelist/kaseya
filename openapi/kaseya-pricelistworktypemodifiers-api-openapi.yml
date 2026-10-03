@@ -506,68 +506,88 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Object:
-      type: object
-      properties: {}
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    QueryCountResultModel:
+    Filter:
       type: object
       properties:
-        queryCount:
-          format: int32
-          type: integer
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
+        op:
           type: string
-          readOnly: true
-        canCreate:
+        field:
+          type: string
+        udf:
           type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    QueryActionResult_PriceListWorkTypeModifierModel_PriceListWorkTypeModifier:
-      type: object
-      properties:
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
         items:
+          description: An Array of Filter objects
           type: array
           items:
-            $ref: '#/components/schemas/PriceListWorkTypeModifierModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
+            $ref: '#/components/schemas/Filter'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     ItemQueryResultModel_PriceListWorkTypeModifierModel_PriceListWorkTypeModifier:
       type: object
       properties:
         item:
           $ref: '#/components/schemas/PriceListWorkTypeModifierModel'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Object:
+      type: object
+      properties: {}
+    PriceListWorkTypeModifierModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        currencyID:
+          format: int32
+          type: integer
+        modifierType:
+          format: int32
+          type: integer
+        modifierValue:
+          format: double
+          type: number
+        usesInternalCurrencyPrice:
+          type: boolean
+        workTypeModifierID:
+          format: int32
+          type: integer
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
     FieldInformationModel:
       type: object
       properties:
@@ -598,84 +618,29 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    UserDefinedFieldInformationResultModel:
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    FieldInformationResultModel:
       type: object
       properties:
         fields:
           type: array
           items:
-            $ref: '#/components/schemas/Field'
+            $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
-    QueryModel:
+    QueryActionResult_PriceListWorkTypeModifierModel_PriceListWorkTypeModifier:
       type: object
       properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
         items:
-          description: An Array of Filter objects
           type: array
           items:
-            $ref: '#/components/schemas/Filter'
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+            $ref: '#/components/schemas/PriceListWorkTypeModifierModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     Field:
       type: object
       properties:
@@ -712,45 +677,80 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    PriceListWorkTypeModifierModel:
+    QueryModel:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        currencyID:
+        maxRecords:
           format: int32
           type: integer
-        modifierType:
-          format: int32
-          type: integer
-        modifierValue:
-          format: double
-          type: number
-        usesInternalCurrencyPrice:
-          type: boolean
-        workTypeModifierID:
-          format: int32
-          type: integer
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
+        includeFields:
           type: array
           items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PagingModel:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    PickListValue:
       type: object
       properties:
-        count:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
           readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true

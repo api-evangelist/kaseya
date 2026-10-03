@@ -176,6 +176,39 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SsoStatusResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/SsoStatus'
+      additionalProperties: false
+    TokenOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TokenOutputDto'
+      additionalProperties: false
+    UserInfoOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/UserInfoOutputDto'
+      additionalProperties: false
     UserAccessRight:
       type: object
       properties:
@@ -328,16 +361,30 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    SsoStatusResponse:
+    ErrorInfo:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/SsoStatus'
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
     SpecialFeature:
       type: object
@@ -346,16 +393,15 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    UserInfoOutputDtoResponse:
+    SsoStatus:
       type: object
       properties:
-        Success:
+        Enabled:
           type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/UserInfoOutputDto'
+        LoginEndpointUrl:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     Menu:
       type: object
@@ -438,52 +484,6 @@ components:
           - string
           - 'null'
           readOnly: true
-      additionalProperties: false
-    SsoStatus:
-      type: object
-      properties:
-        Enabled:
-          type: boolean
-        LoginEndpointUrl:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    TokenOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TokenOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

@@ -36,13 +36,35 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    K1GorgonContractActionDto:
+    K1GorgonCustomerIdentifiersDto:
       type: object
       properties:
-        Action:
+        SalesForceId:
           type:
           - string
           - 'null'
+        NetSuiteId:
+          type:
+          - string
+          - 'null'
+        ResellerUuid:
+          type:
+          - string
+          - 'null'
+        K1OrgId:
+          type:
+          - string
+          - 'null'
+        AutoTaskDbId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1GorgonProvisioningNotificationsDto:
+      type: object
+      properties:
+        Event:
+          $ref: '#/components/schemas/K1GorgonProvisioningPayload'
       additionalProperties: false
     K1GorgonContactDto:
       type: object
@@ -80,36 +102,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    K1GorgonProvisioningNotificationsDto:
-      type: object
-      properties:
-        Event:
-          $ref: '#/components/schemas/K1GorgonProvisioningPayload'
-      additionalProperties: false
-    K1GorgonCustomerIdentifiersDto:
-      type: object
-      properties:
-        SalesForceId:
-          type:
-          - string
-          - 'null'
-        NetSuiteId:
-          type:
-          - string
-          - 'null'
-        ResellerUuid:
-          type:
-          - string
-          - 'null'
-        K1OrgId:
-          type:
-          - string
-          - 'null'
-        AutoTaskDbId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     K1GorgonShippingDto:
       type: object
       properties:
@@ -133,35 +125,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    K1GorgonProvisioningPayload:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        CustomerIdentifiers:
-          $ref: '#/components/schemas/K1GorgonCustomerIdentifiersDto'
-        Contact:
-          $ref: '#/components/schemas/K1GorgonContactDto'
-        Tenant:
-          $ref: '#/components/schemas/K1GorgonTenantDto'
-        Shipping:
-          $ref: '#/components/schemas/K1GorgonShippingDto'
-        Contract:
-          $ref: '#/components/schemas/K1GorgonContractActionDto'
-        ActionType:
-          type:
-          - string
-          - 'null'
-        ActionDetails:
-          $ref: '#/components/schemas/K1GorgonActionDetailsDto'
-        PlanId:
-          type:
-          - integer
-          - 'null'
-          format: int32
       additionalProperties: false
     K1GorgonLicenseDto:
       type: object
@@ -205,6 +168,43 @@ components:
           - string
           - 'null'
           format: date-time
+      additionalProperties: false
+    K1GorgonProvisioningPayload:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        CustomerIdentifiers:
+          $ref: '#/components/schemas/K1GorgonCustomerIdentifiersDto'
+        Contact:
+          $ref: '#/components/schemas/K1GorgonContactDto'
+        Tenant:
+          $ref: '#/components/schemas/K1GorgonTenantDto'
+        Shipping:
+          $ref: '#/components/schemas/K1GorgonShippingDto'
+        Contract:
+          $ref: '#/components/schemas/K1GorgonContractActionDto'
+        ActionType:
+          type:
+          - string
+          - 'null'
+        ActionDetails:
+          $ref: '#/components/schemas/K1GorgonActionDetailsDto'
+        PlanId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    K1GorgonContractActionDto:
+      type: object
+      properties:
+        Action:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

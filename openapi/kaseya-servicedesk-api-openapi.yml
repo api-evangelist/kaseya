@@ -230,15 +230,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    TicketRephraseNoteInputDto:
-      required:
-      - Details
-      type: object
-      properties:
-        Details:
-          minLength: 1
-          type: string
-      additionalProperties: false
     TicketSmartResolutionSummaryPutInputDto:
       type: object
       properties:
@@ -265,6 +256,15 @@ components:
         DurationInMilliseconds:
           type: integer
           format: int32
+      additionalProperties: false
+    TicketRephraseNoteInputDto:
+      required:
+      - Details
+      type: object
+      properties:
+        Details:
+          minLength: 1
+          type: string
       additionalProperties: false
   securitySchemes:
     bearerAuth:

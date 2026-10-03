@@ -4184,120 +4184,6 @@ paths:
     - url: https://api.bms.kaseya.com
 components:
   schemas:
-    Object:
-      type: object
-      properties: {}
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    ItemQueryResultModel_TicketModel_Ticket:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/TicketModel'
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
     Filter:
       type: object
       properties:
@@ -4316,88 +4202,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryActionResult_TicketModel_Ticket:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
     UserDefinedField:
       type: object
       properties:
@@ -4405,20 +4209,14 @@ components:
           type: string
         value:
           type: string
-    PagingModel:
+    OperationResultModel:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        itemId:
+          $ref: '#/components/schemas/Object'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
     TicketModel:
       type: object
       properties:
@@ -4636,6 +4434,1990 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserDefinedField'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Object:
+      type: object
+      properties: {}
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    QueryActionResult_TicketModel_Ticket:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    ItemQueryResultModel_TicketModel_Ticket:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/TicketModel'
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    ClientPortalTicketListDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        Title:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        AccountName:
+          type:
+          - string
+          - 'null'
+        ContactId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContactName:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        StatusColor:
+          type:
+          - string
+          - 'null'
+        StatusForeColor:
+          type:
+          - string
+          - 'null'
+        StatusOrder:
+          type: integer
+          format: int32
+        PriorityId:
+          type: integer
+          format: int32
+        PriorityName:
+          type:
+          - string
+          - 'null'
+        PriorityColor:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        IssueTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IssueTypeName:
+          type:
+          - string
+          - 'null'
+        ContractId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContractNumber:
+          type:
+          - string
+          - 'null'
+        ContractName:
+          type:
+          - string
+          - 'null'
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAName:
+          type:
+          - string
+          - 'null'
+        OpenDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketExpenseOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ExpenseSheetId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExpenseSheetName:
+          type:
+          - string
+          - 'null'
+        ExpenseEntrySourceId:
+          type: integer
+          format: int32
+        UserId:
+          type: integer
+          format: int32
+        Date:
+          type: string
+          format: date-time
+        ExpenseTypeId:
+          type: integer
+          format: int32
+        ReimburseStatusId:
+          type: integer
+          format: int32
+        PaymentTypeId:
+          type: integer
+          format: int32
+        Reimbursable:
+          type: boolean
+        TotalAmount:
+          type: number
+          format: double
+        AmountSpent:
+          type: number
+          format: double
+        MarkUpAmount:
+          type: number
+          format: double
+        MarkUpType:
+          type: integer
+          format: int32
+        IsBillable:
+          type: boolean
+        UnitPrice:
+          type: number
+          format: double
+        BalanceDue:
+          type: number
+          format: double
+        PaidAmount:
+          type: number
+          format: double
+        Quantity:
+          type: number
+          format: double
+        Total:
+          type: number
+          format: double
+        Notes:
+          type:
+          - string
+          - 'null'
+        InternalNotes:
+          type:
+          - string
+          - 'null'
+        IsBilled:
+          type: boolean
+        IsPosted:
+          type: boolean
+        IsApproved:
+          type: boolean
+        CustomFields:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldDataOutputDto'
+        Attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AttachmentOutputDto'
+        AttachmentNotes:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    JobLogsDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/JobLogsDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProductChargeHistoryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ProductName:
+          type:
+          - string
+          - 'null'
+        Quantity:
+          type: number
+          format: double
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        LotNumber:
+          type:
+          - string
+          - 'null'
+        DeliveredBy:
+          type:
+          - string
+          - 'null'
+        ShipMethodId:
+          type: integer
+          format: int32
+        DateDelivered:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ProductChargeOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductChargeOutputDto'
+      additionalProperties: false
+    TicketsListSearchSelectOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        Title:
+          type:
+          - string
+          - 'null'
+        QueueId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        QueueName:
+          type:
+          - string
+          - 'null'
+        AssigneeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssigneeName:
+          type:
+          - string
+          - 'null'
+        OpenDate:
+          type: string
+          format: date-time
+        StatusName:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusColor:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProductSummaryOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ProductSummaryOutputDto'
+      additionalProperties: false
+    ITGChecklistRequest:
+      type: object
+      properties:
+        Description:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    POOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        PONumber:
+          type:
+          - string
+          - 'null'
+        PODate:
+          type: string
+          format: date-time
+        Description:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProductChargeAssetOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        AssetId:
+          type: integer
+          format: int32
+        AssetName:
+          type:
+          - string
+          - 'null'
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+        Category:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketExpensePostInputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ExpenseSheetId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExpenseEntrySourceId:
+          type: integer
+          format: int32
+        UserId:
+          type: integer
+          format: int32
+        Date:
+          type: string
+          format: date-time
+        ExpenseTypeId:
+          type: integer
+          format: int32
+        PaymentTypeId:
+          type: integer
+          format: int32
+        AmountSpent:
+          type: number
+          format: double
+        MarkUpAmount:
+          type: number
+          format: double
+        MarkUpType:
+          type: integer
+          format: int32
+        Notes:
+          type:
+          - string
+          - 'null'
+        InternalNotes:
+          type:
+          - string
+          - 'null'
+        Reimbursable:
+          type: boolean
+        IsBillable:
+          type: boolean
+        UnitPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        EmailNotification:
+          $ref: '#/components/schemas/EmailNotificationDto'
+        CustomFields:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldDataInputDto'
+        TempAttachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TempAttachmentInputDto'
+        AttachmentNotes:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    OperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
+    TicketSLAInfoOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketSLAInfoOutputDto'
+      additionalProperties: false
+    ChecklistWithTasksOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ChecklistWithTasksOutputDto'
+      additionalProperties: false
+    WorkflowLogOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        CreatedOn:
+          type: string
+          format: date-time
+      additionalProperties: false
+    TicketActivityOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketActivityOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ClientPortalTicketOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ClientPortalTicketOutputDto'
+      additionalProperties: false
+    TicketChecklistItemPostInputDto:
+      required:
+      - Name
+      type: object
+      properties:
+        Name:
+          minLength: 1
+          type: string
+        Description:
+          type:
+          - string
+          - 'null'
+        Order:
+          type: integer
+          format: int32
+      additionalProperties: false
+    TicketMergeOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketMergeOutputDto'
+      additionalProperties: false
+    ServiceCallOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ServiceCallOutputDto'
+      additionalProperties: false
+    ChecklistTaskOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        name:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        order:
+          type: integer
+          format: int32
+      additionalProperties: false
+    TicketServiceCallToDoOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ItemType:
+          type: integer
+          format: int32
+        Description:
+          type:
+          - string
+          - 'null'
+        AssignedTo:
+          type:
+          - string
+          - 'null'
+        Complete:
+          type: boolean
+        StartDate:
+          type: string
+          format: date-time
+        EndDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ProductChargeOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ProductChargeOutputDto'
+      additionalProperties: false
+    ServiceCallToDoDeleteInputDto:
+      type: object
+      properties:
+        ServiceCallIds:
+          type:
+          - string
+          - 'null'
+        ToDoIds:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CCInputDto:
+      type: object
+      properties:
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        EntityType:
+          $ref: '#/components/schemas/CCInputEntityType'
+        Id:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    TicketNotePostInputDto:
+      required:
+      - Details
+      - IsInternal
+      - NoteDate
+      - TypeId
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Details:
+          minLength: 1
+          type: string
+        IsInternal:
+          type: boolean
+        TypeId:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+          format: int32
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        NoteDate:
+          type: string
+          format: date-time
+        Attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AttachmentInputDto'
+        TempAttachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TempAttachmentInputDto'
+        EmailNotification:
+          $ref: '#/components/schemas/EmailNotificationDto'
+        AttachmentIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    RelatedAlertListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        Title:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StatusName:
+          type:
+          - string
+          - 'null'
+        StatusColor:
+          type:
+          - string
+          - 'null'
+        StatusFontColor:
+          type:
+          - string
+          - 'null'
+        MonitorType:
+          type:
+          - string
+          - 'null'
+        PriorityName:
+          type:
+          - string
+          - 'null'
+        PriorityColor:
+          type:
+          - string
+          - 'null'
+        CreatedOn:
+          type: string
+          format: date-time
+      additionalProperties: false
+    TicketCountOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketCountOutputDto'
+      additionalProperties: false
+    ServiceCallOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ServiceCallOutputDto'
+      additionalProperties: false
+    POOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/POOutputDto'
+      additionalProperties: false
+    DeliverChargeProductInputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        IsFromStock:
+          type: boolean
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        LotNumber:
+          type:
+          - string
+          - 'null'
+        CreateAssetOption:
+          $ref: '#/components/schemas/ProductChargeAssetType'
+      additionalProperties: false
+    ProductChargePostInputDto:
+      type: object
+      properties:
+        ProductIndexId:
+          type: integer
+          format: int32
+        WarehouseId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ChargeName:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        PricingLevelId:
+          type:
+          - number
+          - 'null'
+          format: double
+        Quantity:
+          type:
+          - number
+          - 'null'
+          format: double
+        Price:
+          type:
+          - number
+          - 'null'
+          format: double
+        Amount:
+          type:
+          - number
+          - 'null'
+          format: double
+        Cost:
+          type:
+          - number
+          - 'null'
+          format: double
+        UnitCost:
+          type:
+          - number
+          - 'null'
+          format: double
+        Margin:
+          type:
+          - number
+          - 'null'
+          format: double
+        MarginType:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsBillable:
+          type: boolean
+        POId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsBilled:
+          type: boolean
+        IsPosted:
+          type: boolean
+        DatePurchased:
+          type: string
+          format: date-time
+        SOId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SOItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreateMultipleTimes:
+          type: boolean
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        StockByLocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TempAttachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TempAttachmentInputDto'
+      additionalProperties: false
+    CustomFieldDataInputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CustomFieldId:
+          type: integer
+          format: int32
+        Data:
+          type:
+          - string
+          - 'null'
+        SettingsId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    ProductChargeAssetType:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Operation:
+      type: object
+      properties:
+        OperationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type:
+          - string
+          - 'null'
+        op:
+          type:
+          - string
+          - 'null'
+        from:
+          type:
+          - string
+          - 'null'
+        value: {}
+      additionalProperties: false
+    TicketExpenseChargeOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LogType:
+          type: integer
+          format: int32
+        PurchaseDate:
+          type: string
+          format: date-time
+        Amount:
+          type: number
+          format: double
+        Notes:
+          type:
+          - string
+          - 'null'
+        InternalNotes:
+          type:
+          - string
+          - 'null'
+        IsApproved:
+          type: boolean
+        IsBilled:
+          type: boolean
+        IsPosted:
+          type: boolean
+        InReview:
+          type: boolean
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        PictureName:
+          type:
+          - string
+          - 'null'
+        PictureURL:
+          type:
+          - string
+          - 'null'
+        AttachmentCount:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    TicketChecklistItemPutInputDto:
+      required:
+      - Name
+      type: object
+      properties:
+        Name:
+          minLength: 1
+          type: string
+        Description:
+          type:
+          - string
+          - 'null'
+        Order:
+          type: integer
+          format: int32
+        IsCompleted:
+          type: boolean
+      additionalProperties: false
+    TicketMergeOutputDto:
+      type: object
+      properties:
+        JobId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AttachmentOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        OriginalFileName:
+          type:
+          - string
+          - 'null'
+        AliasName:
+          type:
+          - string
+          - 'null'
+        FileType:
+          type:
+          - string
+          - 'null'
+        ObjectId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModuleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Url:
+          type:
+          - string
+          - 'null'
+        WebUrl:
+          type:
+          - string
+          - 'null'
+        CreatedById:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        IsUploadedToBlob:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    TempAttachmentInputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Alias:
+          type:
+          - string
+          - 'null'
+        IsUploadedToBlob:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    ProductChargePutInputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ProductIndexId:
+          type: integer
+          format: int32
+        WarehouseId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ChargeName:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        PricingLevelId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Quantity:
+          type:
+          - number
+          - 'null'
+          format: double
+        Price:
+          type:
+          - number
+          - 'null'
+          format: double
+        Amount:
+          type:
+          - number
+          - 'null'
+          format: double
+        Cost:
+          type: number
+          format: double
+        Margin:
+          type:
+          - number
+          - 'null'
+          format: double
+        MarginType:
+          type: integer
+          format: int32
+        UnitCost:
+          type:
+          - number
+          - 'null'
+          format: double
+        IsBillable:
+          type: boolean
+        POId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsBilled:
+          type: boolean
+        IsPosted:
+          type: boolean
+        DatePurchased:
+          type: string
+          format: date-time
+        SOId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SOItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        StockByLocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    RelatedTicketListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        TicketId:
+          type: integer
+          format: int32
+        RelatedTicketId:
+          type: integer
+          format: int32
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        Title:
+          type:
+          - string
+          - 'null'
+        StatusName:
+          type:
+          - string
+          - 'null'
+        StatusColor:
+          type:
+          - string
+          - 'null'
+        StatusForeColor:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketExpenseOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketExpenseOutputDto'
+      additionalProperties: false
+    DeliverChargeOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DeliverChargeOutputDto'
+      additionalProperties: false
+    TicketLogsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedOn:
+          type: string
+          format: date-time
+        Source:
+          type:
+          - string
+          - 'null'
+        Action:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketChecklistItemOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Order:
+          type: integer
+          format: int32
+        IsCompleted:
+          type: boolean
+        CompletedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CompletedByName:
+          type:
+          - string
+          - 'null'
+        CompletedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    CCOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        FullName:
+          type:
+          - string
+          - 'null'
+        EntityType:
+          type: integer
+          format: int32
+      additionalProperties: false
+    LogTypeEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    TicketCountOutputDto:
+      type: object
+      properties:
+        Count:
+          type: integer
+          format: int32
+      additionalProperties: false
+    TicketTimeEntryInputDto:
+      required:
+      - EndTime
+      - RoleId
+      - StartDate
+      - StartTime
+      - WorkTypeId
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        StartDate:
+          type: string
+          format: date
+        StartTime:
+          type: string
+          format: date-span
+        EndTime:
+          type: string
+          format: date-span
+        Timespent:
+          maximum: 2147483647
+          minimum: 0
+          type: number
+          format: double
+        Notes:
+          type:
+          - string
+          - 'null'
+        InternalNotes:
+          type:
+          - string
+          - 'null'
+        WorkTypeId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        RoleId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        UserId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CustomFields:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldDataInputDto'
+        EmailNotification:
+          $ref: '#/components/schemas/EmailNotificationDto'
+      additionalProperties: false
+    RelatedAlertListOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RelatedAlertListOutputDto'
+      additionalProperties: false
+    TicketTaskDeleteInputDto:
+      type: object
+      properties:
+        TicketTaskIds:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CountOutpuDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/CountOutpuDto'
+      additionalProperties: false
+    ClientPortalTicketActivityOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LogType:
+          type: integer
+          format: int32
+        WorkTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        WorkTypeName:
+          type:
+          - string
+          - 'null'
+        RoleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        RoleName:
+          type:
+          - string
+          - 'null'
+        NoteTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ActivityType:
+          type:
+          - string
+          - 'null'
+        TicketId:
+          type: integer
+          format: int32
+        Notes:
+          type:
+          - string
+          - 'null'
+        IsPosted:
+          type: integer
+          format: int32
+        Billed:
+          type: integer
+          format: int32
+        IsUser:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AttachmentCount:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TimeSpent:
+          type:
+          - number
+          - 'null'
+          format: double
+        PictureName:
+          type:
+          - string
+          - 'null'
+        PictureURL:
+          type:
+          - string
+          - 'null'
+        StartDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        StartTime:
+          type:
+          - string
+          - 'null'
+          format: date-span
+        EndTime:
+          type:
+          - string
+          - 'null'
+          format: date-span
+        UserId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ChecklistWithTasksOutputDto:
+      type: object
+      properties:
+        Checklist:
+          $ref: '#/components/schemas/ChecklistOutputDto'
+        Tasks:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChecklistTaskOutputDto'
+      additionalProperties: false
+    TicketSLAInfoOutputDto:
+      type: object
+      properties:
+        SlaStage:
+          $ref: '#/components/schemas/TicketSLAStageEnum'
+        SlaName:
+          type:
+          - string
+          - 'null'
+        TicketPriorityName:
+          type:
+          - string
+          - 'null'
+        TicketPriorityColor:
+          type:
+          - string
+          - 'null'
+        RespondGoal:
+          type: number
+          format: double
+        RespondActual:
+          type: number
+          format: double
+        RespondRemaining:
+          type: number
+          format: double
+        ResolveGoal:
+          type: number
+          format: double
+        ResolveActual:
+          type: number
+          format: double
+        ResolveRemaining:
+          type: number
+          format: double
+        WaitingActual:
+          type: number
+          format: double
+        ReopenActual:
+          type: number
+          format: double
+        TimeTotalGoal:
+          type: number
+          format: double
+        TimeTotalActual:
+          type: number
+          format: double
+        TimeTotalRemaining:
+          type: number
+          format: double
+      additionalProperties: false
+    CCOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CCOutputDto'
+      additionalProperties: false
+    DeliverChargeInputDto:
+      type: object
+      properties:
+        DeliveryMethodId:
+          type: integer
+          format: int32
+        DeliveredBy:
+          type:
+          - string
+          - 'null'
+        DeliveryDate:
+          type: string
+          format: date-time
+        QtyToDeliver:
+          type: number
+          format: double
+        Description:
+          type:
+          - string
+          - 'null'
+        IsFromInventory:
+          type: boolean
+        CreateAssetOption:
+          $ref: '#/components/schemas/ProductChargeAssetType'
+        IsSerialized:
+          type: boolean
+        Products:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DeliverChargeProductInputDto'
+      additionalProperties: false
     ServiceCallOutputDto:
       type: object
       properties:
@@ -4701,7 +6483,7 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
-    WorkflowLogOutputDtoIEnumerableResponse:
+    RelatedTicketListOutputDtoIEnumerableResponse:
       type: object
       properties:
         Success:
@@ -4714,123 +6496,251 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/WorkflowLogOutputDto'
+            $ref: '#/components/schemas/RelatedTicketListOutputDto'
       additionalProperties: false
-    ClientPortalTicketFilterDto:
+    TicketListDtoListPagedResponse:
       type: object
       properties:
-        Title:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
-          - string
+          - array
           - 'null'
-        Account:
-          type:
-          - string
-          - 'null'
-        TicketNumber:
-          type:
-          - string
-          - 'null'
-        StatusNames:
-          type:
-          - string
-          - 'null'
-        PriorityNames:
-          type:
-          - string
-          - 'null'
-        TicketTypeNames:
-          type:
-          - string
-          - 'null'
-        IssueTypeNames:
-          type:
-          - string
-          - 'null'
-        ServiceLevelAgreementNames:
-          type:
-          - string
-          - 'null'
-        ExcludeCompleted:
+          items:
+            $ref: '#/components/schemas/TicketListDto'
+        TotalRecords:
           type: integer
           format: int32
-        OpenDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        OpenDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CompletedDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CompletedDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOnFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOnTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
       additionalProperties: false
-    TicketMergeOutputDto:
+    TicketsListSummaryOutputDtoIEnumerableResponse:
       type: object
       properties:
-        JobId:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
-          - string
+          - array
           - 'null'
+          items:
+            $ref: '#/components/schemas/TicketsListSummaryOutputDto'
       additionalProperties: false
-    RelatedTicketListOutputDto:
+    ServiceCallPostInputDto:
+      required:
+      - EndDate
+      - StartDate
+      - UserIds
       type: object
       properties:
         Id:
           type: integer
           format: int32
-        TicketId:
-          type: integer
-          format: int32
-        RelatedTicketId:
-          type: integer
-          format: int32
-        TicketNumber:
+        Description:
           type:
           - string
           - 'null'
-        Title:
-          type:
-          - string
-          - 'null'
-        StatusName:
-          type:
-          - string
-          - 'null'
-        StatusColor:
-          type:
-          - string
-          - 'null'
-        StatusForeColor:
-          type:
-          - string
-          - 'null'
+        Complete:
+          type: boolean
+        StartDate:
+          type: string
+          format: date-time
+        EndDate:
+          type: string
+          format: date-time
+        UserIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+        EmailNotification:
+          $ref: '#/components/schemas/EmailNotificationDto'
       additionalProperties: false
-    TicketNotePostInputDto:
+    TicketInputDto:
+      required:
+      - AccountId
+      - Details
+      - LocationId
+      - OpenDate
+      - PriorityId
+      - SourceId
+      - StatusId
+      - Title
+      - TypeId
+      type: object
+      properties:
+        Title:
+          minLength: 1
+          type: string
+        Details:
+          minLength: 1
+          type: string
+        AccountId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        LocationId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        ContactId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SoftwareAssetId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        HardwareAssetId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        QueueId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        PriorityId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        TypeId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        IssueTypeId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubIssueTypeId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ContractId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AssigneeId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        WorkTypeId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SourceId:
+          type: integer
+          format: int32
+        SLAId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OpenDate:
+          type: string
+          format: date-time
+        DueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        SecondaryAssignees:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SecondaryAssigneeInputDto'
+        Ccs:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CCInputDto'
+        TempAttachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TempAttachmentInputDto'
+        CustomFieldsData:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldDataInputDto'
+        UseDefaultContract:
+          type: boolean
+      additionalProperties: false
+    TicketNoteOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketNoteOutputDto'
+      additionalProperties: false
+    TicketOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketOutputDto'
+      additionalProperties: false
+    AssignTicketInputDto:
       required:
       - Details
       - IsInternal
       - NoteDate
+      - StatusId
       - TypeId
       type: object
       properties:
@@ -4848,35 +6758,43 @@ components:
           type: integer
           format: int32
         StatusId:
-          type:
-          - integer
-          - 'null'
+          maximum: 2147483647
+          minimum: 1
+          type: integer
           format: int32
         NoteDate:
           type: string
           format: date-time
-        Attachments:
+        AssigneeId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        QueueId:
+          maximum: 2147483647
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SecondaryAssignees:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/AttachmentInputDto'
-        TempAttachments:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TempAttachmentInputDto'
+            $ref: '#/components/schemas/SecondaryAssigneeInputDto'
         EmailNotification:
           $ref: '#/components/schemas/EmailNotificationDto'
-        AttachmentIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
       additionalProperties: false
-    JobLogsDtoIEnumerablePagedResponse:
+    CCInputEntityType:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    ProductChargeAssetOutputDtoListResponse:
       type: object
       properties:
         Success:
@@ -4889,233 +6807,7 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/JobLogsDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    TicketFilterDto:
-      type: object
-      properties:
-        IsScheduled:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsRecurringTickets:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Title:
-          type:
-          - string
-          - 'null'
-        Account:
-          type:
-          - string
-          - 'null'
-        LocationName:
-          type:
-          - string
-          - 'null'
-        AccountCode:
-          type:
-          - string
-          - 'null'
-        AssigneeName:
-          type:
-          - string
-          - 'null'
-        TicketNumber:
-          type:
-          - string
-          - 'null'
-        CreatedByName:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        ContactName:
-          type:
-          - string
-          - 'null'
-        StatusNames:
-          type:
-          - string
-          - 'null'
-        QueueNames:
-          type:
-          - string
-          - 'null'
-        PriorityNames:
-          type:
-          - string
-          - 'null'
-        TicketTypeNames:
-          type:
-          - string
-          - 'null'
-        IssueTypeNames:
-          type:
-          - string
-          - 'null'
-        ServiceLevelAgreementNames:
-          type:
-          - string
-          - 'null'
-        SubIssueTypeNames:
-          type:
-          - string
-          - 'null'
-        SourceIds:
-          type:
-          - string
-          - 'null'
-        ExcludeCompleted:
-          type: integer
-          format: int32
-        OpenDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        OpenDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CompletedDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CompletedDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastActivityUpdateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastActivityUpdateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOnFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOnTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastStatusUpdateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastStatusUpdateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastPriorityUpdateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastPriorityUpdateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastQueueUpdateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastQueueUpdateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        DueDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        DueDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ResolutionTargetTimeFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ResolutionTargetTimeTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ContactId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        HardwareAssetId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountLocationId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountIds:
-          type:
-          - string
-          - 'null'
-        SLAEventStatusIds:
-          type:
-          - string
-          - 'null'
-        FromDate:
-          type:
-          - string
-          - 'null'
-        ToDate:
-          type:
-          - string
-          - 'null'
-        Value:
-          type:
-          - string
-          - 'null'
-        ActionType:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        HardwareAssetName:
-          type:
-          - string
-          - 'null'
-        OwnerIds:
-          type:
-          - string
-          - 'null'
+            $ref: '#/components/schemas/ProductChargeAssetOutputDto'
       additionalProperties: false
     CustomFieldDataOutputDto:
       type: object
@@ -5141,7 +6833,7 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    AgentProcedureAuditsOutputDtoListResponse:
+    TicketNoteOutputDtoIEnumerableResponse:
       type: object
       properties:
         Success:
@@ -5154,47 +6846,220 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/AgentProcedureAuditsOutputDto'
+            $ref: '#/components/schemas/TicketNoteOutputDto'
       additionalProperties: false
-    ToDoOutputDto:
+    ClientPortalTicketNotePostInputDto:
+      type: object
+      properties:
+        Details:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        NoteDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        TempAttachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TempAttachmentInputDto'
+        EmailNotification:
+          $ref: '#/components/schemas/EmailNotificationDto'
+        AttachmentIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    TicketSurveyScoreOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketSurveyScoreOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    TicketTaskListOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketTaskListOutputDto'
+      additionalProperties: false
+    ResolveTicketDto:
+      required:
+      - Comment
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Comment:
+          minLength: 1
+          type: string
+        StatusId:
+          type: integer
+          format: int32
+        IsPublishToKnowledgeBase:
+          type: boolean
+        IsInternal:
+          type: boolean
+        KnowledgeBaseCategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    TicketNoteOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CreatedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedBy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Details:
+          type:
+          - string
+          - 'null'
+        IsInternal:
+          type: boolean
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        CreatedByEmail:
+          type:
+          - string
+          - 'null'
+        ModifiedByName:
+          type:
+          - string
+          - 'null'
+        Attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AttachmentOutputDto'
+      additionalProperties: false
+    TicketTaskListOutputDto:
       type: object
       properties:
         Id:
           type: integer
           format: int32
         TicketId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Description:
-          type:
-          - string
-          - 'null'
-        Complete:
-          type: boolean
-        UserId:
           type: integer
           format: int32
-        Date:
-          type: string
-          format: date-time
-        Resource:
+        TaskId:
+          type: integer
+          format: int32
+        TaskName:
           type:
           - string
           - 'null'
+        ProjectName:
+          type:
+          - string
+          - 'null'
+        TaskStatus:
+          type:
+          - string
+          - 'null'
+        StartDate:
+          type: string
+          format: date-time
       additionalProperties: false
-    ChecklistWithTasksOutputDto:
+    TicketTaskInputDto:
       type: object
       properties:
-        Checklist:
-          $ref: '#/components/schemas/ChecklistOutputDto'
-        Tasks:
+        TicketTaskIds:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ChecklistTaskOutputDto'
+            type: integer
+            format: int32
+      additionalProperties: false
+    CountOutpuDto:
+      type: object
+      properties:
+        Count:
+          type: integer
+          format: int64
+      additionalProperties: false
+    TicketExpenseChargeOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketExpenseChargeOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
       additionalProperties: false
     ClientPortalTicketsInputDto:
       type: object
@@ -5224,102 +7089,24 @@ components:
         Filter:
           $ref: '#/components/schemas/ClientPortalTicketFilterDto'
       additionalProperties: false
-    ProductChargeHistoryOutputDto:
+    ProductSummaryOutputDto:
       type: object
       properties:
-        Id:
+        ProductId:
           type: integer
           format: int32
         ProductName:
           type:
           - string
           - 'null'
+        ProductIndexId:
+          type: integer
+          format: int32
         Quantity:
-          type: number
-          format: double
-        SerialNumber:
-          type:
-          - string
-          - 'null'
-        LotNumber:
-          type:
-          - string
-          - 'null'
-        DeliveredBy:
-          type:
-          - string
-          - 'null'
-        ShipMethodId:
           type: integer
           format: int32
-        DateDelivered:
-          type: string
-          format: date-time
       additionalProperties: false
-    TicketTimeEntryInputDto:
-      required:
-      - EndTime
-      - RoleId
-      - StartDate
-      - StartTime
-      - WorkTypeId
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        StartDate:
-          type: string
-          format: date
-        StartTime:
-          type: string
-          format: date-span
-        EndTime:
-          type: string
-          format: date-span
-        Timespent:
-          maximum: 2147483647
-          minimum: 0
-          type: number
-          format: double
-        Notes:
-          type:
-          - string
-          - 'null'
-        InternalNotes:
-          type:
-          - string
-          - 'null'
-        WorkTypeId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        RoleId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        StatusId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        UserId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CustomFields:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CustomFieldDataInputDto'
-        EmailNotification:
-          $ref: '#/components/schemas/EmailNotificationDto'
-      additionalProperties: false
-    TicketsListSummaryOutputDtoIEnumerableResponse:
+    ClientPortalTicketActivityOutputDtoListPagedResponse:
       type: object
       properties:
         Success:
@@ -5332,21 +7119,163 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/TicketsListSummaryOutputDto'
+            $ref: '#/components/schemas/ClientPortalTicketActivityOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
       additionalProperties: false
-    CountOutpuDto:
+    ChecklistTaskOutputDtoListResponse:
       type: object
       properties:
-        Count:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChecklistTaskOutputDto'
+      additionalProperties: false
+    TicketNotePutInputDto:
+      required:
+      - Details
+      - IsInternal
+      - NoteDate
+      - TypeId
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Details:
+          minLength: 1
+          type: string
+        IsInternal:
+          type: boolean
+        TypeId:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+          format: int32
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        NoteDate:
+          type: string
+          format: date-time
+        EmailNotification:
+          $ref: '#/components/schemas/EmailNotificationDto'
+        AttachmentIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    ToDoPutInputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Description:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        UserId:
+          type: integer
+          format: int32
+        Date:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ChecklistOutputDto:
+      type: object
+      properties:
+        Id:
           type: integer
           format: int64
+        name:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        createdByName:
+          type:
+          - string
+          - 'null'
+        createdOn:
+          type: string
+          format: date-time
+        updatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
       additionalProperties: false
-    CCInputEntityType:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
+    TicketsListSearchSelectOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketsListSearchSelectOutputDto'
+      additionalProperties: false
+    Int32BatchIdsDto:
+      type: object
+      properties:
+        ModuleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    JobLogsDto:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        Type:
+          $ref: '#/components/schemas/LogTypeEnum'
+        Action:
+          type:
+          - string
+          - 'null'
+        Message:
+          type:
+          - string
+          - 'null'
+        Date:
+          type: string
+          format: date-time
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -5372,37 +7301,7 @@ components:
           items:
             type: string
       additionalProperties: false
-    RelatedTicketsInputDto:
-      type: object
-      properties:
-        RelatedTicketIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-      additionalProperties: false
-    CustomFieldDataInputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        CustomFieldId:
-          type: integer
-          format: int32
-        Data:
-          type:
-          - string
-          - 'null'
-        SettingsId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    ChecklistTaskOutputDtoListResponse:
+    TicketServiceCallToDoOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
         Success:
@@ -5415,67 +7314,10 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ChecklistTaskOutputDto'
-      additionalProperties: false
-    TicketTabsIndicatorsOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketTabsIndicatorsOutputDto'
-      additionalProperties: false
-    ToDoPostInputDto:
-      type: object
-      properties:
-        Id:
+            $ref: '#/components/schemas/TicketServiceCallToDoOutputDto'
+        TotalRecords:
           type: integer
           format: int32
-        Description:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type: integer
-          format: int32
-        UserId:
-          type: integer
-          format: int32
-        Date:
-          type: string
-          format: date-time
-      additionalProperties: false
-    TicketCountOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketCountOutputDto'
-      additionalProperties: false
-    TicketChecklistItemPutInputDto:
-      required:
-      - Name
-      type: object
-      properties:
-        Name:
-          minLength: 1
-          type: string
-        Description:
-          type:
-          - string
-          - 'null'
-        Order:
-          type: integer
-          format: int32
-        IsCompleted:
-          type: boolean
       additionalProperties: false
     ClientPortalTicketOutputDto:
       type: object
@@ -5783,6 +7625,550 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
+    TicketTimeEntryOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketTimeEntryOutputDto'
+      additionalProperties: false
+    TicketSLAStageEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    TicketTabsIndicatorsOutputDto:
+      type: object
+      properties:
+        RelatedTicketsCount:
+          type: integer
+          format: int32
+        TicketTasksCount:
+          type: integer
+          format: int32
+        ServiceCallsToDosCount:
+          type: integer
+          format: int32
+        ExpensesChargesCount:
+          type: integer
+          format: int32
+        ActivitiesCount:
+          type: integer
+          format: int32
+        RelatedAlertsCount:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ToDoPostInputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Description:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        UserId:
+          type: integer
+          format: int32
+        Date:
+          type: string
+          format: date-time
+      additionalProperties: false
+    TicketChecklistItemOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketChecklistItemOutputDto'
+      additionalProperties: false
+    TicketFilterDto:
+      type: object
+      properties:
+        IsScheduled:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsRecurringTickets:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Title:
+          type:
+          - string
+          - 'null'
+        Account:
+          type:
+          - string
+          - 'null'
+        LocationName:
+          type:
+          - string
+          - 'null'
+        AccountCode:
+          type:
+          - string
+          - 'null'
+        AssigneeName:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        CreatedByName:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        ContactName:
+          type:
+          - string
+          - 'null'
+        StatusNames:
+          type:
+          - string
+          - 'null'
+        QueueNames:
+          type:
+          - string
+          - 'null'
+        PriorityNames:
+          type:
+          - string
+          - 'null'
+        TicketTypeNames:
+          type:
+          - string
+          - 'null'
+        IssueTypeNames:
+          type:
+          - string
+          - 'null'
+        ServiceLevelAgreementNames:
+          type:
+          - string
+          - 'null'
+        SubIssueTypeNames:
+          type:
+          - string
+          - 'null'
+        SourceIds:
+          type:
+          - string
+          - 'null'
+        ExcludeCompleted:
+          type: integer
+          format: int32
+        OpenDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        OpenDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastActivityUpdateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastActivityUpdateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastStatusUpdateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastStatusUpdateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastPriorityUpdateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastPriorityUpdateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastQueueUpdateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastQueueUpdateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DueDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DueDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ResolutionTargetTimeFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ResolutionTargetTimeTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContactId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        HardwareAssetId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountLocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountIds:
+          type:
+          - string
+          - 'null'
+        SLAEventStatusIds:
+          type:
+          - string
+          - 'null'
+        FromDate:
+          type:
+          - string
+          - 'null'
+        ToDate:
+          type:
+          - string
+          - 'null'
+        Value:
+          type:
+          - string
+          - 'null'
+        ActionType:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        HardwareAssetName:
+          type:
+          - string
+          - 'null'
+        OwnerIds:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AgentProcedureAuditsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        AgentProcedureName:
+          type:
+          - string
+          - 'null'
+        Admin:
+          type:
+          - string
+          - 'null'
+        AgentProcedureId:
+          type: integer
+          format: int64
+        AgentId:
+          type: integer
+          format: int64
+        AssetName:
+          type:
+          - string
+          - 'null'
+        TriggeredOn:
+          type: string
+          format: date-time
+        TicketId:
+          type: integer
+          format: int32
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        WorkflowId:
+          type: integer
+          format: int32
+        WorkflowName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProductChargeOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        RecordId:
+          type: integer
+          format: int32
+        ModuleId:
+          type: integer
+          format: int32
+        ProductIndexId:
+          type: integer
+          format: int32
+        WarehouseId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Warehouse:
+          type:
+          - string
+          - 'null'
+        ChargeName:
+          type:
+          - string
+          - 'null'
+        ProductName:
+          type:
+          - string
+          - 'null'
+        ProductIsSerialized:
+          type: boolean
+        ProductTypeId:
+          type: integer
+          format: int32
+        Description:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        PricingLevelId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Quantity:
+          type:
+          - number
+          - 'null'
+          format: double
+        Price:
+          type:
+          - number
+          - 'null'
+          format: double
+        Amount:
+          type:
+          - number
+          - 'null'
+          format: double
+        Cost:
+          type: number
+          format: double
+        UnitCost:
+          type:
+          - number
+          - 'null'
+          format: double
+        Margin:
+          type:
+          - number
+          - 'null'
+          format: double
+        MarginType:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        QtyInStock:
+          type: number
+          format: double
+        QtyDelivered:
+          type: number
+          format: double
+        IsBillable:
+          type: boolean
+        PONumber:
+          type:
+          - string
+          - 'null'
+        POId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsBilled:
+          type: boolean
+        IsPosted:
+          type: boolean
+        DatePurchased:
+          type: string
+          format: date-time
+        SOId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SOItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StockByLocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AttachmentOutputDto'
+        IsFloating:
+          type: boolean
+      additionalProperties: false
+    TicketsListSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Title:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        StatusName:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - string
+          - 'null'
+        StatusColor:
+          type:
+          - string
+          - 'null'
+        PriorityId:
+          type:
+          - string
+          - 'null'
+        PriorityName:
+          type:
+          - string
+          - 'null'
+        PriorityColor:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EmailNotificationDto:
+      type: object
+      properties:
+        ContactIds:
+          type:
+          - string
+          - 'null'
+        ResourcesIds:
+          type:
+          - string
+          - 'null'
+        TemplateId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OtherEmails:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    RelatedTicketsInputDto:
+      type: object
+      properties:
+        RelatedTicketIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
     ClientPortalTicketListDtoListPagedResponse:
       type: object
       properties:
@@ -5801,132 +8187,15 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    OperationType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-      format: int32
-    TicketExpenseOutputDto:
+    RelatedTicketsDeleteInputDto:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
-        ExpenseSheetId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ExpenseSheetName:
-          type:
-          - string
-          - 'null'
-        ExpenseEntrySourceId:
-          type: integer
-          format: int32
-        UserId:
-          type: integer
-          format: int32
-        Date:
-          type: string
-          format: date-time
-        ExpenseTypeId:
-          type: integer
-          format: int32
-        ReimburseStatusId:
-          type: integer
-          format: int32
-        PaymentTypeId:
-          type: integer
-          format: int32
-        Reimbursable:
-          type: boolean
-        TotalAmount:
-          type: number
-          format: double
-        AmountSpent:
-          type: number
-          format: double
-        MarkUpAmount:
-          type: number
-          format: double
-        MarkUpType:
-          type: integer
-          format: int32
-        IsBillable:
-          type: boolean
-        UnitPrice:
-          type: number
-          format: double
-        BalanceDue:
-          type: number
-          format: double
-        PaidAmount:
-          type: number
-          format: double
-        Quantity:
-          type: number
-          format: double
-        Total:
-          type: number
-          format: double
-        Notes:
-          type:
-          - string
-          - 'null'
-        InternalNotes:
-          type:
-          - string
-          - 'null'
-        IsBilled:
-          type: boolean
-        IsPosted:
-          type: boolean
-        IsApproved:
-          type: boolean
-        CustomFields:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CustomFieldDataOutputDto'
-        Attachments:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AttachmentOutputDto'
-        AttachmentNotes:
+        RelatedTicketIds:
           type:
           - string
           - 'null'
       additionalProperties: false
-    DeliverChargeProductInputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        IsFromStock:
-          type: boolean
-        SerialNumber:
-          type:
-          - string
-          - 'null'
-        LotNumber:
-          type:
-          - string
-          - 'null'
-        CreateAssetOption:
-          $ref: '#/components/schemas/ProductChargeAssetType'
-      additionalProperties: false
-    TicketExpenseOutputDtoResponse:
+    TicketTabsIndicatorsOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -5935,65 +8204,7 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/TicketExpenseOutputDto'
-      additionalProperties: false
-    DeliverChargeOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DeliverChargeOutputDto'
-      additionalProperties: false
-    RelatedAlertListOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RelatedAlertListOutputDto'
-      additionalProperties: false
-    TicketTaskListOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        TicketId:
-          type: integer
-          format: int32
-        TaskId:
-          type: integer
-          format: int32
-        TaskName:
-          type:
-          - string
-          - 'null'
-        ProjectName:
-          type:
-          - string
-          - 'null'
-        TaskStatus:
-          type:
-          - string
-          - 'null'
-        StartDate:
-          type: string
-          format: date-time
+          $ref: '#/components/schemas/TicketTabsIndicatorsOutputDto'
       additionalProperties: false
     BatchTicketsDto:
       type: object
@@ -6051,102 +8262,21 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    TicketSurveyScoreOutputDtoIEnumerablePagedResponse:
+    TicketMergeInputDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        DestinationTicketId:
+          type: integer
+          format: int32
+        SourceTicketIds:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/TicketSurveyScoreOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    GetTicketsInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/TicketFilterDto'
-      additionalProperties: false
-    TicketSLAInfoOutputDto:
-      type: object
-      properties:
-        SlaStage:
-          $ref: '#/components/schemas/TicketSLAStageEnum'
-        SlaName:
-          type:
-          - string
-          - 'null'
-        TicketPriorityName:
-          type:
-          - string
-          - 'null'
-        TicketPriorityColor:
-          type:
-          - string
-          - 'null'
-        RespondGoal:
-          type: number
-          format: double
-        RespondActual:
-          type: number
-          format: double
-        RespondRemaining:
-          type: number
-          format: double
-        ResolveGoal:
-          type: number
-          format: double
-        ResolveActual:
-          type: number
-          format: double
-        ResolveRemaining:
-          type: number
-          format: double
-        WaitingActual:
-          type: number
-          format: double
-        ReopenActual:
-          type: number
-          format: double
-        TimeTotalGoal:
-          type: number
-          format: double
-        TimeTotalActual:
-          type: number
-          format: double
-        TimeTotalRemaining:
-          type: number
-          format: double
+            type: integer
+            format: int32
+        IsMerge:
+          type: boolean
       additionalProperties: false
     TicketExpensePutInputDto:
       type: object
@@ -6209,27 +8339,7 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ToDoPutInputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Description:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type: integer
-          format: int32
-        UserId:
-          type: integer
-          format: int32
-        Date:
-          type: string
-          format: date-time
-      additionalProperties: false
-    TicketExpenseChargeOutputDto:
+    TicketTimeEntryOutputDto:
       type: object
       properties:
         Id:
@@ -6255,277 +8365,81 @@ components:
           - string
           - 'null'
           format: date-time
-        LogType:
-          type: integer
-          format: int32
-        PurchaseDate:
-          type: string
+        StartDate:
+          type:
+          - string
+          - 'null'
           format: date-time
-        Amount:
-          type: number
+        StartTime:
+          type:
+          - string
+          - 'null'
+          format: date-span
+        EndTime:
+          type:
+          - string
+          - 'null'
+          format: date-span
+        Timespent:
+          type:
+          - number
+          - 'null'
           format: double
         Notes:
           type:
           - string
           - 'null'
+        UserId:
+          type: integer
+          format: int32
         InternalNotes:
           type:
           - string
           - 'null'
-        IsApproved:
+        Approved:
           type: boolean
-        IsBilled:
+        Billed:
           type: boolean
-        IsPosted:
+        Posted:
           type: boolean
-        InReview:
-          type: boolean
-        CreatedByName:
-          type:
-          - string
-          - 'null'
-        PictureName:
-          type:
-          - string
-          - 'null'
-        PictureURL:
-          type:
-          - string
-          - 'null'
-        AttachmentCount:
-          type: integer
-          format: int32
-        StatusName:
-          type:
-          - string
-          - 'null'
-        StatusId:
+        WorkTypeId:
           type:
           - integer
           - 'null'
           format: int32
-      additionalProperties: false
-    RelatedAlertListOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
+        RoleId:
+          type:
+          - integer
+          - 'null'
           format: int32
-        TicketNumber:
+        EmployeeName:
           type:
           - string
           - 'null'
-        Title:
+        TimeSpentBy:
           type:
           - string
           - 'null'
-        Details:
+        WorkTypeName:
           type:
           - string
           - 'null'
-        StatusName:
+        RoleName:
           type:
           - string
           - 'null'
-        StatusColor:
-          type:
-          - string
-          - 'null'
-        StatusFontColor:
-          type:
-          - string
-          - 'null'
-        MonitorType:
-          type:
-          - string
-          - 'null'
-        PriorityName:
-          type:
-          - string
-          - 'null'
-        PriorityColor:
-          type:
-          - string
-          - 'null'
-        CreatedOn:
+        WeekStart:
           type: string
           format: date-time
-      additionalProperties: false
-    TicketChecklistItemOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int64
-        CreatedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ModifiedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        Order:
-          type: integer
-          format: int32
-        IsCompleted:
-          type: boolean
-        CompletedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CompletedByName:
-          type:
-          - string
-          - 'null'
-        CompletedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    ProductChargeOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ProductChargeOutputDto'
-      additionalProperties: false
-    AssignTicketInputDto:
-      required:
-      - Details
-      - IsInternal
-      - NoteDate
-      - StatusId
-      - TypeId
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Details:
-          minLength: 1
-          type: string
-        IsInternal:
-          type: boolean
-        TypeId:
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-          format: int32
-        StatusId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        NoteDate:
+        WeekEnd:
           type: string
           format: date-time
-        AssigneeId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        QueueId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SecondaryAssignees:
+        CustomFields:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/SecondaryAssigneeInputDto'
-        EmailNotification:
-          $ref: '#/components/schemas/EmailNotificationDto'
-      additionalProperties: false
-    ChecklistWithTasksOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ChecklistWithTasksOutputDto'
-      additionalProperties: false
-    TicketsListSummaryOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Title:
-          type:
-          - string
-          - 'null'
-        TicketNumber:
-          type:
-          - string
-          - 'null'
-        StatusName:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type:
-          - string
-          - 'null'
-        StatusColor:
-          type:
-          - string
-          - 'null'
-        PriorityId:
-          type:
-          - string
-          - 'null'
-        PriorityName:
-          type:
-          - string
-          - 'null'
-        PriorityColor:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketTaskDeleteInputDto:
-      type: object
-      properties:
-        TicketTaskIds:
-          type:
-          - string
-          - 'null'
+            $ref: '#/components/schemas/CustomFieldDataOutputDto'
       additionalProperties: false
     TicketOutputDto:
       type: object
@@ -6927,122 +8841,20 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    ClientPortalTicketActivityOutputDto:
+    TicketLogsOutputDtoIEnumerableResponse:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
-        CreatedBy:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
-          - integer
+          - array
           - 'null'
-          format: int32
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ModifiedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LogType:
-          type: integer
-          format: int32
-        WorkTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        WorkTypeName:
-          type:
-          - string
-          - 'null'
-        RoleId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        RoleName:
-          type:
-          - string
-          - 'null'
-        NoteTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ActivityType:
-          type:
-          - string
-          - 'null'
-        TicketId:
-          type: integer
-          format: int32
-        Notes:
-          type:
-          - string
-          - 'null'
-        IsPosted:
-          type: integer
-          format: int32
-        Billed:
-          type: integer
-          format: int32
-        IsUser:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AttachmentCount:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TimeSpent:
-          type:
-          - number
-          - 'null'
-          format: double
-        PictureName:
-          type:
-          - string
-          - 'null'
-        PictureURL:
-          type:
-          - string
-          - 'null'
-        StartDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        StartTime:
-          type:
-          - string
-          - 'null'
-          format: date-span
-        EndTime:
-          type:
-          - string
-          - 'null'
-          format: date-span
-        UserId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedByName:
-          type:
-          - string
-          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketLogsOutputDto'
       additionalProperties: false
     ServiceCallPutInputDto:
       required:
@@ -7072,6 +8884,39 @@ components:
         EmailNotification:
           $ref: '#/components/schemas/EmailNotificationDto'
       additionalProperties: false
+    ServiceCallOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ServiceCallOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    SecondaryAssigneeInputDto:
+      required:
+      - UserId
+      type: object
+      properties:
+        UserId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        FullName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     ProductChargeHistoryOutputDtoListResponse:
       type: object
       properties:
@@ -7086,168 +8931,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/ProductChargeHistoryOutputDto'
-      additionalProperties: false
-    TicketSLAInfoOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketSLAInfoOutputDto'
-      additionalProperties: false
-    TicketListDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketListDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    AgentProcedureAuditsOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        AgentProcedureName:
-          type:
-          - string
-          - 'null'
-        Admin:
-          type:
-          - string
-          - 'null'
-        AgentProcedureId:
-          type: integer
-          format: int64
-        AgentId:
-          type: integer
-          format: int64
-        AssetName:
-          type:
-          - string
-          - 'null'
-        TriggeredOn:
-          type: string
-          format: date-time
-        TicketId:
-          type: integer
-          format: int32
-        TicketNumber:
-          type:
-          - string
-          - 'null'
-        WorkflowId:
-          type: integer
-          format: int32
-        WorkflowName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    CCInputDto:
-      type: object
-      properties:
-        EmailAddress:
-          type:
-          - string
-          - 'null'
-        EntityType:
-          $ref: '#/components/schemas/CCInputEntityType'
-        Id:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    ServiceCallToDoDeleteInputDto:
-      type: object
-      properties:
-        ServiceCallIds:
-          type:
-          - string
-          - 'null'
-        ToDoIds:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketMergeInputDto:
-      type: object
-      properties:
-        DestinationTicketId:
-          type: integer
-          format: int32
-        SourceTicketIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        IsMerge:
-          type: boolean
-      additionalProperties: false
-    ServiceCallPostInputDto:
-      required:
-      - EndDate
-      - StartDate
-      - UserIds
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Description:
-          type:
-          - string
-          - 'null'
-        Complete:
-          type: boolean
-        StartDate:
-          type: string
-          format: date-time
-        EndDate:
-          type: string
-          format: date-time
-        UserIds:
-          type: array
-          items:
-            type: integer
-            format: int32
-        EmailNotification:
-          $ref: '#/components/schemas/EmailNotificationDto'
-      additionalProperties: false
-    POOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        PONumber:
-          type:
-          - string
-          - 'null'
-        PODate:
-          type: string
-          format: date-time
-        Description:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     TicketActivityOutputDto:
       type: object
@@ -7402,7 +9085,7 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    TicketServiceCallToDoOutputDtoIEnumerablePagedResponse:
+    AgentProcedureAuditsOutputDtoListResponse:
       type: object
       properties:
         Success:
@@ -7415,10 +9098,194 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/TicketServiceCallToDoOutputDto'
-        TotalRecords:
+            $ref: '#/components/schemas/AgentProcedureAuditsOutputDto'
+      additionalProperties: false
+    WorkflowLogOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WorkflowLogOutputDto'
+      additionalProperties: false
+    AttachmentInputDto:
+      required:
+      - Base64Data
+      - Name
+      - Type
+      type: object
+      properties:
+        Id:
           type: integer
           format: int32
+        Name:
+          minLength: 1
+          type: string
+        Alias:
+          type:
+          - string
+          - 'null'
+        Base64Data:
+          minLength: 1
+          type: string
+        Type:
+          minLength: 1
+          type: string
+      additionalProperties: false
+    TicketSurveyScoreOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Email:
+          type:
+          - string
+          - 'null'
+        Comment:
+          type:
+          - string
+          - 'null'
+        Score:
+          type: integer
+          format: int32
+        Date:
+          type: string
+          format: date-time
+        ScoreMeta:
+          type:
+          - string
+          - 'null'
+        ScoreTextInternal:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    GetTicketsInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/TicketFilterDto'
+      additionalProperties: false
+    POInputDto:
+      type: object
+      properties:
+        ProductId:
+          type: integer
+          format: int32
+        SupplierId:
+          type: integer
+          format: int32
+        Quantity:
+          type: number
+          format: double
+        ExpectedDate:
+          type: string
+          format: date-time
+        ShipMethodId:
+          type: integer
+          format: int32
+        LocationId:
+          type: integer
+          format: int32
+        Description:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DeliverChargeOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ProductChargeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsFromStock:
+          type:
+          - boolean
+          - 'null'
+        Quantity:
+          type: number
+          format: double
+        DeliveredBy:
+          type:
+          - string
+          - 'null'
+        DateDelivered:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DeliveryMethodId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        LotNumber:
+          type:
+          - string
+          - 'null'
+        Notes:
+          type:
+          - string
+          - 'null'
+        AssetType:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    ToDoOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ToDoOutputDto'
       additionalProperties: false
     TicketListDto:
       type: object
@@ -7742,121 +9609,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ProductChargePostInputDto:
-      type: object
-      properties:
-        ProductIndexId:
-          type: integer
-          format: int32
-        WarehouseId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ChargeName:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        PricingLevelId:
-          type:
-          - number
-          - 'null'
-          format: double
-        Quantity:
-          type:
-          - number
-          - 'null'
-          format: double
-        Price:
-          type:
-          - number
-          - 'null'
-          format: double
-        Amount:
-          type:
-          - number
-          - 'null'
-          format: double
-        Cost:
-          type:
-          - number
-          - 'null'
-          format: double
-        UnitCost:
-          type:
-          - number
-          - 'null'
-          format: double
-        Margin:
-          type:
-          - number
-          - 'null'
-          format: double
-        MarginType:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsBillable:
-          type: boolean
-        POId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsBilled:
-          type: boolean
-        IsPosted:
-          type: boolean
-        DatePurchased:
-          type: string
-          format: date-time
-        SOId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SOItemId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreateMultipleTimes:
-          type: boolean
-        SerialNumber:
-          type:
-          - string
-          - 'null'
-        StockByLocationId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TempAttachments:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TempAttachmentInputDto'
-      additionalProperties: false
-    WorkflowLogOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        CreatedOn:
-          type: string
-          format: date-time
-      additionalProperties: false
     ClientPortalTicketInputDto:
       required:
       - Details
@@ -7949,1619 +9701,102 @@ components:
           items:
             $ref: '#/components/schemas/TempAttachmentInputDto'
       additionalProperties: false
-    TicketCountOutputDto:
+    ClientPortalTicketFilterDto:
       type: object
       properties:
-        Count:
-          type: integer
-          format: int32
-      additionalProperties: false
-    TicketChecklistItemPostInputDto:
-      required:
-      - Name
-      type: object
-      properties:
-        Name:
-          minLength: 1
-          type: string
-        Description:
+        Title:
           type:
           - string
           - 'null'
-        Order:
+        Account:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        StatusNames:
+          type:
+          - string
+          - 'null'
+        PriorityNames:
+          type:
+          - string
+          - 'null'
+        TicketTypeNames:
+          type:
+          - string
+          - 'null'
+        IssueTypeNames:
+          type:
+          - string
+          - 'null'
+        ServiceLevelAgreementNames:
+          type:
+          - string
+          - 'null'
+        ExcludeCompleted:
           type: integer
           format: int32
+        OpenDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        OpenDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CompletedDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
       additionalProperties: false
-    TicketServiceCallToDoOutputDto:
+    ToDoOutputDto:
       type: object
       properties:
         Id:
           type: integer
           format: int32
-        CreatedBy:
+        TicketId:
           type:
           - integer
           - 'null'
-          format: int32
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ModifiedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ItemType:
-          type: integer
           format: int32
         Description:
-          type:
-          - string
-          - 'null'
-        AssignedTo:
           type:
           - string
           - 'null'
         Complete:
           type: boolean
-        StartDate:
-          type: string
-          format: date-time
-        EndDate:
-          type: string
-          format: date-time
-      additionalProperties: false
-    TicketActivityOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketActivityOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    TicketLogsOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        CreatedOn:
-          type: string
-          format: date-time
-        Source:
-          type:
-          - string
-          - 'null'
-        Action:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketTabsIndicatorsOutputDto:
-      type: object
-      properties:
-        RelatedTicketsCount:
-          type: integer
-          format: int32
-        TicketTasksCount:
-          type: integer
-          format: int32
-        ServiceCallsToDosCount:
-          type: integer
-          format: int32
-        ExpensesChargesCount:
-          type: integer
-          format: int32
-        ActivitiesCount:
-          type: integer
-          format: int32
-        RelatedAlertsCount:
-          type: integer
-          format: int32
-      additionalProperties: false
-    POInputDto:
-      type: object
-      properties:
-        ProductId:
-          type: integer
-          format: int32
-        SupplierId:
-          type: integer
-          format: int32
-        Quantity:
-          type: number
-          format: double
-        ExpectedDate:
-          type: string
-          format: date-time
-        ShipMethodId:
-          type: integer
-          format: int32
-        LocationId:
-          type: integer
-          format: int32
-        Description:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ServiceCallOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ServiceCallOutputDto'
-      additionalProperties: false
-    EmailNotificationDto:
-      type: object
-      properties:
-        ContactIds:
-          type:
-          - string
-          - 'null'
-        ResourcesIds:
-          type:
-          - string
-          - 'null'
-        TemplateId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        OtherEmails:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    ProductChargeAssetOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        AssetId:
-          type: integer
-          format: int32
-        AssetName:
-          type:
-          - string
-          - 'null'
-        SerialNumber:
-          type:
-          - string
-          - 'null'
-        Type:
-          type:
-          - string
-          - 'null'
-        Category:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    SecondaryAssigneeInputDto:
-      required:
-      - UserId
-      type: object
-      properties:
-        UserId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        FullName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    JobLogsDto:
-      type: object
-      properties:
-        Id:
-          type: string
-          format: uuid
-        Type:
-          $ref: '#/components/schemas/LogTypeEnum'
-        Action:
-          type:
-          - string
-          - 'null'
-        Message:
-          type:
-          - string
-          - 'null'
-        Date:
-          type: string
-          format: date-time
-      additionalProperties: false
-    DeliverChargeInputDto:
-      type: object
-      properties:
-        DeliveryMethodId:
-          type: integer
-          format: int32
-        DeliveredBy:
-          type:
-          - string
-          - 'null'
-        DeliveryDate:
-          type: string
-          format: date-time
-        QtyToDeliver:
-          type: number
-          format: double
-        Description:
-          type:
-          - string
-          - 'null'
-        IsFromInventory:
-          type: boolean
-        CreateAssetOption:
-          $ref: '#/components/schemas/ProductChargeAssetType'
-        IsSerialized:
-          type: boolean
-        Products:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DeliverChargeProductInputDto'
-      additionalProperties: false
-    ProductChargeOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        RecordId:
-          type: integer
-          format: int32
-        ModuleId:
-          type: integer
-          format: int32
-        ProductIndexId:
-          type: integer
-          format: int32
-        WarehouseId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Warehouse:
-          type:
-          - string
-          - 'null'
-        ChargeName:
-          type:
-          - string
-          - 'null'
-        ProductName:
-          type:
-          - string
-          - 'null'
-        ProductIsSerialized:
-          type: boolean
-        ProductTypeId:
-          type: integer
-          format: int32
-        Description:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type: integer
-          format: int32
-        PricingLevelId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Quantity:
-          type:
-          - number
-          - 'null'
-          format: double
-        Price:
-          type:
-          - number
-          - 'null'
-          format: double
-        Amount:
-          type:
-          - number
-          - 'null'
-          format: double
-        Cost:
-          type: number
-          format: double
-        UnitCost:
-          type:
-          - number
-          - 'null'
-          format: double
-        Margin:
-          type:
-          - number
-          - 'null'
-          format: double
-        MarginType:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        QtyInStock:
-          type: number
-          format: double
-        QtyDelivered:
-          type: number
-          format: double
-        IsBillable:
-          type: boolean
-        PONumber:
-          type:
-          - string
-          - 'null'
-        POId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsBilled:
-          type: boolean
-        IsPosted:
-          type: boolean
-        DatePurchased:
-          type: string
-          format: date-time
-        SOId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SOItemId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StockByLocationId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Attachments:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AttachmentOutputDto'
-        IsFloating:
-          type: boolean
-      additionalProperties: false
-    LogTypeEnum:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    RelatedTicketsDeleteInputDto:
-      type: object
-      properties:
-        RelatedTicketIds:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketMergeOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketMergeOutputDto'
-      additionalProperties: false
-    TicketsListSearchSelectOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketsListSearchSelectOutputDto'
-      additionalProperties: false
-    TicketNotePutInputDto:
-      required:
-      - Details
-      - IsInternal
-      - NoteDate
-      - TypeId
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Details:
-          minLength: 1
-          type: string
-        IsInternal:
-          type: boolean
-        TypeId:
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-          format: int32
-        StatusId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        NoteDate:
-          type: string
-          format: date-time
-        EmailNotification:
-          $ref: '#/components/schemas/EmailNotificationDto'
-        AttachmentIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-      additionalProperties: false
-    ProductChargeAssetType:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    ProductChargeAssetOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProductChargeAssetOutputDto'
-      additionalProperties: false
-    ProductSummaryOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ProductSummaryOutputDto'
-      additionalProperties: false
-    TicketTimeEntryOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketTimeEntryOutputDto'
-      additionalProperties: false
-    TicketOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketOutputDto'
-      additionalProperties: false
-    TicketInputDto:
-      required:
-      - AccountId
-      - Details
-      - LocationId
-      - OpenDate
-      - PriorityId
-      - SourceId
-      - StatusId
-      - Title
-      - TypeId
-      type: object
-      properties:
-        Title:
-          minLength: 1
-          type: string
-        Details:
-          minLength: 1
-          type: string
-        AccountId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        LocationId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        ContactId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SoftwareAssetId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        HardwareAssetId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        QueueId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StatusId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        PriorityId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        TypeId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        IssueTypeId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SubIssueTypeId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ContractId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssigneeId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        WorkTypeId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SourceId:
-          type: integer
-          format: int32
-        SLAId:
-          maximum: 2147483647
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        OpenDate:
-          type: string
-          format: date-time
-        DueDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        SecondaryAssignees:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SecondaryAssigneeInputDto'
-        Ccs:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CCInputDto'
-        TempAttachments:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TempAttachmentInputDto'
-        CustomFieldsData:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CustomFieldDataInputDto'
-        UseDefaultContract:
-          type: boolean
-      additionalProperties: false
-    TicketSurveyScoreOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Email:
-          type:
-          - string
-          - 'null'
-        Comment:
-          type:
-          - string
-          - 'null'
-        Score:
-          type: integer
-          format: int32
-        Date:
-          type: string
-          format: date-time
-        ScoreMeta:
-          type:
-          - string
-          - 'null'
-        ScoreTextInternal:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    CCOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        EmailAddress:
-          type:
-          - string
-          - 'null'
-        FullName:
-          type:
-          - string
-          - 'null'
-        EntityType:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ProductChargeOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProductChargeOutputDto'
-      additionalProperties: false
-    Operation:
-      type: object
-      properties:
-        OperationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
-          type:
-          - string
-          - 'null'
-        op:
-          type:
-          - string
-          - 'null'
-        from:
-          type:
-          - string
-          - 'null'
-        value: {}
-      additionalProperties: false
-    ClientPortalTicketListDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        CreatedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ModifiedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        TicketNumber:
-          type:
-          - string
-          - 'null'
-        Title:
-          type:
-          - string
-          - 'null'
-        AccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountCode:
-          type:
-          - string
-          - 'null'
-        AccountName:
-          type:
-          - string
-          - 'null'
-        ContactId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ContactName:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type: integer
-          format: int32
-        StatusName:
-          type:
-          - string
-          - 'null'
-        StatusColor:
-          type:
-          - string
-          - 'null'
-        StatusForeColor:
-          type:
-          - string
-          - 'null'
-        StatusOrder:
-          type: integer
-          format: int32
-        PriorityId:
-          type: integer
-          format: int32
-        PriorityName:
-          type:
-          - string
-          - 'null'
-        PriorityColor:
-          type:
-          - string
-          - 'null'
-        TypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TypeName:
-          type:
-          - string
-          - 'null'
-        IssueTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IssueTypeName:
-          type:
-          - string
-          - 'null'
-        ContractId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ContractNumber:
-          type:
-          - string
-          - 'null'
-        ContractName:
-          type:
-          - string
-          - 'null'
-        SLAId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SLAName:
-          type:
-          - string
-          - 'null'
-        OpenDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        DueDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CompletedDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedByName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    RelatedTicketListOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RelatedTicketListOutputDto'
-      additionalProperties: false
-    ITGChecklistRequest:
-      type: object
-      properties:
-        Description:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketTaskListOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketTaskListOutputDto'
-      additionalProperties: false
-    TicketSLAStageEnum:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    POOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/POOutputDto'
-      additionalProperties: false
-    TicketLogsOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketLogsOutputDto'
-      additionalProperties: false
-    TicketTaskInputDto:
-      type: object
-      properties:
-        TicketTaskIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-      additionalProperties: false
-    ClientPortalTicketActivityOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ClientPortalTicketActivityOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ClientPortalTicketNotePostInputDto:
-      type: object
-      properties:
-        Details:
-          type:
-          - string
-          - 'null'
-        TypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        NoteDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        TempAttachments:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TempAttachmentInputDto'
-        EmailNotification:
-          $ref: '#/components/schemas/EmailNotificationDto'
-        AttachmentIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    ToDoOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ToDoOutputDto'
-      additionalProperties: false
-    AttachmentOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        OriginalFileName:
-          type:
-          - string
-          - 'null'
-        AliasName:
-          type:
-          - string
-          - 'null'
-        FileType:
-          type:
-          - string
-          - 'null'
-        ObjectId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModuleId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Url:
-          type:
-          - string
-          - 'null'
-        WebUrl:
-          type:
-          - string
-          - 'null'
-        CreatedById:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedByName:
-          type:
-          - string
-          - 'null'
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        IsUploadedToBlob:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    AttachmentInputDto:
-      required:
-      - Base64Data
-      - Name
-      - Type
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          minLength: 1
-          type: string
-        Alias:
-          type:
-          - string
-          - 'null'
-        Base64Data:
-          minLength: 1
-          type: string
-        Type:
-          minLength: 1
-          type: string
-      additionalProperties: false
-    ServiceCallOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ServiceCallOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ProductSummaryOutputDto:
-      type: object
-      properties:
-        ProductId:
-          type: integer
-          format: int32
-        ProductName:
-          type:
-          - string
-          - 'null'
-        ProductIndexId:
-          type: integer
-          format: int32
-        Quantity:
-          type: integer
-          format: int32
-      additionalProperties: false
-    TicketNoteOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketNoteOutputDto'
-      additionalProperties: false
-    TicketExpenseChargeOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketExpenseChargeOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    CCOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CCOutputDto'
-      additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketsListSearchSelectOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        TicketNumber:
-          type:
-          - string
-          - 'null'
-        Title:
-          type:
-          - string
-          - 'null'
-        QueueId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        QueueName:
-          type:
-          - string
-          - 'null'
-        AssigneeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AssigneeName:
-          type:
-          - string
-          - 'null'
-        OpenDate:
-          type: string
-          format: date-time
-        StatusName:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StatusColor:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketExpensePostInputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        ExpenseSheetId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ExpenseEntrySourceId:
-          type: integer
-          format: int32
         UserId:
           type: integer
           format: int32
         Date:
           type: string
           format: date-time
-        ExpenseTypeId:
-          type: integer
-          format: int32
-        PaymentTypeId:
-          type: integer
-          format: int32
-        AmountSpent:
-          type: number
-          format: double
-        MarkUpAmount:
-          type: number
-          format: double
-        MarkUpType:
-          type: integer
-          format: int32
-        Notes:
+        Resource:
           type:
           - string
           - 'null'
-        InternalNotes:
-          type:
-          - string
-          - 'null'
-        Reimbursable:
-          type: boolean
-        IsBillable:
-          type: boolean
-        UnitPrice:
-          type:
-          - number
-          - 'null'
-          format: double
-        EmailNotification:
-          $ref: '#/components/schemas/EmailNotificationDto'
-        CustomFields:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CustomFieldDataInputDto'
-        TempAttachments:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TempAttachmentInputDto'
-        AttachmentNotes:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketChecklistItemOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketChecklistItemOutputDto'
-      additionalProperties: false
-    DeliverChargeOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        ProductChargeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsFromStock:
-          type:
-          - boolean
-          - 'null'
-        Quantity:
-          type: number
-          format: double
-        DeliveredBy:
-          type:
-          - string
-          - 'null'
-        DateDelivered:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        DeliveryMethodId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SerialNumber:
-          type:
-          - string
-          - 'null'
-        LotNumber:
-          type:
-          - string
-          - 'null'
-        Notes:
-          type:
-          - string
-          - 'null'
-        AssetType:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    CountOutpuDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/CountOutpuDto'
-      additionalProperties: false
-    Int32BatchIdsDto:
-      type: object
-      properties:
-        ModuleId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TargetedIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-      additionalProperties: false
-    TempAttachmentInputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Alias:
-          type:
-          - string
-          - 'null'
-        IsUploadedToBlob:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    TicketNoteOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        CreatedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ModifiedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        Details:
-          type:
-          - string
-          - 'null'
-        IsInternal:
-          type: boolean
-        TypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TypeName:
-          type:
-          - string
-          - 'null'
-        CreatedByName:
-          type:
-          - string
-          - 'null'
-        CreatedByEmail:
-          type:
-          - string
-          - 'null'
-        ModifiedByName:
-          type:
-          - string
-          - 'null'
-        Attachments:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AttachmentOutputDto'
-      additionalProperties: false
-    ResolveTicketDto:
-      required:
-      - Comment
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int64
-        Comment:
-          minLength: 1
-          type: string
-        StatusId:
-          type: integer
-          format: int32
-        IsPublishToKnowledgeBase:
-          type: boolean
-        IsInternal:
-          type: boolean
-        KnowledgeBaseCategoryId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    ChecklistTaskOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int64
-        name:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        order:
-          type: integer
-          format: int32
-      additionalProperties: false
-    TicketNoteOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketNoteOutputDto'
-      additionalProperties: false
-    ClientPortalTicketOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ClientPortalTicketOutputDto'
       additionalProperties: false
     TicketTimeEntryOutputDtoResponse:
       type: object
@@ -9573,241 +9808,6 @@ components:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
           $ref: '#/components/schemas/TicketTimeEntryOutputDto'
-      additionalProperties: false
-    ServiceCallOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ServiceCallOutputDto'
-      additionalProperties: false
-    TicketTimeEntryOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        CreatedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ModifiedBy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        StartDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        StartTime:
-          type:
-          - string
-          - 'null'
-          format: date-span
-        EndTime:
-          type:
-          - string
-          - 'null'
-          format: date-span
-        Timespent:
-          type:
-          - number
-          - 'null'
-          format: double
-        Notes:
-          type:
-          - string
-          - 'null'
-        UserId:
-          type: integer
-          format: int32
-        InternalNotes:
-          type:
-          - string
-          - 'null'
-        Approved:
-          type: boolean
-        Billed:
-          type: boolean
-        Posted:
-          type: boolean
-        WorkTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        RoleId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        EmployeeName:
-          type:
-          - string
-          - 'null'
-        TimeSpentBy:
-          type:
-          - string
-          - 'null'
-        WorkTypeName:
-          type:
-          - string
-          - 'null'
-        RoleName:
-          type:
-          - string
-          - 'null'
-        WeekStart:
-          type: string
-          format: date-time
-        WeekEnd:
-          type: string
-          format: date-time
-        CustomFields:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CustomFieldDataOutputDto'
-      additionalProperties: false
-    ChecklistOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int64
-        name:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        createdByName:
-          type:
-          - string
-          - 'null'
-        createdOn:
-          type: string
-          format: date-time
-        updatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    ProductChargePutInputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        ProductIndexId:
-          type: integer
-          format: int32
-        WarehouseId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ChargeName:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type: integer
-          format: int32
-        PricingLevelId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Quantity:
-          type:
-          - number
-          - 'null'
-          format: double
-        Price:
-          type:
-          - number
-          - 'null'
-          format: double
-        Amount:
-          type:
-          - number
-          - 'null'
-          format: double
-        Cost:
-          type: number
-          format: double
-        Margin:
-          type:
-          - number
-          - 'null'
-          format: double
-        MarginType:
-          type: integer
-          format: int32
-        UnitCost:
-          type:
-          - number
-          - 'null'
-          format: double
-        IsBillable:
-          type: boolean
-        POId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsBilled:
-          type: boolean
-        IsPosted:
-          type: boolean
-        DatePurchased:
-          type: string
-          format: date-time
-        SOId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SOItemId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SerialNumber:
-          type:
-          - string
-          - 'null'
-        StockByLocationId:
-          type:
-          - integer
-          - 'null'
-          format: int32
       additionalProperties: false
   securitySchemes:
     bearerAuth:

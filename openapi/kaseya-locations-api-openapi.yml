@@ -32,18 +32,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    LocationLookupOutputDto:
+    LocationLookupOutputDtoListResponse:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsMain:
+        Success:
           type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/LocationLookupOutputDto'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -70,20 +72,18 @@ components:
           items:
             type: string
       additionalProperties: false
-    LocationLookupOutputDtoListResponse:
+    LocationLookupOutputDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Id:
+          type: integer
+          format: int32
+        Name:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/LocationLookupOutputDto'
+        IsMain:
+          type: boolean
       additionalProperties: false
   securitySchemes:
     bearerAuth:

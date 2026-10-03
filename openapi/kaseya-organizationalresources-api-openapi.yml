@@ -403,53 +403,72 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Object:
+    Filter:
       type: object
-      properties: {}
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
     RestUserAccessLevel:
       type: object
       properties: {}
-    QueryCountResultModel:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        queryCount:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
           format: int32
           type: integer
-    EntityInformationModel:
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Object:
+      type: object
+      properties: {}
+    ItemQueryResultModel_OrganizationalResourceModel_BusinessDivisionSubdivisionResource:
       type: object
       properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
+        item:
+          $ref: '#/components/schemas/OrganizationalResourceModel'
+    OrganizationalResourceModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        organizationalLevelAssociationID:
+          format: int32
+          type: integer
+        resourceID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          format: int64
+          type: integer
           readOnly: true
     FieldInformationModel:
       type: object
@@ -481,14 +500,18 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    UserDefinedFieldInformationResultModel:
+    QueryCountResultModel:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
+        queryCount:
+          format: int32
+          type: integer
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
     QueryActionResult_OrganizationalResourceModel_BusinessDivisionSubdivisionResource:
       type: object
       properties:
@@ -498,71 +521,14 @@ components:
             $ref: '#/components/schemas/OrganizationalResourceModel'
         pageDetails:
           $ref: '#/components/schemas/PagingModel'
-    QueryModel:
+    FieldInformationResultModel:
       type: object
       properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
+        fields:
           type: array
           items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     Field:
       type: object
       properties:
@@ -599,46 +565,80 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    OrganizationalResourceModel:
+    QueryModel:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        organizationalLevelAssociationID:
+        maxRecords:
           format: int32
           type: integer
-        resourceID:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          format: int64
-          type: integer
-          readOnly: true
-    ItemQueryResultModel_OrganizationalResourceModel_BusinessDivisionSubdivisionResource:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/OrganizationalResourceModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
+        includeFields:
           type: array
           items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PagingModel:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    PickListValue:
       type: object
       properties:
-        count:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
           readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true

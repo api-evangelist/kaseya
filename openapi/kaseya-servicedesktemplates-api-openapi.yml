@@ -165,33 +165,7 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TicketTimeEntryTemplateDetailsOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Notes:
-          type:
-          - string
-          - 'null'
-        InternalNotes:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketNoteTemplateDetailsOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Details:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TicketNoteTemplateLookupOutputDtoIEnumerableResponse:
+    TicketTimeEntryTemplateDetailsOutputDtoIEnumerableResponse:
       type: object
       properties:
         Success:
@@ -204,37 +178,7 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/TicketNoteTemplateLookupOutputDto'
-      additionalProperties: false
-    TicketTimeEntryTemplateLookupOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketTimeEntryTemplateLookupOutputDto'
-      additionalProperties: false
-    TicketTemplateLookupOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketTemplateLookupOutputDto'
+            $ref: '#/components/schemas/TicketTimeEntryTemplateDetailsOutputDto'
       additionalProperties: false
     TicketTimeEntryTemplateLookupOutputDto:
       type: object
@@ -273,17 +217,6 @@ components:
           type: number
           format: double
       additionalProperties: false
-    TicketTemplateOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TicketTemplateOutputDto'
-      additionalProperties: false
     TicketNoteTemplateLookupOutputDto:
       type: object
       properties:
@@ -306,21 +239,6 @@ components:
           format: int32
         IsInternal:
           type: boolean
-      additionalProperties: false
-    TicketNoteTemplateDetailsOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketNoteTemplateDetailsOutputDto'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -347,13 +265,32 @@ components:
           items:
             type: string
       additionalProperties: false
-    TicketTemplateLookupOutputDto:
+    TicketNoteTemplateLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketNoteTemplateLookupOutputDto'
+      additionalProperties: false
+    TicketTimeEntryTemplateDetailsOutputDto:
       type: object
       properties:
         Id:
           type: integer
           format: int32
-        Name:
+        Notes:
+          type:
+          - string
+          - 'null'
+        InternalNotes:
           type:
           - string
           - 'null'
@@ -435,7 +372,7 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    TicketTimeEntryTemplateDetailsOutputDtoIEnumerableResponse:
+    TicketTimeEntryTemplateLookupOutputDtoIEnumerableResponse:
       type: object
       properties:
         Success:
@@ -448,7 +385,70 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/TicketTimeEntryTemplateDetailsOutputDto'
+            $ref: '#/components/schemas/TicketTimeEntryTemplateLookupOutputDto'
+      additionalProperties: false
+    TicketTemplateLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketTemplateLookupOutputDto'
+      additionalProperties: false
+    TicketNoteTemplateDetailsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Details:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TicketNoteTemplateDetailsOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketNoteTemplateDetailsOutputDto'
+      additionalProperties: false
+    TicketTemplateOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TicketTemplateOutputDto'
+      additionalProperties: false
+    TicketTemplateLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

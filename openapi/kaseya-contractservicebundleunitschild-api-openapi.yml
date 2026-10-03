@@ -272,47 +272,44 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Object:
-      type: object
-      properties: {}
     RestUserAccessLevel:
       type: object
       properties: {}
-    EntityInformationModel:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        name:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
           type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
+        nextPageUrl:
+          type: string
+    Object:
+      type: object
+      properties: {}
+    ItemQueryResultModel_ContractServiceBundleUnitModel_ContractServiceBundleUnit:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ContractServiceBundleUnitModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true
     FieldInformationModel:
       type: object
@@ -344,14 +341,6 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
     ContractServiceBundleUnitModel:
       type: object
       properties:
@@ -395,44 +384,14 @@ components:
           format: int64
           type: integer
           readOnly: true
-    EntityInformationResultModel:
+    FieldInformationResultModel:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryActionResult_ContractServiceBundleUnitModel_ContractServiceBundleUnit:
-      type: object
-      properties:
-        items:
+        fields:
           type: array
           items:
-            $ref: '#/components/schemas/ContractServiceBundleUnitModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    ItemQueryResultModel_ContractServiceBundleUnitModel_ContractServiceBundleUnit:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ContractServiceBundleUnitModel'
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     Field:
       type: object
       properties:
@@ -469,25 +428,66 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
+    QueryActionResult_ContractServiceBundleUnitModel_ContractServiceBundleUnit:
       type: object
       properties:
-        fields:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PagingModel:
+            $ref: '#/components/schemas/ContractServiceBundleUnitModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    PickListValue:
       type: object
       properties:
-        count:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
           readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true

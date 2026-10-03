@@ -66,20 +66,43 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ExpenseSheetLookupDtoListResponse:
+    ExpenseSheetOutputDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Id:
+          type: integer
+          format: int32
+        UserId:
+          type: integer
+          format: int32
+        StatusId:
+          type: integer
+          format: int32
+        Name:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/ExpenseSheetLookupDto'
+        Notes:
+          type:
+          - string
+          - 'null'
+        EndPeriod:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ExpenseSheetLookupDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
       additionalProperties: false
     ExpenseSheetPostInputDto:
       type: object
@@ -106,20 +129,6 @@ components:
           - string
           - 'null'
           format: date-time
-      additionalProperties: false
-    ExpenseSheetLookupDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type: integer
-          format: int32
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -157,29 +166,20 @@ components:
         Result:
           $ref: '#/components/schemas/ExpenseSheetOutputDto'
       additionalProperties: false
-    ExpenseSheetOutputDto:
+    ExpenseSheetLookupDtoListResponse:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
-        UserId:
-          type: integer
-          format: int32
-        StatusId:
-          type: integer
-          format: int32
-        Name:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
-          - string
+          - array
           - 'null'
-        Notes:
-          type:
-          - string
-          - 'null'
-        EndPeriod:
-          type: string
-          format: date-time
+          items:
+            $ref: '#/components/schemas/ExpenseSheetLookupDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

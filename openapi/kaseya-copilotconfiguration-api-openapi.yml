@@ -106,21 +106,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CopilotConfigurationOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CopilotConfigurationOutputDto'
-      additionalProperties: false
     CopilotConfigurationInputDto:
       type: object
       properties:
@@ -165,6 +150,32 @@ components:
           type: integer
           format: int32
       additionalProperties: false
+    CopilotConfigurationOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/CopilotConfigurationOutputDto'
+      additionalProperties: false
+    CopilotConfigurationOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CopilotConfigurationOutputDto'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -205,17 +216,6 @@ components:
           type:
           - boolean
           - 'null'
-      additionalProperties: false
-    CopilotConfigurationOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/CopilotConfigurationOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

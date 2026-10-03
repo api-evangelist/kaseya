@@ -291,44 +291,82 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Statuses:
+    HardwareAssetInputDto:
+      required:
+      - AccountId
+      - AccountLocationId
+      - CategoryId
+      - Name
       type: object
       properties:
-        Message:
-          type:
-          - string
-          - 'null'
         Name:
-          type:
-          - string
-          - 'null'
-        Color:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    HardwareAssetsListSearchSelectOutputDto:
-      type: object
-      properties:
-        Id:
+          minLength: 1
+          type: string
+        AccountId:
+          maximum: 2147483647
+          minimum: 1
           type: integer
           format: int32
-        CategoryName:
+        AccountLocationId:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+        ContactId:
           type:
-          - string
+          - integer
           - 'null'
+          format: int32
         CategoryId:
+          maximum: 2147483647
+          minimum: 1
           type: integer
           format: int32
-        LocationName:
+        BrandId:
           type:
-          - string
+          - integer
           - 'null'
-        AssetName:
-          type:
-          - string
-          - 'null'
+          format: int32
         SerialNumber:
+          type:
+          - string
+          - 'null'
+        BusinessImpactId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StateId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        LocationInfo:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        BarCode:
+          type:
+          - string
+          - 'null'
+        AssetTag:
+          type:
+          - string
+          - 'null'
+        VendorId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        ModelNumber:
           type:
           - string
           - 'null'
@@ -336,26 +374,260 @@ components:
           type:
           - string
           - 'null'
-        IPAddress:
+        IpAddress:
           type:
           - string
           - 'null'
-        ContactId:
-          type: integer
+        SubnetMask:
+          type:
+          - string
+          - 'null'
+        DefaultGateway:
+          type:
+          - string
+          - 'null'
+        DnsServers:
+          type:
+          - string
+          - 'null'
+        DhcpEnabled:
+          type:
+          - boolean
+          - 'null'
+        DhcpServer:
+          type:
+          - string
+          - 'null'
+        WinsEnabled:
+          type:
+          - boolean
+          - 'null'
+        SecondaryWinsServer:
+          type:
+          - string
+          - 'null'
+        ConnectionGatewayIp:
+          type:
+          - string
+          - 'null'
+        OsType:
+          type:
+          - string
+          - 'null'
+        OsInfo:
+          type:
+          - string
+          - 'null'
+        MajorVersion:
+          type:
+          - string
+          - 'null'
+        MinorVersion:
+          type:
+          - string
+          - 'null'
+        MacAddress:
+          type:
+          - string
+          - 'null'
+        LoginName:
+          type:
+          - string
+          - 'null'
+        LastLoginname:
+          type:
+          - string
+          - 'null'
+        CurrentUser:
+          type:
+          - string
+          - 'null'
+        ProductName:
+          type:
+          - string
+          - 'null'
+        MachineVersion:
+          type:
+          - string
+          - 'null'
+        MotherboardManufacturerId:
+          type:
+          - integer
+          - 'null'
           format: int32
-        ContactName:
+        MotherboardProductCode:
           type:
           - string
           - 'null'
-        AccountId:
-          type: integer
+        MotherboardSerialNumber:
+          type:
+          - string
+          - 'null'
+        MotherboardVersion:
+          type:
+          - string
+          - 'null'
+        ChassisAssetTag:
+          type:
+          - string
+          - 'null'
+        ChassisManufacturerId:
+          type:
+          - integer
+          - 'null'
           format: int32
-        AccountName:
+        ChassisSerialNumber:
           type:
           - string
           - 'null'
-        IsActive:
+        ChassisType:
+          type:
+          - string
+          - 'null'
+        ChassisVersion:
+          type:
+          - string
+          - 'null'
+        BusSpeed:
+          type:
+          - string
+          - 'null'
+        ManufacturerId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        MaxMemorySize:
+          type:
+          - string
+          - 'null'
+        MaxMemorySlots:
+          type:
+          - string
+          - 'null'
+        PrimaryWinsServer:
+          type:
+          - string
+          - 'null'
+        ComputerName:
+          type:
+          - string
+          - 'null'
+        PurchaseCost:
+          type:
+          - number
+          - 'null'
+          format: double
+        WarrantyExpirationDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ExpirationDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AcquisitionDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        FirstCheckIn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastCheckIn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        LastReboot:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    TicketListDtoListResponse:
+      type: object
+      properties:
+        Success:
           type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TicketListDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    HardwareAssetOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/HardwareAssetOutputDto'
+      additionalProperties: false
+    HardwareAssetDiskVolumeDto:
+      type: object
+      properties:
+        Drive:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+        Format:
+          type:
+          - string
+          - 'null'
+        FreeMBytes:
+          type: integer
+          format: int64
+        UsedMBytes:
+          type: integer
+          format: int64
+        TotalMBytes:
+          type: integer
+          format: int64
+        Label:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     TicketListDto:
       type: object
@@ -679,375 +951,11 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    HardwareAssetInputDto:
-      required:
-      - AccountId
-      - AccountLocationId
-      - CategoryId
-      - Name
-      type: object
-      properties:
-        Name:
-          minLength: 1
-          type: string
-        AccountId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        AccountLocationId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        ContactId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CategoryId:
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-          format: int32
-        BrandId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SerialNumber:
-          type:
-          - string
-          - 'null'
-        BusinessImpactId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StateId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        LocationInfo:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        BarCode:
-          type:
-          - string
-          - 'null'
-        AssetTag:
-          type:
-          - string
-          - 'null'
-        VendorId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        ModelNumber:
-          type:
-          - string
-          - 'null'
-        MachineGroupId:
-          type:
-          - string
-          - 'null'
-        IpAddress:
-          type:
-          - string
-          - 'null'
-        SubnetMask:
-          type:
-          - string
-          - 'null'
-        DefaultGateway:
-          type:
-          - string
-          - 'null'
-        DnsServers:
-          type:
-          - string
-          - 'null'
-        DhcpEnabled:
-          type:
-          - boolean
-          - 'null'
-        DhcpServer:
-          type:
-          - string
-          - 'null'
-        WinsEnabled:
-          type:
-          - boolean
-          - 'null'
-        SecondaryWinsServer:
-          type:
-          - string
-          - 'null'
-        ConnectionGatewayIp:
-          type:
-          - string
-          - 'null'
-        OsType:
-          type:
-          - string
-          - 'null'
-        OsInfo:
-          type:
-          - string
-          - 'null'
-        MajorVersion:
-          type:
-          - string
-          - 'null'
-        MinorVersion:
-          type:
-          - string
-          - 'null'
-        MacAddress:
-          type:
-          - string
-          - 'null'
-        LoginName:
-          type:
-          - string
-          - 'null'
-        LastLoginname:
-          type:
-          - string
-          - 'null'
-        CurrentUser:
-          type:
-          - string
-          - 'null'
-        ProductName:
-          type:
-          - string
-          - 'null'
-        MachineVersion:
-          type:
-          - string
-          - 'null'
-        MotherboardManufacturerId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        MotherboardProductCode:
-          type:
-          - string
-          - 'null'
-        MotherboardSerialNumber:
-          type:
-          - string
-          - 'null'
-        MotherboardVersion:
-          type:
-          - string
-          - 'null'
-        ChassisAssetTag:
-          type:
-          - string
-          - 'null'
-        ChassisManufacturerId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ChassisSerialNumber:
-          type:
-          - string
-          - 'null'
-        ChassisType:
-          type:
-          - string
-          - 'null'
-        ChassisVersion:
-          type:
-          - string
-          - 'null'
-        BusSpeed:
-          type:
-          - string
-          - 'null'
-        ManufacturerId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        MaxMemorySize:
-          type:
-          - string
-          - 'null'
-        MaxMemorySlots:
-          type:
-          - string
-          - 'null'
-        PrimaryWinsServer:
-          type:
-          - string
-          - 'null'
-        ComputerName:
-          type:
-          - string
-          - 'null'
-        PurchaseCost:
-          type:
-          - number
-          - 'null'
-          format: double
-        WarrantyExpirationDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ExpirationDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        AcquisitionDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        FirstCheckIn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastCheckIn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        LastReboot:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
     HardwareAssetStatusOutputDto:
       type: object
       properties:
         IsOnline:
           type: boolean
-      additionalProperties: false
-    HardwareAssetsListSearchSelectOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/HardwareAssetsListSearchSelectOutputDto'
-      additionalProperties: false
-    HardwareAssetOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/HardwareAssetOutputDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    TicketListDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TicketListDto'
-      additionalProperties: false
-    HardwareAssetDiskVolumeDto:
-      type: object
-      properties:
-        Drive:
-          type:
-          - string
-          - 'null'
-        Type:
-          type:
-          - string
-          - 'null'
-        Format:
-          type:
-          - string
-          - 'null'
-        FreeMBytes:
-          type: integer
-          format: int64
-        UsedMBytes:
-          type: integer
-          format: int64
-        TotalMBytes:
-          type: integer
-          format: int64
-        Label:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    HardwareAssetStatusOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/HardwareAssetStatusOutputDto'
       additionalProperties: false
     HardwareAssetOutputDto:
       type: object
@@ -1406,6 +1314,98 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/Statuses'
+      additionalProperties: false
+    HardwareAssetStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/HardwareAssetStatusOutputDto'
+      additionalProperties: false
+    HardwareAssetsListSearchSelectOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/HardwareAssetsListSearchSelectOutputDto'
+      additionalProperties: false
+    HardwareAssetsListSearchSelectOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        CategoryName:
+          type:
+          - string
+          - 'null'
+        CategoryId:
+          type: integer
+          format: int32
+        LocationName:
+          type:
+          - string
+          - 'null'
+        AssetName:
+          type:
+          - string
+          - 'null'
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        MachineGroupId:
+          type:
+          - string
+          - 'null'
+        IPAddress:
+          type:
+          - string
+          - 'null'
+        ContactId:
+          type: integer
+          format: int32
+        ContactName:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type: integer
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    Statuses:
+      type: object
+      properties:
+        Message:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Color:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

@@ -441,44 +441,53 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RMMSettingsDto:
+    IntegrationStatusOutputDtoResponse:
       type: object
       properties:
-        Type:
-          type: integer
-          format: int32
-        Enabled:
+        Success:
           type: boolean
-        Target:
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/IntegrationStatusOutputDto'
+      additionalProperties: false
+    IntegrationAssetJobStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/IntegrationAssetJobStatusOutputDto'
+      additionalProperties: false
+    AssetMotherboardInfoInputDto:
+      type: object
+      properties:
+        MotherboardManufacturer:
           type:
           - string
           - 'null'
-        EnableRemoteConnect:
-          type: boolean
-        ShowServerAddressOnTicket:
-          type: boolean
-      additionalProperties: false
-    IntegrationTicketJobStatusOutputDto:
-      type: object
-      properties:
-        JobId:
-          type: integer
-          format: int64
-        JobStatus:
+        MotherboardProductCode:
           type:
           - string
           - 'null'
-        ActionType:
-          type: integer
-          format: int32
-        Details:
+        MotherboardVersion:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/IntegrationTicketJobDetailOutputDto'
+        MotherboardSerialNumber:
+          type:
+          - string
+          - 'null'
+        BusSpeed:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-    IntegrationTicketInputDto:
+    IntegrationTicketResolveInputDto:
       type: object
       properties:
         TransactionId:
@@ -489,75 +498,10 @@ components:
           type:
           - string
           - 'null'
-        Organization:
-          $ref: '#/components/schemas/IntegrationAccountInputDto'
-        Title:
+        ResolutionNote:
           type:
           - string
           - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        OpenDate:
-          type: string
-          format: date-time
-        Asset:
-          $ref: '#/components/schemas/IntegrationTicketAssetInputDto'
-        DuplicationCount:
-          type: integer
-          format: int32
-        LastOccurence:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    AssetChassisInfoInputDto:
-      type: object
-      properties:
-        ChassisManufacturer:
-          type:
-          - string
-          - 'null'
-        ChassisSerialNumber:
-          type:
-          - string
-          - 'null'
-        ChassisVersion:
-          type:
-          - string
-          - 'null'
-        ChassisAssetTag:
-          type:
-          - string
-          - 'null'
-        ChassisType:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    IntegrationTicketDuplicateInputDto:
-      type: object
-      properties:
-        TransactionId:
-          type:
-          - string
-          - 'null'
-        AlertRefId:
-          type:
-          - string
-          - 'null'
-        DuplicationCount:
-          type: integer
-          format: int32
-        LastOccurence:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ReopenTicket:
-          type: boolean
       additionalProperties: false
     AssetNetworkDetailsInputDto:
       type: object
@@ -603,29 +547,320 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    AssetMotherboardInfoInputDto:
+    IntegrationtAssetInputDto:
       type: object
       properties:
-        MotherboardManufacturer:
+        TransactionId:
           type:
           - string
           - 'null'
-        MotherboardProductCode:
+        AssetId:
           type:
           - string
           - 'null'
-        MotherboardVersion:
+        AgentId:
           type:
           - string
           - 'null'
-        MotherboardSerialNumber:
+        Organization:
+          $ref: '#/components/schemas/IntegrationAccountInputDto'
+        Name:
           type:
           - string
           - 'null'
-        BusSpeed:
+        Description:
           type:
           - string
           - 'null'
+        MachineGroupId:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+        LocationId:
+          type:
+          - string
+          - 'null'
+        AdditionalInfo:
+          $ref: '#/components/schemas/AssetAdditionalInfoInputDto'
+        AssetDetails:
+          $ref: '#/components/schemas/AssetDetailsInputDto'
+        AssetNetworkDetails:
+          $ref: '#/components/schemas/AssetNetworkDetailsInputDto'
+        AssetMotherboardInfo:
+          $ref: '#/components/schemas/AssetMotherboardInfoInputDto'
+        AssetChassisInfo:
+          $ref: '#/components/schemas/AssetChassisInfoInputDto'
+        AssetDiskVolumes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AssetDiskVolumeInputDto'
+      additionalProperties: false
+    IntegrationTicketInputDto:
+      type: object
+      properties:
+        TransactionId:
+          type:
+          - string
+          - 'null'
+        AlertRefId:
+          type:
+          - string
+          - 'null'
+        Organization:
+          $ref: '#/components/schemas/IntegrationAccountInputDto'
+        Title:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        OpenDate:
+          type: string
+          format: date-time
+        Asset:
+          $ref: '#/components/schemas/IntegrationTicketAssetInputDto'
+        DuplicationCount:
+          type: integer
+          format: int32
+        LastOccurence:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    AssetAdditionalInfoInputDto:
+      type: object
+      properties:
+        AcquisitionDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        WarrantyExpDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ExpiryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        Barcode:
+          type:
+          - string
+          - 'null'
+        PurchaseCost:
+          type:
+          - number
+          - 'null'
+          format: double
+      additionalProperties: false
+    IntegrationTicketJobStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/IntegrationTicketJobStatusOutputDto'
+      additionalProperties: false
+    RemoteSessionsOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/RemoteSessionsOutputDto'
+      additionalProperties: false
+    AssetDiskVolumeInputDto:
+      type: object
+      properties:
+        Drive:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+        Format:
+          type:
+          - string
+          - 'null'
+        FreeMBytes:
+          type: integer
+          format: int64
+        UsedMBytes:
+          type: integer
+          format: int64
+        TotalMBytes:
+          type: integer
+          format: int64
+        Label:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationAssetJobStatusOutputDto:
+      type: object
+      properties:
+        JobId:
+          type: integer
+          format: int64
+        JobStatus:
+          type:
+          - string
+          - 'null'
+        ActionType:
+          type: integer
+          format: int32
+        Details:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IntegrationAssetJobDetailOutput'
+      additionalProperties: false
+    RMMSettingsDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RMMSettingsDto'
+      additionalProperties: false
+    IntegrationAssetJobDetailOutput:
+      type: object
+      properties:
+        StatusCode:
+          type:
+          - string
+          - 'null'
+        StatusMessage:
+          type:
+          - string
+          - 'null'
+        TransactionId:
+          type:
+          - string
+          - 'null'
+        AssetId:
+          type:
+          - string
+          - 'null'
+        PsaAssetId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    IntegrationTicketJobDetailOutputDto:
+      type: object
+      properties:
+        StatusCode:
+          type:
+          - string
+          - 'null'
+        StatusMessage:
+          type:
+          - string
+          - 'null'
+        TransactionId:
+          type:
+          - string
+          - 'null'
+        AlertRefId:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        TicketId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    AssetChassisInfoInputDto:
+      type: object
+      properties:
+        ChassisManufacturer:
+          type:
+          - string
+          - 'null'
+        ChassisSerialNumber:
+          type:
+          - string
+          - 'null'
+        ChassisVersion:
+          type:
+          - string
+          - 'null'
+        ChassisAssetTag:
+          type:
+          - string
+          - 'null'
+        ChassisType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationAccountInputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PulsewayRemoteSessionEntity:
+      type: object
+      properties:
+        Token:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Read_Only:
+          type: boolean
+        Is_Active:
+          type: boolean
+        Is_Console_Session:
+          type: boolean
       additionalProperties: false
     AssetDetailsInputDto:
       type: object
@@ -706,44 +941,24 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    IntegrationStatusOutputDtoResponse:
+    RMMSettingsDto:
       type: object
       properties:
-        Success:
+        Type:
+          type: integer
+          format: int32
+        Enabled:
           type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/IntegrationStatusOutputDto'
-      additionalProperties: false
-    RMMSettingsDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Target:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/RMMSettingsDto'
-      additionalProperties: false
-    IntegrationAssetJobStatusOutputDtoResponse:
-      type: object
-      properties:
-        Success:
+        EnableRemoteConnect:
           type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/IntegrationAssetJobStatusOutputDto'
+        ShowServerAddressOnTicket:
+          type: boolean
       additionalProperties: false
-    IntegrationTicketResolveInputDto:
+    IntegrationTicketDuplicateInputDto:
       type: object
       properties:
         TransactionId:
@@ -754,83 +969,25 @@ components:
           type:
           - string
           - 'null'
-        ResolutionNote:
+        DuplicationCount:
+          type: integer
+          format: int32
+        LastOccurence:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    IntegrationJobOutputDtoResponse:
-      type: object
-      properties:
-        Success:
+          format: date-time
+        ReopenTicket:
           type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/IntegrationJobOutputDto'
       additionalProperties: false
-    AssetDiskVolumeInputDto:
-      type: object
-      properties:
-        Drive:
-          type:
-          - string
-          - 'null'
-        Type:
-          type:
-          - string
-          - 'null'
-        Format:
-          type:
-          - string
-          - 'null'
-        FreeMBytes:
-          type: integer
-          format: int64
-        UsedMBytes:
-          type: integer
-          format: int64
-        TotalMBytes:
-          type: integer
-          format: int64
-        Label:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    AssetAdditionalInfoInputDto:
-      type: object
-      properties:
-        AcquisitionDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        WarrantyExpDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ExpiryDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        Barcode:
-          type:
-          - string
-          - 'null'
-        PurchaseCost:
-          type:
-          - number
-          - 'null'
-          format: double
-      additionalProperties: false
-    IntegrationAccountInputDto:
+    IntegrationTicketAssetInputDto:
       type: object
       properties:
         Id:
+          type:
+          - string
+          - 'null'
+        AgentId:
           type:
           - string
           - 'null'
@@ -839,70 +996,33 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    IntegrationAssetJobDetailOutput:
+    IntegrationTicketJobStatusOutputDto:
       type: object
       properties:
-        StatusCode:
+        JobId:
+          type: integer
+          format: int64
+        JobStatus:
           type:
           - string
           - 'null'
-        StatusMessage:
-          type:
-          - string
-          - 'null'
-        TransactionId:
-          type:
-          - string
-          - 'null'
-        AssetId:
-          type:
-          - string
-          - 'null'
-        PsaAssetId:
-          type:
-          - integer
-          - 'null'
+        ActionType:
+          type: integer
           format: int32
+        Details:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IntegrationTicketJobDetailOutputDto'
       additionalProperties: false
-    RemoteSessionsOutputDtoResponse:
+    IntegrationJobOutputDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/RemoteSessionsOutputDto'
-      additionalProperties: false
-    IntegrationTicketJobDetailOutputDto:
-      type: object
-      properties:
-        StatusCode:
+        JobId:
           type:
           - string
           - 'null'
-        StatusMessage:
-          type:
-          - string
-          - 'null'
-        TransactionId:
-          type:
-          - string
-          - 'null'
-        AlertRefId:
-          type:
-          - string
-          - 'null'
-        TicketNumber:
-          type:
-          - string
-          - 'null'
-        TicketId:
-          type:
-          - integer
-          - 'null'
-          format: int32
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -929,143 +1049,11 @@ components:
           items:
             type: string
       additionalProperties: false
-    IntegrationJobOutputDto:
-      type: object
-      properties:
-        JobId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     IntegrationStatusOutputDto:
       type: object
       properties:
         IsEnabled:
           type: boolean
-      additionalProperties: false
-    PulsewayRemoteSessionEntity:
-      type: object
-      properties:
-        Token:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        Read_Only:
-          type: boolean
-        Is_Active:
-          type: boolean
-        Is_Console_Session:
-          type: boolean
-      additionalProperties: false
-    IntegrationTicketAssetInputDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        AgentId:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    IntegrationAssetJobStatusOutputDto:
-      type: object
-      properties:
-        JobId:
-          type: integer
-          format: int64
-        JobStatus:
-          type:
-          - string
-          - 'null'
-        ActionType:
-          type: integer
-          format: int32
-        Details:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/IntegrationAssetJobDetailOutput'
-      additionalProperties: false
-    IntegrationDeactivateAssetInputDto:
-      type: object
-      properties:
-        TransactionId:
-          type:
-          - string
-          - 'null'
-        AssetId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    IntegrationtAssetInputDto:
-      type: object
-      properties:
-        TransactionId:
-          type:
-          - string
-          - 'null'
-        AssetId:
-          type:
-          - string
-          - 'null'
-        AgentId:
-          type:
-          - string
-          - 'null'
-        Organization:
-          $ref: '#/components/schemas/IntegrationAccountInputDto'
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        MachineGroupId:
-          type:
-          - string
-          - 'null'
-        Type:
-          type:
-          - string
-          - 'null'
-        LocationId:
-          type:
-          - string
-          - 'null'
-        AdditionalInfo:
-          $ref: '#/components/schemas/AssetAdditionalInfoInputDto'
-        AssetDetails:
-          $ref: '#/components/schemas/AssetDetailsInputDto'
-        AssetNetworkDetails:
-          $ref: '#/components/schemas/AssetNetworkDetailsInputDto'
-        AssetMotherboardInfo:
-          $ref: '#/components/schemas/AssetMotherboardInfoInputDto'
-        AssetChassisInfo:
-          $ref: '#/components/schemas/AssetChassisInfoInputDto'
-        AssetDiskVolumes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AssetDiskVolumeInputDto'
       additionalProperties: false
     RemoteSessionsOutputDto:
       type: object
@@ -1083,7 +1071,19 @@ components:
         IsOffline:
           type: boolean
       additionalProperties: false
-    IntegrationTicketJobStatusOutputDtoResponse:
+    IntegrationDeactivateAssetInputDto:
+      type: object
+      properties:
+        TransactionId:
+          type:
+          - string
+          - 'null'
+        AssetId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationJobOutputDtoResponse:
       type: object
       properties:
         Success:
@@ -1092,7 +1092,7 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/IntegrationTicketJobStatusOutputDto'
+          $ref: '#/components/schemas/IntegrationJobOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

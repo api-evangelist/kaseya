@@ -36,38 +36,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    K1ActionNotificationDto:
-      type: object
-      properties:
-        KaseyaOneOrganizationId:
-          type:
-          - string
-          - 'null'
-        Id:
-          type:
-          - string
-          - 'null'
-        ActionEventType:
-          type:
-          - string
-          - 'null'
-        Event:
-          $ref: '#/components/schemas/K1CentralizedConfigurationEventDto'
-        EventType:
-          type:
-          - string
-          - 'null'
-        AppClientIdentifier:
-          type:
-          - string
-          - 'null'
-        TargetProducts:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     K1CentralizedConfigurationEventDto:
       type: object
       properties:
@@ -108,6 +76,38 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    K1ActionNotificationDto:
+      type: object
+      properties:
+        KaseyaOneOrganizationId:
+          type:
+          - string
+          - 'null'
+        Id:
+          type:
+          - string
+          - 'null'
+        ActionEventType:
+          type:
+          - string
+          - 'null'
+        Event:
+          $ref: '#/components/schemas/K1CentralizedConfigurationEventDto'
+        EventType:
+          type:
+          - string
+          - 'null'
+        AppClientIdentifier:
+          type:
+          - string
+          - 'null'
+        TargetProducts:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
   securitySchemes:
     bearerAuth:

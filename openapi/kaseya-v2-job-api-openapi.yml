@@ -461,45 +461,6 @@ paths:
                       $ref: '#/components/schemas/JobComponent'
 components:
   schemas:
-    JobStdData:
-      type: object
-      description: Job Std data
-      properties:
-        componentUid:
-          type: string
-        componentName:
-          type: string
-        stdData:
-          type: string
-    JobComponent:
-      type: object
-      description: Job component data
-      properties:
-        uid:
-          type: string
-        name:
-          type: string
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobComponentVariable'
-    ErrorResponse:
-      description: Default error response body
-      properties:
-        timestamp:
-          type: integer
-          format: int64
-          description: Epoch millis when the error occurred
-        status:
-          type: integer
-          format: int32
-          description: HTTP status code
-        error:
-          type: string
-          description: HTTP reason phrase
-        path:
-          type: string
-          description: Request path that produced the error
     JobComponentVariable:
       type: object
       description: Job component variable data
@@ -510,6 +471,16 @@ components:
         value:
           type: string
           description: Value has to be convertible to the type specified in component variable
+    JobStdData:
+      type: object
+      description: Job Std data
+      properties:
+        componentUid:
+          type: string
+        componentName:
+          type: string
+        stdData:
+          type: string
     JobComponentResult:
       type: object
       description: Job component result data
@@ -530,6 +501,23 @@ components:
           type: boolean
         hasStdErr:
           type: boolean
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
     PaginationData:
       type: object
       description: Pagination data
@@ -544,3 +532,15 @@ components:
           type: string
         nextPageUrl:
           type: string
+    JobComponent:
+      type: object
+      description: Job component data
+      properties:
+        uid:
+          type: string
+        name:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobComponentVariable'

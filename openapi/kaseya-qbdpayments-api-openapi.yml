@@ -54,166 +54,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    QbAccountImportDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Code:
-          type:
-          - string
-          - 'null'
-        TaxId:
-          type:
-          - string
-          - 'null'
-        Taxable:
-          type: boolean
-        CreditLimit:
-          type: number
-          format: double
-        NetDays:
-          type: integer
-          format: int32
-        WebAddressURI:
-          type:
-          - string
-          - 'null'
-        CurrencyValue:
-          type:
-          - string
-          - 'null'
-        IsBilling:
-          type: boolean
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        TaxItem:
-          $ref: '#/components/schemas/QbTaxItemDto'
-        ParentAccount:
-          $ref: '#/components/schemas/QbAccountImportDto'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-        ShipAddress:
-          $ref: '#/components/schemas/QbAddressDto'
-        BillAddress:
-          $ref: '#/components/schemas/QbAddressDto'
-      additionalProperties: false
-    QbPaymentLineImportDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Amount:
-          type: number
-          format: double
-        Discount:
-          type: number
-          format: double
-        Balance:
-          type: number
-          format: double
-        InvoiceId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    QbTaxItemDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        Active:
-          type: boolean
-        RateValue:
-          type: number
-          format: double
-        IsGroup:
-          type: boolean
-        TaxAgency:
-          type:
-          - string
-          - 'null'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-        SalesTaxRateList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbTaxItemDto'
-      additionalProperties: false
-    QbAddressDto:
-      type: object
-      properties:
-        Address1:
-          type:
-          - string
-          - 'null'
-        Address2:
-          type:
-          - string
-          - 'null'
-        State:
-          type:
-          - string
-          - 'null'
-        City:
-          type:
-          - string
-          - 'null'
-        ZipCode:
-          type:
-          - string
-          - 'null'
-        EmailAddress:
-          type:
-          - string
-          - 'null'
-        PhoneNumber:
-          type:
-          - string
-          - 'null'
-        MobileNumber:
-          type:
-          - string
-          - 'null'
-        FaxNumber:
-          type:
-          - string
-          - 'null'
-        Country:
-          type:
-          - string
-          - 'null'
-        ContactName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     QbPaymentImportDto:
       type: object
       properties:
@@ -276,6 +116,166 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    QbAddressDto:
+      type: object
+      properties:
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        MobileNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+        ContactName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbPaymentLineImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Amount:
+          type: number
+          format: double
+        Discount:
+          type: number
+          format: double
+        Balance:
+          type: number
+          format: double
+        InvoiceId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    QbTaxItemDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Active:
+          type: boolean
+        RateValue:
+          type: number
+          format: double
+        IsGroup:
+          type: boolean
+        TaxAgency:
+          type:
+          - string
+          - 'null'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        SalesTaxRateList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbTaxItemDto'
+      additionalProperties: false
+    QbAccountImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Code:
+          type:
+          - string
+          - 'null'
+        TaxId:
+          type:
+          - string
+          - 'null'
+        Taxable:
+          type: boolean
+        CreditLimit:
+          type: number
+          format: double
+        NetDays:
+          type: integer
+          format: int32
+        WebAddressURI:
+          type:
+          - string
+          - 'null'
+        CurrencyValue:
+          type:
+          - string
+          - 'null'
+        IsBilling:
+          type: boolean
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        TaxItem:
+          $ref: '#/components/schemas/QbTaxItemDto'
+        ParentAccount:
+          $ref: '#/components/schemas/QbAccountImportDto'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        ShipAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+        BillAddress:
+          $ref: '#/components/schemas/QbAddressDto'
       additionalProperties: false
     StringResponse:
       type: object

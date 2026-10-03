@@ -78,6 +78,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SoftwareAssetsListSearchSelectOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SoftwareAssetsListSearchSelectOutputDto'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -102,21 +117,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    SoftwareAssetsListSearchSelectOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SoftwareAssetsListSearchSelectOutputDto'
       additionalProperties: false
     SoftwareAssetsListSearchSelectOutputDto:
       type: object

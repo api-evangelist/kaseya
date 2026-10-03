@@ -37,20 +37,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    StringObjectIDictionaryResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - object
-          - 'null'
-          additionalProperties: {}
-      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -75,6 +61,20 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    StringObjectIDictionaryResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
       additionalProperties: false
   securitySchemes:
     bearerAuth:

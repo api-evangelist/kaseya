@@ -329,56 +329,62 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Object:
+    OperationResultModel:
       type: object
-      properties: {}
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     RestUserAccessLevel:
       type: object
       properties: {}
-    QueryActionResult_ConfigurationItemDnsRecordModel_InstalledProductDnsRecord:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        items:
+        fields:
           type: array
           items:
-            $ref: '#/components/schemas/ConfigurationItemDnsRecordModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    EntityInformationModel:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    PagingModel:
       type: object
       properties:
-        name:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
           type: string
-          readOnly: true
-        canCreate:
+        nextPageUrl:
+          type: string
+    Object:
+      type: object
+      properties: {}
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
           type: boolean
-          readOnly: true
-        canDelete:
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
           type: boolean
-          readOnly: true
-        canQuery:
+        isSystem:
           type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true
     FieldInformationModel:
       type: object
@@ -410,66 +416,19 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    UserDefinedFieldInformationResultModel:
+    ItemQueryResultModel_ConfigurationItemDnsRecordModel_InstalledProductDnsRecord:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ConfigurationItemDnsRecordModel'
+    FieldInformationResultModel:
       type: object
       properties:
         fields:
           type: array
           items:
-            $ref: '#/components/schemas/Field'
+            $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    ConfigurationItemDnsRecordModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        createDateTime:
-          format: date-time
-          type: string
-        data:
-          type: string
-        installedProductID:
-          format: int32
-          type: integer
-        timeToLiveSeconds:
-          format: int32
-          type: integer
-        dnsType:
-          type: string
-        soapParentPropertyId:
-          format: int64
-          type: integer
-          readOnly: true
     Field:
       type: object
       properties:
@@ -506,30 +465,71 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
+    QueryActionResult_ConfigurationItemDnsRecordModel_InstalledProductDnsRecord:
       type: object
       properties:
-        fields:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PagingModel:
+            $ref: '#/components/schemas/ConfigurationItemDnsRecordModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    ConfigurationItemDnsRecordModel:
       type: object
       properties:
-        count:
+        id:
+          format: int64
+          type: integer
+        createDateTime:
+          format: date-time
+          type: string
+        data:
+          type: string
+        installedProductID:
           format: int32
           type: integer
-        requestCount:
+        timeToLiveSeconds:
           format: int32
+          type: integer
+        dnsType:
+          type: string
+        soapParentPropertyId:
+          format: int64
           type: integer
           readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    ItemQueryResultModel_ConfigurationItemDnsRecordModel_InstalledProductDnsRecord:
+    EntityInformationModel:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/ConfigurationItemDnsRecordModel'
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true

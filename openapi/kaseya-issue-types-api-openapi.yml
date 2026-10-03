@@ -64,6 +64,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    IssueTypeLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IssueTypeLookupOutputDto'
+      additionalProperties: false
     IssueSubTypeLookupOutputDto:
       type: object
       properties:
@@ -74,19 +89,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    IssueTypeLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
       additionalProperties: false
     IssueSubTypeLookupOutputDtoListResponse:
       type: object
@@ -128,20 +130,18 @@ components:
           items:
             type: string
       additionalProperties: false
-    IssueTypeLookupOutputDtoListResponse:
+    IssueTypeLookupOutputDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Id:
+          type: integer
+          format: int32
+        Name:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/IssueTypeLookupOutputDto'
+        IsActive:
+          type: boolean
       additionalProperties: false
   securitySchemes:
     bearerAuth:

@@ -350,6 +350,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    AddContactRecipientsResultModel:
+      type: object
+      properties:
+        contactRecipients:
+          type: array
+          items:
+            format: int32
+            type: integer
+            readOnly: true
     AccountInvoiceSettingsResultModel:
       type: object
       properties:
@@ -374,9 +388,6 @@ components:
             type: integer
         otherEmails:
           type: string
-    Object:
-      type: object
-      properties: {}
     UpdateResourceRecipientsModel:
       type: object
       properties:
@@ -385,15 +396,9 @@ components:
           items:
             format: int32
             type: integer
-    AddContactRecipientsResultModel:
+    Object:
       type: object
-      properties:
-        contactRecipients:
-          type: array
-          items:
-            format: int32
-            type: integer
-            readOnly: true
+      properties: {}
     AddResourceRecipientsResultModel:
       type: object
       properties:
@@ -403,11 +408,14 @@ components:
             format: int32
             type: integer
             readOnly: true
-    OperationResultModel:
+    UpdateContactRecipientsModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
+        items:
+          type: array
+          items:
+            format: int32
+            type: integer
     UpdateAccountInvoiceSettingsModel:
       type: object
       properties:
@@ -422,11 +430,3 @@ components:
           type: boolean
         otherEmails:
           type: string
-    UpdateContactRecipientsModel:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            format: int32
-            type: integer

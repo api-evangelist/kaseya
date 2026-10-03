@@ -142,64 +142,27 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    EtilizeProductOutputDto:
+    ProductDescriptions:
       type: object
       properties:
+        Description:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductDescription'
+      additionalProperties: false
+    ProductSku:
+      type: object
+      properties:
+        Number:
+          type:
+          - string
+          - 'null'
         Type:
           type:
           - string
           - 'null'
-        Message:
-          type:
-          - string
-          - 'null'
-        ProductId:
-          type: integer
-          format: int64
-        Category:
-          $ref: '#/components/schemas/ProductCategory'
-        Manufacturer:
-          $ref: '#/components/schemas/ProductManufacturer'
-        Descriptions:
-          $ref: '#/components/schemas/ProductDescriptions'
-        Resources:
-          $ref: '#/components/schemas/ProductResources'
-        Skus:
-          $ref: '#/components/schemas/ProductSkus'
-      additionalProperties: false
-    DistributorIntegrationProductPricingOutputDto:
-      type: object
-      properties:
-        Exception:
-          type:
-          - string
-          - 'null'
-        StatusCode:
-          $ref: '#/components/schemas/HttpStatusCode'
-        PartNumber:
-          type:
-          - string
-          - 'null'
-        BasePrice:
-          type: number
-          format: double
-        RetailPrice:
-          type: number
-          format: double
-        PromotedPrice:
-          type: number
-          format: double
-        Status:
-          type:
-          - string
-          - 'null'
-        Availability:
-          type:
-          - string
-          - 'null'
-        DistributorTypeId:
-          type: integer
-          format: int32
       additionalProperties: false
     ProductSkus:
       type: object
@@ -211,25 +174,62 @@ components:
           items:
             $ref: '#/components/schemas/ProductSku'
       additionalProperties: false
-    FeatureDto:
+    DistributorIntegrationProductPricingOutputDtoListResponse:
       type: object
       properties:
-        Value:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/FilterDto'
-        Count:
+            $ref: '#/components/schemas/DistributorIntegrationProductPricingOutputDto'
+      additionalProperties: false
+    EtilizeProductOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/EtilizeProductOutputDto'
+      additionalProperties: false
+    EtilizeSearchOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/EtilizeSearchOutputDto'
+      additionalProperties: false
+    EtilizeSearchInputDto:
+      type: object
+      properties:
+        PageSize:
           type: integer
           format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Id:
+        PageNumber:
           type: integer
-          format: int64
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Filter:
+          $ref: '#/components/schemas/EtilizeSearchFilterDto'
       additionalProperties: false
     HttpStatusCode:
       enum:
@@ -277,6 +277,260 @@ components:
       - 505
       type: integer
       format: int32
+    DistributorIntegrationProductPricingOutputDto:
+      type: object
+      properties:
+        Exception:
+          type:
+          - string
+          - 'null'
+        StatusCode:
+          $ref: '#/components/schemas/HttpStatusCode'
+        PartNumber:
+          type:
+          - string
+          - 'null'
+        BasePrice:
+          type: number
+          format: double
+        RetailPrice:
+          type: number
+          format: double
+        PromotedPrice:
+          type: number
+          format: double
+        Status:
+          type:
+          - string
+          - 'null'
+        Availability:
+          type:
+          - string
+          - 'null'
+        DistributorTypeId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    DistributorIntegrationStatusOutputDto:
+      type: object
+      properties:
+        ProductSkuType:
+          $ref: '#/components/schemas/ProductSkuTypeEnum'
+        IsConnected:
+          type: boolean
+      additionalProperties: false
+    FeatureDto:
+      type: object
+      properties:
+        Value:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FilterDto'
+        Count:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Id:
+          type: integer
+          format: int64
+      additionalProperties: false
+    EtilizeSearchFilterDto:
+      type: object
+      properties:
+        Keyword:
+          type:
+          - string
+          - 'null'
+        SkuTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ManufacturerIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int64
+        CategoryIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int64
+        AttributeValueIds:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AttributeValueDto'
+      additionalProperties: false
+    ProductManufacturer:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Name:
+          type:
+          - string
+          - 'null'
+        Number:
+          type:
+          - string
+          - 'null'
+        HasLogo:
+          type: boolean
+        MaxLogoWidth:
+          type: integer
+          format: int32
+        MaxLogoHeight:
+          type: integer
+          format: int32
+      additionalProperties: false
+    FilterDto:
+      type: object
+      properties:
+        Count:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Id:
+          type: integer
+          format: int64
+      additionalProperties: false
+    AttributeValueDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        ValueId:
+          type: integer
+          format: int64
+      additionalProperties: false
+    DistributorIntegrationStatusOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DistributorIntegrationStatusOutputDto'
+      additionalProperties: false
+    ProductDescription:
+      type: object
+      properties:
+        Content:
+          type:
+          - string
+          - 'null'
+        Type:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProductDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Title:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        UPC:
+          type:
+          - string
+          - 'null'
+        ImageURL:
+          type:
+          - string
+          - 'null'
+        MFR:
+          type:
+          - string
+          - 'null'
+        UNSPSC:
+          type:
+          - string
+          - 'null'
+        SKU:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProductResources:
+      type: object
+      properties:
+        Resource:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductResource'
+      additionalProperties: false
+    ProductCategory:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Name:
+          type:
+          - string
+          - 'null'
+        ParId:
+          type: integer
+          format: int64
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
     EtilizeSearchOutputDto:
       type: object
       properties:
@@ -316,253 +570,30 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    FilterDto:
+    EtilizeProductOutputDto:
       type: object
       properties:
-        Count:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Id:
-          type: integer
-          format: int64
-      additionalProperties: false
-    DistributorIntegrationProductPricingOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DistributorIntegrationProductPricingOutputDto'
-      additionalProperties: false
-    ProductCategory:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int64
-        Name:
-          type:
-          - string
-          - 'null'
-        ParId:
-          type: integer
-          format: int64
-      additionalProperties: false
-    DistributorIntegrationStatusOutputDto:
-      type: object
-      properties:
-        ProductSkuType:
-          $ref: '#/components/schemas/ProductSkuTypeEnum'
-        IsConnected:
-          type: boolean
-      additionalProperties: false
-    ProductSku:
-      type: object
-      properties:
-        Number:
-          type:
-          - string
-          - 'null'
         Type:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    DistributorIntegrationStatusOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DistributorIntegrationStatusOutputDto'
-      additionalProperties: false
-    ProductResources:
-      type: object
-      properties:
-        Resource:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProductResource'
-      additionalProperties: false
-    EtilizeProductOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/EtilizeProductOutputDto'
-      additionalProperties: false
-    EtilizeSearchOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/EtilizeSearchOutputDto'
-      additionalProperties: false
-    EtilizeSearchInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Filter:
-          $ref: '#/components/schemas/EtilizeSearchFilterDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
         Message:
           type:
           - string
           - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    ProductManufacturer:
-      type: object
-      properties:
-        Id:
+        ProductId:
           type: integer
           format: int64
-        Name:
-          type:
-          - string
-          - 'null'
-        Number:
-          type:
-          - string
-          - 'null'
-        HasLogo:
-          type: boolean
-        MaxLogoWidth:
-          type: integer
-          format: int32
-        MaxLogoHeight:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ProductDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int64
-        Title:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        UPC:
-          type:
-          - string
-          - 'null'
-        ImageURL:
-          type:
-          - string
-          - 'null'
-        MFR:
-          type:
-          - string
-          - 'null'
-        UNSPSC:
-          type:
-          - string
-          - 'null'
-        SKU:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    EtilizeSearchFilterDto:
-      type: object
-      properties:
-        Keyword:
-          type:
-          - string
-          - 'null'
-        SkuTypes:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ManufacturerIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int64
-        CategoryIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int64
-        AttributeValueIds:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AttributeValueDto'
+        Category:
+          $ref: '#/components/schemas/ProductCategory'
+        Manufacturer:
+          $ref: '#/components/schemas/ProductManufacturer'
+        Descriptions:
+          $ref: '#/components/schemas/ProductDescriptions'
+        Resources:
+          $ref: '#/components/schemas/ProductResources'
+        Skus:
+          $ref: '#/components/schemas/ProductSkus'
       additionalProperties: false
     ProductSkuTypeEnum:
       enum:
@@ -572,37 +603,6 @@ components:
       - 3
       type: integer
       format: int32
-    AttributeValueDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int64
-        ValueId:
-          type: integer
-          format: int64
-      additionalProperties: false
-    ProductDescriptions:
-      type: object
-      properties:
-        Description:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProductDescription'
-      additionalProperties: false
-    ProductDescription:
-      type: object
-      properties:
-        Content:
-          type:
-          - string
-          - 'null'
-        Type:
-          type: integer
-          format: int32
-      additionalProperties: false
   securitySchemes:
     bearerAuth:
       type: http

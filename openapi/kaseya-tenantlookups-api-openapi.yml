@@ -77,21 +77,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TenantLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
-        IsDefault:
-          type: boolean
-      additionalProperties: false
     TenantLookupOutputDtoIEnumerableResponse:
       type: object
       properties:
@@ -145,6 +130,21 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    TenantLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        IsDefault:
+          type: boolean
       additionalProperties: false
   securitySchemes:
     bearerAuth:

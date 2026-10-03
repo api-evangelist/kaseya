@@ -117,18 +117,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ShiftDetailEntry:
-      type: object
-      properties:
-        FromTime:
-          type:
-          - string
-          - 'null'
-        ToTime:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     WorkforcePlannerPeriodPutInputDto:
       type: object
       properties:
@@ -181,20 +169,59 @@ components:
         Filter:
           $ref: '#/components/schemas/WorkforcePlannerListFilterDto'
       additionalProperties: false
-    WorkforcePlannerListOutputDtoListResponse:
+    ShiftDetailEntry:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        FromTime:
+          type:
+          - string
+          - 'null'
+        ToTime:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    WorkforcePlannerListFilterDto:
+      type: object
+      properties:
+        AssigneeIds:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/WorkforcePlannerListOutputDto'
+            type: integer
+            format: int32
+        ProjectIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ProjectStatusIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        TaskStatusIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        FromDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ToDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
       additionalProperties: false
     WorkforcePlannerListOutputDto:
       type: object
@@ -283,6 +310,21 @@ components:
           items:
             type: string
       additionalProperties: false
+    WorkforcePlannerListOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WorkforcePlannerListOutputDto'
+      additionalProperties: false
     WorkforcePlannerTasksDto:
       type: object
       properties:
@@ -368,48 +410,6 @@ components:
           items:
             type: integer
             format: int32
-      additionalProperties: false
-    WorkforcePlannerListFilterDto:
-      type: object
-      properties:
-        AssigneeIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ProjectIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ProjectStatusIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        TaskStatusIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        FromDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ToDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
       additionalProperties: false
   securitySchemes:
     bearerAuth:

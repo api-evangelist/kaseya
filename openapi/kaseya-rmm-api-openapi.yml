@@ -276,77 +276,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    OperationType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-      format: int32
-    DeleteEntityMappingInputDto:
-      type: object
-      properties:
-        ExternalId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    IntegrationSettingDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        IsEnabled:
-          type: boolean
-        Username:
-          type:
-          - string
-          - 'null'
-        PasswordOrToken:
-          type:
-          - string
-          - 'null'
-        TargetUrl:
-          type:
-          - string
-          - 'null'
-        UseAccessToken:
-          type: boolean
-        IsAutoAccountPushEnabled:
-          type: boolean
-        IsAssetNightlySyncEnabled:
-          type: boolean
-        IsParentModeConfigEnabled:
-          type: boolean
-        ParentModeRootOrg:
-          type:
-          - string
-          - 'null'
-        RemoteControl:
-          $ref: '#/components/schemas/RemoteControl'
-        DefaultOptions:
-          $ref: '#/components/schemas/DefaultOptions'
-      additionalProperties: false
-    RemoteControl:
-      type: object
-      properties:
-        IsEnabled:
-          type: boolean
-        ClientId:
-          type:
-          - string
-          - 'null'
-        ClientSecret:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     ImportEntityMappingInputDto:
       type: object
       properties:
@@ -390,6 +319,69 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
+    RemoteControl:
+      type: object
+      properties:
+        IsEnabled:
+          type: boolean
+        ClientId:
+          type:
+          - string
+          - 'null'
+        ClientSecret:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IntegrationSettingDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        IsEnabled:
+          type: boolean
+        Username:
+          type:
+          - string
+          - 'null'
+        PasswordOrToken:
+          type:
+          - string
+          - 'null'
+        TargetUrl:
+          type:
+          - string
+          - 'null'
+        UseAccessToken:
+          type: boolean
+        IsAutoAccountPushEnabled:
+          type: boolean
+        IsAssetNightlySyncEnabled:
+          type: boolean
+        IsParentModeConfigEnabled:
+          type: boolean
+        ParentModeRootOrg:
+          type:
+          - string
+          - 'null'
+        RemoteControl:
+          $ref: '#/components/schemas/RemoteControl'
+        DefaultOptions:
+          $ref: '#/components/schemas/DefaultOptions'
+      additionalProperties: false
+    OperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
     Operation:
       type: object
       properties:
@@ -408,6 +400,14 @@ components:
           - string
           - 'null'
         value: {}
+      additionalProperties: false
+    DeleteEntityMappingInputDto:
+      type: object
+      properties:
+        ExternalId:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

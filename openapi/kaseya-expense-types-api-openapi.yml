@@ -65,21 +65,6 @@ components:
         IsActive:
           type: boolean
       additionalProperties: false
-    ExpenseTypeLookupDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ExpenseTypeLookupDto'
-      additionalProperties: false
     ExpenseTypeRuleDto:
       type: object
       properties:
@@ -116,6 +101,21 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    ExpenseTypeLookupDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ExpenseTypeLookupDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

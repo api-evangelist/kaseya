@@ -206,91 +206,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ProjectStatusesLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProjectStatusesLookupOutputDto'
-      additionalProperties: false
-    ProjectStatusesListFilterDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        IsSystem:
-          type:
-          - boolean
-          - 'null'
-        IsDefault:
-          type:
-          - boolean
-          - 'null'
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    ProjectStatusesLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
-        IsDefault:
-          type: boolean
-        StageStatusId:
-          type: integer
-          format: int32
-        ColorId:
-          type: integer
-          format: int32
-        ColorName:
-          type:
-          - string
-          - 'null'
-        Order:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ProjectStatusesListOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProjectStatusesListOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
     ProjectStatusesListOutputDto:
       type: object
       properties:
@@ -369,31 +284,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ProjectStatusInputDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsDefault:
-          type: boolean
-        IsActive:
-          type: boolean
-        StageStatusId:
-          type: integer
-          format: int32
-        Order:
-          type: integer
-          format: int32
-        ColorId:
-          type: integer
-          format: int32
-      additionalProperties: false
     ProjectStatusOutputDtoResponse:
       type: object
       properties:
@@ -404,6 +294,63 @@ components:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
           $ref: '#/components/schemas/ProjectStatusOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ProjectStatusesLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        IsDefault:
+          type: boolean
+        StageStatusId:
+          type: integer
+          format: int32
+        ColorId:
+          type: integer
+          format: int32
+        ColorName:
+          type:
+          - string
+          - 'null'
+        Order:
+          type: integer
+          format: int32
       additionalProperties: false
     ProjectStatusesListInpuDto:
       type: object
@@ -433,30 +380,83 @@ components:
         Filter:
           $ref: '#/components/schemas/ProjectStatusesListFilterDto'
       additionalProperties: false
-    ErrorInfo:
+    ProjectStatusesListOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - array
           - 'null'
           items:
-            type: string
+            $ref: '#/components/schemas/ProjectStatusesListOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProjectStatusInputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsDefault:
+          type: boolean
+        IsActive:
+          type: boolean
+        StageStatusId:
+          type: integer
+          format: int32
+        Order:
+          type: integer
+          format: int32
+        ColorId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProjectStatusesListFilterDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        IsSystem:
+          type:
+          - boolean
+          - 'null'
+        IsDefault:
+          type:
+          - boolean
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    ProjectStatusesLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProjectStatusesLookupOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

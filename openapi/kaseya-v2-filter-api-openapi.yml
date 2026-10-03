@@ -192,20 +192,6 @@ components:
         lastUpdated:
           type: string
           format: date-time
-    PaginationData:
-      type: object
-      description: Pagination data
-      properties:
-        count:
-          type: integer
-          format: int32
-        totalCount:
-          type: integer
-          format: int64
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     ErrorResponse:
       description: Default error response body
       properties:
@@ -223,3 +209,17 @@ components:
         path:
           type: string
           description: Request path that produced the error
+    PaginationData:
+      type: object
+      description: Pagination data
+      properties:
+        count:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string

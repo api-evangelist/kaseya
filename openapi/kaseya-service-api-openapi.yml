@@ -387,9 +387,33 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RelatedServicesListFilterDto:
+    RelatedServicesListBulkUpdateInputDto:
       type: object
       properties:
+        SelectedClientContractServices:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RelatedServicesBulkUpdateSelectedContractServices'
+        Values:
+          $ref: '#/components/schemas/RelatedServicesBulkUpdateValues'
+      additionalProperties: false
+    RelatedServicesListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ServiceId:
+          type: integer
+          format: int32
+        ContractId:
+          type: integer
+          format: int32
+        AccountId:
+          type: integer
+          format: int32
         ServiceName:
           type:
           - string
@@ -406,46 +430,29 @@ components:
           type:
           - string
           - 'null'
-        EffectiveDateFrom:
-          type:
-          - string
-          - 'null'
+        EffectiveDate:
+          type: string
           format: date-time
-        EffectiveDateTo:
-          type:
-          - string
-          - 'null'
+        ContractStartDate:
+          type: string
           format: date-time
-        ContractStartDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ContractStartDateTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ContractEndDateFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ContractEndDateTo:
-          type:
-          - string
-          - 'null'
+        ContractEndDate:
+          type: string
           format: date-time
         UnitCost:
-          type:
-          - number
-          - 'null'
+          type: number
           format: double
         UnitPrice:
-          type:
-          - number
-          - 'null'
+          type: number
           format: double
+        MarginType:
+          type: integer
+          format: int32
+        Margin:
+          type: number
+          format: double
+        ExcludeFromContractBulkUpdates:
+          type: boolean
       additionalProperties: false
     ServiceListOutputDto:
       type: object
@@ -537,7 +544,7 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    ServiceListOutputDtoIEnumerablePagedResponse:
+    ServiceLookupOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
         Success:
@@ -550,113 +557,10 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ServiceListOutputDto'
+            $ref: '#/components/schemas/ServiceLookupOutputDto'
         TotalRecords:
           type: integer
           format: int32
-      additionalProperties: false
-    ServicesListInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/ServicesListFilterDto'
-      additionalProperties: false
-    ServiceBackgroundJobOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ServiceBackgroundJobOutputDto'
-      additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ServicesListFilterDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        CategoryIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        SubCategoryIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        UnitOfMeasureIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        IsActive:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsTaxable:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        Description:
-          type:
-          - string
-          - 'null'
-        IncomeAccount:
-          type:
-          - string
-          - 'null'
-        ExpenseAccount:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     RelatedServicesListInputDto:
       type: object
@@ -685,232 +589,6 @@ components:
           - 'null'
         Filter:
           $ref: '#/components/schemas/RelatedServicesListFilterDto'
-      additionalProperties: false
-    BatchDeleteServicesInputDto:
-      type: object
-      properties:
-        TargetedIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-      additionalProperties: false
-    ServiceBackgroundJobOutputDto:
-      type: object
-      properties:
-        JobId:
-          type:
-          - integer
-          - 'null'
-          format: int64
-      additionalProperties: false
-    ServiceLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    RelatedServicesListBulkUpdateInputDto:
-      type: object
-      properties:
-        SelectedClientContractServices:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RelatedServicesBulkUpdateSelectedContractServices'
-        Values:
-          $ref: '#/components/schemas/RelatedServicesBulkUpdateValues'
-      additionalProperties: false
-    RelatedServicesListOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/RelatedServicesListOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ServiceInputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        UnitCost:
-          type:
-          - number
-          - 'null'
-          format: double
-        UnitPrice:
-          type:
-          - number
-          - 'null'
-          format: double
-        CategoryId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SubCategoryId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        UnitOfMeasureId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IncomeAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ExpenseAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsActive:
-          type: boolean
-        IsTaxable:
-          type: boolean
-        Margin:
-          type:
-          - number
-          - 'null'
-          format: double
-        MarginType:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    RelatedServicesBulkUpdateValues:
-      type: object
-      properties:
-        ServiceName:
-          type:
-          - string
-          - 'null'
-        ServiceDescription:
-          type:
-          - string
-          - 'null'
-        UnitPrice:
-          type:
-          - number
-          - 'null'
-          format: double
-        UnitCost:
-          type:
-          - number
-          - 'null'
-          format: double
-        EffectiveDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    BatchServiceDto:
-      type: object
-      properties:
-        TargetedIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        CategoryId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SubCategoryId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        UnitOfMeasureId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        IsTaxable:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    ServiceOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ServiceOutputDto'
       additionalProperties: false
     ServiceOutputDto:
       type: object
@@ -1012,7 +690,7 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    ServiceLookupOutputDtoIEnumerablePagedResponse:
+    RelatedServicesListOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
         Success:
@@ -1025,36 +703,171 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ServiceLookupOutputDto'
+            $ref: '#/components/schemas/RelatedServicesListOutputDto'
         TotalRecords:
           type: integer
           format: int32
       additionalProperties: false
-    RelatedServicesBulkUpdateSelectedContractServices:
+    ServiceBackgroundJobOutputDtoResponse:
       type: object
       properties:
-        ClientContractId:
-          type: integer
-          format: int32
-        ClientContractServiceId:
-          type: integer
-          format: int32
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ServiceBackgroundJobOutputDto'
       additionalProperties: false
-    RelatedServicesListOutputDto:
+    ServiceInputDto:
       type: object
       properties:
         Id:
           type: integer
           format: int32
-        ServiceId:
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        UnitCost:
+          type:
+          - number
+          - 'null'
+          format: double
+        UnitPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        CategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubCategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        UnitOfMeasureId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IncomeAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExpenseAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsActive:
+          type: boolean
+        IsTaxable:
+          type: boolean
+        Margin:
+          type:
+          - number
+          - 'null'
+          format: double
+        MarginType:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    ServicesListFilterDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        CategoryIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        SubCategoryIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        UnitOfMeasureIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        IsActive:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsTaxable:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        Description:
+          type:
+          - string
+          - 'null'
+        IncomeAccount:
+          type:
+          - string
+          - 'null'
+        ExpenseAccount:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ServiceListOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ServiceListOutputDto'
+        TotalRecords:
           type: integer
           format: int32
-        ContractId:
-          type: integer
-          format: int32
-        AccountId:
-          type: integer
-          format: int32
+      additionalProperties: false
+    RelatedServicesListFilterDto:
+      type: object
+      properties:
         ServiceName:
           type:
           - string
@@ -1071,29 +884,216 @@ components:
           type:
           - string
           - 'null'
-        EffectiveDate:
-          type: string
+        EffectiveDateFrom:
+          type:
+          - string
+          - 'null'
           format: date-time
-        ContractStartDate:
-          type: string
+        EffectiveDateTo:
+          type:
+          - string
+          - 'null'
           format: date-time
-        ContractEndDate:
-          type: string
+        ContractStartDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractStartDateTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractEndDateFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractEndDateTo:
+          type:
+          - string
+          - 'null'
           format: date-time
         UnitCost:
-          type: number
+          type:
+          - number
+          - 'null'
           format: double
         UnitPrice:
-          type: number
+          type:
+          - number
+          - 'null'
           format: double
-        MarginType:
+      additionalProperties: false
+    BatchServiceDto:
+      type: object
+      properties:
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        CategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubCategoryId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        UnitOfMeasureId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        IsTaxable:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    ServiceBackgroundJobOutputDto:
+      type: object
+      properties:
+        JobId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+      additionalProperties: false
+    ServiceLookupOutputDto:
+      type: object
+      properties:
+        Id:
           type: integer
           format: int32
-        Margin:
-          type: number
-          format: double
-        ExcludeFromContractBulkUpdates:
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    BatchDeleteServicesInputDto:
+      type: object
+      properties:
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    RelatedServicesBulkUpdateSelectedContractServices:
+      type: object
+      properties:
+        ClientContractId:
+          type: integer
+          format: int32
+        ClientContractServiceId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ServiceOutputDtoResponse:
+      type: object
+      properties:
+        Success:
           type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ServiceOutputDto'
+      additionalProperties: false
+    ServicesListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/ServicesListFilterDto'
+      additionalProperties: false
+    RelatedServicesBulkUpdateValues:
+      type: object
+      properties:
+        ServiceName:
+          type:
+          - string
+          - 'null'
+        ServiceDescription:
+          type:
+          - string
+          - 'null'
+        UnitPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        UnitCost:
+          type:
+          - number
+          - 'null'
+          format: double
+        EffectiveDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
       additionalProperties: false
   securitySchemes:
     bearerAuth:

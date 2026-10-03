@@ -500,9 +500,11 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Object:
+    OperationResultModel:
       type: object
-      properties: {}
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     Expression:
       type: object
       properties:
@@ -602,6 +604,31 @@ components:
           type: boolean
           readOnly: true
     RestUserAccessLevel:
+      type: object
+      properties: {}
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Object:
       type: object
       properties: {}
     Expression_Func_QuoteItem_Int64:
@@ -719,181 +746,6 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    QueryActionResult_QuoteItemModel_QuoteItem:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuoteItemModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    QuoteItemModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        averageCost:
-          format: double
-          type: number
-        chargeID:
-          format: int32
-          type: integer
-        description:
-          type: string
-        expenseID:
-          format: int32
-          type: integer
-        highestCost:
-          format: double
-          type: number
-        internalCurrencyLineDiscount:
-          format: double
-          type: number
-        internalCurrencyUnitDiscount:
-          format: double
-          type: number
-        internalCurrencyUnitPrice:
-          format: double
-          type: number
-        isOptional:
-          type: boolean
-        isTaxable:
-          type: boolean
-        laborID:
-          format: int32
-          type: integer
-        lineDiscount:
-          format: double
-          type: number
-        markupRate:
-          format: double
-          type: number
-        name:
-          type: string
-        percentageDiscount:
-          format: double
-          type: number
-        periodType:
-          format: int32
-          type: integer
-        productID:
-          format: int32
-          type: integer
-        quantity:
-          format: double
-          type: number
-        quoteID:
-          format: int32
-          type: integer
-        quoteItemType:
-          format: int32
-          type: integer
-        serviceBundleID:
-          format: int32
-          type: integer
-        serviceID:
-          format: int32
-          type: integer
-        shippingID:
-          format: int32
-          type: integer
-        sortOrderID:
-          format: int32
-          type: integer
-        taxCategoryID:
-          format: int32
-          type: integer
-        totalEffectiveTax:
-          format: double
-          type: number
-        unitCost:
-          format: double
-          type: number
-        unitDiscount:
-          format: double
-          type: number
-        unitPrice:
-          format: double
-          type: number
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_QuoteItem_Int64'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
     ParameterExpression:
       type: object
       properties:
@@ -998,22 +850,6 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    ItemQueryResultModel_QuoteItemModel_QuoteItem:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/QuoteItemModel'
     PickListValue:
       type: object
       properties:
@@ -1032,6 +868,55 @@ components:
           type: boolean
         isSystem:
           type: boolean
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    ItemQueryResultModel_QuoteItemModel_QuoteItem:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/QuoteItemModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     Field:
       type: object
       properties:
@@ -1068,25 +953,140 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
+    QueryActionResult_QuoteItemModel_QuoteItem:
       type: object
       properties:
-        fields:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PagingModel:
+            $ref: '#/components/schemas/QuoteItemModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    QuoteItemModel:
       type: object
       properties:
-        count:
+        id:
+          format: int64
+          type: integer
+        averageCost:
+          format: double
+          type: number
+        chargeID:
           format: int32
           type: integer
-        requestCount:
+        description:
+          type: string
+        expenseID:
           format: int32
           type: integer
+        highestCost:
+          format: double
+          type: number
+        internalCurrencyLineDiscount:
+          format: double
+          type: number
+        internalCurrencyUnitDiscount:
+          format: double
+          type: number
+        internalCurrencyUnitPrice:
+          format: double
+          type: number
+        isOptional:
+          type: boolean
+        isTaxable:
+          type: boolean
+        laborID:
+          format: int32
+          type: integer
+        lineDiscount:
+          format: double
+          type: number
+        markupRate:
+          format: double
+          type: number
+        name:
+          type: string
+        percentageDiscount:
+          format: double
+          type: number
+        periodType:
+          format: int32
+          type: integer
+        productID:
+          format: int32
+          type: integer
+        quantity:
+          format: double
+          type: number
+        quoteID:
+          format: int32
+          type: integer
+        quoteItemType:
+          format: int32
+          type: integer
+        serviceBundleID:
+          format: int32
+          type: integer
+        serviceID:
+          format: int32
+          type: integer
+        shippingID:
+          format: int32
+          type: integer
+        sortOrderID:
+          format: int32
+          type: integer
+        taxCategoryID:
+          format: int32
+          type: integer
+        totalEffectiveTax:
+          format: double
+          type: number
+        unitCost:
+          format: double
+          type: number
+        unitDiscount:
+          format: double
+          type: number
+        unitPrice:
+          format: double
+          type: number
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_QuoteItem_Int64'
           readOnly: true
-        prevPageUrl:
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
           type: string
-        nextPageUrl:
-          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true

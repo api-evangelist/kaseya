@@ -93,7 +93,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SearchComboItemOutputDtoIEnumerableResponse:
+    DataType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
+    ListingColumnOutputDtoIEnumerableResponse:
       type: object
       properties:
         Success:
@@ -106,51 +117,7 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/SearchComboItemOutputDto'
-      additionalProperties: false
-    ListingSearchOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Label:
-          type:
-          - string
-          - 'null'
-        Type:
-          type:
-          - string
-          - 'null'
-        ControlType:
-          type:
-          - string
-          - 'null'
-        Operator:
-          type:
-          - string
-          - 'null'
-        SearchOrder:
-          type: integer
-          format: int32
-        IsSearchById:
-          type: boolean
-      additionalProperties: false
-    SearchComboItemOutputDto:
-      type: object
-      properties:
-        SearchValue:
-          type:
-          - string
-          - 'null'
-        SearchText:
-          type:
-          - string
-          - 'null'
+            $ref: '#/components/schemas/ListingColumnOutputDto'
       additionalProperties: false
     ListingColumnOutputDto:
       type: object
@@ -211,7 +178,51 @@ components:
           items:
             type: string
       additionalProperties: false
-    ListingColumnOutputDtoIEnumerableResponse:
+    ListingSearchOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Label:
+          type:
+          - string
+          - 'null'
+        Type:
+          type:
+          - string
+          - 'null'
+        ControlType:
+          type:
+          - string
+          - 'null'
+        Operator:
+          type:
+          - string
+          - 'null'
+        SearchOrder:
+          type: integer
+          format: int32
+        IsSearchById:
+          type: boolean
+      additionalProperties: false
+    SearchComboItemOutputDto:
+      type: object
+      properties:
+        SearchValue:
+          type:
+          - string
+          - 'null'
+        SearchText:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SearchComboItemOutputDtoIEnumerableResponse:
       type: object
       properties:
         Success:
@@ -224,19 +235,8 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ListingColumnOutputDto'
+            $ref: '#/components/schemas/SearchComboItemOutputDto'
       additionalProperties: false
-    DataType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-      format: int32
     ListingSearchOutputDtoIEnumerableResponse:
       type: object
       properties:

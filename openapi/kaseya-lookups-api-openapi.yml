@@ -38,20 +38,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    LookupOutputDtoIEnumerableResponse:
+    LookupOutputDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Id:
+          type: integer
+          format: int32
+        Name:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/LookupOutputDto'
+        IsDefault:
+          type: boolean
+        IsActive:
+          type: boolean
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -78,20 +78,20 @@ components:
           items:
             type: string
       additionalProperties: false
-    LookupOutputDto:
+    LookupOutputDtoIEnumerableResponse:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
-          - string
+          - array
           - 'null'
-        IsDefault:
-          type: boolean
-        IsActive:
-          type: boolean
+          items:
+            $ref: '#/components/schemas/LookupOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

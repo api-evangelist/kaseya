@@ -194,19 +194,6 @@ paths:
                 path: /v2/activity-logs
 components:
   schemas:
-    ActivityLogsPage:
-      type: object
-      description: Activity logs page
-      properties:
-        pageDetails:
-          $ref: '#/components/schemas/PaginationData'
-        activities:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActivityLog'
-        error:
-          type: string
-          description: Shows error information when request fails at the database layer
     UserDto:
       type: object
       description: User information
@@ -220,32 +207,6 @@ components:
           type: string
         lastName:
           type: string
-    SiteBasicDto:
-      type: object
-      description: Site information
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-    ErrorResponse:
-      description: Default error response body
-      properties:
-        timestamp:
-          type: integer
-          format: int64
-          description: Epoch millis when the error occurred
-        status:
-          type: integer
-          format: int32
-          description: HTTP status code
-        error:
-          type: string
-          description: HTTP reason phrase
-        path:
-          type: string
-          description: Request path that produced the error
     ActivityLog:
       type: object
       description: Activity log data
@@ -282,6 +243,32 @@ components:
           type: boolean
         hasStdErr:
           type: boolean
+    SiteBasicDto:
+      type: object
+      description: Site information
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
     PaginationData:
       type: object
       description: Pagination data
@@ -296,3 +283,16 @@ components:
           type: string
         nextPageUrl:
           type: string
+    ActivityLogsPage:
+      type: object
+      description: Activity logs page
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/PaginationData'
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityLog'
+        error:
+          type: string
+          description: Shows error information when request fails at the database layer

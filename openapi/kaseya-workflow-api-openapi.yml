@@ -358,60 +358,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OperationType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-      format: int32
-    ServiceTypeOptionsLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ServiceTypeOptionsLookupOutputDto'
-      additionalProperties: false
-    WorkflowPostInputDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        Triggers:
-          $ref: '#/components/schemas/WorkflowTriggerInputDto'
-        TimeSensitives:
-          $ref: '#/components/schemas/WorkflowTimeSensitiveInputDto'
-        Conditions:
-          $ref: '#/components/schemas/WorkflowConditionPostInputDto'
-        Updates:
-          $ref: '#/components/schemas/WorkflowUpdateInputDto'
-        Notifications:
-          $ref: '#/components/schemas/WorkflowNotificationInputDto'
-        AgentProcedures:
-          $ref: '#/components/schemas/WorkflowAgentProcedureInputDto'
-      additionalProperties: false
     WorkflowConditionPostInputDto:
       type: object
       properties:
@@ -1026,7 +972,39 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    WorkflowUpdateOutputDto:
+    WorkflowTimeZoneOutputDto:
+      type: object
+      properties:
+        TimeZoneName:
+          type:
+          - string
+          - 'null'
+        WorkingHours:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WorkingHoursDto'
+      additionalProperties: false
+    AgentProcedureLogsOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AgentProcedureLogsOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    WorkflowUpdateInputDto:
       type: object
       properties:
         AccountId:
@@ -1085,23 +1063,33 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    WorkingHoursDto:
+    ServiceTypeOptionsLookupOutputDto:
       type: object
       properties:
-        Weekday:
+        Id:
+          type: integer
+          format: int32
+        Name:
           type:
           - string
           - 'null'
-        StartTime:
-          type:
-          - string
-          - 'null'
-        EndTime:
-          type:
-          - string
-          - 'null'
+        IsDefault:
+          type: boolean
+        IsActive:
+          type: boolean
       additionalProperties: false
-    WorkflowNotificationOutputDto:
+    OperationType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
+    WorkflowNotificationInputDto:
       type: object
       properties:
         AssignedResources:
@@ -1169,35 +1157,20 @@ components:
           - boolean
           - 'null'
       additionalProperties: false
-    WorkflowListInputDto:
+    DataTypeOutputDto:
       type: object
       properties:
-        PageSize:
+        DataType:
           type: integer
           format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
+        Operators:
           type:
-          - string
+          - array
           - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/WorkflowFilterDto'
+          items:
+            $ref: '#/components/schemas/OperatorDto'
       additionalProperties: false
-    WorkflowTriggerOutputDto:
+    WorkflowTriggerInputDto:
       type: object
       properties:
         TicketCreatedBy:
@@ -1293,6 +1266,17 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
+    WorkflowOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WorkflowOutputDto'
+      additionalProperties: false
     WorkflowOutputDto:
       type: object
       properties:
@@ -1323,100 +1307,6 @@ components:
           $ref: '#/components/schemas/WorkflowNotificationOutputDto'
         AgentProcedures:
           $ref: '#/components/schemas/WorkflowAgentProcedureOutputDto'
-      additionalProperties: false
-    SatisfactionScoreOptionsLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Value:
-          type: integer
-          format: int32
-      additionalProperties: false
-    WorkflowUpdateInputDto:
-      type: object
-      properties:
-        AccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StatusId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        PriorityId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SLAId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IssueTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SubIssueTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TicketTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        QueueId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        PrimaryAssigneeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ClientContractId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        WorkTypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    WorkflowListOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
-        CreatedOn:
-          type: string
-          format: date-time
-        LastUpdated:
-          type:
-          - string
-          - 'null'
-          format: date-time
       additionalProperties: false
     WorkflowConditionOutputDto:
       type: object
@@ -2038,6 +1928,540 @@ components:
           items:
             $ref: '#/components/schemas/WorkflowConditionCustomFieldOutputDto'
       additionalProperties: false
+    SatisfactionScoreOptionsLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Value:
+          type: integer
+          format: int32
+      additionalProperties: false
+    WorkflowConditionCustomFieldOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Data:
+          type:
+          - string
+          - 'null'
+        CustomFieldType:
+          type: integer
+          format: int32
+        CustomFieldId:
+          type: integer
+          format: int32
+        Operand:
+          type: integer
+          format: int32
+        ModuleId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    WorkflowAgentProcedureInputDto:
+      type: object
+      properties:
+        IsTicketActivityEnabled:
+          type: boolean
+        IsActive:
+          type: boolean
+        ExternalAgentProcedureId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        ExternalAgentProcedureName:
+          type:
+          - string
+          - 'null'
+        SecondaryExternalAgentProcedureId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        SecondaryExternalAgentProcedureName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DataTypeOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DataTypeOutputDto'
+      additionalProperties: false
+    Operation:
+      type: object
+      properties:
+        OperationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type:
+          - string
+          - 'null'
+        op:
+          type:
+          - string
+          - 'null'
+        from:
+          type:
+          - string
+          - 'null'
+        value: {}
+      additionalProperties: false
+    WorkflowAgentProcedureOutputDto:
+      type: object
+      properties:
+        IsTicketActivityEnabled:
+          type:
+          - boolean
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        ExternalAgentProcedureId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        ExternalAgentProcedureName:
+          type:
+          - string
+          - 'null'
+        SecondaryExternalAgentProcedureId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        SecondaryExternalAgentProcedureName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    OperatorDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        AliasName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    WorkflowFilterDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedOnFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    SatisfactionScoreOptionsLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SatisfactionScoreOptionsLookupOutputDto'
+      additionalProperties: false
+    WorkingHoursDto:
+      type: object
+      properties:
+        Weekday:
+          type:
+          - string
+          - 'null'
+        StartTime:
+          type:
+          - string
+          - 'null'
+        EndTime:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    WorkflowPutInputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        Triggers:
+          $ref: '#/components/schemas/WorkflowTriggerInputDto'
+        TimeSensitives:
+          $ref: '#/components/schemas/WorkflowTimeSensitiveInputDto'
+        Conditions:
+          $ref: '#/components/schemas/WorkflowConditionPutInputDto'
+        Updates:
+          $ref: '#/components/schemas/WorkflowUpdateInputDto'
+        Notifications:
+          $ref: '#/components/schemas/WorkflowNotificationInputDto'
+        AgentProcedures:
+          $ref: '#/components/schemas/WorkflowAgentProcedureInputDto'
+      additionalProperties: false
+    WorkflowTimeSensitiveInputDto:
+      type: object
+      properties:
+        IsEnabled:
+          type: boolean
+        IsDuringBusinessHours:
+          type:
+          - boolean
+          - 'null'
+        BranchId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    WorkflowNotificationOutputDto:
+      type: object
+      properties:
+        AssignedResources:
+          type:
+          - boolean
+          - 'null'
+        ResourcesIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        AssignedQueues:
+          type:
+          - boolean
+          - 'null'
+        AccountAssociatedResources:
+          type:
+          - boolean
+          - 'null'
+        CreatedByResource:
+          type:
+          - boolean
+          - 'null'
+        TicketContact:
+          type:
+          - boolean
+          - 'null'
+        TicketCC:
+          type:
+          - boolean
+          - 'null'
+        POCs:
+          type:
+          - boolean
+          - 'null'
+        EmailTemplateId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        OtherEmails:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        ContactsIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        TeamsChannelIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ShowInternalNotesToOtherEmails:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    WorkflowListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/WorkflowFilterDto'
+      additionalProperties: false
+    WorkflowTimeSensitiveOutputDto:
+      type: object
+      properties:
+        IsDuringBusinessHours:
+          type:
+          - boolean
+          - 'null'
+        BranchId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsEnabled:
+          type: boolean
+      additionalProperties: false
+    WorkflowConditionCustomFieldInputDto:
+      type: object
+      properties:
+        CustomFieldId:
+          type: integer
+          format: int32
+        Operand:
+          type: integer
+          format: int32
+        Value:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AgentProcedureLogsOutputDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        RunOn:
+          type: string
+          format: date-time
+        WorkflowName:
+          type:
+          - string
+          - 'null'
+        AgentProcedureName:
+          type:
+          - string
+          - 'null'
+        AssetName:
+          type:
+          - string
+          - 'null'
+        AgentProcedureId:
+          type: integer
+          format: int64
+        AgentId:
+          type:
+          - string
+          - 'null'
+        Admin:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    WorkflowCloningOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WorkflowCloningOutputDto'
+      additionalProperties: false
+    WorkflowTimeZoneOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WorkflowTimeZoneOutputDto'
+      additionalProperties: false
+    WorkflowListOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WorkflowListOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    WorkflowUpdateOutputDto:
+      type: object
+      properties:
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PriorityId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SLAId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IssueTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SubIssueTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TicketTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        QueueId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PrimaryAssigneeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClientContractId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        WorkTypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    ServiceTypeOptionsLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ServiceTypeOptionsLookupOutputDto'
+      additionalProperties: false
     WorkflowConditionPutInputDto:
       type: object
       properties:
@@ -2658,389 +3082,7 @@ components:
           items:
             $ref: '#/components/schemas/WorkflowConditionCustomFieldInputDto'
       additionalProperties: false
-    WorkflowTimeSensitiveOutputDto:
-      type: object
-      properties:
-        IsDuringBusinessHours:
-          type:
-          - boolean
-          - 'null'
-        BranchId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsEnabled:
-          type: boolean
-      additionalProperties: false
-    WorkflowNotificationInputDto:
-      type: object
-      properties:
-        AssignedResources:
-          type:
-          - boolean
-          - 'null'
-        ResourcesIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        AssignedQueues:
-          type:
-          - boolean
-          - 'null'
-        AccountAssociatedResources:
-          type:
-          - boolean
-          - 'null'
-        CreatedByResource:
-          type:
-          - boolean
-          - 'null'
-        TicketContact:
-          type:
-          - boolean
-          - 'null'
-        TicketCC:
-          type:
-          - boolean
-          - 'null'
-        POCs:
-          type:
-          - boolean
-          - 'null'
-        EmailTemplateId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        OtherEmails:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        ContactsIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        TeamsChannelIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ShowInternalNotesToOtherEmails:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    DataTypeOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DataTypeOutputDto'
-      additionalProperties: false
-    WorkflowConditionCustomFieldInputDto:
-      type: object
-      properties:
-        CustomFieldId:
-          type: integer
-          format: int32
-        Operand:
-          type: integer
-          format: int32
-        Value:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    AgentProcedureLogsOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AgentProcedureLogsOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ServiceTypeOptionsLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsDefault:
-          type: boolean
-        IsActive:
-          type: boolean
-      additionalProperties: false
-    WorkflowConditionCustomFieldOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Data:
-          type:
-          - string
-          - 'null'
-        CustomFieldType:
-          type: integer
-          format: int32
-        CustomFieldId:
-          type: integer
-          format: int32
-        Operand:
-          type: integer
-          format: int32
-        ModuleId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    WorkflowPutInputDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        Triggers:
-          $ref: '#/components/schemas/WorkflowTriggerInputDto'
-        TimeSensitives:
-          $ref: '#/components/schemas/WorkflowTimeSensitiveInputDto'
-        Conditions:
-          $ref: '#/components/schemas/WorkflowConditionPutInputDto'
-        Updates:
-          $ref: '#/components/schemas/WorkflowUpdateInputDto'
-        Notifications:
-          $ref: '#/components/schemas/WorkflowNotificationInputDto'
-        AgentProcedures:
-          $ref: '#/components/schemas/WorkflowAgentProcedureInputDto'
-      additionalProperties: false
-    OperatorDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        AliasName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    AgentProcedureLogsOutputDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        RunOn:
-          type: string
-          format: date-time
-        WorkflowName:
-          type:
-          - string
-          - 'null'
-        AgentProcedureName:
-          type:
-          - string
-          - 'null'
-        AssetName:
-          type:
-          - string
-          - 'null'
-        AgentProcedureId:
-          type: integer
-          format: int64
-        AgentId:
-          type:
-          - string
-          - 'null'
-        Admin:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Operation:
-      type: object
-      properties:
-        OperationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
-          type:
-          - string
-          - 'null'
-        op:
-          type:
-          - string
-          - 'null'
-        from:
-          type:
-          - string
-          - 'null'
-        value: {}
-      additionalProperties: false
-    WorkflowOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/WorkflowOutputDto'
-      additionalProperties: false
-    SatisfactionScoreOptionsLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SatisfactionScoreOptionsLookupOutputDto'
-      additionalProperties: false
-    WorkflowListOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/WorkflowListOutputDto'
-      additionalProperties: false
-    WorkflowCloningOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-      additionalProperties: false
-    WorkflowTimeZoneOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/WorkflowTimeZoneOutputDto'
-      additionalProperties: false
-    WorkflowFilterDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedOnFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOnTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    WorkflowCloningOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/WorkflowCloningOutputDto'
-      additionalProperties: false
-    WorkflowTriggerInputDto:
+    WorkflowTriggerOutputDto:
       type: object
       properties:
         TicketCreatedBy:
@@ -3136,103 +3178,61 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    WorkflowTimeZoneOutputDto:
+    WorkflowPostInputDto:
       type: object
       properties:
-        TimeZoneName:
+        Name:
           type:
           - string
           - 'null'
-        WorkingHours:
+        Description:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/WorkingHoursDto'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        Triggers:
+          $ref: '#/components/schemas/WorkflowTriggerInputDto'
+        TimeSensitives:
+          $ref: '#/components/schemas/WorkflowTimeSensitiveInputDto'
+        Conditions:
+          $ref: '#/components/schemas/WorkflowConditionPostInputDto'
+        Updates:
+          $ref: '#/components/schemas/WorkflowUpdateInputDto'
+        Notifications:
+          $ref: '#/components/schemas/WorkflowNotificationInputDto'
+        AgentProcedures:
+          $ref: '#/components/schemas/WorkflowAgentProcedureInputDto'
       additionalProperties: false
-    DataTypeOutputDto:
+    WorkflowCloningOutputDto:
       type: object
       properties:
-        DataType:
+        Id:
           type: integer
           format: int32
-        Operators:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/OperatorDto'
       additionalProperties: false
-    WorkflowAgentProcedureInputDto:
+    WorkflowListOutputDto:
       type: object
       properties:
-        IsTicketActivityEnabled:
-          type: boolean
-        IsActive:
-          type: boolean
-        ExternalAgentProcedureId:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        ExternalAgentProcedureName:
-          type:
-          - string
-          - 'null'
-        SecondaryExternalAgentProcedureId:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        SecondaryExternalAgentProcedureName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    WorkflowTimeSensitiveInputDto:
-      type: object
-      properties:
-        IsEnabled:
-          type: boolean
-        IsDuringBusinessHours:
-          type:
-          - boolean
-          - 'null'
-        BranchId:
-          type:
-          - integer
-          - 'null'
+        Id:
+          type: integer
           format: int32
-      additionalProperties: false
-    WorkflowAgentProcedureOutputDto:
-      type: object
-      properties:
-        IsTicketActivityEnabled:
+        Name:
           type:
-          - boolean
+          - string
           - 'null'
         IsActive:
-          type:
-          - boolean
-          - 'null'
-        ExternalAgentProcedureId:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        ExternalAgentProcedureName:
+          type: boolean
+        CreatedOn:
+          type: string
+          format: date-time
+        LastUpdated:
           type:
           - string
           - 'null'
-        SecondaryExternalAgentProcedureId:
-          type:
-          - integer
-          - 'null'
-          format: int64
-        SecondaryExternalAgentProcedureName:
-          type:
-          - string
-          - 'null'
+          format: date-time
       additionalProperties: false
   securitySchemes:
     bearerAuth:

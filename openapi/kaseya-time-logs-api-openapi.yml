@@ -122,24 +122,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TimeLogOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TimeLogOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
     TimeLogOutputDto:
       type: object
       properties:
@@ -273,6 +255,24 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    TimeLogOutputDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TimeLogOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
       additionalProperties: false
     ErrorInfo:
       type: object

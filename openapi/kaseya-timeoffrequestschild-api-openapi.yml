@@ -443,70 +443,11 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Object:
-      type: object
-      properties: {}
-    TimeOffRequestModel:
+    OperationResultModel:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        approvedDateTime:
-          format: date-time
-          type: string
-        approveRejectResourceID:
-          format: int32
-          type: integer
-        createdByResourceID:
-          format: int32
-          type: integer
-        createDateTime:
-          format: date-time
-          type: string
-        endTime:
-          format: date-time
-          type: string
-        hours:
-          format: double
-          type: number
-        impersonatorApproveRejectResourceID:
-          format: int32
-          type: integer
-        lastModifiedByResourceID:
-          format: int32
-          type: integer
-        lastModifiedDateTime:
-          format: date-time
-          type: string
-        lastApprovedLevel:
-          format: int32
-          type: integer
-        reason:
-          type: string
-        rejectReason:
-          type: string
-        requestDate:
-          format: date-time
-          type: string
-        resourceID:
-          format: int32
-          type: integer
-        startTime:
-          format: date-time
-          type: string
-        status:
-          format: int32
-          type: integer
-        timeOffRequestType:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_TimeOffRequest_Int64'
-          readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
+        itemId:
+          $ref: '#/components/schemas/Object'
     Expression:
       type: object
       properties:
@@ -605,86 +546,9 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    QueryActionResult_TimeOffRequestModel_TimeOffRequest:
+    RestUserAccessLevel:
       type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeOffRequestModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    ItemQueryResultModel_TimeOffRequestModel_TimeOffRequest:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/TimeOffRequestModel'
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
+      properties: {}
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -693,6 +557,23 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Object:
+      type: object
+      properties: {}
     ParameterExpression:
       type: object
       properties:
@@ -797,35 +678,122 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
     EntityInformationResultModel:
       type: object
       properties:
         info:
           $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true
-    PickListValue:
+    FieldInformationModel:
       type: object
       properties:
-        value:
+        name:
           type: string
-        label:
+        dataType:
           type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        length:
           format: int32
           type: integer
-        parentValue:
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
           type: string
-        isActive:
+        isPickList:
           type: boolean
-        isSystem:
-          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    ItemQueryResultModel_TimeOffRequestModel_TimeOffRequest:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/TimeOffRequestModel'
+    TimeOffRequestModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        approvedDateTime:
+          format: date-time
+          type: string
+        approveRejectResourceID:
+          format: int32
+          type: integer
+        createdByResourceID:
+          format: int32
+          type: integer
+        createDateTime:
+          format: date-time
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        hours:
+          format: double
+          type: number
+        impersonatorApproveRejectResourceID:
+          format: int32
+          type: integer
+        lastModifiedByResourceID:
+          format: int32
+          type: integer
+        lastModifiedDateTime:
+          format: date-time
+          type: string
+        lastApprovedLevel:
+          format: int32
+          type: integer
+        reason:
+          type: string
+        rejectReason:
+          type: string
+        requestDate:
+          format: date-time
+          type: string
+        resourceID:
+          format: int32
+          type: integer
+        startTime:
+          format: date-time
+          type: string
+        status:
+          format: int32
+          type: integer
+        timeOffRequestType:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_TimeOffRequest_Int64'
+          readOnly: true
+    QueryActionResult_TimeOffRequestModel_TimeOffRequest:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeOffRequestModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     Field:
       type: object
       properties:
@@ -862,28 +830,6 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     Expression_Func_TimeOffRequest_Int64:
       type: object
       properties:
@@ -997,5 +943,59 @@ components:
           type: boolean
           readOnly: true
         canReduce:
+          type: boolean
+          readOnly: true
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
           type: boolean
           readOnly: true

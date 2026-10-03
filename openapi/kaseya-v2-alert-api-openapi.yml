@@ -303,14 +303,6 @@ components:
         path:
           type: string
           description: Request path that produced the error
-    AlertMonitorInfo:
-      type: object
-      description: Alert monitor information
-      properties:
-        sendsEmails:
-          type: boolean
-        createsTicket:
-          type: boolean
     AlertSourceInfo:
       type: object
       description: Alert source information data
@@ -323,3 +315,11 @@ components:
           type: string
         siteName:
           type: string
+    AlertMonitorInfo:
+      type: object
+      description: Alert monitor information
+      properties:
+        sendsEmails:
+          type: boolean
+        createsTicket:
+          type: boolean

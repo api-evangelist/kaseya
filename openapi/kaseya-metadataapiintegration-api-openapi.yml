@@ -55,6 +55,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
     GlobalEntityInformationResultModel:
       type: object
       properties:
@@ -63,15 +72,6 @@ components:
           items:
             $ref: '#/components/schemas/EntityInformationResultModel'
             readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
     EntityInformationModel:
       type: object
       properties:

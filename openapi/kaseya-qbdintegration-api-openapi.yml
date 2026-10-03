@@ -71,35 +71,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    IntegrationJobInfoDto:
-      type: object
-      properties:
-        State:
-          type:
-          - string
-          - 'null'
-        JobLogs:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/IntegrationJobLogDto'
-      additionalProperties: false
-    IntegrationJobLogDto:
-      type: object
-      properties:
-        Message:
-          type:
-          - string
-          - 'null'
-        Code:
-          type:
-          - string
-          - 'null'
-        Date:
-          type: string
-          format: date-time
-      additionalProperties: false
     QbEntityMappingInputDto:
       type: object
       properties:
@@ -117,6 +88,20 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    IntegrationJobInfoDto:
+      type: object
+      properties:
+        State:
+          type:
+          - string
+          - 'null'
+        JobLogs:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IntegrationJobLogDto'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -142,6 +127,21 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    IntegrationJobLogDto:
+      type: object
+      properties:
+        Message:
+          type:
+          - string
+          - 'null'
+        Code:
+          type:
+          - string
+          - 'null'
+        Date:
+          type: string
+          format: date-time
       additionalProperties: false
     IntegrationJobInfoDtoResponse:
       type: object
