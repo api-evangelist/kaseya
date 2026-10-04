@@ -117,199 +117,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    WorkforcePlannerPeriodPutInputDto:
-      type: object
-      properties:
-        TaskMemberhourId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        FromDate:
-          type: string
-          format: date-time
-        ToDate:
-          type: string
-          format: date-time
-        AssigneeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    WorkforcePlannerListInputDto:
-      type: object
-      properties:
-        PageSize:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        PageNumber:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/WorkforcePlannerListFilterDto'
-      additionalProperties: false
-    ShiftDetailEntry:
-      type: object
-      properties:
-        FromTime:
-          type:
-          - string
-          - 'null'
-        ToTime:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    WorkforcePlannerListFilterDto:
-      type: object
-      properties:
-        AssigneeIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ProjectIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        ProjectStatusIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        TaskStatusIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        FromDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ToDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    WorkforcePlannerListOutputDto:
-      type: object
-      properties:
-        AssigneeId:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        EmailAddress:
-          type:
-          - string
-          - 'null'
-        PictureName:
-          type:
-          - string
-          - 'null'
-        PictureURL:
-          type:
-          - string
-          - 'null'
-        JobTitle:
-          type:
-          - string
-          - 'null'
-        TimeZoneName:
-          type:
-          - string
-          - 'null'
-        ShiftDetails:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type:
-            - array
-            - 'null'
-            items:
-              $ref: '#/components/schemas/ShiftDetailEntry'
-        ScheduledHours:
-          type:
-          - number
-          - 'null'
-          format: double
-        TotalWorkingHours:
-          type:
-          - number
-          - 'null'
-          format: double
-        AvailableHours:
-          type:
-          - number
-          - 'null'
-          format: double
-        Tasks:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/WorkforcePlannerTasksDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     WorkforcePlannerListOutputDtoListResponse:
       type: object
       properties:
@@ -410,6 +217,199 @@ components:
           items:
             type: integer
             format: int32
+      additionalProperties: false
+    ShiftDetailEntry:
+      type: object
+      properties:
+        FromTime:
+          type:
+          - string
+          - 'null'
+        ToTime:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    WorkforcePlannerListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        PageNumber:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/WorkforcePlannerListFilterDto'
+      additionalProperties: false
+    WorkforcePlannerListOutputDto:
+      type: object
+      properties:
+        AssigneeId:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PictureName:
+          type:
+          - string
+          - 'null'
+        PictureURL:
+          type:
+          - string
+          - 'null'
+        JobTitle:
+          type:
+          - string
+          - 'null'
+        TimeZoneName:
+          type:
+          - string
+          - 'null'
+        ShiftDetails:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              $ref: '#/components/schemas/ShiftDetailEntry'
+        ScheduledHours:
+          type:
+          - number
+          - 'null'
+          format: double
+        TotalWorkingHours:
+          type:
+          - number
+          - 'null'
+          format: double
+        AvailableHours:
+          type:
+          - number
+          - 'null'
+          format: double
+        Tasks:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WorkforcePlannerTasksDto'
+      additionalProperties: false
+    WorkforcePlannerListFilterDto:
+      type: object
+      properties:
+        AssigneeIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ProjectIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        ProjectStatusIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        TaskStatusIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        FromDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ToDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    WorkforcePlannerPeriodPutInputDto:
+      type: object
+      properties:
+        TaskMemberhourId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        FromDate:
+          type: string
+          format: date-time
+        ToDate:
+          type: string
+          format: date-time
+        AssigneeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
       additionalProperties: false
   securitySchemes:
     bearerAuth:

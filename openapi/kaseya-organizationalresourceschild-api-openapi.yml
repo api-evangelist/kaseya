@@ -272,9 +272,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RestUserAccessLevel:
-      type: object
-      properties: {}
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -283,29 +280,26 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
+    RestUserAccessLevel:
       type: object
       properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     EntityInformationResultModel:
       type: object
       properties:
         info:
           $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true
+    Object:
+      type: object
+      properties: {}
     OrganizationalResourceModel:
       type: object
       properties:
@@ -322,6 +316,20 @@ components:
           format: int64
           type: integer
           readOnly: true
+    QueryActionResult_OrganizationalResourceModel_BusinessDivisionSubdivisionResource:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationalResourceModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    ItemQueryResultModel_OrganizationalResourceModel_BusinessDivisionSubdivisionResource:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/OrganizationalResourceModel'
     FieldInformationModel:
       type: object
       properties:
@@ -352,28 +360,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_OrganizationalResourceModel_BusinessDivisionSubdivisionResource:
+    PickListValue:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/OrganizationalResourceModel'
-    QueryActionResult_OrganizationalResourceModel_BusinessDivisionSubdivisionResource:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrganizationalResourceModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -410,24 +414,20 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    PickListValue:
+    PagingModel:
       type: object
       properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        count:
           format: int32
           type: integer
-        parentValue:
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
           type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:

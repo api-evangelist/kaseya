@@ -443,142 +443,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ItemQueryResultModel_ResourceServiceDeskRoleModel_ResourceServiceDeskRole:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ResourceServiceDeskRoleModel'
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    Expression:
-      type: object
-      properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
     Expression_Func_ResourceServiceDeskRole_Int64:
       type: object
       properties:
@@ -694,6 +558,25 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    ResourceServiceDeskRoleModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        isActive:
+          type: boolean
+        isDefault:
+          type: boolean
+        resourceID:
+          format: int32
+          type: integer
+        roleID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_ResourceServiceDeskRole_Int64'
+          readOnly: true
     ParameterExpression:
       type: object
       properties:
@@ -798,12 +681,151 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
     EntityInformationResultModel:
       type: object
       properties:
         info:
           $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    ItemQueryResultModel_ResourceServiceDeskRoleModel_ResourceServiceDeskRole:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ResourceServiceDeskRoleModel'
+    Expression:
+      type: object
+      properties:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    QueryActionResult_ResourceServiceDeskRoleModel_ResourceServiceDeskRole:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceServiceDeskRoleModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     FieldInformationModel:
       type: object
       properties:
@@ -834,33 +856,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    ResourceServiceDeskRoleModel:
+    PickListValue:
       type: object
       properties:
-        id:
-          format: int64
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
           type: integer
+        parentValue:
+          type: string
         isActive:
           type: boolean
-        isDefault:
+        isSystem:
           type: boolean
-        resourceID:
-          format: int32
-          type: integer
-        roleID:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_ResourceServiceDeskRole_Int64'
-          readOnly: true
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
     Field:
       type: object
       properties:
@@ -897,33 +910,20 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryActionResult_ResourceServiceDeskRoleModel_ResourceServiceDeskRole:
+    PagingModel:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceServiceDeskRoleModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        count:
           format: int32
           type: integer
-        parentValue:
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
           type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:

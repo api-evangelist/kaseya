@@ -403,27 +403,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -432,123 +411,6 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    QueryActionResult_SurveyResultsModel_SurveyResults:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SurveyResultsModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_SurveyResultsModel_SurveyResults:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/SurveyResultsModel'
     SurveyResultsModel:
       type: object
       properties:
@@ -585,6 +447,59 @@ components:
         ticketID:
           format: int32
           type: integer
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    QueryActionResult_SurveyResultsModel_SurveyResults:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SurveyResultsModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
     QueryModel:
       type: object
       properties:
@@ -608,6 +523,36 @@ components:
           value: 0
           udf: false
           items: []
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     PickListValue:
       type: object
       properties:
@@ -626,6 +571,56 @@ components:
           type: boolean
         isSystem:
           type: boolean
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:
@@ -662,3 +657,8 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    ItemQueryResultModel_SurveyResultsModel_SurveyResults:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/SurveyResultsModel'

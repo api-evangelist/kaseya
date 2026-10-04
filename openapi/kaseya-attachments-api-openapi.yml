@@ -366,30 +366,54 @@ components:
           items:
             $ref: '#/components/schemas/AttachmentOutputDto'
       additionalProperties: false
-    ErrorInfo:
+    AttachmentOutputDtoIEnumerablePagedResponse:
       type: object
       properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - array
           - 'null'
           items:
-            type: string
+            $ref: '#/components/schemas/AttachmentOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    AttachmentOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/AttachmentOutputDto'
+      additionalProperties: false
+    TempAttachmentOuputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Alias:
+          type:
+          - string
+          - 'null'
+        FileType:
+          type:
+          - string
+          - 'null'
+        IsUploadedToBlob:
+          type:
+          - boolean
+          - 'null'
       additionalProperties: false
     AttachmentOutputDto:
       type: object
@@ -446,18 +470,6 @@ components:
           - boolean
           - 'null'
       additionalProperties: false
-    AttachmentPutInputDto:
-      required:
-      - Name
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          minLength: 1
-          type: string
-      additionalProperties: false
     TempAttachmentOuputDtoResponse:
       type: object
       properties:
@@ -469,57 +481,45 @@ components:
         Result:
           $ref: '#/components/schemas/TempAttachmentOuputDto'
       additionalProperties: false
-    File:
-      type: object
-      additionalProperties: false
-    AttachmentOutputDtoIEnumerablePagedResponse:
+    ErrorInfo:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/AttachmentOutputDto'
-        TotalRecords:
+            type: string
+      additionalProperties: false
+    File:
+      type: object
+      additionalProperties: false
+    AttachmentPutInputDto:
+      required:
+      - Name
+      type: object
+      properties:
+        Id:
           type: integer
           format: int32
-      additionalProperties: false
-    TempAttachmentOuputDto:
-      type: object
-      properties:
         Name:
-          type:
-          - string
-          - 'null'
-        Alias:
-          type:
-          - string
-          - 'null'
-        FileType:
-          type:
-          - string
-          - 'null'
-        IsUploadedToBlob:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    AttachmentOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/AttachmentOutputDto'
+          minLength: 1
+          type: string
       additionalProperties: false
   securitySchemes:
     bearerAuth:

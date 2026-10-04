@@ -403,6 +403,48 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     Filter:
       type: object
       properties:
@@ -421,34 +463,119 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
+    QueryCountResultModel:
       type: object
       properties:
-        fields:
+        queryCount:
+          format: int32
+          type: integer
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
           type: array
           items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    FieldInformationModel:
       type: object
       properties:
-        count:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
           type: string
-        nextPageUrl:
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
           type: string
-    Object:
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    PickListValue:
       type: object
-      properties: {}
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     InvoiceTemplateModel:
       type: object
       properties:
@@ -514,48 +641,6 @@ components:
         timeFormat:
           format: int32
           type: integer
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
     QueryActionResult_InvoiceTemplateModel_InvoiceTemplate:
       type: object
       properties:
@@ -565,96 +650,6 @@ components:
             $ref: '#/components/schemas/InvoiceTemplateModel'
         pageDetails:
           $ref: '#/components/schemas/PagingModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    ItemQueryResultModel_InvoiceTemplateModel_InvoiceTemplate:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/InvoiceTemplateModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -691,3 +686,8 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    ItemQueryResultModel_InvoiceTemplateModel_InvoiceTemplate:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/InvoiceTemplateModel'

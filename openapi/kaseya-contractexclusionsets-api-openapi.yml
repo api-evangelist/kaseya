@@ -608,6 +608,48 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ItemQueryResultModel_ContractExclusionSetModel_ContractExclusionSet:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ContractExclusionSetModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    QueryActionResult_ContractExclusionSetModel_ContractExclusionSet:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractExclusionSetModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -626,103 +668,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    QueryActionResult_ContractExclusionSetModel_ContractExclusionSet:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContractExclusionSetModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    ItemQueryResultModel_ContractExclusionSetModel_ContractExclusionSet:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ContractExclusionSetModel'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
     QueryCountResultModel:
       type: object
       properties:
         queryCount:
           format: int32
           type: integer
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
     Field:
       type: object
       properties:
@@ -782,18 +733,41 @@ components:
           value: 0
           udf: false
           items: []
-    ContractExclusionSetModel:
+    OperationResultModel:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        description:
-          type: string
-        isActive:
-          type: boolean
+        itemId:
+          $ref: '#/components/schemas/Object'
+    FieldInformationModel:
+      type: object
+      properties:
         name:
           type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     PickListValue:
       type: object
       properties:
@@ -812,6 +786,32 @@ components:
           type: boolean
         isSystem:
           type: boolean
+    ContractExclusionSetModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        description:
+          type: string
+        isActive:
+          type: boolean
+        name:
+          type: string
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:

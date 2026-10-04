@@ -206,46 +206,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ProjectStatusesListOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsSystem:
-          type: boolean
-        IsDefault:
-          type: boolean
-        IsActive:
-          type: boolean
-        StageStatusId:
-          type: integer
-          format: int32
-        StageStatusName:
-          type:
-          - string
-          - 'null'
-        Order:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ColorId:
-          type: integer
-          format: int32
-        ColorName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     ProjectStatusOutputDto:
       type: object
       properties:
@@ -284,42 +244,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ProjectStatusOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ProjectStatusOutputDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     ProjectStatusesLookupOutputDto:
       type: object
       properties:
@@ -352,33 +276,30 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    ProjectStatusesListInpuDto:
+    ErrorInfo:
       type: object
       properties:
-        PageSize:
+        Code:
           type: integer
           format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
+        Message:
           type:
           - string
           - 'null'
-        Exclude:
+        Details:
           type:
           - string
           - 'null'
-        Filter:
-          $ref: '#/components/schemas/ProjectStatusesListFilterDto'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
     ProjectStatusesListOutputDtoIEnumerablePagedResponse:
       type: object
@@ -423,6 +344,60 @@ components:
           type: integer
           format: int32
       additionalProperties: false
+    ProjectStatusesLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProjectStatusesLookupOutputDto'
+      additionalProperties: false
+    ProjectStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ProjectStatusOutputDto'
+      additionalProperties: false
+    ProjectStatusesListInpuDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/ProjectStatusesListFilterDto'
+      additionalProperties: false
     ProjectStatusesListFilterDto:
       type: object
       properties:
@@ -443,20 +418,45 @@ components:
           - boolean
           - 'null'
       additionalProperties: false
-    ProjectStatusesLookupOutputDtoListResponse:
+    ProjectStatusesListOutputDto:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Id:
+          type: integer
+          format: int32
+        Name:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/ProjectStatusesLookupOutputDto'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsSystem:
+          type: boolean
+        IsDefault:
+          type: boolean
+        IsActive:
+          type: boolean
+        StageStatusId:
+          type: integer
+          format: int32
+        StageStatusName:
+          type:
+          - string
+          - 'null'
+        Order:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ColorId:
+          type: integer
+          format: int32
+        ColorName:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

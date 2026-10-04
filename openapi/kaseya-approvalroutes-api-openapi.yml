@@ -57,6 +57,19 @@ components:
           items:
             type: string
       additionalProperties: false
+    ApprovalRouteLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
     ApprovalRouteLookupOutputDtoListResponse:
       type: object
       properties:
@@ -71,19 +84,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/ApprovalRouteLookupOutputDto'
-      additionalProperties: false
-    ApprovalRouteLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
       additionalProperties: false
   securitySchemes:
     bearerAuth:

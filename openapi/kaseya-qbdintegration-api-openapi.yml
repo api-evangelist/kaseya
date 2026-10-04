@@ -71,6 +71,31 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    IntegrationJobInfoDto:
+      type: object
+      properties:
+        State:
+          type:
+          - string
+          - 'null'
+        JobLogs:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IntegrationJobLogDto'
+      additionalProperties: false
+    IntegrationJobInfoDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/IntegrationJobInfoDto'
+      additionalProperties: false
     QbEntityMappingInputDto:
       type: object
       properties:
@@ -89,19 +114,20 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    IntegrationJobInfoDto:
+    IntegrationJobLogDto:
       type: object
       properties:
-        State:
+        Message:
           type:
           - string
           - 'null'
-        JobLogs:
+        Code:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/IntegrationJobLogDto'
+        Date:
+          type: string
+          format: date-time
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -127,32 +153,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    IntegrationJobLogDto:
-      type: object
-      properties:
-        Message:
-          type:
-          - string
-          - 'null'
-        Code:
-          type:
-          - string
-          - 'null'
-        Date:
-          type: string
-          format: date-time
-      additionalProperties: false
-    IntegrationJobInfoDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/IntegrationJobInfoDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

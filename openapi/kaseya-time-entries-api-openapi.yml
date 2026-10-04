@@ -608,29 +608,31 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Filter:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
+        fields:
           type: array
           items:
-            $ref: '#/components/schemas/Filter'
-    OperationResultModel:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
     TimeEntryModel:
       type: object
       properties:
@@ -722,46 +724,70 @@ components:
         timeEntryType:
           format: int32
           type: integer
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     Object:
       type: object
       properties: {}
-    EntityInformationResultModel:
+    Filter:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
     QueryCountResultModel:
       type: object
       properties:
         queryCount:
           format: int32
           type: integer
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    QueryActionResult_TimeEntryModel_TimeEntry:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeEntryModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     FieldInformationModel:
       type: object
       properties:
@@ -792,59 +818,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    EntityInformationModel:
+    PickListValue:
       type: object
       properties:
-        name:
+        value:
           type: string
-          readOnly: true
-        canCreate:
+        label:
+          type: string
+        isDefaultValue:
           type: boolean
-          readOnly: true
-        canDelete:
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
           type: boolean
-          readOnly: true
-        canQuery:
+        isSystem:
           type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryActionResult_TimeEntryModel_TimeEntry:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeEntryModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
     Field:
       type: object
       properties:
@@ -881,47 +872,56 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryModel:
+    PagingModel:
       type: object
       properties:
-        maxRecords:
+        count:
           format: int32
           type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    PickListValue:
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    EntityInformationModel:
       type: object
       properties:
-        value:
+        name:
           type: string
-        label:
-          type: string
-        isDefaultValue:
+          readOnly: true
+        canCreate:
           type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
+          readOnly: true
+        canDelete:
           type: boolean
-        isSystem:
+          readOnly: true
+        canQuery:
           type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
     ItemQueryResultModel_TimeEntryModel_TimeEntry:
       type: object
       properties:

@@ -350,6 +350,32 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AddResourceRecipientsResultModel:
+      type: object
+      properties:
+        resourceRecipients:
+          type: array
+          items:
+            format: int32
+            type: integer
+            readOnly: true
+    UpdateAccountInvoiceSettingsModel:
+      type: object
+      properties:
+        taxExempt:
+          type: boolean
+        taxRegionId:
+          format: int32
+          type: integer
+        taxId:
+          type: string
+        invoiceEmailingEnabled:
+          type: boolean
+        otherEmails:
+          type: string
+    Object:
+      type: object
+      properties: {}
     OperationResultModel:
       type: object
       properties:
@@ -364,6 +390,22 @@ components:
             format: int32
             type: integer
             readOnly: true
+    UpdateResourceRecipientsModel:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            format: int32
+            type: integer
+    UpdateContactRecipientsModel:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            format: int32
+            type: integer
     AccountInvoiceSettingsResultModel:
       type: object
       properties:
@@ -386,47 +428,5 @@ components:
           items:
             format: int32
             type: integer
-        otherEmails:
-          type: string
-    UpdateResourceRecipientsModel:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            format: int32
-            type: integer
-    Object:
-      type: object
-      properties: {}
-    AddResourceRecipientsResultModel:
-      type: object
-      properties:
-        resourceRecipients:
-          type: array
-          items:
-            format: int32
-            type: integer
-            readOnly: true
-    UpdateContactRecipientsModel:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            format: int32
-            type: integer
-    UpdateAccountInvoiceSettingsModel:
-      type: object
-      properties:
-        taxExempt:
-          type: boolean
-        taxRegionId:
-          format: int32
-          type: integer
-        taxId:
-          type: string
-        invoiceEmailingEnabled:
-          type: boolean
         otherEmails:
           type: string

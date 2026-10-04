@@ -403,6 +403,39 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    ItemQueryResultModel_ShippingTypeModel_ShippingType:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ShippingTypeModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -421,36 +454,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    ItemQueryResultModel_ShippingTypeModel_ShippingType:
+    QueryCountResultModel:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/ShippingTypeModel'
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
+        queryCount:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     ShippingTypeModel:
       type: object
       properties:
@@ -466,21 +475,29 @@ components:
           type: boolean
         name:
           type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
+    QueryModel:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
+        maxRecords:
           format: int32
           type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     FieldInformationModel:
       type: object
       properties:
@@ -511,23 +528,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
+    PickListValue:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryActionResult_ShippingTypeModel_ShippingType:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ShippingTypeModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -564,47 +582,20 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryModel:
+    PagingModel:
       type: object
       properties:
-        maxRecords:
+        count:
           format: int32
           type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        requestCount:
           format: int32
           type: integer
-        parentValue:
+          readOnly: true
+        prevPageUrl:
           type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:
@@ -641,3 +632,12 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    QueryActionResult_ShippingTypeModel_ShippingType:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingTypeModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'

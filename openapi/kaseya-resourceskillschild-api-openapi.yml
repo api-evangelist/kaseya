@@ -386,14 +386,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OperationResultModel:
+    ParameterExpression:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    Expression:
-      type: object
-      properties:
+        type:
+          type: string
+          readOnly: true
         nodeType:
           enum:
           - Add
@@ -483,11 +481,59 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        type:
+        name:
           type: string
+          readOnly: true
+        isByRef:
+          type: boolean
           readOnly: true
         canReduce:
           type: boolean
+          readOnly: true
+    ResourceSkillModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        resourceID:
+          format: int64
+          type: integer
+        skillDescription:
+          type: string
+        skillID:
+          format: int64
+          type: integer
+        skillLevel:
+          format: int64
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_ResourceSkill_Int64'
+          readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true
     Expression_Func_ResourceSkill_Int64:
       type: object
@@ -604,60 +650,9 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    ResourceSkillModel:
+    Expression:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        resourceID:
-          format: int64
-          type: integer
-        skillDescription:
-          type: string
-        skillID:
-          format: int64
-          type: integer
-        skillLevel:
-          format: int64
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_ResourceSkill_Int64'
-          readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    ParameterExpression:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
         nodeType:
           enum:
           - Add
@@ -747,21 +742,34 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        name:
+        type:
           type: string
-          readOnly: true
-        isByRef:
-          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    EntityInformationResultModel:
+    Object:
+      type: object
+      properties: {}
+    ItemQueryResultModel_ResourceSkillModel_ResourceSkill:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
+        item:
+          $ref: '#/components/schemas/ResourceSkillModel'
+    QueryActionResult_ResourceSkillModel_ResourceSkill:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceSkillModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     FieldInformationModel:
       type: object
       properties:
@@ -792,28 +800,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryActionResult_ResourceSkillModel_ResourceSkill:
+    PickListValue:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceSkillModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    ItemQueryResultModel_ResourceSkillModel_ResourceSkill:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ResourceSkillModel'
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -850,24 +854,20 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    PickListValue:
+    PagingModel:
       type: object
       properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        count:
           format: int32
           type: integer
-        parentValue:
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
           type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:

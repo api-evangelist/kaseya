@@ -155,10 +155,15 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    RestUserAccessLevel:
+    FieldInformationResultModel:
       type: object
-      properties: {}
-    Object:
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    RestUserAccessLevel:
       type: object
       properties: {}
     EntityInformationResultModel:
@@ -167,6 +172,9 @@ components:
         info:
           $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true
+    Object:
+      type: object
+      properties: {}
     FieldInformationModel:
       type: object
       properties:
@@ -197,6 +205,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -233,32 +259,6 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     EntityInformationModel:
       type: object
       properties:

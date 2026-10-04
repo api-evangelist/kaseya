@@ -220,120 +220,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    Expression:
-      type: object
-      properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
     InventoryStockedItemAddModel:
       type: object
       properties:
@@ -376,9 +262,14 @@ components:
         soapParentPropertyId:
           $ref: '#/components/schemas/Expression_Func_InventoryStockedItemAdd_Int64'
           readOnly: true
-    Object:
+    UserDefinedFieldInformationResultModel:
       type: object
-      properties: {}
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
     ParameterExpression:
       type: object
       properties:
@@ -483,42 +374,9 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    EntityInformationResultModel:
+    RestUserAccessLevel:
       type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
+      properties: {}
     FieldInformationResultModel:
       type: object
       properties:
@@ -527,42 +385,12 @@ components:
           items:
             $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
-    Field:
+    EntityInformationResultModel:
       type: object
       properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
     Expression_Func_InventoryStockedItemAdd_Int64:
       type: object
       properties:
@@ -678,6 +506,44 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    Object:
+      type: object
+      properties: {}
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     PickListValue:
       type: object
       properties:
@@ -696,6 +562,140 @@ components:
           type: boolean
         isSystem:
           type: boolean
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    Expression:
+      type: object
+      properties:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
     EntityInformationModel:
       type: object
       properties:

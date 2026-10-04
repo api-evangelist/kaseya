@@ -354,86 +354,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TeamsChannelLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TeamsChannelLookupOutputDto'
-      additionalProperties: false
-    TeamsChannelsActivityLogsFilterDto:
-      type: object
-      properties:
-        IsSuccess:
-          type:
-          - boolean
-          - 'null'
-        CreatedOnFromDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOnToDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        WorkflowName:
-          type:
-          - string
-          - 'null'
-        TicketNumber:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TeamsChannelListOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        FailureNotificationEmail:
-          type:
-          - string
-          - 'null'
-        FailureNotificationCount:
-          type:
-          - string
-          - 'null'
-        WebhookUrl:
-          type:
-          - string
-          - 'null'
-        IsEnabled:
-          type: boolean
-        WorkflowsAssigned:
-          type: integer
-          format: int32
-        Alerts:
-          type: integer
-          format: int32
-      additionalProperties: false
     TeamsChannelInputDto:
       type: object
       properties:
@@ -455,152 +375,6 @@ components:
           - 'null'
         IsEnabled:
           type: boolean
-      additionalProperties: false
-    TeamsChannelStatusInputDto:
-      type: object
-      properties:
-        WebhookUrl:
-          type:
-          - string
-          - 'null'
-        TeamsChannelId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    TeamsChannelListOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TeamsChannelListOutputDto'
-      additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TeamsChannelOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TeamsChannelOutputDto'
-      additionalProperties: false
-    TeamsChannelLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    TeamsChannelsActivityLogsListOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TeamsChannelsActivityLogsListOutputDto'
-      additionalProperties: false
-    TeamsChannelStatusOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/TeamsChannelStatusOutputDto'
-      additionalProperties: false
-    TeamsChannelsListFilter:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        IsEnabled:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    TeamsChannelsActivityLogsListInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/TeamsChannelsActivityLogsFilterDto'
-      additionalProperties: false
-    Int32BatchIdsDto:
-      type: object
-      properties:
-        ModuleId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TargetedIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
       additionalProperties: false
     TeamsChannelOutputDto:
       type: object
@@ -653,6 +427,90 @@ components:
           type: integer
           format: int32
       additionalProperties: false
+    TeamsChannelListOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TeamsChannelListOutputDto'
+      additionalProperties: false
+    Int32BatchIdsDto:
+      type: object
+      properties:
+        ModuleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    TeamsChannelsListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/TeamsChannelsListFilter'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
     TeamsChannelsActivityLogsListOutputDto:
       type: object
       properties:
@@ -701,32 +559,155 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    ErrorInfo:
+    TeamsChannelOutputDtoResponse:
       type: object
       properties:
-        Code:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TeamsChannelOutputDto'
+      additionalProperties: false
+    TeamsChannelsListFilter:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        IsEnabled:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    TeamsChannelLookupOutputDto:
+      type: object
+      properties:
+        Id:
           type: integer
           format: int32
-        Message:
+        Name:
           type:
           - string
           - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
+      additionalProperties: false
+    TeamsChannelsActivityLogsListOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - array
           - 'null'
           items:
-            type: string
+            $ref: '#/components/schemas/TeamsChannelsActivityLogsListOutputDto'
       additionalProperties: false
-    TeamsChannelsListInputDto:
+    TeamsChannelStatusOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/TeamsChannelStatusOutputDto'
+      additionalProperties: false
+    TeamsChannelListOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        FailureNotificationEmail:
+          type:
+          - string
+          - 'null'
+        FailureNotificationCount:
+          type:
+          - string
+          - 'null'
+        WebhookUrl:
+          type:
+          - string
+          - 'null'
+        IsEnabled:
+          type: boolean
+        WorkflowsAssigned:
+          type: integer
+          format: int32
+        Alerts:
+          type: integer
+          format: int32
+      additionalProperties: false
+    TeamsChannelLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TeamsChannelLookupOutputDto'
+      additionalProperties: false
+    TeamsChannelStatusOutputDto:
+      type: object
+      properties:
+        IsConnected:
+          type: boolean
+      additionalProperties: false
+    TeamsChannelStatusInputDto:
+      type: object
+      properties:
+        WebhookUrl:
+          type:
+          - string
+          - 'null'
+        TeamsChannelId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    TeamsChannelBatchInputDto:
+      type: object
+      properties:
+        ModuleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        IsEnabled:
+          type: boolean
+      additionalProperties: false
+    TeamsChannelsActivityLogsListInputDto:
       type: object
       properties:
         PageSize:
@@ -752,31 +733,50 @@ components:
           - string
           - 'null'
         Filter:
-          $ref: '#/components/schemas/TeamsChannelsListFilter'
+          $ref: '#/components/schemas/TeamsChannelsActivityLogsFilterDto'
       additionalProperties: false
-    TeamsChannelStatusOutputDto:
+    TeamsChannelsActivityLogsFilterDto:
       type: object
       properties:
-        IsConnected:
-          type: boolean
+        IsSuccess:
+          type:
+          - boolean
+          - 'null'
+        CreatedOnFromDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOnToDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        WorkflowName:
+          type:
+          - string
+          - 'null'
+        TicketNumber:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-    TeamsChannelBatchInputDto:
+    StringResponse:
       type: object
       properties:
-        ModuleId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TargetedIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        IsEnabled:
+        Success:
           type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

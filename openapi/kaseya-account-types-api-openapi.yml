@@ -32,6 +32,38 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AccountTypeLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        IsClient:
+          type: boolean
+        IsVendor:
+          type: boolean
+      additionalProperties: false
+    AccountTypeLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AccountTypeLookupOutputDto'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -56,38 +88,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    AccountTypeLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AccountTypeLookupOutputDto'
-      additionalProperties: false
-    AccountTypeLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
-        IsClient:
-          type: boolean
-        IsVendor:
-          type: boolean
       additionalProperties: false
   securitySchemes:
     bearerAuth:

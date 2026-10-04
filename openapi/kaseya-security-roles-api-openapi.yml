@@ -55,21 +55,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SecurityRoleLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SecurityRoleLookupOutputDto'
-      additionalProperties: false
     SecurityRoleLookupOutputDto:
       type: object
       properties:
@@ -86,6 +71,21 @@ components:
           type: boolean
         isExternal:
           type: boolean
+      additionalProperties: false
+    SecurityRoleLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SecurityRoleLookupOutputDto'
       additionalProperties: false
     ErrorInfo:
       type: object

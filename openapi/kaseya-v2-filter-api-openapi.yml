@@ -169,29 +169,6 @@ paths:
                       $ref: '#/components/schemas/Filter'
 components:
   schemas:
-    Filter:
-      type: object
-      description: Filter data
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-          enum:
-          - rmm_default
-          - custom
-          - site
-        dateCreate:
-          type: string
-          format: date-time
-        lastUpdated:
-          type: string
-          format: date-time
     ErrorResponse:
       description: Default error response body
       properties:
@@ -223,3 +200,26 @@ components:
           type: string
         nextPageUrl:
           type: string
+    Filter:
+      type: object
+      description: Filter data
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum:
+          - rmm_default
+          - custom
+          - site
+        dateCreate:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time

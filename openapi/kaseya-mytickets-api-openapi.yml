@@ -394,58 +394,23 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    GetMyTicketsInputDto:
+    MyTicketListDtoIEnumerablePagedResponse:
       type: object
       properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
+        Success:
+          type: boolean
           readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/MyTicketFilterDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - array
           - 'null'
           items:
-            type: string
+            $ref: '#/components/schemas/MyTicketListDto'
+        TotalRecords:
+          type: integer
+          format: int32
       additionalProperties: false
     MyTicketListDto:
       type: object
@@ -827,6 +792,105 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
+    GetMyTicketsInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/MyTicketFilterDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ClientPortalTicketListDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ClientPortalTicketListDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ClientPortalMyTicketsInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/ClientPortalMyTicketFilterDto'
+      additionalProperties: false
     MyTicketFilterDto:
       type: object
       properties:
@@ -949,70 +1013,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    ClientPortalTicketListDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ClientPortalTicketListDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ClientPortalMyTicketsInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/ClientPortalMyTicketFilterDto'
-      additionalProperties: false
-    MyTicketListDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/MyTicketListDto'
-        TotalRecords:
-          type: integer
-          format: int32
       additionalProperties: false
   securitySchemes:
     bearerAuth:

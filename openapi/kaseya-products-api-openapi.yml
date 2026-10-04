@@ -932,36 +932,25 @@ paths:
     - url: https://api.bms.kaseya.com
 components:
   schemas:
-    ItemQueryResultModel_ProductModel_Product:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/ProductModel'
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
+        fields:
           type: array
           items:
-            $ref: '#/components/schemas/Filter'
-    UserDefinedField:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
       type: object
       properties:
-        name:
-          type: string
-        value:
-          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     ProductModel:
       type: object
       properties:
@@ -1043,22 +1032,74 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserDefinedField'
-    OperationResultModel:
+    EntityInformationResultModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    ItemQueryResultModel_ProductModel_Product:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ProductModel'
+    UserDefinedField:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    Object:
       type: object
       properties: {}
-    UserDefinedFieldInformationResultModel:
+    Filter:
       type: object
       properties:
-        fields:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
           type: array
           items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
+            $ref: '#/components/schemas/Filter'
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     QueryActionResult_ProductModel_Product:
       type: object
       properties:
@@ -1068,35 +1109,11 @@ components:
             $ref: '#/components/schemas/ProductModel'
         pageDetails:
           $ref: '#/components/schemas/PagingModel'
-    PagingModel:
+    OperationResultModel:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
+        itemId:
+          $ref: '#/components/schemas/Object'
     FieldInformationModel:
       type: object
       properties:
@@ -1127,14 +1144,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
+    PickListValue:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -1171,47 +1198,20 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryModel:
+    PagingModel:
       type: object
       properties:
-        maxRecords:
+        count:
           format: int32
           type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        requestCount:
           format: int32
           type: integer
-        parentValue:
+          readOnly: true
+        prevPageUrl:
           type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:
@@ -1248,6 +1248,60 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    ProductCategoriesOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ProductCategoriesOutputDto'
+      additionalProperties: false
+    ProductCategoryLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+      additionalProperties: false
+    DefaultCostOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/DefaultCostOutputDto'
+      additionalProperties: false
+    ProductsInStockOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductsInStockOutputDto'
+      additionalProperties: false
     PricingLevelLookupDtoListResponse:
       type: object
       properties:
@@ -1262,6 +1316,48 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/PricingLevelLookupDto'
+      additionalProperties: false
+    WeightedCostOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WeightedCostOutputDto'
+      additionalProperties: false
+    PricingLevelLookupDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Price:
+          type: number
+          format: double
+        Margin:
+          type: number
+          format: double
+        IsActive:
+          type: boolean
+        IsDefault:
+          type: boolean
+      additionalProperties: false
+    WeightedCostOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        WeightedCost:
+          type: number
+          format: double
       additionalProperties: false
     ProductCategoriesOutputDto:
       type: object
@@ -1300,31 +1396,6 @@ components:
         IsActive:
           type: boolean
       additionalProperties: false
-    DefaultCostOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        DefaultCost:
-          type: number
-          format: double
-      additionalProperties: false
-    SupplierLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SupplierLookupOutputDto'
-      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -1350,25 +1421,6 @@ components:
           items:
             type: string
       additionalProperties: false
-    ProductsInStockOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        SerialNumber:
-          type:
-          - string
-          - 'null'
-        LotNumber:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     ProductCategoryLookupOutputDtoListPagedResponse:
       type: object
       properties:
@@ -1387,18 +1439,7 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    SupplierLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    WeightedCostOutputDtoResponse:
+    ProductsListSearchSelectOutputDtoListPagedResponse:
       type: object
       properties:
         Success:
@@ -1407,9 +1448,16 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/WeightedCostOutputDto'
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductsListSearchSelectOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
       additionalProperties: false
-    PricingLevelLookupDto:
+    ProductsInStockOutputDto:
       type: object
       properties:
         Id:
@@ -1419,16 +1467,14 @@ components:
           type:
           - string
           - 'null'
-        Price:
-          type: number
-          format: double
-        Margin:
-          type: number
-          format: double
-        IsActive:
-          type: boolean
-        IsDefault:
-          type: boolean
+        SerialNumber:
+          type:
+          - string
+          - 'null'
+        LotNumber:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     ProductsListSearchSelectOutputDto:
       type: object
@@ -1508,63 +1554,6 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    DefaultCostOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/DefaultCostOutputDto'
-      additionalProperties: false
-    ProductCategoriesOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ProductCategoriesOutputDto'
-      additionalProperties: false
-    ProductsListSearchSelectOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProductsListSearchSelectOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ProductCategoryLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
-      additionalProperties: false
     ProductCategoriesInputDto:
       required:
       - IsActive
@@ -1581,7 +1570,28 @@ components:
         IsActive:
           type: boolean
       additionalProperties: false
-    ProductsInStockOutputDtoListResponse:
+    DefaultCostOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        DefaultCost:
+          type: number
+          format: double
+      additionalProperties: false
+    SupplierLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SupplierLookupOutputDtoListResponse:
       type: object
       properties:
         Success:
@@ -1594,17 +1604,7 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ProductsInStockOutputDto'
-      additionalProperties: false
-    WeightedCostOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        WeightedCost:
-          type: number
-          format: double
+            $ref: '#/components/schemas/SupplierLookupOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

@@ -130,51 +130,35 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SalesAcceleratorAccountDataDto:
+    SalesAcceleratorSummaryOutputDto:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
+        AccountsSummary:
+          $ref: '#/components/schemas/SalesAcceleratorAccountsSummaryDto'
+        ServicesSummary:
+          $ref: '#/components/schemas/SalesAcceleratorServicesSummaryDto'
+      additionalProperties: false
+    SalesAcceleratorHighestServiceDto:
+      type: object
+      properties:
         Name:
           type:
           - string
           - 'null'
-        Potential:
-          type: number
-          format: double
-        Sold:
+        Value:
           type: number
           format: double
       additionalProperties: false
-    SalesAcceleratorAccountServicesOutputDto:
+    SalesAcceleratorSummaryOutputDtoResponse:
       type: object
       properties:
-        Account:
-          $ref: '#/components/schemas/SalesAcceleratorAccountDataDto'
-        Services:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SalesAcceleratorServiceDataDto'
-      additionalProperties: false
-    SalesAcceleratorServiceDataDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Potential:
-          type:
-          - number
-          - 'null'
-          format: double
-        Sold:
-          type:
-          - number
-          - 'null'
-          format: double
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/SalesAcceleratorSummaryOutputDto'
       additionalProperties: false
     SalesAcceleratorAccountsSummaryDto:
       type: object
@@ -233,24 +217,69 @@ components:
           items:
             type: string
       additionalProperties: false
-    SalesAcceleratorSummaryOutputDto:
+    SalesAcceleratorServiceDataDto:
       type: object
       properties:
-        AccountsSummary:
-          $ref: '#/components/schemas/SalesAcceleratorAccountsSummaryDto'
-        ServicesSummary:
-          $ref: '#/components/schemas/SalesAcceleratorServicesSummaryDto'
+        Id:
+          type: integer
+          format: int32
+        Potential:
+          type:
+          - number
+          - 'null'
+          format: double
+        Sold:
+          type:
+          - number
+          - 'null'
+          format: double
       additionalProperties: false
-    SalesAcceleratorHighestServiceDto:
+    SalesAcceleratorAccountDataDto:
       type: object
       properties:
+        Id:
+          type: integer
+          format: int32
         Name:
           type:
           - string
           - 'null'
-        Value:
+        Potential:
           type: number
           format: double
+        Sold:
+          type: number
+          format: double
+      additionalProperties: false
+    SalesAcceleratorAccountServicesOutputDtoIEnumerablePagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SalesAcceleratorAccountServicesOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    SalesAcceleratorAccountServicesOutputDto:
+      type: object
+      properties:
+        Account:
+          $ref: '#/components/schemas/SalesAcceleratorAccountDataDto'
+        Services:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SalesAcceleratorServiceDataDto'
       additionalProperties: false
     SalesAcceleratorServiceDto:
       type: object
@@ -292,35 +321,6 @@ components:
         TotalSold:
           type: number
           format: double
-      additionalProperties: false
-    SalesAcceleratorAccountServicesOutputDtoIEnumerablePagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/SalesAcceleratorAccountServicesOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    SalesAcceleratorSummaryOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/SalesAcceleratorSummaryOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

@@ -230,13 +230,14 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    TicketSmartResolutionSummaryPutInputDto:
+    TicketRephraseNoteInputDto:
+      required:
+      - Details
       type: object
       properties:
-        Summary:
-          type:
-          - string
-          - 'null'
+        Details:
+          minLength: 1
+          type: string
       additionalProperties: false
     TicketSmartSummaryPutInputDto:
       type: object
@@ -257,14 +258,13 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    TicketRephraseNoteInputDto:
-      required:
-      - Details
+    TicketSmartResolutionSummaryPutInputDto:
       type: object
       properties:
-        Details:
-          minLength: 1
-          type: string
+        Summary:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

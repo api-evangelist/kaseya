@@ -66,30 +66,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ExpenseSheetOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        UserId:
-          type: integer
-          format: int32
-        StatusId:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        Notes:
-          type:
-          - string
-          - 'null'
-        EndPeriod:
-          type: string
-          format: date-time
-      additionalProperties: false
     ExpenseSheetLookupDto:
       type: object
       properties:
@@ -103,6 +79,17 @@ components:
         StatusId:
           type: integer
           format: int32
+      additionalProperties: false
+    ExpenseSheetOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ExpenseSheetOutputDto'
       additionalProperties: false
     ExpenseSheetPostInputDto:
       type: object
@@ -155,17 +142,6 @@ components:
           items:
             type: string
       additionalProperties: false
-    ExpenseSheetOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ExpenseSheetOutputDto'
-      additionalProperties: false
     ExpenseSheetLookupDtoListResponse:
       type: object
       properties:
@@ -180,6 +156,30 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/ExpenseSheetLookupDto'
+      additionalProperties: false
+    ExpenseSheetOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        UserId:
+          type: integer
+          format: int32
+        StatusId:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        Notes:
+          type:
+          - string
+          - 'null'
+        EndPeriod:
+          type: string
+          format: date-time
       additionalProperties: false
   securitySchemes:
     bearerAuth:

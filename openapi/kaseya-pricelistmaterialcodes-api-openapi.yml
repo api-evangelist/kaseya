@@ -506,6 +506,56 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    ItemQueryResultModel_PriceListMaterialCodeModel_PriceListMaterialCode:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/PriceListMaterialCodeModel'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    PriceListMaterialCodeModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        billingCodeID:
+          format: int32
+          type: integer
+        currencyID:
+          format: int32
+          type: integer
+        unitPrice:
+          format: double
+          type: number
+        usesInternalCurrencyPrice:
+          type: boolean
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -524,103 +574,35 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
     QueryCountResultModel:
       type: object
       properties:
         queryCount:
           format: int32
           type: integer
-    FieldInformationModel:
+    QueryModel:
       type: object
       properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
+        maxRecords:
           format: int32
           type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
+        includeFields:
           type: array
           items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_PriceListMaterialCodeModel_PriceListMaterialCode:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/PriceListMaterialCodeModel'
-    QueryActionResult_PriceListMaterialCodeModel_PriceListMaterialCode:
-      type: object
-      properties:
-        items:
+            type: string
+        filter:
           type: array
           items:
-            $ref: '#/components/schemas/PriceListMaterialCodeModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     Field:
       type: object
       properties:
@@ -657,46 +639,41 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryModel:
+    OperationResultModel:
       type: object
       properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    PriceListMaterialCodeModel:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    FieldInformationModel:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        billingCodeID:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
           format: int32
           type: integer
-        currencyID:
-          format: int32
-          type: integer
-        unitPrice:
-          format: double
-          type: number
-        usesInternalCurrencyPrice:
+        isRequired:
           type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     PickListValue:
       type: object
       properties:
@@ -715,6 +692,29 @@ components:
           type: boolean
         isSystem:
           type: boolean
+    QueryActionResult_PriceListMaterialCodeModel_PriceListMaterialCode:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceListMaterialCodeModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:

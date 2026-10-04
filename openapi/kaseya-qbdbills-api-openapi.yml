@@ -132,6 +132,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    QbBillReferenceInputDto:
+      type: object
+      properties:
+        BillId:
+          type: integer
+          format: int32
+        QbBillId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -156,6 +167,70 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    QbBillDetailExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbBillDetailExportDto'
+      additionalProperties: false
+    QbBillExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        VendorId:
+          type:
+          - string
+          - 'null'
+        VendorName:
+          type:
+          - string
+          - 'null'
+        ReferenceNumber:
+          type:
+          - string
+          - 'null'
+        Amount:
+          type: number
+          format: double
+        DueDate:
+          type: string
+          format: date-time
+        BillDate:
+          type: string
+          format: date-time
+        Memo:
+          type:
+          - string
+          - 'null'
+        SalesTaxItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExternalVendorId:
+          type:
+          - string
+          - 'null'
+        ExternalTaxId:
+          type:
+          - string
+          - 'null'
+        ShipAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+        BillAddress:
+          $ref: '#/components/schemas/QbAddressDto'
       additionalProperties: false
     QbAddressDto:
       type: object
@@ -278,81 +353,6 @@ components:
           - 'null'
           format: int32
         ExternalItemId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    QbBillExportDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        VendorId:
-          type:
-          - string
-          - 'null'
-        VendorName:
-          type:
-          - string
-          - 'null'
-        ReferenceNumber:
-          type:
-          - string
-          - 'null'
-        Amount:
-          type: number
-          format: double
-        DueDate:
-          type: string
-          format: date-time
-        BillDate:
-          type: string
-          format: date-time
-        Memo:
-          type:
-          - string
-          - 'null'
-        SalesTaxItemId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ExternalVendorId:
-          type:
-          - string
-          - 'null'
-        ExternalTaxId:
-          type:
-          - string
-          - 'null'
-        ShipAddress:
-          $ref: '#/components/schemas/QbAddressDto'
-        BillAddress:
-          $ref: '#/components/schemas/QbAddressDto'
-      additionalProperties: false
-    QbBillDetailExportDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbBillDetailExportDto'
-      additionalProperties: false
-    QbBillReferenceInputDto:
-      type: object
-      properties:
-        BillId:
-          type: integer
-          format: int32
-        QbBillId:
           type:
           - string
           - 'null'

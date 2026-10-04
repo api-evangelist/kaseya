@@ -32,6 +32,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ExpenseTypeRuleDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        LimitAmount:
+          type: number
+          format: double
+        Overage:
+          type: boolean
+      additionalProperties: false
     ExpenseTypeLookupDto:
       type: object
       properties:
@@ -65,17 +77,20 @@ components:
         IsActive:
           type: boolean
       additionalProperties: false
-    ExpenseTypeRuleDto:
+    ExpenseTypeLookupDtoListResponse:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
-        LimitAmount:
-          type: number
-          format: double
-        Overage:
+        Success:
           type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ExpenseTypeLookupDto'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -101,21 +116,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    ExpenseTypeLookupDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ExpenseTypeLookupDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

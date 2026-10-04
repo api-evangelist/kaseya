@@ -154,6 +154,21 @@ components:
           type: integer
           format: int32
       additionalProperties: false
+    QbAccountCodeExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbAccountCodeExportDto'
+      additionalProperties: false
     QbAccountCodeImportDto:
       type: object
       properties:
@@ -208,21 +223,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    QbAccountCodeExportDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbAccountCodeExportDto'
       additionalProperties: false
     QbAccountCodeExportDto:
       type: object

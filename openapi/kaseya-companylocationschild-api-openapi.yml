@@ -500,14 +500,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OperationResultModel:
+    ParameterExpression:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    Expression:
-      type: object
-      properties:
+        type:
+          type: string
+          readOnly: true
         nodeType:
           enum:
           - Add
@@ -597,15 +595,15 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        type:
+        name:
           type: string
+          readOnly: true
+        isByRef:
+          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -614,11 +612,40 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    QueryActionResult_CompanyLocationModel_AccountPhysicalLocation:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompanyLocationModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     ItemQueryResultModel_CompanyLocationModel_AccountPhysicalLocation:
       type: object
       properties:
         item:
           $ref: '#/components/schemas/CompanyLocationModel'
+    Object:
+      type: object
+      properties: {}
     PagingModel:
       type: object
       properties:
@@ -633,9 +660,146 @@ components:
           type: string
         nextPageUrl:
           type: string
-    Object:
+    OperationResultModel:
       type: object
-      properties: {}
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    CompanyLocationModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        address1:
+          type: string
+        address2:
+          type: string
+        alternatePhone1:
+          type: string
+        alternatePhone2:
+          type: string
+        city:
+          type: string
+        companyID:
+          format: int32
+          type: integer
+        countryID:
+          format: int32
+          type: integer
+        description:
+          type: string
+        fax:
+          type: string
+        isActive:
+          type: boolean
+        isPrimary:
+          type: boolean
+        isTaxExempt:
+          type: boolean
+        overrideCompanyTaxSettings:
+          type: boolean
+        name:
+          type: string
+        phone:
+          type: string
+        postalCode:
+          type: string
+        roundtripDistance:
+          format: double
+          type: number
+        state:
+          type: string
+        taxRegionID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_AccountPhysicalLocation_Int64'
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     Expression_Func_AccountPhysicalLocation_Int64:
       type: object
       properties:
@@ -751,12 +915,9 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    ParameterExpression:
+    Expression:
       type: object
       properties:
-        type:
-          type: string
-          readOnly: true
         nodeType:
           enum:
           - Add
@@ -846,173 +1007,12 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        name:
+        type:
           type: string
-          readOnly: true
-        isByRef:
-          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    CompanyLocationModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        address1:
-          type: string
-        address2:
-          type: string
-        alternatePhone1:
-          type: string
-        alternatePhone2:
-          type: string
-        city:
-          type: string
-        companyID:
-          format: int32
-          type: integer
-        countryID:
-          format: int32
-          type: integer
-        description:
-          type: string
-        fax:
-          type: string
-        isActive:
-          type: boolean
-        isPrimary:
-          type: boolean
-        isTaxExempt:
-          type: boolean
-        overrideCompanyTaxSettings:
-          type: boolean
-        name:
-          type: string
-        phone:
-          type: string
-        postalCode:
-          type: string
-        roundtripDistance:
-          format: double
-          type: number
-        state:
-          type: string
-        taxRegionID:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_AccountPhysicalLocation_Int64'
-          readOnly: true
-    QueryActionResult_CompanyLocationModel_AccountPhysicalLocation:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompanyLocationModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     EntityInformationModel:
       type: object
       properties:

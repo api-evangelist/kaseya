@@ -91,6 +91,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    QbSalesTaxItemExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbSalesTaxItemExportDto'
+      additionalProperties: false
     QbSalesTaxItemExportDto:
       type: object
       properties:
@@ -168,21 +183,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    QbSalesTaxItemExportDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbSalesTaxItemExportDto'
       additionalProperties: false
     QbSalesTaxItemExportDtoListPagedResponse:
       type: object

@@ -608,6 +608,39 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ItemQueryResultModel_TagModel_Tag:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/TagModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -626,11 +659,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
+    QueryCountResultModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
+        queryCount:
+          format: int32
+          type: integer
     QueryActionResult_TagModel_Tag:
       type: object
       properties:
@@ -640,46 +674,34 @@ components:
             $ref: '#/components/schemas/TagModel'
         pageDetails:
           $ref: '#/components/schemas/PagingModel'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
+    QueryModel:
       type: object
       properties:
-        fields:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
           type: array
           items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    OperationResultModel:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
+        itemId:
+          $ref: '#/components/schemas/Object'
     FieldInformationModel:
       type: object
       properties:
@@ -710,55 +732,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_TagModel_Tag:
+    PickListValue:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/TagModel'
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
+        value:
           type: string
-          readOnly: true
-        canCreate:
+        label:
+          type: string
+        isDefaultValue:
           type: boolean
-          readOnly: true
-        canDelete:
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
           type: boolean
-          readOnly: true
-        canQuery:
+        isSystem:
           type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
     Field:
       type: object
       properties:
@@ -795,47 +786,6 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     TagModel:
       type: object
       properties:
@@ -859,3 +809,53 @@ components:
         tagGroupID:
           format: int32
           type: integer
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true

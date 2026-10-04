@@ -403,76 +403,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ItemQueryResultModel_CompanyNoteModel_AccountNote:
+    ParameterExpression:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/CompanyNoteModel'
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
         type:
           type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    Expression:
-      type: object
-      properties:
+          readOnly: true
         nodeType:
           enum:
           - Add
@@ -562,60 +498,14 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        type:
+        name:
           type: string
+          readOnly: true
+        isByRef:
+          type: boolean
           readOnly: true
         canReduce:
           type: boolean
-          readOnly: true
-    CompanyNoteModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        actionType:
-          format: int32
-          type: integer
-        assignedResourceID:
-          format: int32
-          type: integer
-        companyID:
-          format: int32
-          type: integer
-        completedDateTime:
-          format: date-time
-          type: string
-        contactID:
-          format: int32
-          type: integer
-        createDateTime:
-          format: date-time
-          type: string
-        endDateTime:
-          format: date-time
-          type: string
-        impersonatorCreatorResourceID:
-          format: int32
-          type: integer
-        impersonatorUpdaterResourceID:
-          format: int32
-          type: integer
-        lastModifiedDate:
-          format: date-time
-          type: string
-        name:
-          type: string
-        note:
-          type: string
-        opportunityID:
-          format: int32
-          type: integer
-        startDateTime:
-          format: date-time
-          type: string
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_AccountNote_Int64'
           readOnly: true
     Expression_Func_AccountNote_Int64:
       type: object
@@ -732,35 +622,158 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    PagingModel:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
     EntityInformationResultModel:
       type: object
       properties:
         info:
           $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true
-    QueryCountResultModel:
+    Filter:
       type: object
       properties:
-        queryCount:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    QueryActionResult_CompanyNoteModel_AccountNote:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompanyNoteModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    CompanyNoteModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        actionType:
           format: int32
           type: integer
+        assignedResourceID:
+          format: int32
+          type: integer
+        companyID:
+          format: int32
+          type: integer
+        completedDateTime:
+          format: date-time
+          type: string
+        contactID:
+          format: int32
+          type: integer
+        createDateTime:
+          format: date-time
+          type: string
+        endDateTime:
+          format: date-time
+          type: string
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        impersonatorUpdaterResourceID:
+          format: int32
+          type: integer
+        lastModifiedDate:
+          format: date-time
+          type: string
+        name:
+          type: string
+        note:
+          type: string
+        opportunityID:
+          format: int32
+          type: integer
+        startDateTime:
+          format: date-time
+          type: string
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_AccountNote_Int64'
+          readOnly: true
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     FieldInformationModel:
       type: object
       properties:
@@ -791,73 +804,23 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
+    PagingModel:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
+        count:
           format: int32
           type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    QueryActionResult_CompanyNoteModel_AccountNote:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompanyNoteModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-    Object:
-      type: object
-      properties: {}
-    ParameterExpression:
-      type: object
-      properties:
-        type:
-          type: string
+        requestCount:
+          format: int32
+          type: integer
           readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Expression:
+      type: object
+      properties:
         nodeType:
           enum:
           - Add
@@ -947,48 +910,85 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        name:
+        type:
           type: string
-          readOnly: true
-        isByRef:
-          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    EntityInformationModel:
+    ItemQueryResultModel_CompanyNoteModel_AccountNote:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/CompanyNoteModel'
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    Object:
+      type: object
+      properties: {}
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Field:
       type: object
       properties:
         name:
           type: string
-          readOnly: true
-        canCreate:
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
           type: boolean
-          readOnly: true
-        canDelete:
+        isReadOnly:
           type: boolean
-          readOnly: true
-        canQuery:
+        isQueryable:
           type: boolean
-          readOnly: true
-        canUpdate:
+        isReference:
           type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
+        referenceEntityType:
+          type: string
+        isPickList:
           type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'

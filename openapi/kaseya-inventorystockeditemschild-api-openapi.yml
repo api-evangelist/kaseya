@@ -386,246 +386,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    QueryActionResult_InventoryStockedItemModel_InventoryStockedItem:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/InventoryStockedItemModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    Expression:
-      type: object
-      properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    InventoryStockedItemModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        availableUnits:
-          format: int32
-          type: integer
-        companyID:
-          format: int32
-          type: integer
-        configurationItemID:
-          format: int32
-          type: integer
-        createDateTime:
-          format: date-time
-          type: string
-        createdByResourceID:
-          format: int32
-          type: integer
-        currentInventoryLocationID:
-          format: int32
-          type: integer
-        deliveredUnits:
-          format: int32
-          type: integer
-        inventoryProductID:
-          format: int32
-          type: integer
-        purchaseOrderItemReceivingID:
-          format: int32
-          type: integer
-        onHandUnits:
-          format: int32
-          type: integer
-        parentInventoryStockedItemID:
-          format: int32
-          type: integer
-        pickedRemovedByResourceID:
-          format: int32
-          type: integer
-        pickedRemovedDateTime:
-          format: date-time
-          type: string
-        pickedUnits:
-          format: int32
-          type: integer
-        purchaseOrderID:
-          format: int32
-          type: integer
-        purchaseOrderItemID:
-          format: int32
-          type: integer
-        quoteItemID:
-          format: int32
-          type: integer
-        removedUnits:
-          format: int32
-          type: integer
-        reservedUnits:
-          format: int32
-          type: integer
-        returnPrice:
-          format: double
-          type: number
-        returnTypeID:
-          format: int32
-          type: integer
-        serialNumber:
-          type: string
-        statusID:
-          format: int32
-          type: integer
-        transferredUnits:
-          format: int32
-          type: integer
-        unitCost:
-          format: double
-          type: number
-        vendorID:
-          format: int32
-          type: integer
-        vendorInvoiceNumber:
-          type: string
-        parentStockedItemReceivedUnits:
-          format: int32
-          type: integer
-        contractChargeID:
-          format: int32
-          type: integer
-        projectChargeID:
-          format: int32
-          type: integer
-        ticketChargeID:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_InventoryStockedItem_Int64'
-          readOnly: true
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
     ParameterExpression:
       type: object
       properties:
@@ -730,42 +490,18 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    EntityInformationResultModel:
+    QueryActionResult_InventoryStockedItemModel_InventoryStockedItem:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
+            $ref: '#/components/schemas/InventoryStockedItemModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
     FieldInformationResultModel:
       type: object
       properties:
@@ -774,42 +510,120 @@ components:
           items:
             $ref: '#/components/schemas/FieldInformationModel'
             readOnly: true
-    Field:
+    InventoryStockedItemModel:
       type: object
       properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
+        id:
+          format: int64
+          type: integer
+        availableUnits:
           format: int32
           type: integer
-        description:
+        companyID:
+          format: int32
+          type: integer
+        configurationItemID:
+          format: int32
+          type: integer
+        createDateTime:
+          format: date-time
           type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
+        createdByResourceID:
+          format: int32
+          type: integer
+        currentInventoryLocationID:
+          format: int32
+          type: integer
+        deliveredUnits:
+          format: int32
+          type: integer
+        inventoryProductID:
+          format: int32
+          type: integer
+        purchaseOrderItemReceivingID:
+          format: int32
+          type: integer
+        onHandUnits:
+          format: int32
+          type: integer
+        parentInventoryStockedItemID:
+          format: int32
+          type: integer
+        pickedRemovedByResourceID:
+          format: int32
+          type: integer
+        pickedRemovedDateTime:
+          format: date-time
           type: string
-        isPickList:
-          type: boolean
-        picklistValues:
+        pickedUnits:
+          format: int32
+          type: integer
+        purchaseOrderID:
+          format: int32
+          type: integer
+        purchaseOrderItemID:
+          format: int32
+          type: integer
+        quoteItemID:
+          format: int32
+          type: integer
+        removedUnits:
+          format: int32
+          type: integer
+        reservedUnits:
+          format: int32
+          type: integer
+        returnPrice:
+          format: double
+          type: number
+        returnTypeID:
+          format: int32
+          type: integer
+        serialNumber:
+          type: string
+        statusID:
+          format: int32
+          type: integer
+        transferredUnits:
+          format: int32
+          type: integer
+        unitCost:
+          format: double
+          type: number
+        vendorID:
+          format: int32
+          type: integer
+        vendorInvoiceNumber:
+          type: string
+        parentStockedItemReceivedUnits:
+          format: int32
+          type: integer
+        contractChargeID:
+          format: int32
+          type: integer
+        projectChargeID:
+          format: int32
+          type: integer
+        ticketChargeID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_InventoryStockedItem_Int64'
+          readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
           type: array
           items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
+            $ref: '#/components/schemas/Field'
+            readOnly: true
     Expression_Func_InventoryStockedItem_Int64:
       type: object
       properties:
@@ -925,11 +739,63 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     ItemQueryResultModel_InventoryStockedItemModel_InventoryStockedItem:
       type: object
       properties:
         item:
           $ref: '#/components/schemas/InventoryStockedItemModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     PickListValue:
       type: object
       properties:
@@ -948,6 +814,140 @@ components:
           type: boolean
         isSystem:
           type: boolean
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    Expression:
+      type: object
+      properties:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
     EntityInformationModel:
       type: object
       properties:

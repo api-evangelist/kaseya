@@ -92,20 +92,6 @@ components:
           items:
             $ref: '#/components/schemas/TenantLookupOutputDto'
       additionalProperties: false
-    TenantLookupInputDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
-      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -144,6 +130,20 @@ components:
         IsActive:
           type: boolean
         IsDefault:
+          type: boolean
+      additionalProperties: false
+    TenantLookupInputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
           type: boolean
       additionalProperties: false
   securitySchemes:

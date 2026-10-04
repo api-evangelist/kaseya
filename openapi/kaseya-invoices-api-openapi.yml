@@ -747,6 +747,39 @@ paths:
     - url: https://api.bms.kaseya.com
 components:
   schemas:
+    ItemQueryResultModel_InvoiceModel_Invoice:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/InvoiceModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -765,22 +798,133 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     OperationResultModel:
       type: object
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
+    QueryActionResult_InvoiceModel_Invoice:
       type: object
       properties:
-        fields:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
+            $ref: '#/components/schemas/InvoiceModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     PagingModel:
       type: object
       properties:
@@ -795,9 +939,42 @@ components:
           type: string
         nextPageUrl:
           type: string
-    Object:
+    EntityInformationModel:
       type: object
-      properties: {}
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
     InvoiceModel:
       type: object
       properties:
@@ -870,427 +1047,6 @@ components:
           type: integer
         invoiceTaxMethodExternalCode:
           type: string
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    QueryActionResult_InvoiceModel_Invoice:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvoiceModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_InvoiceModel_Invoice:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/InvoiceModel'
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    InvoiceSummaryOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        InvoiceNumber:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        StatusName:
-          type:
-          - string
-          - 'null'
-        Notes:
-          type:
-          - string
-          - 'null'
-        AccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountName:
-          type:
-          - string
-          - 'null'
-        AccountLocationId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        AccountLocationName:
-          type:
-          - string
-          - 'null'
-        ProjectId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ProjectName:
-          type:
-          - string
-          - 'null'
-        PONumber:
-          type:
-          - string
-          - 'null'
-        SalesTaxItemId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SalesTaxItemName:
-          type:
-          - string
-          - 'null'
-        SalesRepId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        SalesRepName:
-          type:
-          - string
-          - 'null'
-        ClassId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ClassName:
-          type:
-          - string
-          - 'null'
-        Discount:
-          type:
-          - number
-          - 'null'
-          format: double
-        SalesTaxRate:
-          type:
-          - number
-          - 'null'
-          format: double
-        TotalPrice:
-          type:
-          - number
-          - 'null'
-          format: double
-        TotalTax:
-          type:
-          - number
-          - 'null'
-          format: double
-        GrandTotal:
-          type:
-          - number
-          - 'null'
-          format: double
-        PaymentDue:
-          type:
-          - number
-          - 'null'
-          format: double
-        PaidAmount:
-          type:
-          - number
-          - 'null'
-          format: double
-        InvoiceDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        DueDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        InvoiceFrom:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        InvoiceTo:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        SentOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ContactFirstName:
-          type:
-          - string
-          - 'null'
-        ContactLastName:
-          type:
-          - string
-          - 'null'
-        Address1:
-          type:
-          - string
-          - 'null'
-        Address2:
-          type:
-          - string
-          - 'null'
-        State:
-          type:
-          - string
-          - 'null'
-        City:
-          type:
-          - string
-          - 'null'
-        CountryName:
-          type:
-          - string
-          - 'null'
-        ZipCode:
-          type:
-          - string
-          - 'null'
-        EmailAddress:
-          type:
-          - string
-          - 'null'
-        PhoneNumber:
-          type:
-          - string
-          - 'null'
-        Extension:
-          type:
-          - string
-          - 'null'
-        MobileNumber:
-          type:
-          - string
-          - 'null'
-        FaxNumber:
-          type:
-          - string
-          - 'null'
-        SentByUserName:
-          type:
-          - string
-          - 'null'
-        CreatedById:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedByUserName:
-          type:
-          - string
-          - 'null'
-        ModifiedById:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedByUserName:
-          type:
-          - string
-          - 'null'
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        PostedToAccounting:
-          type:
-          - boolean
-          - 'null'
-        PostedToAccountingOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        AccountingAppReference:
-          type:
-          - string
-          - 'null'
-        GeneratedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
     InvoiceLineItemsOutputDtoListResponse:
       type: object
       properties:
@@ -1305,34 +1061,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/InvoiceLineItemsOutputDto'
-      additionalProperties: false
-    InvoiceDetailsListSearchSelectInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/InvoiceDetailsListFilterDto'
       additionalProperties: false
     InvoiceDetailsListFilterDto:
       type: object
@@ -1359,242 +1087,6 @@ components:
           type:
           - boolean
           - 'null'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    InvoiceBatchInputDto:
-      type: object
-      properties:
-        TargetedIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-      additionalProperties: false
-    InvoiceLineItemsOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        InvoiceId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        InvoiceNumber:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        TypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TypeName:
-          type:
-          - string
-          - 'null'
-        GLAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        GLAccountCode:
-          type:
-          - string
-          - 'null'
-        GLAccountName:
-          type:
-          - string
-          - 'null'
-        ClassId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ClassName:
-          type:
-          - string
-          - 'null'
-        Qty:
-          type:
-          - number
-          - 'null'
-          format: double
-        UnitPrice:
-          type:
-          - number
-          - 'null'
-          format: double
-        TotalPrice:
-          type:
-          - number
-          - 'null'
-          format: double
-        ValueDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ContractId:
-          type: integer
-          format: int32
-        ContractName:
-          type:
-          - string
-          - 'null'
-        IsTaxable:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    InvoiceSummaryOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/InvoiceSummaryOutputDto'
-      additionalProperties: false
-    InvoiceDiscountLineItemsOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        InvoiceId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        InvoiceNumber:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        TypeId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TypeName:
-          type:
-          - string
-          - 'null'
-        GLAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        GLAccountCode:
-          type:
-          - string
-          - 'null'
-        GLAccountName:
-          type:
-          - string
-          - 'null'
-        Value:
-          type:
-          - number
-          - 'null'
-          format: double
-        ClassId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ClassName:
-          type:
-          - string
-          - 'null'
-        CreatedById:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        CreatedByUserName:
-          type:
-          - string
-          - 'null'
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        ModifiedById:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ModifiedByUserName:
-          type:
-          - string
-          - 'null'
-        ModifiedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        IsTaxable:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    InvoiceOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/InvoiceOutputDto'
       additionalProperties: false
     InvoiceOutputDto:
       type: object
@@ -1852,6 +1344,17 @@ components:
           items:
             $ref: '#/components/schemas/InvoiceDiscountLineItemsOutputDto'
       additionalProperties: false
+    InvoiceOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/InvoiceOutputDto'
+      additionalProperties: false
     StringResponse:
       type: object
       properties:
@@ -1864,6 +1367,503 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    InvoiceBatchInputDto:
+      type: object
+      properties:
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    InvoiceSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        InvoiceNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        Notes:
+          type:
+          - string
+          - 'null'
+        AccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountName:
+          type:
+          - string
+          - 'null'
+        AccountLocationId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        AccountLocationName:
+          type:
+          - string
+          - 'null'
+        ProjectId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ProjectName:
+          type:
+          - string
+          - 'null'
+        PONumber:
+          type:
+          - string
+          - 'null'
+        SalesTaxItemId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesTaxItemName:
+          type:
+          - string
+          - 'null'
+        SalesRepId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        SalesRepName:
+          type:
+          - string
+          - 'null'
+        ClassId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClassName:
+          type:
+          - string
+          - 'null'
+        Discount:
+          type:
+          - number
+          - 'null'
+          format: double
+        SalesTaxRate:
+          type:
+          - number
+          - 'null'
+          format: double
+        TotalPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        TotalTax:
+          type:
+          - number
+          - 'null'
+          format: double
+        GrandTotal:
+          type:
+          - number
+          - 'null'
+          format: double
+        PaymentDue:
+          type:
+          - number
+          - 'null'
+          format: double
+        PaidAmount:
+          type:
+          - number
+          - 'null'
+          format: double
+        InvoiceDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        DueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        InvoiceFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        InvoiceTo:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        SentOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContactFirstName:
+          type:
+          - string
+          - 'null'
+        ContactLastName:
+          type:
+          - string
+          - 'null'
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        CountryName:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        Extension:
+          type:
+          - string
+          - 'null'
+        MobileNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        SentByUserName:
+          type:
+          - string
+          - 'null'
+        CreatedById:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedByUserName:
+          type:
+          - string
+          - 'null'
+        ModifiedById:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedByUserName:
+          type:
+          - string
+          - 'null'
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        PostedToAccounting:
+          type:
+          - boolean
+          - 'null'
+        PostedToAccountingOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        AccountingAppReference:
+          type:
+          - string
+          - 'null'
+        GeneratedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    InvoiceLineItemsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        InvoiceId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        InvoiceNumber:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        GLAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        GLAccountCode:
+          type:
+          - string
+          - 'null'
+        GLAccountName:
+          type:
+          - string
+          - 'null'
+        ClassId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClassName:
+          type:
+          - string
+          - 'null'
+        Qty:
+          type:
+          - number
+          - 'null'
+          format: double
+        UnitPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        TotalPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        ValueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ContractId:
+          type: integer
+          format: int32
+        ContractName:
+          type:
+          - string
+          - 'null'
+        IsTaxable:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    InvoiceDetailsListSearchSelectInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/InvoiceDetailsListFilterDto'
+      additionalProperties: false
+    InvoiceDiscountLineItemsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        InvoiceId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        InvoiceNumber:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        TypeId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TypeName:
+          type:
+          - string
+          - 'null'
+        GLAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        GLAccountCode:
+          type:
+          - string
+          - 'null'
+        GLAccountName:
+          type:
+          - string
+          - 'null'
+        Value:
+          type:
+          - number
+          - 'null'
+          format: double
+        ClassId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ClassName:
+          type:
+          - string
+          - 'null'
+        CreatedById:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        CreatedByUserName:
+          type:
+          - string
+          - 'null'
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        ModifiedById:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ModifiedByUserName:
+          type:
+          - string
+          - 'null'
+        ModifiedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        IsTaxable:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    InvoiceSummaryOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/InvoiceSummaryOutputDto'
       additionalProperties: false
     InvoiceDiscountLineItemsOutputDtoListResponse:
       type: object

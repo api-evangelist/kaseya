@@ -132,7 +132,44 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    StringResponse:
+    QbTaxItemDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Active:
+          type: boolean
+        RateValue:
+          type: number
+          format: double
+        IsGroup:
+          type: boolean
+        TaxAgency:
+          type:
+          - string
+          - 'null'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        SalesTaxRateList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbTaxItemDto'
+      additionalProperties: false
+    QbAccountExportDtoListResponse:
       type: object
       properties:
         Success:
@@ -142,8 +179,35 @@ components:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
           type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbAccountExportDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
           - string
           - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
     QbAccountExportDto:
       type: object
@@ -242,31 +306,6 @@ components:
         BillAddress:
           $ref: '#/components/schemas/QbAddressDto'
       additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     QbAddressDto:
       type: object
       properties:
@@ -315,7 +354,7 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    QbAccountExportDtoListResponse:
+    StringResponse:
       type: object
       properties:
         Success:
@@ -325,47 +364,8 @@ components:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
           type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbAccountExportDto'
-      additionalProperties: false
-    QbTaxItemDto:
-      type: object
-      properties:
-        Id:
-          type:
           - string
           - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        Active:
-          type: boolean
-        RateValue:
-          type: number
-          format: double
-        IsGroup:
-          type: boolean
-        TaxAgency:
-          type:
-          - string
-          - 'null'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-        SalesTaxRateList:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbTaxItemDto'
       additionalProperties: false
     QbAccountImportDto:
       type: object

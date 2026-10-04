@@ -506,6 +506,51 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    ItemQueryResultModel_ChangeRequestLinkModel_ChangeRequestLink:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ChangeRequestLinkModel'
+    ChangeRequestLinkModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        changeRequestTicketID:
+          format: int32
+          type: integer
+        problemOrIncidentTicketID:
+          format: int32
+          type: integer
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -524,125 +569,40 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
+    QueryModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
           type: array
           items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     QueryCountResultModel:
       type: object
       properties:
         queryCount:
           format: int32
           type: integer
-    FieldInformationModel:
+    OperationResultModel:
       type: object
       properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
+        itemId:
           $ref: '#/components/schemas/Object'
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
     QueryActionResult_ChangeRequestLinkModel_ChangeRequestLink:
       type: object
       properties:
@@ -652,6 +612,24 @@ components:
             $ref: '#/components/schemas/ChangeRequestLinkModel'
         pageDetails:
           $ref: '#/components/schemas/PagingModel'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -688,61 +666,83 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_ChangeRequestLinkModel_ChangeRequestLink:
+    PagingModel:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/ChangeRequestLinkModel'
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
+        count:
           format: int32
           type: integer
-        includeFields:
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
           type: array
           items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    PickListValue:
-      type: object
-      properties:
-        value:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
           type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    ChangeRequestLinkModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        changeRequestTicketID:
-          format: int32
-          type: integer
-        problemOrIncidentTicketID:
-          format: int32
-          type: integer
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'

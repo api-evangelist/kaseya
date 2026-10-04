@@ -597,6 +597,43 @@ paths:
     - url: https://api.bms.kaseya.com
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    QueryActionResult_RoleModel_Role:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -615,22 +652,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
+    QueryCountResultModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
+        queryCount:
+          format: int32
+          type: integer
     PagingModel:
       type: object
       properties:
@@ -645,19 +672,60 @@ components:
           type: string
         nextPageUrl:
           type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
+    QueryModel:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    OperationResultModel:
       type: object
       properties:
-        queryCount:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    RoleModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        description:
+          type: string
+        hourlyFactor:
+          format: double
+          type: number
+        hourlyRate:
+          format: double
+          type: number
+        isActive:
+          type: boolean
+        isExcludedFromNewContracts:
+          type: boolean
+        isSystemRole:
+          type: boolean
+        name:
+          type: string
+        quoteItemDefaultTaxCategoryId:
+          format: int32
+          type: integer
+        roleType:
           format: int32
           type: integer
     FieldInformationModel:
@@ -687,6 +755,60 @@ components:
           items:
             $ref: '#/components/schemas/PickListValue'
         picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
@@ -731,128 +853,19 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
-    FieldInformationResultModel:
+    RoleLookupOutputDto:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
+        Id:
+          type: integer
           format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
+        Name:
+          type:
+          - string
+          - 'null'
+        IsDefault:
           type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    QueryActionResult_RoleModel_Role:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    RoleModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        description:
-          type: string
-        hourlyFactor:
-          format: double
-          type: number
-        hourlyRate:
-          format: double
-          type: number
-        isActive:
-          type: boolean
-        isExcludedFromNewContracts:
-          type: boolean
-        isSystemRole:
-          type: boolean
-        name:
-          type: string
-        quoteItemDefaultTaxCategoryId:
-          format: int32
-          type: integer
-        roleType:
-          format: int32
-          type: integer
+      additionalProperties: false
     RoleLookupOutputDtoListResponse:
       type: object
       properties:
@@ -867,19 +880,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/RoleLookupOutputDto'
-      additionalProperties: false
-    RoleLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsDefault:
-          type: boolean
       additionalProperties: false
     ErrorInfo:
       type: object

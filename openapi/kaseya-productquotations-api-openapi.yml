@@ -122,45 +122,6 @@ components:
           items:
             type: string
       additionalProperties: false
-    ProductQuotationsListSummaryOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        QuotationNumber:
-          type:
-          - string
-          - 'null'
-        StatusId:
-          type: integer
-          format: int32
-        StatusName:
-          type:
-          - string
-          - 'null'
-        ExpiryDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        CreatedOn:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    ProductQuotationOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/ProductQuotationOutputDto'
-      additionalProperties: false
     ProductQuotationOutputDto:
       type: object
       properties:
@@ -220,6 +181,45 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    ProductQuotationOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/ProductQuotationOutputDto'
+      additionalProperties: false
+    ProductQuotationsListSummaryOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        QuotationNumber:
+          type:
+          - string
+          - 'null'
+        StatusId:
+          type: integer
+          format: int32
+        StatusName:
+          type:
+          - string
+          - 'null'
+        ExpiryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        CreatedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
       additionalProperties: false
     ProductQuotationsListSummaryOutputDtoIEnumerablePagedResponse:
       type: object

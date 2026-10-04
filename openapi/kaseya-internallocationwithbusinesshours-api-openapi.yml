@@ -557,6 +557,48 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     Filter:
       type: object
       properties:
@@ -575,60 +617,63 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
+    ItemQueryResultModel_InternalLocationWithBusinessHoursModel_BusinessLocation:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
+        item:
+          $ref: '#/components/schemas/InternalLocationWithBusinessHoursModel'
+    QueryModel:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    QueryActionResult_InternalLocationWithBusinessHoursModel_BusinessLocation:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/InternalLocationWithBusinessHoursModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    Object:
-      type: object
-      properties: {}
-    PagingModel:
-      type: object
-      properties:
-        count:
+        maxRecords:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     QueryCountResultModel:
       type: object
       properties:
         queryCount:
           format: int32
           type: integer
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     FieldInformationModel:
       type: object
       properties:
@@ -659,78 +704,6 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_InternalLocationWithBusinessHoursModel_BusinessLocation:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/InternalLocationWithBusinessHoursModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
     InternalLocationWithBusinessHoursModel:
       type: object
       properties:
@@ -872,24 +845,51 @@ components:
         wednesdayExtendedHoursStartTime:
           format: date-time
           type: string
-    PickListValue:
+    Field:
       type: object
       properties:
-        value:
+        name:
           type: string
         label:
           type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        type:
+          type: string
+        length:
           format: int32
           type: integer
-        parentValue:
+        description:
           type: string
-        isActive:
+        isRequired:
           type: boolean
-        isSystem:
+        isReadOnly:
           type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    QueryActionResult_InternalLocationWithBusinessHoursModel_BusinessLocation:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/InternalLocationWithBusinessHoursModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     EntityInformationModel:
       type: object
       properties:

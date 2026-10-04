@@ -506,6 +506,69 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CurrencyModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        currencyNegativeFormat:
+          type: string
+        currencyPositiveFormat:
+          type: string
+        description:
+          type: string
+        displaySymbol:
+          format: int32
+          type: integer
+        exchangeRate:
+          format: double
+          type: number
+        isActive:
+          type: boolean
+        isInternalCurrency:
+          type: boolean
+        lastModifiedDateTime:
+          format: date-time
+          type: string
+        name:
+          type: string
+        updateResourceId:
+          format: int32
+          type: integer
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    ItemQueryResultModel_CurrencyModel_Currency:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/CurrencyModel'
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -524,63 +587,49 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     QueryCountResultModel:
       type: object
       properties:
         queryCount:
           format: int32
           type: integer
+    QueryActionResult_CurrencyModel_Currency:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CurrencyModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     FieldInformationModel:
       type: object
       properties:
@@ -611,65 +660,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
+    PickListValue:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryActionResult_CurrencyModel_Currency:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CurrencyModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
+        value:
           type: string
-          readOnly: true
-        canCreate:
+        label:
+          type: string
+        isDefaultValue:
           type: boolean
-          readOnly: true
-        canDelete:
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
           type: boolean
-          readOnly: true
-        canQuery:
+        isSystem:
           type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
     Field:
       type: object
       properties:
@@ -706,61 +714,53 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryModel:
+    PagingModel:
       type: object
       properties:
-        maxRecords:
+        count:
           format: int32
           type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    CurrencyModel:
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    EntityInformationModel:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        currencyNegativeFormat:
-          type: string
-        currencyPositiveFormat:
-          type: string
-        description:
-          type: string
-        displaySymbol:
-          format: int32
-          type: integer
-        exchangeRate:
-          format: double
-          type: number
-        isActive:
-          type: boolean
-        isInternalCurrency:
-          type: boolean
-        lastModifiedDateTime:
-          format: date-time
-          type: string
         name:
           type: string
-        updateResourceId:
-          format: int32
-          type: integer
-    ItemQueryResultModel_CurrencyModel_Currency:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/CurrencyModel'
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true

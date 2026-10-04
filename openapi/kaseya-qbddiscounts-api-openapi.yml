@@ -132,30 +132,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ErrorInfo:
+    QbDiscountTypeExportDtoListResponse:
       type: object
       properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - array
           - 'null'
           items:
-            type: string
+            $ref: '#/components/schemas/QbDiscountTypeExportDto'
       additionalProperties: false
     QbAccountCodeImportDto:
       type: object
@@ -187,23 +177,30 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    QbDiscountTypeExportDtoListPagedResponse:
+    ErrorInfo:
       type: object
       properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/QbDiscountTypeExportDto'
-        TotalRecords:
-          type: integer
-          format: int32
+            type: string
       additionalProperties: false
     QbItemImportDto:
       type: object
@@ -258,6 +255,37 @@ components:
         AssetAccount:
           $ref: '#/components/schemas/QbAccountCodeImportDto'
       additionalProperties: false
+    QbDiscountTypeExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbDiscountTypeExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     QbDiscountTypeExportDto:
       type: object
       properties:
@@ -306,34 +334,6 @@ components:
           - string
           - 'null'
         ExternalExpenseId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    QbDiscountTypeExportDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbDiscountTypeExportDto'
-      additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
           type:
           - string
           - 'null'

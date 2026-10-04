@@ -506,6 +506,14 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
     PriceListProductModel:
       type: object
       properties:
@@ -523,6 +531,26 @@ components:
           type: number
         usesInternalCurrencyPrice:
           type: boolean
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -541,6 +569,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
     QueryModel:
       type: object
       properties:
@@ -569,51 +603,24 @@ components:
       properties:
         itemId:
           $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
+    PickListValue:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
+        value:
           type: string
-        nextPageUrl:
+        label:
           type: string
-    Object:
-      type: object
-      properties: {}
-    ItemQueryResultModel_PriceListProductModel_PriceListProduct:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/PriceListProductModel'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
+        isDefaultValue:
+          type: boolean
+        sortOrder:
           format: int32
           type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     FieldInformationModel:
       type: object
       properties:
@@ -644,14 +651,15 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
+    QueryActionResult_PriceListProductModel_PriceListProduct:
       type: object
       properties:
-        fields:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
+            $ref: '#/components/schemas/PriceListProductModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     Field:
       type: object
       properties:
@@ -688,33 +696,25 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryActionResult_PriceListProductModel_PriceListProduct:
+    ItemQueryResultModel_PriceListProductModel_PriceListProduct:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PriceListProductModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PickListValue:
+        item:
+          $ref: '#/components/schemas/PriceListProductModel'
+    PagingModel:
       type: object
       properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        count:
           format: int32
           type: integer
-        parentValue:
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
           type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:

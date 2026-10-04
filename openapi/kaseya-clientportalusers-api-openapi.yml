@@ -557,6 +557,39 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    ItemQueryResultModel_ClientPortalUserModel_ClientPortalUser:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ClientPortalUserModel'
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -575,36 +608,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
+    QueryCountResultModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
+        queryCount:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     ClientPortalUserModel:
       type: object
       properties:
@@ -632,21 +641,52 @@ components:
           type: integer
         userName:
           type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
+    QueryModel:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
+        maxRecords:
           format: int32
           type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     FieldInformationModel:
       type: object
       properties:
@@ -677,19 +717,15 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_ClientPortalUserModel_ClientPortalUser:
+    QueryActionResult_ClientPortalUserModel_ClientPortalUser:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/ClientPortalUserModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
+            $ref: '#/components/schemas/ClientPortalUserModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
     Field:
       type: object
       properties:
@@ -726,56 +762,20 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryModel:
+    PagingModel:
       type: object
       properties:
-        maxRecords:
+        count:
           format: int32
           type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    QueryActionResult_ClientPortalUserModel_ClientPortalUser:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClientPortalUserModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        requestCount:
           format: int32
           type: integer
-        parentValue:
+          readOnly: true
+        prevPageUrl:
           type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:

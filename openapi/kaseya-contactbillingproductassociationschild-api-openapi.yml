@@ -500,137 +500,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    Expression:
-      type: object
-      properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
     ParameterExpression:
       type: object
       properties:
@@ -735,33 +604,30 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    EntityInformationResultModel:
+    UserDefinedFieldInformationResultModel:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    ContactBillingProductAssociationModel:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        billingProductID:
-          format: int32
-          type: integer
-        contactID:
-          format: int32
-          type: integer
-        effectiveDate:
-          format: date-time
-          type: string
-        expirationDate:
-          format: date-time
-          type: string
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_ContactBillingProductAssociation_Int64'
-          readOnly: true
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    ItemQueryResultModel_ContactBillingProductAssociationModel_ContactBillingProductAssociation:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ContactBillingProductAssociationModel'
     Expression_Func_ContactBillingProductAssociation_Int64:
       type: object
       properties:
@@ -877,6 +743,52 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     FieldInformationModel:
       type: object
       properties:
@@ -916,50 +828,6 @@ components:
             $ref: '#/components/schemas/ContactBillingProductAssociationModel'
         pageDetails:
           $ref: '#/components/schemas/PagingModel'
-    EntityInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        canCreate:
-          type: boolean
-          readOnly: true
-        canDelete:
-          type: boolean
-          readOnly: true
-        canQuery:
-          type: boolean
-          readOnly: true
-        canUpdate:
-          type: boolean
-          readOnly: true
-        userAccessForCreate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForDelete:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForQuery:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        userAccessForUpdate:
-          $ref: '#/components/schemas/RestUserAccessLevel'
-          readOnly: true
-        hasUserDefinedFields:
-          type: boolean
-          readOnly: true
-        supportsWebhookCallouts:
-          type: boolean
-          readOnly: true
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
     Field:
       type: object
       properties:
@@ -996,26 +864,158 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    PickListValue:
+    Expression:
       type: object
       properties:
-        value:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
           type: string
-        label:
+          readOnly: true
+        type:
           type: string
-        isDefaultValue:
+          readOnly: true
+        canReduce:
           type: boolean
-        sortOrder:
+          readOnly: true
+    EntityInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        canCreate:
+          type: boolean
+          readOnly: true
+        canDelete:
+          type: boolean
+          readOnly: true
+        canQuery:
+          type: boolean
+          readOnly: true
+        canUpdate:
+          type: boolean
+          readOnly: true
+        userAccessForCreate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForDelete:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForQuery:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        userAccessForUpdate:
+          $ref: '#/components/schemas/RestUserAccessLevel'
+          readOnly: true
+        hasUserDefinedFields:
+          type: boolean
+          readOnly: true
+        supportsWebhookCallouts:
+          type: boolean
+          readOnly: true
+    ContactBillingProductAssociationModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        billingProductID:
           format: int32
           type: integer
-        parentValue:
+        contactID:
+          format: int32
+          type: integer
+        effectiveDate:
+          format: date-time
           type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    ItemQueryResultModel_ContactBillingProductAssociationModel_ContactBillingProductAssociation:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ContactBillingProductAssociationModel'
+        expirationDate:
+          format: date-time
+          type: string
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_ContactBillingProductAssociation_Int64'
+          readOnly: true

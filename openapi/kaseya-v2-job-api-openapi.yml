@@ -461,6 +461,20 @@ paths:
                       $ref: '#/components/schemas/JobComponent'
 components:
   schemas:
+    PaginationData:
+      type: object
+      description: Pagination data
+      properties:
+        count:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     JobComponentVariable:
       type: object
       description: Job component variable data
@@ -481,6 +495,23 @@ components:
           type: string
         stdData:
           type: string
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
     JobComponentResult:
       type: object
       description: Job component result data
@@ -501,37 +532,6 @@ components:
           type: boolean
         hasStdErr:
           type: boolean
-    ErrorResponse:
-      description: Default error response body
-      properties:
-        timestamp:
-          type: integer
-          format: int64
-          description: Epoch millis when the error occurred
-        status:
-          type: integer
-          format: int32
-          description: HTTP status code
-        error:
-          type: string
-          description: HTTP reason phrase
-        path:
-          type: string
-          description: Request path that produced the error
-    PaginationData:
-      type: object
-      description: Pagination data
-      properties:
-        count:
-          type: integer
-          format: int32
-        totalCount:
-          type: integer
-          format: int64
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
     JobComponent:
       type: object
       description: Job component data

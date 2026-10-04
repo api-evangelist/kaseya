@@ -403,6 +403,43 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    QueryActionResult_ConfigurationItemSslSubjectAlternativeNameModel_InstalledProductSslSubjectAlternativeName:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationItemSslSubjectAlternativeNameModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -421,17 +458,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
+    QueryCountResultModel:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
+        queryCount:
+          format: int32
+          type: integer
     PagingModel:
       type: object
       properties:
@@ -446,21 +478,44 @@ components:
           type: string
         nextPageUrl:
           type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
+    QueryModel:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
+        maxRecords:
           format: int32
           type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
+    ConfigurationItemSslSubjectAlternativeNameModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        configurationItemID:
+          format: int32
+          type: integer
+        name:
+          type: string
+        soapParentPropertyId:
+          format: int64
+          type: integer
+          readOnly: true
     FieldInformationModel:
       type: object
       properties:
@@ -491,43 +546,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    ConfigurationItemSslSubjectAlternativeNameModel:
+    PickListValue:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        configurationItemID:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
           format: int32
           type: integer
-        name:
+        parentValue:
           type: string
-        soapParentPropertyId:
-          format: int64
-          type: integer
-          readOnly: true
-    ItemQueryResultModel_ConfigurationItemSslSubjectAlternativeNameModel_InstalledProductSslSubjectAlternativeName:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ConfigurationItemSslSubjectAlternativeNameModel'
-    QueryActionResult_ConfigurationItemSslSubjectAlternativeNameModel_InstalledProductSslSubjectAlternativeName:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConfigurationItemSslSubjectAlternativeNameModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -564,47 +600,11 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryModel:
+    ItemQueryResultModel_ConfigurationItemSslSubjectAlternativeNameModel_InstalledProductSslSubjectAlternativeName:
       type: object
       properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+        item:
+          $ref: '#/components/schemas/ConfigurationItemSslSubjectAlternativeNameModel'
     EntityInformationModel:
       type: object
       properties:

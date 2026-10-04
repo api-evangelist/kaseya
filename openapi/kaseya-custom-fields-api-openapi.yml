@@ -130,6 +130,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CustomFieldDataPutOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/CustomFieldDataPutOutputDto'
+      additionalProperties: false
     CustomFieldDataOutputDto:
       type: object
       properties:
@@ -154,7 +165,7 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    CustomFieldDataPutOutputDtoResponse:
+    CustomFieldDataOutputDtoIEnumerableResponse:
       type: object
       properties:
         Success:
@@ -163,20 +174,26 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorInfo'
         Result:
-          $ref: '#/components/schemas/CustomFieldDataPutOutputDto'
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldDataOutputDto'
       additionalProperties: false
-    CustomFieldSettingsOutputDto:
+    CustomFieldOutputDtoIEnumerableResponse:
       type: object
       properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsActive:
+        Success:
           type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomFieldOutputDto'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -202,34 +219,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    CustomFieldOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        DataType:
-          type: integer
-          format: int32
-        IsRequired:
-          type: boolean
-        ErrorMessage:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
-        Settings:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CustomFieldSettingsOutputDto'
       additionalProperties: false
     CustomFieldDataPutOutputDto:
       type: object
@@ -279,20 +268,46 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    CustomFieldOutputDtoIEnumerableResponse:
+    CustomFieldOutputDto:
       type: object
       properties:
-        Success:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        DataType:
+          type: integer
+          format: int32
+        IsRequired:
           type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
+        ErrorMessage:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        Settings:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/CustomFieldOutputDto'
+            $ref: '#/components/schemas/CustomFieldSettingsOutputDto'
+      additionalProperties: false
+    CustomFieldSettingsOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
       additionalProperties: false
     CustomFieldDataPutInputDto:
       type: object
@@ -301,21 +316,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    CustomFieldDataOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CustomFieldDataOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

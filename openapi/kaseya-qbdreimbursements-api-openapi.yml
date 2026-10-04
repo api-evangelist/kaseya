@@ -132,6 +132,157 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    QbReimbursementDetailExportDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbReimbursementDetailExportDto'
+      additionalProperties: false
+    QbReimbursementExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbReimbursementExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    QbReimbursementsReferenceInputDto:
+      type: object
+      properties:
+        ReimbursementId:
+          type: integer
+          format: int32
+        QbReimbursementId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    QbReimbursementExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        EmployeeId:
+          type: integer
+          format: int32
+        EmployeeName:
+          type:
+          - string
+          - 'null'
+        VendorName:
+          type:
+          - string
+          - 'null'
+        ReferenceNumber:
+          type:
+          - string
+          - 'null'
+        Amount:
+          type: number
+          format: double
+        ReimbursementDate:
+          type: string
+          format: date-time
+        Memo:
+          type:
+          - string
+          - 'null'
+        ShipAddress:
+          $ref: '#/components/schemas/QbAddressDto'
+      additionalProperties: false
+    QbAddressDto:
+      type: object
+      properties:
+        Address1:
+          type:
+          - string
+          - 'null'
+        Address2:
+          type:
+          - string
+          - 'null'
+        State:
+          type:
+          - string
+          - 'null'
+        City:
+          type:
+          - string
+          - 'null'
+        ZipCode:
+          type:
+          - string
+          - 'null'
+        EmailAddress:
+          type:
+          - string
+          - 'null'
+        PhoneNumber:
+          type:
+          - string
+          - 'null'
+        MobileNumber:
+          type:
+          - string
+          - 'null'
+        FaxNumber:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+        ContactName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     QbReimbursementDetailExportDto:
       type: object
       properties:
@@ -192,157 +343,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    QbReimbursementDetailExportDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbReimbursementDetailExportDto'
-      additionalProperties: false
-    QbReimbursementsReferenceInputDto:
-      type: object
-      properties:
-        ReimbursementId:
-          type: integer
-          format: int32
-        QbReimbursementId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    QbReimbursementExportDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        EmployeeId:
-          type: integer
-          format: int32
-        EmployeeName:
-          type:
-          - string
-          - 'null'
-        VendorName:
-          type:
-          - string
-          - 'null'
-        ReferenceNumber:
-          type:
-          - string
-          - 'null'
-        Amount:
-          type: number
-          format: double
-        ReimbursementDate:
-          type: string
-          format: date-time
-        Memo:
-          type:
-          - string
-          - 'null'
-        ShipAddress:
-          $ref: '#/components/schemas/QbAddressDto'
-      additionalProperties: false
-    ErrorInfo:
-      type: object
-      properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    QbAddressDto:
-      type: object
-      properties:
-        Address1:
-          type:
-          - string
-          - 'null'
-        Address2:
-          type:
-          - string
-          - 'null'
-        State:
-          type:
-          - string
-          - 'null'
-        City:
-          type:
-          - string
-          - 'null'
-        ZipCode:
-          type:
-          - string
-          - 'null'
-        EmailAddress:
-          type:
-          - string
-          - 'null'
-        PhoneNumber:
-          type:
-          - string
-          - 'null'
-        MobileNumber:
-          type:
-          - string
-          - 'null'
-        FaxNumber:
-          type:
-          - string
-          - 'null'
-        Country:
-          type:
-          - string
-          - 'null'
-        ContactName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    QbReimbursementExportDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbReimbursementExportDto'
-        TotalRecords:
-          type: integer
-          format: int32
       additionalProperties: false
   securitySchemes:
     bearerAuth:

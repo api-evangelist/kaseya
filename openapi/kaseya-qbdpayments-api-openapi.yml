@@ -54,43 +54,42 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    QbPaymentImportDto:
+    QbTaxItemDto:
       type: object
       properties:
         Id:
           type:
           - string
           - 'null'
-        Amount:
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        Active:
+          type: boolean
+        RateValue:
           type: number
           format: double
-        PaymentMethod:
+        IsGroup:
+          type: boolean
+        TaxAgency:
           type:
           - string
           - 'null'
-        PaymentDate:
-          type: string
-          format: date-time
-        Memo:
-          type:
-          - string
-          - 'null'
-        Reference:
-          type:
-          - string
-          - 'null'
-        ExternalCustomer:
-          $ref: '#/components/schemas/QbAccountImportDto'
-        Lines:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbPaymentLineImportDto'
         ExternalTenantId:
           type:
           - string
           - 'null'
+        SalesTaxRateList:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbTaxItemDto'
       additionalProperties: false
     ErrorInfo:
       type: object
@@ -116,6 +115,27 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    QbPaymentLineImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Amount:
+          type: number
+          format: double
+        Discount:
+          type: number
+          format: double
+        Balance:
+          type: number
+          format: double
+        InvoiceId:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     QbAddressDto:
       type: object
@@ -165,7 +185,7 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    QbPaymentLineImportDto:
+    QbPaymentImportDto:
       type: object
       properties:
         Id:
@@ -175,53 +195,46 @@ components:
         Amount:
           type: number
           format: double
-        Discount:
-          type: number
-          format: double
-        Balance:
-          type: number
-          format: double
-        InvoiceId:
+        PaymentMethod:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    QbTaxItemDto:
-      type: object
-      properties:
-        Id:
+        PaymentDate:
+          type: string
+          format: date-time
+        Memo:
           type:
           - string
           - 'null'
-        Name:
+        Reference:
           type:
           - string
           - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        Active:
-          type: boolean
-        RateValue:
-          type: number
-          format: double
-        IsGroup:
-          type: boolean
-        TaxAgency:
-          type:
-          - string
-          - 'null'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-        SalesTaxRateList:
+        ExternalCustomer:
+          $ref: '#/components/schemas/QbAccountImportDto'
+        Lines:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/QbTaxItemDto'
+            $ref: '#/components/schemas/QbPaymentLineImportDto'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     QbAccountImportDto:
       type: object
@@ -276,19 +289,6 @@ components:
           $ref: '#/components/schemas/QbAddressDto'
         BillAddress:
           $ref: '#/components/schemas/QbAddressDto'
-      additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

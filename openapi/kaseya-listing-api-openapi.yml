@@ -93,32 +93,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DataType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-      format: int32
-    ListingColumnOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ListingColumnOutputDto'
-      additionalProperties: false
     ListingColumnOutputDto:
       type: object
       properties:
@@ -178,6 +152,59 @@ components:
           items:
             type: string
       additionalProperties: false
+    ListingColumnOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ListingColumnOutputDto'
+      additionalProperties: false
+    DataType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
+    ListingSearchOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ListingSearchOutputDto'
+      additionalProperties: false
+    SearchComboItemOutputDto:
+      type: object
+      properties:
+        SearchValue:
+          type:
+          - string
+          - 'null'
+        SearchText:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     ListingSearchOutputDto:
       type: object
       properties:
@@ -210,18 +237,6 @@ components:
         IsSearchById:
           type: boolean
       additionalProperties: false
-    SearchComboItemOutputDto:
-      type: object
-      properties:
-        SearchValue:
-          type:
-          - string
-          - 'null'
-        SearchText:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     SearchComboItemOutputDtoIEnumerableResponse:
       type: object
       properties:
@@ -236,21 +251,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/SearchComboItemOutputDto'
-      additionalProperties: false
-    ListingSearchOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ListingSearchOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

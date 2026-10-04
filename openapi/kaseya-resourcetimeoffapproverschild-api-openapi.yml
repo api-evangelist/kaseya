@@ -272,9 +272,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RestUserAccessLevel:
-      type: object
-      properties: {}
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -283,6 +280,40 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
+    QueryActionResult_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceTimeOffApproverModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    ItemQueryResultModel_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ResourceTimeOffApproverModel'
+    Object:
+      type: object
+      properties: {}
     PagingModel:
       type: object
       properties:
@@ -297,33 +328,6 @@ components:
           type: string
         nextPageUrl:
           type: string
-    Object:
-      type: object
-      properties: {}
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
     FieldInformationModel:
       type: object
       properties:
@@ -354,14 +358,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
+    PickListValue:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -398,15 +412,6 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryActionResult_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceTimeOffApproverModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
     ResourceTimeOffApproverModel:
       type: object
       properties:
@@ -426,11 +431,6 @@ components:
           format: int64
           type: integer
           readOnly: true
-    ItemQueryResultModel_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ResourceTimeOffApproverModel'
     EntityInformationModel:
       type: object
       properties:

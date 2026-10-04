@@ -329,14 +329,34 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OperationResultModel:
+    ConfigurationItemDnsRecordModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
+        id:
+          format: int64
+          type: integer
+        createDateTime:
+          format: date-time
+          type: string
+        data:
+          type: string
+        installedProductID:
+          format: int32
+          type: integer
+        timeToLiveSeconds:
+          format: int32
+          type: integer
+        dnsType:
+          type: string
+        soapParentPropertyId:
+          format: int64
+          type: integer
+          readOnly: true
+    ItemQueryResultModel_ConfigurationItemDnsRecordModel_InstalledProductDnsRecord:
       type: object
-      properties: {}
+      properties:
+        item:
+          $ref: '#/components/schemas/ConfigurationItemDnsRecordModel'
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -345,47 +365,40 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
+    RestUserAccessLevel:
       type: object
       properties: {}
-    PickListValue:
+    FieldInformationResultModel:
       type: object
       properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     EntityInformationResultModel:
       type: object
       properties:
         info:
           $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true
+    Object:
+      type: object
+      properties: {}
+    QueryActionResult_ConfigurationItemDnsRecordModel_InstalledProductDnsRecord:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationItemDnsRecordModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     FieldInformationModel:
       type: object
       properties:
@@ -416,19 +429,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_ConfigurationItemDnsRecordModel_InstalledProductDnsRecord:
+    PickListValue:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/ConfigurationItemDnsRecordModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -465,38 +483,20 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryActionResult_ConfigurationItemDnsRecordModel_InstalledProductDnsRecord:
+    PagingModel:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConfigurationItemDnsRecordModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    ConfigurationItemDnsRecordModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        createDateTime:
-          format: date-time
-          type: string
-        data:
-          type: string
-        installedProductID:
+        count:
           format: int32
           type: integer
-        timeToLiveSeconds:
+        requestCount:
           format: int32
-          type: integer
-        dnsType:
-          type: string
-        soapParentPropertyId:
-          format: int64
           type: integer
           readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:

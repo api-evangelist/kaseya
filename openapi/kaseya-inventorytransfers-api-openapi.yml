@@ -455,6 +455,34 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -473,133 +501,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
-      type: object
-      properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
     QueryCountResultModel:
       type: object
       properties:
         queryCount:
           format: int32
           type: integer
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    InventoryTransferModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        fromLocationID:
-          format: int64
-          type: integer
-        notes:
-          type: string
-        productID:
-          format: int64
-          type: integer
-        quantityTransferred:
-          format: int32
-          type: integer
-        serialNumber:
-          type: string
-        toLocationID:
-          format: int64
-          type: integer
-        transferByResourceID:
-          format: int32
-          type: integer
-        transferDate:
-          format: date-time
-          type: string
-        updateNote:
-          type: string
-    QueryActionResult_InventoryTransferModel_InventoryTransfer:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/InventoryTransferModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    ItemQueryResultModel_InventoryTransferModel_InventoryTransfer:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/InventoryTransferModel'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
     Field:
       type: object
       properties:
@@ -659,6 +566,41 @@ components:
           value: 0
           udf: false
           items: []
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     PickListValue:
       type: object
       properties:
@@ -677,6 +619,34 @@ components:
           type: boolean
         isSystem:
           type: boolean
+    QueryActionResult_InventoryTransferModel_InventoryTransfer:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryTransferModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    ItemQueryResultModel_InventoryTransferModel_InventoryTransfer:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/InventoryTransferModel'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:
@@ -713,3 +683,33 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    InventoryTransferModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        fromLocationID:
+          format: int64
+          type: integer
+        notes:
+          type: string
+        productID:
+          format: int64
+          type: integer
+        quantityTransferred:
+          format: int32
+          type: integer
+        serialNumber:
+          type: string
+        toLocationID:
+          format: int64
+          type: integer
+        transferByResourceID:
+          format: int32
+          type: integer
+        transferDate:
+          format: date-time
+          type: string
+        updateNote:
+          type: string

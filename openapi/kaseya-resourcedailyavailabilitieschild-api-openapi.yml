@@ -386,14 +386,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OperationResultModel:
+    ParameterExpression:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    Expression:
-      type: object
-      properties:
+        type:
+          type: string
+          readOnly: true
         nodeType:
           enum:
           - Add
@@ -483,24 +481,15 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        type:
+        name:
           type: string
+          readOnly: true
+        isByRef:
+          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    QueryActionResult_ResourceDailyAvailabilityModel_ResourceDailyAvailability:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceDailyAvailabilityModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -509,28 +498,17 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    ItemQueryResultModel_ResourceDailyAvailabilityModel_ResourceDailyAvailability:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ResourceDailyAvailabilityModel'
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
+    RestUserAccessLevel:
       type: object
       properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     Expression_Func_ResourceDailyAvailability_Int64:
       type: object
       properties:
@@ -646,12 +624,164 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    ParameterExpression:
+    ItemQueryResultModel_ResourceDailyAvailabilityModel_ResourceDailyAvailability:
       type: object
       properties:
+        item:
+          $ref: '#/components/schemas/ResourceDailyAvailabilityModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    ResourceDailyAvailabilityModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        resourceID:
+          format: int32
+          type: integer
+        sundayAvailableHours:
+          format: double
+          type: number
+        mondayAvailableHours:
+          format: double
+          type: number
+        tuesdayAvailableHours:
+          format: double
+          type: number
+        wednesdayAvailableHours:
+          format: double
+          type: number
+        thursdayAvailableHours:
+          format: double
+          type: number
+        fridayAvailableHours:
+          format: double
+          type: number
+        saturdayAvailableHours:
+          format: double
+          type: number
+        weeklyBillableHoursGoal:
+          format: double
+          type: number
+        travelAvailability:
+          type: string
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_ResourceDailyAvailability_Int64'
+          readOnly: true
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
         type:
           type: string
-          readOnly: true
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    Expression:
+      type: object
+      properties:
         nodeType:
           enum:
           - Add
@@ -741,151 +871,12 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        name:
+        type:
           type: string
-          readOnly: true
-        isByRef:
-          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    ResourceDailyAvailabilityModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        resourceID:
-          format: int32
-          type: integer
-        sundayAvailableHours:
-          format: double
-          type: number
-        mondayAvailableHours:
-          format: double
-          type: number
-        tuesdayAvailableHours:
-          format: double
-          type: number
-        wednesdayAvailableHours:
-          format: double
-          type: number
-        thursdayAvailableHours:
-          format: double
-          type: number
-        fridayAvailableHours:
-          format: double
-          type: number
-        saturdayAvailableHours:
-          format: double
-          type: number
-        weeklyBillableHoursGoal:
-          format: double
-          type: number
-        travelAvailability:
-          type: string
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_ResourceDailyAvailability_Int64'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -922,3 +913,12 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    QueryActionResult_ResourceDailyAvailabilityModel_ResourceDailyAvailability:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceDailyAvailabilityModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'

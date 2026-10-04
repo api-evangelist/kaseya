@@ -76,6 +76,42 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    K1UserDeprovisioningEventsDto:
+      type: object
+      properties:
+        KaseyaOneOrganizationId:
+          type:
+          - string
+          - 'null'
+        AccessGroupIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        UserEmail:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    K1UserDeprovisioningNotificationsDto:
+      type: object
+      properties:
+        ActionEventType:
+          type:
+          - string
+          - 'null'
+        Events:
+          $ref: '#/components/schemas/K1UserDeprovisioningEventsDto'
+        EventType:
+          type:
+          - string
+          - 'null'
+        AppClientIdentifier:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     K1UserListInputDto:
       type: object
       properties:
@@ -151,42 +187,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    K1UserDeprovisioningNotificationsDto:
-      type: object
-      properties:
-        ActionEventType:
-          type:
-          - string
-          - 'null'
-        Events:
-          $ref: '#/components/schemas/K1UserDeprovisioningEventsDto'
-        EventType:
-          type:
-          - string
-          - 'null'
-        AppClientIdentifier:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    K1UserDeprovisioningEventsDto:
-      type: object
-      properties:
-        KaseyaOneOrganizationId:
-          type:
-          - string
-          - 'null'
-        AccessGroupIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        UserEmail:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

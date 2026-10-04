@@ -132,21 +132,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    QbExpenseTypeExportDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbExpenseTypeExportDto'
-      additionalProperties: false
     QbExpenseTypeExportDtoListPagedResponse:
       type: object
       properties:
@@ -165,30 +150,72 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    ErrorInfo:
+    QbExpenseTypeExportDtoListResponse:
       type: object
       properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
           type:
           - array
           - 'null'
           items:
-            type: string
+            $ref: '#/components/schemas/QbExpenseTypeExportDto'
+      additionalProperties: false
+    QbExpenseTypeExportDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        ItemCode:
+          type:
+          - string
+          - 'null'
+        ItemRate:
+          type:
+          - number
+          - 'null'
+          format: double
+        Name:
+          type:
+          - string
+          - 'null'
+        Description:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type:
+          - boolean
+          - 'null'
+        IncomeAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        ExpenseAccountId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        IsTaxable:
+          type: boolean
+        ExternalItemId:
+          type:
+          - string
+          - 'null'
+        ExternalIncomeId:
+          type:
+          - string
+          - 'null'
+        ExternalExpenseId:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     QbAccountCodeImportDto:
       type: object
@@ -219,6 +246,31 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
     QbItemImportDto:
       type: object
@@ -272,58 +324,6 @@ components:
           $ref: '#/components/schemas/QbAccountCodeImportDto'
         AssetAccount:
           $ref: '#/components/schemas/QbAccountCodeImportDto'
-      additionalProperties: false
-    QbExpenseTypeExportDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        ItemCode:
-          type:
-          - string
-          - 'null'
-        ItemRate:
-          type:
-          - number
-          - 'null'
-          format: double
-        Name:
-          type:
-          - string
-          - 'null'
-        Description:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type:
-          - boolean
-          - 'null'
-        IncomeAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        ExpenseAccountId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        IsTaxable:
-          type: boolean
-        ExternalItemId:
-          type:
-          - string
-          - 'null'
-        ExternalIncomeId:
-          type:
-          - string
-          - 'null'
-        ExternalExpenseId:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     StringResponse:
       type: object

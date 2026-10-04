@@ -386,14 +386,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OperationResultModel:
+    ParameterExpression:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    Expression:
-      type: object
-      properties:
+        type:
+          type: string
+          readOnly: true
         nodeType:
           enum:
           - Add
@@ -483,15 +481,15 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        type:
+        name:
           type: string
+          readOnly: true
+        isByRef:
+          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
     UserDefinedFieldInformationResultModel:
       type: object
       properties:
@@ -500,20 +498,17 @@ components:
           items:
             $ref: '#/components/schemas/Field'
             readOnly: true
-    PagingModel:
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     Expression_Func_ContactWebhookExcludedResource_Int64:
       type: object
       properties:
@@ -629,12 +624,135 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    ParameterExpression:
+    EntityInformationResultModel:
       type: object
       properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    QueryActionResult_ContactWebhookExcludedResourceModel_ContactWebhookExcludedResource:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactWebhookExcludedResourceModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
         type:
           type: string
-          readOnly: true
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    FieldInformationModel:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    PickListValue:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    ItemQueryResultModel_ContactWebhookExcludedResourceModel_ContactWebhookExcludedResource:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ContactWebhookExcludedResourceModel'
+    Expression:
+      type: object
+      properties:
         nodeType:
           enum:
           - Add
@@ -724,145 +842,12 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        name:
+        type:
           type: string
-          readOnly: true
-        isByRef:
-          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    ItemQueryResultModel_ContactWebhookExcludedResourceModel_ContactWebhookExcludedResource:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ContactWebhookExcludedResourceModel'
-    QueryActionResult_ContactWebhookExcludedResourceModel_ContactWebhookExcludedResource:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactWebhookExcludedResourceModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    ContactWebhookExcludedResourceModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        resourceID:
-          format: int32
-          type: integer
-        webhookID:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_ContactWebhookExcludedResource_Int64'
-          readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     EntityInformationModel:
       type: object
       properties:
@@ -898,4 +883,19 @@ components:
           readOnly: true
         supportsWebhookCallouts:
           type: boolean
+          readOnly: true
+    ContactWebhookExcludedResourceModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        resourceID:
+          format: int32
+          type: integer
+        webhookID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_ContactWebhookExcludedResource_Int64'
           readOnly: true

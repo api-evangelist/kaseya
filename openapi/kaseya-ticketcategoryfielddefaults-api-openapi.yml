@@ -403,6 +403,48 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ItemQueryResultModel_TicketCategoryFieldDefaultsModel_TicketCategoryFieldDefaults:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/TicketCategoryFieldDefaultsModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    QueryActionResult_TicketCategoryFieldDefaultsModel_TicketCategoryFieldDefaults:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketCategoryFieldDefaultsModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -421,138 +463,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
     QueryCountResultModel:
       type: object
       properties:
         queryCount:
           format: int32
           type: integer
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    TicketCategoryFieldDefaultsModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        description:
-          type: string
-        estimatedHours:
-          format: double
-          type: number
-        issueTypeID:
-          format: int32
-          type: integer
-        organizationalLevelAssociationID:
-          format: int32
-          type: integer
-        priority:
-          format: int32
-          type: integer
-        purchaseOrderNumber:
-          type: string
-        queueID:
-          format: int32
-          type: integer
-        resolution:
-          type: string
-        serviceLevelAgreementID:
-          format: int32
-          type: integer
-        sourceID:
-          format: int32
-          type: integer
-        status:
-          format: int32
-          type: integer
-        subIssueTypeID:
-          format: int32
-          type: integer
-        ticketCategoryID:
-          format: int32
-          type: integer
-        ticketTypeID:
-          format: int32
-          type: integer
-        title:
-          type: string
-        workTypeID:
-          format: int32
-          type: integer
-        soapParentPropertyId:
-          format: int64
-          type: integer
-          readOnly: true
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
     Field:
       type: object
       properties:
@@ -612,20 +528,36 @@ components:
           value: 0
           udf: false
           items: []
-    ItemQueryResultModel_TicketCategoryFieldDefaultsModel_TicketCategoryFieldDefaults:
+    FieldInformationModel:
       type: object
       properties:
-        item:
-          $ref: '#/components/schemas/TicketCategoryFieldDefaultsModel'
-    QueryActionResult_TicketCategoryFieldDefaultsModel_TicketCategoryFieldDefaults:
-      type: object
-      properties:
-        items:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
           type: array
           items:
-            $ref: '#/components/schemas/TicketCategoryFieldDefaultsModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
     PickListValue:
       type: object
       properties:
@@ -644,6 +576,74 @@ components:
           type: boolean
         isSystem:
           type: boolean
+    TicketCategoryFieldDefaultsModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        description:
+          type: string
+        estimatedHours:
+          format: double
+          type: number
+        issueTypeID:
+          format: int32
+          type: integer
+        organizationalLevelAssociationID:
+          format: int32
+          type: integer
+        priority:
+          format: int32
+          type: integer
+        purchaseOrderNumber:
+          type: string
+        queueID:
+          format: int32
+          type: integer
+        resolution:
+          type: string
+        serviceLevelAgreementID:
+          format: int32
+          type: integer
+        sourceID:
+          format: int32
+          type: integer
+        status:
+          format: int32
+          type: integer
+        subIssueTypeID:
+          format: int32
+          type: integer
+        ticketCategoryID:
+          format: int32
+          type: integer
+        ticketTypeID:
+          format: int32
+          type: integer
+        title:
+          type: string
+        workTypeID:
+          format: int32
+          type: integer
+        soapParentPropertyId:
+          format: int64
+          type: integer
+          readOnly: true
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:

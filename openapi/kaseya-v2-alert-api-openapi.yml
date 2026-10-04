@@ -262,6 +262,31 @@ components:
           type: string
       required:
       - '@class'
+    ErrorResponse:
+      description: Default error response body
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Epoch millis when the error occurred
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP reason phrase
+        path:
+          type: string
+          description: Request path that produced the error
+    AlertMonitorInfo:
+      type: object
+      description: Alert monitor information
+      properties:
+        sendsEmails:
+          type: boolean
+        createsTicket:
+          type: boolean
     ResponseAction:
       type: object
       properties:
@@ -286,23 +311,6 @@ components:
           type: string
         actionReferenceInt:
           type: string
-    ErrorResponse:
-      description: Default error response body
-      properties:
-        timestamp:
-          type: integer
-          format: int64
-          description: Epoch millis when the error occurred
-        status:
-          type: integer
-          format: int32
-          description: HTTP status code
-        error:
-          type: string
-          description: HTTP reason phrase
-        path:
-          type: string
-          description: Request path that produced the error
     AlertSourceInfo:
       type: object
       description: Alert source information data
@@ -315,11 +323,3 @@ components:
           type: string
         siteName:
           type: string
-    AlertMonitorInfo:
-      type: object
-      description: Alert monitor information
-      properties:
-        sendsEmails:
-          type: boolean
-        createsTicket:
-          type: boolean

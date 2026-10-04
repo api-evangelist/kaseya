@@ -557,6 +557,55 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    ItemQueryResultModel_QuoteLocationModel_QuoteLocation:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/QuoteLocationModel'
+    Object:
+      type: object
+      properties: {}
+    QuoteLocationModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        postalCode:
+          type: string
+        state:
+          type: string
     Filter:
       type: object
       properties:
@@ -575,11 +624,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
+    QueryCountResultModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
+        queryCount:
+          format: int32
+          type: integer
     QueryModel:
       type: object
       properties:
@@ -603,61 +653,11 @@ components:
           value: 0
           udf: false
           items: []
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
+    OperationResultModel:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    ItemQueryResultModel_QuoteLocationModel_QuoteLocation:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/QuoteLocationModel'
-    QuoteLocationModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        address1:
-          type: string
-        address2:
-          type: string
-        city:
-          type: string
-        postalCode:
-          type: string
-        state:
-          type: string
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
+        itemId:
+          $ref: '#/components/schemas/Object'
     FieldInformationModel:
       type: object
       properties:
@@ -688,20 +688,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryCountResultModel:
+    PickListValue:
       type: object
       properties:
-        queryCount:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
           format: int32
           type: integer
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -738,33 +742,20 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryActionResult_QuoteLocationModel_QuoteLocation:
+    PagingModel:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuoteLocationModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        count:
           format: int32
           type: integer
-        parentValue:
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
           type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:
@@ -801,3 +792,12 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    QueryActionResult_QuoteLocationModel_QuoteLocation:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuoteLocationModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'

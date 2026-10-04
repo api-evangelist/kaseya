@@ -500,14 +500,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OperationResultModel:
+    ItemQueryResultModel_KnowledgeBaseArticleModel_KnowledgeBaseArticle:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
-    Expression:
+        item:
+          $ref: '#/components/schemas/KnowledgeBaseArticleModel'
+    ParameterExpression:
       type: object
       properties:
+        type:
+          type: string
+          readOnly: true
         nodeType:
           enum:
           - Add
@@ -597,12 +600,107 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        type:
+        name:
           type: string
+          readOnly: true
+        isByRef:
+          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    QueryActionResult_KnowledgeBaseArticleModel_KnowledgeBaseArticle:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeBaseArticleModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    PagingModel:
+      type: object
+      properties:
+        count:
+          format: int32
+          type: integer
+        requestCount:
+          format: int32
+          type: integer
+          readOnly: true
+        prevPageUrl:
+          type: string
+        nextPageUrl:
+          type: string
+    Field:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+        length:
+          format: int32
+          type: integer
+        description:
+          type: string
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        defaultValue:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    OperationResultModel:
+      type: object
+      properties:
+        itemId:
+          $ref: '#/components/schemas/Object'
     Expression_Func_KnowledgeBaseArticle_Int64:
       type: object
       properties:
@@ -718,40 +816,94 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
+    FieldInformationModel:
       type: object
       properties:
-        fields:
+        name:
+          type: string
+        dataType:
+          type: string
+        length:
+          format: int32
+          type: integer
+        isRequired:
+          type: boolean
+        isReadOnly:
+          type: boolean
+        isQueryable:
+          type: boolean
+        isReference:
+          type: boolean
+        referenceEntityType:
+          type: string
+        isPickList:
+          type: boolean
+        picklistValues:
           type: array
           items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
+            $ref: '#/components/schemas/PickListValue'
+        picklistParentValueField:
+          type: string
+        isSupportedWebhookField:
+          $ref: '#/components/schemas/Object'
+    PickListValue:
       type: object
       properties:
-        count:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
           format: int32
           type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
+        parentValue:
           type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    ParameterExpression:
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
+    KnowledgeBaseArticleModel:
       type: object
       properties:
-        type:
+        id:
+          format: int64
+          type: integer
+        createdByResourceID:
+          format: int32
+          type: integer
+        createdDateTime:
+          format: date-time
           type: string
+        articleCategoryID:
+          format: int32
+          type: integer
+        errorCodes:
+          type: string
+        isActive:
+          type: boolean
+        keywords:
+          type: string
+        lastModifiedByResourceID:
+          format: int32
+          type: integer
+        lastModifiedDateTime:
+          format: date-time
+          type: string
+        publish:
+          format: int32
+          type: integer
+        referenceLink:
+          type: string
+        title:
+          type: string
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_KnowledgeBaseArticle_Int64'
           readOnly: true
+    Expression:
+      type: object
+      properties:
         nodeType:
           enum:
           - Add
@@ -841,164 +993,12 @@ components:
           - IsFalse
           type: string
           readOnly: true
-        name:
+        type:
           type: string
-          readOnly: true
-        isByRef:
-          type: boolean
           readOnly: true
         canReduce:
           type: boolean
           readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationModel:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          type: string
-        length:
-          format: int32
-          type: integer
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    Field:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-        type:
-          type: string
-        length:
-          format: int32
-          type: integer
-        description:
-          type: string
-        isRequired:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isQueryable:
-          type: boolean
-        isReference:
-          type: boolean
-        referenceEntityType:
-          type: string
-        isPickList:
-          type: boolean
-        picklistValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/PickListValue'
-        picklistParentValueField:
-          type: string
-        defaultValue:
-          type: string
-        isSupportedWebhookField:
-          $ref: '#/components/schemas/Object'
-    QueryActionResult_KnowledgeBaseArticleModel_KnowledgeBaseArticle:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/KnowledgeBaseArticleModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    KnowledgeBaseArticleModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        createdByResourceID:
-          format: int32
-          type: integer
-        createdDateTime:
-          format: date-time
-          type: string
-        articleCategoryID:
-          format: int32
-          type: integer
-        errorCodes:
-          type: string
-        isActive:
-          type: boolean
-        keywords:
-          type: string
-        lastModifiedByResourceID:
-          format: int32
-          type: integer
-        lastModifiedDateTime:
-          format: date-time
-          type: string
-        publish:
-          format: int32
-          type: integer
-        referenceLink:
-          type: string
-        title:
-          type: string
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_KnowledgeBaseArticle_Int64'
-          readOnly: true
-    ItemQueryResultModel_KnowledgeBaseArticleModel_KnowledgeBaseArticle:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/KnowledgeBaseArticleModel'
     EntityInformationModel:
       type: object
       properties:

@@ -32,6 +32,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    PriorityLookupOutputDtoIEnumerableResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PriorityLookupOutputDto'
+      additionalProperties: false
     PriorityLookupOutputDto:
       type: object
       properties:
@@ -48,21 +63,6 @@ components:
           - 'null'
         IsDefault:
           type: boolean
-      additionalProperties: false
-    PriorityLookupOutputDtoIEnumerableResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PriorityLookupOutputDto'
       additionalProperties: false
     ErrorInfo:
       type: object

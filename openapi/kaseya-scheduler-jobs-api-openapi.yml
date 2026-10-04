@@ -38,6 +38,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SchedulerJobOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/SchedulerJobOutputDto'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -82,17 +93,6 @@ components:
             type:
             - string
             - 'null'
-      additionalProperties: false
-    SchedulerJobOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/SchedulerJobOutputDto'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

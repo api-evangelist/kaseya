@@ -132,44 +132,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    QbCLassListImportDto:
-      type: object
-      properties:
-        Id:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        ExternalTenantId:
-          type:
-          - string
-          - 'null'
-        IsActive:
-          type: boolean
-        ParentClassList:
-          $ref: '#/components/schemas/QbCLassListImportDto'
-      additionalProperties: false
-    QbClassListExportDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QbClassListExportDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
     QbClassListExportDto:
       type: object
       properties:
@@ -223,6 +185,57 @@ components:
           items:
             type: string
       additionalProperties: false
+    QbCLassListImportDto:
+      type: object
+      properties:
+        Id:
+          type:
+          - string
+          - 'null'
+        Name:
+          type:
+          - string
+          - 'null'
+        ExternalTenantId:
+          type:
+          - string
+          - 'null'
+        IsActive:
+          type: boolean
+        ParentClassList:
+          $ref: '#/components/schemas/QbCLassListImportDto'
+      additionalProperties: false
+    QbClassListExportDtoListPagedResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QbClassListExportDto'
+        TotalRecords:
+          type: integer
+          format: int32
+      additionalProperties: false
+    StringResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     QbClassListExportDtoListResponse:
       type: object
       properties:
@@ -237,19 +250,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/QbClassListExportDto'
-      additionalProperties: false
-    StringResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

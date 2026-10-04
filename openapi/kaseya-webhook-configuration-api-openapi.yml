@@ -249,43 +249,7 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    BatchWebhooksDto:
-      type: object
-      properties:
-        ModuleId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TargetedIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        IsEnabled:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    Int32BatchIdsDto:
-      type: object
-      properties:
-        ModuleId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        TargetedIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-      additionalProperties: false
-    WebhookEventOutputDtoListResponse:
+    WebhookConfigurationListOutputDtoListPagedResponse:
       type: object
       properties:
         Success:
@@ -298,60 +262,27 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/WebhookEventOutputDto'
+            $ref: '#/components/schemas/WebhookConfigurationListOutputDto'
+        TotalRecords:
+          type: integer
+          format: int32
       additionalProperties: false
-    ErrorInfo:
+    WebhookConfigurationListFilterDto:
       type: object
       properties:
-        Code:
-          type: integer
-          format: int32
-        Message:
+        PayloadUrl:
           type:
           - string
           - 'null'
-        Details:
+        Name:
           type:
           - string
           - 'null'
-        StackStrace:
+        IsEnabled:
           type:
-          - string
+          - integer
           - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    WebhookConfigurationListInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
           format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/WebhookConfigurationListFilterDto'
       additionalProperties: false
     WebhookConfigurationOutputDto:
       type: object
@@ -404,6 +335,131 @@ components:
         HasSecret:
           type: boolean
       additionalProperties: false
+    WebhookConfigurationInputDto:
+      type: object
+      properties:
+        Name:
+          type:
+          - string
+          - 'null'
+        PayloadURL:
+          type:
+          - string
+          - 'null'
+        IsEnabled:
+          type: boolean
+        Secret:
+          type:
+          - string
+          - 'null'
+        ContentType:
+          type: integer
+          format: int32
+        SendAllEvents:
+          type: boolean
+        Events:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    Int32BatchIdsDto:
+      type: object
+      properties:
+        ModuleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    WebhookEventOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WebhookEventOutputDto'
+      additionalProperties: false
+    WebhookConfigurationListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/WebhookConfigurationListFilterDto'
+      additionalProperties: false
+    WebhookConfigurationOutputDtoResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          $ref: '#/components/schemas/WebhookConfigurationOutputDto'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
     WebhookConfigurationListOutputDto:
       type: object
       properties:
@@ -449,36 +505,6 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    WebhookConfigurationInputDto:
-      type: object
-      properties:
-        Name:
-          type:
-          - string
-          - 'null'
-        PayloadURL:
-          type:
-          - string
-          - 'null'
-        IsEnabled:
-          type: boolean
-        Secret:
-          type:
-          - string
-          - 'null'
-        ContentType:
-          type: integer
-          format: int32
-        SendAllEvents:
-          type: boolean
-        Events:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-      additionalProperties: false
     WebhookEventOutputDto:
       type: object
       properties:
@@ -501,52 +527,6 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    WebhookConfigurationListOutputDtoListPagedResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/WebhookConfigurationListOutputDto'
-        TotalRecords:
-          type: integer
-          format: int32
-      additionalProperties: false
-    WebhookConfigurationListFilterDto:
-      type: object
-      properties:
-        PayloadUrl:
-          type:
-          - string
-          - 'null'
-        Name:
-          type:
-          - string
-          - 'null'
-        IsEnabled:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    WebhookConfigurationOutputDtoResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          $ref: '#/components/schemas/WebhookConfigurationOutputDto'
-      additionalProperties: false
     StringResponse:
       type: object
       properties:
@@ -558,6 +538,26 @@ components:
         Result:
           type:
           - string
+          - 'null'
+      additionalProperties: false
+    BatchWebhooksDto:
+      type: object
+      properties:
+        ModuleId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        TargetedIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        IsEnabled:
+          type:
+          - boolean
           - 'null'
       additionalProperties: false
   securitySchemes:

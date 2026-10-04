@@ -608,6 +608,34 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -626,6 +654,40 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
+    QueryCountResultModel:
+      type: object
+      properties:
+        queryCount:
+          format: int32
+          type: integer
+    ItemQueryResultModel_TicketWebhookModel_TicketWebhook:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/TicketWebhookModel'
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     OperationResultModel:
       type: object
       properties:
@@ -640,58 +702,6 @@ components:
             $ref: '#/components/schemas/TicketWebhookModel'
         pageDetails:
           $ref: '#/components/schemas/PagingModel'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
-      type: object
-      properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
     FieldInformationModel:
       type: object
       properties:
@@ -722,25 +732,57 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
+    TicketWebhookModel:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationResultModel:
+        id:
+          format: int64
+          type: integer
+        deactivationUrl:
+          type: string
+        isActive:
+          type: boolean
+        isReady:
+          type: boolean
+        isSubscribedToCreateEvents:
+          type: boolean
+        isSubscribedToDeleteEvents:
+          type: boolean
+        isSubscribedToUpdateEvents:
+          type: boolean
+        name:
+          type: string
+        notificationEmailAddress:
+          type: string
+        ownerResourceID:
+          format: int32
+          type: integer
+        secretKey:
+          type: string
+        sendThresholdExceededNotification:
+          type: boolean
+        webhookGUID:
+          type: string
+        webhookUrl:
+          type: string
+    PickListValue:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    ItemQueryResultModel_TicketWebhookModel_TicketWebhook:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/TicketWebhookModel'
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -777,61 +819,19 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryModel:
+    PagingModel:
       type: object
       properties:
-        maxRecords:
+        count:
           format: int32
           type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    TicketWebhookModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        deactivationUrl:
-          type: string
-        isActive:
-          type: boolean
-        isReady:
-          type: boolean
-        isSubscribedToCreateEvents:
-          type: boolean
-        isSubscribedToDeleteEvents:
-          type: boolean
-        isSubscribedToUpdateEvents:
-          type: boolean
-        name:
-          type: string
-        notificationEmailAddress:
-          type: string
-        ownerResourceID:
+        requestCount:
           format: int32
           type: integer
-        secretKey:
+          readOnly: true
+        prevPageUrl:
           type: string
-        sendThresholdExceededNotification:
-          type: boolean
-        webhookGUID:
-          type: string
-        webhookUrl:
+        nextPageUrl:
           type: string
     EntityInformationModel:
       type: object

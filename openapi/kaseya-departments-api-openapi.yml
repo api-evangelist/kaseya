@@ -597,6 +597,43 @@ paths:
     - url: https://api.bms.kaseya.com
 components:
   schemas:
+    QueryActionResult_DepartmentModel_Department:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DepartmentModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -615,11 +652,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
+    QueryCountResultModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
+        queryCount:
+          format: int32
+          type: integer
+    DepartmentModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        description:
+          type: string
+        name:
+          type: string
+        number:
+          type: string
+        primaryLocationID:
+          format: int32
+          type: integer
     QueryModel:
       type: object
       properties:
@@ -643,46 +696,16 @@ components:
           value: 0
           udf: false
           items: []
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
+    ItemQueryResultModel_DepartmentModel_Department:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
-    PagingModel:
+        item:
+          $ref: '#/components/schemas/DepartmentModel'
+    OperationResultModel:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
-          type: string
-        nextPageUrl:
-          type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
+        itemId:
+          $ref: '#/components/schemas/Object'
     FieldInformationModel:
       type: object
       properties:
@@ -713,14 +736,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
+    PickListValue:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -757,53 +790,20 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    DepartmentModel:
+    PagingModel:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        description:
-          type: string
-        name:
-          type: string
-        number:
-          type: string
-        primaryLocationID:
+        count:
           format: int32
           type: integer
-    ItemQueryResultModel_DepartmentModel_Department:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/DepartmentModel'
-    QueryActionResult_DepartmentModel_Department:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DepartmentModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
+        requestCount:
           format: int32
           type: integer
-        parentValue:
+          readOnly: true
+        prevPageUrl:
           type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
+        nextPageUrl:
+          type: string
     EntityInformationModel:
       type: object
       properties:
@@ -840,6 +840,21 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+    DepartmentLookupOutputDtoListResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          readOnly: true
+        Error:
+          $ref: '#/components/schemas/ErrorInfo'
+        Result:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DepartmentLookupOutputDto'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -864,21 +879,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    DepartmentLookupOutputDtoListResponse:
-      type: object
-      properties:
-        Success:
-          type: boolean
-          readOnly: true
-        Error:
-          $ref: '#/components/schemas/ErrorInfo'
-        Result:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DepartmentLookupOutputDto'
       additionalProperties: false
     DepartmentLookupOutputDto:
       type: object

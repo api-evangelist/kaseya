@@ -506,6 +506,34 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
     Filter:
       type: object
       properties:
@@ -524,27 +552,40 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    OperationResultModel:
+    QueryCountResultModel:
       type: object
       properties:
-        itemId:
-          $ref: '#/components/schemas/Object'
+        queryCount:
+          format: int32
+          type: integer
     ItemQueryResultModel_WorkTypeModifierModel_WorkTypeModifier:
       type: object
       properties:
         item:
           $ref: '#/components/schemas/WorkTypeModifierModel'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
+    QueryModel:
       type: object
       properties:
-        fields:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
           type: array
           items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     QueryActionResult_WorkTypeModifierModel_WorkTypeModifier:
       type: object
       properties:
@@ -554,35 +595,29 @@ components:
             $ref: '#/components/schemas/WorkTypeModifierModel'
         pageDetails:
           $ref: '#/components/schemas/PagingModel'
-    PagingModel:
+    OperationResultModel:
       type: object
       properties:
-        count:
-          format: int32
-          type: integer
-        requestCount:
-          format: int32
-          type: integer
-          readOnly: true
-        prevPageUrl:
+        itemId:
+          $ref: '#/components/schemas/Object'
+    PickListValue:
+      type: object
+      properties:
+        value:
           type: string
-        nextPageUrl:
+        label:
           type: string
-    Object:
-      type: object
-      properties: {}
-    EntityInformationResultModel:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
+        isDefaultValue:
+          type: boolean
+        sortOrder:
           format: int32
           type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     FieldInformationModel:
       type: object
       properties:
@@ -613,14 +648,18 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
+    WorkTypeModifierModel:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
+        id:
+          format: int64
+          type: integer
+        modifierType:
+          format: int32
+          type: integer
+        modifierValue:
+          format: double
+          type: number
     Field:
       type: object
       properties:
@@ -657,59 +696,20 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    WorkTypeModifierModel:
+    PagingModel:
       type: object
       properties:
-        id:
-          format: int64
-          type: integer
-        modifierType:
+        count:
           format: int32
           type: integer
-        modifierValue:
-          format: double
-          type: number
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
+        requestCount:
           format: int32
           type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
-    PickListValue:
-      type: object
-      properties:
-        value:
+          readOnly: true
+        prevPageUrl:
           type: string
-        label:
+        nextPageUrl:
           type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     EntityInformationModel:
       type: object
       properties:

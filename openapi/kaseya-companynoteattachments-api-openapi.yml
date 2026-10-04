@@ -357,191 +357,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Filter:
-      type: object
-      properties:
-        op:
-          type: string
-        field:
-          type: string
-        udf:
-          type: boolean
-        value:
-          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
-          type: object
-          properties: {}
-        items:
-          description: An Array of Filter objects
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-    Expression:
-      type: object
-      properties:
-        nodeType:
-          enum:
-          - Add
-          - AddChecked
-          - And
-          - AndAlso
-          - ArrayLength
-          - ArrayIndex
-          - Call
-          - Coalesce
-          - Conditional
-          - Constant
-          - Convert
-          - ConvertChecked
-          - Divide
-          - Equal
-          - ExclusiveOr
-          - GreaterThan
-          - GreaterThanOrEqual
-          - Invoke
-          - Lambda
-          - LeftShift
-          - LessThan
-          - LessThanOrEqual
-          - ListInit
-          - MemberAccess
-          - MemberInit
-          - Modulo
-          - Multiply
-          - MultiplyChecked
-          - Negate
-          - UnaryPlus
-          - NegateChecked
-          - New
-          - NewArrayInit
-          - NewArrayBounds
-          - Not
-          - NotEqual
-          - Or
-          - OrElse
-          - Parameter
-          - Power
-          - Quote
-          - RightShift
-          - Subtract
-          - SubtractChecked
-          - TypeAs
-          - TypeIs
-          - Assign
-          - Block
-          - DebugInfo
-          - Decrement
-          - Dynamic
-          - Default
-          - Extension
-          - Goto
-          - Increment
-          - Index
-          - Label
-          - RuntimeVariables
-          - Loop
-          - Switch
-          - Throw
-          - Try
-          - Unbox
-          - AddAssign
-          - AndAssign
-          - DivideAssign
-          - ExclusiveOrAssign
-          - LeftShiftAssign
-          - ModuloAssign
-          - MultiplyAssign
-          - OrAssign
-          - PowerAssign
-          - RightShiftAssign
-          - SubtractAssign
-          - AddAssignChecked
-          - MultiplyAssignChecked
-          - SubtractAssignChecked
-          - PreIncrementAssign
-          - PreDecrementAssign
-          - PostIncrementAssign
-          - PostDecrementAssign
-          - TypeEqual
-          - OnesComplement
-          - IsTrue
-          - IsFalse
-          type: string
-          readOnly: true
-        type:
-          type: string
-          readOnly: true
-        canReduce:
-          type: boolean
-          readOnly: true
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    CompanyNoteAttachmentModel:
-      type: object
-      properties:
-        id:
-          format: int64
-          type: integer
-        attachDate:
-          format: date-time
-          type: string
-        attachedByContactID:
-          format: int64
-          type: integer
-        attachedByResourceID:
-          format: int64
-          type: integer
-        attachmentType:
-          type: string
-        companyID:
-          format: int32
-          type: integer
-        companyNoteID:
-          format: int32
-          type: integer
-        contentType:
-          type: string
-        creatorType:
-          format: int32
-          type: integer
-        fileSize:
-          format: double
-          type: number
-        fullPath:
-          type: string
-        impersonatorCreatorResourceID:
-          format: int32
-          type: integer
-        opportunityID:
-          format: int64
-          type: integer
-        parentID:
-          format: int64
-          type: integer
-        publish:
-          format: int32
-          type: integer
-        salesOrderID:
-          format: int32
-          type: integer
-        title:
-          type: string
-        data:
-          format: byte
-          type: string
-        parentType:
-          format: int32
-          type: integer
-          readOnly: true
-        soapParentPropertyId:
-          $ref: '#/components/schemas/Expression_Func_AttachmentInfo_Int64'
-          readOnly: true
-        isTaskAttachment:
-          type: boolean
-          readOnly: true
-    Object:
-      type: object
-      properties: {}
     ParameterExpression:
       type: object
       properties:
@@ -646,18 +461,234 @@ components:
         canReduce:
           type: boolean
           readOnly: true
+    CompanyNoteAttachmentModel:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        attachDate:
+          format: date-time
+          type: string
+        attachedByContactID:
+          format: int64
+          type: integer
+        attachedByResourceID:
+          format: int64
+          type: integer
+        attachmentType:
+          type: string
+        companyID:
+          format: int32
+          type: integer
+        companyNoteID:
+          format: int32
+          type: integer
+        contentType:
+          type: string
+        creatorType:
+          format: int32
+          type: integer
+        fileSize:
+          format: double
+          type: number
+        fullPath:
+          type: string
+        impersonatorCreatorResourceID:
+          format: int32
+          type: integer
+        opportunityID:
+          format: int64
+          type: integer
+        parentID:
+          format: int64
+          type: integer
+        publish:
+          format: int32
+          type: integer
+        salesOrderID:
+          format: int32
+          type: integer
+        title:
+          type: string
+        data:
+          format: byte
+          type: string
+        parentType:
+          format: int32
+          type: integer
+          readOnly: true
+        soapParentPropertyId:
+          $ref: '#/components/schemas/Expression_Func_AttachmentInfo_Int64'
+          readOnly: true
+        isTaskAttachment:
+          type: boolean
+          readOnly: true
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
     EntityInformationResultModel:
       type: object
       properties:
         info:
           $ref: '#/components/schemas/EntityInformationModel'
           readOnly: true
+    Expression:
+      type: object
+      properties:
+        nodeType:
+          enum:
+          - Add
+          - AddChecked
+          - And
+          - AndAlso
+          - ArrayLength
+          - ArrayIndex
+          - Call
+          - Coalesce
+          - Conditional
+          - Constant
+          - Convert
+          - ConvertChecked
+          - Divide
+          - Equal
+          - ExclusiveOr
+          - GreaterThan
+          - GreaterThanOrEqual
+          - Invoke
+          - Lambda
+          - LeftShift
+          - LessThan
+          - LessThanOrEqual
+          - ListInit
+          - MemberAccess
+          - MemberInit
+          - Modulo
+          - Multiply
+          - MultiplyChecked
+          - Negate
+          - UnaryPlus
+          - NegateChecked
+          - New
+          - NewArrayInit
+          - NewArrayBounds
+          - Not
+          - NotEqual
+          - Or
+          - OrElse
+          - Parameter
+          - Power
+          - Quote
+          - RightShift
+          - Subtract
+          - SubtractChecked
+          - TypeAs
+          - TypeIs
+          - Assign
+          - Block
+          - DebugInfo
+          - Decrement
+          - Dynamic
+          - Default
+          - Extension
+          - Goto
+          - Increment
+          - Index
+          - Label
+          - RuntimeVariables
+          - Loop
+          - Switch
+          - Throw
+          - Try
+          - Unbox
+          - AddAssign
+          - AndAssign
+          - DivideAssign
+          - ExclusiveOrAssign
+          - LeftShiftAssign
+          - ModuloAssign
+          - MultiplyAssign
+          - OrAssign
+          - PowerAssign
+          - RightShiftAssign
+          - SubtractAssign
+          - AddAssignChecked
+          - MultiplyAssignChecked
+          - SubtractAssignChecked
+          - PreIncrementAssign
+          - PreDecrementAssign
+          - PostIncrementAssign
+          - PostDecrementAssign
+          - TypeEqual
+          - OnesComplement
+          - IsTrue
+          - IsFalse
+          type: string
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
+        canReduce:
+          type: boolean
+          readOnly: true
+    Object:
+      type: object
+      properties: {}
+    Filter:
+      type: object
+      properties:
+        op:
+          type: string
+        field:
+          type: string
+        udf:
+          type: boolean
+        value:
+          description: 'Can be either an Integer, String, Boolean, an Array of Integers, or an Array of Strings. '
+          type: object
+          properties: {}
+        items:
+          description: An Array of Filter objects
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
     QueryCountResultModel:
       type: object
       properties:
         queryCount:
           format: int32
           type: integer
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     FieldInformationModel:
       type: object
       properties:
@@ -688,37 +719,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    FieldInformationResultModel:
+    PickListValue:
       type: object
       properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
           format: int32
           type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Expression_Func_AttachmentInfo_Int64:
       type: object
       properties:
@@ -834,24 +852,6 @@ components:
         canReduce:
           type: boolean
           readOnly: true
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
     EntityInformationModel:
       type: object
       properties:

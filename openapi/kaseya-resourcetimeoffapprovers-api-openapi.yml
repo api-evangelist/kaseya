@@ -403,6 +403,45 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UserDefinedFieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+            readOnly: true
+    QueryActionResult_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceTimeOffApproverModel'
+        pageDetails:
+          $ref: '#/components/schemas/PagingModel'
+    RestUserAccessLevel:
+      type: object
+      properties: {}
+    FieldInformationResultModel:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInformationModel'
+            readOnly: true
+    EntityInformationResultModel:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/EntityInformationModel'
+          readOnly: true
+    ItemQueryResultModel_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/ResourceTimeOffApproverModel'
     Filter:
       type: object
       properties:
@@ -421,17 +460,38 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Filter'
-    RestUserAccessLevel:
-      type: object
-      properties: {}
-    UserDefinedFieldInformationResultModel:
+    QueryCountResultModel:
       type: object
       properties:
-        fields:
+        queryCount:
+          format: int32
+          type: integer
+    Object:
+      type: object
+      properties: {}
+    QueryModel:
+      type: object
+      properties:
+        maxRecords:
+          format: int32
+          type: integer
+        includeFields:
           type: array
           items:
-            $ref: '#/components/schemas/Field'
-            readOnly: true
+            type: string
+        filter:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+      example:
+        MaxRecords: 10
+        IncludeFields: []
+        Filter:
+        - op: gt
+          field: id
+          value: 0
+          udf: false
+          items: []
     PagingModel:
       type: object
       properties:
@@ -446,33 +506,6 @@ components:
           type: string
         nextPageUrl:
           type: string
-    Object:
-      type: object
-      properties: {}
-    PickListValue:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-        isDefaultValue:
-          type: boolean
-        sortOrder:
-          format: int32
-          type: integer
-        parentValue:
-          type: string
-        isActive:
-          type: boolean
-        isSystem:
-          type: boolean
-    QueryCountResultModel:
-      type: object
-      properties:
-        queryCount:
-          format: int32
-          type: integer
     FieldInformationModel:
       type: object
       properties:
@@ -503,20 +536,24 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    EntityInformationResultModel:
+    PickListValue:
       type: object
       properties:
-        info:
-          $ref: '#/components/schemas/EntityInformationModel'
-          readOnly: true
-    FieldInformationResultModel:
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldInformationModel'
-            readOnly: true
+        value:
+          type: string
+        label:
+          type: string
+        isDefaultValue:
+          type: boolean
+        sortOrder:
+          format: int32
+          type: integer
+        parentValue:
+          type: string
+        isActive:
+          type: boolean
+        isSystem:
+          type: boolean
     Field:
       type: object
       properties:
@@ -553,38 +590,6 @@ components:
           type: string
         isSupportedWebhookField:
           $ref: '#/components/schemas/Object'
-    QueryActionResult_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceTimeOffApproverModel'
-        pageDetails:
-          $ref: '#/components/schemas/PagingModel'
-    QueryModel:
-      type: object
-      properties:
-        maxRecords:
-          format: int32
-          type: integer
-        includeFields:
-          type: array
-          items:
-            type: string
-        filter:
-          type: array
-          items:
-            $ref: '#/components/schemas/Filter'
-      example:
-        MaxRecords: 10
-        IncludeFields: []
-        Filter:
-        - op: gt
-          field: id
-          value: 0
-          udf: false
-          items: []
     ResourceTimeOffApproverModel:
       type: object
       properties:
@@ -604,11 +609,6 @@ components:
           format: int64
           type: integer
           readOnly: true
-    ItemQueryResultModel_ResourceTimeOffApproverModel_ResourceTimeOffApprover:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/ResourceTimeOffApproverModel'
     EntityInformationModel:
       type: object
       properties:

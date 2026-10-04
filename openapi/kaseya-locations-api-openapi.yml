@@ -32,6 +32,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    LocationLookupOutputDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
+        IsMain:
+          type: boolean
+      additionalProperties: false
     LocationLookupOutputDtoListResponse:
       type: object
       properties:
@@ -71,19 +84,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    LocationLookupOutputDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-        IsMain:
-          type: boolean
       additionalProperties: false
   securitySchemes:
     bearerAuth:

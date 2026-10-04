@@ -106,16 +106,46 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CopilotConfigurationInputDto:
+    CopilotConfigurationValueDto:
       type: object
       properties:
-        IsEnabled:
-          type: boolean
-        Value:
-          $ref: '#/components/schemas/CopilotConfigurationValueDto'
-        ModuleId:
+        IsTicketSmartSummaryEnabled:
+          type:
+          - boolean
+          - 'null'
+        IsWritingAssistantEnabled:
+          type:
+          - boolean
+          - 'null'
+        IsTicketResolutionEnabled:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    ErrorInfo:
+      type: object
+      properties:
+        Code:
           type: integer
           format: int32
+        Message:
+          type:
+          - string
+          - 'null'
+        Details:
+          type:
+          - string
+          - 'null'
+        StackStrace:
+          type:
+          - string
+          - 'null'
+        SubErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
     CopilotConfigurationOutputDto:
       type: object
@@ -176,46 +206,16 @@ components:
           items:
             $ref: '#/components/schemas/CopilotConfigurationOutputDto'
       additionalProperties: false
-    ErrorInfo:
+    CopilotConfigurationInputDto:
       type: object
       properties:
-        Code:
+        IsEnabled:
+          type: boolean
+        Value:
+          $ref: '#/components/schemas/CopilotConfigurationValueDto'
+        ModuleId:
           type: integer
           format: int32
-        Message:
-          type:
-          - string
-          - 'null'
-        Details:
-          type:
-          - string
-          - 'null'
-        StackStrace:
-          type:
-          - string
-          - 'null'
-        SubErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    CopilotConfigurationValueDto:
-      type: object
-      properties:
-        IsTicketSmartSummaryEnabled:
-          type:
-          - boolean
-          - 'null'
-        IsWritingAssistantEnabled:
-          type:
-          - boolean
-          - 'null'
-        IsTicketResolutionEnabled:
-          type:
-          - boolean
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:

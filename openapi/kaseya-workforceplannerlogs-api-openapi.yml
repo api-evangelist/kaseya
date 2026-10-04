@@ -46,6 +46,34 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    WorkforcePlannerLogListInputDto:
+      type: object
+      properties:
+        PageSize:
+          type: integer
+          format: int32
+        PageNumber:
+          type: integer
+          format: int32
+        StartRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        EndRowIndex:
+          type: integer
+          format: int32
+          readOnly: true
+        Sort:
+          type:
+          - string
+          - 'null'
+        Exclude:
+          type:
+          - string
+          - 'null'
+        Filter:
+          $ref: '#/components/schemas/WorkforcePlannerLogListFilter'
+      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -103,34 +131,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    WorkforcePlannerLogListInputDto:
-      type: object
-      properties:
-        PageSize:
-          type: integer
-          format: int32
-        PageNumber:
-          type: integer
-          format: int32
-        StartRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        EndRowIndex:
-          type: integer
-          format: int32
-          readOnly: true
-        Sort:
-          type:
-          - string
-          - 'null'
-        Exclude:
-          type:
-          - string
-          - 'null'
-        Filter:
-          $ref: '#/components/schemas/WorkforcePlannerLogListFilter'
       additionalProperties: false
     WorkforcePlannerLogListOutputDto:
       type: object

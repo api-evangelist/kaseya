@@ -70,17 +70,6 @@ components:
           items:
             $ref: '#/components/schemas/POLookupDto'
       additionalProperties: false
-    POLookupDto:
-      type: object
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     ErrorInfo:
       type: object
       properties:
@@ -105,6 +94,17 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    POLookupDto:
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     bearerAuth:
