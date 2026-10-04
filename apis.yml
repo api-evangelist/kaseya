@@ -15288,6 +15288,8 @@ apis:
   humanURL: https://api.itglue.com/developer/
   baseURL: https://api.itglue.com
   tags:
+  - AccountCodes
+  tags_raw:
   - Account Codes
   properties:
   - type: OpenAPI
@@ -15458,6 +15460,8 @@ apis:
   humanURL: https://api.itglue.com/developer/
   baseURL: https://api.itglue.com
   tags:
+  - CompanyLocations
+  tags_raw:
   - Company Locations
   properties:
   - type: OpenAPI
@@ -16002,6 +16006,8 @@ apis:
   humanURL: https://api.itglue.com/developer/
   baseURL: https://api.itglue.com
   tags:
+  - JobTitle
+  tags_raw:
   - Job Title
   properties:
   - type: OpenAPI
@@ -16446,6 +16452,8 @@ apis:
   humanURL: https://api.itglue.com/developer/
   baseURL: https://api.itglue.com
   tags:
+  - ShippingTypes
+  tags_raw:
   - Shipping Types
   properties:
   - type: OpenAPI

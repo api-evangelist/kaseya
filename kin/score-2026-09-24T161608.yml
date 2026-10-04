@@ -1,22 +1,20 @@
-# Kin Score artifact — kaseya — 2026-08-25T133943
+# Kin Score artifact — kaseya — 2026-09-24T161608
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: kaseya
-  schema_version: 0.14.0
-  scored_at: '2026-08-25'
-  run_ts: 2026-08-25T133943
-  composite: 51.6
-  band: developing
+  schema_version: 0.22.0
+  scored_at: '2026-09-24'
+  run_ts: 2026-09-24T161608
+  composite: 58.8
+  band: strong
   facets:
-    discoverability: 81.5
-    contract_quality: 51.6
-    governance: 16.7
+    discoverability: 75.9
+    contract_quality: 57.9
+    contract_governance: 4.5
     operational_transparency: 73.7
-    developer_ergonomics: 56.5
-    commercial_clarity: 38.2
-    contract_governance: 16.7
-    access_clarity: 38.2
+    developer_ergonomics: 63.7
+    access_clarity: 59.2
   agent_readiness:
     score: 31.5
     band: agent-ready
@@ -45,7 +43,7 @@ kin_score:
     skills: derived
     conformance: derived
     contracts:
-      total: 3
+      total: 484
       derived: 0
       coverage: 0.0
       callable: 100.0
