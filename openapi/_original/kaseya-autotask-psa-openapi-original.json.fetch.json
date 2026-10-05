@@ -1,0 +1,12 @@
+{
+ "url": "https://webservices5.autotask.net/ATServicesRest/swagger/docs/v1",
+ "requested_url": "https://webservices5.autotask.net/ATServicesRest/swagger/docs/v1",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 3161112,
+ "sha256": "33004189221cd6b39557d8f517031b7477a8bc78ffbccd81b982c58ec806a57d",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.997), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
