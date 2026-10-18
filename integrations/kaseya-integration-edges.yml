@@ -6,6 +6,7 @@ source:
 - https://composio.dev/toolkits/kaseya
 - https://monid.ai/tools/kaseya
 checked:
+- google-workspace/integrations/google-workspace-integration-edges.yml
 - https://composio.dev/toolkits/kaseya
 - https://monid.ai/tools/kaseya
 - https://n8n.io/integrations/kaseya/
@@ -35,4 +36,21 @@ edges:
   - OKTA_VERIFIED
   features:
   - SAML
+- partner_name: Google Workspace (own)
+  partner: google-workspace
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://workspace.google.com/marketplace/app/automated_phishing_defense/94796565456
+  mirror_of: google-workspace/integrations/google-workspace-integration-edges.yml
+  apps:
+  - Automated Phishing Defense
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Google Workspace app
 templates: []
