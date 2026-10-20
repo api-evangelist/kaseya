@@ -29,3 +29,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: kaseya-jamf-own
+  label: JAMF (own)
+  partner: jamf
+  partner_name: JAMF (own)
+  category: Integration
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.jamf.com/details/it-glue-1
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

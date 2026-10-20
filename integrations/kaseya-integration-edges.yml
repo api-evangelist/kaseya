@@ -12,6 +12,7 @@ checked:
 - https://n8n.io/integrations/kaseya/
 - https://zapier.com/apps/kaseya/integrations
 - okta/integrations/okta-integration-edges.yml
+- jamf/integrations/jamf-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -53,4 +54,21 @@ edges:
   detected: '2026-10-18'
   detected_by: mirror-platform-listings.py
   category: Google Workspace app
+- partner_name: JAMF (own)
+  partner: jamf
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.jamf.com/details/it-glue-1
+  mirror_of: jamf/integrations/jamf-integration-edges.yml
+  apps:
+  - IT Glue
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: Integration
 templates: []
