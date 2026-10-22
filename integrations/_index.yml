@@ -77,3 +77,45 @@
     identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
   status: not-a-workflow
   arazzo: null
+- slug: kaseya-nist-cryptographic-module-validation-program-fips-140
+  label: NIST Cryptographic Module Validation Program (FIPS 140)
+  partner_name: NIST Cryptographic Module Validation Program (FIPS 140)
+  category: FIPS 140 cryptographic module validation (NIST / CCCS CMVP)
+  type: register
+  channel: standard-directory
+  evidence: https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search/all
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: 'NIST CMVP validated cryptographic modules (csrc.nist.gov validated-modules search: active + historical)
+      and Modules In Process list'
+    standard: FIPS 140-2 / FIPS 140-3
+    spec_file: null
+    role: fips-140-validated-vendor
+    registered_name: Kaseya US LLC
+    matched_domain: kaseya.com
+    matched_by: domain
+    signal_note: 'certified_products = one entry per (FIPS 140 edition, CMVP module type) held; a pair whose certificates
+      are all on the historical list is lapsed: true; Modules In Process are listing only (in_process), never certified;
+      certificate and module counts are context, never counted'
+    detected_by: sweep-nist-cmvp-fips-140-modules.py
+    detected: '2026-10-22'
+    certified_products:
+    - product: FIPS 140-2 Software cryptographic module
+      product_type: Software
+      standard: FIPS 140-2
+      status: Historical
+      lapsed: true
+      validated: '2021-12-02'
+    - product: FIPS 140-3 Software cryptographic module
+      product_type: Software
+      standard: FIPS 140-3
+      status: Active
+      lapsed: false
+      validated: '2026-03-26'
+    vendor_country: USA
+    identity_source: register website (CMVP certificate Vendor panel)
+    other_registrations:
+    - Kaseya US Sales, LLC
+  status: not-a-workflow
+  arazzo: null
