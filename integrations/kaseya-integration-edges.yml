@@ -13,6 +13,9 @@ checked:
 - https://zapier.com/apps/kaseya/integrations
 - okta/integrations/okta-integration-edges.yml
 - jamf/integrations/jamf-integration-edges.yml
+- https://www.commoncriteriaportal.org/products/certified_products-archived.csv
+- https://www.commoncriteriaportal.org/products/certified_products.csv
+- https://www.niap-ccevs.org/Product/PCL.cfm
 summary: null
 marketplace_apps: []
 edges:
@@ -71,4 +74,39 @@ edges:
   detected: '2026-10-20'
   detected_by: mirror-platform-listings.py
   category: Integration
+- partner_name: Common Criteria Portal (CCRA certified products)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.commoncriteriaportal.org/products/
+  category: Common Criteria (ISO/IEC 15408) product certification
+  contract_reference:
+    register: Common Criteria Portal certified products + archived certificates (commoncriteriaportal.org/products/certified_products.csv,
+      certified_products-archived.csv)
+    standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+    spec_file: null
+    role: cc-certified-manufacturer
+    registered_name: Kaseya International Limited
+    matched_domain: kaseya.com
+    matched_by: domain
+    certified_products:
+    - product: Network and Network-Related Devices and Systems
+      product_type: Network and Network-Related Devices and Systems
+      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+      lapsed: true
+      partner_tier: EAL2+,ALC_FLR.2
+      schemes:
+      - UK
+    signal_note: 'certified_products = one entry per Common Criteria product CATEGORY held (highest EAL for that
+      category in partner_tier; a category held only among archived certificates is lapsed: true); certificate and
+      product counts are context, never counted'
+    detected_by: sweep-common-criteria-certified-products.py
+    detected: '2026-10-21'
+    identity: wikidata Q107420131 'Kaseya' P856 https://www.kaseya.com/
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  detected_by: sweep-common-criteria-certified-products.py
+  first_seen: '2026-10-21'
 templates: []
