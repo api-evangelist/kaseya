@@ -734,3 +734,9 @@ components:
         supportsWebhookCallouts:
           type: boolean
           readOnly: true
+x-provenance:
+  method: harvested
+  publisher: Kaseya
+  source: https://webservices5.autotask.net/ATServicesRest/swagger/docs/v1
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
